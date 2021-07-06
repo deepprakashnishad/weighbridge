@@ -1,0 +1,32 @@
+<div class="container" mat-dialog>
+	<div mat-dialog-title>{{title}}</div>
+	<mat-dialog-content [formGroup]="permissionForm">
+		<div *ngIf="errors.length" class="alert alert-danger">
+	      <ul>
+	        <li *ngFor="let error of errors">{{error}}</li>
+	      </ul>
+	    </div>
+		<div class="row">
+			<div class="col-md-12">
+				<mat-form-field appearance="outline">
+					<mat-label>Permission Name</mat-label>
+					<input type="text" matInput formControlName="permission" [(ngModel)]="permission.permission" appCapitalize/>
+				</mat-form-field>
+			</div>
+			<div class="col-md-12">
+				<mat-form-field appearance="outline">
+					<mat-label>Description</mat-label>
+					<textarea type="text" matInput formControlName="description"
+					[(ngModel)]="permission.description"></textarea>
+				</mat-form-field>
+			</div>
+		</div>
+	</mat-dialog-content>
+	<mat-dialog-actions> 
+		<button type="button" mat-raised-button color="primary"
+		    (click)="save(permission)"
+		    [disabled]="permissionForm.invalid">Save</button>
+		<button type="button" mat-button 
+		    (click)="dialogRef.close(false)">Cancel</button>
+	 </mat-dialog-actions>
+</div>

@@ -1,0 +1,45 @@
+<div class="container">
+	<form *ngIf="displayMode==='dropdown'">
+		<mat-form-field>
+		<input type="text" placeholder="Select Person" matInput [formControl]="personControl" [matAutocomplete]="personAuto" (focus)="onFocus()">
+		<mat-hint>Type person name, mobile or email</mat-hint>
+		</mat-form-field>
+		
+		<mat-autocomplete #personAuto="matAutocomplete" 
+			[displayWith]="displayFn" (optionSelected)="selected($event)">
+		<mat-option *ngFor="let person of filteredPersons" [value]="person">	
+			<img src=""/>
+			{{person.name}} | {{person.mobile}} | {{person.email}}
+		</mat-option>
+		</mat-autocomplete>
+	</form>
+	<div *ngIf="displayMode==='grid'">
+		<mat-form-field>
+			<input type="text" placeholder="Select Person" matInput [formControl]="personControl">
+			<mat-hint>Type person name, mobile or email</mat-hint>
+		</mat-form-field>
+		<div class="grid-container" fxLayout="row wrap" fxLayoutGap="16px grid">
+			<div *ngFor="let person of filteredPersons; let i=index;">
+				<mat-card [ngClass]="{'selected': selectedPerson?.id === person.id}" (click)="selectedInGrid(person)">
+					<mat-card-header fxLayout>
+						<mat-card-title>{{person.name}}</mat-card-title>
+					</mat-card-header>
+					<mat-card-content fxLayout="column" fxLayoutGap="16px">
+						<div>Email - {{person.email}}</div>					
+						<div>Mob - {{person.mobile}}</div>
+						<div>Role - {{person.role['name']}}</div>
+						<div>Status - {{person.status}}</div>
+					</mat-card-content>
+					<mat-action-list fxLayout fxLayoutAlign="end center">
+						<button mat-icon-button color="accent" matTooltip="Edit Person" (click)="onEditClick(person);$event.stopPropagation();">
+							<mat-icon aria-label="Edit">edit</mat-icon>
+						</button>
+						<button mat-icon-button color="warn" matTooltip="Reset Password" (click)="openResetPasswordDialog(person);$event.stopPropagation();">
+							<mat-icon aria-label="Reset Password">vpn_key</mat-icon>
+						</button>
+					</mat-action-list>
+				</mat-card>
+			</div>
+		</div>
+	</div>
+</div>

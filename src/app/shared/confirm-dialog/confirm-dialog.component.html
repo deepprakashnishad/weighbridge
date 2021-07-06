@@ -1,0 +1,10 @@
+<div mat-dialog>	
+	<div mat-dialog-title>{{title}}</div>
+	<mat-dialog-content>{{message}}</mat-dialog-content>
+	<mat-dialog-actions> 
+		<button type="button" mat-raised-button color="primary"
+		    (click)="dialogRef.close(true)">Yes</button>
+		<button type="button" mat-button 
+		    (click)="dialogRef.close(false)">No</button>
+	 </mat-dialog-actions>
+</div>

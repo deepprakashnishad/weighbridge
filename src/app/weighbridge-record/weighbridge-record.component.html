@@ -1,0 +1,48 @@
+<div class="full-height main-container" fxLayout="column" fxLayoutGap="5px">
+  <mat-card>
+    <div class="box-title" fxLayout="column" fxLayoutGap="4px">Weighbridge</div>
+      <mat-card-content>
+        <mat-form-field appearance="fill">
+          <mat-label>Select weighbridge</mat-label>
+          <mat-select name="cntlSelectedWeightBridge" [(ngModel)]="selectedWeighbridge" appearance="outline">
+            <mat-option *ngFor="let weighbridge of weighbridges" [value]="weighbridge">{{weighbridge.title}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div fxLayout fxLayoutAlign="space-between center">
+          <h2>{{currentWeight}}</h2>
+          <div class="icon-container"><img width="15" height="15" src="assets/icons/plug-30.png" /></div>
+        </div>
+      </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <div class="box-title" fxLayout="column" fxLayoutGap="4px">DI Status</div>
+    <mat-card-content>
+      <div fxLayout fxLayoutAlign="space-between center">
+        <div></div>
+        <div class="icon-container"><img width="15" height="15" src="assets/icons/plug-30.png" /></div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card fxFlex class="pending-record-container">
+    <div class="box-title" fxLayout fxLayoutAlign="space-between start">
+      <div>Pending Records</div>
+      <div fxLayout>
+        <button mat-icon-button color="primary"><mat-icon>add</mat-icon></button>
+        <button mat-icon-button color="primary"><mat-icon>refresh</mat-icon></button>
+      </div>
+    </div>
+    <mat-card-content>
+      <div class="pending-record-row" fxLayout fxLayoutAlign="space-between center">
+        <div class="bordered" fxFlex="10">Sr.</div>
+        <div class="bordered" fxFlex="45">Truck No.</div>
+        <div class="bordered" fxFlex="45">In Time</div>
+      </div>
+      <div class="pending-record-row" fxLayout fxLayoutAlign="space-between center" *ngFor="let record of pendingRecords; let i=index">
+        <div class="bordered" fxFlex="10">{{i}}</div>
+        <div class="bordered" fxFlex="45">{{record.truckNo}}</div>
+        <div class="bordered" fxFlex="45">{{record.inTime}}</div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

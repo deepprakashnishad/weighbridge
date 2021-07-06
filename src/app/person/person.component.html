@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row mat-elevation-z8">
+		<div class="col-md-6">
+			<app-person-search [displayMode]="'grid'" (personSelected)="personSelected($event)" [selectedPerson]="selectedPerson"></app-person-search>
+		</div>
+		<div class="col-md-6" style="padding-top: 10px">
+			<button mat-raised-button color="primary" matTooltip="Add Person" (click)="onAddClick()">Add New Member</button>
+		</div>
+	</div>
+	<div fxLayout="column" *ngIf="selectedPerson" style="padding-top: 20px">
+		<div fxLayout="row" fxLayoutAlign="space-between">
+			<div>
+				<h5>Mobile</h5>
+				<h4>{{selectedPerson.mobile}}</h4>
+			</div>
+			<div>
+				<h5>Email</h5>
+				<h4>{{selectedPerson.email}}</h4>
+			</div>
+			<div>
+				<h5>Role</h5>
+				<h4>{{selectedPerson.role.name}}</h4>
+			</div>
+			<div fxlayout>
+				<button mat-icon-button color="accent" matTooltip="Edit Person" (click)="onEditClick()">
+					<mat-icon aria-label="Edit">edit</mat-icon>
+				</button>
+				<button mat-icon-button color="warn" matTooltip="Reset Password" (click)="openResetPasswordDialog()">
+					<mat-icon aria-label="Reset Password">vpn_key</mat-icon>
+				</button>
+			</div>
+		</div>
+		<app-view-permission [permissions]="selectedPerson.permissions" fxFlex="grow"></app-view-permission>
+	</div>
+</div>

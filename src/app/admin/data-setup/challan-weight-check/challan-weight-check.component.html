@@ -1,0 +1,47 @@
+<div class="container content-box" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="32px">
+  <div class="full-width" fxLayout fxLayoutAlign="space-around center">
+    <form fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="16px">
+      <mat-checkbox class="example-margin">Enable challan weight for Inbound</mat-checkbox>
+      <mat-checkbox class="example-margin">Enable validation for Inbound</mat-checkbox>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Inbound Upper limit</mat-label>
+        <input name="cntlInboundUpperLimit" matInput placeholder="Upper limit" value="">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Inbound Lower limit</mat-label>
+        <input name="cntlOutboundUpperLimit" matInput placeholder="Lower limit" value="">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>On validation failure</mat-label>
+        <mat-select name="cntlFailureEffectOnInbound" [(ngModel)]="failureEffectOnInbound" appearance="outline">
+          <mat-option value="do_not_save">Do not save</mat-option>
+          <mat-option value="show_warning">Show warning and allow to save</mat-option>
+          <mat-option value="failure_reason">Failure reason required </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+    <form fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="16px">
+        <mat-checkbox class="example-margin">Enable challan weight for Outbound</mat-checkbox>
+        <mat-checkbox class="example-margin">Enable validation for Outbound</mat-checkbox>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Upper limit</mat-label>
+            <input name="cntlOutboundUpperLimit" matInput placeholder="Upper limit" value="">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Lower limit</mat-label>
+            <input name="cntlOutboundLowerLimit" matInput placeholder="Lower limit" value="">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>On validation failure</mat-label>
+            <mat-select name="cntlFailureEffectOnOutbound" [(ngModel)]="failureEffectOnOutbound" appearance="outline">
+              <mat-option value="do_not_save">Do not save</mat-option>
+              <mat-option value="show_warning">Show warning and allow to save</mat-option>
+              <mat-option value="failure_reason">Failure reason required </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </form>
+  </div>
+  <div fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
+    <button mat-raised-button color="primary">Save & Next</button>
+  </div>
+</div>

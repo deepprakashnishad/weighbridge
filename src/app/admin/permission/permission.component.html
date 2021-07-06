@@ -1,0 +1,4 @@
+<div class="container">
+	<button class="pull-right" mat-raised-button color="primary" (click)="openAddEditPermissionDialog()" *ngIf="isAddPermitted">Add New Permission</button>
+	<app-view-permission [permissions]="permissions" [isEditPermitted]="isEditPermitted"></app-view-permission>
+</div>

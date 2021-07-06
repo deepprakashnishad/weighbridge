@@ -1,0 +1,67 @@
+<div class="container" mat-dialog>
+	<div fxlayout fxLayoutAlign="space-between center">
+		<div mat-dialog-title>{{title}}</div>
+		<button mat-icon-button (click)="dialogRef.close(false)"><mat-icon>close</mat-icon></button>
+	</div>
+	<mat-dialog-content [formGroup]="personForm">
+		<div *ngIf="errors.length" class="alert alert-danger">
+	      <ul>
+	        <li *ngFor="let error of errors">{{error}}</li>
+	      </ul>
+	    </div>
+		<div fxLayout="column">
+			<mat-form-field appearance="outline">
+				<mat-label>Name</mat-label>
+				<input type="text" matInput formControlName="name" [(ngModel)]="person.name" appCapitalizeFirstLetter/>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>Mobile</mat-label>
+				<input type="text" matInput formControlName="mobile" [(ngModel)]="person.mobile" />
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>Email</mat-label>
+				<input type="text" matInput formControlName="email" [(ngModel)]="person.email" />
+			</mat-form-field>
+			<mat-form-field *ngIf="person.id">
+				<mat-label>Password</mat-label>
+				<input type="text" matInput formControlName="password" [(ngModel)]="person.password" />
+				<button matSuffix mat-icon-button (click)="generatePassword()">
+					<mat-icon>vpn_key</mat-icon>
+				</button>
+				<button matSuffix mat-icon-button [cdkCopyToClipboard]="person.password" (click)="copied()">
+					<mat-icon *ngIf="person?.password?.length>0">content_copy</mat-icon>
+				</button>
+			</mat-form-field>
+			<div class="col" *ngIf="person.status!==''">
+				<mat-label>Status: {{person.status}}</mat-label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<mat-expansion-panel expanded="true">
+				    <mat-expansion-panel-header>
+				    	Grant &amp; Revoke Permissions
+				    </mat-expansion-panel-header>
+				    <div class="row">
+				    	<div class="col-sm-3">
+				    		<h4>Select Role</h4>
+				    		<mat-button-toggle-group class="toggle-button-wrapper vertical" name="selectedRole" aria-label="Person role">
+				    			<mat-button-toggle *ngFor="let role of roles; index as i" value="role" (change)="selectRole(role)" checked="{{role.id===person.role.id}}">{{role.name}}</mat-button-toggle>
+				    		</mat-button-toggle-group>
+				    	</div>
+				    	<div class="col-sm-9" *ngIf="person.id">
+				    		<app-assign-revoke-permissions [grantedPermissions]="person.permissions" (grantedPermissionModified)="onPermissionUpdate($event)" *ngIf="person.role"></app-assign-revoke-permissions>		
+				    	</div>
+				    </div>
+			  	</mat-expansion-panel>
+			</div>
+		</div>
+	</mat-dialog-content>
+	<mat-dialog-actions> 
+		<button type="button" mat-raised-button color="primary"
+		    (click)="save(person)"
+		    [disabled]="personForm.invalid">Save</button>
+		<button type="button" mat-button 
+		    (click)="dialogRef.close(false)">Cancel</button>
+	 </mat-dialog-actions>
+</div>

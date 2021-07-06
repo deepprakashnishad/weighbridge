@@ -1,0 +1,14 @@
+<div class="container">
+  <div fxLayout fxLayoutGap="16px" fxLayoutAlign="start center">
+    <form>
+      <mat-form-field appearance="fill">
+        <mat-label>Template Name</mat-label>
+        <mat-select [(value)]="selectedTemplate">
+          <mat-option *ngFor="let template of templates" value="template">{{template.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+    <button mat-raised-button color="primary" (click)="openAddTicketTemplateDialog()">Add <mat-icon>add</mat-icon></button>
+    <button mat-raised-button color="primary" *ngIf="selectedTemplate">Edit <mat-icon>edit</mat-icon></button>
+  </div>
+</div>

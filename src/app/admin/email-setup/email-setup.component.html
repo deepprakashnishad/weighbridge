@@ -1,0 +1,105 @@
+<div class="container" fxLayout fxLayoutGap="12px">
+  <mat-card>
+    <mat-card-content>
+      <form fxLayout="column" fxLayoutGap="16px">
+        <mat-checkbox [(ngModel)]="allowEmail" name="cboxAllowEmail">Allow Email</mat-checkbox>
+        <mat-checkbox [(ngModel)]="enableDailyEmail" name="cboxEnableDailyEmail">Enable daily email</mat-checkbox>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Select daily email time" aria-label="12hr format" [ngxTimepicker]="pickerDailyEmail" [value]="dailyEmailTime" readonly>
+          <ngx-material-timepicker #pickerDailyEmail [enableKeyboardInput]="true"></ngx-material-timepicker>
+        </mat-form-field>
+        <mat-checkbox [(ngModel)]="enableCollectionEmail" name="cboxEnableCollectionEmail">Enable daily operator collection email</mat-checkbox>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Daily operator collection email time" aria-label="12hr format" [ngxTimepicker]="pickerCollectionEmail" [value]="collectionEmailTime" readonly>
+          <ngx-material-timepicker #pickerCollectionEmail [enableKeyboardInput]="true"></ngx-material-timepicker>
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill">
+          <mat-label>Email Provider</mat-label>
+          <mat-select [(value)]="emailProvider" placeholder="Email Provider">
+            <mat-option value="gmail">Gmail</mat-option>
+            <mat-option value="hotmail">Hotmail</mat-option>
+            <mat-option value="microsoft">Microsoft</mat-option>
+            <mat-option value="custom">Custom</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card fxLayout="column">
+    <mat-card-title>Sender Email Account</mat-card-title>
+    <form>
+      <mat-card-content>
+        <mat-form-field appearance="outline">
+          <mat-label>Email Id</mat-label>
+          <input matInput placeholder="Email Id" name="cntlEmailId" [(ngModel)]="senderEmailId" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Password" name="cntlPassword" [(ngModel)]="senderEmailPassword" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" name="cntlName" [(ngModel)]="senderName" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email Server</mat-label>
+          <input matInput placeholder="Email Server" name="cntlSMTP" [(ngModel)]="emailServer" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Port</mat-label>
+          <input matInput placeholder="Port" name="cntlPort" [(ngModel)]="port" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Email Protocol</mat-label>
+          <mat-select [(value)]="emailProtocol" placeholder="Email Protocol">
+            <mat-option value="gmail">SMTP</mat-option>
+            <mat-option value="hotmail">POP3</mat-option>
+            <mat-option value="microsoft">IMAP</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-content>
+    </form>    
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Email Recipients</mat-card-title>
+    <form>
+      <mat-card-content class="limit-height">
+        <div fxLayout fxLayoutGap="16px" fxLayoutAlign="start center">
+          <mat-form-field appearance="outline">
+            <mat-label>Recipient Email</mat-label>
+            <input matInput placeholder="Email Id" name="cntlEmailId" [(ngModel)]="recipientEmailId" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Remarks</mat-label>
+            <input matInput placeholder="Password" name="cntlPassword" [(ngModel)]="recipientRemarks" />
+          </mat-form-field>
+          <div><button mat-raised-button color="primary" (click)="addRecipientToList()">Add</button></div>
+        </div>
+        <mat-list class="full-width">
+          <mat-list-item *ngFor="let recipient of recipients; let i=index">
+            <div class="full-width" fxLayout fxLayoutAlign="space-between center">
+              <div>
+                <div matLine>{{recipient['email']}}</div>
+                <div matLine>{{recipient['remarks']}}</div>
+              </div>
+              <button mat-icon-button color="primary" (click)="removeRecipient(i)"><mat-icon>delete</mat-icon></button>
+            </div>            
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </form>    
+  </mat-card>
+</div>
+<div fxLayout fxLayoutAlign="space-between center" fxLayoutGap="32px">
+  <mat-radio-group [(ngModel)]="emailOn" name="radioEmailOn"  fxLayout fxLayoutAlign="center center" fxLayoutGap="16px">
+    <mat-radio-button value="emailOnEachWeight">Email on each weight</mat-radio-button>
+    <mat-radio-button value="enableDailyEmail">Enable daily email</mat-radio-button>
+  </mat-radio-group>
+  <div fxLayout fxLayoutAlign="center center" fxLayoutGap="16px">
+    <button mat-raised-button (click)="save()" color="primary">Save</button>
+    <button mat-raised-button (click)="sendTestEmail()" color="accent">Send test email</button>
+  </div>  
+</div>

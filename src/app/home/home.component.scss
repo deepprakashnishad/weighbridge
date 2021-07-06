@@ -1,0 +1,28 @@
+.container{
+    padding: 2% 15%;
+}
+
+.item-container{
+    min-width: 150px;
+    min-height: 150px;
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.mat-icon{
+    font-size: 50px;
+}
+
+.icon-container{
+    padding-left: 30%;
+}
+
+mat-grid-tile {
+    background: lightblue;
+    height: fit-content;
+    width: fit-content;
+}
+
+.no-underline{
+    text-decoration: none;
+}

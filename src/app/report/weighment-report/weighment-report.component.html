@@ -1,0 +1,164 @@
+<div fxLayout="column" fxLayoutGap="12px">
+  <mat-radio-group fxLayout fxLayoutGap="32px" [(ngModel)]="reportType">
+    <mat-radio-button value="all">All</mat-radio-button>
+    <mat-radio-button value="inbound">Inbound</mat-radio-button>
+    <mat-radio-button value="outbound">Outbound</mat-radio-button>
+    <mat-radio-button value="internal">Internal</mat-radio-button>
+  </mat-radio-group>
+  <div fxLayout="row wrap" fxLayoutGap="32px">
+    <mat-form-field appearance="fill">
+      <mat-label>Select date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate placeholder="Start date">
+        <input matEndDate placeholder="End date">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>   
+    <mat-form-field appearance="outline">
+      <mat-label>From time</mat-label>
+      <input matInput placeholder="Select from time" aria-label="12hr format" [ngxTimepicker]="pickerFromTime" [value]="fromTime" readonly>
+      <span matSuffix>
+        <mat-icon>watch_later</mat-icon>
+      </span>
+      <ngx-material-timepicker #pickerFromTime [enableKeyboardInput]="true"></ngx-material-timepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>To time</mat-label>
+      <input matInput placeholder="Select to time" aria-label="12hr format" [ngxTimepicker]="pickerToTime" [value]="toTime" readonly>
+      <span matSuffix>
+        <mat-icon>watch_later</mat-icon>
+      </span>
+      <ngx-material-timepicker #pickerToTime [enableKeyboardInput]="true"></ngx-material-timepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>From RST No.</mat-label>
+      <input matInput placeholder="From RST No." aria-label="From RST No." [(ngModel)]="fromRSTNo" name="cntlFromRSTNo" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>To RST No.</mat-label>
+      <input matInput placeholder="To RST No." aria-label="From RST No." [(ngModel)]="toRSTNo" name="cntlToRSTNo" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Truck No.</mat-label>
+      <input matInput placeholder="Truck No." aria-label="Truck No." [(ngModel)]="truckNumber" name="cntlTruckNumber" />
+    </mat-form-field>
+    <app-tag-selector [title]="'Select material'"></app-tag-selector>
+    <app-tag-selector [title]="'Select supplier'"></app-tag-selector>
+  </div>
+
+  <form fxLayout fxLayoutGap="16px" fxLayoutAlign="start center">
+    <mat-form-field appearance="fill">
+      <mat-label>Status</mat-label>
+      <mat-select [(ngModel)]="status" name="cntlSelectStatus">
+        <mat-option [value]="'all'">All</mat-option>
+        <mat-option [value]="'completed'">Completed</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Columns</mat-label>
+      <mat-select multiple [(ngModel)]="displayedColumns" name="cntlSelectDisplayedColumns">
+        <mat-option *ngFor="let column of columns" [value]="column">{{column}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div fxLayout fxLayoutGap="16px">
+      <button mat-raised-button color="primary" (click)="search()"><mat-icon>search</mat-icon> Search</button>
+      <button mat-raised-button color="primary" (click)="export()"><mat-icon>file_download</mat-icon> Export</button>
+    </div>
+  </form>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+    <ng-container matColumnDef="SNo">
+      <th mat-header-cell *matHeaderCellDef> SNo. </th>
+      <td mat-cell *matCellDef="let element"> {{element.i}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="RSTNo">
+      <th mat-header-cell *matHeaderCellDef> RSTNo </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Truck No">
+      <th mat-header-cell *matHeaderCellDef> Truck No </th>
+      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Supplier">
+      <th mat-header-cell *matHeaderCellDef> Supplier </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Material">
+      <th mat-header-cell *matHeaderCellDef> Material </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Wbridge1">
+      <th mat-header-cell *matHeaderCellDef> Wbridge1 </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Wt1">
+      <th mat-header-cell *matHeaderCellDef> Wt1 </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="DateTime1">
+      <th mat-header-cell *matHeaderCellDef> DateTime1 </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Operator1">
+      <th mat-header-cell *matHeaderCellDef> Operator1 </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="GatePassNo">
+      <th mat-header-cell *matHeaderCellDef> GatePassNo </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="PODetails">
+      <th mat-header-cell *matHeaderCellDef> PO Details </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Wbridge2">
+      <th mat-header-cell *matHeaderCellDef> Wbridge2 </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Wt2">
+      <th mat-header-cell *matHeaderCellDef> Wt2 </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Datetime2">
+      <th mat-header-cell *matHeaderCellDef> Datetime2 </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Operator2">
+      <th mat-header-cell *matHeaderCellDef> Operator2 </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="NetWt">
+      <th mat-header-cell *matHeaderCellDef> Net Wt </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="Duration">
+      <th mat-header-cell *matHeaderCellDef> Duration </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns; let i=index;"></tr>
+  </table>
+  
+</div>

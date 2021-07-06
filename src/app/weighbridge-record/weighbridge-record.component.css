@@ -1,0 +1,24 @@
+.icon-container{
+    border: 1px solid #000000;
+    border-radius: 30px;
+    padding: 4px;
+    background-color: #d3d3d3;
+}
+
+.bordered{
+    border: 1px solid;
+    padding: 4px;
+}
+
+.pending-record-row{
+    cursor: pointer;
+}
+
+.main-container{
+    max-height: 100%;
+}
+
+.pending-record-container{
+    max-height: inherit;
+    overflow-y: auto;
+}

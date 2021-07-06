@@ -1,0 +1,137 @@
+<mat-card>
+  <mat-card-title>Indicator Strings</mat-card-title>
+  <form>
+    <mat-card-content fxLayout="column" fxLayoutGap="16px">
+      <div fxLayout fxLayoutAlign="space-between center">
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Name</mat-label>
+          <input name="cntlName" matInput placeholder="Name" [(ngModel)]="indicatorString.name">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Total Chars</mat-label>
+          <input name="cntlTotalChars" matInput placeholder="Total Chars" [(ngModel)]="indicatorString.totalChars">
+        </mat-form-field>
+
+        <mat-checkbox class="example-margin" [(ngModel)]="indicatorString.variableLength" name="cntlIsVariableString">Variable length</mat-checkbox>
+
+        <mat-form-field appearance="fill">
+          <mat-label>String type</mat-label>
+          <mat-select name="cntlStringType" [(ngModel)]="indicatorString.type" appearance="outline">
+            <mat-option value="continuous">Continuous</mat-option>
+            <mat-option value="polling">Polling</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill" *ngIf="indicatorString.type==='polling'">
+          <mat-label>Polling command</mat-label>
+          <input name="cntlPollingCmd" matInput placeholder="Polling Command" [(ngModel)]="indicatorString.pollingCommand">
+        </mat-form-field>
+      </div>
+      <div class="full-width">
+        <div fxFlex="25">
+          <h3>Serial Port Setting</h3>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Baud rate</mat-label>
+            <input name="cntlBaudRate" matInput placeholder="Baud rate" [(ngModel)]="indicatorString.baudRate">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Data bits</mat-label>
+            <input name="cntlDataBits" matInput placeholder="Data Bits" [(ngModel)]="indicatorString.dataBits">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Stop Bits</mat-label>
+            <input name="cntlStopBits" matInput placeholder="Stop Bits" [(ngModel)]="indicatorString.stopBits">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Parity</mat-label>
+            <mat-select name="cntlParity" [(ngModel)]="indicatorString.parity" appearance="outline">
+              <mat-option value="none">NONE</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Flow control</mat-label>
+            <mat-select name="cntlFlowControl" [(ngModel)]="indicatorString.flowControl" appearance="outline">
+              <mat-option value="none">NONE</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxFlex="25">
+          <h3>Weight Char Position</h3>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>First</mat-label>
+            <input name="cntlWCP1" matInput placeholder="First" [(ngModel)]="indicatorString.weightCharPosition1">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Second</mat-label>
+            <input name="cntlWCP2" matInput placeholder="Second" [(ngModel)]="indicatorString.weightCharPosition2">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Third</mat-label>
+            <input name="cntlWCP3" matInput placeholder="Third" [(ngModel)]="indicatorString.weightCharPosition3">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Fourth</mat-label>
+            <input name="cntlWCP4" matInput placeholder="Fourth" [(ngModel)]="indicatorString.weightCharPosition4">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Fifth</mat-label>
+            <input name="cntlWCP5" matInput placeholder="Fifth" [(ngModel)]="indicatorString.weightCharPosition5">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Sixth</mat-label>
+            <input name="cntlWCP6" matInput placeholder="Sixth" [(ngModel)]="indicatorString.weightCharPosition6">
+          </mat-form-field>
+        </div>
+        <div fxFlex="25">
+          <h3>Start Chars</h3>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>First</mat-label>
+            <input name="cntlStartChars1" matInput placeholder="First" [(ngModel)]="indicatorString.startChar1">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Second</mat-label>
+            <input name="cntlStartChars2" matInput placeholder="Second" [(ngModel)]="indicatorString.startChar2">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Third</mat-label>
+            <input name="cntlStartChars3" matInput placeholder="Third" [(ngModel)]="indicatorString.startChar3">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Fourth</mat-label>
+            <input name="cntlStartChars4" matInput placeholder="Fourth" [(ngModel)]="indicatorString.startChar4">
+          </mat-form-field>
+        </div>
+        <div fxFlex="25">
+          <h3>End Chars</h3>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>First</mat-label>
+            <input name="cntlEndChars1" matInput placeholder="First" [(ngModel)]="indicatorString.endChar1">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Second</mat-label>
+            <input name="cntlEndChars2" matInput placeholder="Second" [(ngModel)]="indicatorString.endChar2">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Third</mat-label>
+            <input name="cntlEndChars3" matInput placeholder="Third" [(ngModel)]="indicatorString.endChar3">
+          </mat-form-field>
+          <h3>Sign Chars</h3>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Sign char position</mat-label>
+            <input name="cntlsignCharPosition" matInput placeholder="Sign char position" [(ngModel)]="indicatorString.signCharPosition">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Negative Sign Value</mat-label>
+            <input name="cntlNegativeSignValue" matInput placeholder="Negative Sign Value" [(ngModel)]="indicatorString.negativeSignValue">
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <div fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
+      <button mat-raised-button color="primary">Save</button>
+      <button mat-raised-button color="accent">Close</button>
+    </div>
+  </form>
+</mat-card>

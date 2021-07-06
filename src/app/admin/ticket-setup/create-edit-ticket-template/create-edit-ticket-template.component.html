@@ -1,0 +1,53 @@
+<mat-card>
+  <mat-card-title>
+    Ticket Template
+  </mat-card-title>
+  <form>
+    <mat-card-content fxLayout="row wrap" fxLayoutGap="32px">
+      <mat-form-field appearance="fill">
+        <mat-label>Template Name</mat-label>
+        <input matInput name="cntlName" [(ngModel)]="template.name" placeholder="Template Name"/>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Inbound/Outbound</mat-label>
+        <mat-select [(value)]="template.applicableTo" placeholder="Inbound/Outbound">
+          <mat-option value="GENERIC">GENERIC</mat-option>
+          <mat-option value="INBOUND">INBOUND</mat-option>
+          <mat-option value="OUTBOUND">OUTBOUND</mat-option>
+          <mat-option value="INTERNAL">INTERNAL</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Printer Type</mat-label>
+        <mat-select [(value)]="template.printerType" placeholder="Printer Type">
+          <mat-option value="GRAPHICAL">GRAPHICAL</mat-option>
+          <mat-option value="DOT MATRIX">DOT MATRIX</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Default</mat-label>
+        <mat-select [(value)]="template.printerType" placeholder="Default">
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Label length</mat-label>
+        <input matInput name="cntlLabelLength" [(ngModel)]="template.labelLength" placeholder="Label length"/>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Copy From</mat-label>
+        <mat-select [(value)]="copyFrom" placeholder="Copy From">
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Number of copies per print</mat-label>
+        <mat-select [(value)]="template.copiesPerPrint" placeholder="Number of copies per print">
+          <mat-option *ngFor="let i of [0,1,2,3,4,5,6,7,8,9]" value="i">{{i}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+  </form>
+  <div fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
+    <button color="primary" mat-raised-button>Save</button>
+    <button color="accent" mat-raised-button (click)="dialogRef.close()">Cancel</button>
+  </div>
+</mat-card>

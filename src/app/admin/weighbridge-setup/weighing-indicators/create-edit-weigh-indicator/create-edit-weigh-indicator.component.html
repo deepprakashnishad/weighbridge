@@ -1,0 +1,80 @@
+<mat-card>
+    <mat-card-title>
+      Weighing Indicator
+    </mat-card-title>
+    <form>
+      <mat-card-content fxLayout="column" fxLayoutGap="24px">
+        <mat-radio-group aria-label="Select indicator type" name="cntlType" [(ngModel)]="indicator.type">
+          <mat-radio-button value="serial">Serial</mat-radio-button>
+          <mat-radio-button value="tcpip">TCP/IP</mat-radio-button>
+          <mat-radio-button value="http">Http</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field appearance="fill" *ngIf="indicator.type==='serial'">
+          <mat-label>On validation failure</mat-label>
+          <mat-select matInput [(ngModel)]="indicator.comPort" name="cntlComPort">
+            <mat-option value="COM1">COM1</mat-option>
+            <mat-option value="COM2">COM2</mat-option>
+            <mat-option value="COM3">COM3</mat-option>
+            <mat-option value="COM4">COM4</mat-option>
+            <mat-option value="COM5">COM5</mat-option>
+            <mat-option value="COM6">COM6</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="indicator.type!=='serial'" fxLayout fxLayoutGap="16px">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>IP Address</mat-label>
+            <input name="cntlIpAddress" matInput placeholder="IP Address" [(ngModel)]="indicator.ipAddress">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Port</mat-label>
+            <input name="cntlPort" matInput placeholder="Port" [(ngModel)]="indicator.port">
+          </mat-form-field>
+          <mat-form-field appearance="fill" *ngIf="indicator.type==='http'">
+            <mat-label>On validation failure</mat-label>
+            <mat-select matInput [(ngModel)]="indicator.httpType" name="cntlHttpType">
+              <mat-option value="http">http</mat-option>
+              <mat-option value="https">https</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayout fxLayoutGap="16px">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Indicator Name</mat-label>
+            <input matInput name="cntlIndicatorName" matInput placeholder="Indicator Name" [(ngModel)]="indicator.name">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>On validation failure</mat-label>
+            <mat-select matInput [(ngModel)]="indicator.indicatorString" name="cntlIndicatorString">
+              <mat-option *ngFor="let item of indicatorStrings" value="item.id" >{{item.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayout fxLayoutGap="16px">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Status</mat-label>
+            <input name="cntlStatus" matInput placeholder="Status" [(ngModel)]="indicator.status">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Weight measuring unit</mat-label>
+            <mat-select matInput [(ngModel)]="indicator.measuringUnit" name="cntlMeasuringUnit">
+              <mat-option value="gm">GM</mat-option>
+              <mat-option value="kg">KG</mat-option>
+              <mat-option value="quintol">Quintol</mat-option>
+              <mat-option value="ton">Ton</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Decimal Point</mat-label>
+            <input name="cntlDecimalPoint" matInput placeholder="Decimal Point" [(ngModel)]="indicator.decimalPoint">
+          </mat-form-field>
+        </div>
+        <div fxLayout fxLayoutAlign="space-between center">
+          <button mat-raised-button (click)="verify()">Verify</button>
+          <div fxLayout fxLayoutGap="16px">
+            <button mat-raised-button (click)="save()"><mat-icon>save</mat-icon> Save</button>
+            <button mat-raised-button (click)="cancel()"><mat-icon>cancel</mat-icon> Cancel</button>
+          </div>
+        </div>
+      </mat-card-content>
+    </form>
+</mat-card>

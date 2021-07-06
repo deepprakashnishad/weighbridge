@@ -1,0 +1,20 @@
+<div fxLayout fxLayoutGap="32px">
+  <div fxLayout="column" fxLayoutGap="32px">
+    <button mat-raised-button color="primary">One Time Backup <mat-icon>beenhere</mat-icon></button>
+    <mat-checkbox [(ngModel)]="cboxEnableDBBackup">Enable auto scheduled backup</mat-checkbox>
+  </div>
+
+  <mat-card *ngIf="cboxEnableDBBackup">
+    <mat-card-title>Periodic Backup</mat-card-title>
+    <mat-card-content>
+      <form>
+        <mat-form-field appearance="fill">
+          <mat-label>Periodic backup location</mat-label>
+          <input matInput name="cntlBackupPath" [(ngModel)]="backupPath" placeholder="Periodic backup location" />
+        </mat-form-field>
+      </form>
+      <button mat-raised-button color="primary" (click)="save()">Save</button>
+    </mat-card-content>
+    <div *ngIf="lastBackupTime">Last Backup Time: {{lastBackupTime}}</div>
+  </mat-card>
+</div>

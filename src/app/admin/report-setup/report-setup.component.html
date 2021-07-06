@@ -1,0 +1,71 @@
+<div fxLayout="row" fxLayoutAlign="space-between start">
+  <mat-card>
+    <mat-card-title>Report Header Setup</mat-card-title>
+    <form>
+      <mat-card-content fxLayout="column">
+        <mat-form-field appearance="fill">
+          <mat-label>Header line 1</mat-label>
+          <input matInput name="cntlHeader1" [(ngModel)]="report.header1" placeholder="Header Line 1"/>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Header line 2</mat-label>
+          <input matInput name="cntlHeader2" [(ngModel)]="report.header2" placeholder="Header Line 2"/>
+        </mat-form-field>
+        <mat-checkbox name="cboxPrintCurrDate" [(ngModel)]="report.printCurrentDate">Print current date</mat-checkbox>
+        <mat-checkbox name="cboxPrintSearchParams" [(ngModel)]="report.printSearchParameters">Print search parameters</mat-checkbox>
+      </mat-card-content>
+    </form>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Security</mat-card-title>
+    <form>
+      <mat-card-content fxLayout="column">
+        <mat-checkbox name="cboxReadOnly" [(ngModel)]="report.reportReadOnly">Read Only</mat-checkbox>
+        <mat-checkbox name="cboxPasswordProtected" [(ngModel)]="report.passwordProtected">Enable password protection</mat-checkbox>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" [disabled]="!report.passwordProtected" name="cntlPassword" [(ngModel)]="report.password" placeholder="Password"/>
+        </mat-form-field>
+      </mat-card-content>
+    </form>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Report Header Setup</mat-card-title>
+    <form>
+      <mat-card-content fxLayout="column">
+        <mat-form-field appearance="fill">
+          <mat-label>Date Format</mat-label>
+          <mat-select [(value)]="report.dateFormat" placeholder="Date Format">
+            <mat-option value="dd-MM-yyyy">dd-MM-yyyy</mat-option>
+            <mat-option value="dd-MMM-yy">dd-MMM-yy</mat-option>
+            <mat-option value="yyyy MMM dd">yyyy MMM dd</mat-option>
+            <mat-option value="dd/MM/YYYY">dd/MM/YYYY</mat-option>
+            <mat-option value="dd/MM/YY">dd/MM/YY</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Time Format</mat-label>
+          <mat-select [(value)]="report.timeFormat" placeholder="Time Format">
+            <mat-option value="HH:mm">HH:mm</mat-option>
+            <mat-option value="HH:mm:ss">HH:mm:ss</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Currency</mat-label>
+          <input matInput name="cntlCurrency" [(ngModel)]="report.currency" placeholder="Currency"/>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>No. of decimal for weight</mat-label>
+          <mat-select [(value)]="report.noOfDecimalsForWeight" placeholder="No. of decimal for weight">
+            <mat-option *ngFor="let i of [0,1,2,3,4,5]" value="i">{{i}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>
+<div fxLayout fxLayoutAlign="center center">
+  <button mat-raised-button color="primary">Save</button>
+</div>

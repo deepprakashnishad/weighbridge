@@ -1,0 +1,66 @@
+<div class="container" fxLayout fxLayoutAlign="space-between start">
+  <mat-card>
+    <mat-card-title>Select Printer</mat-card-title>
+    <mat-card-content>
+      <form fxLayout="column" fxLayoutGap="16px">
+        <mat-form-field appearance="fill">
+          <mat-label>Printer 1</mat-label>
+          <mat-select name="cntlPrinter1" [(ngModel)]="selectedPrinter1" placeholder="Printer 1">
+            <mat-option *ngFor="let printer of availablePrinters" [value]="printer">{{printer['name']}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Printer 2</mat-label>
+          <mat-select  name="cntlPrinter2" [(ngModel)]="selectedPrinter2" placeholder="Printer 2">
+            <mat-option *ngFor="let printer of availablePrinters" [value]="printer">{{printer['name']}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Printer 3</mat-label>
+          <mat-select [(ngModel)]="selectedPrinter3" name="cntlPrinter3" placeholder="Printer 3">
+            <mat-option *ngFor="let printer of availablePrinters" [value]="printer">{{printer['name']}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Printer 4</mat-label>
+          <mat-select [(ngModel)]="selectedPrinter4" name="cntlPrinter4" placeholder="Printer 4">
+            <mat-option *ngFor="let printer of availablePrinters" [value]="printer">{{printer['name']}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Template formula</mat-card-title>
+    <mat-card-content>
+      <mat-selection-list #cntlTemplateFormula [multiple]="false">
+        <mat-list-option *ngFor="let template of templates" [value]="template">
+          {{template['name']}}
+        </mat-list-option>
+      </mat-selection-list>      
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Auto printing after weightment</mat-card-title>
+    <mat-card-content>
+      <mat-checkbox [(ngModel)]="enableAutoPrint" name="cntlIsAutoPrintEnabled">Enable auto print</mat-checkbox>
+      <form fxLayout=column *ngIf="enableAutoPrint">
+        <h3>Number of prints</h3>
+
+        <mat-form-field appearance="fill">
+          <mat-label>After first weight</mat-label>
+          <input name="cntlPostFirstWeight" matInput placeholder="After first weight" [(ngModel)]="afterFirstWeight">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>After second weight</mat-label>
+          <input name="cntlPostSecondWeight" matInput placeholder="After second weight" [(ngModel)]="afterSecondWeight">
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
+  <button mat-raised-button color="primary">Save</button>
+</div>

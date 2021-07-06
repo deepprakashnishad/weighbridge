@@ -1,0 +1,40 @@
+<h4>Grant &amp; Revoke Permissions</h4>
+<div cdkDropListGroup fxLayout="row">
+	<div class="example-container" fxFlex="60">
+	    <h2>Restricted Permissions</h2>
+	    <mat-selection-list #list
+	    	(selectionChange)="onGrantPermissionChange($event, list.selectedOptions.selected)"
+	      cdkDropList
+	      [cdkDropListData]="restrictedPermissions"
+	      class="example-list"
+	      (cdkDropListDropped)="drop($event)">
+	      <mat-list-option class="example-box" *ngFor="let permission of restrictedPermissions" [value]="permission" cdkDrag>{{permission.permission}}</mat-list-option>
+	    </mat-selection-list>
+  	</div>
+	<div fxFlex="10" fxFlexAlign="center">
+		<p><button mat-mini-fab (click)="revokePermissions()" matTooltip="Revoke Permissions">
+			<mat-icon aria-label="Revoke Permissions">arrow_back_ios</mat-icon>
+		</button></p>
+		<p><button mat-mini-fab (click)="grantPermissions()" matTooltip="Grant Permissions">
+			<mat-icon aria-label="Grant Permissions">arrow_forward_ios</mat-icon>
+		</button></p>
+		<p><button mat-mini-fab (click)="revokeAllPermissions()" matTooltip="Revoke All Permissions">
+			<mat-icon aria-label="Revoke All Permissions">fast_rewind</mat-icon>
+		</button></p>
+		<p><button mat-mini-fab (click)="grantAllPermissions()" matTooltip="Grant All Permissions">
+			<mat-icon aria-label="Grant All Permissions">fast_forward</mat-icon>
+		</button></p>
+	</div>
+	<div class="example-container" fxFlex="60">
+	    <h2>Granted Permissions</h2>
+
+	    <mat-selection-list #list1
+	    (selectionChange)="onRevokePermissionChange($event, list1.selectedOptions.selected)"
+	      cdkDropList
+	      [cdkDropListData]="grantedPermissions"
+	      class="example-list"
+	      (cdkDropListDropped)="drop($event)">
+	      <mat-list-option class="example-box" *ngFor="let permission of grantedPermissions" [value]="permission" cdkDrag>{{permission.permission}}</mat-list-option>
+	    </mat-selection-list>
+	</div>
+</div>
