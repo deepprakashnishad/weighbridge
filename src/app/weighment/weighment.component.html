@@ -1,24 +1,35 @@
 <div class="container">
   <div fxLayout fxLayoutAlign="space-between">
     <app-tag-selector [title]="'Truck No.*'" (optionSelected)="truckSelected($event)"></app-tag-selector>
+    <mat-form-field>
+      <mat-label>RST No</mat-label>
+      <input matInput [(ngModel)]="weighment.rstNo" name="cntlRSTNo" />
+    </mat-form-field>
     <h3>Date - {{currDate.getDate()}} / {{currDate.getMonth()}} / {{currDate.getFullYear()}}</h3>
   </div>
   <form ><!-- *ngIf="truckNo && truckNo.length>0" -->
-    <div fxLayout fxLayoutGap="32px" fxLayoutAlign="start">
-      <mat-form-field>
-        <mat-label>RST No</mat-label>
-        <input matInput [(ngModel)]="weighment.rstNo" name="cntlRSTNo"/>
-      </mat-form-field>
-      <mat-select class="weighment-type-selector" appearance="fill"[(value)]="weighment.weightmentType">
-        <mat-option *ngFor="let option of weighmentTypes" [value]="option">{{option}}</mat-option>
-      </mat-select>
+      <mat-radio-group aria-label="Select weightment type" fxLayout fxLayoutGap="32px" fxLayoutAlign="start">
+        <mat-radio-button value="inbound">Inbound(Purchase)</mat-radio-button>
+        <mat-radio-button value="outbound_export">Outbound(Export)</mat-radio-button>
+        <mat-radio-button value="outbound_domestic">Outbound(Domestic)</mat-radio-button>
+        <mat-radio-button value="outbound_subcontract">Outbound(Sub-contract Dispatch)</mat-radio-button>
+        <mat-radio-button value="others">Others</mat-radio-button>
+      </mat-radio-group>
+      <!--<mat-select class="weighment-type-selector" appearance="fill" [(value)]="weighment.weightmentType">
+        <mat-option value="sub_contract">Sub contract dispatch</mat-option>
+        <mat-option value="inbound">Inbound(Purchase)</mat-option>
+        <mat-optgroup label="Outbound(Sale of goods)">
+          <mat-option value="outbound-domestic">Domestic</mat-option>
+          <mat-option value="outbound-export">Export</mat-option>
+        </mat-optgroup>
+        <mat-option value="others">Others</mat-option>
+      </mat-select>-->
       <!-- <mat-form-field appearance="fill">
         <mat-label>Angular forms</mat-label>
         <input  matInput [matDatepicker]="picker1" [formControl]="date">
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field> -->
-    </div>
     <div fxLayout fxLayoutAlign="start center" fxLayoutGap="32px">
       <app-tag-selector [title]="'Supplier*'" (optionSelected)="supplierSelected($event)"></app-tag-selector>
       <app-tag-selector [title]="'Material*'" (optionSelected)="materialSelected($event)"></app-tag-selector>

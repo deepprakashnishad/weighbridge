@@ -2,18 +2,40 @@
   "name": "weighbridge",
   "version": "0.0.0",
   "author": "Deep Prakash Nishad",
-  "description": "Demo Angular Electron app",
+  "description": "Weighbridge by Notamedia",
   "main": "electron-main.js",
+  "build": {
+    "appId": "com.notamedia.weighbridge",
+    "productName": "Notamedia Weighbridge",
+    "files": ["**/*" ],
+
+    "directories": {
+      "output": "release",
+      "buildResources": "app"
+    },
+    "asar": true,
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "runAfterFinish": false
+    }
+  },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --live-reload",
     "build": "ng build --prod --base-href ./",
+    "rebuild": "electron-rebuild",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "electron-start": "electron .",
+    "dist": "electron-builder",
+    "electron-start": "electron ./app/electron-main.js",
+    "package-win": "electron-packager ./app wb --overwrite --ignore=\"(e2e/.*|src/.*|.browserslistrc|.editorconfig|.gitignore|angular.json|karma.conf.js|package-lock.json|README.md|tsconfig.app.json|tsconfig.json|tsconfig.spec.json|tslint.json)\" --asar=false --platform=win32 --arch=ia32 --icon=./dist/angular-build/assets/icons8-connect-256.ico --prune=true --out=./dist --version-string.CompanyName=Notamedia --version-string.FileDescription=Notamedia --version-string.ProductName=\"Weighbridge\"",
     "build-mac": "ng build --prod --base-href ./ && electron-packager . --overwrite --ignore=\"(e2e/.*|node_modules/.*|src/.*|.browserslistrc|.editorconfig|.gitignore|angular.json|karma.conf.js|package-lock.json|README.md|tsconfig.app.json|tsconfig.json|tsconfig.spec.json|tslint.json)\" --platform=darwin --arch=x64 --icon=./dist/angular-build/assets/icons8-connect-256.icns --prune=true --out=./dist/electron-build",
-    "build-win": "ng build --prod --base-href ./ && electron-packager . demo-app --overwrite --ignore=\"(e2e/.*|node_modules/.*|src/.*|.browserslistrc|.editorconfig|.gitignore|angular.json|karma.conf.js|package-lock.json|README.md|tsconfig.app.json|tsconfig.json|tsconfig.spec.json|tslint.json)\" --asar --platform=win32 --arch=ia32 --icon=./dist/angular-build/assets/icons8-connect-256.ico --prune=true --out=./dist/electron-build --version-string.CompanyName=SciTechEnthusiast --version-string.FileDescription=SciTechEnthusiast --version-string.ProductName=\"Demo Angular Electron app\"",
+    "build-win": "ng build --prod --base-href ./ && electron-packager . weighbridge --overwrite --ignore=\"(e2e/.*|node_modules/.*|src/.*|.browserslistrc|.editorconfig|.gitignore|angular.json|karma.conf.js|package-lock.json|README.md|tsconfig.app.json|tsconfig.json|tsconfig.spec.json|tslint.json)\" --asar --platform=win32 --arch=ia32 --icon=./dist/angular-build/assets/icons8-connect-256.ico --prune=true --out=./dist/electron-build --version-string.CompanyName=Notamedia --version-string.FileDescription=Notamedia --version-string.ProductName=\"Weighbridge\"",
     "build-linux": "ng build --prod --base-href ./ && electron-packager . demo-app --overwrite --ignore=\"(e2e/.*|node_modules/.*|src/.*|.browserslistrc|.editorconfig|.gitignore|angular.json|karma.conf.js|package-lock.json|README.md|tsconfig.app.json|tsconfig.json|tsconfig.spec.json|tslint.json)\" --asar --platform=linux --arch=x64 --icon=./dist/angular-build/assets/icons8-connect-256.png --prune=true --out=./dist/electron-build",
     "build-winux": "ng build --prod --base-href ./ && electron-packager . demo-app --overwrite --ignore=\"(e2e/.*|node_modules/.*|src/.*|.browserslistrc|.editorconfig|.gitignore|angular.json|karma.conf.js|package-lock.json|README.md|tsconfig.app.json|tsconfig.json|tsconfig.spec.json|tslint.json)\" --asar --platform=win32 --arch=ia32 --icon=./dist/angular-build/assets/icons8-connect-256.ico --prune=true --out=./dist/electron-build --version-string.CompanyName=SciTechEnthusiast --version-string.FileDescription=SciTechEnthusiast --version-string.ProductName=\"Demo Angular Electron app\" && electron-packager . demo-app --overwrite --ignore=(\"e2e|node_modules|src|.browserslistrc|.editorconfig|.gitignore|angular.json|karma.conf.js|package-lock.json|README.md|tsconfig.app.json|tsconfig.json|tsconfig.spec.json|tslint.json\") --asar --platform=linux --arch=x64 --icon=./dist/angular-build/assets/icons8-connect-256.png --prune=true --out=./dist/electron-build"
   },
@@ -35,12 +57,10 @@
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
     "material-design-icons": "^3.0.1",
-    "mysql": "^2.18.1",
     "ngx-color-picker": "^11.0.0",
     "ngx-electron": "^2.2.0",
     "ngx-json-viewer": "^3.0.2",
     "ngx-material-timepicker": "^5.5.3",
-    "printer": "^0.4.0",
     "rxjs": "^6.6.6",
     "rxjs-compat": "^6.4.0",
     "tslib": "^2.0.0",
@@ -53,10 +73,12 @@
     "@angular/language-service": "^11.2.5",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "^8.10.66",
+    "@types/node": "^16.0.0",
     "codelyzer": "^6.0.0",
-    "electron": "^11.2.2",
+    "electron": "^13.1.6",
+    "electron-builder": "^22.11.7",
     "electron-packager": "^15.2.0",
+    "electron-rebuild": "^2.3.5",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.2.0",

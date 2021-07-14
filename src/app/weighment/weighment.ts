@@ -23,7 +23,7 @@ export class Weighment{
     netWeight: number;  
 
     constructor(){
-        this.weightmentType = "INBOUND";
+      this.weightmentType = "inbound";
     }
 }
 

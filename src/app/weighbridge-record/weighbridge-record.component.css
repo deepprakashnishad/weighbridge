@@ -22,3 +22,8 @@
     max-height: inherit;
     overflow-y: auto;
 }
+
+.curr-weight {
+  font-size: 60px;
+  color: #25ab25;
+}

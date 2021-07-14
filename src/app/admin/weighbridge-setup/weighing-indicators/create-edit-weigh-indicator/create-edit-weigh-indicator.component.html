@@ -10,7 +10,7 @@
           <mat-radio-button value="http">Http</mat-radio-button>
         </mat-radio-group>
         <mat-form-field appearance="fill" *ngIf="indicator.type==='serial'">
-          <mat-label>On validation failure</mat-label>
+          <mat-label>Port</mat-label>
           <mat-select matInput [(ngModel)]="indicator.comPort" name="cntlComPort">
             <mat-option value="COM1">COM1</mat-option>
             <mat-option value="COM2">COM2</mat-option>
@@ -39,13 +39,19 @@
         </div>
         <div fxLayout fxLayoutGap="16px">
           <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Indicator Name</mat-label>
-            <input matInput name="cntlIndicatorName" matInput placeholder="Indicator Name" [(ngModel)]="indicator.name">
+            <mat-label>String Indicator Name</mat-label>
+            <mat-select matInput [(ngModel)]="indicator.indicatorString" name="cntlWeighString">
+              <mat-option *ngFor="let iString of indicatorStrings" [value]="iString.stringName">{{iString.stringName}}</mat-option>
+            </mat-select>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>On validation failure</mat-label>
-            <mat-select matInput [(ngModel)]="indicator.indicatorString" name="cntlIndicatorString">
-              <mat-option *ngFor="let item of indicatorStrings" value="item.id" >{{item.name}}</mat-option>
+            <mat-select
+              matInput
+              [(ngModel)]="indicator.indicatorString"
+              name="cntlIndicatorString"
+              (change)="selectedStringChanged()">
+              <mat-option *ngFor="let item of indicatorStrings" value="item">{{item.stringName}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -57,8 +63,8 @@
           <mat-form-field appearance="fill">
             <mat-label>Weight measuring unit</mat-label>
             <mat-select matInput [(ngModel)]="indicator.measuringUnit" name="cntlMeasuringUnit">
-              <mat-option value="gm">GM</mat-option>
-              <mat-option value="kg">KG</mat-option>
+              <mat-option value="gm">gm</mat-option>
+              <mat-option value="KG">KG</mat-option>
               <mat-option value="quintol">Quintol</mat-option>
               <mat-option value="ton">Ton</mat-option>
             </mat-select>
@@ -69,10 +75,14 @@
           </mat-form-field>
         </div>
         <div fxLayout fxLayoutAlign="space-between center">
-          <button mat-raised-button (click)="verify()">Verify</button>
+          <div>
+            <button mat-raised-button color="accent" (click)="verify()">Verify</button>
+            <span>{{verification_weight}}</span>
+          </div>
+          
           <div fxLayout fxLayoutGap="16px">
-            <button mat-raised-button (click)="save()"><mat-icon>save</mat-icon> Save</button>
-            <button mat-raised-button (click)="cancel()"><mat-icon>cancel</mat-icon> Cancel</button>
+            <button mat-raised-button color="primary" (click)="save()"><mat-icon>save</mat-icon> Save</button>
+            <button mat-raised-button color="error" (click)="cancel()"><mat-icon>cancel</mat-icon> Cancel</button>
           </div>
         </div>
       </mat-card-content>

@@ -16,6 +16,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { NgxElectronModule } from 'ngx-electron';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { TagSelectorComponent } from './tag-selector/tag-selector.component';
+import { ListEditorComponent } from './list-editor/list-editor.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { TagSelectorComponent } from './tag-selector/tag-selector.component';
     SafeHtmlPipe, 
     SafeUrlPipe,
     ConfirmDialogComponent,
-    TagSelectorComponent
+    TagSelectorComponent,
+    ListEditorComponent
   ],
   imports: [
     CommonModule,
@@ -52,6 +54,7 @@ import { TagSelectorComponent } from './tag-selector/tag-selector.component';
   	AddEditPermissionComponent,
   	ViewPermissionComponent,
     TagSelectorComponent,
+    ListEditorComponent,
   	CapitalizeFirstLetterDirective,
   	CapitalizeDirective,
   	MyFilterPipe,

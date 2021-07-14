@@ -3,7 +3,7 @@
   <h3>Indicator Strings</h3>
   <div fxLayout="row wrap">
     <div *ngFor="let iString of indicatorStrings; let i=index">
-      <button mat-stroked-button (click)="openEditDialog(iString, i)">{{iString?.name}}</button>
+      <button mat-stroked-button (click)="openEditDialog(iString, i)">{{iString?.stringName}}</button>
     </div>
   </div>
 </div>

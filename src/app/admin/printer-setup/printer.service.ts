@@ -13,7 +13,7 @@ constructor(
 ) { }
 
   async getAvailablePrinters(){
-    var availablePrinters = await this._electronService.ipcRenderer.invoke('sync-invokable-ipc', "getPrinters");
+    var availablePrinters = await this._electronService.ipcRenderer.invoke('printer-ipc', "getPrinters");
     console.log(availablePrinters);
     return availablePrinters;
   }
