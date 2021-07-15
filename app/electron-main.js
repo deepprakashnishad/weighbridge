@@ -3,8 +3,8 @@ const { electron } = require('process');
 const url = require('url');
 const path = require('path');
 require("./db-service.js");
-require("./printer-service.js");
 require("./my-port-reader.js");
+require("./printer-service.js");
 
 const env = "DEV"; // DEV Or PROD
 

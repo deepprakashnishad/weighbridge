@@ -1,11 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\app",
-    "\\src",
-    "\\src\\app\\admin\\data-setup",
-    "\\src\\app\\admin\\data-setup\\search-fields"
+    "\\src\\app\\admin\\data-setup\\challan-weight-check",
+    "\\src\\app\\admin\\data-setup\\features",
+    "\\src\\app\\admin\\data-setup\\search-fields",
+    "\\src\\app\\weighment"
   ],
-  "SelectedNode": "\\src\\app",
+  "SelectedNode": "\\.browserslistrc",
   "PreviewInSolutionExplorer": false
 }

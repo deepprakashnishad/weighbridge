@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { MyIpcService } from '../../my-ipc.service';
 import { Printer } from './printer';
-import { PrinterService } from './printer.service';
 
 
 @Component({
@@ -23,15 +23,9 @@ export class PrinterSetupComponent implements OnInit {
   templates: Array<any> = [];
 
   constructor(
-    private printerService: PrinterService,
-  ) { 
-    /* this.availablePrinters = Printer.generator(4);
-    this.selectedPrinter1 = this.availablePrinters[0];
-    this.selectedPrinter2 = this.availablePrinters[0];
-    this.selectedPrinter3 = this.availablePrinters[0];
-    this.selectedPrinter4 = this.availablePrinters[0];
-    console.log(this.selectedPrinter1); */
-    this.printerService.getAvailablePrinters().then((printers)=>{
+    private myIPCService: MyIpcService
+  ) {
+    this.myIPCService.invokeIPC("printer-ipc", "getPrinters").then((printers) => {
       this.availablePrinters = Printer.jsonToPrintersArray(printers);
       this.selectedPrinter1 = this.availablePrinters[0];
       this.selectedPrinter2 = this.availablePrinters[0];
@@ -41,6 +35,11 @@ export class PrinterSetupComponent implements OnInit {
   }
 
   ngOnInit() {
+    
+  }
+
+  print() {
+    this.myIPCService.invokeIPC("printer-ipc", "print", "start /min notepad /P <filename>", "Hare Krishna Hare Krishna \n Krishna Krishna Hare Hare\nHare Rame Hare Rama\n Rama Rama Hare Hare")
   }
 
 }
