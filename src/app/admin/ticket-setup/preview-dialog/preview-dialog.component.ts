@@ -65,45 +65,50 @@ export class PreviewDialogComponent implements OnInit {
   }
 
   print(fields: Array<TicketField>) {
-    var mText = "";
-    var currX = 0, currY = 0;
-    let ESC = 0x001B;
-    let E = 0x0045;
-    let F = 0x0046;
-    var bold = ESC + E;    // ESC, E
-    var unbold = ESC + F;  // ESC, F
-
-    for (var i = 0; i < fields.length; i++) {
-      var field = fields[i];
-      if (field.row > currX) {
-        mText = mText + "\n".repeat(field.row - currX);
-        currX = field.row;
-        currY = 0;
-      }
-      if (field.col > currY) {
-        mText = mText + " ".repeat(field.col - currY);
-        currY = field.col;
-      }
-      if (field.type === "ticket-field") {
-        if (field.font === "RB") {
-          mText = mText + bold + field.displayName + ": " + `{${field.field}}` + unbold;
-        } else if (field.font === "DB") {
-          mText = mText + bold + field.displayName + ": " + `{${field.field}}` + unbold;
-        } else if (field.font === "D") {
-          mText = mText + field.displayName + ": " + `{${field.field}}`;
-        } else {
-          mText = mText + field.displayName + ": " + `{${field.field}}`;
-        }
-
-      } else {
-        if (field.font === "RB" || field.font === "DB") {
-          mText = mText + bold + field.displayName + unbold ;
-        } else {
-          mText = mText + field.displayName;
-        }
-      }
-    }
-    console.log(mText);
-    this.myIPCService.invokeIPC("printer-ipc", "print", "notepad /P <filename>", mText);
+    var cmd = "python print.py";
+    cmd = cmd + " " + "RB" + " " + "\"Hare Krishna\"" + " " + "R"+" "+"\"Radhe Radhe\""+"\\nGovind";
+    this.myIPCService.invokeIPC("printer-ipc", "print", cmd);
   }
+  //print(fields: Array<TicketField>) {
+  //  var mText = "";
+  //  var currX = 0, currY = 0;
+  //  let ESC = 0x001B;
+  //  let E = 0x0045;
+  //  let F = 0x0046;
+  //  var bold = ESC + E;    // ESC, E
+  //  var unbold = ESC + F;  // ESC, F
+
+  //  for (var i = 0; i < fields.length; i++) {
+  //    var field = fields[i];
+  //    if (field.row > currX) {
+  //      mText = mText + "\n".repeat(field.row - currX);
+  //      currX = field.row;
+  //      currY = 0;
+  //    }
+  //    if (field.col > currY) {
+  //      mText = mText + " ".repeat(field.col - currY);
+  //      currY = field.col;
+  //    }
+  //    if (field.type === "ticket-field") {
+  //      if (field.font === "RB") {
+  //        mText = mText + bold + field.displayName + ": " + `{${field.field}}` + unbold;
+  //      } else if (field.font === "DB") {
+  //        mText = mText + bold + field.displayName + ": " + `{${field.field}}` + unbold;
+  //      } else if (field.font === "D") {
+  //        mText = mText + field.displayName + ": " + `{${field.field}}`;
+  //      } else {
+  //        mText = mText + field.displayName + ": " + `{${field.field}}`;
+  //      }
+
+  //    } else {
+  //      if (field.font === "RB" || field.font === "DB") {
+  //        mText = mText + bold + field.displayName + unbold ;
+  //      } else {
+  //        mText = mText + field.displayName;
+  //      }
+  //    }
+  //  }
+  //  console.log(mText);
+  //  this.myIPCService.invokeIPC("printer-ipc", "print", "notepad /P <filename>", mText);
+  //}
 }

@@ -29,9 +29,10 @@ ipcMain.handle("printer-ipc", async (event, ...args) => {
   if (args[0] === "getPrinters") {
     return getPrinters();
   } else if (args[0] === "print") {
-    createRecieptFile(args[2]);
-    var command = args[1].replace("<filename>", "reciept_for_print.txt");
-    const result = await runCommand(command);
-    console.log(result);
+    await runCommand(args[1]);
+    //createRecieptFile(args[2]);
+    //var command = args[1].replace("<filename>", "reciept_for_print.txt");
+    //const result = await runCommand(command);
+    //console.log(result);
   }
 })
