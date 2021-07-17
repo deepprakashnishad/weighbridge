@@ -19,7 +19,10 @@ function getPrinters() {
 function createRecieptFile(content) {
   const fs = require('fs');
   try { fs.writeFileSync('reciept_for_print.txt', content, 'utf-8'); }
-  catch (e) { alert('Failed to save the file !'); }
+  catch (e) {
+    console.log('Failed to save the file !');
+    console.log(e);
+  }
 }
 
 ipcMain.handle("printer-ipc", async (event, ...args) => {

@@ -28,6 +28,7 @@ import { EmailSetupComponent } from './email-setup/email-setup.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { DbBackupComponent } from './db-backup/db-backup.component';
 import { TagChipInputComponent } from './tag-chip-input/tag-chip-input.component';
+import { PreviewDialogComponent } from './ticket-setup/preview-dialog/preview-dialog.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { TagChipInputComponent } from './tag-chip-input/tag-chip-input.component
     CreateEditWeightStringComponent,
     CreateEditWeighIndicatorComponent,
     PrinterSetupComponent,
+    PreviewDialogComponent,
     TicketSetupComponent,
     CreateEditTicketTemplateComponent,
     ReportSetupComponent,

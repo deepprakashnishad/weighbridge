@@ -27,9 +27,17 @@ export class MyDbService {
     this._electronService.ipcRenderer.send("executeDBQuery", [entity, query]);
   }
 
-  async executeSyncDBStmt(entity, query) {
-    console.log(query);
-    var result = await this._electronService.ipcRenderer.invoke("executeSyncStmt", [entity, query]);
+  async executeSyncDBStmt(queryType, query) {
+    var result = await this._electronService.ipcRenderer.invoke("executeSyncStmt", [queryType, query]);
+    return result;
+  }
+
+  async executeInsertAutoId(tablename, primaryColumnName, query) {
+    console.log("Making call");
+    var result = await this._electronService.ipcRenderer.invoke(
+      "executeSyncInsertAutoId", [tablename, primaryColumnName, query]
+    );
+    console.log("Call returned");
     return result;
   }
 }

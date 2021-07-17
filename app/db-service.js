@@ -40,9 +40,28 @@ ipcMain.on("executeDBQuery", (event, arg) => {
 
 ipcMain.handle("executeSyncStmt", async (event, arg) => {
   var pool = await sql.connect(sqlConfig);
+  //console.log(arg[1]);
   var results = await pool.query(arg[1]);
-  console.log(results);
+  
   return processResult(arg[0], results);
+});
+
+ipcMain.handle("executeSyncInsertAutoId", async (event, arg) => {
+  var pool = await sql.connect(sqlConfig);
+  var getIdQuery = `SELECT max(${arg[1]}) as maxId FROM ${arg[0]}`;
+  //console.log(getIdQuery);
+  var result = await pool.query(getIdQuery);
+  //console.log(result);
+  if (result['recordset'][0]['maxId'] === null) {
+    var newId = 1;
+  } else {
+    var newId = result['recordset'][0]['maxId'] + 1;
+  }
+  var mQuery = arg[2].replace(`{${arg[1]}}`, newId);
+  //console.log(mQuery);
+  var results = await pool.query(mQuery);
+  //console.log(results);
+  return { affectedRows: processResult(arg[0], results), "newId": newId};
 });
 
 function processResult(queryType, result){

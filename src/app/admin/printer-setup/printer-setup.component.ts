@@ -39,7 +39,7 @@ export class PrinterSetupComponent implements OnInit {
   }
 
   print() {
-    this.myIPCService.invokeIPC("printer-ipc", "print", "start /min notepad /P <filename>", "Hare Krishna Hare Krishna \n Krishna Krishna Hare Hare\nHare Rame Hare Rama\n Rama Rama Hare Hare")
+    this.myIPCService.invokeIPC("printer-ipc", "print", "start /min notepad /P <filename>", "Radhe Krishna Radhe Krishna \n Krishna Krishna Radhe Radhe\nSita Ram Sita Rama\n Rama Rama Sita Sita");
   }
 
 }

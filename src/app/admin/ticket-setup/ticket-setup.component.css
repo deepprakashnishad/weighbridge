@@ -1,0 +1,50 @@
+table {
+  width: 100%;
+  border-spacing: 0 8px !important;
+}
+
+td.mat-cell {
+  padding: 16px 0 16px 0;
+  border-bottom: 2px solid #ffa600;
+  border-top: 2px solid #ffa600;
+}
+
+  td.mat-cell:first-child {
+    border-left: 2px solid #ffa600;
+  }
+
+  td.mat-cell:last-child {
+    border-right: 2px solid #ffa600;
+  }
+
+tr.mat-row {
+  background: #79a1d8; /* Old browsers */
+}
+
+.mat-column-row {
+  flex: 0 0 12%;
+  padding: 0px 8px;
+}
+
+.mat-column-col {
+  flex: 0 0 12%;
+  padding: 0px 8px;
+}
+
+.mat-column-font {
+  flex: 0 0 12%;
+  padding: 0px 8px;
+}
+.mat-column-action {
+  flex: 0 0 12%;
+  padding: 0px 8px;
+}
+
+.mat-column-displayString {
+  flex: 0 0 40%;
+}
+
+.template-selector{
+    min-width:100px;
+    max-width: 150px;
+}

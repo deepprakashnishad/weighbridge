@@ -22,4 +22,15 @@ export class QueryList{
   //Weigh Indicators
   static readonly INSERT_WEIGH_INDICATOR: string = "INSERT INTO weighindicator(weighstring, port, status, measuringUnit, decimalPoint, type, httpType, comPort, wiName, ipAddress) VALUES('{weighstring}', {port}, '{status}', '{measuringUnit}', {decimalPoint}, '{type}', '{httpType}', '{comPort}', '{wiName}', '{ipAddress}')"
   static readonly GET_WEIGH_INDICATOR: string = "SELECT * FROM weighindicator";
+
+  //Ticket Templates
+  static readonly INSERT_TICKET_TEMPLATE: string = "INSERT INTO ticket_template(id, name, applicableTo, printerType, defaultPrinter, labelLength, copiesPerPrint, alignment, width, font, fontSize, operatingType) VALUES({id}, '{name}', '{applicableTo}', '{printerType}', '{defaultPrinter}', {labelLength}, {copiesPerPrint}, '{alignment}', {width}, '{font}', {fontSize}, '{operatingType}')";
+  static readonly UPDATE_TICKET_TEMPLATE: string = "UPDATE ticket_template SET id={id}, name='{name}', applicableTo='{applicableTo}', printerType='{printerType}', defaultPrinter='{defaultPrinter}', labelLength={labelLength}, copiesPerPrint={copiesPerPrint}, alignment='{alignment}', width={width}, font='{font}', fontSize={fontSize}, operatingType='{operatingType}'";
+  static readonly GET_ALL_TICKET_TEMPLATE: string = "SELECT * FROM ticket_template";
+
+  //Ticket Field
+  static readonly INSERT_TICKET_FIELD: string = "INSERT INTO template_detail(id, templateId, field, type, displayName, row, col, isIncluded, font) VALUES({id}, {templateId}, '{field}', '{type}', '{diplayName}', {row}, {col}, {isIncluded}, '{font}')";
+  static readonly GET_TICKET_FIELDS: string = "SELECT * FROM template_detail WHERE templateId={templateId}";
+  static readonly UPDATE_TICKET_FIELD: string = "UPDATE template_detail SET templateId={templateId}, field='{field}', type='{type}', displayName='{displayName}', row={row}, col={col}, isIncluded={isIncluded}, font='{font}' WHERE id={id}";
+  static readonly DELETE_TICKET_FIELD: string = "DELETE FROM template_detail WHERE id={id}";
 }

@@ -1,11 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src\\app\\admin\\data-setup\\challan-weight-check",
-    "\\src\\app\\admin\\data-setup\\features",
-    "\\src\\app\\admin\\data-setup\\search-fields",
-    "\\src\\app\\weighment"
+    "\\src",
+    "\\src\\app\\admin\\printer-setup"
   ],
-  "SelectedNode": "\\.browserslistrc",
+  "SelectedNode": "\\reciept_for_print.txt",
   "PreviewInSolutionExplorer": false
 }

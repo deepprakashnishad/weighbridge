@@ -1,0 +1,8 @@
+<h3 matDialogTitle>Ticket Preview</h3>
+<mat-dialog-content>
+  <div class="ticket" [innerHtml]="htmlContent | safeHtml"></div>
+</mat-dialog-content>
+<mat-dialog-actions fxLayout fxLayoutGap="32px" fxLayoutAlign="center center">
+  <button mat-raised-button (click)="print(fields)" color="primary">Print</button>
+  <button mat-button matDialogClose color="accent">Close Dialog</button>
+</mat-dialog-actions>
