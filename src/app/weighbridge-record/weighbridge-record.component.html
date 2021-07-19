@@ -1,16 +1,12 @@
 <div class="full-height main-container" fxLayout="column" fxLayoutGap="5px">
   <mat-card>
-    <div class="box-title" fxLayout="column">Weighbridge</div>
+    <div class="box-title" fxLayout fxLayoutAlign="space-between center">
+      <div>WB1</div>
+      <div class="icon-container"><img width="15" height="15" src="assets/icons/plug-30.png" /></div>
+    </div>
       <mat-card-content>
-        <mat-form-field appearance="fill">
-          <mat-label>Select weighbridge</mat-label>
-          <mat-select name="cntlSelectedWeightBridge" [(ngModel)]="selectedWeighbridge" appearance="outline">
-            <mat-option *ngFor="let weighbridge of weighbridges" [value]="weighbridge">{{weighbridge.title}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <div fxLayout fxLayoutAlign="space-between center">
-          <span class="curr-weight">{{currentWeight}}</span>
-          <div class="icon-container"><img width="15" height="15" src="assets/icons/plug-30.png" /></div>
+        <div fxLayout="column" fxLayoutAlign="start start">
+          <span [ngClass]="{'curr-weight-red': !isWeightStable, 'curr-weight-green': isWeightStable}">{{currentWeight}}</span>
         </div>
       </mat-card-content>
   </mat-card>

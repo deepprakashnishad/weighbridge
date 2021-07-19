@@ -1,11 +1,7 @@
-import { Component, OnInit, Output, EventEmitter, NgZone } from '@angular/core';
-import { log } from 'console';
-import { interval } from 'rxjs';
-import { take, takeUntil, takeWhile } from 'rxjs/operators';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { MyDbService } from '../my-db.service';
 import { QueryList } from '../query-list';
 import { SharedDataService } from '../shared-data.service';
-import { Utils } from '../utils';
 import { Weighbridge } from '../weighment/weighment';
 import {Record} from './record';
 
@@ -21,6 +17,11 @@ export class WeighbridgeRecordComponent implements OnInit {
   currentWeight: number = 10000;
   pendingRecords: Array<Record>;
 
+  isWeightStable = false;
+
+  prevWeight: number;
+  cnt: number=0;
+
   constructor(
     private sharedDataService: SharedDataService,
     private dbService: MyDbService,
@@ -28,6 +29,9 @@ export class WeighbridgeRecordComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    //Later remove this line
+    setTimeout(() => { this.isWeightStable = true }, 2000);
+
     this.dbService.executeDBStmt("weighbridges", QueryList.GET_WEIGHBRIDGES);
 
     var subscription = this.sharedDataService.currentData.pipe().subscribe(currData=>{
@@ -42,10 +46,18 @@ export class WeighbridgeRecordComponent implements OnInit {
 
     //Subscribe to weight
     this.sharedDataService.currentData.pipe().subscribe(currData => {
-      this.ngZone.run(() => {
-        this.currentWeight = currData['currWeight'];
-        console.log(this.currentWeight);
-      });
+      if (this.prevWeight === currData) {
+        this.cnt++;
+        if (this.cnt > 100) {
+          this.isWeightStable = true;
+          this.ngZone.run(() => {
+            //this.currentWeight = currData['currWeight'];
+          });
+        }
+      } else {
+        this.cnt = 0;
+        this.isWeightStable = false;
+      }
     });    
   }
 

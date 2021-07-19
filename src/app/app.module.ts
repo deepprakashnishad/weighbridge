@@ -15,6 +15,7 @@ import { WeighbridgeRecordComponent } from './weighbridge-record/weighbridge-rec
 import { ReportModule } from './report/report.module';
 import { WeighmentComponent } from './weighment/weighment.component';
 import { WeighmentSummaryComponent } from './weighment/weighment-summary/weighment-summary.component';
+import { WeighmentDetailComponent } from './weighment/weighment-details/weighment-details.component';
 
 const notifierDefaultOptions: NotifierOptions = {
   position: {
@@ -58,12 +59,13 @@ const notifierDefaultOptions: NotifierOptions = {
 
 @NgModule({
   declarations: [							
-      AppComponent,
-      NavigationComponent,
-      HomeComponent,
-      WeighbridgeRecordComponent,
-      WeighmentComponent,
-      WeighmentSummaryComponent
+    AppComponent,
+    NavigationComponent,
+    HomeComponent,
+    WeighbridgeRecordComponent,
+    WeighmentComponent,
+    WeighmentDetailComponent,
+    WeighmentSummaryComponent
    ],
   imports: [
     BrowserModule,

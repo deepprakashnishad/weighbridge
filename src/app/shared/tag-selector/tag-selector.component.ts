@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { Observable } from 'rxjs';
@@ -9,7 +9,7 @@ import {map, startWith} from 'rxjs/operators';
   templateUrl: './tag-selector.component.html',
   styleUrls: ['./tag-selector.component.css']
 })
-export class TagSelectorComponent implements OnInit {
+export class TagSelectorComponent implements OnInit, OnChanges {
 
   mControl = new FormControl();
   @Input() selectedTag: string;
@@ -42,6 +42,15 @@ export class TagSelectorComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    var keys = Object.keys(changes);
+    for (var i = 0; i < keys.length; i++) {
+      if (keys[i] === "selectedTag" && changes[keys[i]]["currentValue"]) {
+        this.mControl.setValue(changes[keys[i]]["currentValue"]);
+      }
+    }
   }
 
   onFocus(){

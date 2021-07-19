@@ -23,7 +23,12 @@
     overflow-y: auto;
 }
 
-.curr-weight {
+.curr-weight-green {
   font-size: 60px;
   color: #25ab25;
+}
+
+.curr-weight-red {
+  font-size: 60px;
+  color: #ff2f2f;
 }

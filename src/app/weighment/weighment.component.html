@@ -1,56 +1,94 @@
-<div class="container">
-  <div fxLayout fxLayoutAlign="space-between">
-    <app-tag-selector [title]="'Truck No.*'" (optionSelected)="truckSelected($event)"></app-tag-selector>
-    <mat-form-field>
-      <mat-label>RST No</mat-label>
-      <input matInput [(ngModel)]="weighment.rstNo" name="cntlRSTNo" />
-    </mat-form-field>
-    <h3>Date - {{currDate.getDate()}} / {{currDate.getMonth()}} / {{currDate.getFullYear()}}</h3>
-  </div>
-  <form ><!-- *ngIf="truckNo && truckNo.length>0" -->
-      <mat-radio-group aria-label="Select weightment type" fxLayout fxLayoutGap="32px" fxLayoutAlign="start">
+<div class="container" fxLayout="column" fxLayoutGap="4px">
+  <div fxLayout="column" fxLayoutGap="8px">
+    <div fxLayout fxLayoutAlign="space-between center">
+      <mat-radio-group [(ngModel)]="weighment.weighmentType" aria-label="Select weightment type" fxLayout fxLayoutGap="32px" fxLayoutAlign="start">
         <mat-radio-button value="inbound">Inbound(Purchase)</mat-radio-button>
         <mat-radio-button value="outbound_export">Outbound(Export)</mat-radio-button>
         <mat-radio-button value="outbound_domestic">Outbound(Domestic)</mat-radio-button>
         <mat-radio-button value="outbound_subcontract">Outbound(Sub-contract Dispatch)</mat-radio-button>
         <mat-radio-button value="others">Others</mat-radio-button>
       </mat-radio-group>
-      <!--<mat-select class="weighment-type-selector" appearance="fill" [(value)]="weighment.weightmentType">
-        <mat-option value="sub_contract">Sub contract dispatch</mat-option>
-        <mat-option value="inbound">Inbound(Purchase)</mat-option>
-        <mat-optgroup label="Outbound(Sale of goods)">
-          <mat-option value="outbound-domestic">Domestic</mat-option>
-          <mat-option value="outbound-export">Export</mat-option>
-        </mat-optgroup>
-        <mat-option value="others">Others</mat-option>
-      </mat-select>-->
-      <!-- <mat-form-field appearance="fill">
-        <mat-label>Angular forms</mat-label>
-        <input  matInput [matDatepicker]="picker1" [formControl]="date">
-        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
-      </mat-form-field> -->
-    <div fxLayout fxLayoutAlign="start center" fxLayoutGap="32px">
-      <app-tag-selector [title]="'Supplier*'" (optionSelected)="supplierSelected($event)"></app-tag-selector>
-      <app-tag-selector [title]="'Material*'" (optionSelected)="materialSelected($event)"></app-tag-selector>
-      <mat-form-field>
-        <mat-label>Gate Pass No</mat-label>
-        <input matInput [(ngModel)]="weighment.gatePassNo" name="cntlGatePassNo"/>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>PO Details</mat-label>
-        <input matInput [(ngModel)]="weighment.poDetails" name="cntlPODetails"/>
-      </mat-form-field>
-    </div>
-    <div fxLayout fxLayoutAlign="space-around center">
-      <h3>First Weight - {{currWeight}}</h3>
-      <h3>Second Weight - {{currWeight}}</h3>
-      <h3 *ngIf="weighment.firstWeight && weighment.secondWeight">Net Weight - {{weighment.secondWeight - weighment.firstWeight}}</h3>
+      <h3>Date - {{currDate.getDate()}} / {{currDate.getMonth()}} / {{currDate.getFullYear()}}</h3>
     </div>
 
-    <div class="full-width" fxLayout fxLayoutGap="32px" fxLayoutAlign="center center">
-      <button mat-raised-button color="primary" (click)="save()">Save</button>
-      <button mat-raised-button color="accent" (click)="reset()">Reset</button>
+    <div fxLayout fxLayoutAlign="start start" fxLayoutGap="16px">
+      <mat-form-field appearance="outline">
+        <mat-label>Vehicle No</mat-label>
+        <input matInput [(ngModel)]="weighment.vehicleNo" name="cntlRequestId"
+               (keyup.enter)="parseQRString(weighment.vehicleNo)"
+               (blur)="parseQRString(weighment.vehicleNo)" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Request Id</mat-label>
+        <input matInput [(ngModel)]="weighment.reqId" name="cntlRequestId"
+               (keyup.enter)="parseQRString(weighment.reqId)"
+               (blur)="parseQRString(weighment.reqId)" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Gate Pass No</mat-label>
+        <input matInput [(ngModel)]="weighment.gatePassNo" name="cntlGatePassNo"
+               (keyup.enter)="parseQRString(weighment.gatePassNo)"
+               (blur)="parseQRString(weighment.gatePassNo)" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>RST No</mat-label>
+        <input matInput [(ngModel)]="weighment.rstNo" name="cntlRSTNo" readonly />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Weighment Slip No</mat-label>
+        <input matInput [(ngModel)]="weighmentDetail.id" name="cntlWeighSlipNo" readonly />
+      </mat-form-field>
     </div>
-  </form>
+    <div fxLayout fxLayoutAlign="start center" fxLayoutGap="16px">
+      <app-tag-selector [selectedTag]="weighmentDetail.supplier" [title]="'Supplier'" (optionSelected)="supplierSelected($event)"></app-tag-selector>
+      <mat-form-field appearance="outline">
+        <mat-label>Transporter Code</mat-label>
+        <input matInput [(ngModel)]="weighment.transporterCode" name="cntlTransporterCode"
+               (keyup.enter)="parseQRString(weighment.transporterCode)"
+               (blur)="parseQRString(weighment.transporterCode)" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Transporter Name</mat-label>
+        <input matInput [(ngModel)]="weighment.transporterName" name="cntlTransporterName"
+               (keyup.enter)="parseQRString(weighment.transporterName)"
+               (blur)="parseQRString(weighment.transporterName)" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" fxFlex>
+        <mat-label>Miscellenous</mat-label>
+        <input matInput [(ngModel)]="weighmentDetail.remark" name="cntlMisc"
+               (keyup.enter)="parseQRString(weighmentDetail.remark)"
+               (blur)="parseQRString(weighmentDetail.remark)" />
+      </mat-form-field>
+    </div>
+    <div fxLayout fxLayoutAlign="start center" fxLayoutGap="16px">
+      <app-tag-selector [selectedTag]="weighmentDetail.material" [title]="'Material*'" (optionSelected)="materialSelected($event)"></app-tag-selector>
+      <mat-form-field appearance="outline">
+        <mat-label>First Weight</mat-label>
+        <input matInput [(ngModel)]="weighmentDetail.firstWeight" name="cntlFirstWt" readonly />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Second Weight</mat-label>
+        <input matInput [(ngModel)]="weighmentDetail.secondWeight" name="cntlSecondWt" readonly />
+      </mat-form-field>
+      <mat-form-field appearance="outline" *ngIf="firstWeight && secondWeight">
+        <mat-label>Net Weight</mat-label>
+        <input matInput
+               [(ngModel)]="weighmentDetail.netWeight" name="cntlNetWeight" readonly />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="full-width" fxLayout fxLayoutGap="32px" fxLayoutAlign="space-between center">
+    <button mat-raised-button color="primary" [disabled]="!isWeightStable" (click)="capture()">Capture</button>
+    <div fxLayout fxLayoutGap="32px" fxLayoutAlign="center center">
+      <button *ngIf="weighmentDetail.id"
+              mat-raised-button color="accent"
+              (click)="save('complete')">
+        Save Complete Weighment
+      </button>
+      <button mat-raised-button color="primary" (click)="save('pending')">Save <span *ngIf="weighmentDetail.id">Partial Weighment</span></button>
+      <button mat-raised-button color="error" (click)="reset()">Reset</button>
+    </div>
+  </div>
+  <app-weighment-details [weighmentDetails]="weighment.weighmentDetails"></app-weighment-details>
 </div>

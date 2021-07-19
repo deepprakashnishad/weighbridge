@@ -7,8 +7,9 @@
   "build": {
     "appId": "com.notamedia.weighbridge",
     "productName": "Notamedia Weighbridge",
-    "files": ["**/*" ],
-
+    "author": "Deep Prakash Nishad",
+    "description": "Weighbridge by Notamedia",
+    "files": [ "**/*", "print.py" ],
     "directories": {
       "output": "release",
       "buildResources": "app"
@@ -16,7 +17,9 @@
     "asar": true,
     "win": {
       "target": [
-        "nsis"
+        "nsis",
+        "nsis-web",
+        "portable"
       ]
     },
     "nsis": {

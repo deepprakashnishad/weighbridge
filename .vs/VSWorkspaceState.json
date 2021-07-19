@@ -1,9 +1,15 @@
 {
   "ExpandedNodes": [
     "",
+    "\\app",
     "\\src",
-    "\\src\\app\\admin\\printer-setup"
+    "\\src\\app",
+    "\\src\\app\\admin\\ticket-setup\\preview-dialog",
+    "\\src\\app\\shared\\tag-selector",
+    "\\src\\app\\weighment",
+    "\\src\\app\\weighment\\weighment-details",
+    "\\src\\themes"
   ],
-  "SelectedNode": "\\reciept_for_print.txt",
+  "SelectedNode": "\\src\\app\\weighment\\weighment.component.ts",
   "PreviewInSolutionExplorer": false
 }

@@ -1,6 +1,5 @@
-<div class="container">
 	<form>
-		<mat-form-field>
+		<mat-form-field appearance="outline">
 			<mat-label>{{title}}</mat-label>	
 			<input type="text" [placeholder]="title" matInput [formControl]="mControl" [matAutocomplete]="auto" (focus)="onFocus()">
 			<mat-hint>{{hint}}</mat-hint>
@@ -13,4 +12,3 @@
 		</mat-option>
 		</mat-autocomplete>
 	</form>
-</div>

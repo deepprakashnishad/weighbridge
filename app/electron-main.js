@@ -6,7 +6,7 @@ require("./db-service.js");
 require("./my-port-reader.js");
 require("./printer-service.js");
 
-const env = "DEV"; // DEV Or PROD
+const env = "PROD"; // DEV Or PROD
 
 global.win;
 
