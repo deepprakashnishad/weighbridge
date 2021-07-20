@@ -18,17 +18,23 @@
                (keyup.enter)="parseQRString(weighment.vehicleNo)"
                (blur)="parseQRString(weighment.vehicleNo)" />
       </mat-form-field>
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" *ngIf="weighment.weighmentType!=='inbound' && weighment.weighmentType!=='others'">
         <mat-label>Request Id</mat-label>
         <input matInput [(ngModel)]="weighment.reqId" name="cntlRequestId"
                (keyup.enter)="parseQRString(weighment.reqId)"
                (blur)="parseQRString(weighment.reqId)" />
       </mat-form-field>
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" *ngIf="weighment.weighmentType!=='inbound' && weighment.weighmentType!=='others'">
         <mat-label>Gate Pass No</mat-label>
         <input matInput [(ngModel)]="weighment.gatePassNo" name="cntlGatePassNo"
                (keyup.enter)="parseQRString(weighment.gatePassNo)"
                (blur)="parseQRString(weighment.gatePassNo)" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" *ngIf="weighment.weighmentType==='inbound'">
+        <mat-label>Scroll No</mat-label>
+        <input matInput [(ngModel)]="weighment.scrollNo" name="cntlscrollNo"
+               (keyup.enter)="parseQRString(weighment.scrollNo)"
+               (blur)="parseQRString(weighment.scrollNo)" />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>RST No</mat-label>
@@ -79,7 +85,7 @@
   </div>
 
   <div class="full-width" fxLayout fxLayoutGap="32px" fxLayoutAlign="space-between center">
-    <button mat-raised-button color="primary" [disabled]="!isWeightStable" (click)="capture()">Capture</button>
+    <button mat-raised-button color="primary" [disabled]="!isWeightStable || weighment.status==='complete'" (click)="capture()">Capture</button>
     <div fxLayout fxLayoutGap="32px" fxLayoutAlign="center center">
       <button *ngIf="weighmentDetail.id"
               mat-raised-button color="accent"

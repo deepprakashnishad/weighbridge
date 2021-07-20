@@ -71,14 +71,6 @@ export class NavigationComponent implements OnInit {
 		console.log(e);
     } */
 
-	@HostListener('document:scroll', []) scrollHandler(){
-		console.log("I am scrolled");
-    }
-
-	@HostListener('window:scroll', []) windowScrollHandler(){
-		console.log("I am scrolled");
-    }
-
 	toggleLoginStatus(isLoggedIn){
 		if(isLoggedIn){
 			this.isLoggedIn = false;

@@ -7,8 +7,7 @@
   "build": {
     "appId": "com.notamedia.weighbridge",
     "productName": "Notamedia Weighbridge",
-    "author": "Deep Prakash Nishad",
-    "description": "Weighbridge by Notamedia",
+    "buildVersion":  "0.0.0",
     "files": [ "**/*", "print.py" ],
     "directories": {
       "output": "release",

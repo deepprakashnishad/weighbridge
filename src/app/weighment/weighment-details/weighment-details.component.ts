@@ -27,18 +27,13 @@ export class WeighmentDetailComponent implements OnInit, OnChanges, AfterViewIni
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
     var keys = Object.keys(changes);
     for (var i = 0; i < keys.length; i++) {
       if (keys[i] === "weighmentDetails" && changes[keys[i]].currentValue !== undefined) {
-        console.log(changes[keys[i]].currentValue);
-        //this.dataSource = new MatTableDataSource(this.weighmentDetails);
         this.dataSource.data = changes[keys[i]].currentValue;
         if (this.mtable) {
           this.mtable.renderRows();
         }
-        
-        console.log(this.dataSource.data);
       }
     }
   }

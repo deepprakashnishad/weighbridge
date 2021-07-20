@@ -164,26 +164,10 @@ export class TicketSetupComponent implements OnInit {
     var result = await this.dbService.executeSyncDBStmt(
       "SELECT", QueryList.GET_TICKET_FIELDS.replace("{templateId}", this.selectedTemplate.id.toString())
     );
-    var ticketFields = [];
-    var freetextFields = [];
 
-    for (var i = 0; i < result.length; i++) {
-      var temp: TicketField = new TicketField();
-      temp.col = result[i]['col'];
-      temp.row = result[i]['row'];
-      temp.id = result[i]['id'];
-      temp.templateId = result[i]['templateId'];
-      temp.displayName = result[i]['displayName'];
-      temp.field = result[i]['field'];
-      temp.font = result[i]['font'];
-      temp.isIncluded = result[i]['isIncluded'];
-      temp.type = result[i]['type'];
-      if (temp.type === "ticket-field") {
-        ticketFields.push(temp);
-      } else {
-        freetextFields.push(temp);
-      }
-    }
+    var mFields = TicketField.fromJSON(result);
+    var ticketFields = mFields["ticketFields"];
+    var freetextFields = mFields["freetextFields"];
 
     if (ticketFields.length > 0) {
       this.ticketFieldDataSource.data = ticketFields;

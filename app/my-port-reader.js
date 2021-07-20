@@ -28,8 +28,6 @@ ipcMain.handle("serial-port-ipc", async (event, ...args) => {
 });
 
 ipcMain.handle("verify-port", async (event, ...args) => {
-  console.log(args[0]);
-  console.log(args[1]);
   if (args[1]['type'] === "serial") {
     port = serialPort(args[1]['comPort'], {
       baudRate: args[1]['baudRate'],
@@ -59,8 +57,11 @@ function onData(data) {
   if (data.toString().charCodeAt(0) === 3) {
     currWeight = tempWeight;
     tempWeight = "";
+    if (currWeight.charAt(0) === "\r") {
+      currWeight = currWeight.slice(3);
+    }
     win.webContents.send("curr-weight-recieved", [currWeight]);
-    console.log("Main channel" + currWeight);
+    console.log(`Main channel: ${currWeight}`);
   }
 }
 

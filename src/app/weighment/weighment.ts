@@ -7,18 +7,15 @@ export class Weighment{
   weighmentType: string;
   gatePassNo: number;
   poDetails: string;
+  scrollNo: string;
   transporterCode: number;
   transporterName: string;
   status: string;
+  createdAt: string;
   weighmentDetails: Array<WeighmentDetail>;
 
   constructor(){
     this.weighmentType = "inbound";
-    //this.reqId = 99;
-    //this.gatePassNo = 2;
-    //this.vehicleNo = "MH 13 AZ 1234";
-    //this.transporterCode = 40003;
-    //this.transporterName = "ATO (I) LIMITED";
     this.weighmentDetails = [];
   }
 }
@@ -43,9 +40,7 @@ export class WeighmentDetail {
   netWeight: number;
 
   constructor() {
-    this.remark = "Hare Krishna";
     this.firstUnit = "Kg";
-    this.supplier = "Krishna";
   }
 }
 

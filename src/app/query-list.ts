@@ -1,13 +1,16 @@
 export class QueryList{
 
   //Weighment
-  static readonly INSERT_WEIGHMENT: string = "INSERT INTO weighment(rstNo, vehicleNo, reqId, gatePassNo, weighmentType, poDetails, transporterCode, transporterName, status, createdAt) VALUES({rstNo}, '{vehicleNo}', {reqId}, {gatePassNo}, '{weighmentType}', '{poDetails}', {transporterCode}, '{transporterName}', '{status}', GETDATE());";
+  static readonly INSERT_WEIGHMENT: string = "INSERT INTO weighment(rstNo, vehicleNo, scrollNo, reqId, gatePassNo, weighmentType, poDetails, transporterCode, transporterName, status, createdAt) VALUES({rstNo}, '{vehicleNo}', '{scrollNo}', {reqId}, {gatePassNo}, '{weighmentType}', '{poDetails}', {transporterCode}, '{transporterName}', '{status}', GETDATE());";
+  static readonly UPDATE_WEIGHMENT: string = "UPDATE weighment SET scrollNo='{scrollNo}', reqId={reqId}, gatePassNo={gatePassNo}, weighmentType='{weighmentType}', transporterCode='{transporterCode}', transporterName='{transaporterName}', status='{status}' WHERE rstNo={rstNo}";
+  //Weighment Details
   static readonly INSERT_WEIGHMENT_DETAIL: string = "INSERT INTO weighment_details(id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser, secondWeighBridge, secondWeight, secondUnit, secondWeightDatetime, secondWeightUser, remark, netWeight) VALUES({id}, {weighmentRstNo}, '{material}', '{supplier}', '{firstWeighBridge}', {firstWeight}, '{firstUnit}', {firstWeightDatetime}, {firstWeightUser}, {secondWeighBridge}, {secondWeight}, '{secondUnit}', {secondWeightDatetime}, {secondWeightUser}, '{remark}', {netWeight})";
   static readonly INSERT_FIRST_WEIGHMENT_DETAIL: string = "INSERT INTO weighment_details(id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser, remark) VALUES({id}, {weighmentRstNo}, '{material}', '{supplier}', '{firstWeighBridge}', {firstWeight}, '{firstUnit}', GETDATE(), {firstWeightUser}, '{remark}')";
   static readonly UPDATE_SECOND_WEIGHMENT_DETAIL: string = "UPDATE weighment_details SET material='{material}', supplier='{supplier}', secondWeighBridge='{secondWeighBridge}', secondWeight={secondWeight}, secondUnit='{secondUnit}', secondWeightDatetime=GETDATE(), secondWeightUser={secondWeightUser}, remark='{remark}', netWeight={netWeight} WHERE id={id}";
 
-  static readonly GET_WEIGHMENTS = "SELECT * FROM weighment WHERE ";
-  static readonly GET_WEIGHMENT_DETAILS = "SELECT * FROM weighment_details WHERE weighmentRstNo={rstNo}";
+  static readonly GET_WEIGHMENTS = "SELECT * FROM weighment ";
+  static readonly GET_PENDING_RECORDS = "SELECT rstNo, vehicleNo, weighmentType, convert(varchar, createdAt, 8) as createdAt FROM weighment WHERE status='Pending' ORDER BY createdAt desc";
+  static readonly GET_WEIGHMENT_DETAILS = "SELECT * FROM weighment_details WHERE weighmentRstNo={rstNo} ORDER BY id";
   // Weighbridges
   static readonly GET_WEIGHBRIDGES: string = "Select * from weighbridge";
     

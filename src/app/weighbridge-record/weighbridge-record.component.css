@@ -28,6 +28,14 @@
   color: #25ab25;
 }
 
+.mat-list-item {
+    cursor: pointer;
+}
+
+.mat-list-item:nth-child(odd) {
+  background-color: silver;
+}
+
 .curr-weight-red {
   font-size: 60px;
   color: #ff2f2f;

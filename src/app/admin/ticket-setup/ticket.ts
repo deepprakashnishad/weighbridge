@@ -29,6 +29,31 @@ export class TicketField {
 
   constructor() { }
 
+  static fromJSON(result) {
+    var ticketFields = [];
+
+    for (var i = 0; i < result.length; i++) {
+      var temp: TicketField = new TicketField();
+      temp.col = result[i]['col'];
+      temp.row = result[i]['row'];
+      temp.id = result[i]['id'];
+      temp.templateId = result[i]['templateId'];
+      temp.displayName = result[i]['displayName'];
+      temp.field = result[i]['field'];
+      temp.font = result[i]['font'];
+      temp.isIncluded = result[i]['isIncluded'];
+      temp.type = result[i]['type'];
+      ticketFields.push(temp);
+      //if (temp.type === "ticket-field") {
+      //  ticketFields.push(temp);
+      //} else {
+      //  freetextFields.push(temp);
+      //}
+    }
+
+    return ticketFields;
+  }
+
   static generateFreeTextRecords(fields: Array<TicketField>) {
     var freeTextRecords = [];
     for (var i = 0; i < freeTextFieldCnt; i++) {
@@ -70,4 +95,5 @@ export class TicketField {
     });
     return ticketFields;
   }
+
 }

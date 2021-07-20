@@ -42,7 +42,6 @@ ipcMain.handle("executeSyncStmt", async (event, arg) => {
   var pool = await sql.connect(sqlConfig);
   console.log(arg[1]);
   var results = await pool.query(arg[1]);
-  
   return processResult(arg[0], results);
 });
 

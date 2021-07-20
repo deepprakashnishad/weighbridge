@@ -5,11 +5,9 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\admin\\ticket-setup\\preview-dialog",
-    "\\src\\app\\shared\\tag-selector",
     "\\src\\app\\weighment",
-    "\\src\\app\\weighment\\weighment-details",
-    "\\src\\themes"
+    "\\src\\app\\weighment\\weighment-summary"
   ],
-  "SelectedNode": "\\src\\app\\weighment\\weighment.component.ts",
+  "SelectedNode": "\\src\\app\\weighment\\weighment-summary\\weighment-summary.component.html",
   "PreviewInSolutionExplorer": false
 }

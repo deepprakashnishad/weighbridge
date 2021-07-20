@@ -64,19 +64,9 @@ export class PreviewDialogComponent implements OnInit {
     return mText;
   }
 
-  //print(fields: Array<TicketField>) {
-  //  var cmd = "python print.py";
-  //  cmd = cmd + " " + "RB" + " " + "\"Hare Krishna\"" + " " + "R"+" "+"\"Radhe Radhe\""+" newline R "+"\"Govind\"";
-  //  this.myIPCService.invokeIPC("printer-ipc", "print", cmd);
-  //}
   print(fields: Array<TicketField>) {
     var mText = "python print.py ";
     var currX = 0, currY = 0;
-    let ESC = 0x001B;
-    let E = 0x0045;
-    let F = 0x0046;
-    var bold = ESC + E;    // ESC, E
-    var unbold = ESC + F;  // ESC, F
 
     for (var i = 0; i < fields.length; i++) {
       var field = fields[i];
@@ -98,6 +88,5 @@ export class PreviewDialogComponent implements OnInit {
     }
     console.log(mText);
     this.myIPCService.invokeIPC("printer-ipc", "print", mText);
-    //this.myIPCService.invokeIPC("printer-ipc", "print", "notepad /P <filename>", mText);
   }
 }
