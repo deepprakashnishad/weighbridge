@@ -9,8 +9,8 @@ export class QueryList{
   static readonly UPDATE_SECOND_WEIGHMENT_DETAIL: string = "UPDATE weighment_details SET material='{material}', supplier='{supplier}', secondWeighBridge='{secondWeighBridge}', secondWeight={secondWeight}, secondUnit='{secondUnit}', secondWeightDatetime=GETDATE(), secondWeightUser={secondWeightUser}, remark='{remark}', netWeight={netWeight} WHERE id={id}";
 
   static readonly GET_WEIGHMENTS = "SELECT * FROM weighment ";
-  static readonly GET_PENDING_RECORDS = "SELECT rstNo, vehicleNo, weighmentType, convert(varchar, createdAt, 8) as createdAt FROM weighment WHERE status='Pending' ORDER BY createdAt desc";
-  static readonly GET_WEIGHMENT_DETAILS = "SELECT * FROM weighment_details WHERE weighmentRstNo={rstNo} ORDER BY id";
+  static readonly GET_PENDING_RECORDS = "SELECT rstNo, vehicleNo, weighmentType, convert(varchar, createdAt, 8) as createdAt FROM weighment WHERE status='Pending' ORDER BY rstNo desc";
+  static readonly GET_WEIGHMENT_DETAILS = "SELECT id, weighmentRstNo, material, supplier, firstWeighBridge, firstUnit, firstWeight, convert(varchar, firstWeightDatetime, 20) as firstWeightDatetime, firstWeightUser, secondWeighBridge, secondUnit, secondWeight, convert(varchar, secondWeightDatetime, 20) as secondWeightDatetime, secondWeightUser, remark, netWeight FROM weighment_details WHERE weighmentRstNo={rstNo} ORDER BY id";
   // Weighbridges
   static readonly GET_WEIGHBRIDGES: string = "Select * from weighbridge";
     
@@ -36,7 +36,7 @@ export class QueryList{
 
   //Ticket Templates
   static readonly INSERT_TICKET_TEMPLATE: string = "INSERT INTO ticket_template(id, name, applicableTo, printerType, defaultPrinter, labelLength, copiesPerPrint, alignment, width, font, fontSize, operatingType) VALUES({id}, '{name}', '{applicableTo}', '{printerType}', '{defaultPrinter}', {labelLength}, {copiesPerPrint}, '{alignment}', {width}, '{font}', {fontSize}, '{operatingType}')";
-  static readonly UPDATE_TICKET_TEMPLATE: string = "UPDATE ticket_template SET id={id}, name='{name}', applicableTo='{applicableTo}', printerType='{printerType}', defaultPrinter='{defaultPrinter}', labelLength={labelLength}, copiesPerPrint={copiesPerPrint}, alignment='{alignment}', width={width}, font='{font}', fontSize={fontSize}, operatingType='{operatingType}'";
+  static readonly UPDATE_TICKET_TEMPLATE: string = "UPDATE ticket_template SET name='{name}', applicableTo='{applicableTo}', printerType='{printerType}', defaultPrinter='{defaultPrinter}', labelLength={labelLength}, copiesPerPrint={copiesPerPrint}, alignment='{alignment}', width={width}, font='{font}', fontSize={fontSize}, operatingType='{operatingType}' WHERE id={id}";
   static readonly GET_ALL_TICKET_TEMPLATE: string = "SELECT * FROM ticket_template";
 
   //Ticket Field

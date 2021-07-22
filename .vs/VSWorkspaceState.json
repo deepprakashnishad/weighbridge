@@ -1,13 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\app",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\admin\\ticket-setup\\preview-dialog",
-    "\\src\\app\\weighment",
+    "\\src\\app\\admin",
+    "\\src\\app\\admin\\ticket-setup",
+    "\\src\\app\\admin\\ticket-setup\\create-edit-ticket-template",
+    "\\src\\app\\admin\\weighbridge-setup\\weighing-indicators",
+    "\\src\\app\\admin\\weighbridge-setup\\weighing-indicators\\create-edit-weigh-indicator",
     "\\src\\app\\weighment\\weighment-summary"
   ],
-  "SelectedNode": "\\src\\app\\weighment\\weighment-summary\\weighment-summary.component.html",
+  "SelectedNode": "\\src\\app\\admin\\ticket-setup\\ticket-setup.component.ts",
   "PreviewInSolutionExplorer": false
 }

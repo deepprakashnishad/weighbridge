@@ -33,7 +33,7 @@ export class WeighmentComponent implements OnInit {
   remark: string;
 
   currWeight: number = 10000;
-  isWeightStable: boolean = false;
+  isWeightStable: boolean = true;
   prevWeight: number;
   cnt: number = 0;
   
@@ -56,19 +56,22 @@ export class WeighmentComponent implements OnInit {
     
 
     //Later remove this one line
-    setTimeout(() => { this.isWeightStable = true }, 2000);
+    //setTimeout(() => { this.isWeightStable = true }, 2000);
 
-    this.sharedDataService.currentData.subscribe((data)=>{
-      this.currWeight = data['currWeight'];
-      if (this.prevWeight === data['currWeight']) {
-        this.cnt++;
-        if (this.cnt > 100) {
-          this.isWeightStable = true;
-        }
-      } else {
-        this.cnt = 0;
-        this.isWeightStable = false;
-      }
+    this.sharedDataService.currentData.subscribe((data) => {
+      this.ngZone.run(() => {
+        this.currWeight = data['currWeight'];
+      });
+      
+      //if (this.prevWeight === data['currWeight']) {
+      //  this.cnt++;
+      //  if (this.cnt > 100) {
+      //    this.isWeightStable = true;
+      //  }
+      //} else {
+      //  this.cnt = 0;
+      //  this.isWeightStable = false;
+      //}
     });
   }
 
@@ -126,7 +129,7 @@ export class WeighmentComponent implements OnInit {
 
     this.sharedDataService.updateData("WEIGHMENT_COMPLETED", true);
 
-    this.displayWeighmentSummary();
+    //this.displayWeighmentSummary();
   }
 
   async insertFirstWeighmentForPartial(weighBridge, firstWeight, firstUnit, user) {
@@ -171,7 +174,7 @@ export class WeighmentComponent implements OnInit {
   async createWeighment(status) {
     var stmt = QueryList.INSERT_WEIGHMENT
       .replace("{vehicleNo}", this.weighment.vehicleNo)
-      .replace("{scrollNo}", this.weighment.scrollNo ? this.weighment.scrollNo : null)
+      .replace("{scrollNo}", this.weighment.scrollNo ? this.weighment.scrollNo : "")
       .replace("{reqId}", this.weighment.reqId ? this.weighment.reqId.toString():null)
       .replace("{gatePassNo}", this.weighment?.gatePassNo ? this.weighment.gatePassNo.toString() : null)
       .replace("{weighmentType}", this.weighment.weighmentType)
@@ -357,6 +360,7 @@ export class WeighmentComponent implements OnInit {
   async getWeighmentDetails(rstNo) {
     var result = new Array<WeighmentDetail>();
     if (rstNo) {
+      console.log(QueryList.GET_WEIGHMENT_DETAILS.replace("{rstNo}", rstNo));
       result = await this.dbService.executeSyncDBStmt("SELECT", QueryList.GET_WEIGHMENT_DETAILS.replace("{rstNo}", rstNo));
     }
     return result;

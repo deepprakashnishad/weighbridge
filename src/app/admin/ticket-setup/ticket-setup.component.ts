@@ -6,7 +6,7 @@ import { MyDbService } from '../../my-db.service';
 import { QueryList } from '../../query-list';
 import { CreateEditTicketTemplateComponent } from './create-edit-ticket-template/create-edit-ticket-template.component';
 import { PreviewDialogComponent } from './preview-dialog/preview-dialog.component';
-import { Ticket, TicketField } from './ticket';
+import { TicketField } from './ticket';
 import { TicketTemplate } from './ticket-template';
 
 @Component({
@@ -38,6 +38,7 @@ export class TicketSetupComponent implements OnInit {
   ngOnInit() {
     this.dbService.executeSyncDBStmt("SELECT", QueryList.GET_ALL_TICKET_TEMPLATE).then(results => {
       this.templates = results;
+      //this.selectedTemplate = this.templates[0];
     });
   }
 
@@ -48,20 +49,26 @@ export class TicketSetupComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result)=>{
-      console.log(result);
+      this.templates.push(result);
     });
   }
 
   openEditTicketTemplateDialog(){
     const dialogRef = this.dialog.open(CreateEditTicketTemplateComponent, {
+      width: "600px",
       data: {
-        title: "New ticket template",
+        title: "Edit ticket template",
         ticketTemplate: this.selectedTemplate
       }
     });
 
-    dialogRef.afterClosed().subscribe((result)=>{
-      console.log(result);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        for (var i = 0; i < this.templates.length; i++) {
+          this.templates[i] = result;
+          break;
+        }
+      }      
     });
   }
 
@@ -70,6 +77,7 @@ export class TicketSetupComponent implements OnInit {
       this.notifier.notify("error", "Please select a template");
       return;
     }
+    //console.log(this.ticketFieldDataSource.data);
     for (var i = 0; i < this.ticketFieldDataSource.data.length; i++) {
       this.ticketFieldDataSource.data[i]['id'] = await this.insertTicketField(this.ticketFieldDataSource.data[i], this.selectedTemplate.id);
     }
@@ -164,11 +172,9 @@ export class TicketSetupComponent implements OnInit {
     var result = await this.dbService.executeSyncDBStmt(
       "SELECT", QueryList.GET_TICKET_FIELDS.replace("{templateId}", this.selectedTemplate.id.toString())
     );
-
-    var mFields = TicketField.fromJSON(result);
+    var mFields = TicketField.fromJSON(result, true);
     var ticketFields = mFields["ticketFields"];
     var freetextFields = mFields["freetextFields"];
-
     if (ticketFields.length > 0) {
       this.ticketFieldDataSource.data = ticketFields;
     } else {

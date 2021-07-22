@@ -20,7 +20,7 @@ export class PreviewDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data: any,
   ) {
     this.fields = data;
-    
+    console.log(data);
   }
 
   ngOnInit() {
@@ -52,7 +52,6 @@ export class PreviewDialogComponent implements OnInit {
         } else {
           mText = mText + field.displayName + ": " + `{${field.field}}`;
         }
-
       } else {
         if (field.font === "RB" || field.font === "DB") {
           mText = mText + "<b>" + field.displayName + "</b>";

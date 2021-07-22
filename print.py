@@ -2,8 +2,6 @@ import os, sys
 import win32print
 
 def formatData(args):
-  print("Arguments");
-  print(args);
   cnt = 1;
   byteArr = bytearray()
   while(cnt < len(args)):

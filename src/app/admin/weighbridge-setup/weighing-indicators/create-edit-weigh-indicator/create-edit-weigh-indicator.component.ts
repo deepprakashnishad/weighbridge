@@ -72,6 +72,14 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
         baudRate: this.selectedString.baudRate
       }
     );
+    //this.ipcService.invokeIPC("serial-port-ipc",
+    //  "initialiaze-port",
+    //  {
+    //    type: this.indicator.type,
+    //    comPort: this.indicator.comPort,
+    //    baudRate: this.selectedString.baudRate
+    //  }
+    //);
     this.sharedDataService.currentData.pipe().subscribe(currData => {
       this.ngzone.run(() => {
         this.verification_weight = currData['verification_weight'];

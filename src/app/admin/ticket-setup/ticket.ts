@@ -1,20 +1,26 @@
-const freeTextFieldCnt = 10;
-
-
-export class Ticket{
-    gatePassNo: string;
-    poDetails: string;
-    currentDateTime: string;
-    date1: Date;
-    date2: Date;
-    duration: number;
-    ticketType: string;
-    invoiceDateTime: Date;
-    netWeight: number;
-    totalPrint: number;
-    invoicePrint: string;
-    weighingPrint: string;
-}
+const ticketPredefinedFields = [
+  { displayName: "Transporter Code", field: "transporterCode" },
+  { displayName: "Transporter Name", field: "transporterName" },
+  { displayName: "Scroll No", field: "scrollNo" },
+  { displayName: "Rst No", field: "rstNo" },
+  { displayName: "Vehicle No", field: "vehicleNo" },
+  { displayName: "Request Id", field: "reqId" },
+  { displayName: "status", field: "status" },
+  { displayName: "Gate Pass No.", field: "gatePassNo" },
+  { displayName: "PO Details", field: "poDetails" },
+  { displayName: "Created At", field: "createdAt" },
+  { displayName: "Duration", field: "duration" },
+  { displayName: "Inbound/Outbound", field: "weighmentType" },
+  { displayName: "Weighment Details", field: 'weighmentDetails' },
+  { displayName: "Weighslip No", field: "weighDetails_id" },
+  { displayName: "Material", field: "weighDetails_material" },
+  { displayName: "Supplier", field: "weighDetails_supplier" },
+  { displayName: "Wt1(KG)", field: "weighDetails_firstWeight" },
+  { displayName: "In Date/Time", field: "weighDetails_firstWeightDatetime" },
+  { displayName: "Wt2(KG)", field: "weighDetails_secondWeight" },
+  { displayName: "Out Date/Time", field: "weighDetails_secondWeightDatetime" },
+  { displayName: "Net Wt(KG)", field: "weighDetails_netWeight" },
+]
 
 export class TicketField {
   id: number;
@@ -29,9 +35,9 @@ export class TicketField {
 
   constructor() { }
 
-  static fromJSON(result) {
+  static fromJSON(result, isSeparateReqd) {
     var ticketFields = [];
-
+    var freetextFields = [];
     for (var i = 0; i < result.length; i++) {
       var temp: TicketField = new TicketField();
       temp.col = result[i]['col'];
@@ -43,20 +49,26 @@ export class TicketField {
       temp.font = result[i]['font'];
       temp.isIncluded = result[i]['isIncluded'];
       temp.type = result[i]['type'];
-      ticketFields.push(temp);
-      //if (temp.type === "ticket-field") {
-      //  ticketFields.push(temp);
-      //} else {
-      //  freetextFields.push(temp);
-      //}
+      if (isSeparateReqd) {
+        if (temp.type === "ticket-field") {
+          ticketFields.push(temp);
+        } else {
+          freetextFields.push(temp);
+        }
+      } else {
+        ticketFields.push(temp);
+      }
     }
-
-    return ticketFields;
+    if (isSeparateReqd) {
+      return { "ticketFields": ticketFields, "freetextFields": freetextFields };
+    } else {
+      return ticketFields;
+    }    
   }
 
   static generateFreeTextRecords(fields: Array<TicketField>) {
     var freeTextRecords = [];
-    for (var i = 0; i < freeTextFieldCnt; i++) {
+    for (var i = 0; i < ticketPredefinedFields.length; i++) {
       if (i < fields.length) {
         freeTextRecords.push(fields[i]);
       } else {
@@ -71,20 +83,8 @@ export class TicketField {
   }
 
   static generateTicketFields() {
-    var fields = [
-      { displayName: "Gate Pass No.", field: "gatePassNo" },
-      { displayName: "PO Details", field: "poDetails" },
-      { displayName: "Current date", field: "currentDate" },
-      { displayName: "Current time", field: "currentTime" },
-      { displayName: "Date1", field: "date1" },
-      { displayName: "Date2", field: "date2" },
-      { displayName: "Duration", field: "duration" },
-      { displayName: "Inbound/Outbound", field: "weighmentType" },
-      { displayName: "Invoice date", field: "invoiceDate" },
-      { displayName: "Net weight", field: "invoiceTime" },
-    ]
     var ticketFields = [];
-    fields.forEach(ele => {
+    ticketPredefinedFields.forEach(ele => {
       var field = new TicketField();
       field.displayName = ele['displayName'];
       field.field = ele['field'];
@@ -97,3 +97,19 @@ export class TicketField {
   }
 
 }
+
+
+//export class Ticket{
+//    gatePassNo: string;
+//    poDetails: string;
+//    currentDateTime: string;
+//    date1: Date;
+//    date2: Date;
+//    duration: number;
+//    ticketType: string;
+//    invoiceDateTime: Date;
+//    netWeight: number;
+//    totalPrint: number;
+//    invoicePrint: string;
+//    weighingPrint: string;
+//}

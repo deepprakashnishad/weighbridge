@@ -5,10 +5,10 @@
         <mat-option *ngFor="let template of templates" [value]="template">{{template.name}}</mat-option>
       </mat-select>
       <button mat-icon-button color="primary" (click)="openAddTicketTemplateDialog()"><mat-icon>add</mat-icon></button>
-      <button mat-icon-button color="primary" *ngIf="selectedTemplate"><mat-icon>edit</mat-icon></button>
+      <button mat-icon-button color="primary" *ngIf="selectedTemplate" (click)="openEditTicketTemplateDialog()"><mat-icon>edit</mat-icon></button>
     </form>
     <div fxLayout fxLayoutGap="12px">
-      <button fxFlexAlign="end" mat-raised-button color="primary" *ngIf="selectedTemplate.id" (click)="saveTemplateDetail()">Save Template Detail</button>
+      <button fxFlexAlign="end" mat-raised-button color="primary" *ngIf="selectedTemplate?.id" (click)="saveTemplateDetail()">Save Template Detail</button>
       <button fxFlexAlign="end" mat-raised-button color="primary" (click)="previewTemplate()">Preview Template</button>
     </div>
   </div>

@@ -16,18 +16,26 @@ export class CreateEditTicketTemplateComponent implements OnInit {
 
   template: TicketTemplate = new TicketTemplate();
   copyFrom: TicketTemplate;
+  title: string;
 
   constructor(
     private dbService: MyDbService,
     private notifier: NotifierService,
     public dialogRef: MatDialogRef<CreateEditTicketTemplateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+  ) {
+    this.title = data['title'];
+    console.log(this.template);
+    if (data['ticketTemplate']) {
+      this.template = data['ticketTemplate'];
+      console.log(this.template);
+    }
+  }
 
   ngOnInit() {
   }
 
-  save() {
+  async save() {
     const undefinedRegExp = /undefined/g;
     if (this.template.id) {
       var stmt = QueryList.UPDATE_TICKET_TEMPLATE
@@ -44,6 +52,15 @@ export class CreateEditTicketTemplateComponent implements OnInit {
         .replace("{fontSize}", this.template?.fontSize ? this.template?.fontSize.toString() : "10")
         .replace("{operatingType}", this.template?.operatingType)
         .replace(undefinedRegExp, "");
+      var result = await this.dbService.executeSyncDBStmt("UPDATE", stmt);
+      if (result) {
+        this.notifier.notify("success", "Ticket template updated successfully");
+        this.template.id = result['newId'];
+        this.dialogRef.close(this.template);
+      } else {
+        this.notifier.notify("error", "Failed to update ticket template");
+      }
+      
     } else {
       var stmt = QueryList.INSERT_TICKET_TEMPLATE
         .replace("{name}", this.template?.name)
@@ -58,11 +75,21 @@ export class CreateEditTicketTemplateComponent implements OnInit {
         .replace("{fontSize}", this.template?.fontSize ? this.template?.fontSize.toString(): "10")
         .replace("{operatingType}", this.template?.operatingType)
         .replace(undefinedRegExp, "");
+      var result = await this.dbService.executeInsertAutoId("ticket_template", "id", stmt);
+      if (result['newId']) {
+        this.notifier.notify("success", "Ticket template created successfully");
+        this.template.id = result['newId'];
+        this.dialogRef.close(this.template);
+      } else {
+        this.notifier.notify("error", "Failed to save ticketTemplate");
+      }
     }
-    this.dbService.executeInsertAutoId("ticket_template", "id", stmt).then(result => {
-      console.log(result);
-      this.notifier.notify("success", "Ticket template created successfully");
-    });
+    
+    console.log(result);
+    
+    
+    
+      
   }
 
 }

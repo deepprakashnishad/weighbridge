@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { MyDbService } from '../my-db.service';
+import { MyIpcService } from '../my-ipc.service';
 import { QueryList } from '../query-list';
 import { SharedDataService } from '../shared-data.service';
 import { Weighbridge, Weighment } from '../weighment/weighment';
@@ -20,7 +21,7 @@ export class WeighbridgeRecordComponent implements OnInit {
   currentWeight: any = 10000;
   pendingRecords: Array<Weighment>;
 
-  isWeightStable = false;
+  isWeightStable = true;
 
   prevWeight: number;
   cnt: number=0;
@@ -28,13 +29,14 @@ export class WeighbridgeRecordComponent implements OnInit {
   constructor(
     private sharedDataService: SharedDataService,
     private dbService: MyDbService,
+    private ipcService: MyIpcService,
     private ngZone: NgZone,
     private router: Router,
   ) { }
 
   ngOnInit() {
     //Later remove this line
-    setTimeout(() => { this.isWeightStable = true }, 2000);
+    //setTimeout(() => { this.isWeightStable = true }, 2000);
 
     //Get pending records
     this.fetchPendingRecords();
@@ -71,7 +73,7 @@ export class WeighbridgeRecordComponent implements OnInit {
       }
     } else {
       this.cnt = 0;
-      this.isWeightStable = false;
+      //this.isWeightStable = false;
     }
   }
 
@@ -83,5 +85,9 @@ export class WeighbridgeRecordComponent implements OnInit {
 
   navigateTo(path, rstNo) {
     this.router.navigate([path], { queryParams: { "rstNo": rstNo } });
+  }
+
+  refreshWeightReader() {
+    this.ipcService.invokeIPC("serial-port-ipc", "initialiaze-port");
   }
 }
