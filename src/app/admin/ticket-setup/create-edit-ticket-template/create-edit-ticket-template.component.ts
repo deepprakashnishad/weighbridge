@@ -86,10 +86,6 @@ export class CreateEditTicketTemplateComponent implements OnInit {
     }
     
     console.log(result);
-    
-    
-    
-      
   }
 
 }

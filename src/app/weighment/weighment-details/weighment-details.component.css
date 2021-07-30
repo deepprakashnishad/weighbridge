@@ -1,6 +1,8 @@
-table{
-    width: 100%;
+.table-container{
+    width: inherit;
+    overflow:auto;
 }
+
 
 .mat-table {
   overflow-x: scroll;

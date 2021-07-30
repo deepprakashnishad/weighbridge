@@ -3,6 +3,7 @@ import {Router, RoutesRecognized} from '@angular/router';
 import {AuthenticationService} from '../authentication/authentication.service';
 import { Title } from '@angular/platform-browser';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Permission } from '../admin/permission/permission';
 
 
 @Component({
@@ -37,11 +38,13 @@ export class NavigationComponent implements OnInit {
 
 	private readonly SHRINK_TOP_SCROLL_POSITION = 5;
 	shrinkToolbar = false;
-	elementPosition: any;
+  elementPosition: any;
+  allowedPermissionList: Array<Permission> = [];
 
   	constructor(
 		private authenticationService: AuthenticationService,
-		private router: Router,
+    private router: Router,
+    private ngZone: NgZone,
 		private titleService: Title,
 		private renderer: Renderer2,
 	) { }
@@ -59,7 +62,13 @@ export class NavigationComponent implements OnInit {
 	      if(value){
 	      	this.name = this.authenticationService.getTokenOrOtherStoredData("name");
 	      }
-	    });
+    });
+
+    let permissionList: any = this.authenticationService.getTokenOrOtherStoredData('permissions')
+    if (permissionList === undefined) {
+      return false;
+    }
+    this.allowedPermissionList = JSON.parse(permissionList);
 
 		this.renderer.listen('window', 'click', (e: Event)=>{});	
 	}
@@ -81,8 +90,25 @@ export class NavigationComponent implements OnInit {
 	}
 
 	navigateTo(path){
-		if(path){
-			this.router.navigate([path]);
-		}
-	}
+    if (path && path !== "logout") {
+      this.ngZone.run(() => {
+        this.router.navigate([path]);
+      });
+    } else if (path === "logout") {
+      this.ngZone.run(() => {
+        this.authenticationService.logout()
+      });
+    }
+  }
+
+  refresh() {
+    window.location.reload();
+  }
+
+  isAuthorized(accessListReqd) {
+    return this.allowedPermissionList.some(ele1 => {
+      if (ele1.id === accessListReqd)
+          return true;
+    });
+  }
 }

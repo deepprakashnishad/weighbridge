@@ -1,17 +1,15 @@
 const { ipcMain } = require('electron');
 const sql = require("mssql");
-const process = require("process");
+const fs = require('fs');
+const log = require('electron-log');
+log.transports.file.level = 'info';
+log.transports.file.file = __dirname + 'log.log';
 
-const mUsername = "admin";
-const mPassword = "admin";
-const mDatabase = "weighbridge";
-const mServer = "localhost";
-
-const sqlConfig = {
-  user: mUsername,
-  password: mPassword,
-  database: mDatabase,
-  server: mServer,
+var sqlConfig = {
+  //user: mUsername,
+  //password: mPassword,
+  //database: mDatabase,
+  //server: mServer,
   pool: {
     max: 10,
     min: 0,
@@ -21,14 +19,30 @@ const sqlConfig = {
     encrypt: false, // for azure
     trustServerCertificate: true // change to true for local dev / self-signed certs
   }
+};
+
+var data = fs.readFileSync("env.txt", 'utf-8');
+global.env_data = JSON.parse(data);
+
+initializeSqlConfig(env_data);
+//initialDataSetup();
+
+function initializeSqlConfig(dbDetails){
+  try {
+    sqlConfig['user'] = dbDetails['username'];
+    sqlConfig['password'] = dbDetails['password'];
+    sqlConfig['database'] = dbDetails['database'];
+    sqlConfig['server'] = dbDetails['server'];
+
+    loadEnvDataFromDB();
+  }
+  catch (e) {
+    console.log('Failed to save the file !');
+    console.log(e);
+    log.error(e);
+    return false;
+  }
 }
-
-//const pool = new sql.ConnectionPool(sqlConfig);
-//const poolConnect = pool.connect();
-
-//pool.on("error", err => {
-//  console.log(err);
-//});
 
 ipcMain.on("executeDBQuery", (event, arg) => {
   sql.connect(sqlConfig).then(pool => {
@@ -39,9 +53,16 @@ ipcMain.on("executeDBQuery", (event, arg) => {
 })
 
 ipcMain.handle("executeSyncStmt", async (event, arg) => {
-  var pool = await sql.connect(sqlConfig);
-  //console.log(arg[1]);
-  var results = await pool.query(arg[1]);
+  try {
+    var pool = await sql.connect(sqlConfig);
+    //console.log(arg[1]);
+    var results = await pool.query(arg[1]);
+  } catch (err) {
+    console.log(err);
+    log.error(err);
+    return { error: err };
+  }
+  
   return processResult(arg[0], results);
 });
 
@@ -58,10 +79,49 @@ ipcMain.handle("executeSyncInsertAutoId", async (event, arg) => {
   }
   var mQuery = arg[2].replace(`{${arg[1]}}`, newId);
   //console.log(mQuery);
-  var results = await pool.query(mQuery);
+  try {
+    var results = await pool.query(mQuery);
+  } catch (err) {
+    log.error(err);
+    return { "error": err };
+  }
+  
   //console.log(results);
   return { affectedRows: processResult(arg[0], results), "newId": newId};
 });
+
+ipcMain.handle("createDataForInitialSetup", async (event, arg) => {
+  try {
+    initialDataSetup()
+  } catch (err) {
+    log.error(err);
+  }
+  return true;
+});
+
+ipcMain.handle("get-env-data", async (event, arg) => {
+  return env_data;
+})
+
+async function initialDataSetup() {
+  const data = require("./bootstrap.js");
+  var pool = await sql.connect(sqlConfig);
+  var keys = Object.keys(data.seed);
+  for (var key of keys) {
+    for (var obj of data.seed[key]) {
+      var stmt = data['sqlStmt'][key]
+      for (var sKey of Object.keys(obj)) {
+        stmt = stmt.replace(`{${sKey}}`, obj[sKey])
+      }
+      try {
+        await pool.query(stmt);
+      } catch (err) {
+        console.log(err);
+        log.error(err);
+      }      
+    }
+  }
+}
 
 function processResult(queryType, result){
   if (queryType === "INSERT" || queryType === "UPDATE" || queryType === "DELETE") {
@@ -70,3 +130,25 @@ function processResult(queryType, result){
     return result['recordset'];
   }
 }
+
+async function loadEnvDataFromDB() {
+  const data = require("./bootstrap.js");
+  var pool = await sql.connect(sqlConfig);
+  var keys = Object.keys(data.envStmts);
+  for (var key of keys) {
+    var stmt = data['envStmts'][key]['stmt'];
+    for (var replacementKey of data['envStmts'][key]['replacementKeys']) {
+      stmt = stmt.replace(`{${replacementKey}}`, env_data[replacementKey])
+    }
+    try {
+      var result = await pool.query(stmt);
+      env_data[key] = processResult("SELECT", result);
+      if (data['envStmts'][key]['isSingleRecord']) {
+        env_data[key] = env_data[key][0];
+      }
+    } catch (err) {
+      log.error(err);
+    }
+  }
+}
+

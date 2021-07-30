@@ -15,36 +15,20 @@
   <mat-card fxFlex class="pending-record-container">
     <div class="box-title" fxLayout fxLayoutAlign="space-between center">
       <div>Pending Records</div>
-      <button mat-icon-button color="primary" (click)="fetchPendingRecords()"><mat-icon>refresh</mat-icon></button>
+      <div>
+        <button mat-icon-button color="primary" (click)="reverseOrder()"><mat-icon>import_export</mat-icon></button>
+        <button mat-icon-button color="primary" (click)="fetchPendingRecords()"><mat-icon>refresh</mat-icon></button>
+      </div>
     </div>
     <mat-card-content>
       <mat-list dense>
-        <mat-list-item *ngFor="let record of pendingRecords" (click)="navigateTo('weighment', record.rstNo)">
-          <a matLine fxLayout fxLayoutAlign="space-between center">
-            <mat-list-title>{{record.vehicleNo}}</mat-list-title>
-            <mat-list-subtitle>{{record.createdAt}}</mat-list-subtitle>
+        <mat-list-item [class.pending-long] = "isPendingForLong(record)" *ngFor="let record of pendingRecords" (click)="navigateTo('weighment', record.rstNo)">
+          <a fxLayout fxLayoutAlign="space-between center">
+            <div class="record-item-left">{{record.vehicleNo}}</div>
+            <div class="record-item-right">{{record.createdAt}}</div>
           </a>
         </mat-list-item>
       </mat-list>
-      <!--<mat-selection-list #shoes [multiple]="false">
-    <mat-list-option *ngFor="let record of pendingRecords" [value]="shoe">
-      <a matLine fxLayout fxLayoutAlign="space-between center">
-        <mat-list-title>{{record.vehicleNo}}</mat-list-title>
-        <mat-list-subtitle>{{record.createdAt}}</mat-list-subtitle>
-      </a>
-
-    </mat-list-option>
-  </mat-selection-list>-->
-      <!--<div class="pending-record-row" fxLayout fxLayoutAlign="space-between center">
-    <div class="bordered" fxFlex="10">Sr.</div>
-    <div class="bordered" fxFlex="45">Truck No.</div>
-    <div class="bordered" fxFlex="45">In Time</div>
-  </div>
-  <div class="pending-record-row" fxLayout fxLayoutAlign="space-between center" *ngFor="let record of pendingRecords; let i=index">
-    <div class="bordered" fxFlex="10">{{i}}</div>
-    <div class="bordered" fxFlex="45">{{record.truckNo}}</div>
-    <div class="bordered" fxFlex="45">{{record.inTime}}</div>
-  </div>-->
     </mat-card-content>
   </mat-card>
 </div>

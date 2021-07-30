@@ -21,10 +21,12 @@ export class WeighbridgeRecordComponent implements OnInit {
   currentWeight: any = 10000;
   pendingRecords: Array<Weighment>;
 
-  isWeightStable = true;
+  isWeightStable = false;
 
   prevWeight: number;
-  cnt: number=0;
+  cnt: number = 0;
+
+  allowedNoOfDays = 8;
 
   constructor(
     private sharedDataService: SharedDataService,
@@ -60,20 +62,16 @@ export class WeighbridgeRecordComponent implements OnInit {
   }
 
   updateCurrentWeight(currData) {
-    this.ngZone.run(() => {
-      this.currentWeight = currData['currWeight'];
-    });
-    if (this.prevWeight === currData) {
+    this.currentWeight = currData['currWeight'];
+    if (this.prevWeight === currData['currWeight']) {
       this.cnt++;
       if (this.cnt > 10) {
-        this.isWeightStable = true;
-        this.ngZone.run(() => {
-          this.currentWeight = currData['currWeight'];
-        });
+        this.isWeightStable = true;        
       }
     } else {
       this.cnt = 0;
-      //this.isWeightStable = false;
+      this.prevWeight = this.currentWeight;
+      this.isWeightStable = false;
     }
   }
 
@@ -89,5 +87,15 @@ export class WeighbridgeRecordComponent implements OnInit {
 
   refreshWeightReader() {
     this.ipcService.invokeIPC("serial-port-ipc", "initialiaze-port");
+  }
+
+  isPendingForLong(record: Weighment) {
+    var currDate = new Date();
+    var recordDate = new Date(record.createdAt);
+    return currDate.getTime() - recordDate.getTime() > this.allowedNoOfDays*24*60*60*1000;
+  }
+
+  reverseOrder() {
+    this.pendingRecords = this.pendingRecords.reverse();
   }
 }

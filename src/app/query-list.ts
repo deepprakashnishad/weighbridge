@@ -9,8 +9,13 @@ export class QueryList{
   static readonly UPDATE_SECOND_WEIGHMENT_DETAIL: string = "UPDATE weighment_details SET material='{material}', supplier='{supplier}', secondWeighBridge='{secondWeighBridge}', secondWeight={secondWeight}, secondUnit='{secondUnit}', secondWeightDatetime=GETDATE(), secondWeightUser={secondWeightUser}, remark='{remark}', netWeight={netWeight} WHERE id={id}";
 
   static readonly GET_WEIGHMENTS = "SELECT * FROM weighment ";
-  static readonly GET_PENDING_RECORDS = "SELECT rstNo, vehicleNo, weighmentType, convert(varchar, createdAt, 8) as createdAt FROM weighment WHERE status='Pending' ORDER BY rstNo desc";
-  static readonly GET_WEIGHMENT_DETAILS = "SELECT id, weighmentRstNo, material, supplier, firstWeighBridge, firstUnit, firstWeight, convert(varchar, firstWeightDatetime, 20) as firstWeightDatetime, firstWeightUser, secondWeighBridge, secondUnit, secondWeight, convert(varchar, secondWeightDatetime, 20) as secondWeightDatetime, secondWeightUser, remark, netWeight FROM weighment_details WHERE weighmentRstNo={rstNo} ORDER BY id";
+  static readonly GET_PENDING_RECORDS = "SELECT rstNo, vehicleNo, weighmentType, convert(varchar, createdAt, 20) as createdAt\
+      FROM weighment WHERE status='Pending' ORDER BY rstNo desc";
+  static readonly GET_WEIGHMENT_DETAILS = "SELECT id, weighmentRstNo, material, supplier, firstWeighBridge, firstUnit, firstWeight, \
+    convert(varchar, firstWeightDatetime, 20) as firstWeightDatetime, firstWeightUser, secondWeighBridge, secondUnit, secondWeight, \
+    convert(varchar, secondWeightDatetime, 20) as secondWeightDatetime, secondWeightUser, remark, netWeight \
+    FROM weighment_details WHERE weighmentRstNo={rstNo} ORDER BY id";
+
   // Weighbridges
   static readonly GET_WEIGHBRIDGES: string = "Select * from weighbridge";
     
@@ -20,18 +25,25 @@ export class QueryList{
   static readonly GET_TAGS_BY_TYPE: string = "SELECT * FROM tag WHERE tagType={tagType}";
 
   //SearchFields
-  static readonly INSERT_SEARCH_FIELD: string = "INSERT INTO search_field(id, displayName, entryMode, inOutMode, mValues) VALUES({id}, '{displayName}', '{entryMode}', '{inOutMode}', '{mValues}'); SELECT SCOPE_IDENTITY() as id";
+  static readonly INSERT_SEARCH_FIELD: string = "INSERT INTO search_field(id, displayName, entryMode, inOutMode) VALUES({id}, '{displayName}', '{entryMode}', '{inOutMode}')";
   //static readonly UPDATE_SEARCH_FIELD: string = "UPDATE search_field(displayName, entryMode, inOutMode, mValues) SET VALUES('{displayName}', '{entryMode}', '{inOutMode}', '{mValues}') WHERE id={id}";
-  static readonly UPDATE_SEARCH_FIELD: string = "UPDATE search_field  SET displayName='{displayName}', entryMode='{entryMode}', inOutMode='{inOutMode}', mValues='{mValues}' WHERE id={id}";
+  static readonly UPDATE_SEARCH_FIELD: string = "UPDATE search_field  SET displayName='{displayName}', entryMode='{entryMode}', inOutMode='{inOutMode}' WHERE id={id}";
   static readonly DELETE_SEARCH_FIELD: string = "DELETE search_field where id={id}";
   static readonly GET_ALL_SEARCH_FIELD: string = "SELECT * FROM search_field";
 
+  //Search Field Value
+  static readonly INSERT_SEARCH_FIELD_VALUE: string = "INSERT INTO search_field_value(id, search_field_id, mValue, code) VALUES({id}, {search_field_id}, '{mValue}', '{code}')";
+  static readonly DELETE_SEARCH_FIELD_VALUE_BY_SEARCH_FIELD_ID: string = "DELETE search_field_value WHERE search_field_id={search_field_id}";
+  static readonly GET_SEARCH_FIELD_VALUES_BY_SEARCH_FIELD_ID: string = "SELECT * FROM search_field_value WHERE search_field_id={search_field_id}";
+  static readonly GET_SEARCH_FIELD_VALUES_BY_SEARCH_FIELD_TEXT: string = "SELECT * FROM search_field_value WHERE mValue LIKE '%{str}%' OR mValue LIKE '%{str}%'";
+  static readonly UPDATE_SEARCH_FIELD_VALUE: string = "UPDATE search_field_value SET mValue='{mValue}', code='{code}' WHERE id={id}";
+  static readonly DELETE_SEARCH_FIELD_VALUE_BY_ID: string = "DELETE search_field_value WHERE id={id}";
   //Weigh Strings
   static readonly INSERT_WEIGH_STRING: string = "INSERT INTO weighstring (stringName, totalChars, variableLength, type, pollingCommand, baudRate, dataBits, stopBits, parity, flowControl, weightCharPosition1, weightCharPosition2, weightCharPosition3, weightCharPosition4, weightCharPosition5, weightCharPosition6, startChar1, startChar2, startChar3, startChar4, endChar1, endChar2, endChar3, signCharPosition, negativeSignValue) VALUES ('{stringName}', {totalChars}, {variableLength}, '{type}', '{pollingCommand}', '{baudRate}', {dataBits}, {stopBits}, '{parity}', '{flowControl}', {weightCharPosition1}, {weightCharPosition2}, {weightCharPosition3}, {weightCharPosition4}, {weightCharPosition5}, {weightCharPosition6}, '{startChar1}', '{startChar2}', '{startChar3}', '{startChar4}', '{endChar1}', '{endChar2}', '{endChar3}', {signCharPosition}, '{negativeSignValue}')";
   static readonly GET_WEIGH_STRINGS: string = "SELECT * FROM weighstring";
 
   //Weigh Indicators
-  static readonly INSERT_WEIGH_INDICATOR: string = "INSERT INTO weighindicator(weighstring, port, status, measuringUnit, decimalPoint, type, httpType, comPort, wiName, ipAddress) VALUES('{weighstring}', {port}, '{status}', '{measuringUnit}', {decimalPoint}, '{type}', '{httpType}', '{comPort}', '{wiName}', '{ipAddress}')"
+  static readonly INSERT_WEIGH_INDICATOR: string = "INSERT INTO weighindicator(id, weighstring, port, status, measuringUnit, decimalPoint, type, httpType, comPort, wiName, ipAddress) VALUES({id}, '{weighstring}', {port}, '{status}', '{measuringUnit}', {decimalPoint}, '{type}', '{httpType}', '{comPort}', '{wiName}', '{ipAddress}')"
   static readonly GET_WEIGH_INDICATOR: string = "SELECT * FROM weighindicator";
 
   //Ticket Templates
@@ -40,8 +52,23 @@ export class QueryList{
   static readonly GET_ALL_TICKET_TEMPLATE: string = "SELECT * FROM ticket_template";
 
   //Ticket Field
-  static readonly INSERT_TICKET_FIELD: string = "INSERT INTO template_detail(id, templateId, field, type, displayName, row, col, isIncluded, font) VALUES({id}, {templateId}, '{field}', '{type}', '{diplayName}', {row}, {col}, {isIncluded}, '{font}')";
+  static readonly INSERT_TICKET_FIELD: string = "INSERT INTO template_detail(id, templateId, field, type, displayName, row, col, isIncluded, font) VALUES({id}, {templateId}, '{field}', '{type}', '{displayName}', {row}, {col}, {isIncluded}, '{font}')";
   static readonly GET_TICKET_FIELDS: string = "SELECT * FROM template_detail WHERE templateId={templateId}";
   static readonly UPDATE_TICKET_FIELD: string = "UPDATE template_detail SET templateId={templateId}, field='{field}', type='{type}', displayName='{displayName}', row={row}, col={col}, isIncluded={isIncluded}, font='{font}' WHERE id={id}";
   static readonly DELETE_TICKET_FIELD: string = "DELETE FROM template_detail WHERE id={id}";
+
+  //User
+  static readonly GET_USER_BY_CREDENTIALS: string = "SELECT * FROM app_user WHERE username='{username}' AND password='{password}'";
+  static readonly GET_ALL_USERS: string = "SELECT * FROM app_user";
+  static readonly GET_USER_BY_ID: string = "SELECT fullname, id, username, status, role FROM app_user WHERE id={id}";
+  static readonly UPDATE_USER: string = "UPDATE app_user SET username='{username}',fullname='{fullname}', role='{role}', status='{status}' WHERE id={id}";
+  static readonly INSERT_USER: string = "INSERT INTO app_user(id, fullname, username, password, status, role) VALUES('{id}', '{fullname}', '{username}', '{password}', '{status}', '{role}')";
+
+  //Permission
+  static readonly GET_ALL_PERMISSIONS: string = "SELECT * FROM permission";
+  static readonly GET_USER_PERMISSIONS: string = "SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid={userid}";
+  static readonly DELETE_USER_PERMISSIONS: string = "DELETE FROM user_permission WHERE userid={userid}";
+  static readonly INSERT_USER_PERMISSION: string = "INSERT INTO user_permission(userid, permissionid) VALUES({userid}, {permissionid})";
+  static readonly INSERT_PERMISSION: string = "INSERT INTO permission(id, permission) VALUES({id}, '{permission}')"
+  static readonly RESET_PASSWORD: string = "UPDATE app_user SET password='{password}' WHERE id={id}";
 }

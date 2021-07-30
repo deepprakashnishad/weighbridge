@@ -12,7 +12,7 @@ import { WeighmentComponent } from './weighment/weighment.component';
 
 const routes: Routes = [
 	{
-		path: '', 
+		path: 'home', 
 		component: HomeComponent,
 		data: { title: 'Home', permissions: []}
 	},

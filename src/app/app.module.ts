@@ -16,6 +16,7 @@ import { ReportModule } from './report/report.module';
 import { WeighmentComponent } from './weighment/weighment.component';
 import { WeighmentSummaryComponent } from './weighment/weighment-summary/weighment-summary.component';
 import { WeighmentDetailComponent } from './weighment/weighment-details/weighment-details.component';
+import { InitialSetupComponent } from './admin/initial-setup/initial-setup.component';
 
 const notifierDefaultOptions: NotifierOptions = {
   position: {
@@ -65,7 +66,8 @@ const notifierDefaultOptions: NotifierOptions = {
     WeighbridgeRecordComponent,
     WeighmentComponent,
     WeighmentDetailComponent,
-    WeighmentSummaryComponent
+    WeighmentSummaryComponent,
+    InitialSetupComponent
    ],
   imports: [
     BrowserModule,
@@ -78,6 +80,7 @@ const notifierDefaultOptions: NotifierOptions = {
     SharedModule,
     AppRoutingModule,
   ],
+  exports: [InitialSetupComponent],
   providers: [
     httpInterceptorProviders
   ],

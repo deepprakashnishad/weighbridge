@@ -5,8 +5,9 @@ const path = require('path');
 require("./db-service.js");
 require("./my-port-reader.js");
 require("./printer-service.js");
+require("./file-service.js");
 
-const env = "DEV"; // DEV Or PROD
+const env = "PROD"; // DEV Or PROD
 
 global.win;
 
@@ -40,7 +41,7 @@ function createWindow () {
   if (env === "DEV") {
     win.loadURL('http://localhost:4200');
   } else {
-    win.setMenu(null);
+    //win.setMenu(null);
     win.loadFile("./dist/index.html");
   }
 }

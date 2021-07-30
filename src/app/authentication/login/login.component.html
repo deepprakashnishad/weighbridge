@@ -5,9 +5,8 @@
         <li *ngFor="let error of errors">{{error}}</li>
       </ul>
     </div>
-    <mat-tab-group mat-stretch-tabs dynamicHeight>
-      <mat-tab label="Login">
       	<mat-card>
+					<mat-card-title>Login</mat-card-title>
 	        <form fxLayout="column" [formGroup]="loginForm">
 	          <mat-form-field appearance="outline">
 	            <input matInput placeholder="Username" type="text" id="inputUsername" formControlName="inputUsername" class="form-control" mdbInputDirective>
@@ -23,59 +22,11 @@
 	            <mat-icon class="mouse-hand" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
 	          </mat-form-field>
 	          <!-- <mat-checkbox [hidden]="!false" formControlName="inputRememberMe" ngDefaultControl>Remember Me</mat-checkbox> -->
-	          <div class="text-center py-4 mt-3">
-	            <button mat-raised-button type="reset"  [disabled]="loginForm.invalid" color="primary" (click)="login();">Login</button>
-	          </div>
+            <div class="text-center py-4 mt-3" fxLayout fxLayoutAlign="space-between center">
+              <button mat-raised-button type="submit" [disabled]="loginForm.invalid" color="primary" (click)="login();">Login</button>
+              <button mat-raised-button color="primary" (click)="openInitialSetupDialog()">Initial Setup</button>
+            </div>
 	        </form>
         </mat-card>
-      </mat-tab>
-      <!-- <mat-tab label="New User? Sign Up">
-        <form [formGroup]="cardForm" fxLayout="column">
-          <p class="h4" fxFlexAlign="center">Sign up</p>
-
-          <mat-form-field appearance="outline">
-          	<input matInput type="text" id="materialFormCardNameEx" formControlName="materialFormCardNameEx" placeholder="Name" class="form-control" placeholder="Name">
-          	<span matPrefix>
-            	<i class="fa fa-user prefix grey-text"></i>&nbsp;&nbsp;
-            </span>
-          </mat-form-field>
-
-          <mat-form-field appearance="outline">
-            <input type="text" id="materialFormCardMobile" formControlName="materialFormCardMobile" class="form-control" matInput placeholder="Phone Number">
-            <span matPrefix>
-            	<i class="fa fa-mobile prefix grey-text"></i>&nbsp;&nbsp;
-            </span>
-          </mat-form-field>
-
-          <mat-form-field appearance="outline">
-            <input type="email" id="materialFormCardEmailEx" formControlName="materialFormCardEmailEx" class="form-control" matInput placeholder="Mail ID">
-            <span matPrefix>
-            	<i class="fa fa-envelope prefix grey-text"></i>&nbsp;&nbsp;
-            </span>
-          </mat-form-field>
-
-          <mat-form-field class="password" appearance="outline">
-            <input [type]="hide?'password':'text'" id="materialFormCardPasswordEx" formControlName="materialFormCardPasswordEx" class="form-control" matInput placeholder="Password" />
-            <span matPrefix>
-            	<i class="fa fa-lock prefix grey-text"></i>&nbsp;&nbsp;
-            </span>
-            <mat-icon class="mouse-hand" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </mat-form-field>
-
-          <mat-form-field class="password" appearance="outline">
-          	<span matPrefix>
-            	<i class="fa fa-lock prefix grey-text"></i>&nbsp;&nbsp;
-            </span>
-            <input type="password" id="materialFormCardConfirmPass" formControlName="materialFormCardConfirmPass" class="form-control" matInput placeholder="Confirm Password">
-            <mat-error *ngIf="cardForm.errors?.passwordMismatched && cardForm.controls['materialFormCardConfirmPass'].touched && cardForm.controls['materialFormCardPasswordEx'].touched && cardForm.controls['materialFormCardConfirmPass'].dirty &&
-            cardForm.controls['materialFormCardPasswordEx'].dirty">Passwords do not match</mat-error>
-          </mat-form-field>
-
-          <div>
-            <button mat-raised-button type="reset" [disabled]="cardForm.invalid" color="primary" (click)="onSubmit();">Register</button>
-          </div>
-        </form>
-      </mat-tab> -->
-    </mat-tab-group>
   </div>
 </div>

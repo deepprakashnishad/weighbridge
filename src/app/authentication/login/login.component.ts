@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, 
           ValidatorFn, ValidationErrors} from '@angular/forms';
 import { AuthenticationService } from './../authentication.service';
@@ -8,6 +8,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { NotifierService } from 'angular-notifier';
+import { MatDialog } from '@angular/material/dialog';
+import { InitialSetupComponent } from '../../admin/initial-setup/initial-setup.component';
 
 const MismatchPasswordValidator: ValidatorFn = (fg: FormGroup): ValidationErrors | null => {
   const pass = fg.get('materialFormCardPasswordEx');
@@ -38,6 +40,8 @@ export class LoginComponent implements OnInit{
     private authService: AuthenticationService,
     public snackBar: MatSnackBar,
     private router: Router,
+    private dialog: MatDialog,
+    private ngZone: NgZone,
     private notifier: NotifierService,
     private route: ActivatedRoute) {
     this.cardForm = fb.group({
@@ -110,21 +114,13 @@ export class LoginComponent implements OnInit{
       const username = this.loginForm.get('inputUsername').value;
       const password = this.loginForm.get('inputPassword').value;
       this.rememberMe = this.loginForm.controls['inputRememberMe'].value;
-      this.authService.login(
-        {username: username, password: password}
-        ).subscribe((authResponse) =>  {
-          this.authResponse = authResponse;
-          if (this.authResponse) {
-            this.openSnackBar('Login successful', 'Dismiss');
-            this.storeData(this.authResponse);
-            this.clearForm();
-            let redirectUrl = this.authService.redirectUrl ? this.authService.redirectUrl : ''
-            this.router.navigate([redirectUrl]);
-          }
-        }, error => {
-            this.notifier.notify("error", error.error.msg);
-            this.errors.push(error.error.msg);
-        });
+      this.authService.login({ username: username, password: password }).then(result => {
+        if (result) {
+          this.ngZone.run(() => {
+            this.router.navigate(["/home"]);
+          });          
+        }
+      });
     }
   }
 
@@ -148,9 +144,9 @@ export class LoginComponent implements OnInit{
     data.permissions = this.getPermissionList(authResponse.permissions);
     data.role = authResponse.role.name
     if (this.rememberMe) { 
-      this.authService.storeLocalData(data, "LOCAL_STORAGE")
+      this.authService.storeLocalData(data)
     } 
-    this.authService.storeLocalData(data, "SESSION_STORAGE")
+    this.authService.storeLocalData(data)
   }
 
   getPermissionList(permissions){
@@ -159,6 +155,13 @@ export class LoginComponent implements OnInit{
       permissionList.push(permissions[i].permission);
     }
     return permissionList.join(',');
+  }
+
+  openInitialSetupDialog() {
+    const dialogRef = this.dialog.open(InitialSetupComponent, {
+      height: "80vh",
+      width: "80vh"
+    });
   }
 }
 

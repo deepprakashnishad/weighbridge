@@ -32,11 +32,23 @@
     cursor: pointer;
 }
 
-.mat-list-item:nth-child(odd) {
-  background-color: silver;
-}
+  .mat-list-item:nth-child(odd) {
+    background-color: #efefef;
+  }
 
 .curr-weight-red {
   font-size: 60px;
   color: #ff2f2f;
+}
+
+.mat-list-item.pending-long {
+  background-color: #ff7e7e;
+}
+
+.record-item-left{
+    padding-right: 8px;
+}
+
+.record-item-right {
+  padding-left: 8px;
 }

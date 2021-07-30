@@ -9,23 +9,16 @@
           <mat-radio-button value="tcpip">TCP/IP</mat-radio-button>
           <mat-radio-button value="http">Http</mat-radio-button>
         </mat-radio-group>
-        <mat-form-field appearance="fill" *ngIf="indicator.type==='serial'">
-          <mat-label>Port</mat-label>
-          <mat-select matInput [(ngModel)]="indicator.comPort" name="cntlComPort">
-            <mat-option value="COM1">COM1</mat-option>
-            <mat-option value="COM2">COM2</mat-option>
-            <mat-option value="COM3">COM3</mat-option>
-            <mat-option value="COM4">COM4</mat-option>
-            <mat-option value="COM5">COM5</mat-option>
-            <mat-option value="COM6">COM6</mat-option>
-            <mat-option value="COM7">COM7</mat-option>
-            <mat-option value="COM8">COM8</mat-option>
-            <mat-option value="COM9">COM9</mat-option>
-            <mat-option value="COM10">COM10</mat-option>
-            <mat-option value="COM11">COM11</mat-option>
-            <mat-option value="COM12">COM12</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <div fxLayout fxLayoutGap="8px">
+          <mat-form-field appearance="fill" *ngIf="indicator.type==='serial'">
+            <mat-label>Port</mat-label>
+            <mat-select matInput [(ngModel)]="indicator.comPort" name="cntlComPort">
+              <mat-option *ngFor="let port of ports" [value]="port">{{port}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-icon-button color="primary" (click)="refreshPortList()"><mat-icon>refresh</mat-icon></button>
+        </div>
+        
         <div *ngIf="indicator.type!=='serial'" fxLayout fxLayoutGap="16px">
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>IP Address</mat-label>

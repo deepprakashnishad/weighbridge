@@ -18,6 +18,7 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
   indicator: WeighIndicator = new WeighIndicator();
   indicatorStrings: Array<WeighIndicatorString> = [];
   isNew = true;
+  ports: Array<any> = [];
   verification_weight = "";
   selectedString: WeighIndicatorString = new WeighIndicatorString();
 
@@ -39,7 +40,7 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
 
   ngOnInit() {
     this.dbService.executeDBStmt("weighstrings", QueryList.GET_WEIGH_STRINGS);
-
+    this.refreshPortList();
     var subscription = this.sharedDataService.currentData.pipe().subscribe(currData => {
       if (currData['weighstrings']) {
         this.indicatorStrings = WeighIndicatorString.fromJSON(currData['weighstrings']);
@@ -49,6 +50,12 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
         subscription?.unsubscribe();
       }
     }, () => { }, () => console.log("Fetch completed"));
+  }
+
+  refreshPortList() {
+    this.ipcService.invokeIPC("get-available-ports").then(result => {
+      this.ports = result.map(ele => ele.path);
+    });
   }
 
   selectedStringChanged() {
@@ -69,17 +76,12 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
       {
         type: this.indicator.type,
         comPort: this.indicator.comPort,
-        baudRate: this.selectedString.baudRate
+        baudRate: this.selectedString.baudRate,
+        parity: this.selectedString.parity,
+        dataBits: this.selectedString.dataBits,
+        stopBits: this.selectedString.stopBits
       }
     );
-    //this.ipcService.invokeIPC("serial-port-ipc",
-    //  "initialiaze-port",
-    //  {
-    //    type: this.indicator.type,
-    //    comPort: this.indicator.comPort,
-    //    baudRate: this.selectedString.baudRate
-    //  }
-    //);
     this.sharedDataService.currentData.pipe().subscribe(currData => {
       this.ngzone.run(() => {
         this.verification_weight = currData['verification_weight'];
@@ -88,7 +90,7 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
     });
   }
 
-  save() {
+  async save() {
     if (this.indicator.indicatorString === undefined) {
       this.notifier.notify("error", "Please select weigh indicator string");
       return;
@@ -107,8 +109,14 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
       .replace("{wiName}", this.indicator.wiName)
       .replace(undefinedRegExp, "");
 
-    this.dbService.executeDBStmt("weigh_indicator", insertStmt);
-    this.dialogRef.close();
+    var result = await this.dbService.executeInsertAutoId("weighindicator", "id", insertStmt);
+    if (result['newId']) {
+      this.notifier.notify("success", "Weigh indicator created successfully");
+      this.dialogRef.close();
+    } else {
+      this.notifier.notify("error", "Weigh indicator could not be created");
+    }
+    
   }
 
   cancel() {

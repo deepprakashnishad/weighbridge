@@ -1,16 +1,6 @@
 <div class="main-container" fxLayout="column" fxLayoutGap="2px" fxLayoutAlign="space-between">
 	<header>
-		<!--<mat-toolbar color="primary">
-			<mat-toolbar-row fxLayout fxLayoutAlign="space-between center">
-			  <div>Welcome to weighment software</div>
-			  <div fxLayout fxLayoutGap="16px">
-				<button mat-icon-button><mat-icon>help</mat-icon></button>
-				<button mat-icon-button><mat-icon>info</mat-icon></button>
-				<button mat-icon-button><mat-icon>logout</mat-icon></button>
-			  </div>
-			</mat-toolbar-row>
-		</mat-toolbar>-->
-		<app-navigation></app-navigation>
+		<app-navigation *ngIf="isLoggedIn"></app-navigation>
 	</header>
 	<!-- Main -->
 	<main class="main-container" fxFlex="grow" fxLayout="row" fxLayoutAlign="start">
@@ -18,16 +8,8 @@
 			<router-outlet></router-outlet>
 		</div>
 		<div fxFlex="20">
-			<app-weighbridge-record></app-weighbridge-record>
+			<app-weighbridge-record *ngIf="isLoggedIn"></app-weighbridge-record>
 		</div>
 	</main>
 	<notifier-container></notifier-container>
-	<!-- Footer -->
-	<!--<footer>
-		<mat-toolbar color="primary" fxLayout.lt-sm="column">
-			  <span fxFlex>Weighbridge © 2018 Copyright:</span>-->
-			  <!-- This fills the remaining space of the current row -->
-			  <!--<span class="example-fill-remaining-space" fxFlex></span>
-		</mat-toolbar>
-	</footer>-->
 </div>

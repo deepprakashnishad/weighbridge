@@ -1,5 +1,5 @@
 <div class="container" fxLayout="column" fxLayoutGap="4px">
-  <div fxLayout="column" fxLayoutGap="8px">
+  <div class="container" [ngClass]="{'red': weighment.weighmentType === 'inbound', 'green' : weighment.weighmentType.indexOf('outbound')>-1}" fxLayout="column" fxLayoutGap="8px">
     <div fxLayout fxLayoutAlign="space-between center">
       <mat-radio-group [(ngModel)]="weighment.weighmentType" aria-label="Select weightment type" fxLayout fxLayoutGap="32px" fxLayoutAlign="start">
         <mat-radio-button value="inbound">Inbound(Purchase)</mat-radio-button>
@@ -14,9 +14,9 @@
     <div fxLayout fxLayoutAlign="start start" fxLayoutGap="16px">
       <mat-form-field appearance="outline">
         <mat-label>Vehicle No</mat-label>
-        <input matInput [(ngModel)]="weighment.vehicleNo" name="cntlRequestId"
+        <input matInput #vehicleCntl [(ngModel)]="weighment.vehicleNo" name="cntlRequestId"
                (keyup.enter)="parseQRString(weighment.vehicleNo)"
-               (blur)="parseQRString(weighment.vehicleNo)" />
+               (blur)="parseQRString(weighment.vehicleNo)" tabindex="0" />
       </mat-form-field>
       <mat-form-field appearance="outline" *ngIf="weighment.weighmentType!=='inbound' && weighment.weighmentType!=='others'">
         <mat-label>Request Id</mat-label>
@@ -38,15 +38,17 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>RST No</mat-label>
-        <input matInput [(ngModel)]="weighment.rstNo" name="cntlRSTNo" readonly />
+        <input matInput [(ngModel)]="weighment.rstNo" name="cntlRSTNo"
+               (keyup.enter)="parseQRString(weighment.rstNo)"
+               (blur)="parseQRString(weighment.rstNo)" />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Weighment Slip No</mat-label>
-        <input matInput [(ngModel)]="weighmentDetail.id" name="cntlWeighSlipNo" readonly />
+        <input matInput [(ngModel)]="weighmentDetail.id" name="cntlWeighSlipNo" readonly tabindex="-1" />
       </mat-form-field>
     </div>
     <div fxLayout fxLayoutAlign="start center" fxLayoutGap="16px">
-      <app-tag-selector [selectedTag]="weighmentDetail.supplier" [title]="'Supplier'" (optionSelected)="supplierSelected($event)"></app-tag-selector>
+      <app-tag-selector [tagTypeId]="1" [selectedTag]="weighmentDetail.supplier" [title]="'Supplier'" (optionSelected)="supplierSelected($event)"></app-tag-selector>
       <mat-form-field appearance="outline">
         <mat-label>Transporter Code</mat-label>
         <input matInput [(ngModel)]="weighment.transporterCode" name="cntlTransporterCode"
@@ -67,33 +69,32 @@
       </mat-form-field>
     </div>
     <div fxLayout fxLayoutAlign="start center" fxLayoutGap="16px">
-      <app-tag-selector [selectedTag]="weighmentDetail.material" [title]="'Material*'" (optionSelected)="materialSelected($event)"></app-tag-selector>
+      <app-tag-selector [tagTypeId]="2" [selectedTag]="weighmentDetail.material" [title]="'Material*'" (optionSelected)="materialSelected($event)"></app-tag-selector>
       <mat-form-field appearance="outline">
         <mat-label>First Weight</mat-label>
-        <input matInput [(ngModel)]="weighmentDetail.firstWeight" name="cntlFirstWt" readonly />
+        <input matInput [(ngModel)]="weighmentDetail.firstWeight" name="cntlFirstWt" readonly tabindex="-1" />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Second Weight</mat-label>
-        <input matInput [(ngModel)]="weighmentDetail.secondWeight" name="cntlSecondWt" readonly />
+        <input matInput [(ngModel)]="weighmentDetail.secondWeight" name="cntlSecondWt" readonly tabindex="-1" />
       </mat-form-field>
-      <mat-form-field appearance="outline" *ngIf="firstWeight && secondWeight">
+      <mat-form-field appearance="outline">
         <mat-label>Net Weight</mat-label>
-        <input matInput
-               [(ngModel)]="weighmentDetail.netWeight" name="cntlNetWeight" readonly />
+        <input matInput [(ngModel)]="weighmentDetail.netWeight" name="cntlNetWeight" readonly tabindex="-1"/>
       </mat-form-field>
     </div>
-  </div>
-
-  <div class="full-width" fxLayout fxLayoutGap="32px" fxLayoutAlign="space-between center">
-    <button mat-raised-button color="primary" [disabled]="!isWeightStable || weighment.status==='complete'" (click)="capture()">Capture</button>
-    <div fxLayout fxLayoutGap="32px" fxLayoutAlign="center center">
-      <button *ngIf="weighmentDetail.id"
-              mat-raised-button color="accent"
-              (click)="save('complete')">
-        Save Complete Weighment
-      </button>
-      <button mat-raised-button color="primary" (click)="save('pending')">Save <span *ngIf="weighmentDetail.id">Partial Weighment</span></button>
-      <button mat-raised-button color="error" (click)="reset()">Reset</button>
+    <div class="full-width" fxLayout fxLayoutGap="32px" fxLayoutAlign="space-between center">
+      <button mat-raised-button class="capture-button" color="primary" [disabled]="!isWeightStable || weighment.status==='complete'" (click)="capture()">Capture</button>
+      <div fxLayout fxLayoutGap="32px" fxLayoutAlign="center center">
+        <mat-checkbox *ngIf="weighmentDetail.secondWeight && weighmentDetail.firstWeight" [(ngModel)]="isComplete">Is Complete</mat-checkbox>
+        <!--<button *ngIf="weighmentDetail.id"
+                mat-raised-button color="accent"
+                (click)="save('complete')">
+          Save Complete Weighment
+        </button>-->
+        <button mat-raised-button color="primary" (click)="save()">Save</button>
+        <button mat-raised-button color="error" (click)="reset()">Reset</button>
+      </div>
     </div>
   </div>
   <app-weighment-details [weighmentDetails]="weighment.weighmentDetails"></app-weighment-details>

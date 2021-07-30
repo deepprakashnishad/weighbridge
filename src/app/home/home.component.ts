@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, Component, OnInit } from '@angular/core';
+import { environment } from "./../../environments/environment";
 
 @Component({
   selector: 'app-home',
@@ -30,5 +31,4 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

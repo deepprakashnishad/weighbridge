@@ -1,72 +1,76 @@
-<table class="full-width" #mtable mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
-  </ng-container>
+<div class="table-container">
+  <table #mtable mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <tr>
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
+      </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="material">
-    <th mat-header-cell *matHeaderCellDef> Material </th>
-    <td mat-cell *matCellDef="let element"> {{element.material}} </td>
-  </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="material">
+        <th mat-header-cell *matHeaderCellDef> Material </th>
+        <td mat-cell *matCellDef="let element"> {{element.material}} </td>
+      </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="remark">
-    <th mat-header-cell *matHeaderCellDef> Remark </th>
-    <td mat-cell *matCellDef="let element"> {{element.remark}} </td>
-  </ng-container>
+      <!-- Weight Column -->
+      <ng-container matColumnDef="remark">
+        <th mat-header-cell *matHeaderCellDef> Remark </th>
+        <td mat-cell *matCellDef="let element"> {{element.remark}} </td>
+      </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="firstWeight">
-    <th mat-header-cell *matHeaderCellDef> First Wt. </th>
-    <td mat-cell *matCellDef="let element"> {{element.firstWeight}} </td>
-  </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="firstWeight">
+        <th mat-header-cell *matHeaderCellDef> First Wt. </th>
+        <td mat-cell *matCellDef="let element"> {{element.firstWeight}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="secondWeight">
-    <th mat-header-cell *matHeaderCellDef> Second Wt. </th>
-    <td mat-cell *matCellDef="let element"> {{element.secondWeight}} </td>
-  </ng-container>
+      <ng-container matColumnDef="secondWeight">
+        <th mat-header-cell *matHeaderCellDef> Second Wt. </th>
+        <td mat-cell *matCellDef="let element"> {{element.secondWeight}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="netWeight">
-    <th mat-header-cell *matHeaderCellDef> Net Wt. </th>
-    <td mat-cell *matCellDef="let element"> {{element.netWeight}} </td>
-  </ng-container>
+      <ng-container matColumnDef="netWeight">
+        <th mat-header-cell *matHeaderCellDef> Net Wt. </th>
+        <td mat-cell *matCellDef="let element"> {{element.netWeight}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="firstWeighBridge">
-    <th mat-header-cell *matHeaderCellDef> First Weighbridge </th>
-    <td mat-cell *matCellDef="let element"> {{element.firstWeighBridge}} </td>
-  </ng-container>
+      <ng-container matColumnDef="firstWeighBridge">
+        <th mat-header-cell *matHeaderCellDef> First Weighbridge </th>
+        <td mat-cell *matCellDef="let element"> {{element.firstWeighBridge}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="firstWeightDatetime">
-    <th mat-header-cell *matHeaderCellDef> First Wt. Time </th>
-    <td mat-cell *matCellDef="let element"> {{element.firstWeightDatetime}} </td>
-  </ng-container>
+      <ng-container matColumnDef="firstWeightDatetime">
+        <th mat-header-cell *matHeaderCellDef> First Wt. Time </th>
+        <td mat-cell *matCellDef="let element"> {{element.firstWeightDatetime}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="firstWeightUser">
-    <th mat-header-cell *matHeaderCellDef> First Wt. User</th>
-    <td mat-cell *matCellDef="let element"> {{element.firstWeightUser}} </td>
-  </ng-container>
+      <ng-container matColumnDef="firstWeightUser">
+        <th mat-header-cell *matHeaderCellDef> First Wt. User</th>
+        <td mat-cell *matCellDef="let element"> {{element.firstWeightUser?.fullname}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="secondWeighBridge">
-    <th mat-header-cell *matHeaderCellDef> Second Wt. Time </th>
-    <td mat-cell *matCellDef="let element"> {{element.secondWeighBridge}} </td>
-  </ng-container>
+      <ng-container matColumnDef="secondWeighBridge">
+        <th mat-header-cell *matHeaderCellDef> Second Wt. Time </th>
+        <td mat-cell *matCellDef="let element"> {{element.secondWeighBridge}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="secondUnit">
-    <th mat-header-cell *matHeaderCellDef> Second Wt. Unit</th>
-    <td mat-cell *matCellDef="let element"> {{element.secondUnit}} </td>
-  </ng-container>
+      <ng-container matColumnDef="secondUnit">
+        <th mat-header-cell *matHeaderCellDef> Second Wt. Unit</th>
+        <td mat-cell *matCellDef="let element"> {{element.secondUnit}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="secondWeightDatetime">
-    <th mat-header-cell *matHeaderCellDef> Second Wt. Time </th>
-    <td mat-cell *matCellDef="let element"> {{element.secondWeightDatetime}} </td>
-  </ng-container>
+      <ng-container matColumnDef="secondWeightDatetime">
+        <th mat-header-cell *matHeaderCellDef> Second Wt. Time </th>
+        <td mat-cell *matCellDef="let element"> {{element.secondWeightDatetime}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="secondWeightUser">
-    <th mat-header-cell *matHeaderCellDef> Second Wt. User</th>
-    <td mat-cell *matCellDef="let element"> {{element.secondWeightUser}} </td>
-  </ng-container>
+      <ng-container matColumnDef="secondWeightUser">
+        <th mat-header-cell *matHeaderCellDef> Second Wt. User</th>
+        <td mat-cell *matCellDef="let element"> {{element.secondWeightUser?.fullname}} </td>
+      </ng-container>
+    </tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+</div>

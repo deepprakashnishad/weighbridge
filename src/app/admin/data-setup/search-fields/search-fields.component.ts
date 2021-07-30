@@ -90,7 +90,6 @@ export class SearchFieldsComponent implements OnInit {
           .replace("{displayName}", this.searchField.displayName)
           .replace("{entryMode}", this.searchField.entryMode)
           .replace("{inOutMode}", this.searchField.inOutMode)
-          .replace("{mValues}", this.searchField.mValues)
           .replace("{id}", this.searchField.id.toString())
       ).then(isOperated => {
         if (isOperated) {
@@ -105,18 +104,17 @@ export class SearchFieldsComponent implements OnInit {
         }
       });
     } else {
-      this.searchField.id = this.searchFields.length + 1;
-      this.dbService.executeSyncDBStmt(
-        "INSERT",
+      this.dbService.executeInsertAutoId(
+        "search_field",
+        "id",
         QueryList.INSERT_SEARCH_FIELD
           .replace("{displayName}", this.searchField.displayName)
           .replace("{entryMode}", this.searchField.entryMode)
           .replace("{inOutMode}", this.searchField.inOutMode)
-          .replace("{mValues}", this.searchField.mValues)
-          .replace("{id}", this.searchField.id.toString())
-      ).then(isOperated => {
-        if (isOperated) {
-          this.searchFields.push(this.searchField)
+      ).then(result => {
+        if (result['newId']) {
+          this.searchField.id = result['newId'];
+          this.searchFields.push(this.searchField);
           this.notifier.notify("success", "Search field created successfully");
           this.searchField = new SearchField();
         }        
@@ -129,32 +127,31 @@ export class SearchFieldsComponent implements OnInit {
   }
 
   openListEditor(field: SearchField, index) {
-    console.log(field);
     var dialogRef = this.dialog.open(ListEditorComponent, {
-      maxHeight: "600px",
+      height: "600px",
+      width: "800px",
       data: {
         title: `Edit ${field.displayName} values`,
-        items: field?.mValues?.split("#"),
+        fieldId: field.id,
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-
+    dialogRef.afterClosed().subscribe(async result => {
       if (result) {
-        this.searchFields[index].mValues = result.items.join("#");
-        this.dbService.executeSyncDBStmt(
-          "UPDATE",
-          QueryList.UPDATE_SEARCH_FIELD
-            .replace("{displayName}", this.searchFields[index].displayName)
-            .replace("{entryMode}", this.searchFields[index].entryMode)
-            .replace("{inOutMode}", this.searchFields[index].inOutMode)
-            .replace("{mValues}", this.searchFields[index].mValues)
-            .replace("{id}", this.searchFields[index].id.toString())
-        ).then(isOperated => {
-          if (isOperated) {
-            this.notifier.notify("success", "Search field updated successfully");
-          }
-        });
+        console.log(result);
+        //this.searchFields[index].mValue = result.items.join("#");
+        //await this.dbService.executeSyncDBStmt("DELETE",
+        //  QueryList.DELETE_SEARCH_FIELD_VALUE_BY_SEARCH_FIELD_ID.replace("{search_field_id}", field.id.toString()));
+        //console.log(result.items);
+        //for (var i = 0; i < result.items.length; i++) {
+        //  var item = result.items[i];
+        //  await this.dbService.executeInsertAutoId("search_field_value", "id",
+        //    QueryList.INSERT_SEARCH_FIELD_VALUE
+        //      .replace("{search_field_id}", field.id.toString())
+        //      .replace("{mValue}", item)
+        //  )
+        //}
+        this.notifier.notify("success", "Search field updated successfully");
       }
 
     });

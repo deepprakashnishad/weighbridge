@@ -4,31 +4,43 @@
 			{{title}}
 		</mat-card-title>
 		<mat-card-content>
-			<form>
-				<mat-form-field>
+			<form fxLayout fxLayoutGap="16px">
+				<mat-form-field appearance="outline">
+					<mat-label>Code</mat-label>
+					<input matInput
+								 placeholder="Code"
+								 maxlength="3"
+								 minlength="3"
+								 [(ngModel)]="selectedItem.code"
+								 name="cntlCode"
+								 (keyup.enter)="addItem()" />
+					<mat-hint>{{hint}}</mat-hint>
+				</mat-form-field>
+				<mat-form-field appearance="outline">
 					<mat-label>{{fieldText}}</mat-label>
-					<input
-								 matInput
+					<input matInput
 								 [placeholder]="fieldText"
-								 [(ngModel)]="selectedText"
-								 name="cntl"
-								 (keyup.enter)="addItem()"/>
+								 [(ngModel)]="selectedItem.mValue"
+								 name="cntlName"
+								 (keyup.enter)="addItem()" />
 					<mat-hint>{{hint}}</mat-hint>
 				</mat-form-field>
 			</form>
 			<mat-selection-list #itemList [multiple]="false">
 				<mat-list-option *ngFor="let item of items; let i=index;" [value]="item">
 					<div fxLayout fxLayoutAlign="space-between center">
-						<div>{{item}}</div>
-						<div><button mat-icon-button color="error" (click)="removeItem(i)"><mat-icon>clear</mat-icon></button></div>
+						<div>{{item.mValue}} - {{item.code}}</div>
+						<div fxLayout>
+							<button mat-icon-button color="primary" (click)="editItem(item, i)"><mat-icon>edit</mat-icon></button>
+							<button mat-icon-button color="error" (click)="removeItem(item, i)"><mat-icon>clear</mat-icon></button>
+						</div>						
 					</div>
-					
 				</mat-list-option>
 			</mat-selection-list>
 		</mat-card-content>
 		<mat-card-action fxLayout fxLayouAlign="center center" fxLayoutGap="16px">
-			<button mat-raised-button (click)="save()" color="primary">Save</button>
-			<button mat-raised-button (click)="cancel()" color="primary">Cancel</button>
+			<!--<button mat-raised-button (click)="save()" color="primary">Save</button>-->
+			<button mat-raised-button (click)="cancel()" color="primary">Close</button>
 		</mat-card-action>
 	</mat-card>
 	

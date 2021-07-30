@@ -1,41 +1,47 @@
 <app-progress-spinner></app-progress-spinner>
 <mat-toolbar color="primary">
-	<mat-toolbar-row fxLayout fxLayoutAlign="start center" fxLayoutGap="50px">
-		<button class="menu-button" mat-button [matMenuTriggerFor]="dataentry">Data Entry</button>
-		<button class="menu-button" mat-button [matMenuTriggerFor]="reports">Reports</button>
-		<button class="menu-button" mat-button [matMenuTriggerFor]="administration">Administration</button>
-		<button class="menu-button" mat-button [matMenuTriggerFor]="options">Options</button>
-		<button class="menu-button" mat-button [matMenuTriggerFor]="help">Help</button>
+	<mat-toolbar-row fxLayout fxLayoutAlign="space-between center">
+		<div fxLayout fxLayoutAlign="start center" fxLayoutGap="50px">
+			<button class="menu-button" mat-button [matMenuTriggerFor]="dataentry">Data Entry</button>
+			<button class="menu-button" mat-button [matMenuTriggerFor]="reports">Reports</button>
+			<button class="menu-button" mat-button [matMenuTriggerFor]="administration">Administration</button>
+			<button class="menu-button" mat-button [matMenuTriggerFor]="options">Options</button>
+			<button class="menu-button" mat-button [matMenuTriggerFor]="help">Help</button>
+		</div>
+		<div fxLayout fxLayoutAlign="end center">
+			<button mat-icon-button (click)="refresh()"><mat-icon>refresh</mat-icon></button>
+			<button mat-icon-button><mat-icon>info</mat-icon></button>
+		</div>
 	</mat-toolbar-row>
 	<mat-menu #dataentry="matMenu">
-		<button mat-menu-item (click)="navigateTo('weighment')">Weightment</button>
+		<button mat-menu-item (click)="navigateTo('weighment')" *ngIf="isAuthorized(1)">Weightment</button>
 	</mat-menu>
 	<mat-menu #reports="matMenu">
-		<button mat-menu-item (click)="navigateTo('reports')">Weightment Reports</button>
-		<button mat-menu-item (click)="navigateTo('reports/audit-log')">Audit Log</button>
-		<button mat-menu-item (click)="navigateTo('reports/custom-reports')">Custom Reports</button>
-		<button mat-menu-item (click)="navigateTo('reports/daily-collection-report')">Daily Operator Collection Report</button>
-		<button mat-menu-item (click)="navigateTo('reports/zero-check-report')">Zero Check Report</button>
-		<button mat-menu-item (click)="navigateTo('reports/notification-log')">Notification Log</button>
-		<button mat-menu-item (click)="navigateTo('reports/theft-detection-report')">Theft Detection Report</button>
+		<button mat-menu-item (click)="navigateTo('reports')" *ngIf="isAuthorized(8)">Weightment Reports</button>
+		<button mat-menu-item (click)="navigateTo('reports/audit-log')" *ngIf="isAuthorized(8)">Audit Log</button>
+		<button mat-menu-item (click)="navigateTo('reports/custom-reports')" *ngIf="isAuthorized(8)">Custom Reports</button>
+		<button mat-menu-item (click)="navigateTo('reports/daily-collection-report')" *ngIf="isAuthorized(8)">Daily Operator Collection Report</button>
+		<button mat-menu-item (click)="navigateTo('reports/zero-check-report')" *ngIf="isAuthorized(8)">Zero Check Report</button>
+		<button mat-menu-item (click)="navigateTo('reports/notification-log')" *ngIf="isAuthorized(8)">Notification Log</button>
+		<button mat-menu-item (click)="navigateTo('reports/theft-detection-report')" *ngIf="isAuthorized(8)">Theft Detection Report</button>
 	</mat-menu>
 	<mat-menu #administration="matMenu">
-		<button mat-menu-item (click)="navigateTo('admin')">Data Setup</button>
-		<button mat-menu-item (click)="navigateTo('admin/weighbridge-setup')">Weightbridge Setup</button>
+		<button mat-menu-item (click)="navigateTo('admin')" *ngIf="isAuthorized(2)">Data Setup</button>
+		<button mat-menu-item (click)="navigateTo('admin/weighbridge-setup')" *ngIf="isAuthorized(2)">Weightbridge Setup</button>
 		<!-- <button mat-menu-item>Default Value Setup</button> -->
-		<button mat-menu-item (click)="navigateTo('admin/printer-setup')">Printer Setup</button>
-		<button mat-menu-item (click)="navigateTo('admin/ticket-setup')">Ticket Setup</button>
-		<button mat-menu-item (click)="navigateTo('admin/report-setup')">Report Setup</button>
-		<button mat-menu-item (click)="navigateTo('admin/email-setup')">Email Setup</button>
-		<button mat-menu-item>SMS Setup</button>
-		<button mat-menu-item>REST Setup</button>
-		<button mat-menu-item>User Management</button>
-		<button mat-menu-item (click)="navigateTo('admin/db-backup')">Database Backup</button>
-		<button mat-menu-item>Digital IO Controller Setup</button>
+		<button mat-menu-item (click)="navigateTo('admin/printer-setup')" *ngIf="isAuthorized(2)">Printer Setup</button>
+		<button mat-menu-item (click)="navigateTo('admin/ticket-setup')" *ngIf="isAuthorized(3)">Ticket Setup</button>
+		<button mat-menu-item (click)="navigateTo('admin/report-setup')" *ngIf="isAuthorized(2)">Report Setup</button>
+		<button mat-menu-item (click)="navigateTo('admin/email-setup')" *ngIf="isAuthorized(2)">Email Setup</button>
+		<button mat-menu-item *ngIf="isAuthorized(2)">SMS Setup</button>
+		<button mat-menu-item *ngIf="isAuthorized(2)">REST Setup</button>
+		<button mat-menu-item (click)="navigateTo('admin/user-management')" *ngIf="isAuthorized(10)">User Management</button>
+		<button mat-menu-item (click)="navigateTo('admin/db-backup')" *ngIf="isAuthorized(5)">Database Backup</button>
+		<button mat-menu-item *ngIf="isAuthorized(2)">Digital IO Controller Setup</button>
 	</mat-menu>
 	<mat-menu #options="matMenu">
 		<button mat-menu-item>Change Password</button>
-		<button mat-menu-item>Logout</button>
+		<button mat-menu-item (click)="navigateTo('logout')">Logout</button>
 	</mat-menu>
 	<mat-menu #help="matMenu">
 		<button mat-menu-item>About</button>

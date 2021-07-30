@@ -3,6 +3,8 @@ import { FormControl } from '@angular/forms';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { Observable } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { MyDbService } from '../../my-db.service';
+import { QueryList } from '../../query-list';
 
 @Component({
   selector: 'app-tag-selector',
@@ -12,22 +14,25 @@ import {map, startWith} from 'rxjs/operators';
 export class TagSelectorComponent implements OnInit, OnChanges {
 
   mControl = new FormControl();
-  @Input() selectedTag: string;
-  @Input() tagType: string;
+  @Input() selectedTag: any;
+  @Input() tagTypeId: number;
   @Input() title: string;
   @Input() hint: string = "";
-	@Output() optionSelected = new EventEmitter<string>();
+	@Output() optionSelected = new EventEmitter<any>();
 
 	@ViewChild(MatAutocompleteTrigger) trigger;
 
-  filteredOptions: Observable<string[]>;
-  options: string[] = ["Hare", "Krishna", "Rama", "Govind","Narayana", "Madhava", "Radhanath", "Gopal", "Giridhari", "Mukunda", "Radharaman", "Vrindavanchandra", "Vanvihari", "Rasbihari", "Rasrashika", "Vamana", "Narsimha"];
+  filteredOptions: Observable<any[]>;
+
+  options: Array<any> = [];
 
   limit: number=30;
   offset: number=0;
   searchStr: string = "";
 
-  constructor() { }
+  constructor(
+    private dbService: MyDbService
+  ) { }
 
   ngOnInit() {
     this.filteredOptions = this.mControl.valueChanges
@@ -41,7 +46,8 @@ export class TagSelectorComponent implements OnInit, OnChanges {
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+    return this.options.filter(option => (option?.mValue.toLowerCase().includes(filterValue) ||
+      option?.code.toLowerCase().includes(filterValue)));
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -50,7 +56,19 @@ export class TagSelectorComponent implements OnInit, OnChanges {
       if (keys[i] === "selectedTag" && changes[keys[i]]["currentValue"]) {
         this.mControl.setValue(changes[keys[i]]["currentValue"]);
       }
+      if (keys[i] === "tagTypeId" && changes[keys[i]]["currentValue"]) {
+        this.fetchData();
+      }
     }
+  }
+
+  async fetchData() {
+    this.options = await this.dbService.executeSyncDBStmt("SELECT",
+      QueryList.GET_SEARCH_FIELD_VALUES_BY_SEARCH_FIELD_ID.replace(
+        "{search_field_id}", this.tagTypeId.toString()
+      )
+    );
+    console.log(this.options);
   }
 
   onFocus(){
@@ -67,7 +85,12 @@ export class TagSelectorComponent implements OnInit, OnChanges {
   }
 
   displayFn(item: any): string | undefined{
-    return item;
+    if (item && item.code && item.mValue) {
+      return `${item?.code} - ${item?.mValue}`;
+    } else {
+      return undefined;
+    }
+    
   }
 
 }

@@ -80,12 +80,6 @@ public isSelection: boolean = false;
   }
 
   remove(value: string): void {
-    /*const index = this.selectedTags.indexOf(value);
-
-    if (index >= 0) {
-      this.selectedTags.splice(index, 1);
-    }*/
-
     if (this.isRemoveOnSeverFlag) {
       
     }

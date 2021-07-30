@@ -1,0 +1,33 @@
+<div class="card-container" fxLayoutAlign="start start" fxFlex="auto">
+  <div class="card-body" fxLayout="column">
+    <mat-card>
+      <h3>Settings</h3>
+      <form fxLayout="row wrap" fxLayoutGap="12px" [formGroup]="mForm">
+        <mat-form-field appearance="outline">
+          <mat-label>Weighbridge Name</mat-label>
+          <input matInput placeholder="Weighbridge Name" [(ngModel)]="weighbridge" type="text" formControlName="inputWeighbridge" class="form-control">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Database Server</mat-label>
+          <input matInput placeholder="Database Server" [(ngModel)]="server" type="text" formControlName="inputServer" class="form-control">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Database Name</mat-label>
+          <input matInput placeholder="Database Name" [(ngModel)]="dbName" type="text" formControlName="inputDbName" class="form-control">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Database Username</mat-label>
+          <input matInput placeholder="Username" [(ngModel)]="username" type="text" formControlName="inputUsername" class="form-control">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Password" [(ngModel)]="password" type="password" formControlName="inputPassword" class="form-control">
+        </mat-form-field>
+      </form>
+    </mat-card>
+    <mat-card-action class="full-width" fxLayout fxLayoutAlign="center center">
+      <button mat-raised-button [disabled]="mForm.invalid" type="submit" color="primary" (click)="save();">Save</button>
+      <button mat-raised-button type="submit" color="primary" (click)="loadInitialData();">Load Initial Data</button>
+    </mat-card-action>
+  </div>
+</div>

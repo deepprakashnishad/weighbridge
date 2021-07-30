@@ -5,9 +5,7 @@
 export const environment = {
   production: false,
   baseurl: "http://localhost:1337",
-  razorpay: {
-    keyId: ""
-  }
+  firstAutoRefresh: true
 };
 
 

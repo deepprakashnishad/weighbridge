@@ -1,10 +1,12 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { isString } from 'util';
+import { AuthenticationService } from '../authentication/authentication.service';
 import { MyDbService } from '../my-db.service';
+import { MyIpcService } from '../my-ipc.service';
 import { QueryList } from '../query-list';
 import { SharedDataService } from '../shared-data.service';
 import { Utils } from '../utils';
@@ -16,11 +18,13 @@ import { WeighmentSummaryComponent } from './weighment-summary/weighment-summary
   templateUrl: './weighment.component.html',
   styleUrls: ['./weighment.component.scss']
 })
-export class WeighmentComponent implements OnInit {
+export class WeighmentComponent implements OnInit, AfterViewInit {
 
   weighment: Weighment = new Weighment();
   weighmentDetail: WeighmentDetail = new WeighmentDetail();
   weighmentDetails: Array<WeighmentDetail> = [];
+
+  @ViewChild('vehicleCntl') vehicleCntl: ElementRef;
 
   currDate = new Date();
   gatePassNo: string;
@@ -32,15 +36,21 @@ export class WeighmentComponent implements OnInit {
   netWeight: number;
   remark: string;
 
-  currWeight: number = 10000;
+  currentWeight: number = 10000;
   isWeightStable: boolean = true;
   prevWeight: number;
   cnt: number = 0;
+
+  weighbridge: string = "";
+
+  isComplete: boolean = false;
   
   constructor(
     private sharedDataService: SharedDataService,
+    private authService: AuthenticationService,
     private notifier: NotifierService,
     private dbService: MyDbService,
+    private ipcService: MyIpcService,
     private ngZone: NgZone,
     private route: ActivatedRoute,
     private dialog: MatDialog
@@ -53,26 +63,35 @@ export class WeighmentComponent implements OnInit {
         this.getWeighment({ "rstNo": params['rstNo'] });
       }
     });
-    
+
+    this.ipcService.invokeIPC("get-env-data").then(result => {
+      this.weighbridge = result['weighbridge'];
+    });
 
     //Later remove this one line
     //setTimeout(() => { this.isWeightStable = true }, 2000);
 
     this.sharedDataService.currentData.subscribe((data) => {
-      this.ngZone.run(() => {
-        this.currWeight = data['currWeight'];
-      });
-      
-      //if (this.prevWeight === data['currWeight']) {
-      //  this.cnt++;
-      //  if (this.cnt > 100) {
-      //    this.isWeightStable = true;
-      //  }
-      //} else {
-      //  this.cnt = 0;
-      //  this.isWeightStable = false;
-      //}
+      this.updateCurrentWeight(data);
     });
+  }
+
+  updateCurrentWeight(currData) {
+    this.currentWeight = currData['currWeight'];
+    if (this.prevWeight === currData['currWeight']) {
+      this.cnt++;
+      if (this.cnt > 10) {
+        this.isWeightStable = true;
+      }
+    } else {
+      this.cnt = 0;
+      this.prevWeight = this.currentWeight;
+      this.isWeightStable = false;
+    }
+  }
+
+  ngAfterViewInit() {
+    this.vehicleCntl.nativeElement.focus();
   }
 
   parseQRString(inputStr) {
@@ -86,6 +105,14 @@ export class WeighmentComponent implements OnInit {
       this.weighment.vehicleNo = inputs[2];
       this.weighment.transporterCode = parseInt(inputs[3]); 
       this.weighment.transporterName = inputs[4];
+    }
+
+    if (this.weighment.rstNo) {
+      this.getWeighment({ rstNo: this.weighment.rstNo, status: "pending" });
+    } else if (this.weighment.vehicleNo) {
+      this.weighment.vehicleNo = Utils.removeWhiteSpaces(this.weighment.vehicleNo);
+      console.log(this.weighment.vehicleNo);
+      this.getWeighment({ vehicleNo: this.weighment.vehicleNo, status: "pending" });
     }
   }
 
@@ -101,9 +128,13 @@ export class WeighmentComponent implements OnInit {
     this.weighmentDetail.material = event;
   }
 
-  save(status) {
+  save() {
     if (!this.isValid()) {
       return;
+    }
+    var status = "pending";
+    if (this.isComplete && this.weighmentDetail.secondWeight && this.weighmentDetail.firstWeight) {
+      status = "complete";
     }
     //Initial weighment
     if (this.weighment.rstNo ===undefined) {
@@ -119,17 +150,17 @@ export class WeighmentComponent implements OnInit {
         //Create new Weighment detail record for first weight with data of second weighment
         // of prev record
         this.insertFirstWeighmentForPartial(
-          "WB1",
+          this.weighbridge,
           this.weighmentDetail.secondWeight,
           this.weighmentDetail.secondUnit,
-          null
+          this.authService.getTokenOrOtherStoredData("id")
         );
       }
     }
 
     this.sharedDataService.updateData("WEIGHMENT_COMPLETED", true);
-
-    //this.displayWeighmentSummary();
+    this.notifier.notify("success", "Weighment saved successfully");
+    this.displayWeighmentSummary();
   }
 
   async insertFirstWeighmentForPartial(weighBridge, firstWeight, firstUnit, user) {
@@ -141,7 +172,7 @@ export class WeighmentComponent implements OnInit {
       .replace("{firstWeight}", firstWeight.toString())
       .replace("{firstUnit}", this.weighmentDetail.firstUnit)
       .replace("{firstWeightUser}", user)
-      .replace("{remark}", null);
+      .replace("{remark}", this.weighmentDetail.remark != null ? this.weighmentDetail.remark: "");
 
     var result = await this.dbService.executeInsertAutoId("weighment_details", "id", stmt);
     if (result['newId']) {
@@ -156,7 +187,7 @@ export class WeighmentComponent implements OnInit {
 
   async updateWeighment(status) {
     var stmt = QueryList.UPDATE_WEIGHMENT
-      .replace("{scrollNo}", this.weighment.scrollNo ? this.weighment.scrollNo : null)
+      .replace("{scrollNo}", this.weighment.scrollNo ? this.weighment.scrollNo : "")
       .replace("{reqId}", this.weighment.reqId ? this.weighment.reqId.toString() : null)
       .replace("{gatePassNo}", this.weighment.gatePassNo ? this.weighment.gatePassNo.toString() : null)
       .replace("{weighmentType}", this.weighment.weighmentType)
@@ -190,9 +221,7 @@ export class WeighmentComponent implements OnInit {
     } else {
       this.ngZone.run(() => {
         this.weighment.rstNo = result['newId'];
-      });
-      
-      console.log(this.weighment);
+      });      
       this.insertFirstWeighment();
     }
     //this.reset();
@@ -201,13 +230,13 @@ export class WeighmentComponent implements OnInit {
   async insertFirstWeighment() {
     var stmt = QueryList.INSERT_FIRST_WEIGHMENT_DETAIL
       .replace("{weighmentRstNo}", this.weighment.rstNo.toString())
-      .replace("{material}", this.weighmentDetail.material ? this.weighmentDetail.material: null)
-      .replace("{supplier}", this.weighmentDetail.supplier ? this.weighmentDetail.supplier:null)  
-      .replace("{firstWeighBridge}", "WB1")
+      .replace("{material}", this.weighmentDetail.material ? this.weighmentDetail.material : null)
+      .replace("{supplier}", this.weighmentDetail.supplier ? this.weighmentDetail.supplier : null)
+      .replace("{firstWeighBridge}", this.weighbridge)
       .replace("{firstWeight}", this.weighmentDetail.firstWeight.toString())
       .replace("{firstUnit}", this.weighmentDetail.firstUnit)
-      .replace("{firstWeightUser}", null)
-      .replace("{remark}", this.weighmentDetail.remark ? this.weighmentDetail.remark : null);
+      .replace("{firstWeightUser}", this.authService.getTokenOrOtherStoredData("id"))
+      .replace("{remark}", this.weighmentDetail.remark != null ? this.weighmentDetail.remark : "");
 
     var result = await this.dbService.executeInsertAutoId("weighment_details", "id", stmt);
     if (result['newId']) {
@@ -225,12 +254,12 @@ export class WeighmentComponent implements OnInit {
     var stmt = QueryList.UPDATE_SECOND_WEIGHMENT_DETAIL
       .replace("{material}", this.weighmentDetail.material ? this.weighmentDetail.material: null)
       .replace("{supplier}", this.weighmentDetail.supplier)
-      .replace("{secondWeighBridge}", "WB1")
+      .replace("{secondWeighBridge}", this.weighbridge)
       .replace("{secondWeight}", this.weighmentDetail.secondWeight.toString())
       .replace("{secondUnit}", this.weighmentDetail.secondUnit ? this.weighmentDetail.secondUnit: "Kg")
-      .replace("{secondWeightUser}", null)
-      .replace("{netWeight}", (this.weighmentDetail.firstWeight - this.currWeight).toString())
-      .replace("{remark}", this.weighmentDetail.remark ? this.weighmentDetail.remark : null)
+      .replace("{secondWeightUser}", this.authService.getTokenOrOtherStoredData("id"))
+      .replace("{netWeight}", this.weighmentDetail.netWeight ? this.weighmentDetail.netWeight?.toString() : null)
+      .replace("{remark}", this.weighmentDetail.remark ? this.weighmentDetail.remark : "")
       .replace("{id}", this.weighment.weighmentDetails[this.weighment.weighmentDetails.length-1].id.toString());
 
     var result = await this.dbService.executeSyncDBStmt("UPDATE", stmt);
@@ -251,6 +280,10 @@ export class WeighmentComponent implements OnInit {
       data: {
         weighment: this.weighment
       }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.reset();
     });
   }
 
@@ -277,6 +310,18 @@ export class WeighmentComponent implements OnInit {
 
     if (this.weighment.weighmentType === "inbound" && !this.weighment.scrollNo) {
       this.notifier.notify("error", "Scroll number is required for inbound");
+      return false;
+    }
+
+    if (this.weighment.weighmentType === "inbound" &&
+      this.weighmentDetail.secondWeight > this.weighmentDetail.firstWeight) {
+      this.notifier.notify("error", "Second weight can't be greater than first weight for inbound");
+      return false;
+    }
+
+    if (this.weighment.weighmentType.indexOf("outbound")>-1 &&
+      this.weighmentDetail.secondWeight < this.weighmentDetail.firstWeight) {
+      this.notifier.notify("error", "First weight can't be greater than second weight for inbound");
       return false;
     }
 
@@ -318,50 +363,57 @@ export class WeighmentComponent implements OnInit {
   }
 
   capture() {
-    this.currWeight = Utils.randomNumberGenerator(5, 10000, 50000);
+    //this.currentWeight = Utils.randomNumberGenerator(5, 10000, 50000);
 
     if (this.weighmentDetail.firstWeight === undefined) {
-      this.weighmentDetail.firstWeight = this.currWeight;
+      this.weighmentDetail.firstWeight = this.currentWeight;
     } else {
-      this.weighmentDetail.secondWeight = this.currWeight;
+      this.weighmentDetail.secondWeight = this.currentWeight;
+      this.weighmentDetail.netWeight = Math.abs(this.weighmentDetail.secondWeight - this.weighmentDetail.firstWeight);
     }
   }
 
   async getWeighment(criteria) {
-    var stmt = QueryList.GET_WEIGHMENTS + " WHERE ";
+    if (!criteria['status']) {
+      criteria['status'] = "pending";
+    }
+    var stmt = `${QueryList.GET_WEIGHMENTS} WHERE status='${criteria["status"]}'`;
     var keys = Object.keys(criteria);
     for (let key of keys) {
       switch (key) {
-        case "status":
-          stmt = ` ${stmt} status='${criteria[key]}'`;
-          break;
         case "rstNo":
-          stmt = ` ${stmt} rstNo=${criteria[key]}`;
+          stmt = ` ${stmt} AND rstNo=${criteria[key]}`;
           break;
         case "vehicleNo":
-          stmt = ` ${stmt} vehicleNo=${criteria[key]}`;
+          stmt = ` ${stmt} AND vehicleNo='${criteria[key]}'`;
           break;
         case "reqId":
-          stmt = ` ${stmt} reqId=${criteria[key]}`;
+          stmt = ` ${stmt} AND reqId=${criteria[key]}`;
           break;
       }
     }
     var result = await this.dbService.executeSyncDBStmt("SELECT", stmt);
-    this.weighment = result[0];
-    this.weighment.weighmentDetails = await this.getWeighmentDetails(this.weighment.rstNo);
-    if (this.weighment.weighmentDetails.length > 0) {
-      this.weighmentDetail = this.weighment.weighmentDetails[this.weighment.weighmentDetails.length-1];
+    if (result[0]) {
+      this.weighment = Weighment.fromJSON(result[0]);
+      this.weighment.weighmentDetails = WeighmentDetail.fromJSONList(await this.getWeighmentDetails(this.weighment.rstNo));
+      if (this.weighment.weighmentDetails.length > 0) {
+        this.weighmentDetail = this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1];
+      }
     }
-
-    //This is temporary and will be removed. It is only for testing purpose
-    this.displayWeighmentSummary();
+    
   }
 
   async getWeighmentDetails(rstNo) {
     var result = new Array<WeighmentDetail>();
     if (rstNo) {
-      console.log(QueryList.GET_WEIGHMENT_DETAILS.replace("{rstNo}", rstNo));
       result = await this.dbService.executeSyncDBStmt("SELECT", QueryList.GET_WEIGHMENT_DETAILS.replace("{rstNo}", rstNo));
+      for (var i = 0; i < result.length; i++) {
+        var temp = result[i];
+        if (temp['firstWeightUser']!==null)
+          result[i]['firstWeightUser'] = (await this.dbService.executeSyncDBStmt("SELECT", QueryList.GET_USER_BY_ID.replace("{id}", temp['firstWeightUser'].toString())))[0];
+        if (temp['secondWeightUser'] !== null)
+          result[i]['secondWeightUser'] = (await this.dbService.executeSyncDBStmt("SELECT", QueryList.GET_USER_BY_ID.replace("{id}", temp['secondWeightUser'].toString())))[0];
+      }
     }
     return result;
   }

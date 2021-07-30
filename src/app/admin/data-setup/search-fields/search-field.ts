@@ -3,11 +3,11 @@ export class SearchField {
   displayName: string;
   entryMode: string;
   inOutMode: string;
-  mValues: string;
+  mValue: string;
 
   constructor() {
     this.entryMode = "LIST_SOFT";
     this.inOutMode = "GENERIC";
-    this.mValues = null;
+    this.mValue = null;
   }
 }

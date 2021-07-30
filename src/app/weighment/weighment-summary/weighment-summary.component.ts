@@ -80,7 +80,7 @@ export class WeighmentSummaryComponent implements OnInit {
             mText = mText + field.displayName + ": " + `${this.weighment[field.field]}`;
           }
         } else if (field.field === "weighmentDetails") {
-          mText = mText + this.prepareWeighmentTableText(this.weighment.weighmentDetails)
+          mText = mText + this.preparePreviewWeighmentTableText(this.weighment.weighmentDetails)
         }
       } else {
         if (field.font === "RB" || field.font === "DB") {
@@ -189,22 +189,22 @@ export class WeighmentSummaryComponent implements OnInit {
 
         if (currY <= colPos[5]) {
           mText = mText + " R \"" + " ".repeat(colPos[5] - currY) + "\"";
-          mText = mText + " R \"" + weighmentDetails[0].secondWeightDatetime + "\"";
-          currY = colPos[5] + weighmentDetails[0].secondWeightDatetime.toString().length;
+          mText = mText + " R \"" + weighmentDetails[0]?.secondWeightDatetime + "\"";
+          currY = colPos[5] + weighmentDetails[0]?.secondWeightDatetime?.toString()?.length;
         } else {
           mText = mText + " " + weighmentDetails[0].secondWeightDatetime;
-          mText = mText + " R \"" + weighmentDetails[0].secondWeightDatetime + "\"";
-          currY = currY + weighmentDetails[0].secondWeightDatetime.toString().length;
+          mText = mText + " R \"" + weighmentDetails[0]?.secondWeightDatetime + "\"";
+          currY = currY + weighmentDetails[0]?.secondWeightDatetime?.toString()?.length;
         }
 
         if (currY <= colPos[6]) {
           mText = mText + " R \"" + " ".repeat(colPos[6] - currY) + "\"";
-          mText = mText + " R \"" + weighmentDetails[0].netWeight + "\"";
-          currY = colPos[6] + weighmentDetails[0].netWeight.toString().length;
+          mText = mText + " R \"" + weighmentDetails[0]?.netWeight + "\"";
+          currY = colPos[6] + weighmentDetails[0].netWeight?.toString().length;
         } else {
           mText = mText + " " + weighmentDetails[0].netWeight;
-          mText = mText + " R \"" + weighmentDetails[0].netWeight + "\"";
-          currY = currY + weighmentDetails[0].netWeight.toString().length;
+          mText = mText + " R \"" + weighmentDetails[0]?.netWeight + "\"";
+          currY = currY + weighmentDetails[0]?.netWeight?.toString().length;
         }
       }      
 
@@ -233,6 +233,116 @@ export class WeighmentSummaryComponent implements OnInit {
       }
     }
     mText = mText + " newline ";
+    currY = 0;
+
+    return mText;
+  }
+
+  preparePreviewWeighmentTableText(weighmentDetails: Array<WeighmentDetail>) {
+
+    var mText = "";
+    mText = mText + this.preparePreviewWeighmentDetailsHeader();
+    var currY = 0;
+
+    for (var i = 0; i < weighmentDetails.length; i++) {
+      var field = weighmentDetails[i];
+
+      if (currY <= colPos[0]) {
+        mText = mText + "&nbsp;".repeat(colPos[0] - currY);
+        mText = mText + (i + 1).toString();
+        currY = colPos[0] + (i + 1).toString().length;
+      } else {
+        mText = mText + (i + 1).toString();
+        currY = currY + (i + 1).toString().length;
+      }
+
+      if (currY <= colPos[1]) {
+        mText = mText + "&nbsp;".repeat(colPos[1] - currY);
+        mText = mText + weighmentDetails[0].material;
+        currY = colPos[1] + weighmentDetails[0].material.length;
+      } else {
+        mText = mText + "&nbsp;" + weighmentDetails[0].material;
+        mText = mText + weighmentDetails[0].material;
+        currY = currY + weighmentDetails[0].material.length;
+      }
+
+      if (currY <= colPos[2]) {
+        mText = mText + "&nbsp;".repeat(colPos[2] - currY);
+        mText = mText + weighmentDetails[0].firstWeight;
+        currY = colPos[2] + weighmentDetails[0].firstWeight.toString().length;
+      } else {
+        mText = mText + " " + weighmentDetails[0].firstWeight;
+        mText = mText + weighmentDetails[0].firstWeight;
+        currY = currY + weighmentDetails[0].firstWeight.toString().length;
+      }
+
+      if (currY <= colPos[3]) {
+        mText = mText + "&nbsp;".repeat(colPos[3] - currY);
+        mText = mText + weighmentDetails[0].firstWeightDatetime;
+        currY = colPos[3] + weighmentDetails[0].firstWeightDatetime.toString().length;
+      } else {
+        mText = mText + "&nbsp;" + weighmentDetails[0].firstWeightDatetime;
+        mText = mText + weighmentDetails[0].firstWeightDatetime;
+        currY = currY + weighmentDetails[0].firstWeightDatetime.toString().length;
+      }
+
+      if (weighmentDetails[0].secondWeight !== undefined && weighmentDetails[0].secondWeight != null) {
+        if (currY <= colPos[4]) {
+          mText = mText + "&nbsp;".repeat(colPos[4] - currY);
+          mText = mText + weighmentDetails[0].secondWeight;
+          currY = colPos[4] + weighmentDetails[0].secondWeight.toString().length;
+        } else {
+          mText = mText + "&nbsp;" + weighmentDetails[0].secondWeight;
+          mText = mText + weighmentDetails[0].secondWeight;
+          currY = currY + weighmentDetails[0].secondWeight.toString().length;
+        }
+
+        if (currY <= colPos[5]) {
+          mText = mText + "&nbsp;".repeat(colPos[5] - currY);
+          mText = mText + weighmentDetails[0]?.secondWeightDatetime;
+          currY = colPos[5] + weighmentDetails[0]?.secondWeightDatetime?.toString()?.length;
+        } else {
+          mText = mText + "&nbsp;" + weighmentDetails[0].secondWeightDatetime;
+          mText = mText + weighmentDetails[0]?.secondWeightDatetime;
+          currY = currY + weighmentDetails[0]?.secondWeightDatetime?.toString()?.length;
+        }
+
+        if (currY <= colPos[6]) {
+          mText = mText + "&nbsp;".repeat(colPos[6] - currY);
+          mText = mText + weighmentDetails[0]?.netWeight;
+          currY = colPos[6] + weighmentDetails[0].netWeight?.toString().length;
+        } else {
+          mText = mText + "&nbsp;" + weighmentDetails[0].netWeight;
+          mText = mText + weighmentDetails[0]?.netWeight;
+          currY = currY + weighmentDetails[0]?.netWeight?.toString().length;
+        }
+      }
+
+      mText = mText + " <br/> ";
+      currY = 0;
+    }
+
+    return mText;
+  }
+
+  preparePreviewWeighmentDetailsHeader() {
+    var mText = "";
+
+    var currY = 0;
+
+    var field = ["#", "Material", "Wt1", "Wt1 Datetime", "Wt2", "Wt2 Datetime", "Net Wt"];
+
+    for (var i = 0; i < field.length; i++) {
+      if (currY <= colPos[i]) {
+        mText = mText + "&nbsp;".repeat(colPos[i] - currY);
+        mText = mText + field[i];
+        currY = colPos[i] + field[i].length;
+      } else {
+        mText = mText + field[i];
+        currY = currY + field[i].length;
+      }
+    }
+    mText = mText + " <br/> ";
     currY = 0;
 
     return mText;

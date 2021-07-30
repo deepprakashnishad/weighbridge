@@ -1,5 +1,6 @@
 const { ipcMain } = require("electron");
 const serialPort = require('serialport');
+const Readline = require('@serialport/parser-readline')
 
 var tempWeight = "";
 var currWeight = "";
@@ -13,15 +14,25 @@ serialPort.list().then((ports, err) => {
     return;
   }
   mports = ports;
-  console.log('ports', ports);
-  port = serialPort(mports[0]['path'], {
-    baudRate: 2400,
-  });
-
-  port.on('data', onData);
+  console.log(mports);
+  if (mports.length > 0) {
+    setTimeout(function () {
+      initialiazePort("serial", mports[0]['path'], env_data['weighString']['baudRate'], env_data['weighString']['dataBits'],
+        env_data['weighString']['stopBits'], env_data['weighString']['parity']);
+    }, 500);
+  }  
 });
 
-
+ipcMain.handle("get-available-ports", async (event, ...args) => {
+  try {
+    var ports = await serialPort.list();
+    return ports;
+  } catch (err) {
+    log.error("Unable to read ports. Please see below error logged");
+    log.error(err);
+    return [];
+  }
+});
 
 ipcMain.handle("serial-port-ipc", async (event, ...args) => {
   if (args[0] === "initialiaze-port") {
@@ -31,34 +42,27 @@ ipcMain.handle("serial-port-ipc", async (event, ...args) => {
         return;
       }
       mports = ports;
-      console.log('ports', ports);
-      port = serialPort(mports[0]['path'], {
-        baudRate: 2400,
-      });
-
-      port.on('data', onData);
+      initialiazePort("serial", mports[0]['path'], env_data['weighString']['baudRate'], env_data['weighString']['dataBits'],
+        env_data['weighString']['stopBits'], env_data['weighString']['parity']);
     });
-    //initialiazePort(args[1]['type'], args[1]['comPort'], args[1]['baudRate']);
   }
 });
 
 ipcMain.handle("verify-port", async (event, ...args) => {
   if (args[1]['type'] === "serial") {
     try {
-      console.log("Initializing port");
-      port = serialPort(args[1]['comPort'], {
-        baudRate: args[1]['baudRate'],
+      var tempPort = serialPort(args[1]['comPort'], {
+        "baudRate": args[1]['baudRate'],
+        "dataBits": args[1]['dataBits'],
+        "stopBits": args[1]['stopBits'],
+        "parity": args[1]['parity'].toString().toLowerCase()
       });
-      console.log(port);
     } catch (err) {
       console.log(err);
     }
-    port.on('data', (data) => {
-      console.log(data);
-      stringParser(data, args[0]);
-    });
+    tempPort.on('data', onData);
 
-    port.on('error', function (err) {
+    tempPort.on('error', function (err) {
       console.log("Error recieved");
       console.log(err);
       win.webContents.send(args[0], [err]);
@@ -66,49 +70,61 @@ ipcMain.handle("verify-port", async (event, ...args) => {
   }
 });
 
-function initialiazePort(type, portPath, baudRate) {
+function initialiazePort(type, portPath, baudRate, dataBits, stopBits, parity) {
   if (type === "serial") {
     port = serialPort(portPath, {
-      baudRate: baudRate,
+      "baudRate": baudRate,
+      "dataBits": dataBits,
+      "stopBits": stopBits,
+      "parity": parity.toString().toLowerCase()
     });
-    port.on('data', onData);
-    port.on('error', function (err) {
-      console.log("Error recieved");
-      console.log(err);
+    var parser = port.pipe(new Readline({ delimiter: '\r\n' }));
+    parser.on('data', onData);
+    parser.on('error', function (err) {
+      log.error(err);
       win.webContents.send("curr-weight-recieved", [err]);
     });
   }
 }
 
 function onData(data) {
-  if (data.toString().charCodeAt(0) === 2) {
-    startReadingWeight = true;
+  if (env_data['weighString'] === undefined) {
+    return;
   }
-  if (startReadingWeight && data.toString().charCodeAt(0) !== 2 && data.toString().charCodeAt(0) !== 3) {
-    tempWeight = tempWeight.concat(String.fromCharCode(data.toString().charCodeAt(0)));
-  }
-  if (data.toString().charCodeAt(0) === 3) {
-    currWeight = tempWeight;
-    tempWeight = "";
-    if (currWeight.charAt(0) === "\r") {
-      currWeight = currWeight.slice(3);
-    }
-    win.webContents.send("curr-weight-recieved", [currWeight]);
-    //console.log(`Main channel: ${currWeight}`);
-  }
-}
 
-function stringParser(data, channelName) {
-  if (data.toString().charCodeAt(0) === 2) {
-    startReadingWeight = true;
+  var weighString = env_data['weighString'];
+
+  var tempWeight = '';
+
+  if (data.charCodeAt(weighString['signCharPosition']) === weighString['negativeSignValue'] ||
+    data.charAt(weighString['signCharPosition']) === weighString['negativeSignValue']) {
+    tempWeight = '-';
   }
-  if (startReadingWeight && data.toString().charCodeAt(0) !== 2 && data.toString().charCodeAt(0) !== 3) {
-    tempWeight = tempWeight.concat(String.fromCharCode(data.toString().charCodeAt(0)));
+
+  if (weighString['weightCharPosition1'] !== null) {
+    tempWeight = tempWeight + data.charAt(weighString['weightCharPosition1']);
   }
-  if (data.toString().charCodeAt(0) === 3) {
-    currWeight = tempWeight;
-    tempWeight = "";
-    win.webContents.send(channelName, [currWeight]);
-    //console.log("Verification channel" + currWeight);
+
+  if (weighString['weightCharPosition2'] !== null) {
+    tempWeight = tempWeight + data.charAt(weighString['weightCharPosition2']);
   }
+
+  if (weighString['weightCharPosition3'] !== null) {
+    tempWeight = tempWeight + data.charAt(weighString['weightCharPosition3']);
+  }
+
+  if (weighString['weightCharPosition4'] !== null) {
+    tempWeight = tempWeight + data.charAt(weighString['weightCharPosition4']);
+  }
+
+  if (weighString['weightCharPosition5'] !== null) {
+    tempWeight = tempWeight + data.charAt(weighString['weightCharPosition5']);
+  }
+
+  if (weighString['weightCharPosition6'] !== null) {
+    tempWeight = tempWeight + data.charAt(weighString['weightCharPosition6']);
+  }
+
+  //console.log("Weight - " + tempWeight);
+  win.webContents.send("curr-weight-recieved", [tempWeight]);
 }

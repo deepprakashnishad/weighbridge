@@ -14,6 +14,7 @@ import { TicketSetupComponent } from './ticket-setup/ticket-setup.component';
 import { ReportSetupComponent } from './report-setup/report-setup.component';
 import { EmailSetupComponent } from './email-setup/email-setup.component';
 import { DbBackupComponent } from './db-backup/db-backup.component';
+import { UserManagement } from './user-management/user-management.component';
 
 const routes: Routes = [
 	
@@ -50,29 +51,36 @@ const routes: Routes = [
 				component: TicketSetupComponent,
 				canActivate: [AuthGuardService], 
 				canDeactivate:[CanDeactivateGuardService],
-				data: { title: 'Printer Setup', permissions: []}
+				data: { title: 'Printer Setup', permissions: [3]}
 			},
 			{
 				path: 'report-setup', 
 				component: ReportSetupComponent,
 				canActivate: [AuthGuardService], 
 				canDeactivate:[CanDeactivateGuardService],
-				data: { title: 'Report Setup', permissions: []}
+				data: { title: 'Report Setup', permissions: [2]}
 			},
 			{
 				path: 'email-setup', 
 				component: EmailSetupComponent,
 				canActivate: [AuthGuardService], 
 				canDeactivate:[CanDeactivateGuardService],
-				data: { title: 'Email Setup', permissions: []}
+				data: { title: 'Email Setup', permissions: [2]}
 			},
 			{
 				path: 'db-backup', 
 				component: DbBackupComponent,
 				canActivate: [AuthGuardService], 
 				canDeactivate:[CanDeactivateGuardService],
-				data: { title: 'DB Backup', permissions: []}
-			},
+				data: { title: 'DB Backup'}
+      },
+      {
+        path: 'user-management',
+        component: UserManagement,
+        canActivate: [AuthGuardService],
+        canDeactivate: [CanDeactivateGuardService],
+        data: { title: 'User Management' }
+      },
 		]
 	},
 ];

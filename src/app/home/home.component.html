@@ -5,14 +5,14 @@
     fxLayoutAlign="center center"
     fxLayoutGap="32px">
     <div class="item-container" *ngFor="let option of options">
-      <a class="no-underline" [href]="option.route">
+      <!--<a class="no-underline" [href]="option.route">-->
         <mat-card fxLayout="column" fxLayoutAlign="start center">
-          <img [src]="option.icon" width="50px" height="50px"/>
+          <img [src]="option.icon" width="50" height="50"/>
           <mat-card-content>
             <h5>{{option.title}}</h5>
           </mat-card-content>
         </mat-card>
-      </a>
+      <!--</a>-->
     </div>
   </div>
   <!-- <div fxFlex="20">

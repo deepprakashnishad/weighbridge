@@ -23,7 +23,6 @@ export class MyIpcService {
 
   async invokeIPC(channelName, ...args) {
     var reply = await this._electronService.ipcRenderer.invoke(channelName, ...args);
-    console.log(reply);
     return reply;
   }
 }

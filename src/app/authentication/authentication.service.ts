@@ -7,6 +7,9 @@ import { retry, catchError, map, tap } from 'rxjs/operators';
 import {AuthResponse} from './auth-response';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
+import { MyDbService } from '../my-db.service';
+import { QueryList } from '../query-list';
+import { Utils } from '../utils';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -24,15 +27,21 @@ export class AuthenticationService {
   redirectUrl: string;
   loginUrl: string;
   signupUrl: string;
-  isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
-  	private http: HttpClient,
+    private http: HttpClient,
+    private dbService: MyDbService,
     private router: Router,
     private notifier: NotifierService
   ) {
   	this.loginUrl = environment.baseurl+'/UserLogin/login';
-  	this.signupUrl = environment.baseurl+'/UserLogin';
+    this.signupUrl = environment.baseurl + '/UserLogin';
+    var loginStatus = this.getTokenOrOtherStoredData("isLoggedIn");
+    if (loginStatus === 'true') {
+      this.isLoggedIn.next(loginStatus);
+    }
+    
   }
 
   authorizeUser(accessListReqd: string[]):boolean{
@@ -40,39 +49,29 @@ export class AuthenticationService {
         if(accessListReqd===undefined || accessListReqd.length == 0){
           return true;
         }
-        let permissionList:string = this.getTokenOrOtherStoredData('permissions')
+        let permissionList:any = this.getTokenOrOtherStoredData('permissions')
         if(permissionList === undefined){
           return false;
         }
-
-        let allowedPermissionList = permissionList.split(',')
-          return accessListReqd.every((ele)=> 
-          {  
-            return allowedPermissionList.indexOf(ele) >=0 
-          }
-        )
+        var allowedPermissionList = JSON.parse(permissionList);
+        return accessListReqd.every((ele)=> 
+        {  
+          return allowedPermissionList.some(ele1 => {
+            if (ele1.id === ele)
+              return true;
+          })
+        })
       }else{
         return false;
       }
       
   }
 
-  getTokenOrOtherStoredData(key='token') {
+  getTokenOrOtherStoredData(key='isLoggedIn'):any {
     if (sessionStorage.getItem(key)) {
       return sessionStorage.getItem(key);
-    } else if (localStorage.getItem(key)) {
-      let data = {
-        token  : localStorage.getItem('token'),
-        name : localStorage.getItem('name'),
-        mobile : localStorage.getItem('mobile'),
-        email : localStorage.getItem('email'),
-        role : localStorage.getItem('role'),
-        permissions : localStorage.getItem('permissions')
-      }
-      this.storeLocalData(data, "SESSION_STORAGE")
-      return localStorage.getItem(key);
     } else {
-      return '';
+      return "";
     }
   }
 
@@ -92,56 +91,40 @@ export class AuthenticationService {
   		);
   }
 
-  login(credentials): Observable<AuthResponse> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': 'Basic ' + btoa(credentials.username + ':' + credentials.password),
-        AuthInterceptorSkipHeader:''
-      })
-    };
+  async login(credentials) {
+    var stmt = QueryList.GET_USER_BY_CREDENTIALS
+      .replace("{username}", Utils.mysql_real_escape_string(credentials.username))
+      .replace("{password}", Utils.mysql_real_escape_string(credentials.password));
 
-  	return this.http.post<AuthResponse>(
-  		this.loginUrl, null, httpOptions)
-  		.pipe(
-  			retry(2),
-  			catchError(this.handleError('login', null))
-  		);
+    var result = await this.dbService.executeSyncDBStmt("SELECT", stmt);
+    if (result.length > 0) {
+      var permissions = await this.dbService.executeSyncDBStmt(
+        "SELECT", QueryList.GET_USER_PERMISSIONS.replace("{userid}", result[0]['id']));
+      result[0]['permissions'] = JSON.stringify(permissions);
+      this.isLoggedIn.next(true);
+      this.storeLocalData(result[0]);
+      this.notifier.notify("success", "Login successfull");
+      return true;
+    } else {
+      this.isLoggedIn.next(false);
+      this.notifier.notify("error", "Login failed");
+      return false;
+    }
   }
 
   logout(): void{
     localStorage.clear();
     sessionStorage.clear();
-    this.router.navigate(['/login']);
+    this.router.navigate(['']);
     this.isLoggedIn.next(false);
   }
 
-  storeLocalData(data: any, storageType): void {
-    if (storageType === "LOCAL_STORAGE") {
-      localStorage.setItem('token', data.token, );
-      if(data.fbToken){
-        sessionStorage.setItem('fbToken', data.fbToken);
-      }
-      localStorage.setItem('name', data.name);
-      localStorage.setItem('mobile', data.mobile);
-      localStorage.setItem('email', data.email);
-      localStorage.setItem('role', data.role);
-      localStorage.setItem('permissions', data.permissions);
-      localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('id', data.id);
-    } else {
-      sessionStorage.setItem('token', data.token, );
-      if(data.fbToken){
-        sessionStorage.setItem('fbToken', data.fbToken);
-      }
-      sessionStorage.setItem('name', data.name);
-      sessionStorage.setItem('mobile', data.mobile);
-      sessionStorage.setItem('email', data.email);
-      sessionStorage.setItem('role', data.role);
-      sessionStorage.setItem('permissions', data.permissions);
-      sessionStorage.setItem('isLoggedIn', 'true');
-      sessionStorage.setItem('id', data.id);
-    }
+  storeLocalData(data: any): void {
+    sessionStorage.setItem('fullname', data.fullname);
+    sessionStorage.setItem('role', data.role);
+    sessionStorage.setItem('permissions', data.permissions);
+    sessionStorage.setItem('isLoggedIn', 'true');
+    sessionStorage.setItem('id', data.id);
     this.isLoggedIn.next(true);
   }
 
@@ -158,7 +141,7 @@ export class AuthenticationService {
 
   handleForbiddenRequest(error){
     this.redirectUrl = this.router.url
-    this.router.navigate(['/login', {'error':[error.error.msg]}])
+    this.router.navigate(['', {'error':[error.error.msg]}])
     localStorage.clear();
     sessionStorage.clear();
     this.isLoggedIn.next(false);
