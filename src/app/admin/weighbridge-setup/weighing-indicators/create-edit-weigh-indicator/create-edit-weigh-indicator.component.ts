@@ -20,7 +20,12 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
   isNew = true;
   ports: Array<any> = [];
   verification_weight = "";
+  cnt: number;
+  prevWeight: any;
   selectedString: WeighIndicatorString = new WeighIndicatorString();
+  currWeighData: any;
+
+  updateWeightIntervalId: any;
 
   constructor(
     private notifier: NotifierService,
@@ -39,17 +44,22 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dbService.executeDBStmt("weighstrings", QueryList.GET_WEIGH_STRINGS);
-    this.refreshPortList();
-    var subscription = this.sharedDataService.currentData.pipe().subscribe(currData => {
-      if (currData['weighstrings']) {
-        this.indicatorStrings = WeighIndicatorString.fromJSON(currData['weighstrings']);
+    this.dbService.executeSyncDBStmt("SELECT", QueryList.GET_WEIGH_STRINGS).then(result => {
+      if (result && result.length>1) {
+        this.indicatorStrings = WeighIndicatorString.fromJSON(result);
         this.updateSelectedString(this.indicator.indicatorString);
       }
-      if (this.indicatorStrings && this.indicatorStrings.length > 0) {
-        subscription?.unsubscribe();
-      }
-    }, () => { }, () => console.log("Fetch completed"));
+    });
+    this.refreshPortList();
+    //var subscription = this.sharedDataService.currentData.pipe().subscribe(currData => {
+    //  if (currData['weighstrings']) {
+    //    this.indicatorStrings = WeighIndicatorString.fromJSON(currData['weighstrings']);
+    //    this.updateSelectedString(this.indicator.indicatorString);
+    //  }
+    //  if (this.indicatorStrings && this.indicatorStrings.length > 0) {
+    //    subscription?.unsubscribe();
+    //  }
+    //}, () => { }, () => console.log("Fetch completed"));
   }
 
   refreshPortList() {
@@ -66,6 +76,8 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
     for (var i = 0; i < this.indicatorStrings.length; i++) {
       if (this.indicatorStrings[i].stringName == newString) {
         this.selectedString = this.indicatorStrings[i];
+        console.log(this.selectedString);
+        console.log(newString);
       }
     }
   }
@@ -74,20 +86,36 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
     this.ipcService.invokeIPC("verify-port", 
       "verification-weight-recieved",
       {
+        weighbridgeName: this.indicator.wiName,
         type: this.indicator.type,
         comPort: this.indicator.comPort,
-        baudRate: this.selectedString.baudRate,
-        parity: this.selectedString.parity,
-        dataBits: this.selectedString.dataBits,
-        stopBits: this.selectedString.stopBits
+        weighString: this.selectedString
       }
     );
+    this.updateWeightIntervalId = setInterval(this.updateCurrentWeight.bind(this), 1000);
     this.sharedDataService.currentData.pipe().subscribe(currData => {
-      this.ngzone.run(() => {
-        this.verification_weight = currData['verification_weight'];
-        console.log(this.verification_weight);
-      });
+      this.currWeighData = currData['verification_weight'];
     });
+  }
+
+  updateCurrentWeight() {
+    var currWeight = this.currWeighData;
+    console.log(currWeight);
+    if (currWeight['timestamp'] > (new Date().getTime()) - 1000) {
+      this.verification_weight = currWeight['weight'];
+      if (this.prevWeight === currWeight['weight']) {
+        this.cnt++;
+        if (this.cnt > 1) {
+          this.ipcService.invokeIPC("close-verification-port");
+          clearInterval(this.updateWeightIntervalId);
+        }
+      } else {
+        this.cnt = 0;
+        this.prevWeight = this.verification_weight;
+      }
+    } else {
+      this.verification_weight = "Err!";
+    }
   }
 
   async save() {
@@ -116,7 +144,16 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
     } else {
       this.notifier.notify("error", "Weigh indicator could not be created");
     }
-    
+  }
+
+  setAsDefault() {
+    this.ipcService.invokeIPC("saveSingleEnvVar", ["weighIndicatorId", this.indicator.id]).then(result => {
+      if (result) {
+        this.notifier.notify("success", `Default string set to ${this.indicator.indicatorString}`);
+      } else {
+        this.notifier.notify("error", `Failed to set default string`);
+      }
+    });
   }
 
   cancel() {

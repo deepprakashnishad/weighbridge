@@ -15,6 +15,14 @@
   background-color: #dfffdf;
 }
 
+.weight.mat-form-field {
+  .mat-input-element {
+    color: red;
+    font-weight: bolder;
+    font-size: large;
+  }
+}
+
 ::ng-deep .mat-form-field-flex > .mat-form-field-infix {
   padding: 0.4em 0px !important;
 }

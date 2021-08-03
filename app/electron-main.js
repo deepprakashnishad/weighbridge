@@ -6,8 +6,9 @@ require("./db-service.js");
 require("./my-port-reader.js");
 require("./printer-service.js");
 require("./file-service.js");
+require("./port-verifier.js");
 
-const env = "PROD"; // DEV Or PROD
+const env = "DEV"; // DEV Or PROD
 
 global.win;
 

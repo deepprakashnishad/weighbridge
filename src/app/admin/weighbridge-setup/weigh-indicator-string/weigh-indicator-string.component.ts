@@ -69,8 +69,15 @@ export class WeighIndicatorStringComponent implements OnInit {
     });
   }
 
-  delete(field, index){
-
+  delete(stringName, index) {
+    //this.dbService.executeSyncDBStmt("DELETE",
+    //  QueryList.DELETE_WEIGH_STRING.replace("{stringName}", stringName)).then(result => {
+    //    if (result && result['error'] === undefined) {
+    //      this.notifier.notify("success", "String deleted successfully");
+    //      this.indicatorStrings.splice(index, 1);
+    //    } else {
+    //      this.notifier.notify("error", "String could not be deleted");
+    //    }
+    //  });
   }
-
 }

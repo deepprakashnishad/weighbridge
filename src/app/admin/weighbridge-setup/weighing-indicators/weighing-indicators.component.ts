@@ -16,7 +16,7 @@ import { CreateEditWeighIndicatorComponent } from './create-edit-weigh-indicator
 export class WeighingIndicatorsComponent implements OnInit {
 
   indicators: Array<WeighIndicator>=[];
-  displayedColumns: string[] = ['isLocal', 'connection', 'comPort', 'ipAddress', 'port', "name", 'indicatorString', 'status', 'unit', 'decimalPoint', 'action'];
+  displayedColumns: string[] = ['isLocal', 'connection', 'comPort', 'ipAddress', 'port', 'name', 'indicatorString', 'status', 'unit', 'decimalPoint', 'action'];
 
   constructor(
     private notifier: NotifierService,

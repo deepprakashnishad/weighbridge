@@ -28,6 +28,11 @@
           <mat-label>Polling command</mat-label>
           <input name="cntlPollingCmd" matInput placeholder="Polling Command" [(ngModel)]="indicatorString.pollingCommand">
         </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Delimeter character</mat-label>
+          <input name="cntlDelimeter" matInput placeholder="Delimeter" [(ngModel)]="indicatorString.delimeter">
+        </mat-form-field>
       </div>
       <div class="full-width">
         <div fxFlex="25">
@@ -47,7 +52,11 @@
           <mat-form-field appearance="fill">
             <mat-label>Parity</mat-label>
             <mat-select name="cntlParity" [(ngModel)]="indicatorString.parity" appearance="outline">
-              <mat-option value="None">NONE</mat-option>
+              <mat-option value="none">NONE</mat-option>
+              <mat-option value="even">EVEN</mat-option>
+              <mat-option value="odd">ODD</mat-option>
+              <mat-option value="mark">MARK</mat-option>
+              <mat-option value="space">SPACE</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="fill">

@@ -60,6 +60,7 @@ export class WeighmentDetail {
 
   constructor() {
     this.firstUnit = "Kg";
+    this.secondUnit = "Kg";
     this.remark = "";
   }
 

@@ -29,13 +29,17 @@ export class CreateEditWeightStringComponent implements OnInit {
   ngOnInit() {
   }
 
-  save() {
+  async save() {
     if (this.indicatorString.stringName && this.indicatorString.stringName?.length === 0) {
       return;
     }
     const undefinedRegExp = /undefined/g;
-    var insertStmt = QueryList.INSERT_WEIGH_STRING
-      .replace("{stringName}", this.indicatorString.stringName)
+    var stmt = QueryList.INSERT_WEIGH_STRING;
+    var result = await this.dbService.executeSyncDBStmt("SELECT", QueryList.GET_WEIGH_STRING_BY_NAME.replace("{stringName}", this.indicatorString.stringName));
+    if (result && result.length > 0) {
+      stmt = QueryList.UPDATE_WEIGH_STRING;
+    }
+    stmt = stmt.replace("{stringName}", this.indicatorString.stringName)
       .replace("{totalChars}", this.indicatorString.totalChars ? this.indicatorString.totalChars.toString(): "null")
       .replace("{variableLength}", this.indicatorString.variableLength?"1":"0")
       .replace("{type}", this.indicatorString.type)
@@ -60,13 +64,23 @@ export class CreateEditWeightStringComponent implements OnInit {
       .replace("{endChar3}", this.indicatorString.endChar3)
       .replace("{signCharPosition}", this.indicatorString.signCharPosition ? this.indicatorString.signCharPosition.toString():"null")
       .replace("{negativeSignValue}", this.indicatorString.negativeSignValue)
+      .replace("{delimeter}", this.indicatorString.delimeter)
       .replace(undefinedRegExp, "");
     try {
-      this.dbService.executeDBStmt("INSERT_WEIGH_STRING_DONT_SAVE", insertStmt);
-      this.notifier.notify("success", "Weigh string created successfully");
-      this.dialogRef.close();
+      if (result && result.length > 0) {
+        result = await this.dbService.executeSyncDBStmt("UPDATE", stmt);
+      } else {
+        result = await this.dbService.executeSyncDBStmt("INSERT", stmt);
+      }
+      console.log(result);
+      if (result && result['error']===undefined) {
+        this.notifier.notify("success", "Weigh string saved successfully");
+        this.dialogRef.close();
+      } else {
+        this.notifier.notify("error", "Weigh string could not saved");
+      }      
     } catch (ex) {
-      this.notifier.notify("error", "Weigh string could not be created");
+      this.notifier.notify("error", "Weigh string could not be saved");
       console.log(ex);
     }
     

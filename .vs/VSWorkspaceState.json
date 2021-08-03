@@ -2,15 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\app",
-    "\\src",
-    "\\src\\app",
-    "\\src\\app\\admin\\ticket-setup\\create-edit-ticket-template",
-    "\\src\\app\\admin\\user-management\\add-edit-user-dialog",
-    "\\src\\app\\authentication",
-    "\\src\\app\\authentication\\login",
-    "\\src\\app\\report\\weighment-report",
-    "\\src\\app\\weighment"
+    "\\src\\app"
   ],
-  "SelectedNode": "\\src\\app\\app-routing.module.ts",
+  "SelectedNode": "\\app\\db-service.js",
   "PreviewInSolutionExplorer": false
 }

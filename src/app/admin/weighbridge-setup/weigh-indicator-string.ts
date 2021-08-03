@@ -7,6 +7,7 @@ export class WeighIndicatorString{
     variableLength: boolean;
     type: string;
     pollingCommand: string;
+    delimeter: string;
 
     //Serial port setting
     baudRate: number;
@@ -45,6 +46,7 @@ export class WeighIndicatorString{
     this.type = "continuous";
     this.startChar1 = "2";
     this.endChar1 = "3";
+    this.delimeter = "";
     this.signCharPosition = 2;
   }
 
@@ -82,7 +84,7 @@ export class WeighIndicatorString{
       indicator.weightCharPosition4 = ele['weightCharPosition4'];
       indicator.weightCharPosition5 = ele['weightCharPosition5'];
       indicator.weightCharPosition6 = ele['weightCharPosition6'];
-
+      indicator.delimeter = ele['delimeter'];
       indicators.push(indicator);
     }
 

@@ -1,9 +1,10 @@
 <button mat-raised-button color="primary" (click)="openCreateDialog()">Create New <mat-icon>add</mat-icon></button>
 <div fxLayout="column" fxLayoutGap="16px">
   <h3>Indicator Strings</h3>
-  <div fxLayout="row wrap">
+  <div fxLayout="column" fxLayoutGap="12px">
     <div *ngFor="let iString of indicatorStrings; let i=index">
-      <button mat-stroked-button (click)="openEditDialog(iString, i)">{{iString?.stringName}}</button>
+      <button mat-button (click)="openEditDialog(iString, i)">{{iString?.stringName}}</button>
+      <!--<button mat-icon-button color="error" (click)="delete(iString?.stringName, index)"><mat-icon>delete</mat-icon></button>-->
     </div>
   </div>
 </div>

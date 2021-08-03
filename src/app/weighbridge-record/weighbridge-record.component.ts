@@ -18,7 +18,8 @@ export class WeighbridgeRecordComponent implements OnInit {
 
   selectedWeighbridge: Weighbridge;
   weighbridges: Array<Weighbridge> = [];
-  currentWeight: any = 10000;
+  currentWeight: any;
+  currData: any;
   pendingRecords: Array<Weighment>;
 
   isWeightStable = false;
@@ -46,9 +47,14 @@ export class WeighbridgeRecordComponent implements OnInit {
       this.fetchPendingRecords();
     }, refreshTime);
 
+    setInterval(this.updateCurrentWeight.bind(this), 1000);
+
     //Subscribe to weight
     this.sharedDataService.currentData.pipe().subscribe(currData => {
-      this.updateCurrentWeight(currData);
+      if (currData['currWeight']) {
+        this.currData = currData['currWeight'];
+        //this.updateCurrentWeight(currData['currWeight']);
+      }
       this.updatePendingRecords(currData['PENDING_RECORDS']);
       if (currData['WEIGHMENT_COMPLETED']) {
         this.fetchPendingRecords();
@@ -61,16 +67,28 @@ export class WeighbridgeRecordComponent implements OnInit {
     this.dbService.executeDBStmt("PENDING_RECORDS", QueryList.GET_PENDING_RECORDS);
   }
 
-  updateCurrentWeight(currData) {
-    this.currentWeight = currData['currWeight'];
-    if (this.prevWeight === currData['currWeight']) {
-      this.cnt++;
-      if (this.cnt > 10) {
-        this.isWeightStable = true;        
+  updateCurrentWeight() {
+    if (!this.currData) {
+      this.isWeightStable = false;
+      this.currentWeight = "Err!";
+      return;
+    }
+    var currWeight = this.currData;
+
+    if (currWeight['timestamp'] > (new Date().getTime())-1000) {
+      this.currentWeight = currWeight['weight'];
+      if (this.prevWeight === currWeight['weight']) {
+        this.cnt++;
+        if (this.cnt > 1) {
+          this.isWeightStable = true;
+        }
+      } else {
+        this.cnt = 0;
+        this.prevWeight = this.currentWeight;
+        this.isWeightStable = false;
       }
     } else {
-      this.cnt = 0;
-      this.prevWeight = this.currentWeight;
+      this.currentWeight = "Err!";
       this.isWeightStable = false;
     }
   }

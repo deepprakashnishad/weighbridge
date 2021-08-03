@@ -32,7 +32,7 @@
       </mat-form-field>
       <mat-form-field appearance="outline" *ngIf="weighment.weighmentType==='inbound'">
         <mat-label>Scroll No</mat-label>
-        <input matInput [(ngModel)]="weighment.scrollNo" name="cntlscrollNo"
+        <input matInput maxlength="1" [(ngModel)]="weighment.scrollNo" name="cntlscrollNo"
                (keyup.enter)="parseQRString(weighment.scrollNo)"
                (blur)="parseQRString(weighment.scrollNo)" />
       </mat-form-field>
@@ -70,21 +70,22 @@
     </div>
     <div fxLayout fxLayoutAlign="start center" fxLayoutGap="16px">
       <app-tag-selector [tagTypeId]="2" [selectedTag]="weighmentDetail.material" [title]="'Material*'" (optionSelected)="materialSelected($event)"></app-tag-selector>
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="weight">
         <mat-label>First Weight</mat-label>
         <input matInput [(ngModel)]="weighmentDetail.firstWeight" name="cntlFirstWt" readonly tabindex="-1" />
       </mat-form-field>
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="weight">
         <mat-label>Second Weight</mat-label>
         <input matInput [(ngModel)]="weighmentDetail.secondWeight" name="cntlSecondWt" readonly tabindex="-1" />
       </mat-form-field>
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="weight">
         <mat-label>Net Weight</mat-label>
         <input matInput [(ngModel)]="weighmentDetail.netWeight" name="cntlNetWeight" readonly tabindex="-1"/>
       </mat-form-field>
     </div>
     <div class="full-width" fxLayout fxLayoutGap="32px" fxLayoutAlign="space-between center">
-      <button mat-raised-button class="capture-button" color="primary" [disabled]="!isWeightStable || weighment.status==='complete'" (click)="capture()">Capture</button>
+      <button mat-raised-button class="capture-button" color="primary"
+              [disabled]="!isWeightStable || weighment.status==='complete'" (click)="capture()">Capture</button>
       <div fxLayout fxLayoutGap="32px" fxLayoutAlign="center center">
         <mat-checkbox *ngIf="weighmentDetail.secondWeight && weighmentDetail.firstWeight" [(ngModel)]="isComplete">Is Complete</mat-checkbox>
         <!--<button *ngIf="weighmentDetail.id"

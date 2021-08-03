@@ -36,7 +36,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   netWeight: number;
   remark: string;
 
-  currentWeight: number = 10000;
+  currentWeight: any = 10000;
+  currData: any;
   isWeightStable: boolean = true;
   prevWeight: number;
   cnt: number = 0;
@@ -71,24 +72,55 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     //Later remove this one line
     //setTimeout(() => { this.isWeightStable = true }, 2000);
 
+    setInterval(this.updateCurrentWeight.bind(this), 1000);
+    
     this.sharedDataService.currentData.subscribe((data) => {
-      this.updateCurrentWeight(data);
+      //this.updateCurrentWeight(data['currWeight']);
+      this.currData = data['currWeight'];
     });
   }
 
-  updateCurrentWeight(currData) {
-    this.currentWeight = currData['currWeight'];
-    if (this.prevWeight === currData['currWeight']) {
-      this.cnt++;
-      if (this.cnt > 10) {
-        this.isWeightStable = true;
+  updateCurrentWeight() {
+    console.log(this.currData);
+    if (!this.currData) {
+      this.isWeightStable = false;
+      this.currentWeight = "Err!";
+      this.capture();
+      return;
+    }
+    var currWeight = this.currData;
+    if (currWeight['timestamp'] > (new Date().getTime()) - 1000) {
+      this.currentWeight = currWeight['weight'];
+      if (this.prevWeight === currWeight['weight']) {
+        this.cnt++;
+        if (this.cnt > 1) {
+          this.isWeightStable = true;
+        }
+      } else {
+        this.cnt = 0;
+        this.prevWeight = this.currentWeight;
+        this.isWeightStable = false;
       }
     } else {
-      this.cnt = 0;
-      this.prevWeight = this.currentWeight;
       this.isWeightStable = false;
+      this.currentWeight = "Err!";
+      this.capture();
     }
   }
+
+  //updateCurrentWeight(currData) {
+  //  this.currentWeight = currData['currWeight'];
+  //  if (this.prevWeight === currData['currWeight']) {
+  //    this.cnt++;
+  //    if (this.cnt > 10) {
+  //      this.isWeightStable = true;
+  //    }
+  //  } else {
+  //    this.cnt = 0;
+  //    this.prevWeight = this.currentWeight;
+  //    this.isWeightStable = false;
+  //  }
+  //}
 
   ngAfterViewInit() {
     this.vehicleCntl.nativeElement.focus();
@@ -365,9 +397,10 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   capture() {
     //this.currentWeight = Utils.randomNumberGenerator(5, 10000, 50000);
 
-    if (this.weighmentDetail.firstWeight === undefined) {
+    if (this.weighment?.weighmentDetails[this.weighment?.weighmentDetails?.length - 1]?.firstWeight===undefined) {
       this.weighmentDetail.firstWeight = this.currentWeight;
     } else {
+      this.weighmentDetail.firstWeight = this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1].firstWeight;
       this.weighmentDetail.secondWeight = this.currentWeight;
       this.weighmentDetail.netWeight = Math.abs(this.weighmentDetail.secondWeight - this.weighmentDetail.firstWeight);
     }
@@ -394,11 +427,13 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     }
     var result = await this.dbService.executeSyncDBStmt("SELECT", stmt);
     if (result[0]) {
-      this.weighment = Weighment.fromJSON(result[0]);
-      this.weighment.weighmentDetails = WeighmentDetail.fromJSONList(await this.getWeighmentDetails(this.weighment.rstNo));
-      if (this.weighment.weighmentDetails.length > 0) {
-        this.weighmentDetail = this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1];
-      }
+      this.ngZone.run(async () => {
+        this.weighment = Weighment.fromJSON(result[0]);
+        this.weighment.weighmentDetails = WeighmentDetail.fromJSONList(await this.getWeighmentDetails(this.weighment.rstNo));
+        if (this.weighment.weighmentDetails.length > 0) {
+          this.weighmentDetail = this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1];
+        }
+      });
     }
     
   }
