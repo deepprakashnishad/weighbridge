@@ -2,75 +2,90 @@ const { ipcMain } = require("electron");
 const serialPort = require('serialport');
 const Readline = require('@serialport/parser-readline')
 const ByteLength = require('@serialport/parser-byte-length')
-
 const log = require('electron-log');
+
 log.transports.file.level = 'info';
 log.transports.file.file = __dirname + 'log.log';
 
-var currWeight = "";
-var startReadingWeight = false;
-var weighbridgeName;
+var weighString;
+var tempPort;
+var isPortInUse = false;
 
-ipcMain.handle("serial-port-ipc", async (event, ...args) => {
-  if (args[0] === "initialiaze-port") {
-    serialPort.list().then((ports, err) => {
-      if (err) {
-        log.error(err);
-        return;
+ipcMain.handle("initialize-port", async (event, ...args) => {
+  if (args[1]['wiType'] === "serial") {
+    try {
+      if (tempPort?.isOpen) {
+        tempPort.close();
       }
-      mports = ports;
-      initialiazePort("serial", env_data['weighString']['comPort'], env_data['weighString']['baudRate'],
-        env_data['weighString']['dataBits'], env_data['weighString']['stopBits'],
-        env_data['weighString']['parity'], env_data['weighString']['delimeter'], env_data['weighString']['totalChars']);
-    });
+    } catch (err) {
+      log.error(err);
+    }
+    try {
+      weighString = args[1]['weighString'];
+      tempPort = serialPort(args[1]['comPort'], {
+        "baudRate": weighString['baudRate'],
+        "dataBits": weighString['dataBits'],
+        "stopBits": weighString['stopBits'],
+        "parity": weighString['parity'].toString().toLowerCase(),
+        "flowControl": weighString['flowControl'],
+        autoOpen: false
+      });
+    } catch (err) {
+      log.error(err);
+      win.webContents.send("curr-weight-recieved", ["Port initialization failed"]);
+    }
+
+    tempPort.on("open", function () {
+      isPortInUse = true;
+    })
+    tempPort.on("close", function () {
+      isPortInUse = false;
+    })
+    if (isPortInUse===false) {
+      initializePort();
+    }
+      
   }
 });
 
-function initialiazePort(type, portPath, baudRate, dataBits, stopBits, parity, delimeter, totalChars) {
+function initializePort() {
   try {
-    if (type === "serial") {
-      port = serialPort(portPath, {
-        "baudRate": baudRate,
-        "dataBits": dataBits,
-        "stopBits": stopBits,
-        "parity": parity.toString().toLowerCase(),
-      });
-
-      if (delimeter === undefined || delimeter === null || delimeter.length === 0) {
-        console.log("Invoking byte length parse");
-        var parser = port.pipe(new ByteLength({ length: totalChars }));
-        parser.on('data', onReadline);
-        parser.on('error', function (err) {
-          log.error(err);
-          win.webContents.send("curr-weight-recieved", [err]);
-        });
-      } else {
-        console.log("Invoking readline parser");
-        var parser = port.pipe(new Readline({ delimiter: '\r\n' }));
-        parser.on('data', onReadline);
-        parser.on('error', function (err) {
-          log.error(err);
-          win.webContents.send("curr-weight-recieved", [{weighbridgeName: { weight: err, timestamp: (new Date().getTime()) }}]);
-        });
-      }
-      parser.on('close', function () {
-        console.log("Port got closed");
-      });
+    tempPort.open();
+    if (weighString['delimeter'] === undefined
+      || weighString['delimeter'] === null
+      || weighString['delimeter'].length === 0) {
+      var parser = tempPort.pipe(new ByteLength({ length: weighString["totalChars"] }));
+    } else {
+      var parser = tempPort.pipe(new Readline({ delimiter: '\r\n' }));
     }
-    log.info("Initialization complete");
+
+    parser.on('data', onReadData);
+    parser.on('error', function (err) {
+      log.error(err);
+      win.webContents.send("curr-weight-recieved", [err]);
+    });
   } catch (err) {
-    log.error(err);
-  }
+
+  } 
 }
 
-function onReadline(data) {
+ipcMain.handle("write-to-port", async (event, ...args) => {
+  if (args[0] && !isNaN(args[0])) {
+    tempPort.write(String.fromCharCode(args[0]));
+  } else if (args[0] && isNaN(args[0])) {
+    tempPort.write(args[0]);
+  } else {
+    tempPort.write(String.fromCharCode(05));
+  }
+});
+
+function onReadData(data) {
   try {
     data = data.toString();
-    if (env_data['weighString'] === undefined) {
+    console.log(data);
+    if (weighString === undefined) {
       return;
     }
-
-    var weighString = env_data['weighString'];
 
     var tempWeight = '';
 
@@ -102,51 +117,13 @@ function onReadline(data) {
     if (weighString['weightCharPosition6'] && weighString['weightCharPosition6'] !== null) {
       tempWeight = tempWeight + data.charAt(weighString['weightCharPosition6']);
     }
-
-    //console.log("Weight - " + tempWeight);
-    console.log(`Weighbridge - ${weighbridgeName}`);
-    win.webContents.send("curr-weight-recieved", [{ weighbridgeName: { weight: tempWeight, timestamp: (new Date().getTime()) }}]);
+    win.webContents.send("curr-weight-recieved", [{ weight: tempWeight, timestamp: (new Date()).getTime() }]);
   } catch (err) {
     log.error(err);
   }
 }
 
-
-function onData(data) {
-  log.info(data.toString());
-  if (data.toString().charCodeAt(0) === 2) {
-    startReadingWeight = true;
-    if (env_data['weighString'] === undefined) {
-      return;
-    }
-    if (startReadingWeight && data.toString().charCodeAt(0) !== 2 && data.toString().charCodeAt(0) !== 3) {
-      tempWeight = tempWeight.concat(String.fromCharCode(data.toString().charCodeAt(0)));
-
-      var weighString = env_data['weighString'];
-
-      var tempWeight = '';
-
-      if (data.charCodeAt(weighString['signCharPosition']) === weighString['negativeSignValue'] ||
-        data.charAt(weighString['signCharPosition']) === weighString['negativeSignValue']) {
-        tempWeight = '-';
-      }
-      if (data.toString().charCodeAt(0) === 3) {
-        currWeight = tempWeight;
-        tempWeight = "";
-        if (currWeight.charAt(0) === "\r") {
-          currWeight = currWeight.slice(3);
-        }
-        win.webContents.send("curr-weight-recieved", [currWeight]);
-        log.info(`Main channel: ${currWeight}`);
-      }
-    }
-  }
-}
-
-
-//port.on('data', onData);
-//port.on('error', function (err) {
-//  log.error(err);
-//  console.log("Haribol ho gaya")
-//  win.webContents.send("curr-weight-recieved", [err]);
-//});
+ipcMain.handle("close-port", async (event, ...args) => {
+  if (tempPort.isOpen)
+    tempPort.close();
+})

@@ -24,8 +24,9 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
   prevWeight: any;
   selectedString: WeighIndicatorString = new WeighIndicatorString();
   currWeighData: any;
-
+  existingIndicators: Array<WeighIndicator> = [];
   updateWeightIntervalId: any;
+  isPortVerified = false;
 
   constructor(
     private notifier: NotifierService,
@@ -38,6 +39,7 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data: any
   ) {
     this.isNew = data['isNew'];
+    this.existingIndicators = data['existingIndicators'];
     if (data['indicator']) {
       this.indicator = data["indicator"];
     }
@@ -51,15 +53,6 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
       }
     });
     this.refreshPortList();
-    //var subscription = this.sharedDataService.currentData.pipe().subscribe(currData => {
-    //  if (currData['weighstrings']) {
-    //    this.indicatorStrings = WeighIndicatorString.fromJSON(currData['weighstrings']);
-    //    this.updateSelectedString(this.indicator.indicatorString);
-    //  }
-    //  if (this.indicatorStrings && this.indicatorStrings.length > 0) {
-    //    subscription?.unsubscribe();
-    //  }
-    //}, () => { }, () => console.log("Fetch completed"));
   }
 
   refreshPortList() {
@@ -76,13 +69,19 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
     for (var i = 0; i < this.indicatorStrings.length; i++) {
       if (this.indicatorStrings[i].stringName == newString) {
         this.selectedString = this.indicatorStrings[i];
-        console.log(this.selectedString);
-        console.log(newString);
       }
     }
   }
 
   verify() {
+    if (this.existingIndicators.some(ele => {
+      if (ele.comPort === this.indicator.comPort) {
+        return true;
+      }
+    })) {
+      this.notifier.notify("error", "One port cannot be used by multiple indicators");
+      return;
+    }
     this.ipcService.invokeIPC("verify-port", 
       "verification-weight-recieved",
       {
@@ -100,49 +99,100 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
 
   updateCurrentWeight() {
     var currWeight = this.currWeighData;
-    console.log(currWeight);
-    if (currWeight['timestamp'] > (new Date().getTime()) - 1000) {
-      this.verification_weight = currWeight['weight'];
-      if (this.prevWeight === currWeight['weight']) {
-        this.cnt++;
-        if (this.cnt > 1) {
-          this.ipcService.invokeIPC("close-verification-port");
-          clearInterval(this.updateWeightIntervalId);
-        }
-      } else {
-        this.cnt = 0;
-        this.prevWeight = this.verification_weight;
+    this.verification_weight = currWeight['weight'];
+    if (this.prevWeight === currWeight['weight']) {
+      this.cnt++;
+      if (this.cnt > 1) {
+        this.ipcService.invokeIPC("close-verification-port");
+        clearInterval(this.updateWeightIntervalId);
+        this.isPortVerified = true;
       }
     } else {
-      this.verification_weight = "Err!";
+      this.cnt = 0;
+      this.prevWeight = this.verification_weight;
     }
   }
 
-  async save() {
-    if (this.indicator.indicatorString === undefined) {
-      this.notifier.notify("error", "Please select weigh indicator string");
-      return;
+  isValid() {
+    var isValid = true;
+    if (this.indicator.wiName === undefined || this.indicator.wiName.length===0) {
+      isValid = false;
+      this.notifier.notify("error", "Weighment indicator name is required");
     }
-    const undefinedRegExp = /undefined/g;
-    var insertStmt = QueryList.INSERT_WEIGH_INDICATOR
-      .replace("{comPort}", this.indicator.comPort)
-      .replace("{port}", this.indicator.port ? this.indicator.port.toString() : "8080")
-      .replace("{weighstring}", this.indicator?.indicatorString)
-      .replace("{status}", this.indicator.status)
-      .replace("{measuringUnit}", this.indicator.measuringUnit)
-      .replace("{decimalPoint}", this.indicator.decimalPoint ? this.indicator.decimalPoint.toString() : "0")
-      .replace("{type}", this.indicator.type)
-      .replace("{httpType}", this.indicator.httpType)
-      .replace("{ipAddress}", this.indicator.ipAddress)
-      .replace("{wiName}", this.indicator.wiName)
-      .replace(undefinedRegExp, "");
 
-    var result = await this.dbService.executeInsertAutoId("weighindicator", "id", insertStmt);
-    if (result['newId']) {
-      this.notifier.notify("success", "Weigh indicator created successfully");
-      this.dialogRef.close();
+    if (this.indicator.indicatorString === undefined) {
+      isValid = false;
+      this.notifier.notify("error", "Weighment indicator name is required");
+    }
+
+    if (this.existingIndicators.some(ele => ele.wiName === this.indicator.wiName)) {
+      isValid = false;
+      this.notifier.notify("error", "Weighment indicator name cannot be duplicate");
+    }
+    return isValid;
+  }
+
+  async save() {
+    const undefinedRegExp = /undefined/g;
+    if (this.indicator.id) {
+      var stmt = QueryList.UPDATE_WEIGH_INDICATOR
+        .replace("{comPort}", this.indicator.comPort)
+        .replace("{port}", this.indicator.port ? this.indicator.port.toString() : "8080")
+        .replace("{weighstring}", this.indicator?.indicatorString)
+        .replace("{status}", this.indicator.status)
+        .replace("{measuringUnit}", this.indicator.measuringUnit)
+        .replace("{decimalPoint}", this.indicator.decimalPoint ? this.indicator.decimalPoint.toString() : "0")
+        .replace("{type}", this.indicator.type)
+        .replace("{httpType}", this.indicator.httpType)
+        .replace("{ipAddress}", this.indicator.ipAddress)
+        .replace("{wiName}", this.indicator.wiName)
+        .replace("{id}", this.indicator.id.toString())
+        .replace(undefinedRegExp, "");
+      var result = await this.dbService.executeSyncDBStmt("UPDATE", stmt);
+      if (result['error']) {
+        if (result["error"]) {
+          this.notifier.notify("error", result["error"]);
+        } else {
+          this.notifier.notify("error", "Weigh indicator could not be updated");
+        }
+      } else if (result) {
+        this.ipcService.invokeIPC("weighIndicators")
+        this.notifier.notify("success", "Weigh indicator updated successfully");
+        this.dialogRef.close(this.indicator);
+      } else {
+        this.notifier.notify("error", "Weigh indicator could not be updated");
+      }
     } else {
-      this.notifier.notify("error", "Weigh indicator could not be created");
+      if (!this.isValid()) {
+        return;
+      }
+      var stmt = QueryList.INSERT_WEIGH_INDICATOR
+        .replace("{comPort}", this.indicator.comPort)
+        .replace("{port}", this.indicator.port ? this.indicator.port.toString() : "8080")
+        .replace("{weighstring}", this.indicator?.indicatorString)
+        .replace("{status}", this.indicator.status)
+        .replace("{measuringUnit}", this.indicator.measuringUnit)
+        .replace("{decimalPoint}", this.indicator.decimalPoint ? this.indicator.decimalPoint.toString() : "0")
+        .replace("{type}", this.indicator.type)
+        .replace("{httpType}", this.indicator.httpType)
+        .replace("{ipAddress}", this.indicator.ipAddress)
+        .replace("{wiName}", this.indicator.wiName)
+        .replace(undefinedRegExp, "");
+      var result = await this.dbService.executeInsertAutoId("weighindicator", "id", stmt);
+      if (result['newId']) {
+        var envIndicatorStrings = [];
+        envIndicatorStrings = await this.ipcService.invokeIPC("loadEnvironmentVars", ["weighIndicators"]);
+        envIndicatorStrings.push(this.indicator.wiName);
+        this.ipcService.invokeIPC("saveSingleEnvVar", ["weighIndicators", envIndicatorStrings]);
+        this.notifier.notify("success", "Weigh indicator created successfully");
+        this.dialogRef.close(this.indicator);
+      } else {
+        if (result["error"]) {
+          this.notifier.notify("error", result["error"]);
+        } else {
+          this.notifier.notify("error", "Weigh indicator could not be created");
+        }
+      }
     }
   }
 
@@ -158,6 +208,12 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
 
   cancel() {
     this.dialogRef.close();
+  }
+
+  writeToPortTest() {
+    this.ipcService.invokeIPC("write-to-verification-port", ["Hare Krishna"]).then(result => {
+      console.log(result);
+    })
   }
 }
 

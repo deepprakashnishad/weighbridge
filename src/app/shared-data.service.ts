@@ -7,7 +7,6 @@ import { Subject, BehaviorSubject } from 'rxjs';
 export class SharedDataService {
 
   public data: any = {};
-  public subject = new Subject<any>();
   private dataSource = new  BehaviorSubject(this.data);
   currentData = this.dataSource.asObservable();
 

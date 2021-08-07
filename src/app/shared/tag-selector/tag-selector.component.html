@@ -1,7 +1,13 @@
-	<form>
+	<form fxLayout fxLayoutGap="0px">
 		<mat-form-field appearance="outline">
 			<mat-label>{{title}}</mat-label>	
-			<input type="text" [placeholder]="title" matInput [formControl]="mControl" [matAutocomplete]="auto" (focus)="onFocus()">
+			<input
+						 type="text"
+						 [placeholder]="title"
+						 matInput [formControl]="mControl"
+						 [matAutocomplete]="auto"
+						 (focus)="onFocus()"
+						 >
 			<mat-hint>{{hint}}</mat-hint>
 		</mat-form-field>
 		
@@ -11,4 +17,5 @@
 			{{option.code}} - {{option.mValue}}
 		</mat-option>
 		</mat-autocomplete>
+		<button mat-icon-button (click)="inputComplete()"><mat-icon>view_list</mat-icon></button>
 	</form>

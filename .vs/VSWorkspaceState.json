@@ -2,8 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\app",
-    "\\src\\app"
+    "\\src\\app",
+    "\\src\\app\\admin",
+    "\\src\\app\\admin\\data-setup\\challan-weight-check",
+    "\\src\\app\\admin\\weighbridge-setup",
+    "\\src\\app\\admin\\weighbridge-setup\\weighing-indicators",
+    "\\src\\app\\admin\\weighbridge-setup\\weighing-indicators\\create-edit-weigh-indicator",
+    "\\src\\app\\report\\weighment-report"
   ],
-  "SelectedNode": "\\app\\db-service.js",
+  "SelectedNode": "\\app\\port-verifier.js",
   "PreviewInSolutionExplorer": false
 }

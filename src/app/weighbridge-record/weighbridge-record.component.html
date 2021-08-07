@@ -1,7 +1,11 @@
 <div class="full-height main-container" fxLayout="column" fxLayoutGap="5px">
   <mat-card>
     <div class="box-title" fxLayout fxLayoutAlign="space-between center">
-      <div>WB1</div>
+      <mat-select [(ngModel)]="selectedIndicator" (selectionChange)="selectedIndicatorUpdated()">
+        <mat-option *ngFor="let indicator of weighIndicators" [value]="indicator">
+          {{indicator.wiName}}
+        </mat-option>
+      </mat-select>
       <button mat-icon-button (click)="refreshWeightReader()"><mat-icon>refresh</mat-icon></button>
       <!--<div class="icon-container"><img width="15" height="15" src="assets/icons/plug-30.png" /></div>-->
     </div>
@@ -9,6 +13,7 @@
         <div fxLayout="column" fxLayoutAlign="start start">
           <span [ngClass]="{'curr-weight-red': !isWeightStable, 'curr-weight-green': isWeightStable}">{{currentWeight}}</span>
         </div>
+        <button mat-raised-button (click)="getWeight()" *ngIf="selectedIndicator && selectedIndicator['stringType']==='polling'">Get Weight</button>
       </mat-card-content>
   </mat-card>
 

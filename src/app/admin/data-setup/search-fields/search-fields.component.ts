@@ -138,22 +138,8 @@ export class SearchFieldsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(async result => {
       if (result) {
-        console.log(result);
-        //this.searchFields[index].mValue = result.items.join("#");
-        //await this.dbService.executeSyncDBStmt("DELETE",
-        //  QueryList.DELETE_SEARCH_FIELD_VALUE_BY_SEARCH_FIELD_ID.replace("{search_field_id}", field.id.toString()));
-        //console.log(result.items);
-        //for (var i = 0; i < result.items.length; i++) {
-        //  var item = result.items[i];
-        //  await this.dbService.executeInsertAutoId("search_field_value", "id",
-        //    QueryList.INSERT_SEARCH_FIELD_VALUE
-        //      .replace("{search_field_id}", field.id.toString())
-        //      .replace("{mValue}", item)
-        //  )
-        //}
         this.notifier.notify("success", "Search field updated successfully");
       }
-
     });
   }
 }

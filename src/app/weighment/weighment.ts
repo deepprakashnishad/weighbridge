@@ -62,6 +62,8 @@ export class WeighmentDetail {
     this.firstUnit = "Kg";
     this.secondUnit = "Kg";
     this.remark = "";
+    this.material = "";
+    this.supplier = "";
   }
 
   static fromJSON(data) {

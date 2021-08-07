@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { NotifierService } from 'angular-notifier';
 import { MyDbService } from '../../../my-db.service';
+import { MyIpcService } from '../../../my-ipc.service';
 import { QueryList } from '../../../query-list';
 import { SharedDataService } from '../../../shared-data.service';
 import { WeighIndicator } from '../weigh-indicator';
@@ -17,11 +18,14 @@ export class WeighingIndicatorsComponent implements OnInit {
 
   indicators: Array<WeighIndicator>=[];
   displayedColumns: string[] = ['isLocal', 'connection', 'comPort', 'ipAddress', 'port', 'name', 'indicatorString', 'status', 'unit', 'decimalPoint', 'action'];
+  @ViewChild(MatTable) indicatorTable: MatTable<any>;
 
   constructor(
     private notifier: NotifierService,
     private dialog: MatDialog,
     private dbService: MyDbService,
+    private ngZone: NgZone,
+    private ipcService: MyIpcService,
     private sharedDataService: SharedDataService
   ) { }
 
@@ -44,13 +48,17 @@ export class WeighingIndicatorsComponent implements OnInit {
       {
         data: {
           title: "Create Weight Indicator",
-          isNew: true
+          isNew: true,
+          "existingIndicators": this.indicators,
         }
       }  
     );
 
-    ref.afterClosed().subscribe(result=>{
-      this.indicators.push(result);
+    ref.afterClosed().subscribe(result => {
+      if (result) {
+        this.indicators.push(result);
+        this.indicatorTable.renderRows();
+      }
     });
   }
 
@@ -63,6 +71,7 @@ export class WeighingIndicatorsComponent implements OnInit {
         data: {
           "title": "Edit Weight Indicator",
           "indicator": indicator,
+          "existingIndicators": this.indicators,
           isNew: false
         }
       }  
@@ -71,11 +80,22 @@ export class WeighingIndicatorsComponent implements OnInit {
     ref.afterClosed().subscribe(result=>{
       if(result){
         this.indicators[index] = result;
+        this.indicatorTable.renderRows();
       }
     });
   }
 
-  delete(field, index){
-
+  async delete(field, index) {
+    var result = await this.dbService.executeSyncDBStmt("DELETE", QueryList.DELETE_WEIGH_INDICATOR.replace("{id}", field.id))
+    if (result['error']) {
+      console.log(result['error']);
+      this.notifier.notify("error", "Weigh indicator could not be deleted");
+    } else if (result === true) {
+      this.indicators.splice(index, 1);
+      var envIndicatorStrings = this.indicators.map(ele => ele.wiName);
+      this.ipcService.invokeIPC("saveSingleEnvVar", ["weighIndicators", envIndicatorStrings]);
+      this.notifier.notify("success", "Weigh indicator deleted successfully");
+      this.indicatorTable.renderRows();
+    }
   }
 }

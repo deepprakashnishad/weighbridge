@@ -13,6 +13,7 @@ export class MyIpcService {
   ) {
     //Subscribe to database events from main process
     this._electronService.ipcRenderer.on('verification-weight-recieved', (event, arg) => {
+      console.log(arg[0]);
       this._sharedDataService.updateData("verification_weight", arg[0]);
     });
 

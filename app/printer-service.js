@@ -12,7 +12,7 @@ async function runCommand(command) {
 
 function getPrinters() {
   var printers = win.webContents.getPrinters();
-  console.log(printers);
+  //console.log(printers);
   return printers;
 }
 
@@ -21,9 +21,5 @@ ipcMain.handle("printer-ipc", async (event, ...args) => {
     return getPrinters();
   } else if (args[0] === "print") {
     await runCommand(args[1]);
-    //createRecieptFile(args[2]);
-    //var command = args[1].replace("<filename>", "reciept_for_print.txt");
-    //const result = await runCommand(command);
-    //console.log(result);
   }
 })

@@ -1,10 +1,13 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import { MatDialog } from '@angular/material/dialog';
+import { NotifierService } from 'angular-notifier';
 import { Observable } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { MyDbService } from '../../my-db.service';
 import { QueryList } from '../../query-list';
+import { ListEditorComponent } from '../list-editor/list-editor.component';
 
 @Component({
   selector: 'app-tag-selector',
@@ -31,7 +34,9 @@ export class TagSelectorComponent implements OnInit, OnChanges {
   searchStr: string = "";
 
   constructor(
-    private dbService: MyDbService
+    private dialog: MatDialog,
+    private dbService: MyDbService,
+    private notifier: NotifierService
   ) { }
 
   ngOnInit() {
@@ -53,7 +58,8 @@ export class TagSelectorComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     var keys = Object.keys(changes);
     for (var i = 0; i < keys.length; i++) {
-      if (keys[i] === "selectedTag" && changes[keys[i]]["currentValue"]) {
+      if (keys[i] === "selectedTag") {
+        
         this.mControl.setValue(changes[keys[i]]["currentValue"]);
       }
       if (keys[i] === "tagTypeId" && changes[keys[i]]["currentValue"]) {
@@ -68,7 +74,6 @@ export class TagSelectorComponent implements OnInit, OnChanges {
         "{search_field_id}", this.tagTypeId.toString()
       )
     );
-    console.log(this.options);
   }
 
   onFocus(){
@@ -86,11 +91,43 @@ export class TagSelectorComponent implements OnInit, OnChanges {
 
   displayFn(item: any): string | undefined{
     if (item && item.code && item.mValue) {
-      return `${item?.code} - ${item?.mValue}`;
+      return `${item?.code}-${item?.mValue}`;
+    } else if(item){
+      return item;
     } else {
       return undefined;
     }
-    
   }
 
+  inputComplete() {
+    var userValue = this.mControl.value;
+    this.openListEditor(userValue ? userValue:"");
+  }
+
+  openListEditor(userValue) {
+    var data = userValue.split(/-(.+)/);
+    if (data.length === 1 && !isNaN(data[0])) {
+      data.push("");
+    } else if (data.length === 1 && isNaN(data[0])) {
+      data.push(data[0]);
+      data[0] = "";
+    }
+    var dialogRef = this.dialog.open(ListEditorComponent, {
+      height: "600px",
+      width: "800px",
+      data: {
+        title: `Edit values`,
+        fieldId: this.tagTypeId,
+        code: data[0],
+        mValue: data[1]
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(async result => {
+      if (result) {
+        this.optionSelected.emit(result);
+        this.notifier.notify("success", "Search field updated successfully");
+      }
+    });
+  }
 }

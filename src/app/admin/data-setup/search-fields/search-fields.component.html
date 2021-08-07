@@ -5,7 +5,7 @@
   </div>
   <div class="content-box" fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="32px">
     <mat-checkbox class="example-margin">Enable Invoice Creation</mat-checkbox>
-    <form class="full-width">
+    <form class="full-width" *ngIf="searchField.id">
       <div fxLayout>
         <div fxFlex="5"></div>
         <div fxFlex="30">
@@ -47,7 +47,7 @@
         <div fxFlex="20" fxLayout>
           <button mat-icon-button color="primary" (click)="openListEditor(field, i)"><mat-icon>view_list</mat-icon></button>
           <button mat-icon-button color="accent" (click)="edit(field)"><mat-icon>edit</mat-icon></button>
-          <button mat-icon-button color="error" (click)="delete(field, i)"><mat-icon>delete</mat-icon></button>
+          <!--<button mat-icon-button color="error" (click)="delete(field, i)"><mat-icon>delete</mat-icon></button>-->
         </div>
       </div>
     </div>

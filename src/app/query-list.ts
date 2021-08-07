@@ -77,4 +77,8 @@ export class QueryList{
   static readonly INSERT_USER_PERMISSION: string = "INSERT INTO user_permission(userid, permissionid) VALUES({userid}, {permissionid})";
   static readonly INSERT_PERMISSION: string = "INSERT INTO permission(id, permission) VALUES({id}, '{permission}')"
   static readonly RESET_PASSWORD: string = "UPDATE app_user SET password='{password}' WHERE id={id}";
+
+  //Application data
+  static readonly GET_APP_SETTINGS: string = "SELECT * FROM app_data";
+  static readonly UPDATE_APP_SETTING: string = "UPDATE app_data set mValue='{mValue}' WHERE field='{field}'"
 }

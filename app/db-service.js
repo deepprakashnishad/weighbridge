@@ -2,6 +2,8 @@ const { ipcMain } = require('electron');
 const sql = require("mssql");
 const fs = require('fs');
 const log = require('electron-log');
+const bootstrapData = require("./bootstrap.js");
+
 log.transports.file.level = 'info';
 log.transports.file.file = __dirname + 'log.log';
 
@@ -21,7 +23,7 @@ var sqlConfig = {
   }
 };
 
-var data = fs.readFileSync("env.txt", 'utf-8');
+var data = fs.readFileSync(bootstrapData.mConstants.envFilename, 'utf-8');
 global.env_data = JSON.parse(data);
 
 initializeSqlConfig(env_data);
@@ -60,7 +62,7 @@ ipcMain.handle("executeSyncStmt", async (event, arg) => {
   } catch (err) {
     console.log(err);
     log.error(err);
-    return { error: err };
+    return { error: err.message };
   }
   
   return processResult(arg[0], results);
@@ -132,18 +134,17 @@ function processResult(queryType, result){
 }
 
 async function loadEnvDataFromDB() {
-  const data = require("./bootstrap.js");
   var pool = await sql.connect(sqlConfig);
-  var keys = Object.keys(data.envStmts);
+  var keys = Object.keys(bootstrapData.envStmts);
   for (var key of keys) {
-    var stmt = data['envStmts'][key]['stmt'];
-    for (var replacementKey of data['envStmts'][key]['replacementKeys']) {
+    var stmt = bootstrapData['envStmts'][key]['stmt'];
+    for (var replacementKey of bootstrapData['envStmts'][key]['replacementKeys']) {
       stmt = stmt.replace(`{${replacementKey}}`, env_data[replacementKey])
     }
     try {
       var result = await pool.query(stmt);
       env_data[key] = processResult("SELECT", result);
-      if (data['envStmts'][key]['isSingleRecord']) {
+      if (bootstrapData['envStmts'][key]['isSingleRecord']) {
         env_data[key] = env_data[key][0];
       }
     } catch (err) {

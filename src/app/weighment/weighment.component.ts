@@ -9,6 +9,7 @@ import { MyDbService } from '../my-db.service';
 import { MyIpcService } from '../my-ipc.service';
 import { QueryList } from '../query-list';
 import { SharedDataService } from '../shared-data.service';
+import { TagSelectorComponent } from '../shared/tag-selector/tag-selector.component';
 import { Utils } from '../utils';
 import { Weighment, WeighmentDetail } from './weighment';
 import { WeighmentSummaryComponent } from './weighment-summary/weighment-summary.component';
@@ -25,6 +26,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   weighmentDetails: Array<WeighmentDetail> = [];
 
   @ViewChild('vehicleCntl') vehicleCntl: ElementRef;
+
+  @ViewChild('transporterCntl') transporterCntl: TagSelectorComponent;
 
   currDate = new Date();
   gatePassNo: string;
@@ -45,6 +48,10 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   weighbridge: string = "";
 
   isComplete: boolean = false;
+
+  transporter: string;
+
+  selectedIndicator: any = { "stringType": "continuous" };
   
   constructor(
     private sharedDataService: SharedDataService,
@@ -65,23 +72,27 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       }
     });
 
-    this.ipcService.invokeIPC("get-env-data").then(result => {
-      this.weighbridge = result['weighbridge'];
+    if (this.selectedIndicator?.stringType === "continous") {
+      setInterval(this.updateCurrentWeight.bind(this), 1000);
+    }
+
+    this.sharedDataService.currentData.subscribe((data) => {
+      this.currData = data['currWeight'];
+      if (this.selectedIndicator?.stringType === "polling") {
+        this.updateCurrentWeight();
+      }
+
+      if (data["selectedWeighBridge"]) {
+        this.selectedIndicator = data["selectedWeighBridge"];
+      }
     });
 
-    //Later remove this one line
-    //setTimeout(() => { this.isWeightStable = true }, 2000);
-
-    setInterval(this.updateCurrentWeight.bind(this), 1000);
-    
-    this.sharedDataService.currentData.subscribe((data) => {
-      //this.updateCurrentWeight(data['currWeight']);
-      this.currData = data['currWeight'];
+    this.ipcService.invokeIPC("get-env-data").then(result => {
+      this.weighbridge = result['weighbridge'];
     });
   }
 
   updateCurrentWeight() {
-    console.log(this.currData);
     if (!this.currData) {
       this.isWeightStable = false;
       this.currentWeight = "Err!";
@@ -89,38 +100,30 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       return;
     }
     var currWeight = this.currData;
-    if (currWeight['timestamp'] > (new Date().getTime()) - 1000) {
+    if (this.selectedIndicator?.stringType === "polling") {
       this.currentWeight = currWeight['weight'];
-      if (this.prevWeight === currWeight['weight']) {
-        this.cnt++;
-        if (this.cnt > 1) {
-          this.isWeightStable = true;
+      this.isWeightStable = true;
+      this.capture();
+    } else {
+      if (currWeight['timestamp'] > (new Date().getTime()) - 1000) {
+        this.currentWeight = currWeight['weight'];
+        if (this.prevWeight === currWeight['weight']) {
+          this.cnt++;
+          if (this.cnt > 1) {
+            this.isWeightStable = true;
+          }
+        } else {
+          this.cnt = 0;
+          this.prevWeight = this.currentWeight;
+          this.isWeightStable = false;
         }
       } else {
-        this.cnt = 0;
-        this.prevWeight = this.currentWeight;
         this.isWeightStable = false;
+        this.currentWeight = "Err!";
+        this.capture();
       }
-    } else {
-      this.isWeightStable = false;
-      this.currentWeight = "Err!";
-      this.capture();
     }
   }
-
-  //updateCurrentWeight(currData) {
-  //  this.currentWeight = currData['currWeight'];
-  //  if (this.prevWeight === currData['currWeight']) {
-  //    this.cnt++;
-  //    if (this.cnt > 10) {
-  //      this.isWeightStable = true;
-  //    }
-  //  } else {
-  //    this.cnt = 0;
-  //    this.prevWeight = this.currentWeight;
-  //    this.isWeightStable = false;
-  //  }
-  //}
 
   ngAfterViewInit() {
     this.vehicleCntl.nativeElement.focus();
@@ -137,6 +140,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       this.weighment.vehicleNo = inputs[2];
       this.weighment.transporterCode = parseInt(inputs[3]); 
       this.weighment.transporterName = inputs[4];
+      this.transporter = `${this.weighment.transporterCode}-${this.weighment.transporterName}`;
     }
 
     if (this.weighment.rstNo) {
@@ -152,12 +156,18 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     this.weighment.vehicleNo = event;
   }
 
-  supplierSelected(event){
-    this.weighmentDetail.supplier = event;
+  transporterSelected(event) {
+    this.weighment.transporterCode = event.code;
+    this.weighment.transporterName = event.mValue;
   }
 
-  materialSelected(event){
-    this.weighmentDetail.material = event;
+  supplierSelected(event){
+    this.weighmentDetail.supplier = `${event.code}-${event.mValue}`;
+  }
+
+  materialSelected(event) {
+    console.log(event);
+    this.weighmentDetail.material = `${event.code}-${event.mValue}`;
   }
 
   save() {
@@ -392,11 +402,11 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   reset() {
     this.weighment = new Weighment();
     this.weighmentDetail = new WeighmentDetail();
+    this.transporter = "";
   }
 
   capture() {
     //this.currentWeight = Utils.randomNumberGenerator(5, 10000, 50000);
-
     if (this.weighment?.weighmentDetails[this.weighment?.weighmentDetails?.length - 1]?.firstWeight===undefined) {
       this.weighmentDetail.firstWeight = this.currentWeight;
     } else {
@@ -404,6 +414,10 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       this.weighmentDetail.secondWeight = this.currentWeight;
       this.weighmentDetail.netWeight = Math.abs(this.weighmentDetail.secondWeight - this.weighmentDetail.firstWeight);
     }
+  }
+
+  getWeight() {
+    this.ipcService.invokeIPC("write-to-port", [this.selectedIndicator['pollingCommand']]);
   }
 
   async getWeighment(criteria) {
@@ -429,6 +443,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     if (result[0]) {
       this.ngZone.run(async () => {
         this.weighment = Weighment.fromJSON(result[0]);
+        this.transporter = `${this.weighment.transporterCode}-${this.weighment.transporterName}`;
         this.weighment.weighmentDetails = WeighmentDetail.fromJSONList(await this.getWeighmentDetails(this.weighment.rstNo));
         if (this.weighment.weighmentDetails.length > 0) {
           this.weighmentDetail = this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1];

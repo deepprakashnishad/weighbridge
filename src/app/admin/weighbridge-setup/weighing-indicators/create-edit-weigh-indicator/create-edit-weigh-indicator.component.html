@@ -83,8 +83,8 @@
           </div>
         </div>
         <div fxLayout fxLayoutGap="16px">
-          <button mat-raised-button color="primary" (click)="setAsDefault()"><mat-icon>adjust</mat-icon> Set as default</button>
-          <button mat-raised-button color="primary" (click)="save()"><mat-icon>save</mat-icon> Save</button>
+          <!--<button mat-raised-button color="primary" (click)="writeToPortTest()"><mat-icon>adjust</mat-icon> Write to port</button>-->
+          <button mat-raised-button color="primary" [disabled]="!isPortVerified" (click)="save()"><mat-icon>save</mat-icon> Save</button>
           <button mat-raised-button color="error" (click)="cancel()"><mat-icon>cancel</mat-icon> Cancel</button>
         </div>
       </mat-card-content>

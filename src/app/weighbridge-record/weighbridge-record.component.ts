@@ -1,5 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
+import { WeighIndicator } from '../admin/weighbridge-setup/weigh-indicator';
 import { MyDbService } from '../my-db.service';
 import { MyIpcService } from '../my-ipc.service';
 import { QueryList } from '../query-list';
@@ -16,8 +18,8 @@ const refreshTime = 60000;
 })
 export class WeighbridgeRecordComponent implements OnInit {
 
-  selectedWeighbridge: Weighbridge;
-  weighbridges: Array<Weighbridge> = [];
+  selectedIndicator: any;
+  weighIndicators: Array<any> = [];
   currentWeight: any;
   currData: any;
   pendingRecords: Array<Weighment>;
@@ -34,33 +36,74 @@ export class WeighbridgeRecordComponent implements OnInit {
     private dbService: MyDbService,
     private ipcService: MyIpcService,
     private ngZone: NgZone,
+    private notifier: NotifierService,
     private router: Router,
   ) { }
 
   ngOnInit() {
-    //Later remove this line
-    //setTimeout(() => { this.isWeightStable = true }, 2000);
+    this.initializePendingRecords();
+    this.fetchWeighIndicators();
+  }
 
-    //Get pending records
-    this.fetchPendingRecords();
-    setInterval(() => {
-      this.fetchPendingRecords();
-    }, refreshTime);
+  async fetchWeighIndicators() {
+    var weighIndicators = [];
+    weighIndicators  = await this.ipcService.invokeIPC("loadEnvironmentVars", ["weighIndicators"]);
+    if (weighIndicators && weighIndicators.length>0) {
+      var indicatorNames = "(";
+      weighIndicators.forEach(ele => {
+        indicatorNames = indicatorNames.concat(`'${ele}',`);
+      })
+      indicatorNames = indicatorNames.replace(/.$/, ")");
+      var stmt = "SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN {weighIndicators} AND wi.weighString=ws.stringName AND wi.status='Active'".replace("{weighIndicators}", indicatorNames);
+      var result = await this.dbService.executeSyncDBStmt("SELECT", stmt);
+      if (result['error']) {
+        this.notifier.notify("error", "Database error - " + result['error']);
+        return;
+      }
+      this.weighIndicators = result;
+      this.selectedIndicator = this.weighIndicators[0];
+      this.sharedDataService.updateData("selectedWeighBridge", this.selectedIndicator);
+      console.log(this.selectedIndicator);
+      this.refreshWeightReader();
+      this.initializeWeightReader();
+    }
+  }
 
-    setInterval(this.updateCurrentWeight.bind(this), 1000);
+  getWeight() {
+    this.ipcService.invokeIPC("write-to-port", [this.selectedIndicator['pollingCommand']]);
+  }
+
+  selectedIndicatorUpdated() {
+    this.sharedDataService.updateData("selectedWeighBridge", this.selectedIndicator);
+    this.refreshWeightReader();
+  }
+
+  initializeWeightReader() {
+    if (this.selectedIndicator['stringType']==="continous") {
+      setInterval(this.updateCurrentWeight.bind(this), 1000);
+    }
 
     //Subscribe to weight
     this.sharedDataService.currentData.pipe().subscribe(currData => {
       if (currData['currWeight']) {
         this.currData = currData['currWeight'];
-        //this.updateCurrentWeight(currData['currWeight']);
+        if (this.selectedIndicator['stringType'] === "polling") {
+          this.updateCurrentWeight();
+        }
       }
       this.updatePendingRecords(currData['PENDING_RECORDS']);
       if (currData['WEIGHMENT_COMPLETED']) {
         this.fetchPendingRecords();
         this.sharedDataService.updateData("WEIGHMENT_COMPLETED", false);
       }
-    });    
+    });
+  }
+
+  initializePendingRecords() {
+    this.fetchPendingRecords();
+    setInterval(() => {
+      this.fetchPendingRecords();
+    }, refreshTime);
   }
 
   fetchPendingRecords() {
@@ -75,7 +118,7 @@ export class WeighbridgeRecordComponent implements OnInit {
     }
     var currWeight = this.currData;
 
-    if (currWeight['timestamp'] > (new Date().getTime())-1000) {
+    if (currWeight['timestamp'] > (new Date().getTime()) - 1000) {
       this.currentWeight = currWeight['weight'];
       if (this.prevWeight === currWeight['weight']) {
         this.cnt++;
@@ -87,7 +130,8 @@ export class WeighbridgeRecordComponent implements OnInit {
         this.prevWeight = this.currentWeight;
         this.isWeightStable = false;
       }
-    } else {
+    } else if ( this.selectedIndicator['stringType'] !== 'polling') {
+      
       this.currentWeight = "Err!";
       this.isWeightStable = false;
     }
@@ -104,7 +148,13 @@ export class WeighbridgeRecordComponent implements OnInit {
   }
 
   refreshWeightReader() {
-    this.ipcService.invokeIPC("serial-port-ipc", "initialiaze-port");
+    this.ipcService.invokeIPC("initialize-port",
+    "",
+      {
+        wiType: this.selectedIndicator.wiType,
+        comPort: this.selectedIndicator.comPort,
+        weighString: this.selectedIndicator
+    });
   }
 
   isPendingForLong(record: Weighment) {
