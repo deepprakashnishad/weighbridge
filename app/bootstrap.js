@@ -6,12 +6,12 @@ module.exports = Object.freeze({
     app_data: [
       { field: "enable_invoice_creation", mValue: "true" },
       { field: "enable_inbound_challan_weight", mValue: "false" },
-      { field: "enable_inbound__validation", mValue: "false" },
+      { field: "enable_inbound_validation", mValue: "false" },
       { field: "inbound_upper_limit", mValue: "" },
       { field: "inbound_lower_limit", mValue: "" },
       { field: "inbound_on_validation_failure", mValue: "Do not save" },
       { field: "enable_outbound_challan_weight", mValue: "false" },
-      { field: "enable_outbound__validation", mValue: "false" },
+      { field: "enable_outbound_validation", mValue: "false" },
       { field: "outbound_upper_limit", mValue: "" },
       { field: "outbound_lower_limit", mValue: "" },
       { field: "outbound_on_validation_failure", mValue: "Do not save" },
@@ -29,6 +29,8 @@ module.exports = Object.freeze({
       { field: "enable_stable_weight", mValue: "true" },
       { field: "allowed_variation", mValue: "0" },
       { field: "enable_auto_print_post_weighment", mValue: "false" },
+      { field: "print_cnt_post_weight1", mValue: "1" },
+      { field: "print_cnt_post_weight2", mValue: "1" },
       { field: "report_header_1", mValue: "" },
       { field: "report_header_2", mValue: "" },
       { field: "report_print_current_date", mValue: "false" },
@@ -42,6 +44,22 @@ module.exports = Object.freeze({
       { field: "decimals_in_weight", mValue: "" },
       { field: "enable_scheduled_backup", mValue: "false" },
       { field: "backup_location", mValue: "" },
+
+      //Email setup
+      { field: "allow_email", mValue: "false" },
+      { field: "enable_daily_email", mValue: "false" },
+      { field: "daily_email_time", mValue: "" },
+      { field: "enable_daily_operator_collection_email", mValue: "false" },
+      { field: "collection_email_time", mValue: "" },
+      { field: "email_provider", mValue: "" },
+      { field: "email_condition", mValue: "" },
+      { field: "sender_email_id", mValue: "" },
+      { field: "email_password", mValue: "" },
+      { field: "sender_name", mValue: "" },
+      { field: "email_server", mValue: "" },
+      { field: "email_port", mValue: "" },
+      { field: "email_protocol", mValue: "" },
+      { field: "recipients", mValue: "" },
     ],
     app_user: [{
       "id": 1,
@@ -289,7 +307,7 @@ module.exports = Object.freeze({
         endChar3: "A",
         signCharPosition: 4,
         negativeSignValue: "-",
-        delimeter: "\\\n"
+        delimeter: "newline"
       },
       {
         stringName: "UNP",
@@ -344,7 +362,7 @@ module.exports = Object.freeze({
         endChar3: "A",
         signCharPosition: 1,
         negativeSignValue: null,
-        delimeter: "\\\n"
+        delimeter: "newline"
       },        
       {
         stringName: "Sartorius MT",

@@ -1,15 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\app",
+    "\\src",
     "\\src\\app",
-    "\\src\\app\\admin",
-    "\\src\\app\\admin\\data-setup\\challan-weight-check",
-    "\\src\\app\\admin\\weighbridge-setup",
-    "\\src\\app\\admin\\weighbridge-setup\\weighing-indicators",
+    "\\src\\app\\admin\\ticket-setup\\preview-dialog",
     "\\src\\app\\admin\\weighbridge-setup\\weighing-indicators\\create-edit-weigh-indicator",
-    "\\src\\app\\report\\weighment-report"
+    "\\src\\app\\shared\\help",
+    "\\src\\app\\shared\\html-viewer",
+    "\\src\\app\\weighment\\weighment-summary"
   ],
-  "SelectedNode": "\\app\\port-verifier.js",
+  "SelectedNode": "\\src\\app\\query-list.ts",
   "PreviewInSolutionExplorer": false
 }

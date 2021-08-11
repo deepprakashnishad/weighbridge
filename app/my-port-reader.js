@@ -5,7 +5,7 @@ const ByteLength = require('@serialport/parser-byte-length')
 const log = require('electron-log');
 
 log.transports.file.level = 'info';
-log.transports.file.file = __dirname + 'log.log';
+log.transports.file.file = __dirname + 'port-reader.log';
 
 var weighString;
 var tempPort;
@@ -30,21 +30,28 @@ ipcMain.handle("initialize-port", async (event, ...args) => {
         "flowControl": weighString['flowControl'],
         autoOpen: false
       });
+
+      tempPort.on("open", function () {
+        isPortInUse = true;
+        log.info("Port is opened successfully");
+      })
+      tempPort.on("close", function () {
+        isPortInUse = false;
+        log.info("Port is closed successfully");
+      })
+
+      tempPort.on("error", function () {
+        log.error("Error occured on port");
+        win.webContents.send("curr-weight-recieved", ["Port initialization failed"]);
+      });
+
+      if (isPortInUse === false) {
+        initializePort();
+      }
     } catch (err) {
       log.error(err);
       win.webContents.send("curr-weight-recieved", ["Port initialization failed"]);
-    }
-
-    tempPort.on("open", function () {
-      isPortInUse = true;
-    })
-    tempPort.on("close", function () {
-      isPortInUse = false;
-    })
-    if (isPortInUse===false) {
-      initializePort();
-    }
-      
+    }      
   }
 });
 
@@ -64,25 +71,29 @@ function initializePort() {
       log.error(err);
       win.webContents.send("curr-weight-recieved", [err]);
     });
+    log.info("Intialization complete");
   } catch (err) {
-
+    log.error(err);
   } 
 }
 
 ipcMain.handle("write-to-port", async (event, ...args) => {
-  if (args[0] && !isNaN(args[0])) {
-    tempPort.write(String.fromCharCode(args[0]));
-  } else if (args[0] && isNaN(args[0])) {
-    tempPort.write(args[0]);
-  } else {
-    tempPort.write(String.fromCharCode(05));
+  try {
+    if (args[0] && !isNaN(args[0])) {
+      tempPort.write(String.fromCharCode(args[0]));
+    } else if (args[0] && isNaN(args[0])) {
+      tempPort.write(args[0]);
+    } else {
+      tempPort.write(String.fromCharCode(05));
+    }
+  } catch (e) {
+    log.error(e);
   }
 });
 
 function onReadData(data) {
   try {
     data = data.toString();
-    console.log(data);
     if (weighString === undefined) {
       return;
     }

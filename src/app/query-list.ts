@@ -1,8 +1,12 @@
 export class QueryList{
 
   //Weighment
-  static readonly INSERT_WEIGHMENT: string = "INSERT INTO weighment(rstNo, vehicleNo, scrollNo, reqId, gatePassNo, weighmentType, poDetails, transporterCode, transporterName, status, createdAt) VALUES({rstNo}, '{vehicleNo}', '{scrollNo}', {reqId}, {gatePassNo}, '{weighmentType}', '{poDetails}', {transporterCode}, '{transporterName}', '{status}', GETDATE());";
-  static readonly UPDATE_WEIGHMENT: string = "UPDATE weighment SET scrollNo='{scrollNo}', reqId={reqId}, gatePassNo={gatePassNo}, weighmentType='{weighmentType}', transporterCode='{transporterCode}', transporterName='{transaporterName}', status='{status}' WHERE rstNo={rstNo}";
+  static readonly INSERT_WEIGHMENT: string = "INSERT INTO weighment(rstNo, vehicleNo, scrollNo, \
+  reqId, gatePassNo, weighmentType, poDetails, transporterCode, transporterName, status, \
+  createdAt, scrollDate) \
+  VALUES({rstNo}, '{vehicleNo}', '{scrollNo}', {reqId}, {gatePassNo}, '{weighmentType}', \
+  '{poDetails}', {transporterCode}, '{transporterName}', '{status}', GETDATE(), '{scrollDate}');";
+  static readonly UPDATE_WEIGHMENT: string = "UPDATE weighment SET scrollNo='{scrollNo}', reqId={reqId}, gatePassNo={gatePassNo}, weighmentType='{weighmentType}', transporterCode='{transporterCode}', transporterName='{transaporterName}', status='{status}', scrollDate='{scrollDate}' WHERE rstNo={rstNo}";
   //Weighment Details
   static readonly INSERT_WEIGHMENT_DETAIL: string = "INSERT INTO weighment_details(id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser, secondWeighBridge, secondWeight, secondUnit, secondWeightDatetime, secondWeightUser, remark, netWeight) VALUES({id}, {weighmentRstNo}, '{material}', '{supplier}', '{firstWeighBridge}', {firstWeight}, '{firstUnit}', {firstWeightDatetime}, {firstWeightUser}, {secondWeighBridge}, {secondWeight}, '{secondUnit}', {secondWeightDatetime}, {secondWeightUser}, '{remark}', {netWeight})";
   static readonly INSERT_FIRST_WEIGHMENT_DETAIL: string = "INSERT INTO weighment_details(id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser, remark) VALUES({id}, {weighmentRstNo}, '{material}', '{supplier}', '{firstWeighBridge}', {firstWeight}, '{firstUnit}', GETDATE(), {firstWeightUser}, '{remark}')";

@@ -1,0 +1,11 @@
+<style>
+  .html-container{
+    overflow: auto;
+  }
+</style>
+<mat-dialog>
+  <mat-dialog-content>
+    <div class="html-container" [innerHtml]="htmlContent | safeHtml"></div>
+  </mat-dialog-content>
+</mat-dialog>
+

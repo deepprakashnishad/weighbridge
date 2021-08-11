@@ -98,19 +98,26 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
   }
 
   updateCurrentWeight() {
-    var currWeight = this.currWeighData;
-    this.verification_weight = currWeight['weight'];
-    if (this.prevWeight === currWeight['weight']) {
-      this.cnt++;
-      if (this.cnt > 1) {
-        this.ipcService.invokeIPC("close-verification-port");
-        clearInterval(this.updateWeightIntervalId);
-        this.isPortVerified = true;
-      }
-    } else {
-      this.cnt = 0;
-      this.prevWeight = this.verification_weight;
+    if (!this.currWeighData) {
+      this.verification_weight = "Err!";
+      return;
     }
+    var currWeight = this.currWeighData;
+    if (currWeight['timestamp'] > (new Date().getTime()) - 1000) {
+      this.verification_weight = currWeight['weight'];
+      if (this.prevWeight === currWeight['weight']) {
+        this.cnt++;
+        if (this.cnt > 1) {
+          this.isPortVerified = true;
+        }
+      } else {
+        this.cnt = 0;
+        this.prevWeight = this.verification_weight;
+      }
+    } else if (this.selectedString.type !== "polling") {
+      this.verification_weight = "Err!";
+    }
+    
   }
 
   isValid() {

@@ -17,6 +17,8 @@ import { NgxElectronModule } from 'ngx-electron';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { TagSelectorComponent } from './tag-selector/tag-selector.component';
 import { ListEditorComponent } from './list-editor/list-editor.component';
+import { HtmlViewerComponent } from './html-viewer/html-viewer.component';
+import { HelpComponent } from './help/help.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { ListEditorComponent } from './list-editor/list-editor.component';
     SafeUrlPipe,
     ConfirmDialogComponent,
     TagSelectorComponent,
-    ListEditorComponent
+    ListEditorComponent,
+    HtmlViewerComponent,
+    HelpComponent
   ],
   imports: [
     CommonModule,
@@ -60,7 +64,9 @@ import { ListEditorComponent } from './list-editor/list-editor.component';
   	MyFilterPipe,
   	SafeHtmlPipe,
   	SafeUrlPipe,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    HtmlViewerComponent,
+    HelpComponent
   ],
   entryComponents:[AddEditPermissionComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

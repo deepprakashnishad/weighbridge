@@ -1,10 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChildren, SimpleChange } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { map, startWith, switchMap, filter } from 'rxjs/operators';
-import { BehaviorSubject, Observable, of as observableOf } from 'rxjs';
-
-import { TagChipInputComponent } from './../../tag-chip-input/tag-chip-input.component';
-
+import { Component, OnInit, SimpleChange } from '@angular/core';
 import { Tag } from './../../tag-chip-input/tag';
 import { MyDbService } from '../../../my-db.service';
 import { QueryList } from '../../../query-list';
@@ -22,6 +16,7 @@ export class SearchFieldsComponent implements OnInit {
 
   searchFields: Array<SearchField> = [];
   searchField: SearchField = new SearchField();
+  enableInvoiceCreation: boolean = false;
 
   constructor(
     private dialog: MatDialog,
@@ -33,6 +28,8 @@ export class SearchFieldsComponent implements OnInit {
     this.dbService.executeSyncDBStmt("get_search_fields", QueryList.GET_ALL_SEARCH_FIELD).then(results => {
       this.searchFields = results;
     });
+
+    this.enableInvoiceCreation = sessionStorage.getItem("enable_invoice_creation")==="true";
   }
 
   ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
@@ -78,7 +75,7 @@ export class SearchFieldsComponent implements OnInit {
     return tag ? tag.value : undefined;
   }
 
-  selected($event) {
+  selected(event) {
     
   }
 
@@ -124,6 +121,10 @@ export class SearchFieldsComponent implements OnInit {
 
   edit(field) {
     this.searchField = field;
+  }
+
+  enableInvoice(event) {
+    this.dbService.updateAppSetting([{ "field": "enable_invoice_creation", "mValue": event.checked }]);;
   }
 
   openListEditor(field: SearchField, index) {

@@ -7,6 +7,7 @@ require("./my-port-reader.js");
 require("./printer-service.js");
 require("./file-service.js");
 require("./port-verifier.js");
+require("./mailer.js");
 
 const env = "DEV"; // DEV Or PROD
 

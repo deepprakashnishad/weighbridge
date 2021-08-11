@@ -30,17 +30,17 @@
                (keyup.enter)="parseQRString(weighment.gatePassNo)"
                (blur)="parseQRString(weighment.gatePassNo)" />
       </mat-form-field>
-      <mat-form-field appearance="outline" *ngIf="weighment.weighmentType==='inbound'">
+      <mat-form-field fxFlex appearance="outline" *ngIf="weighment.weighmentType==='inbound'">
         <mat-label>Scroll No</mat-label>
-        <input matInput maxlength="1" [(ngModel)]="weighment.scrollNo" name="cntlscrollNo"
+        <input matInput [(ngModel)]="weighment.scrollNo" name="cntlscrollNo"
                (keyup.enter)="parseQRString(weighment.scrollNo)"
                (blur)="parseQRString(weighment.scrollNo)" />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>RST No</mat-label>
         <input matInput [(ngModel)]="weighment.rstNo" name="cntlRSTNo"
-               (keyup.enter)="parseQRString(weighment.rstNo)"
-               (blur)="parseQRString(weighment.rstNo)" readonly disabled />
+               (keyup.enter)="parseQRString(weighment.rstNo.toString())"
+               (blur)="parseQRString(weighment.rstNo.toString())" readonly disabled />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Weighment Slip No</mat-label>

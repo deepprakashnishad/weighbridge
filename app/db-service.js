@@ -5,13 +5,9 @@ const log = require('electron-log');
 const bootstrapData = require("./bootstrap.js");
 
 log.transports.file.level = 'info';
-log.transports.file.file = __dirname + 'log.log';
+log.transports.file.file = __dirname + 'db-log.log';
 
 var sqlConfig = {
-  //user: mUsername,
-  //password: mPassword,
-  //database: mDatabase,
-  //server: mServer,
   pool: {
     max: 10,
     min: 0,
@@ -27,7 +23,6 @@ var data = fs.readFileSync(bootstrapData.mConstants.envFilename, 'utf-8');
 global.env_data = JSON.parse(data);
 
 initializeSqlConfig(env_data);
-//initialDataSetup();
 
 function initializeSqlConfig(dbDetails){
   try {
@@ -39,8 +34,6 @@ function initializeSqlConfig(dbDetails){
     loadEnvDataFromDB();
   }
   catch (e) {
-    console.log('Failed to save the file !');
-    console.log(e);
     log.error(e);
     return false;
   }
@@ -51,44 +44,39 @@ ipcMain.on("executeDBQuery", (event, arg) => {
     return pool.query(arg[1]);
   }).then(results => {
     event.sender.send("db-reply", [arg[0], results['recordset']]);
+  }).catch(e=>{
+    log.error(e);
   });
 })
 
 ipcMain.handle("executeSyncStmt", async (event, arg) => {
   try {
     var pool = await sql.connect(sqlConfig);
-    //console.log(arg[1]);
+    log.info(arg[1]);
     var results = await pool.query(arg[1]);
   } catch (err) {
-    console.log(err);
     log.error(err);
     return { error: err.message };
   }
-  
   return processResult(arg[0], results);
 });
 
 ipcMain.handle("executeSyncInsertAutoId", async (event, arg) => {
   var pool = await sql.connect(sqlConfig);
   var getIdQuery = `SELECT max(${arg[1]}) as maxId FROM ${arg[0]}`;
-  //console.log(getIdQuery);
   var result = await pool.query(getIdQuery);
-  //console.log(result);
   if (result['recordset'][0]['maxId'] === null) {
     var newId = 1;
   } else {
     var newId = result['recordset'][0]['maxId'] + 1;
   }
   var mQuery = arg[2].replace(`{${arg[1]}}`, newId);
-  //console.log(mQuery);
   try {
     var results = await pool.query(mQuery);
   } catch (err) {
     log.error(err);
     return { "error": err };
   }
-  
-  //console.log(results);
   return { affectedRows: processResult(arg[0], results), "newId": newId};
 });
 
@@ -153,3 +141,15 @@ async function loadEnvDataFromDB() {
   }
 }
 
+const stmtExecutor = async (stmtType, stmt) => {
+  try {
+    var pool = await sql.connect(sqlConfig);
+    var results = await pool.query(stmt);
+  } catch (err) {
+    log.error(err);
+    return { error: err.message };
+  }
+  return processResult(stmtType, results);
+}
+
+exports.stmtExecutor = stmtExecutor;

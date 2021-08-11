@@ -47,7 +47,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
 
   weighbridge: string = "";
 
-  isComplete: boolean = false;
+  isComplete: boolean = true;
 
   transporter: string;
 
@@ -72,7 +72,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       }
     });
 
-    if (this.selectedIndicator?.stringType === "continous") {
+    if (this.selectedIndicator?.stringType === "continuous") {
       setInterval(this.updateCurrentWeight.bind(this), 1000);
     }
 
@@ -129,18 +129,23 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     this.vehicleCntl.nativeElement.focus();
   }
 
-  parseQRString(inputStr) {
-    if (isString(inputStr)) {
-      var inputs = inputStr?.split(":");
+  parseQRString(inputStr: string) {
+    if (isString(inputStr) && (inputStr.match(/#/g) || []).length === 2) {
+      var inputs = inputStr?.split("#");
+      this.weighment.vehicleNo = inputs[1];
+      this.weighment.scrollDate = inputs[0];
+      this.weighment.scrollNo = inputs[2];
+      this.weighment.weighmentType = "inbound";
     }
-    
-    if (inputs?.length === 5) {
+    if (isString(inputStr) && (inputStr.match(/:/g) || []).length === 4) {
+      var inputs = inputStr?.split(":");
       this.weighment.reqId = parseInt(inputs[0]);
       this.weighment.gatePassNo = parseInt(inputs[1]);
       this.weighment.vehicleNo = inputs[2];
-      this.weighment.transporterCode = parseInt(inputs[3]); 
+      this.weighment.transporterCode = parseInt(inputs[3]);
       this.weighment.transporterName = inputs[4];
       this.transporter = `${this.weighment.transporterCode}-${this.weighment.transporterName}`;
+      this.weighment.weighmentType = "outbound_domestic";
     }
 
     if (this.weighment.rstNo) {
@@ -236,7 +241,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       .replace("{transporterCode}", this.weighment.transporterCode ? this.weighment.transporterCode.toString(): null)
       .replace("{transporterName}", this.weighment.transporterName)
       .replace("{status}", status)
-      .replace("{rstNo}", this.weighment.rstNo.toString());
+      .replace("{rstNo}", this.weighment.rstNo.toString())
+      .replace("{scrollDate}", this.weighment.scrollDate ? this.weighment.scrollDate:'');
 
     var result = await this.dbService.executeSyncDBStmt("UPDATE", stmt);
     if (result > 0) {
@@ -254,7 +260,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       .replace("{poDetails}", this.weighment?.poDetails ? this.weighment?.poDetails : null)
       .replace("{transporterCode}", this.weighment?.transporterCode ? this.weighment?.transporterCode.toString() : null)
       .replace("{transporterName}", this.weighment?.transporterName ? this.weighment?.transporterName : null)
-      .replace("{status}", status);
+      .replace("{status}", status)
+      .replace("{scrollDate}", this.weighment.scrollDate ? this.weighment.scrollDate:"");
 
     var result = await this.dbService.executeInsertAutoId("weighment", "rstNo", stmt);
     if (result['newId'] === undefined) {

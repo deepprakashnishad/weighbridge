@@ -9,7 +9,7 @@ import { SharedDataService } from '../shared-data.service';
 import { Weighbridge, Weighment } from '../weighment/weighment';
 import {Record} from './record';
 
-const refreshTime = 60000;
+const refreshTime = 3000;
 
 @Component({
   selector: 'app-weighbridge-record',
@@ -63,7 +63,6 @@ export class WeighbridgeRecordComponent implements OnInit {
       this.weighIndicators = result;
       this.selectedIndicator = this.weighIndicators[0];
       this.sharedDataService.updateData("selectedWeighBridge", this.selectedIndicator);
-      console.log(this.selectedIndicator);
       this.refreshWeightReader();
       this.initializeWeightReader();
     }
@@ -76,10 +75,11 @@ export class WeighbridgeRecordComponent implements OnInit {
   selectedIndicatorUpdated() {
     this.sharedDataService.updateData("selectedWeighBridge", this.selectedIndicator);
     this.refreshWeightReader();
+    this.initializeWeightReader();
   }
 
   initializeWeightReader() {
-    if (this.selectedIndicator['stringType']==="continous") {
+    if (this.selectedIndicator['stringType']==="continuous") {
       setInterval(this.updateCurrentWeight.bind(this), 1000);
     }
 

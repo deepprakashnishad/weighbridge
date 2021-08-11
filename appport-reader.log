@@ -1,0 +1,299 @@
+[2021-08-10 14:41:20.336] [info]  SELECT * FROM app_user WHERE username='admin' AND password='Admin123'
+[2021-08-10 14:41:20.438] [info]  SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid=1
+[2021-08-10 14:41:20.707] [info]  SELECT * FROM app_data
+[2021-08-10 14:41:20.799] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-10 14:41:20.886] [info]  Intialization complete
+[2021-08-10 14:41:20.890] [error] Error occured on port
+[2021-08-10 14:41:26.130] [error] Error: connect ECONNREFUSED 127.0.0.1:587
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1146:16)
+[2021-08-10 14:44:52.265] [info]  SELECT * FROM app_user WHERE username='admin' AND password='Admin123'
+[2021-08-10 14:44:52.316] [info]  SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid=1
+[2021-08-10 14:44:52.413] [info]  SELECT * FROM app_data
+[2021-08-10 14:44:52.508] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-10 14:44:52.560] [info]  Intialization complete
+[2021-08-10 14:44:52.562] [error] Error occured on port
+[2021-08-10 14:44:57.973] [error] Error: connect ECONNREFUSED 127.0.0.1:587
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1146:16)
+[2021-08-10 15:16:10.537] [info]  SELECT * FROM app_user WHERE username='admin' AND password='Admin123'
+[2021-08-10 15:16:10.595] [info]  SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid=1
+[2021-08-10 15:16:10.699] [info]  SELECT * FROM app_data
+[2021-08-10 15:16:10.834] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-10 15:16:10.873] [info]  Intialization complete
+[2021-08-10 15:16:10.876] [error] Error occured on port
+[2021-08-10 15:16:20.444] [error] Error: connect ECONNREFUSED 127.0.0.1:587
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1146:16)
+[2021-08-10 15:17:56.711] [info]  SELECT * FROM app_user WHERE username='admin' AND password='Admin123'
+[2021-08-10 15:17:56.757] [info]  SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid=1
+[2021-08-10 15:17:56.845] [info]  SELECT * FROM app_data
+[2021-08-10 15:17:56.963] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-10 15:17:57.000] [info]  Intialization complete
+[2021-08-10 15:17:57.003] [error] Error occured on port
+[2021-08-10 15:18:05.624] [error] TypeError: dbService.stmtExecutor(...).then is not a function
+    at D:\electron\weighbridge\app\mailer.js:17:54
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-08-10 15:20:25.465] [info]  SELECT * FROM app_user WHERE username='admin' AND password='Admin123'
+[2021-08-10 15:20:25.525] [info]  SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid=1
+[2021-08-10 15:20:25.647] [info]  SELECT * FROM app_data
+[2021-08-10 15:20:25.778] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-10 15:20:25.831] [info]  Intialization complete
+[2021-08-10 15:20:25.834] [error] Error occured on port
+[2021-08-10 15:20:33.332] [error] ReferenceError: arg is not defined
+    at Object.stmtExecutor (D:\electron\weighbridge\app\db-service.js:152:24)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async D:\electron\weighbridge\app\mailer.js:17:19
+    at async electron/js2c/browser_init.js:197:563
+[2021-08-10 15:22:09.638] [info]  SELECT * FROM app_user WHERE username='admin' AND password='Admin123'
+[2021-08-10 15:22:09.687] [info]  SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid=1
+[2021-08-10 15:22:09.779] [info]  SELECT * FROM app_data
+[2021-08-10 15:22:09.882] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-10 15:22:09.979] [info]  Intialization complete
+[2021-08-10 15:22:09.983] [error] Error occured on port
+[2021-08-10 15:22:15.335] [error] Error: connect ECONNREFUSED 127.0.0.1:587
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1146:16)
+[2021-08-10 15:23:25.147] [info]  SELECT * FROM app_user WHERE username='admin' AND password='Admin123'
+[2021-08-10 15:23:25.199] [info]  SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid=1
+[2021-08-10 15:23:25.294] [info]  SELECT * FROM app_data
+[2021-08-10 15:23:25.387] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-10 15:23:25.438] [info]  Intialization complete
+[2021-08-10 15:23:25.443] [error] Error occured on port
+[2021-08-10 15:23:35.226] [error] Error: connect ECONNREFUSED 127.0.0.1:587
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1146:16)
+[2021-08-10 15:24:20.511] [info]  SELECT * FROM app_user WHERE username='admin' AND password='Admin123'
+[2021-08-10 15:24:20.559] [info]  SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid=1
+[2021-08-10 15:24:20.650] [info]  SELECT * FROM app_data
+[2021-08-10 15:24:20.765] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-10 15:24:20.806] [info]  Intialization complete
+[2021-08-10 15:24:20.809] [error] Error occured on port
+[2021-08-10 15:24:27.181] [error] Error: connect ECONNREFUSED 127.0.0.1:587
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1146:16)
+[2021-08-10 15:25:05.648] [info]  SELECT * FROM app_user WHERE username='admin' AND password='Admin123'
+[2021-08-10 15:25:05.699] [info]  SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid=1
+[2021-08-10 15:25:05.791] [info]  SELECT * FROM app_data
+[2021-08-10 15:25:05.902] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-10 15:25:05.950] [info]  Intialization complete
+[2021-08-10 15:25:05.952] [error] Error occured on port
+[2021-08-10 15:25:14.638] [error] Error: connect ECONNREFUSED 127.0.0.1:587
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1146:16)
+[2021-08-10 15:27:52.916] [info]  SELECT * FROM app_user WHERE username='admin' AND password='Admin123'
+[2021-08-10 15:27:52.962] [info]  SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid=1
+[2021-08-10 15:27:53.056] [info]  SELECT * FROM app_data
+[2021-08-10 15:27:53.147] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-10 15:27:53.200] [info]  Intialization complete
+[2021-08-10 15:27:53.203] [error] Error occured on port
+[2021-08-10 15:28:00.124] [error] Error: No recipients defined
+    at SMTPConnection._formatError (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:784:19)
+    at SMTPConnection._setEnvelope (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:1001:34)
+    at SMTPConnection.send (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:615:14)
+    at sendMessage (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-transport\index.js:227:28)
+    at D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-transport\index.js:285:25
+    at SMTPConnection._actionAUTHComplete (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:1550:9)
+    at SMTPConnection.<anonymous> (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:540:26)
+    at SMTPConnection._processResponse (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:947:20)
+    at SMTPConnection._onData (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:749:14)
+    at TLSSocket.SMTPConnection._onSocketData (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:189:44)
+[2021-08-10 15:29:37.050] [info]  SELECT * FROM app_user WHERE username='admin' AND password='Admin123'
+[2021-08-10 15:29:37.096] [info]  SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid=1
+[2021-08-10 15:29:37.186] [info]  SELECT * FROM app_data
+[2021-08-10 15:29:37.285] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-10 15:29:37.333] [info]  Intialization complete
+[2021-08-10 15:29:37.335] [error] Error occured on port
+[2021-08-10 15:29:45.774] [error] Error: No recipients defined
+    at SMTPConnection._formatError (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:784:19)
+    at SMTPConnection._setEnvelope (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:1001:34)
+    at SMTPConnection.send (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:615:14)
+    at sendMessage (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-transport\index.js:227:28)
+    at D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-transport\index.js:285:25
+    at SMTPConnection._actionAUTHComplete (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:1550:9)
+    at SMTPConnection.<anonymous> (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:540:26)
+    at SMTPConnection._processResponse (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:947:20)
+    at SMTPConnection._onData (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:749:14)
+    at TLSSocket.SMTPConnection._onSocketData (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:189:44)
+[2021-08-10 15:30:04.255] [error] Error: No recipients defined
+    at SMTPConnection._formatError (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:784:19)
+    at SMTPConnection._setEnvelope (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:1001:34)
+    at SMTPConnection.send (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:615:14)
+    at sendMessage (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-transport\index.js:227:28)
+    at D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-transport\index.js:285:25
+    at SMTPConnection._actionAUTHComplete (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:1550:9)
+    at SMTPConnection.<anonymous> (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:540:26)
+    at SMTPConnection._processResponse (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:947:20)
+    at SMTPConnection._onData (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:749:14)
+    at TLSSocket.SMTPConnection._onSocketData (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:189:44)
+[2021-08-10 15:31:10.311] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-10 15:31:10.373] [info]  Intialization complete
+[2021-08-10 15:31:10.376] [error] Error occured on port
+[2021-08-10 15:31:47.828] [error] Error: No recipients defined
+    at SMTPConnection._formatError (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:784:19)
+    at SMTPConnection._setEnvelope (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:1001:34)
+    at SMTPConnection.send (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:615:14)
+    at sendMessage (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-transport\index.js:227:28)
+    at D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-transport\index.js:285:25
+    at SMTPConnection._actionAUTHComplete (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:1550:9)
+    at SMTPConnection.<anonymous> (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:540:26)
+    at SMTPConnection._processResponse (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:947:20)
+    at SMTPConnection._onData (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:749:14)
+    at TLSSocket.SMTPConnection._onSocketData (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:189:44)
+[2021-08-10 15:33:11.098] [info]  SELECT * FROM app_user WHERE username='admin' AND password='Admin123'
+[2021-08-10 15:33:11.146] [info]  SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid=1
+[2021-08-10 15:33:11.238] [info]  SELECT * FROM app_data
+[2021-08-10 15:33:11.347] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-10 15:33:11.388] [info]  Intialization complete
+[2021-08-10 15:33:11.391] [error] Error occured on port
+[2021-08-10 15:33:19.283] [error] Error: No recipients defined
+    at SMTPConnection._formatError (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:784:19)
+    at SMTPConnection._setEnvelope (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:1001:34)
+    at SMTPConnection.send (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:615:14)
+    at sendMessage (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-transport\index.js:227:28)
+    at D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-transport\index.js:285:25
+    at SMTPConnection._actionAUTHComplete (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:1550:9)
+    at SMTPConnection.<anonymous> (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:540:26)
+    at SMTPConnection._processResponse (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:947:20)
+    at SMTPConnection._onData (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:749:14)
+    at TLSSocket.SMTPConnection._onSocketData (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:189:44)
+[2021-08-10 15:34:32.739] [info]  SELECT * FROM app_user WHERE username='admin' AND password='Admin123'
+[2021-08-10 15:34:32.785] [info]  SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid=1
+[2021-08-10 15:34:32.873] [info]  SELECT * FROM app_data
+[2021-08-10 15:34:32.971] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-10 15:34:33.026] [info]  Intialization complete
+[2021-08-10 15:34:33.029] [error] Error occured on port
+[2021-08-10 15:34:41.652] [info]  Email sent: 250 2.0.0 OK  1628589882 p2sm23983667pfn.141 - gsmtp
+[2021-08-10 15:40:12.459] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-10 15:40:12.523] [info]  Intialization complete
+[2021-08-10 15:40:12.528] [error] Error occured on port
+[2021-08-10 17:41:03.932] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-10 17:41:03.973] [info]  Intialization complete
+[2021-08-10 17:41:03.975] [error] Error occured on port
+[2021-08-10 18:40:53.349] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-10 18:40:53.451] [info]  Intialization complete
+[2021-08-10 18:40:53.454] [error] Error occured on port
+[2021-08-10 19:03:46.419] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-10 19:03:46.647] [info]  Intialization complete
+[2021-08-10 19:03:46.652] [error] Error occured on port
+[2021-08-10 19:57:44.510] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-10 19:57:44.633] [info]  Intialization complete
+[2021-08-10 19:57:44.635] [error] Error occured on port
+[2021-08-11 10:17:06.766] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-11 10:17:07.807] [info]  Intialization complete
+[2021-08-11 10:17:07.808] [error] Error occured on port
+[2021-08-11 10:34:55.884] [info]  SELECT * FROM app_user WHERE username='admin' AND password='Admin123'
+[2021-08-11 10:34:55.974] [info]  SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid=1
+[2021-08-11 10:34:56.103] [info]  SELECT * FROM app_data
+[2021-08-11 10:34:56.205] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-11 10:34:56.262] [info]  Intialization complete
+[2021-08-11 10:34:56.265] [error] Error occured on port
+[2021-08-11 10:35:35.100] [info]  Intialization complete
+[2021-08-11 10:35:35.103] [error] Error occured on port
+[2021-08-11 10:35:54.422] [info]  SELECT * FROM weighstring
+[2021-08-11 10:36:34.284] [info]  Port status - true
+[2021-08-11 10:36:43.091] [info]  SELECT * FROM weighstring
+[2021-08-11 10:36:48.034] [info]  Port status - true
+[2021-08-11 10:36:48.042] [error] Error: Opening COM3: Access denied
+[2021-08-11 10:36:50.147] [info]  Port status - true
+[2021-08-11 10:37:31.342] [info]  DELETE weighindicator WHERE id=undefined
+[2021-08-11 10:37:31.389] [error] RequestError: Invalid column name 'undefined'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-11 10:37:37.965] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-11 10:37:38.004] [info]  Intialization complete
+[2021-08-11 10:37:38.008] [error] Error occured on port
+[2021-08-11 10:37:40.736] [info]  DELETE weighindicator WHERE id=4
+[2021-08-11 10:38:12.340] [info]  SELECT * FROM weighstring
+[2021-08-11 10:38:29.325] [info]  Port status - true
+[2021-08-11 10:38:29.336] [error] Error: Opening COM3: Access denied
+[2021-08-11 10:38:31.309] [info]  Port status - true
+[2021-08-11 10:43:35.286] [info]  Intialization complete
+[2021-08-11 10:43:35.288] [error] Error occured on port
+[2021-08-11 10:43:39.022] [info]  Intialization complete
+[2021-08-11 10:43:39.024] [error] Error occured on port
+[2021-08-11 10:43:40.692] [info]  Intialization complete
+[2021-08-11 10:43:40.694] [error] Error occured on port
+[2021-08-11 10:43:44.647] [info]  Intialization complete
+[2021-08-11 10:43:44.649] [error] Error occured on port
+[2021-08-11 10:43:44.824] [info]  Intialization complete
+[2021-08-11 10:43:44.825] [error] Error occured on port
+[2021-08-11 10:43:46.652] [info]  Intialization complete
+[2021-08-11 10:43:46.653] [error] Error occured on port
+[2021-08-11 10:43:47.847] [info]  Intialization complete
+[2021-08-11 10:43:47.848] [error] Error occured on port
+[2021-08-11 10:43:52.667] [info]  Intialization complete
+[2021-08-11 10:43:52.669] [error] Error occured on port
+[2021-08-11 10:43:55.341] [info]  Intialization complete
+[2021-08-11 10:43:55.343] [error] Error occured on port
+[2021-08-11 10:43:56.060] [info]  Intialization complete
+[2021-08-11 10:43:56.063] [error] Error occured on port
+[2021-08-11 10:43:56.226] [info]  Intialization complete
+[2021-08-11 10:43:56.229] [error] Error occured on port
+[2021-08-11 10:44:01.207] [info]  Intialization complete
+[2021-08-11 10:44:01.209] [error] Error occured on port
+[2021-08-11 10:44:04.203] [info]  Intialization complete
+[2021-08-11 10:44:04.204] [error] Error occured on port
+[2021-08-11 10:44:23.349] [info]  SELECT * FROM app_user WHERE username='admin' AND password='Admin123'
+[2021-08-11 10:44:23.502] [info]  SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid=1
+[2021-08-11 10:44:23.608] [info]  SELECT * FROM app_data
+[2021-08-11 10:44:23.736] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','ttest') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-11 10:44:23.785] [info]  Intialization complete
+[2021-08-11 10:44:23.788] [error] Error occured on port
+[2021-08-11 10:44:26.203] [info]  Intialization complete
+[2021-08-11 10:44:26.245] [info]  Port is opened successfully
+[2021-08-11 10:44:32.004] [info]  Port is closed successfully
+[2021-08-11 10:44:34.451] [info]  Intialization complete
+[2021-08-11 10:44:34.493] [info]  Port is opened successfully
+[2021-08-11 10:45:17.288] [info]  SELECT * FROM app_user
+[2021-08-11 10:50:03.716] [info]  SELECT * FROM search_field
+[2021-08-11 10:51:24.898] [info]  SELECT * FROM search_field
+[2021-08-11 10:51:25.267] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','ttest') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-11 10:51:25.437] [info]  Port is closed successfully
+[2021-08-11 10:52:38.143] [info]  SELECT * FROM search_field
+[2021-08-11 10:52:38.535] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','ttest') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-11 10:52:38.636] [info]  Intialization complete
+[2021-08-11 10:52:38.641] [error] Error occured on port
+[2021-08-11 11:04:27.573] [info]  SELECT * FROM search_field
+[2021-08-11 11:04:27.840] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','ttest') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-11 11:04:27.946] [info]  Intialization complete
+[2021-08-11 11:04:27.949] [error] Error occured on port
+[2021-08-11 11:05:59.838] [info]  SELECT * FROM search_field
+[2021-08-11 11:06:00.265] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','ttest') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-11 11:06:00.359] [info]  Intialization complete
+[2021-08-11 11:06:00.367] [error] Error occured on port
+[2021-08-11 11:06:18.032] [info]  SELECT * FROM search_field
+[2021-08-11 11:06:18.269] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','ttest') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-11 11:06:18.333] [info]  Intialization complete
+[2021-08-11 11:06:18.334] [error] Error occured on port
+[2021-08-11 11:10:21.182] [info]  SELECT * FROM search_field
+[2021-08-11 11:10:21.410] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','ttest') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-11 11:10:21.486] [info]  Intialization complete
+[2021-08-11 11:10:21.489] [error] Error occured on port
+[2021-08-11 11:10:44.112] [info]  SELECT * FROM search_field
+[2021-08-11 11:10:44.344] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','ttest') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-11 11:10:44.409] [info]  Intialization complete
+[2021-08-11 11:10:44.410] [error] Error occured on port
+[2021-08-11 11:12:53.344] [info]  SELECT * FROM search_field
+[2021-08-11 11:12:53.568] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','ttest') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-11 11:12:53.634] [info]  Intialization complete
+[2021-08-11 11:12:53.636] [error] Error occured on port
+[2021-08-11 11:30:54.595] [info]  SELECT * FROM search_field
+[2021-08-11 11:30:54.989] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','ttest') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-11 11:30:55.085] [info]  Intialization complete
+[2021-08-11 11:30:55.086] [error] Error occured on port
+[2021-08-11 11:34:57.955] [info]  SELECT * FROM search_field
+[2021-08-11 11:34:58.385] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','ttest') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-11 11:34:58.483] [info]  Intialization complete
+[2021-08-11 11:34:58.487] [error] Error occured on port
+[2021-08-11 11:35:17.940] [info]  SELECT * FROM search_field
+[2021-08-11 11:35:18.164] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','ttest') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-11 11:35:18.237] [info]  Intialization complete
+[2021-08-11 11:35:18.238] [error] Error occured on port
+[2021-08-11 12:11:44.412] [info]  SELECT * FROM search_field
+[2021-08-11 12:11:44.749] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','ttest') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2021-08-11 12:11:44.833] [info]  Intialization complete
+[2021-08-11 12:11:44.836] [error] Error occured on port

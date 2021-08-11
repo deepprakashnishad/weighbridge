@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { NotifierService } from 'angular-notifier';
 import { ElectronService } from 'ngx-electron';
+import { QueryList } from './query-list';
 import { SharedDataService } from './shared-data.service';
 
 @Injectable({
@@ -9,7 +11,8 @@ export class MyDbService {
 
   constructor(
     private _electronService: ElectronService,
-    private _sharedDataService: SharedDataService
+    private _sharedDataService: SharedDataService,
+    private _notifier: NotifierService
   ) {
     //Subscribe to database events from main process
     this._electronService.ipcRenderer.on('db-reply', (event, arg) => {
@@ -31,6 +34,37 @@ export class MyDbService {
     var result = await this._electronService.ipcRenderer.invoke("executeSyncStmt", [queryType, query]);
     return result;
   }
+
+  async updateAppSetting(fieldArr: Array<any>) {
+    var successCnt = 0;
+    var failedFields = [];
+    for (var i = 0; i < fieldArr.length; i++) {
+      var ele = fieldArr[i];
+      var result = await this.executeSyncDBStmt("UPDATE",
+        QueryList.UPDATE_APP_SETTING
+          .replace("{mValue}", ele['mValue'])
+          .replace("{field}", ele['field'])
+      );
+
+      if (result) {
+        sessionStorage.setItem(ele['field'], ele['mValue']);
+        successCnt++;
+      } else {
+        failedFields.push(ele['field']);
+      }
+    }
+    if (successCnt === fieldArr.length) {
+      this._notifier.notify("success", "App settings updated successfully");
+    } else {
+      if (failedFields.length <= 2) {
+        this._notifier.notify("error", `App setting could not be updated for ${result.join(", ")} fields`);
+      } else {
+        this._notifier.notify("error", "App settings could not be updated");
+      }
+    }
+  }
+
+
 
   async executeInsertAutoId(tablename, primaryColumnName, query) {
     console.log("Making call");

@@ -5,7 +5,7 @@ const ByteLength = require('@serialport/parser-byte-length')
 const log = require('electron-log');
 
 log.transports.file.level = 'info';
-log.transports.file.file = __dirname + 'log.log';
+log.transports.file.file = __dirname + 'port-verifier.log';
 
 var weighString;
 var tempPort;
@@ -26,12 +26,11 @@ ipcMain.handle("verify-port", async (event, ...args) => {
     var ports = await serialPort.list();
     var portStatus = ports.some(port => {
       if (port["path"] === args[1]['comPort']) {
-        console.log(port);
         return true;
       }
     });
 
-    console.log("Port status - " + portStatus);
+    log.info("Port status - " + portStatus);
     if (tempPort?.isOpen) {
       tempPort.close();
     }
@@ -62,10 +61,13 @@ ipcMain.handle("verify-port", async (event, ...args) => {
         if (weighString["type"] === "polling") {
           writeToPort(weighString["pollingCommand"]);
         }
-      }); 
+      });
+
+      tempPort.on("error", (e) => {
+        log.error(e);
+      });
     } catch (err) {
       log.error(err);
-      console.log("Inside catch block");
       win.webContents.send("verification-weight-recieved", [{ weight: "Err!", error: "Port initialization failed", timestamp: (new Date()).getTime() }]);
     }
     parser.on('data', onReadData);
@@ -100,7 +102,7 @@ ipcMain.handle("write-to-verification-port", async (event, ...args) => {
 function onReadData(data) {
   try {
     data = data.toString();
-    console.log(data);
+    //console.log(data);
     if (weighString === undefined) {
       return;
     }
