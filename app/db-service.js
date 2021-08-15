@@ -52,7 +52,6 @@ ipcMain.on("executeDBQuery", (event, arg) => {
 ipcMain.handle("executeSyncStmt", async (event, arg) => {
   try {
     var pool = await sql.connect(sqlConfig);
-    log.info(arg[1]);
     var results = await pool.query(arg[1]);
   } catch (err) {
     log.error(err);

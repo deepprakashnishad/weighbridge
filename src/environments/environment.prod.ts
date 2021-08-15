@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
-  baseurl: "https://master-erp.herokuapp.com",
+  appName: "weighbridge",
+  appDisplayName: "Notamedia Weighbridge",
   firstAutoRefresh: true
 };
 

@@ -58,8 +58,7 @@ export class TagSelectorComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     var keys = Object.keys(changes);
     for (var i = 0; i < keys.length; i++) {
-      if (keys[i] === "selectedTag") {
-        
+      if (keys[i] === "selectedTag" && changes[keys[i]]["currentValue"] != "null" && changes[keys[i]]["currentValue"] != "undefined") {
         this.mControl.setValue(changes[keys[i]]["currentValue"]);
       }
       if (keys[i] === "tagTypeId" && changes[keys[i]]["currentValue"]) {

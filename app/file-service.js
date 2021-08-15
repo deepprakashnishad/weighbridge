@@ -18,7 +18,6 @@ ipcMain.handle("saveSingleEnvVar", async (event, arg) => {
   try {
     if (arg[0] && arg[1]) {
       var data = fs.readFileSync(bootstrapData.mConstants.envFilename, 'utf-8');
-      console.log(data);
       data = JSON.parse(data);
       data[arg[0]] = arg[1];
 
@@ -37,14 +36,14 @@ ipcMain.handle("saveSingleEnvVar", async (event, arg) => {
 ipcMain.handle("loadEnvironmentVars", async (event, arg) => {
   try {
     var data = fs.readFileSync(bootstrapData.mConstants.envFilename, 'utf-8');
-    if (arg[0]) {
+    if (arg && arg[0]) {
       return JSON.parse(data)[arg[0]];
     } else {
       return JSON.parse(data);
     }
   }
   catch (e) {
-    console.log('Failed to save the file !');
+    console.log('Failed to load the file !');
     console.log(e);
     return false;
   }

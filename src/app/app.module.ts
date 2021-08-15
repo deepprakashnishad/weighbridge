@@ -17,6 +17,7 @@ import { WeighmentComponent } from './weighment/weighment.component';
 import { WeighmentSummaryComponent } from './weighment/weighment-summary/weighment-summary.component';
 import { WeighmentDetailComponent } from './weighment/weighment-details/weighment-details.component';
 import { InitialSetupComponent } from './admin/initial-setup/initial-setup.component';
+import { WeighmentSearchDialog } from './weighment/weighment-search-dialog/weighment-search-dialog.component';
 
 const notifierDefaultOptions: NotifierOptions = {
   position: {
@@ -67,6 +68,7 @@ const notifierDefaultOptions: NotifierOptions = {
     WeighmentComponent,
     WeighmentDetailComponent,
     WeighmentSummaryComponent,
+    WeighmentSearchDialog,
     InitialSetupComponent
    ],
   imports: [

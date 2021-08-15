@@ -1,6 +1,6 @@
 <div fxLayout fxLayoutGap="32px">
   <div fxLayout="column" fxLayoutGap="32px">
-    <button mat-raised-button color="primary">One Time Backup <mat-icon>beenhere</mat-icon></button>
+    <button mat-raised-button color="primary" (click)="backup()">One Time Backup <mat-icon>beenhere</mat-icon></button>
     <mat-checkbox [(ngModel)]="cboxEnableDBBackup">Enable auto scheduled backup</mat-checkbox>
   </div>
 

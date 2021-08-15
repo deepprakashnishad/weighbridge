@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseurl: "http://localhost:1337",
+  appName: "weighbridge",
+  appDisplayName: "Notamedia Weighbridge",
   firstAutoRefresh: true
 };
 

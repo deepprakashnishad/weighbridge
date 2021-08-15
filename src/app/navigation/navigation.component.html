@@ -2,15 +2,15 @@
 <mat-toolbar color="primary">
 	<mat-toolbar-row fxLayout fxLayoutAlign="space-between center">
 		<div fxLayout fxLayoutAlign="start center" fxLayoutGap="50px">
-			<button class="menu-button" mat-button [matMenuTriggerFor]="dataentry">Data Entry</button>
-			<button class="menu-button" mat-button [matMenuTriggerFor]="reports">Reports</button>
-			<button class="menu-button" mat-button [matMenuTriggerFor]="administration">Administration</button>
-			<button class="menu-button" mat-button [matMenuTriggerFor]="options">Options</button>
-			<button class="menu-button" mat-button [matMenuTriggerFor]="help">Help</button>
+			<button tabindex="-1" class="menu-button" mat-button [matMenuTriggerFor]="dataentry">Data Entry</button>
+			<button tabindex="-1" class="menu-button" mat-button [matMenuTriggerFor]="reports">Reports</button>
+			<button tabindex="-1" class="menu-button" mat-button [matMenuTriggerFor]="administration">Administration</button>
+			<button tabindex="-1" class="menu-button" mat-button [matMenuTriggerFor]="options">Options</button>
+			<button tabindex="-1" class="menu-button" mat-button [matMenuTriggerFor]="help">Help</button>
 		</div>
 		<div fxLayout fxLayoutAlign="end center">
-			<button mat-icon-button (click)="navigateTo('home')"><mat-icon>home</mat-icon></button>
-			<button mat-icon-button><mat-icon>info</mat-icon></button>
+			<button tabindex="-1" mat-icon-button (click)="navigateTo('home')"><mat-icon>home</mat-icon></button>
+			<button tabindex="-1" mat-icon-button><mat-icon>info</mat-icon></button>
 		</div>
 	</mat-toolbar-row>
 	<mat-menu #dataentry="matMenu">

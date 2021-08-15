@@ -1,7 +1,7 @@
 <div class="container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="32px">
   <div class="full-width" fxLayout fxLayoutAlign="space-between center">
-    <div class="box-title">Truck Weighing</div>
-    <button mat-icon-button color="primary"><mat-icon>info</mat-icon></button>
+    <div class="box-title">Features</div>
+    <app-help [tag]="'FEATURES'"></app-help>
   </div>
   <div class="content-box" fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="32px">
       <mat-checkbox name="cntl1" [(ngModel)]="enableInboundOutbound" class="example-margin">Enable Inbound/Outbound</mat-checkbox>

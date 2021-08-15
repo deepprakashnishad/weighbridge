@@ -35,8 +35,8 @@ export class AuthenticationService {
     private router: Router,
     private notifier: NotifierService
   ) {
-  	this.loginUrl = environment.baseurl+'/UserLogin/login';
-    this.signupUrl = environment.baseurl + '/UserLogin';
+  	this.loginUrl = '/UserLogin/login';
+    this.signupUrl = '/UserLogin';
     var loginStatus = this.getTokenOrOtherStoredData("isLoggedIn");
     if (loginStatus === 'true') {
       this.isLoggedIn.next(loginStatus);

@@ -15,7 +15,7 @@ export class PermissionService {
   	constructor(
 	  	private http: HttpClient,
 	) {
-	     this.permissionUrl = environment.baseurl + '/permission';
+	     this.permissionUrl = '/permission';
 	}
 
 	getPermissions(): Observable<Array<Permission>> {

@@ -1,23 +1,27 @@
 <div class="container" fxLayout="column" fxLayoutGap="4px">
   <div class="container" [ngClass]="{'red': weighment.weighmentType === 'inbound', 'green' : weighment.weighmentType.indexOf('outbound')>-1}" fxLayout="column" fxLayoutGap="8px">
     <div fxLayout fxLayoutAlign="space-between center">
-      <mat-radio-group [(ngModel)]="weighment.weighmentType" aria-label="Select weightment type" fxLayout fxLayoutGap="32px" fxLayoutAlign="start">
-        <mat-radio-button value="inbound">Inbound(Purchase)</mat-radio-button>
-        <mat-radio-button value="outbound_export">Outbound(Export)</mat-radio-button>
-        <mat-radio-button value="outbound_domestic">Outbound(Domestic)</mat-radio-button>
-        <mat-radio-button value="outbound_subcontract">Outbound(Sub-contract Dispatch)</mat-radio-button>
-        <mat-radio-button value="others">Others</mat-radio-button>
+      <mat-radio-group tabindex="-1" [(ngModel)]="weighment.weighmentType" aria-label="Select weightment type" fxLayout fxLayoutGap="32px" fxLayoutAlign="start">
+        <mat-radio-button tabindex="-1" value="inbound">Inbound(Purchase)</mat-radio-button>
+        <mat-radio-button tabindex="-1" value="outbound_export">Outbound(Export)</mat-radio-button>
+        <mat-radio-button tabindex="-1" value="outbound_domestic">Outbound(Domestic)</mat-radio-button>
+        <mat-radio-button tabindex="-1" value="outbound_subcontract">Outbound(Sub-contract Dispatch)</mat-radio-button>
+        <mat-radio-button tabindex="-1" value="others">Others</mat-radio-button>
       </mat-radio-group>
       <h3>Date - {{currDate.getDate()}} / {{currDate.getMonth()}} / {{currDate.getFullYear()}}</h3>
     </div>
 
     <div fxLayout fxLayoutAlign="start start" fxLayoutGap="16px">
-      <mat-form-field appearance="outline">
-        <mat-label>Vehicle No</mat-label>
-        <input matInput #vehicleCntl [(ngModel)]="weighment.vehicleNo" name="cntlRequestId"
-               (keyup.enter)="parseQRString(weighment.vehicleNo)"
-               (blur)="parseQRString(weighment.vehicleNo)" tabindex="0" />
-      </mat-form-field>
+      <div fxLayout fxLayoutGap="16px" fxLayoutAlign="center start">
+        <mat-form-field appearance="outline">
+          <mat-label>Vehicle No</mat-label>
+          <input matInput #vehicleCntl [(ngModel)]="weighment.vehicleNo" name="cntlRequestId"
+                 (keyup.enter)="parseQRString(weighment.vehicleNo)"
+                 (blur)="parseQRString(weighment.vehicleNo)" tabindex="0" />
+          <button tabindex="-1" mat-icon-button matSuffix color="primary" (click)="openSearchDialog()"><mat-icon>open_in_new</mat-icon></button>
+        </mat-form-field>
+        <!--<button tabindex="-1" mat-icon-button color="primary" (click)="openSearchDialog()"><mat-icon>open_in_new</mat-icon></button>-->
+      </div>
       <mat-form-field appearance="outline" *ngIf="weighment.weighmentType!=='inbound' && weighment.weighmentType!=='others'">
         <mat-label>Request Id</mat-label>
         <input matInput [(ngModel)]="weighment.reqId" name="cntlRequestId"
@@ -50,18 +54,7 @@
     <div fxLayout fxLayoutAlign="start center" fxLayoutGap="16px">
       <app-tag-selector [tagTypeId]="1" [selectedTag]="weighmentDetail.supplier" [title]="'Supplier'" (optionSelected)="supplierSelected($event)"></app-tag-selector>
       <app-tag-selector #transporterCntl [tagTypeId]="3" [selectedTag]="transporter" [title]="'Transporter'" (optionSelected)="transporterSelected($event)"></app-tag-selector>
-      <!--<mat-form-field appearance="outline">
-    <mat-label>Transporter Code</mat-label>
-    <input matInput [(ngModel)]="weighment.transporterCode" name="cntlTransporterCode"
-           (keyup.enter)="parseQRString(weighment.transporterCode)"
-           (blur)="parseQRString(weighment.transporterCode)" />
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Transporter Name</mat-label>
-    <input matInput [(ngModel)]="weighment.transporterName" name="cntlTransporterName"
-           (keyup.enter)="parseQRString(weighment.transporterName)"
-           (blur)="parseQRString(weighment.transporterName)" />
-  </mat-form-field>-->
+      
       <mat-form-field appearance="outline" fxFlex>
         <mat-label>Miscellenous</mat-label>
         <input matInput [(ngModel)]="weighmentDetail.remark" name="cntlMisc"

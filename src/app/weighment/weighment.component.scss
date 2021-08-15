@@ -15,6 +15,8 @@
   background-color: #dfffdf;
 }
 
+
+
 .weight.mat-form-field {
   .mat-input-element {
     color: red;
@@ -36,8 +38,8 @@
   width: 133.33333%;
 }
 
-button.mat-button div.mat-button-focus-overlay {
-  background-color: rgba(0,0,0,0.12);
+button.cdk-focused {
+  background-color: #000e5a !important; //rgba(0,0,0,0.12);
 }
 
 button {
@@ -46,6 +48,13 @@ button {
   color: white;
   font-size: 16px;
   line-height: 26px;
+  height: auto;
+  width: auto;
+}
+
+button.mat-icon-button {
+  background: none!important;
+  font-size: 16px;
   height: auto;
   width: auto;
 }

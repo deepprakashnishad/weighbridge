@@ -2,13 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app",
-    "\\src\\app\\admin\\ticket-setup\\preview-dialog",
-    "\\src\\app\\admin\\weighbridge-setup\\weighing-indicators\\create-edit-weigh-indicator",
-    "\\src\\app\\shared\\help",
-    "\\src\\app\\shared\\html-viewer",
-    "\\src\\app\\weighment\\weighment-summary"
+    "\\src\\app"
   ],
-  "SelectedNode": "\\src\\app\\query-list.ts",
+  "SelectedNode": "\\src\\app\\weighbridge-record",
   "PreviewInSolutionExplorer": false
 }

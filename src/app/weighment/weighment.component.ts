@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { isString } from 'util';
@@ -12,6 +11,7 @@ import { SharedDataService } from '../shared-data.service';
 import { TagSelectorComponent } from '../shared/tag-selector/tag-selector.component';
 import { Utils } from '../utils';
 import { Weighment, WeighmentDetail } from './weighment';
+import { WeighmentSearchDialog } from './weighment-search-dialog/weighment-search-dialog.component';
 import { WeighmentSummaryComponent } from './weighment-summary/weighment-summary.component';
 
 @Component({
@@ -84,11 +84,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
 
       if (data["selectedWeighBridge"]) {
         this.selectedIndicator = data["selectedWeighBridge"];
+        this.weighbridge = this.selectedIndicator.wiName;
       }
-    });
-
-    this.ipcService.invokeIPC("get-env-data").then(result => {
-      this.weighbridge = result['weighbridge'];
     });
   }
 
@@ -327,7 +324,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       height: "800px",
       width: "1000px",
       data: {
-        weighment: this.weighment
+        weighment: this.weighment,
+        weighmentDetail: this.weighmentDetail
       }
     });
 
@@ -347,12 +345,13 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       return false;
     }
 
-    if (this.weighmentDetail.firstWeight === undefined) {
+    if (this.weighmentDetail.firstWeight === undefined || isNaN(this.weighmentDetail.firstWeight)) {
       this.notifier.notify("error", "First weight is required");
       return false;
     }
 
-    if (this.weighmentDetail.id && this.weighmentDetail.secondWeight === undefined) {
+    if (this.weighmentDetail.id && (this.weighmentDetail.secondWeight === undefined
+      || isNaN(this.weighmentDetail.secondWeight))) {
       this.notifier.notify("error", "Second weight is required");
       return false;
     }
@@ -370,7 +369,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
 
     if (this.weighment.weighmentType.indexOf("outbound")>-1 &&
       this.weighmentDetail.secondWeight < this.weighmentDetail.firstWeight) {
-      this.notifier.notify("error", "First weight can't be greater than second weight for inbound");
+      this.notifier.notify("error", "First weight can't be greater than second weight for outbound");
       return false;
     }
 
@@ -473,5 +472,12 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       }
     }
     return result;
+  }
+
+  openSearchDialog() {
+    var dialogRef = this.dialog.open(WeighmentSearchDialog, {
+      height: "500px",
+      width: "700px",
+    });
   }
 }

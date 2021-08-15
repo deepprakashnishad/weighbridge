@@ -15,7 +15,7 @@ export class RoleService {
   constructor(
   	private http: HttpClient,
   ) {
-     this.roleUrl = environment.baseurl + '/role';
+     this.roleUrl = '/role';
   }
 
   getRoles(): Observable<Array<Role>> {

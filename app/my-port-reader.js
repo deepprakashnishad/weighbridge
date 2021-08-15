@@ -97,8 +97,14 @@ function onReadData(data) {
     if (weighString === undefined) {
       return;
     }
-
+    console.log(data);
     var tempWeight = '';
+
+    if (data.length !== weighString['totalChars']) {
+      console.log(data.length);
+      console.log(weighString['totalChars']);
+      return;
+    }
 
     if (data.charCodeAt(weighString['signCharPosition']) === weighString['negativeSignValue'] ||
       data.charAt(weighString['signCharPosition']) === weighString['negativeSignValue']) {

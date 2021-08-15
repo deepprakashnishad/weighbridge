@@ -20,6 +20,13 @@ export class QueryList{
     convert(varchar, secondWeightDatetime, 20) as secondWeightDatetime, secondWeightUser, remark, netWeight \
     FROM weighment_details WHERE weighmentRstNo={rstNo} ORDER BY id";
 
+  static readonly GET_WEIGHMENTS_WITH_LATEST_DETAIL = "SELECT * FROM weighment w RIGHT JOIN  \
+      (SELECT id, weighmentRstNo, material, supplier, firstWeighBridge, firstUnit, firstWeight, \
+    convert(varchar, firstWeightDatetime, 20) as firstWeightDatetime, firstWeightUser, secondWeighBridge, secondUnit, secondWeight, \
+    convert(varchar, secondWeightDatetime, 20) as secondWeightDatetime, secondWeightUser, remark, netWeight FROM weighment_details wd RIGHT JOIN \
+      (SELECT max(id) as maxid from weighment_details group by weighmentRstNo)\
+      as wd1 on wd.id = wd1.maxid) as wd2 on w.rstNo = wd2.weighmentRstNo";
+
   // Weighbridges
   static readonly GET_WEIGHBRIDGES: string = "Select * from weighbridge";
     
@@ -85,4 +92,7 @@ export class QueryList{
   //Application data
   static readonly GET_APP_SETTINGS: string = "SELECT * FROM app_data";
   static readonly UPDATE_APP_SETTING: string = "UPDATE app_data set mValue='{mValue}' WHERE field='{field}'"
+
+  //DB Backup
+  static readonly BACKUP: string = "BACKUP DATABASE weighbridge TO DISK = '{path}'";
 }

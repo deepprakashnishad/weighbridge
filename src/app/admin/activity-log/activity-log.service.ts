@@ -16,7 +16,7 @@ export class ActivityLogService {
   constructor(
     private http: HttpClient,
   ) {
-      this.actvityLogUrl = environment.baseurl + '/getActivityLog';
+      this.actvityLogUrl = '/getActivityLog';
   }
 
   getActivityLogs(pageSize, offset): Observable<Array<ActivityLog>> {

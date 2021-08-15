@@ -102,12 +102,17 @@ ipcMain.handle("write-to-verification-port", async (event, ...args) => {
 function onReadData(data) {
   try {
     data = data.toString();
-    //console.log(data);
     if (weighString === undefined) {
       return;
     }
 
     var tempWeight = '';
+
+    if (data.length !== weighString['totalChars']) {
+      console.log("Data length - " + data.length);
+      console.log("Expected chars - " + weighString['totalChars']);
+      return;
+    }
 
     if (data.charCodeAt(weighString['signCharPosition']) === weighString['negativeSignValue'] ||
       data.charAt(weighString['signCharPosition']) === weighString['negativeSignValue']) {
