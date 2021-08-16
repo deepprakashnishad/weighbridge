@@ -10,42 +10,66 @@
       <input matInput [(ngModel)]="vehicleTxt" name="cntlVehicleTxt" (ngModelChange)="filter()" />
     </mat-form-field>
   </form>
-  <mat-table #table [dataSource]="filteredRecords" class="full-width">
+  <div class="table-container">
+    <mat-table #table [dataSource]="filteredRecords" class="full-width">
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="rstNo">
-      <mat-header-cell *matHeaderCellDef> Rst No </mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        {{element.rstNo}}
-      </mat-cell>
-    </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="rstNo">
+        <mat-header-cell *matHeaderCellDef> Rst No </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{element.rstNo}}
+        </mat-cell>
+      </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="vehicleNo">
-      <mat-header-cell *matHeaderCellDef> Vehicle No </mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        {{element.vehicleNo}}
-      </mat-cell>
-    </ng-container>
+      <!-- Weight Column -->
+      <ng-container matColumnDef="vehicleNo">
+        <mat-header-cell *matHeaderCellDef> Vehicle No </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{element.vehicleNo}}
+        </mat-cell>
+      </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="dateTime">
-      <mat-header-cell *matHeaderCellDef> Datetime </mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        {{element.createdAt}}
-      </mat-cell>
-    </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="mdateTime">
+        <mat-header-cell *matHeaderCellDef> Datetime </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{element.firstWeightDatetime}}
+        </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="action">
-      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <button mat-icon-button (click)="navigateTo('weighment', element.rstNo)">
-          <mat-icon>open_in_new</mat-icon>
-        </button>
-      </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="material">
+        <mat-header-cell *matHeaderCellDef> Material </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{element.material}}
+        </mat-cell>
+      </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+      <ng-container matColumnDef="supplier">
+        <mat-header-cell *matHeaderCellDef> Supplier </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{element.supplier}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="transporter">
+        <mat-header-cell *matHeaderCellDef> Transporter </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{element.transporterName}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-icon-button (click)="navigateTo('weighment', element.rstNo)">
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+  </div>
 </div>

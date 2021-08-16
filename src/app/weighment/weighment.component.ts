@@ -476,8 +476,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
 
   openSearchDialog() {
     var dialogRef = this.dialog.open(WeighmentSearchDialog, {
-      height: "500px",
-      width: "700px",
+      height: "600px",
+      width: "1100px",
     });
   }
 }
