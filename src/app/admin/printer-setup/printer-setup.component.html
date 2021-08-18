@@ -3,31 +3,47 @@
     <mat-card-title>Select Printer</mat-card-title>
     <mat-card-content>
       <form fxLayout="column" fxLayoutGap="16px">
-        <mat-form-field appearance="fill">
-          <mat-label>Printer 1</mat-label>
-          <mat-select name="cntlPrinter1" [(ngModel)]="selectedPrinter1" placeholder="Printer 1">
-            <mat-option *ngFor="let printer of availablePrinters" [value]="printer">{{printer['name']}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Printer 2</mat-label>
-          <mat-select  name="cntlPrinter2" [(ngModel)]="selectedPrinter2" placeholder="Printer 2">
-            <mat-option *ngFor="let printer of availablePrinters" [value]="printer">{{printer['name']}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Printer 3</mat-label>
-          <mat-select [(ngModel)]="selectedPrinter3" name="cntlPrinter3" placeholder="Printer 3">
-            <mat-option *ngFor="let printer of availablePrinters" [value]="printer">{{printer['name']}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Printer 4</mat-label>
-          <mat-select [(ngModel)]="selectedPrinter4" name="cntlPrinter4" placeholder="Printer 4">
-            <mat-option *ngFor="let printer of availablePrinters" [value]="printer">{{printer['name']}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </form>
+        <div fxLayout fxLayoutGap="16px">
+          <mat-form-field appearance="fill">
+            <mat-label>Printer 1</mat-label>
+            <mat-select name="cntlPrinter1" [(ngModel)]="selectedPrinter1" (selectionChange)="printerSelected('selectedPrinter1', selectedPrinter1)" placeholder="Printer 1">
+              <mat-option *ngFor="let printer of availablePrinters" [value]="printer">{{printer['name']}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-icon-button (click)="preview()"><mat-icon>remove_red_eye</mat-icon></button>
+          <button mat-icon-button (click)="print('printer1')"><mat-icon>print</mat-icon></button>
+        </div>
+        <div fxLayout fxLayoutGap="16px">
+          <mat-form-field appearance="fill">
+            <mat-label>Printer 2</mat-label>
+            <mat-select name="cntlPrinter2" [(ngModel)]="selectedPrinter2" (selectionChange)="printerSelected('selectedPrinter2', selectedPrinter2)" placeholder="Printer 2">
+              <mat-option *ngFor="let printer of availablePrinters" [value]="printer">{{printer['name']}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-icon-button (click)="preview()"><mat-icon>remove_red_eye</mat-icon></button>
+          <button mat-icon-button (click)="print('printer2')"><mat-icon>print</mat-icon></button>
+        </div>
+        <div fxLayout fxLayoutGap="16px">
+          <mat-form-field appearance="fill">
+            <mat-label>Printer 3</mat-label>
+            <mat-select [(ngModel)]="selectedPrinter3" name="cntlPrinter3" (selectionChange)="printerSelected('selectedPrinter3', selectedPrinter3)" placeholder="Printer 3">
+              <mat-option *ngFor="let printer of availablePrinters" [value]="printer">{{printer['name']}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-icon-button (click)="preview()"><mat-icon>remove_red_eye</mat-icon></button>
+          <button mat-icon-button (click)="print('printer3')"><mat-icon>print</mat-icon></button>
+        </div>
+        <div fxLayout fxLayoutGap="16px">
+          <mat-form-field appearance="fill">
+            <mat-label>Printer 4</mat-label>
+            <mat-select [(ngModel)]="selectedPrinter4" name="cntlPrinter4" (selectionChange)="printerSelected('selectedPrinter4', selectedPrinter4)" placeholder="Printer 4">
+              <mat-option *ngFor="let printer of availablePrinters" [value]="printer">{{printer['name']}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-icon-button (click)="preview()"><mat-icon>remove_red_eye</mat-icon></button>
+          <button mat-icon-button (click)="print('printer4')"><mat-icon>print</mat-icon></button>
+        </div>
+</form>
     </mat-card-content>
   </mat-card>
 
@@ -62,5 +78,6 @@
   </mat-card>
 </div>
 <div fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
-  <button mat-raised-button color="primary" (click)="print()">Print</button>
+  <!--<button mat-raised-button color="primary" (click)="print()">Print</button>-->
+  <button mat-raised-button color="primary" (click)="save()">Save</button>
 </div>

@@ -1,13 +1,11 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
-import { WeighIndicator } from '../admin/weighbridge-setup/weigh-indicator';
 import { MyDbService } from '../my-db.service';
 import { MyIpcService } from '../my-ipc.service';
 import { QueryList } from '../query-list';
 import { SharedDataService } from '../shared-data.service';
-import { Weighbridge, Weighment } from '../weighment/weighment';
-import {Record} from './record';
+import { Weighment } from '../weighment/weighment';
 
 const refreshTime = 3000;
 

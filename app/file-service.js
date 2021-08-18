@@ -20,11 +20,12 @@ ipcMain.handle("saveSingleEnvVar", async (event, arg) => {
       var data = fs.readFileSync(bootstrapData.mConstants.envFilename, 'utf-8');
       data = JSON.parse(data);
       data[arg[0]] = arg[1];
-
       console.log(JSON.stringify(data));
+      fs.writeFileSync(bootstrapData.mConstants.envFilename, JSON.stringify(data), 'utf-8');
+      return true;
+    } else {
+      return false;
     }
-    fs.writeFileSync(bootstrapData.mConstants.envFilename, JSON.stringify(data), 'utf-8');
-    return true;
   }
   catch (e) {
     console.log('Failed to save the file !');

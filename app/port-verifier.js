@@ -102,6 +102,7 @@ ipcMain.handle("write-to-verification-port", async (event, ...args) => {
 function onReadData(data) {
   try {
     data = data.toString();
+    console.log(data);
     if (weighString === undefined) {
       return;
     }

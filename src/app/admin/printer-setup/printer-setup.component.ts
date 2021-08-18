@@ -1,9 +1,14 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { NotifierService } from 'angular-notifier';
 import { MyDbService } from '../../my-db.service';
 import { MyIpcService } from '../../my-ipc.service';
 import { QueryList } from '../../query-list';
+import { HtmlViewerComponent } from '../../shared/html-viewer/html-viewer.component';
+import { Weighment, WeighmentDetail } from '../../weighment/weighment';
 import { TicketTemplate } from '../ticket-setup/ticket-template';
 import { Printer } from './printer';
+import { PrinterService } from './printer.service';
 
 
 @Component({
@@ -27,14 +32,63 @@ export class PrinterSetupComponent implements OnInit {
 
   constructor(
     private myIPCService: MyIpcService,
-    private dbService: MyDbService
+    private dbService: MyDbService,
+    private notifier: NotifierService,
+    private printerService: PrinterService,
+    private dialog: MatDialog
   ) {
     this.myIPCService.invokeIPC("printer-ipc", "getPrinters").then((printers) => {
       this.availablePrinters = Printer.jsonToPrintersArray(printers);
-      this.selectedPrinter1 = this.availablePrinters[0];
-      this.selectedPrinter2 = this.availablePrinters[0];
-      this.selectedPrinter3 = this.availablePrinters[0];
-      this.selectedPrinter4 = this.availablePrinters[0];
+    });
+
+    this.myIPCService.invokeIPC("loadEnvironmentVars", ["printers"]).then(result => {
+      if (result['printer1']) {
+        this.availablePrinters.some(printer => {
+          if (result['printer1']['name'] === printer['name']) {
+            this.selectedPrinter1 = printer;
+            return true;
+          }
+        }); 
+      }
+      if (result['printer2']) {
+        this.availablePrinters.some(printer => {
+          if (result['printer2']['name'] === printer['name']) {
+            this.selectedPrinter2 = printer;
+            return true;
+          }
+        });
+      }
+      if (result['printer3']) {
+        this.availablePrinters.some(printer => {
+          if (result['printer3']['name'] === printer['name']) {
+            this.selectedPrinter3 = printer;
+            return true;
+          }
+        });
+      }
+      if (result['printer4']) {
+        this.availablePrinters.some(printer => {
+          if (result['printer4']['name'] === printer['name']) {
+            this.selectedPrinter4 = printer;
+            return true;
+          }
+        });
+      }
+    });
+  }
+
+  printerSelected(key, value) {
+    this.myIPCService.invokeIPC("saveSingleEnvVar", ["printers", {
+      "printer1": this.selectedPrinter1,
+      "printer2": this.selectedPrinter2,
+      "printer3": this.selectedPrinter3,
+      "printer4": this.selectedPrinter4,
+    }]).then(result => {
+      if (result) {
+        this.notifier.notify("success", `${key} updated successfully`);
+      } else {
+        this.notifier.notify("error", `Failed to update ${key}`);
+      }
     });
   }
 
@@ -45,13 +99,35 @@ export class PrinterSetupComponent implements OnInit {
 
     this.dbService.executeSyncDBStmt("SELECT", QueryList.GET_ALL_TICKET_TEMPLATE)
       .then(result => {
-        console.log(result);
         this.templates = result;
       });
   }
 
-  print() {
-    this.myIPCService.invokeIPC("printer-ipc", "print", "start /min notepad /P <filename>", "Radhe Krishna Radhe Krishna \n Krishna Krishna Radhe Radhe\nSita Ram Sita Rama\n Rama Rama Sita Sita");
+  print(printer) {
+    var selectedPrinter;
+    if (printer === "printer1") {
+      selectedPrinter = this.selectedPrinter1;
+    } else if (printer === "printer2") {
+      selectedPrinter = this.selectedPrinter2;
+    } else if (printer === "printer3") {
+      selectedPrinter = this.selectedPrinter3;
+    } else if (printer === "printer4") {
+      selectedPrinter = this.selectedPrinter4;
+    }
+    //this.printerService.rawTextPrint();
+  }
+
+  preview() {
+    var weighment = Weighment.randomGenerator("inbound", 3, "pending");
+    this.printerService.previewText(
+      weighment,
+      weighment.weighmentDetails[weighment.weighmentDetails.length - 1]
+    ).then(result => {
+      console.log(result);
+      this.dialog.open(HtmlViewerComponent, {
+        data: { htmlContent: result }
+      });
+    });
   }
 
   save() {

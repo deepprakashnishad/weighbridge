@@ -4,6 +4,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { NotifierService } from 'angular-notifier';
 import { MyDbService } from '../../my-db.service';
 import { QueryList } from '../../query-list';
+import { HtmlViewerComponent } from '../../shared/html-viewer/html-viewer.component';
+import { Weighment } from '../../weighment/weighment';
+import { PrinterService } from '../printer-setup/printer.service';
 import { CreateEditTicketTemplateComponent } from './create-edit-ticket-template/create-edit-ticket-template.component';
 import { PreviewDialogComponent } from './preview-dialog/preview-dialog.component';
 import { TicketField } from './ticket';
@@ -25,20 +28,22 @@ export class TicketSetupComponent implements OnInit {
 
   ticketFieldDataSource: MatTableDataSource<TicketField>;
   textFieldDataSource: MatTableDataSource<TicketField>;
+  columnFieldDataSource: MatTableDataSource<TicketField>;
 
   constructor(
     private notifier: NotifierService,
     private dbService: MyDbService,
     private dialog: MatDialog,
+    private printerService: PrinterService
   ) {
     this.textFieldDataSource = new MatTableDataSource(TicketField.generateFreeTextRecords([]));
+    this.columnFieldDataSource = new MatTableDataSource(TicketField.generateColumnFieldRecords());
     this.ticketFieldDataSource = new MatTableDataSource(TicketField.generateTicketFields());
   }
 
   ngOnInit() {
     this.dbService.executeSyncDBStmt("SELECT", QueryList.GET_ALL_TICKET_TEMPLATE).then(results => {
       this.templates = results;
-      //this.selectedTemplate = this.templates[0];
     });
   }
 
@@ -84,6 +89,9 @@ export class TicketSetupComponent implements OnInit {
     for (var i = 0; i < this.textFieldDataSource.data.length; i++) {
       this.textFieldDataSource.data[i]['id'] = await this.insertTicketField(this.textFieldDataSource.data[i], this.selectedTemplate.id);
     }
+    for (var i = 0; i < this.columnFieldDataSource.data.length; i++) {
+      this.columnFieldDataSource.data[i]['id'] = await this.insertTicketField(this.columnFieldDataSource.data[i], this.selectedTemplate.id);
+    }
     this.notifier.notify("success", "Template details saved successfully");
   }
 
@@ -95,7 +103,7 @@ export class TicketSetupComponent implements OnInit {
         .replace("{templateId}", templateId.toString())
         .replace("{field}", data.field ? data.field: null)
         .replace("{type}", data.type ? data.type: null)
-        .replace("{diplayName}", data.displayName ? data.displayName: null)
+        .replace("{displayName}", data.displayName ? data.displayName: null)
         .replace("{row}", data.row ? data.row.toString() :"null")
         .replace("{col}", data.col ? data.col.toString() : "null")
         .replace("{isIncluded}", data.isIncluded ? "1" : "0")
@@ -116,6 +124,7 @@ export class TicketSetupComponent implements OnInit {
         .replace("{font}", data.font ? data.font : "R");
       this.dbService.executeSyncDBStmt("UPDATE", stmt).then(res => {
       });
+      return data.id;
     } else if (data.id && data.displayName.length === 0) {
       //Delete entry from database
       //var stmt = QueryList.DELETE_TICKET_FIELD.replace("{id}", data.id.toString());
@@ -131,17 +140,16 @@ export class TicketSetupComponent implements OnInit {
       this.notifier.notify("error", "Please select fields to preview");
       return;
     }
-    //var mText = this.preparePreviewText(ticketFields);
-    //console.log(mText);
-
-    this.dialog.open(PreviewDialogComponent, {
-      maxWidth: '100vw',
-      maxHeight: '100vh',
-      height: '100%',
-      width: '100%',
-      data: ticketFields
+    var weighment = Weighment.randomGenerator("inbound", 3, "pending");
+    this.printerService.previewText(
+      weighment,
+      weighment.weighmentDetails[weighment.weighmentDetails.length - 1],
+      ticketFields
+    ).then(result => {
+      this.dialog.open(HtmlViewerComponent, {
+        data: { htmlContent: result }
+      });
     });
-
   }
 
   getCurrentFieldData() {
@@ -158,6 +166,15 @@ export class TicketSetupComponent implements OnInit {
         ticketFields.push(temp);
       }
     }
+    if (this.includeWeighmentTableField()) {
+      for (var i = 0; i < this.columnFieldDataSource.data.length; i++) {
+        var temp = this.columnFieldDataSource.data[i];
+        if (temp.displayName?.length > 0 && temp.col !== null && temp.isIncluded) {
+          ticketFields.push(temp);
+        }
+      }
+    }
+    
     ticketFields = ticketFields.sort(function (a, b) {
       if ((a['row'] - b['row']) === 0) {
         return a['col'] - b['col'];
@@ -175,11 +192,19 @@ export class TicketSetupComponent implements OnInit {
     var mFields = TicketField.fromJSON(result, true);
     var ticketFields = mFields["ticketFields"];
     var freetextFields = mFields["freetextFields"];
+    var weighDetailFields = mFields["weighDetailFields"];
     if (ticketFields.length > 0) {
       this.ticketFieldDataSource.data = ticketFields;
     } else {
       this.ticketFieldDataSource.data = TicketField.generateTicketFields();
     }
+
+    if (weighDetailFields.length > 0) {
+      this.columnFieldDataSource.data = weighDetailFields;
+    } else {
+      this.columnFieldDataSource.data = TicketField.generateColumnFieldRecords();
+    }
+
     this.textFieldDataSource.data = TicketField.generateFreeTextRecords(freetextFields);
   }
 
@@ -258,5 +283,14 @@ export class TicketSetupComponent implements OnInit {
       }
     }
     return mText;
+  }
+
+  includeWeighmentTableField() {
+    for (var i in this.ticketFieldDataSource.data) {
+      if (this.ticketFieldDataSource.data[i]['field'] === "weighmentDetails") {
+        return this.ticketFieldDataSource.data[i]['isIncluded'];
+      }
+    }
+    return false;
   }
 }

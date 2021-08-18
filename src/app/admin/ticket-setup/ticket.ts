@@ -22,6 +22,19 @@ const ticketPredefinedFields = [
   { displayName: "Net Wt(KG)", field: "weighDetails_netWeight" },
 ]
 
+const weighmentDetailColumnFields = [
+  { displayName: "Material", field: "material" },
+  { displayName: "Supplier", field: "supplier" },
+  { displayName: "First Weight", field: "firstWeight" },
+  { displayName: "First Unit", field: "firstUnit" },
+  { displayName: "First Wt Datetime", field: "firstWeightDatetime" },
+  { displayName: "Second Wt", field: "secondWeight" },
+  { displayName: "Second Unit", field: "secondUnit" },
+  { displayName: "Second Wt Datetime", field: "secondWeightDatetime" },
+  { displayName: "Remark", field: "remark" },
+  { displayName: "Net Weight", field: "netWeight" },
+]
+
 export class TicketField {
   id: number;
   templateId: number;
@@ -38,6 +51,7 @@ export class TicketField {
   static fromJSON(result, isSeparateReqd) {
     var ticketFields = [];
     var freetextFields = [];
+    var weighDetailFields = [];
     for (var i = 0; i < result.length; i++) {
       var temp: TicketField = new TicketField();
       temp.col = result[i]['col'];
@@ -52,6 +66,8 @@ export class TicketField {
       if (isSeparateReqd) {
         if (temp.type === "ticket-field") {
           ticketFields.push(temp);
+        } else if (temp.type === "weighment_detail") {
+          weighDetailFields.push(temp);
         } else {
           freetextFields.push(temp);
         }
@@ -60,7 +76,7 @@ export class TicketField {
       }
     }
     if (isSeparateReqd) {
-      return { "ticketFields": ticketFields, "freetextFields": freetextFields };
+      return { "ticketFields": ticketFields, "freetextFields": freetextFields, "weighDetailFields": weighDetailFields };
     } else {
       return ticketFields;
     }    
@@ -89,6 +105,20 @@ export class TicketField {
       field.displayName = ele['displayName'];
       field.field = ele['field'];
       field.type = "ticket-field"
+      field.font = "R";
+      field.isIncluded = false;
+      ticketFields.push(field);
+    });
+    return ticketFields;
+  }
+
+  static generateColumnFieldRecords() {
+    var ticketFields = [];
+    weighmentDetailColumnFields.forEach(ele => {
+      var field = new TicketField();
+      field.displayName = ele['displayName'];
+      field.field = ele['field'];
+      field.type = "weighment_detail"
       field.font = "R";
       field.isIncluded = false;
       ticketFields.push(field);

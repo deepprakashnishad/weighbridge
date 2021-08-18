@@ -1,5 +1,6 @@
 import { User } from "../admin/user-management/user";
 import { Person } from "../person/person";
+import { Utils } from "../utils";
 
 export class Weighment{
   rstNo: number;
@@ -37,6 +38,39 @@ export class Weighment{
     weighment.scrollDate = data['scrollDate'] !== null ? data['scrollDate'] : undefined;
     return weighment;
   }
+
+  static randomGenerator(weighmentType: string, weighmentDetailCnt: number, status) {
+    var weighment = new Weighment();
+    weighment.scrollDate = (new Date()).toString();
+    weighment.scrollNo = "M" + Utils.randomStringGenerator(4);
+    weighment.createdAt = (new Date()).toString();
+    weighment.gatePassNo = 1;
+    weighment.poDetails = Utils.randomStringGenerator(6);
+    weighment.reqId = Utils.randomNumberGenerator(4, 1000, 9999);
+    weighment.rstNo = Utils.randomNumberGenerator(4, 1000, 9999);
+    weighment.status = status;
+    weighment.transporterCode = Utils.randomNumberGenerator(4, 1000, 9999);
+    weighment.transporterName = Utils.randomStringGenerator(12);
+    weighment.vehicleNo = Utils.randomStringGenerator(2) + Utils.randomNumberGenerator(2) + Utils.randomStringGenerator(2) + Utils.randomNumberGenerator(4);
+    weighment.weighmentType = weighmentType;
+    var min = 10000;
+    var max = 99999;
+    for (var i = 0; i < weighmentDetailCnt; i++) {
+      var weighmentDetail = WeighmentDetail.randomGenerator(
+        weighmentType == "inbound", i < weighmentDetailCnt - 1 || status === "complete", weighment.rstNo,
+        min, max
+      );
+
+      if (weighmentType === "inbound") {
+        max = weighmentDetail.secondWeight - 1;
+      } else {
+        min = weighmentDetail.secondWeight + 1;
+      }
+      weighment.weighmentDetails.push(weighmentDetail);
+    }
+
+    return weighment;
+  }
 }
 
 export class WeighmentDetail {
@@ -44,16 +78,16 @@ export class WeighmentDetail {
   weighmentRstNo: number;
   material: string;
   supplier: string;
-  firstWeighBridge: Weighbridge;
+  firstWeighBridge: string;
   firstWeight: number;
   firstUnit: string;
-  firstWeightDatetime: Date;
+  firstWeightDatetime: any;//Date;
   firstWeightUser: User;
 
-  secondWeighBridge: Weighbridge;
+  secondWeighBridge: string;
   secondWeight: number;
   secondUnit: string;
-  secondWeightDatetime: Date;
+  secondWeightDatetime: any;// Date;
   secondWeightUser: User;
   remark: string;
   netWeight: number;
@@ -99,9 +133,35 @@ export class WeighmentDetail {
 
     return weighmentDetails;
   }
-}
 
-export class Weighbridge{
-    id: string;
-    title: string;
+  static randomGenerator(isFirstWeightGreater, isComplete, rstNo, mMin, mMax) {
+    var weighmentDetail = new WeighmentDetail();
+    weighmentDetail.firstWeighBridge = Utils.randomStringGenerator(8);
+    weighmentDetail.firstWeightDatetime = new Date().toLocaleString();
+    weighmentDetail.firstWeightUser = User.randomGenerator();
+    weighmentDetail.id = Utils.randomNumberGenerator(3);
+    weighmentDetail.firstWeight = Utils.randomNumberGenerator(5, mMin, mMax);
+
+    weighmentDetail.material = Utils.randomStringGenerator(8);
+    weighmentDetail.supplier = Utils.randomStringGenerator(15);
+    weighmentDetail.remark = Utils.randomStringGenerator(25);
+    weighmentDetail.id = Utils.randomNumberGenerator(4);
+    weighmentDetail.weighmentRstNo = rstNo;
+    if (isComplete) {
+      weighmentDetail.secondWeighBridge = Utils.randomStringGenerator(8);
+      weighmentDetail.secondWeightDatetime = new Date().toLocaleString();
+      weighmentDetail.secondWeightUser = User.randomGenerator();
+      var min = mMin;
+      var max = mMax;
+      if (isFirstWeightGreater) {
+        min = weighmentDetail.firstWeight + 1;
+      } else {
+        max = weighmentDetail.firstWeight - 1;
+      }
+      weighmentDetail.secondWeight = Utils.randomNumberGenerator(5, min, max);
+      weighmentDetail.netWeight = Math.abs(weighmentDetail.secondWeight - weighmentDetail.firstWeight)
+    }
+
+    return weighmentDetail;
+  }
 }

@@ -339,7 +339,7 @@ module.exports = Object.freeze({
       },
       {
         stringName: "String15",
-        totalChars: 11,
+        totalChars: 9,
         variableLength: 0,
         type: "continuous",
         pollingCommand: null,
@@ -362,8 +362,8 @@ module.exports = Object.freeze({
         endChar2: null,
         endChar3: null,
         signCharPosition: 1,
-        negativeSignValue: null,
-        delimeter: null
+        negativeSignValue: "-",
+        delimeter: "newline"
       },        
     ],
     weighindicator: [],
