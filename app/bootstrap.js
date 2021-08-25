@@ -1,6 +1,7 @@
 module.exports = Object.freeze({
   mConstants: {
-    envFilename: "env.json"
+    envFilename: "env.json",
+    appName: "Accubridge"
   },
   seed: {
     app_data: [

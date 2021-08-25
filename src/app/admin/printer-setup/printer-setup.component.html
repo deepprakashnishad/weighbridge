@@ -11,7 +11,7 @@
             </mat-select>
           </mat-form-field>
           <button mat-icon-button (click)="preview()"><mat-icon>remove_red_eye</mat-icon></button>
-          <button mat-icon-button (click)="print('printer1')"><mat-icon>print</mat-icon></button>
+          <!--<button mat-icon-button (click)="print('printer1')"><mat-icon>print</mat-icon></button>-->
         </div>
         <div fxLayout fxLayoutGap="16px">
           <mat-form-field appearance="fill">
@@ -21,7 +21,7 @@
             </mat-select>
           </mat-form-field>
           <button mat-icon-button (click)="preview()"><mat-icon>remove_red_eye</mat-icon></button>
-          <button mat-icon-button (click)="print('printer2')"><mat-icon>print</mat-icon></button>
+          <!--<button mat-icon-button (click)="print('printer2')"><mat-icon>print</mat-icon></button>-->
         </div>
         <div fxLayout fxLayoutGap="16px">
           <mat-form-field appearance="fill">
@@ -31,7 +31,7 @@
             </mat-select>
           </mat-form-field>
           <button mat-icon-button (click)="preview()"><mat-icon>remove_red_eye</mat-icon></button>
-          <button mat-icon-button (click)="print('printer3')"><mat-icon>print</mat-icon></button>
+          <!--<button mat-icon-button (click)="print('printer3')"><mat-icon>print</mat-icon></button>-->
         </div>
         <div fxLayout fxLayoutGap="16px">
           <mat-form-field appearance="fill">
@@ -41,7 +41,7 @@
             </mat-select>
           </mat-form-field>
           <button mat-icon-button (click)="preview()"><mat-icon>remove_red_eye</mat-icon></button>
-          <button mat-icon-button (click)="print('printer4')"><mat-icon>print</mat-icon></button>
+          <!--<button mat-icon-button (click)="print('printer4')"><mat-icon>print</mat-icon></button>-->
         </div>
 </form>
     </mat-card-content>
@@ -50,7 +50,7 @@
   <mat-card>
     <mat-card-title>Template formula</mat-card-title>
     <mat-card-content>
-      <mat-selection-list #cntlTemplateFormula [multiple]="false">
+      <mat-selection-list #cntlTemplateList [multiple]="false" >
         <mat-list-option *ngFor="let template of templates" [value]="template">
           {{template['name']}}
         </mat-list-option>

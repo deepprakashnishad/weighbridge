@@ -97,7 +97,6 @@ function onReadData(data) {
     if (weighString === undefined) {
       return;
     }
-    console.log(data);
     var tempWeight = '';
 
     if (data.length !== weighString['totalChars']) {

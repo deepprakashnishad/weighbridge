@@ -141,13 +141,20 @@ export class TicketSetupComponent implements OnInit {
       return;
     }
     var weighment = Weighment.randomGenerator("inbound", 3, "pending");
-    this.printerService.previewText(
+    this.printerService.getPreviewText(
       weighment,
       weighment.weighmentDetails[weighment.weighmentDetails.length - 1],
       ticketFields
     ).then(result => {
-      this.dialog.open(HtmlViewerComponent, {
-        data: { htmlContent: result }
+      this.dialog.open(PreviewDialogComponent, {
+        data: {
+          htmlContent: result,
+          fontSize: 12,
+          fields: ticketFields,
+          ticketTemplate: this.selectedTemplate,
+          'weighment': weighment,
+          'weighmentDetail': weighment.weighmentDetails[weighment.weighmentDetails.length - 1]
+        }
       });
     });
   }

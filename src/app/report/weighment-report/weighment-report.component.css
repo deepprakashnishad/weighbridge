@@ -53,3 +53,7 @@ button {
 .mat-header-row {
   display: table-row;
 }
+
+.pointer{
+    cursor: pointer;
+}

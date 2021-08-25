@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { isString } from 'util';
+import { PrinterService } from '../admin/printer-setup/printer.service';
+import { PreviewDialogComponent } from '../admin/ticket-setup/preview-dialog/preview-dialog.component';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { MyDbService } from '../my-db.service';
 import { MyIpcService } from '../my-ipc.service';
@@ -59,18 +61,19 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     private notifier: NotifierService,
     private dbService: MyDbService,
     private ipcService: MyIpcService,
+    private printerService: PrinterService,
     private ngZone: NgZone,
     private route: ActivatedRoute,
     private dialog: MatDialog
-  ) { }
-
-  ngOnInit() {
-
+  ) {
     this.route.queryParams.subscribe(params => {
       if (params['rstNo']) {
         this.getWeighment({ "rstNo": params['rstNo'] });
       }
     });
+  }
+
+  ngOnInit() {
 
     if (this.selectedIndicator?.stringType === "continuous") {
       setInterval(this.updateCurrentWeight.bind(this), 1000);
@@ -145,12 +148,11 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       this.weighment.weighmentType = "outbound_domestic";
     }
 
-    if (this.weighment.rstNo) {
-      this.getWeighment({ rstNo: this.weighment.rstNo, status: "pending" });
-    } else if (this.weighment.vehicleNo) {
+    if (this.weighment.vehicleNo) {
       this.weighment.vehicleNo = Utils.removeWhiteSpaces(this.weighment.vehicleNo);
-      console.log(this.weighment.vehicleNo);
       this.getWeighment({ vehicleNo: this.weighment.vehicleNo, status: "pending" });
+    } else if (this.weighment.rstNo) {
+      this.getWeighment({ rstNo: this.weighment.rstNo, status: "pending" });
     }
   }
 
@@ -319,13 +321,22 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     }
   }
 
-  displayWeighmentSummary() {
-    const dialogRef = this.dialog.open(WeighmentSummaryComponent, {
-      height: "800px",
-      width: "1000px",
+  async displayWeighmentSummary() {
+    console.log(this.weighment);
+    console.log(this.weighmentDetail);
+    var data = await this.printerService.getPreviewDataWithTemplate(
+      this.weighment,
+      this.weighment.weighmentDetails[this.weighment.weighmentDetails.length-1]
+    );
+
+    const dialogRef = this.dialog.open(PreviewDialogComponent, {
       data: {
-        weighment: this.weighment,
-        weighmentDetail: this.weighmentDetail
+        'htmlContent': data['content'],
+        fontSize: 12,
+        fields: data['ticketFields'],
+        ticketTemplate: data['template'],
+        'weighment': this.weighment,
+        'weighmentDetail': this.weighmentDetail
       }
     });
 
@@ -345,14 +356,15 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       return false;
     }
 
-    if (this.weighmentDetail.firstWeight === undefined || isNaN(this.weighmentDetail.firstWeight)) {
-      this.notifier.notify("error", "First weight is required");
+    if (this.weighmentDetail.firstWeight === undefined || isNaN(this.weighmentDetail.firstWeight) || this.weighmentDetail.firstWeight<0) {
+      this.notifier.notify("error", "Invalid first weight");
       return false;
     }
 
     if (this.weighmentDetail.id && (this.weighmentDetail.secondWeight === undefined
-      || isNaN(this.weighmentDetail.secondWeight))) {
-      this.notifier.notify("error", "Second weight is required");
+      || isNaN(this.weighmentDetail.secondWeight)
+      || this.weighmentDetail.secondWeight < 0)) {
+      this.notifier.notify("error", "Invalid second weight");
       return false;
     }
 

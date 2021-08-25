@@ -10,6 +10,7 @@ import { switchMap, map } from 'rxjs/operators';
 import { NotifierService } from 'angular-notifier';
 import { MatDialog } from '@angular/material/dialog';
 import { InitialSetupComponent } from '../../admin/initial-setup/initial-setup.component';
+import { LicenseService } from '../../license.service';
 
 const MismatchPasswordValidator: ValidatorFn = (fg: FormGroup): ValidationErrors | null => {
   const pass = fg.get('materialFormCardPasswordEx');
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit{
     private dialog: MatDialog,
     private ngZone: NgZone,
     private notifier: NotifierService,
+    private licenseService: LicenseService,
     private route: ActivatedRoute) {
     this.cardForm = fb.group({
       materialFormCardNameEx: ['', [Validators.required, Validators.minLength(4)]],
@@ -111,15 +113,22 @@ export class LoginComponent implements OnInit{
   login(): void {
     if (this.loginForm.valid) {
       this.errors = [];
-      const username = this.loginForm.get('inputUsername').value;
-      const password = this.loginForm.get('inputPassword').value;
-      this.rememberMe = this.loginForm.controls['inputRememberMe'].value;
-      this.authService.login({ username: username, password: password }).then(result => {
-        if (result) {
-          this.ngZone.run(() => {
-            this.router.navigate(["/home"]);
-          });          
+
+      this.licenseService.isLicenseValid().then((result) => {
+        if (!result["success"]) {
+          this.notifier.notify("error", result['msg']);
         }
+        const username = this.loginForm.get('inputUsername').value;
+        const password = this.loginForm.get('inputPassword').value;
+        this.rememberMe = this.loginForm.controls['inputRememberMe'].value;
+
+        this.authService.login({ username: username, password: password }).then(result => {
+          if (result) {
+            this.ngZone.run(() => {
+              this.router.navigate(["/home"]);
+            });
+          }
+        });
       });
     }
   }
@@ -159,8 +168,8 @@ export class LoginComponent implements OnInit{
 
   openInitialSetupDialog() {
     const dialogRef = this.dialog.open(InitialSetupComponent, {
-      height: "80vh",
-      width: "80vh"
+      height: "95vh",
+      width: "95vw"
     });
   }
 }

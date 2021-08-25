@@ -1,5 +1,5 @@
-<div class="card-container" fxLayoutAlign="start start" fxFlex="auto">
-  <div class="card-body" fxLayout="column">
+<div class="card-container" fxLayout fxLayoutAlign="start start" fxLayoutGap="32px">
+  <div fxFlex="30" class="card-body" fxLayout="column">
     <mat-card>
       <h3>Settings</h3>
       <form fxLayout="row wrap" fxLayoutGap="12px" [formGroup]="mForm">
@@ -25,9 +25,24 @@
         </mat-form-field>
       </form>
     </mat-card>
-    <mat-card-action class="full-width" fxLayout fxLayoutAlign="center center">
+    <mat-card-action class="full-width" fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
       <button mat-raised-button [disabled]="mForm.invalid" type="submit" color="primary" (click)="save();">Save</button>
       <button mat-raised-button type="submit" color="primary" (click)="loadInitialData();">Load Initial Data</button>
     </mat-card-action>
   </div>
+  <mat-card fxFlex>
+    <mat-card-content>
+      <h3>License Details</h3>
+      <form>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>License Number</mat-label>
+          <input license-mask name="cntlLicenseNumber" [disabled]="isLicenseActive" [(ngModel)]="licenseNumber" matInput placeholder="License Number">
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-action fxLayout fxLayoutGap="16px">
+      <button mat-raised-button [disabled]="isLicenseActive" (click)="activateLicense()">Activate</button>
+      <button mat-raised-button [disabled]="!isLicenseActive" (click)="deactivateLicenseForMachine()">De-activate</button>
+    </mat-card-action>
+  </mat-card>
 </div>

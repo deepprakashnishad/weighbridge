@@ -7,6 +7,7 @@ import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 })
 export class HtmlViewerComponent {
 
+  fontSize: number=12;
   htmlContent: string;
 
   constructor(
@@ -14,6 +15,10 @@ export class HtmlViewerComponent {
   ) {
     if (data['htmlContent']) {
       this.htmlContent = data['htmlContent'];
+    }
+
+    if (data['fontSize']) {
+      this.fontSize = data['fontSize'];
     }
   }
 }

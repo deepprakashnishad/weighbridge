@@ -7,9 +7,11 @@
     "rebuild": "electron-rebuild"
   },
   "dependencies": {
+    "change-file-time": "^0.1.0",
     "electron-log": "^4.4.0",
     "mssql": "^7.1.3",
     "mysql": "^2.18.1",
+    "node-machine-id": "^1.1.12",
     "nodemailer": "^6.6.3",
     "printer": "^0.4.0",
     "serialport": "^9.2.0"

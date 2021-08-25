@@ -1,12 +1,14 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NotifierService } from 'angular-notifier';
 import { MyDbService } from '../../my-db.service';
 import { MyIpcService } from '../../my-ipc.service';
 import { QueryList } from '../../query-list';
-import { HtmlViewerComponent } from '../../shared/html-viewer/html-viewer.component';
-import { Weighment, WeighmentDetail } from '../../weighment/weighment';
+import { Weighment } from '../../weighment/weighment';
+import { PreviewDialogComponent } from '../ticket-setup/preview-dialog/preview-dialog.component';
+import { TicketField } from '../ticket-setup/ticket';
 import { TicketTemplate } from '../ticket-setup/ticket-template';
+import { TicketService } from '../ticket-setup/ticket.service';
 import { Printer } from './printer';
 import { PrinterService } from './printer.service';
 
@@ -29,12 +31,15 @@ export class PrinterSetupComponent implements OnInit {
   enableAutoPrint: boolean = false;
 
   templates: Array<TicketTemplate> = [];
+  selectedTemplate: TicketTemplate;
+  ticketFields: Array<TicketField> = [];
 
   constructor(
     private myIPCService: MyIpcService,
     private dbService: MyDbService,
     private notifier: NotifierService,
     private printerService: PrinterService,
+    private ticketService: TicketService,
     private dialog: MatDialog
   ) {
     this.myIPCService.invokeIPC("printer-ipc", "getPrinters").then((printers) => {
@@ -98,34 +103,28 @@ export class PrinterSetupComponent implements OnInit {
     this.printCntAfterSecondWeight = parseInt(sessionStorage.getItem("print_cnt_post_weight2"));
 
     this.dbService.executeSyncDBStmt("SELECT", QueryList.GET_ALL_TICKET_TEMPLATE)
-      .then(result => {
-        this.templates = result;
-      });
-  }
-
-  print(printer) {
-    var selectedPrinter;
-    if (printer === "printer1") {
-      selectedPrinter = this.selectedPrinter1;
-    } else if (printer === "printer2") {
-      selectedPrinter = this.selectedPrinter2;
-    } else if (printer === "printer3") {
-      selectedPrinter = this.selectedPrinter3;
-    } else if (printer === "printer4") {
-      selectedPrinter = this.selectedPrinter4;
-    }
-    //this.printerService.rawTextPrint();
+    .then(result => {
+      this.templates = result;
+      this.selectedTemplate = this.templates[0];
+      this.templateSelected();
+    });
   }
 
   preview() {
     var weighment = Weighment.randomGenerator("inbound", 3, "pending");
-    this.printerService.previewText(
+    this.printerService.getPreviewText(
       weighment,
-      weighment.weighmentDetails[weighment.weighmentDetails.length - 1]
+      weighment.weighmentDetails[weighment.weighmentDetails.length - 1],
+      this.ticketFields
     ).then(result => {
-      console.log(result);
-      this.dialog.open(HtmlViewerComponent, {
-        data: { htmlContent: result }
+      this.dialog.open(PreviewDialogComponent, {
+        data: {
+          htmlContent: result,
+          fontSize: 12,
+          fields: this.ticketFields,
+          ticketTemplate: this.selectedTemplate,
+          'weighment': weighment,
+          'weighmentDetail': weighment.weighmentDetails[weighment.weighmentDetails.length - 1] }
       });
     });
   }
@@ -137,4 +136,56 @@ export class PrinterSetupComponent implements OnInit {
       { field: "print_cnt_post_weight2", mValue: this.printCntAfterSecondWeight }
     ]);
   }
+
+  async templateSelected() {
+    var result = await this.dbService.executeSyncDBStmt(
+      "SELECT", QueryList.GET_TICKET_FIELDS.replace("{templateId}", this.selectedTemplate.id.toString())
+    );
+    this.ticketFields = this.ticketService.getSortedFields(result);
+  }
+
+  //async print(printer) {
+  //  var selectedPrinter;
+  //  if (printer === "printer1") {
+  //    selectedPrinter = this.selectedPrinter1;
+  //  } else if (printer === "printer2") {
+  //    selectedPrinter = this.selectedPrinter2;
+  //  } else if (printer === "printer3") {
+  //    selectedPrinter = this.selectedPrinter3;
+  //  } else if (printer === "printer4") {
+  //    selectedPrinter = this.selectedPrinter4;
+  //  }
+
+  //  var weighment = Weighment.randomGenerator("inbound", 3, "pending");
+  //  var htmlContent = await this.printerService.previewText(weighment,
+  //    weighment.weighmentDetails[weighment.weighmentDetails.length - 1],
+  //    this.ticketFields);
+  //  this.sendForPrinting(selectedPrinter, weighment, htmlContent);
+  //  //this.printerService.rawTextPrint();
+  //}
+
+  //sendForPrinting(selectedPrinter, weighment: Weighment, htmlContent) {
+  //  if (this.selectedTemplate.printerType === "GRAPHICAL") {
+  //    let element = document.getElementById("ticket-content");
+  //    let range = new Range();
+  //    range.setStart(element, 0);
+  //    range.setEndAfter(element);
+  //    document.getSelection().removeAllRanges();
+  //    document.getSelection().addRange(range);
+  //    this.myIPCService.invokeIPC("graphical-print-ipc",
+  //      selectedPrinter,
+  //      "", weighment.rstNo.toString()
+  //    ).then(result => { });
+  //  } else {
+  //    if (weighment) {
+  //      this.printerService.rawTextPrint(
+  //        weighment,
+  //        weighment.weighmentDetails[weighment.weighmentDetails.length - 1],
+  //        this.ticketFields
+  //      ).then(result => {
+  //        this.myIPCService.invokeIPC("cmdline-print-ipc", [selectedPrinter, result]);
+  //      });
+  //    }
+  //  }
+  //}
 }

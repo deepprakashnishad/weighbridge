@@ -1,12 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotifierService } from 'angular-notifier';
-import { MyIpcService } from '../../../my-ipc.service';
-import { Weighment, WeighmentDetail } from '../../../weighment/weighment';
-import { Printer } from '../../printer-setup/printer';
-import { PrinterService } from '../../printer-setup/printer.service';
-import { TicketField } from '../ticket';
-import { TicketTemplate } from '../ticket-template';
+import { MyIpcService } from '../../my-ipc.service';
+import { Printer } from '../../admin/printer-setup/printer';
+import { PrinterService } from '../../admin/printer-setup/printer.service';
+import { TicketService } from '../../admin/ticket-setup/ticket.service';
+import { ReportService } from '../report.service';
 
 @Component({
   selector: 'app-preview-dialog',
@@ -17,17 +16,17 @@ export class PreviewDialogComponent implements OnInit {
 
   fontSize: number = 12;
   htmlContent: string;
-  ticketTemplate: TicketTemplate = new TicketTemplate();
-  fields: Array<TicketField> = [];
+  rawText: string;
   printers: Array<Printer> = [];
   selectedPrinter: Printer;
-  weighment: Weighment;
-  weighmentDetail: WeighmentDetail;
+  printingType: string = "GRAPHICAL";
+  title: string = "Weighment Report";
+
 
   constructor(
     private notifier: NotifierService,
     private myIPCService: MyIpcService,
-    private printerService: PrinterService,
+    private reportService: ReportService,
     @Inject(MAT_DIALOG_DATA) data: any,
   ) {
     if (data['htmlContent']) {
@@ -38,20 +37,8 @@ export class PreviewDialogComponent implements OnInit {
       this.fontSize = data['fontSize'];
     }
 
-    if (data['fields']) {
-      this.fields = data['fields'];
-    }
-
-    if (data['ticketTemplate']) {
-      this.ticketTemplate = data['ticketTemplate'];
-    }
-
-    if (data['weighment']) {
-      this.weighment = data['weighment'];
-    }
-
-    if (data['weighmentDetail']) {
-      this.weighmentDetail = data['weighmentDetail'];
+    if (data['rawText']) {
+      this.rawText = data['rawText'];
     }
   }
 
@@ -74,23 +61,21 @@ export class PreviewDialogComponent implements OnInit {
   }
 
   print() {
-    if (this.ticketTemplate.printerType === "GRAPHICAL") {
+    if (this.printingType === "GRAPHICAL") {
       let element = document.getElementById("ticket-content");
       let range = new Range();
       range.setStart(element, 0);
       range.setEndAfter(element);
       document.getSelection().removeAllRanges();
       document.getSelection().addRange(range);
+      var filename = this.title + "_"+(new Date()).getTime();
+      console.log(filename);
       this.myIPCService.invokeIPC("graphical-print-ipc",
         this.selectedPrinter,
-        this.htmlContent, this.weighment.rstNo.toString()
+        this.htmlContent, `${filename}`
       ).then(result => {});
     } else {
-      if (this.weighment) {
-        this.printerService.rawTextPrint(this.weighment, this.weighmentDetail, this.fields).then(result => {
-          this.myIPCService.invokeIPC("cmdline-print-ipc", [this.selectedPrinter, result]);
-        });
-      }
+      this.myIPCService.invokeIPC("cmdline-print-ipc", [this.selectedPrinter, this.rawText? this.rawText: '']);
     }
   }
 

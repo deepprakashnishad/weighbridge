@@ -5,6 +5,10 @@ import { QueryList } from '../../query-list';
 import { Weighment } from '../../weighment/weighment';
 import * as XLSX from 'xlsx';
 import { FormControl, FormGroup } from '@angular/forms';
+import { PrinterService } from '../../admin/printer-setup/printer.service';
+import { PreviewDialogComponent } from '../preview-dialog/preview-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ReportService } from '../report.service';
 
 @Component({
   selector: 'app-weighment-report',
@@ -22,17 +26,17 @@ export class WeighmentReportComponent implements OnInit {
   truckNumber: string;
   supplier: string;
   material: string;
+  searchDateType: string ='firstWeightDatetime';
 
   status: string;
 
-  /*name of the excel-file which will be downloaded. */
-  fileName = 'report.xlsx';
-
-  columns: string[] = ['SNo', 'RSTNo', 'Truck No', 'Supplier','Material', 'Wbridge1', 'Wt1', 'DateTime1', 'Operator1', 'GatePassNo', 'PODetails', 'Wbridge2', 'Wt2', 'Datetime2', 'Operator2', 'NetWt', 'Status'];
-  displayedColumns: string[] = ['SNo', 'RSTNo', 'Truck No', 'Supplier','Material', 'Wbridge1', 'Wt1', 'DateTime1', 'Operator1', 'GatePassNo', 'PODetails', 'Wbridge2', 'Wt2', 'Datetime2', 'Operator2', 'NetWt', 'Status'];
+  columns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'supplier', 'material', 'firstWeighBridge', 'firstWeight', 'firstWeightDatetime', 'firstWeightUser', 'gatePassNo', 'poDetails', 'secondWeighBridge', 'secondWeight', 'secondWeightDatetime', 'secondWeightUser', 'netWeight', 'status', 'action'];
+  displayedColumns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'supplier', 'material', 'firstWeighBridge', 'firstWeight', 'firstWeightDatetime', 'firstWeightUser', 'gatePassNo', 'poDetails', 'secondWeighBridge', 'secondWeight', 'secondWeightDatetime', 'secondWeightUser', 'netWeight', 'status', 'action'];
 
   dataSource: MatTableDataSource<any>;
   users: any = {};
+
+  maxFieldLength: number=40;
 
   range = new FormGroup({
     start: new FormControl(),
@@ -40,7 +44,10 @@ export class WeighmentReportComponent implements OnInit {
   });
   
   constructor(
-    private dbService: MyDbService
+    private dbService: MyDbService,
+    private printerService: PrinterService,
+    private reportService: ReportService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -103,7 +110,8 @@ export class WeighmentReportComponent implements OnInit {
       if (this.toTime) {
         endDate = `${endDate} ${this.toTime}`;
       }
-      stmt = `${stmt} AND firstWeightDatetime >= Convert(datetime, '${startDate}', 101) AND secondWeightDatetime <= Convert(datetime, '${endDate}', 101)`;
+      stmt = `${stmt} AND ${this.searchDateType} >= Convert(datetime, '${startDate}', 101)\
+              AND ${this.searchDateType} <= Convert(datetime, '${endDate}', 101)`;
       isCriteriaAdded = true;
     }
 
@@ -142,6 +150,58 @@ export class WeighmentReportComponent implements OnInit {
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
     /* save to file */
-    XLSX.writeFile(wb, this.fileName);
+    var timestamp = new Date().getTime();
+    var filename = `weighment_report_${timestamp}.xlsx`;
+    XLSX.writeFile(wb, filename);``
+  }
+
+  getTotalWeight(weightType) {
+    var totalWeight = 0;
+    this.data.forEach(ele => {
+      totalWeight = totalWeight + ele[weightType];
+    })
+    return totalWeight;
+  }
+
+  async previewTicket(element) {
+    var weighment = (await this.dbService.executeSyncDBStmt(
+      "SELECT",
+      QueryList.GET_WEIGHMENTS + `WHERE rstNo=${element.rstNo}`
+    ))[0];
+
+    var weighmentDetails = await this.dbService.executeSyncDBStmt(
+      "SELECT",
+      QueryList.GET_WEIGHMENT_DETAILS.replace("{rstNo}", weighment.rstNo)
+    );
+    weighment['weighmentDetails'] = weighmentDetails;
+
+    var data = await this.printerService.getPreviewDataWithTemplate(
+      weighment,
+      weighmentDetails[weighmentDetails.length-1]
+    );
+
+    this.dialog.open(PreviewDialogComponent, {
+      data: {
+        'htmlContent': data['content'],
+        fontSize: 12,
+        fields: data['ticketFields'],
+        ticketTemplate: data['template'],
+        'weighment': weighment,
+        'weighmentDetail': weighmentDetails[weighmentDetails.length - 1]
+      }
+    });
+  }
+
+  printReport() {
+    var content = this.reportService.getHtmlReportText(this.dataSource.data, this.displayedColumns, this.maxFieldLength);
+    var rawText = this.reportService.getRawReportText(this.dataSource.data, this.displayedColumns, this.maxFieldLength);
+    console.log(rawText);
+    this.dialog.open(PreviewDialogComponent, {
+      data: {
+        htmlContent: content,
+        rawText: rawText,
+        fontSize: 12,
+      }
+    });
   }
 }

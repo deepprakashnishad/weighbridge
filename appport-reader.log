@@ -537,3 +537,222 @@
     at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
     at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
     at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-20 10:43:48.619] [error] RequestError: Invalid column name 'undefined'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-20 10:44:22.820] [error] RequestError: Invalid column name 'undefined'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-20 10:44:25.115] [error] RequestError: Invalid column name 'undefined'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-20 10:54:57.969] [error] RequestError: Invalid column name 'undefined'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-20 10:56:02.997] [error] RequestError: Invalid column name 'undefined'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-20 21:35:52.518] [info]  Port status - true
+[2021-08-20 21:44:18.643] [info]  Intialization complete
+[2021-08-20 21:44:18.691] [info]  Port is opened successfully
+[2021-08-20 22:13:28.165] [info]  Port is closed successfully
+[2021-08-20 22:25:29.664] [info]  Intialization complete
+[2021-08-20 22:25:29.726] [info]  Port is opened successfully
+[2021-08-20 22:27:21.577] [info]  Port is closed successfully
+[2021-08-20 22:27:36.323] [info]  Intialization complete
+[2021-08-20 22:27:36.370] [info]  Port is opened successfully
+[2021-08-20 22:39:27.037] [info]  Port is closed successfully
+[2021-08-20 22:40:43.681] [info]  Intialization complete
+[2021-08-20 22:40:43.723] [info]  Port is opened successfully
+[2021-08-21 01:58:21.173] [info]  Port is closed successfully
+[2021-08-21 10:35:21.922] [info]  Intialization complete
+[2021-08-21 10:35:21.926] [error] Error occured on port
+[2021-08-21 10:37:29.315] [info]  Intialization complete
+[2021-08-21 10:37:29.331] [error] Error occured on port
+[2021-08-21 10:40:39.872] [info]  Intialization complete
+[2021-08-21 10:40:39.878] [error] Error occured on port
+[2021-08-21 10:43:45.842] [info]  Intialization complete
+[2021-08-21 10:43:45.854] [error] Error occured on port
+[2021-08-21 10:47:17.892] [info]  Intialization complete
+[2021-08-21 10:47:17.902] [error] Error occured on port
+[2021-08-21 10:52:25.335] [info]  Intialization complete
+[2021-08-21 10:52:25.337] [error] Error occured on port
+[2021-08-21 10:52:28.466] [info]  Intialization complete
+[2021-08-21 10:52:28.482] [error] Error occured on port
+[2021-08-21 10:57:05.778] [info]  Intialization complete
+[2021-08-21 10:57:05.787] [error] Error occured on port
+[2021-08-21 10:58:39.713] [info]  Intialization complete
+[2021-08-21 10:58:39.716] [error] Error occured on port
+[2021-08-21 10:59:40.059] [info]  Intialization complete
+[2021-08-21 10:59:40.063] [error] Error occured on port
+[2021-08-21 12:42:15.690] [info]  Intialization complete
+[2021-08-21 12:42:15.694] [error] Error occured on port
+[2021-08-21 12:49:10.756] [info]  Intialization complete
+[2021-08-21 12:49:10.761] [error] Error occured on port
+[2021-08-21 12:49:14.989] [info]  Intialization complete
+[2021-08-21 12:49:14.991] [error] Error occured on port
+[2021-08-21 13:22:10.478] [info]  Intialization complete
+[2021-08-21 13:22:10.487] [error] Error occured on port
+[2021-08-21 13:42:28.181] [info]  Intialization complete
+[2021-08-21 13:42:28.190] [error] Error occured on port
+[2021-08-21 13:48:41.569] [info]  Intialization complete
+[2021-08-21 13:48:41.573] [error] Error occured on port
+[2021-08-21 13:49:15.884] [info]  Intialization complete
+[2021-08-21 13:49:15.888] [error] Error occured on port
+[2021-08-21 13:49:29.774] [info]  Intialization complete
+[2021-08-21 13:49:29.779] [error] Error occured on port
+[2021-08-21 14:04:17.385] [info]  Intialization complete
+[2021-08-21 14:04:17.394] [error] Error occured on port
+[2021-08-21 14:21:42.293] [info]  Intialization complete
+[2021-08-21 14:21:42.298] [error] Error occured on port
+[2021-08-21 14:24:03.154] [info]  Intialization complete
+[2021-08-21 14:24:03.162] [error] Error occured on port
+[2021-08-21 14:24:10.831] [info]  Intialization complete
+[2021-08-21 14:24:10.835] [error] Error occured on port
+[2021-08-21 14:26:39.881] [info]  Intialization complete
+[2021-08-21 14:26:39.891] [error] Error occured on port
+[2021-08-22 11:30:35.262] [info]  Intialization complete
+[2021-08-22 11:30:35.297] [error] Error occured on port
+[2021-08-22 11:32:05.498] [info]  Intialization complete
+[2021-08-22 11:35:19.057] [error] Error occured on port
+[2021-08-22 11:35:48.789] [info]  Intialization complete
+[2021-08-22 11:35:48.797] [error] Error occured on port
+[2021-08-22 11:36:12.922] [info]  Intialization complete
+[2021-08-22 11:36:12.923] [error] Error occured on port
+[2021-08-22 11:37:09.886] [info]  Intialization complete
+[2021-08-22 11:37:09.888] [error] Error occured on port
+[2021-08-22 11:38:14.318] [info]  Intialization complete
+[2021-08-22 11:38:14.320] [error] Error occured on port
+[2021-08-22 11:39:12.081] [info]  Intialization complete
+[2021-08-22 11:39:12.094] [error] Error occured on port
+[2021-08-22 11:40:30.786] [info]  Intialization complete
+[2021-08-22 11:40:30.802] [error] Error occured on port
+[2021-08-22 11:41:15.775] [info]  Intialization complete
+[2021-08-22 11:41:15.780] [error] Error occured on port
+[2021-08-22 11:41:28.056] [info]  Intialization complete
+[2021-08-22 11:41:28.061] [error] Error occured on port
+[2021-08-22 11:44:54.457] [info]  Intialization complete
+[2021-08-22 11:44:54.464] [error] Error occured on port
+[2021-08-22 11:46:33.441] [info]  Intialization complete
+[2021-08-22 11:46:33.468] [error] Error occured on port
+[2021-08-22 11:47:32.374] [info]  Intialization complete
+[2021-08-22 11:47:32.397] [error] Error occured on port
+[2021-08-22 11:48:59.541] [info]  Intialization complete
+[2021-08-22 11:48:59.543] [error] Error occured on port
+[2021-08-22 11:49:41.226] [info]  Intialization complete
+[2021-08-22 11:49:41.237] [error] Error occured on port
+[2021-08-22 11:51:07.180] [info]  Intialization complete
+[2021-08-22 11:51:07.187] [error] Error occured on port
+[2021-08-22 12:50:03.183] [info]  Intialization complete
+[2021-08-22 12:50:03.185] [error] Error occured on port
+[2021-08-22 13:03:37.075] [info]  Intialization complete
+[2021-08-22 13:03:37.082] [error] Error occured on port
+[2021-08-22 13:40:09.298] [info]  Intialization complete
+[2021-08-22 13:40:09.302] [error] Error occured on port
+[2021-08-22 15:42:53.404] [info]  Intialization complete
+[2021-08-22 15:42:53.405] [error] Error occured on port
+[2021-08-23 11:27:18.380] [info]  Intialization complete
+[2021-08-23 11:27:18.411] [error] Error occured on port
+[2021-08-23 11:56:47.855] [info]  Intialization complete
+[2021-08-23 11:56:47.861] [error] Error occured on port
+[2021-08-23 12:07:45.283] [info]  Intialization complete
+[2021-08-23 12:07:45.289] [error] Error occured on port
+[2021-08-23 12:11:15.096] [info]  Intialization complete
+[2021-08-23 12:11:15.102] [error] Error occured on port
+[2021-08-23 12:19:06.243] [info]  Intialization complete
+[2021-08-23 12:19:06.259] [error] Error occured on port
+[2021-08-23 12:22:56.930] [info]  Intialization complete
+[2021-08-23 12:22:56.938] [error] Error occured on port
+[2021-08-23 12:24:45.635] [info]  Intialization complete
+[2021-08-23 12:24:45.639] [error] Error occured on port
+[2021-08-23 12:25:47.497] [info]  Intialization complete
+[2021-08-23 12:25:47.499] [error] Error occured on port
+[2021-08-23 12:25:52.213] [info]  Intialization complete
+[2021-08-23 12:25:52.223] [error] Error occured on port
+[2021-08-23 12:26:34.079] [info]  Intialization complete
+[2021-08-23 12:26:34.085] [error] Error occured on port
+[2021-08-23 12:28:33.374] [info]  Intialization complete
+[2021-08-23 12:28:33.383] [error] Error occured on port
+[2021-08-23 12:30:28.999] [info]  Intialization complete
+[2021-08-23 12:30:29.001] [error] Error occured on port
+[2021-08-23 12:34:07.784] [info]  Intialization complete
+[2021-08-23 12:34:07.792] [error] Error occured on port
+[2021-08-23 13:01:20.339] [info]  Intialization complete
+[2021-08-23 13:01:20.349] [error] Error occured on port
+[2021-08-23 13:03:32.751] [info]  Intialization complete
+[2021-08-23 13:03:32.762] [error] Error occured on port
+[2021-08-23 13:04:36.303] [info]  Intialization complete
+[2021-08-23 13:04:36.310] [error] Error occured on port
+[2021-08-24 17:27:07.789] [error] ConnectionError: Login failed for user 'admin'.  Reason: The password of the account has expired.
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:2668:20)
+    at Object.onceWrapper (events.js:421:28)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:34:12)
+    at Readable.emit (events.js:315:20)
+[2021-08-24 17:27:13.915] [error] ConnectionError: Login failed for user 'admin'.  Reason: The password of the account has expired.
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:2668:20)
+    at Object.onceWrapper (events.js:421:28)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:34:12)
+    at Readable.emit (events.js:315:20)
+[2021-08-24 18:29:13.736] [error] ConnectionError: Login failed for user 'admin'.  Reason: The password of the account has expired.
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:2668:20)
+    at Object.onceWrapper (events.js:421:28)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:34:12)
+    at Readable.emit (events.js:315:20)

@@ -1,7 +1,9 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const { electron } = require('process');
+const os = require("os");
 const url = require('url');
 const path = require('path');
+const machine = require("node-machine-id");
 require("./db-service.js");
 require("./my-port-reader.js");
 require("./printer-service.js");
@@ -9,7 +11,8 @@ require("./file-service.js");
 require("./port-verifier.js");
 require("./mailer.js");
 
-const env = "DEV"; // DEV Or PROD
+const env = "PROD"; // DEV Or PROD
+//const env = "DEV";
 
 global.win;
 
@@ -61,3 +64,18 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
+ipcMain.handle("getMachineDetails", async (event, arg) => {
+  try {
+    var machineId = await machine.machineId(true);
+    var platform = os.platform();
+    return {
+      "os": platform,
+      "machineId": machineId
+    };
+  }
+  catch (e) {
+    console.log(e);
+    return false;
+  }
+});
