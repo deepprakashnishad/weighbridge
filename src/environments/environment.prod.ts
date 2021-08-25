@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  licenseurl: "http://localhost:1337",
+  licenseurl: "https://aesm-license-manager.herokuapp.com",
   appName: "weighbridge",
   appDisplayName: "Notamedia Weighbridge",
   firstAutoRefresh: true
