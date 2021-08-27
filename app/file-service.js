@@ -1,6 +1,9 @@
 const { ipcMain } = require('electron');
 const fs = require('fs');
 const bootstrapData = require("./bootstrap.js");
+const log = require('electron-log');
+log.transports.file.level = 'info';
+log.transports.file.file = __dirname + 'file-log.log';
 
 ipcMain.handle("saveEnvironmentVars", async (event, arg) => {
   try {
@@ -8,20 +11,17 @@ ipcMain.handle("saveEnvironmentVars", async (event, arg) => {
     return true;
   }
   catch (e) {
-    console.log('Failed to save the file !');
-    console.log(e);
+    log.error(e);
     return false;
   }
 });
 
 ipcMain.handle("removeSingleEntry", async (event, arg) => {
-  console.log(arg);
   try {
     if (arg[0]) {
       var data = fs.readFileSync(bootstrapData.mConstants.envFilename, 'utf-8');
       data = JSON.parse(data);
       delete data[arg[0]];
-      console.log(JSON.stringify(data));
       fs.writeFileSync(bootstrapData.mConstants.envFilename, JSON.stringify(data), 'utf-8');
       return true;
     } else {
@@ -29,8 +29,7 @@ ipcMain.handle("removeSingleEntry", async (event, arg) => {
     }
   }
   catch (e) {
-    console.log('Failed to save the file !');
-    console.log(e);
+    log.error(e);
     return false;
   }
 });
@@ -41,7 +40,6 @@ ipcMain.handle("saveSingleEnvVar", async (event, arg) => {
       var data = fs.readFileSync(bootstrapData.mConstants.envFilename, 'utf-8');
       data = JSON.parse(data);
       data[arg[0]] = arg[1];
-      console.log(JSON.stringify(data));
       fs.writeFileSync(bootstrapData.mConstants.envFilename, JSON.stringify(data), 'utf-8');
       return true;
     } else {
@@ -49,8 +47,7 @@ ipcMain.handle("saveSingleEnvVar", async (event, arg) => {
     }
   }
   catch (e) {
-    console.log('Failed to save the file !');
-    console.log(e);
+    log.error(e);
     return false;
   }
 });
@@ -65,8 +62,7 @@ ipcMain.handle("loadEnvironmentVars", async (event, arg) => {
     }
   }
   catch (e) {
-    console.log('Failed to load the file !');
-    console.log(e);
+    log.error(e);
     return false;
   }
 });
@@ -80,46 +76,54 @@ ipcMain.handle("saveLicense", async (event, args) => {
       });
     }
     var filepath = `${dir}/${args[0]}`;
-    console.log(args);
     fs.writeFileSync(filepath, "", 'utf-8');
     fs.writeFileSync(filepath, args[1], 'utf-8');
     var stats = fs.statSync(filepath);
-    console.log(stats);
     var birthtime = stats['birthtime'];
     var hash = getHash(args[0], birthtime.toISOString());
     fs.appendFileSync(`${dir}/${args[0]}`, "." + hash);
-
-    var stats = fs.statSync(filepath);
-    console.log(stats);
     return true;
   } catch (e) {
+    log.error(e);
     return false;
   }
   
 });
 
 ipcMain.handle("getLicense", async (event, args) => {
-  const dir = './notamedia';
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, {
-      recursive: true
-    });
-  }
-  var data = fs.readFileSync(`${dir}/${args[0]}`, 'utf-8');
-  var stats = fs.statSync(`${dir}/${args[0]}`);
-  console.log(stats);
-  var birthtime = stats['birthtime'];
-  var newHash = getHash(args[0], birthtime.toISOString());
-  var lastIndex = data.lastIndexOf(".");
-  var existingHash = data.substr(lastIndex + 1);
-  console.log(existingHash);
-  console.log(newHash);
-  if (newHash === existingHash) {
-    var token = data.substr(0, lastIndex);
-    return token;
-  } else {
+  try {
+    const dir = './notamedia';
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, {
+        recursive: true
+      });
+    }
+    var data = fs.readFileSync(`${dir}/${args[0]}`, 'utf-8');
+    var stats = fs.statSync(`${dir}/${args[0]}`);
+    var birthtime = stats['birthtime'];
+    var newHash = getHash(args[0], birthtime.toISOString());
+    var lastIndex = data.lastIndexOf(".");
+    var existingHash = data.substr(lastIndex + 1);
+    if (newHash === existingHash) {
+      var token = data.substr(0, lastIndex);
+      return token;
+    } else {
+      return false;
+    }
+  } catch (e) {
+    log.error(e);
     return false;
   }
+});
+
+ipcMain.handle("removeLicense", async (event, args) => {
+  const dir = './notamedia';
+  var filepath = `${dir}/${args[0]}`;
+  try {
+    fs.rmSync(filepath);
+  } catch (e) {
+    console.log(e);
+  }  
 });
 
 function getHash(key, data){

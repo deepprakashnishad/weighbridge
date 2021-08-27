@@ -7,7 +7,6 @@
     "rebuild": "electron-rebuild"
   },
   "dependencies": {
-    "change-file-time": "^0.1.0",
     "electron-log": "^4.4.0",
     "mssql": "^7.1.3",
     "mysql": "^2.18.1",

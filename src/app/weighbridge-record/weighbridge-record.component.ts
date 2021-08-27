@@ -29,6 +29,8 @@ export class WeighbridgeRecordComponent implements OnInit {
 
   allowedNoOfDays = 8;
 
+  orderByPendingRecords: string = "DESC";
+
   constructor(
     private sharedDataService: SharedDataService,
     private dbService: MyDbService,
@@ -61,7 +63,7 @@ export class WeighbridgeRecordComponent implements OnInit {
       this.weighIndicators = result;
       this.selectedIndicator = this.weighIndicators[0];
       this.sharedDataService.updateData("selectedWeighBridge", this.selectedIndicator);
-      this.refreshWeightReader();
+      this.startWeightReader();
       this.initializeWeightReader();
     }
   }
@@ -72,7 +74,7 @@ export class WeighbridgeRecordComponent implements OnInit {
 
   selectedIndicatorUpdated() {
     this.sharedDataService.updateData("selectedWeighBridge", this.selectedIndicator);
-    this.refreshWeightReader();
+    this.startWeightReader();
     this.initializeWeightReader();
   }
 
@@ -89,7 +91,7 @@ export class WeighbridgeRecordComponent implements OnInit {
           this.updateCurrentWeight();
         }
       }
-      this.updatePendingRecords(currData['PENDING_RECORDS']);
+      //this.updatePendingRecords(currData['PENDING_RECORDS']);
       if (currData['WEIGHMENT_COMPLETED']) {
         this.fetchPendingRecords();
         this.sharedDataService.updateData("WEIGHMENT_COMPLETED", false);
@@ -105,7 +107,12 @@ export class WeighbridgeRecordComponent implements OnInit {
   }
 
   fetchPendingRecords() {
-    this.dbService.executeDBStmt("PENDING_RECORDS", QueryList.GET_PENDING_RECORDS);
+    this.dbService.executeSyncDBStmt(
+      "SELECT",
+      `${QueryList.GET_PENDING_RECORDS} ORDER BY createdAt ${this.orderByPendingRecords}`)
+      .then(records => {
+        this.pendingRecords = records;
+      });
   }
 
   updateCurrentWeight() {
@@ -135,17 +142,11 @@ export class WeighbridgeRecordComponent implements OnInit {
     }
   }
 
-  updatePendingRecords(records) {
-    this.ngZone.run(() => {
-      this.pendingRecords = records;
-    });    
-  }
-
   navigateTo(path, rstNo) {
     this.router.navigate([path], { queryParams: { "rstNo": rstNo } });
   }
 
-  refreshWeightReader() {
+  startWeightReader() {
     this.ipcService.invokeIPC("initialize-port",
     "",
       {
@@ -163,5 +164,10 @@ export class WeighbridgeRecordComponent implements OnInit {
 
   reverseOrder() {
     this.pendingRecords = this.pendingRecords.reverse();
+    if (this.orderByPendingRecords === "ASC") {
+      this.orderByPendingRecords = "DESC";
+    } else {
+      this.orderByPendingRecords = "ASC";
+    }
   }
 }

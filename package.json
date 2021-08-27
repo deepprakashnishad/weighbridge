@@ -1,12 +1,12 @@
 {
-  "name": "weighbridge",
+  "name": "accubridge",
   "version": "0.0.0",
-  "author": "Deep Prakash Nishad",
+  "author": "Deep prakash nishad",
   "description": "Weighbridge by Notamedia",
   "main": "electron-main.js",
   "build": {
     "appId": "com.notamedia.weighbridge",
-    "productName": "Notamedia Weighbridge",
+    "productName": "Accubridge",
     "buildVersion": "0.0.0",
     "files": [
       "**/*",

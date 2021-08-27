@@ -165,6 +165,9 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
       } else if (result) {
         this.ipcService.invokeIPC("weighIndicators")
         this.notifier.notify("success", "Weigh indicator updated successfully");
+        this.ipcService.invokeIPC("close-verification-port").then(result => {
+          console.log(result);
+        });
         this.dialogRef.close(this.indicator);
       } else {
         this.notifier.notify("error", "Weigh indicator could not be updated");
@@ -192,6 +195,9 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
         envIndicatorStrings.push(this.indicator.wiName);
         this.ipcService.invokeIPC("saveSingleEnvVar", ["weighIndicators", envIndicatorStrings]);
         this.notifier.notify("success", "Weigh indicator created successfully");
+        this.ipcService.invokeIPC("close-verification-port").then(result => {
+          console.log(result);
+        });
         this.dialogRef.close(this.indicator);
       } else {
         if (result["error"]) {
@@ -214,6 +220,9 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
   }
 
   cancel() {
+    this.ipcService.invokeIPC("close-verification-port").then(result => {
+      console.log(result);
+    });
     this.dialogRef.close();
   }
 

@@ -174,7 +174,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     this.weighmentDetail.material = `${event.code}-${event.mValue}`;
   }
 
-  save() {
+  async save() {
     if (!this.isValid()) {
       return;
     }
@@ -184,18 +184,18 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     }
     //Initial weighment
     if (this.weighment.rstNo ===undefined) {
-      this.createWeighment(status);
+      await this.createWeighment(status);
     }
     //First weight has been done and second has to be done
     else if (this.weighment.rstNo && this.weighmentDetail.firstWeight) {
-      this.updateSecondWeighment();
+      await this.updateSecondWeighment();
       if (status === "complete") {
         //Update weighment transaction as complete
-        this.updateWeighment(status);
+        await this.updateWeighment(status);
       } else {
         //Create new Weighment detail record for first weight with data of second weighment
         // of prev record
-        this.insertFirstWeighmentForPartial(
+        await this.insertFirstWeighmentForPartial(
           this.weighbridge,
           this.weighmentDetail.secondWeight,
           this.weighmentDetail.secondUnit,
@@ -203,7 +203,9 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
         );
       }
     }
+  }
 
+  postWeighmentProcess() {
     this.sharedDataService.updateData("WEIGHMENT_COMPLETED", true);
     this.notifier.notify("success", "Weighment saved successfully");
     this.displayWeighmentSummary();
@@ -272,7 +274,6 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       });      
       this.insertFirstWeighment();
     }
-    //this.reset();
   }
 
   async insertFirstWeighment() {
@@ -288,11 +289,10 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
 
     var result = await this.dbService.executeInsertAutoId("weighment_details", "id", stmt);
     if (result['newId']) {
-      this.getWeighmentDetails(this.weighment.rstNo).then(result => {
-        this.weighment.weighmentDetails = result;
-        this.weighmentDetail = this.weighment.weighmentDetails[this.weighment.weighmentDetails.length-1];
-      });
-      this.notifier.notify("success", "Weighment created successfully");
+      this.weighment.weighmentDetails = await this.getWeighmentDetails(this.weighment.rstNo);
+      this.weighmentDetail = this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1];
+      this.postWeighmentProcess();
+      //this.notifier.notify("success", "Weighment created successfully");
     } else {
       this.notifier.notify("error", "Failed to create weighment");
     }
@@ -312,9 +312,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
 
     var result = await this.dbService.executeSyncDBStmt("UPDATE", stmt);
     if (result) {
-      this.getWeighmentDetails(this.weighment.rstNo).then(result => {
-        this.weighment.weighmentDetails = result;
-      });
+      this.weighment.weighmentDetails = await this.getWeighmentDetails(this.weighment.rstNo);
+      this.postWeighmentProcess();
       this.notifier.notify("success", "Second weighment updated successfully");
     } else {
       this.notifier.notify("error", "Failed to update second weighment");
@@ -324,6 +323,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   async displayWeighmentSummary() {
     console.log(this.weighment);
     console.log(this.weighmentDetail);
+    console.log(this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1]);
     var data = await this.printerService.getPreviewDataWithTemplate(
       this.weighment,
       this.weighment.weighmentDetails[this.weighment.weighmentDetails.length-1]

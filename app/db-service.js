@@ -25,10 +25,10 @@ initializeSqlConfig(env_data);
 
 function initializeSqlConfig(dbDetails){
   try {
-    sqlConfig['user'] = dbDetails['username'];
-    sqlConfig['password'] = dbDetails['password'];
-    sqlConfig['database'] = dbDetails['database'];
-    sqlConfig['server'] = dbDetails['server'];
+    sqlConfig['user'] = dbDetails['database']['username'];
+    sqlConfig['password'] = dbDetails['database']['password'];
+    sqlConfig['database'] = dbDetails['database']['database'];
+    sqlConfig['server'] = dbDetails['database']['server'];
 
     loadEnvDataFromDB();
   }

@@ -149,5 +149,8 @@ function onReadData(data) {
 }
 
 ipcMain.handle("close-verification-port", async (event, ...args) => {
-  tempPort.close();
+  try {
+    tempPort.close();
+  } catch (e) { }
+  
 })

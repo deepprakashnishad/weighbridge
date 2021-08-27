@@ -18,7 +18,6 @@ export class InitialSetupComponent implements OnInit {
   dbName: string;
   username: string;
   password: string;
-  weighbridge: string;
 
   isLicenseActive: boolean = false;
   licenseNumber: string;
@@ -32,16 +31,13 @@ export class InitialSetupComponent implements OnInit {
 
   ngOnInit() {
     this.mForm = this.fb.group({
-      inputWeighbridge: ['', Validators.required],
       inputDbName: ['', Validators.required],
       inputServer: ['', Validators.required],
       inputUsername: ['', Validators.required],
       inputPassword: ['', Validators.required]
     });
 
-    this.ipcService.invokeIPC("loadEnvironmentVars").then(result => {
-      console.log(result);
-      this.weighbridge = result['weighbridge'];
+    this.ipcService.invokeIPC("loadEnvironmentVars", ["database"]).then(result => {
       this.server = result['server'];
       this.dbName = result['database'];
       this.username = result['username'];
@@ -49,7 +45,6 @@ export class InitialSetupComponent implements OnInit {
     });
 
     this.licenseService.getLicenseDetails().then(async (result) => {
-      console.log(result);
       if (result && result !== null) {
         this.licenseNumber = this.formatLicenseNumber(result['license']);
         var licenseStatus = await this.licenseService.validateLicenseDetail(result);
@@ -82,12 +77,11 @@ export class InitialSetupComponent implements OnInit {
   }
 
   save() {
-    this.ipcService.invokeIPC("saveEnvironmentVars", [{
+    this.ipcService.invokeIPC("saveSingleEnvVar", ["database", {
       "server": this.server,
       "database": this.dbName,
       "username": this.username,
       "password": this.password,
-      "weighbridge": this.weighbridge
     }]).then(res => {
       if (res) {
         this.notifier.notify("success", "Save successful");
@@ -134,12 +128,12 @@ export class InitialSetupComponent implements OnInit {
       this.notifier.notify("error", "Invalid license number");
       return;
     }
-    var token = await this.ipcService.invokeIPC("loadEnvironmentVars", ["token"]);
+    var token = await this.licenseService.getLicenseToken();
     this.licenseService.deactivateLicenseForMachine(machineDetails, token).subscribe(result => {
       if (result["success"]) {
         this.isLicenseActive = false;
         this.licenseNumber = "";
-        this.ipcService.invokeIPC("removeSingleEntry", ["token"]).then(result => {
+        this.ipcService.invokeIPC("removeLicense", [machineDetails['machineId']]).then(result => {
           if (result) {
             this.notifier.notify("success", "License successfully de-activated");
           }

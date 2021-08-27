@@ -23,10 +23,9 @@ export class LicenseService {
   }
 
   async isLicenseValid() {
-    var token = await this.ipcService.invokeIPC("loadEnvironmentVars", ["token"]);
-    if (token) {
+    var payload = await this.getLicenseDetails();
+    if (payload) {
       try {
-        var payload = jwtDecode(token);
         return this.validateLicenseDetail(payload);
       } catch (ex) {
         return { success: false, msg: "License invalid" };
@@ -50,11 +49,11 @@ export class LicenseService {
   }
 
   async getLicenseToken() {
-    return await this.ipcService.invokeIPC("loadEnvironmentVars", ["token"]);
+    var machineDetails = await this.ipcService.invokeIPC("getMachineDetails", []);
+    return await this.ipcService.invokeIPC("getLicense", [machineDetails['machineId']]);
   }
 
   async getLicenseDetails() {
-    //var token = await this.ipcService.invokeIPC("loadEnvironmentVars", ["token"]);
     var machineDetails = await this.ipcService.invokeIPC("getMachineDetails", []);
     var token = await this.ipcService.invokeIPC("getLicense", [machineDetails['machineId']]);
     return jwtDecode(token);
