@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   licenseurl: "http://localhost:1337",
-  appName: "weighbridge",
-  appDisplayName: "Notamedia Weighbridge",
+  appName: "accubridge",
+  appDisplayName: "Accubridge",
   firstAutoRefresh: true
 };
 

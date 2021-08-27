@@ -56,7 +56,12 @@ export class LicenseService {
   async getLicenseDetails() {
     var machineDetails = await this.ipcService.invokeIPC("getMachineDetails", []);
     var token = await this.ipcService.invokeIPC("getLicense", [machineDetails['machineId']]);
-    return jwtDecode(token);
+    if (token) {
+      return jwtDecode(token);
+    } else {
+      return false;
+    }
+    
   }
 
   activateLicense(data): Observable<any> {

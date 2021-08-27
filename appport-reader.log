@@ -1346,3 +1346,68 @@
 [2021-08-27 18:04:11.804] [info]  Port is closed successfully
 [2021-08-27 18:04:15.697] [info]  Intialization complete
 [2021-08-27 18:04:15.739] [info]  Port is opened successfully
+[2021-08-27 20:12:51.165] [error] Error: ENOENT: no such file or directory, open './notamedia/3bbf5c34-cf07-42ff-a4a8-ae4daf5503c0'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:101:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-08-27 20:14:26.830] [error] Error: ENOENT: no such file or directory, open './notamedia/3bbf5c34-cf07-42ff-a4a8-ae4daf5503c0'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:101:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-08-27 20:16:43.720] [error] Error: ENOENT: no such file or directory, open './notamedia/3bbf5c34-cf07-42ff-a4a8-ae4daf5503c0'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:101:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-08-27 20:16:50.720] [error] Error: ENOENT: no such file or directory, open './notamedia/3bbf5c34-cf07-42ff-a4a8-ae4daf5503c0'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:101:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-08-27 20:16:51.319] [info]  Intialization complete
+[2021-08-27 20:16:51.325] [error] Error occured on port
+[2021-08-27 20:17:31.317] [error] Error: ENOENT: no such file or directory, open './notamedia/3bbf5c34-cf07-42ff-a4a8-ae4daf5503c0'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:101:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-08-27 20:18:42.752] [error] Error: ENOENT: no such file or directory, open './notamedia/3bbf5c34-cf07-42ff-a4a8-ae4daf5503c0'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:101:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-08-27 20:18:48.646] [error] Error: ENOENT: no such file or directory, open './notamedia/3bbf5c34-cf07-42ff-a4a8-ae4daf5503c0'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:101:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)

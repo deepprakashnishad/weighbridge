@@ -1,0 +1,24 @@
+{
+  "appId": "com.notamedia.accubridge",
+  "productName": "Accubridge",
+  "buildVersion": "0.0.1",
+  "files": [
+    "**/*"
+  ],
+  "directories": {
+    "app": "app",
+    "buildResources": "build-res",
+    "output": "release"
+  },
+  "extraResources": [ ],
+  "extraFiles": [ "env.json", "print.py" ],
+  "asar": true,
+  "win": {
+    "target": [
+      "nsis"
+    ]
+  },
+  "nsis": {
+    "runAfterFinish": false
+  }
+}

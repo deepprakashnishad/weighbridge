@@ -117,6 +117,8 @@ export class LoginComponent implements OnInit{
       this.licenseService.isLicenseValid().then((result) => {
         if (!result["success"]) {
           this.notifier.notify("error", result['msg']);
+          this.notifier.notify("error", "Please activate using Initial Setup");
+          return;
         }
         const username = this.loginForm.get('inputUsername').value;
         const password = this.loginForm.get('inputPassword').value;
