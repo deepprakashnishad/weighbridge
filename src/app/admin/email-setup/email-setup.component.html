@@ -5,12 +5,24 @@
         <mat-checkbox [(ngModel)]="allowEmail" name="cboxAllowEmail">Allow Email</mat-checkbox>
         <mat-checkbox [(ngModel)]="enableDailyEmail" name="cboxEnableDailyEmail">Enable daily email</mat-checkbox>
         <mat-form-field appearance="outline">
-          <input matInput placeholder="Select daily email time" aria-label="12hr format" [ngxTimepicker]="pickerDailyEmail" [value]="dailyEmailTime" readonly>
+          <input
+                 matInput
+                 placeholder="Select daily email time"
+                 aria-label="12hr format"
+                 name="cntlPickerDailyEmail"
+                 [ngxTimepicker]="pickerDailyEmail"
+                 [(ngModel)]="dailyEmailTime" readonly>
           <ngx-material-timepicker #pickerDailyEmail [enableKeyboardInput]="true"></ngx-material-timepicker>
         </mat-form-field>
         <mat-checkbox [(ngModel)]="enableCollectionEmail" name="cboxEnableCollectionEmail">Enable daily operator collection email</mat-checkbox>
         <mat-form-field appearance="outline">
-          <input matInput placeholder="Daily operator collection email time" aria-label="12hr format" [ngxTimepicker]="pickerCollectionEmail" [value]="collectionEmailTime" readonly>
+          <input
+                 matInput
+                 placeholder="Daily operator collection email time"
+                 aria-label="12hr format"
+                 [ngxTimepicker]="pickerCollectionEmail"
+                 name="cntlCollectionEmailTime"
+                 [(ngModel)]="collectionEmailTime" readonly>
           <ngx-material-timepicker #pickerCollectionEmail [enableKeyboardInput]="true"></ngx-material-timepicker>
         </mat-form-field>
     
@@ -37,7 +49,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
-          <input matInput placeholder="Password" name="cntlPassword" [(ngModel)]="senderEmailPassword" />
+          <input type="password" matInput placeholder="Password" name="cntlPassword" [(ngModel)]="senderEmailPassword" />
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Name</mat-label>
@@ -49,7 +61,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Port</mat-label>
-          <input matInput placeholder="Port" name="cntlPort" [(ngModel)]="port" />
+          <input matInput placeholder="Port" name="cntlPort" [(ngModel)]="emailPort" />
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Email Protocol</mat-label>
@@ -73,8 +85,8 @@
             <input matInput placeholder="Email Id" name="cntlEmailId" [(ngModel)]="recipientEmailId" />
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-label>Remarks</mat-label>
-            <input matInput placeholder="Password" name="cntlPassword" [(ngModel)]="recipientRemarks" />
+            <mat-label>Remark</mat-label>
+            <input matInput placeholder="Remark" name="cntlRemark" [(ngModel)]="recipientRemarks" />
           </mat-form-field>
           <div><button mat-raised-button color="primary" (click)="addRecipientToList()">Add</button></div>
         </div>
@@ -94,7 +106,7 @@
   </mat-card>
 </div>
 <div fxLayout fxLayoutAlign="space-between center" fxLayoutGap="32px">
-  <mat-radio-group [(ngModel)]="emailOn" name="radioEmailOn"  fxLayout fxLayoutAlign="center center" fxLayoutGap="16px">
+  <mat-radio-group [(ngModel)]="emailCondition" name="radioEmailOn"  fxLayout fxLayoutAlign="center center" fxLayoutGap="16px">
     <mat-radio-button value="emailOnEachWeight">Email on each weight</mat-radio-button>
     <mat-radio-button value="enableDailyEmail">Enable daily email</mat-radio-button>
   </mat-radio-group>

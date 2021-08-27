@@ -3,7 +3,7 @@
     <mat-card-title>Zero weight</mat-card-title>
     <mat-card-content fxLayout="column">
       <mat-checkbox [(ngModel)]="saveOnZeroWeight" name="cntlsaveOnZeroWeight">Save on zero weight</mat-checkbox>
-      <mat-checkbox [(ngModel)]="zeroCheck" name="cntlZeroCheck">Zero check on weights</mat-checkbox>
+      <mat-checkbox [(ngModel)]="enableZeroCheck" name="cntlZeroCheck">Zero check on weights</mat-checkbox>
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Zero Tolerance</mat-label>
         <input name="cntlZeroTolerance" matInput placeholder="Zero Tolerance" [(ngModel)]="zeroTolerance">
@@ -34,6 +34,5 @@
   </mat-card>
 </div>
 <div fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
-  <button mat-raised-button color="primary">Save</button>
-  <button mat-raised-button color="accent">Close</button>
+  <button mat-raised-button color="primary" (click)="save()">Save</button>
 </div>

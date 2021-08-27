@@ -1,0 +1,15 @@
+export const PERMISSION_FEATURES = [
+  { id: 1, permission: "Weighment" },
+  { id: 2, permission: "System setup" },
+  { id: 3, permission: "Ticket Setup" },
+  { id: 4, permission: "Vehicle Setup" },
+  { id: 5, permission: "Backup" },
+  { id: 6, permission: "Data edit after complete weighment" },
+  { id: 7, permission: "Theft detection report" },
+  { id: 8, permission: "Reports" },
+  { id: 9, permission: "Code and list entries" },
+  { id: 10, permission: "User Management" },
+  { id: 11, permission: "Change Password" },
+  { id: 12, permission: "Partial Weighment" },
+  { id: 13, permission: "Theft Detection Setup" },
+];

@@ -1,33 +1,43 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import { MatDialog } from '@angular/material/dialog';
+import { NotifierService } from 'angular-notifier';
 import { Observable } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { MyDbService } from '../../my-db.service';
+import { QueryList } from '../../query-list';
+import { ListEditorComponent } from '../list-editor/list-editor.component';
 
 @Component({
   selector: 'app-tag-selector',
   templateUrl: './tag-selector.component.html',
   styleUrls: ['./tag-selector.component.css']
 })
-export class TagSelectorComponent implements OnInit {
+export class TagSelectorComponent implements OnInit, OnChanges {
 
   mControl = new FormControl();
-  @Input() selectedTag: string;
-  @Input() tagType: string;
+  @Input() selectedTag: any;
+  @Input() tagTypeId: number;
   @Input() title: string;
   @Input() hint: string = "";
-	@Output() optionSelected = new EventEmitter<string>();
+	@Output() optionSelected = new EventEmitter<any>();
 
 	@ViewChild(MatAutocompleteTrigger) trigger;
 
-  filteredOptions: Observable<string[]>;
-  options: string[] = ["Hare", "Krishna", "Rama", "Govind","Narayana", "Madhava", "Radhanath", "Gopal", "Giridhari", "Mukunda", "Radharaman", "Vrindavanchandra", "Vanvihari", "Rasbihari", "Rasrashika", "Vamana", "Narsimha"];
+  filteredOptions: Observable<any[]>;
+
+  options: Array<any> = [];
 
   limit: number=30;
   offset: number=0;
   searchStr: string = "";
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog,
+    private dbService: MyDbService,
+    private notifier: NotifierService
+  ) { }
 
   ngOnInit() {
     this.filteredOptions = this.mControl.valueChanges
@@ -41,7 +51,28 @@ export class TagSelectorComponent implements OnInit {
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+    return this.options.filter(option => (option?.mValue.toLowerCase().includes(filterValue) ||
+      option?.code.toLowerCase().includes(filterValue)));
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    var keys = Object.keys(changes);
+    for (var i = 0; i < keys.length; i++) {
+      if (keys[i] === "selectedTag" && changes[keys[i]]["currentValue"] != "null" && changes[keys[i]]["currentValue"] != "undefined") {
+        this.mControl.setValue(changes[keys[i]]["currentValue"]);
+      }
+      if (keys[i] === "tagTypeId" && changes[keys[i]]["currentValue"]) {
+        this.fetchData();
+      }
+    }
+  }
+
+  async fetchData() {
+    this.options = await this.dbService.executeSyncDBStmt("SELECT",
+      QueryList.GET_SEARCH_FIELD_VALUES_BY_SEARCH_FIELD_ID.replace(
+        "{search_field_id}", this.tagTypeId.toString()
+      )
+    );
   }
 
   onFocus(){
@@ -58,7 +89,44 @@ export class TagSelectorComponent implements OnInit {
   }
 
   displayFn(item: any): string | undefined{
-    return item;
+    if (item && item.code && item.mValue) {
+      return `${item?.code}-${item?.mValue}`;
+    } else if(item){
+      return item;
+    } else {
+      return undefined;
+    }
   }
 
+  inputComplete() {
+    var userValue = this.mControl.value;
+    this.openListEditor(userValue ? userValue:"");
+  }
+
+  openListEditor(userValue) {
+    var data = userValue.split(/-(.+)/);
+    if (data.length === 1 && !isNaN(data[0])) {
+      data.push("");
+    } else if (data.length === 1 && isNaN(data[0])) {
+      data.push(data[0]);
+      data[0] = "";
+    }
+    var dialogRef = this.dialog.open(ListEditorComponent, {
+      height: "600px",
+      width: "800px",
+      data: {
+        title: `Edit values`,
+        fieldId: this.tagTypeId,
+        code: data[0],
+        mValue: data[1]
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(async result => {
+      if (result) {
+        this.optionSelected.emit(result);
+        this.notifier.notify("success", "Search field updated successfully");
+      }
+    });
+  }
 }

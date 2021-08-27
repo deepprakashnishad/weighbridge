@@ -15,6 +15,10 @@ import { WeighbridgeRecordComponent } from './weighbridge-record/weighbridge-rec
 import { ReportModule } from './report/report.module';
 import { WeighmentComponent } from './weighment/weighment.component';
 import { WeighmentSummaryComponent } from './weighment/weighment-summary/weighment-summary.component';
+import { WeighmentDetailComponent } from './weighment/weighment-details/weighment-details.component';
+import { InitialSetupComponent } from './admin/initial-setup/initial-setup.component';
+import { WeighmentSearchDialog } from './weighment/weighment-search-dialog/weighment-search-dialog.component';
+import { LicenseMaskDirective } from './directives/license-mask';
 
 const notifierDefaultOptions: NotifierOptions = {
   position: {
@@ -58,12 +62,16 @@ const notifierDefaultOptions: NotifierOptions = {
 
 @NgModule({
   declarations: [							
-      AppComponent,
-      NavigationComponent,
-      HomeComponent,
-      WeighbridgeRecordComponent,
-      WeighmentComponent,
-      WeighmentSummaryComponent
+    AppComponent,
+    NavigationComponent,
+    HomeComponent,
+    WeighbridgeRecordComponent,
+    WeighmentComponent,
+    WeighmentDetailComponent,
+    WeighmentSummaryComponent,
+    WeighmentSearchDialog,
+    InitialSetupComponent,
+    LicenseMaskDirective
    ],
   imports: [
     BrowserModule,
@@ -76,6 +84,7 @@ const notifierDefaultOptions: NotifierOptions = {
     SharedModule,
     AppRoutingModule,
   ],
+  exports: [InitialSetupComponent],
   providers: [
     httpInterceptorProviders
   ],

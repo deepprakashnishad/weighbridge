@@ -16,6 +16,9 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { NgxElectronModule } from 'ngx-electron';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { TagSelectorComponent } from './tag-selector/tag-selector.component';
+import { ListEditorComponent } from './list-editor/list-editor.component';
+import { HtmlViewerComponent } from './html-viewer/html-viewer.component';
+import { HelpComponent } from './help/help.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { TagSelectorComponent } from './tag-selector/tag-selector.component';
     SafeHtmlPipe, 
     SafeUrlPipe,
     ConfirmDialogComponent,
-    TagSelectorComponent
+    TagSelectorComponent,
+    ListEditorComponent,
+    HtmlViewerComponent,
+    HelpComponent
   ],
   imports: [
     CommonModule,
@@ -52,12 +58,15 @@ import { TagSelectorComponent } from './tag-selector/tag-selector.component';
   	AddEditPermissionComponent,
   	ViewPermissionComponent,
     TagSelectorComponent,
+    ListEditorComponent,
   	CapitalizeFirstLetterDirective,
   	CapitalizeDirective,
   	MyFilterPipe,
   	SafeHtmlPipe,
   	SafeUrlPipe,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    HtmlViewerComponent,
+    HelpComponent
   ],
   entryComponents:[AddEditPermissionComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

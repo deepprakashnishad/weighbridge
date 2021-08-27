@@ -1,0 +1,15 @@
+<h3 matDialogTitle>Ticket Preview</h3>
+<mat-dialog-content>
+  <div id="ticket-content" class="ticket" [ngStyle]="{'font-size': fontSize+'px'}" [innerHtml]="htmlContent | safeHtml"></div>
+</mat-dialog-content>
+<mat-dialog-actions fxLayout fxLayoutGap="32px" fxLayoutAlign="center center">
+  <mat-select fxFlex="25" [(ngModel)]="selectedPrinter" (ngModelChange)="selectedPrinterUpdated()" placeholder="Select a printer">
+    <mat-label>Select a printer</mat-label>
+    <mat-option *ngFor="let printer of printers" [value]="printer">{{printer.name}}</mat-option>
+  </mat-select>
+  <div fxFlex="25">
+    <button mat-raised-button (click)="print()" color="primary">Print</button>
+    <button mat-button matDialogClose color="accent">Close Dialog</button>
+  </div>
+  
+</mat-dialog-actions>

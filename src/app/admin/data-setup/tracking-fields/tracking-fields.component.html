@@ -1,22 +1,22 @@
 <div class="container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="32px">
   <div class="full-width" fxLayout fxLayoutAlign="space-between center">
     <div class="box-title">Truck Weighing</div>
-    <button mat-icon-button color="primary"><mat-icon>info</mat-icon></button>
+    <app-help [tag]="'TRACKING_FIELDS'"></app-help>
   </div>
   <div class="content-box">
       <form class="example-form" fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="32px">
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Minimum length for truck number</mat-label>
-          <input name="cntlMinlengthTruckNumber" matInput placeholder="Minimum length for truck number" value="8">
+          <input name="cntlMinlengthTruckNumber" [(ngModel)]="minTruckLength" matInput placeholder="Minimum length for truck number">
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Minimum length for receipt number</mat-label>
-          <input name="cntlMinlengthReceiptNumber" matInput placeholder="Minimum length for receipt number" value="4">
+          <input name="cntlMinlengthReceiptNumber" [(ngModel)]="minimumLenRecieptNo" matInput placeholder="Minimum length for receipt number">
         </mat-form-field>
       </form>
       <div fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
-        <button mat-raised-button color="primary">Reload Sequences</button>
-        <button mat-raised-button color="primary">Save & Next</button>
+        <!--<button mat-raised-button color="primary">Reload Sequences</button>-->
+        <button mat-raised-button color="primary" (click)="save()">Save</button>
       </div>
   </div>
 </div>

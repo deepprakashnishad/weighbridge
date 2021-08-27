@@ -1,60 +1,8 @@
-<mat-card>
-  <mat-card-title class="full-width" fxLayout="row" fxLayoutAlign="center center">Weighment Summary - {{weighment.weightmentType}}</mat-card-title>
-  <mat-card-content fxLayout="column" fxLayoutGap="16px">
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-      <h5>Truck No. - {{weighment.truckNumber}}</h5>
-      <h5>RST No. - {{weighment.rstNo}}</h5>
-      <h5>Supplier - {{weighment.supplier}}</h5>
-      <h5>Material - {{weighment.material}}</h5>
-    </div>
-    <div fxLayout="row" fxLayoutGap="32px">
-      <h5>Gate Pass No. - {{weighment.gatePassNo}}</h5>
-      <h5>PO Details - {{weighment.poDetails}}</h5>
-    </div>
-    <div fxLayout="row" fxLayoutAlign="space-between start">
-      <div fxLayout="column" fxLayoutAlign="start space-between">
-        <h3>First Weighment</h3>
-        <div fxLayout="row" fxLayoutAlign="space-around center">
-          <span>Weighbridge:</span>
-          <span>{{weighment.firstWeighBridge}}</span>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="space-around center">
-          <span>Weight(kg):</span>
-          <span>{{weighment.firstWeight}}</span>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="space-around center">
-          <span>DateTime:</span>
-          <span>{{weighment.firstWeightDatetime}}</span>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="space-around center">
-          <span>User:</span>
-          <span>{{weighment.firstWeightUser}}</span>
-        </div>
-      </div>
-      <div fxLayout="column" fxLayoutAlign="start space-between">
-        <h3>Second Weighment</h3>
-        <div fxLayout="row" fxLayoutAlign="space-around center">
-          <span>Weighbridge:</span>
-          <span>{{weighment.firstWeighBridge}}</span>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="space-around center">
-          <span>Weight(kg):</span>
-          <span>{{weighment.firstWeight}}</span>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="space-around center">
-          <span>DateTime:</span>
-          <span>{{weighment.secondWeightDatetime}}</span>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="space-around center">
-          <span>User:</span>
-          <span>{{weighment.firstWeightUser}}</span>
-        </div>
-      </div>
-      <h2>Net Weight: {{weighment.secondWeight - weighment.firstWeight}}</h2>
-    </div>
-  </mat-card-content>
-  <mat-car-actions fxLayout fxLayoutGap="32px">
-    <button mat-raised-button color="primary">Print</button>
-    <button mat-raised-button color="primary" (click)="dialogRef.close()">Close</button>
-  </mat-car-actions>
-</mat-card>
+<h3 matDialogTitle>Ticket Preview</h3>
+<mat-dialog-content>
+  <div class="ticket" [innerHtml]="htmlContent | safeHtml"></div>
+</mat-dialog-content>
+<mat-dialog-actions fxLayout fxLayoutGap="32px" fxLayoutAlign="center center">
+  <button mat-raised-button (click)="print(mFields)" color="primary">Print</button>
+  <button mat-button matDialogClose color="accent">Close Dialog</button>
+</mat-dialog-actions>

@@ -2,13 +2,18 @@
 
 # compiled output
 /dist
+/app/dist
 /tmp
 /out-tsc
 # Only exists if Bazel was run
 /bazel-out
 
+#Outputs
+/release
+
 # dependencies
 /node_modules
+/app/node_modules
 
 # profiling files
 chrome-profiler-events*.json

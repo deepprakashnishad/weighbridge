@@ -1,15 +1,15 @@
 <div class="container content-box" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="32px">
   <div class="full-width" fxLayout fxLayoutAlign="space-around center">
     <form fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="16px">
-      <mat-checkbox class="example-margin">Enable challan weight for Inbound</mat-checkbox>
-      <mat-checkbox class="example-margin">Enable validation for Inbound</mat-checkbox>
+      <mat-checkbox [(ngModel)]="enableInboundChallanWeight" name="cntlEnableInboundChallanWeight"  class="example-margin">Enable challan weight for Inbound</mat-checkbox>
+      <mat-checkbox [(ngModel)]="enableInboundValidation" name="cntlEnableInboundValidation" class="example-margin">Enable validation for Inbound</mat-checkbox>
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Inbound Upper limit</mat-label>
-        <input name="cntlInboundUpperLimit" matInput placeholder="Upper limit" value="">
+        <input name="cntlInboundUpperLimit" [(ngModel)]="inboundUpperLimit" matInput placeholder="Upper limit">
       </mat-form-field>
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Inbound Lower limit</mat-label>
-        <input name="cntlOutboundUpperLimit" matInput placeholder="Lower limit" value="">
+        <input name="cntlOutboundUpperLimit" matInput placeholder="Lower limit" [(ngModel)]="inboundLowerLimit">
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>On validation failure</mat-label>
@@ -21,15 +21,15 @@
       </mat-form-field>
     </form>
     <form fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="16px">
-        <mat-checkbox class="example-margin">Enable challan weight for Outbound</mat-checkbox>
-        <mat-checkbox class="example-margin">Enable validation for Outbound</mat-checkbox>
+        <mat-checkbox [(ngModel)]="enableOutboundChallanWeight" name="cntlEnableOutboundChallanWeight" class="example-margin">Enable challan weight for Outbound</mat-checkbox>
+        <mat-checkbox [(ngModel)]="enableOutboundValidation" name="cntlEnableOutboundValidation" class="example-margin">Enable validation for Outbound</mat-checkbox>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Upper limit</mat-label>
-            <input name="cntlOutboundUpperLimit" matInput placeholder="Upper limit" value="">
+            <input name="cntlOutboundUpperLimit" [(ngModel)]="outboundUpperLimit" matInput placeholder="Upper limit" value="">
           </mat-form-field>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Lower limit</mat-label>
-            <input name="cntlOutboundLowerLimit" matInput placeholder="Lower limit" value="">
+            <input name="cntlOutboundLowerLimit" matInput [(ngModel)]="outboundLowerLimit" placeholder="Lower limit" value="">
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>On validation failure</mat-label>
@@ -42,6 +42,6 @@
     </form>
   </div>
   <div fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
-    <button mat-raised-button color="primary">Save & Next</button>
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
   </div>
 </div>

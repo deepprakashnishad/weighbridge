@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  baseurl: "http://localhost:1337",
-  razorpay: {
-    keyId: ""
-  }
+  licenseurl: "http://localhost:1337",
+  appName: "accubridge",
+  appDisplayName: "Accubridge",
+  firstAutoRefresh: true
 };
 
 

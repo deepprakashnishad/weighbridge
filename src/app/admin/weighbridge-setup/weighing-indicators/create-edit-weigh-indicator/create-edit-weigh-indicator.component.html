@@ -9,17 +9,19 @@
           <mat-radio-button value="tcpip">TCP/IP</mat-radio-button>
           <mat-radio-button value="http">Http</mat-radio-button>
         </mat-radio-group>
-        <mat-form-field appearance="fill" *ngIf="indicator.type==='serial'">
-          <mat-label>On validation failure</mat-label>
-          <mat-select matInput [(ngModel)]="indicator.comPort" name="cntlComPort">
-            <mat-option value="COM1">COM1</mat-option>
-            <mat-option value="COM2">COM2</mat-option>
-            <mat-option value="COM3">COM3</mat-option>
-            <mat-option value="COM4">COM4</mat-option>
-            <mat-option value="COM5">COM5</mat-option>
-            <mat-option value="COM6">COM6</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <div fxLayout fxLayoutGap="8px">
+          <mat-form-field appearance="fill" *ngIf="indicator.type==='serial'">
+            <mat-label>Port</mat-label>
+            <mat-select matInput [(ngModel)]="indicator.comPort" name="cntlComPort">
+              <!--<mat-option value="COM1">COM1</mat-option>
+              <mat-option value="COM2">COM2</mat-option>
+              <mat-option value="COM3">COM3</mat-option>-->
+              <mat-option *ngFor="let port of ports" [value]="port">{{port}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-icon-button color="primary" (click)="refreshPortList()"><mat-icon>refresh</mat-icon></button>
+        </div>
+
         <div *ngIf="indicator.type!=='serial'" fxLayout fxLayoutGap="16px">
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>IP Address</mat-label>
@@ -40,25 +42,31 @@
         <div fxLayout fxLayoutGap="16px">
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Indicator Name</mat-label>
-            <input matInput name="cntlIndicatorName" matInput placeholder="Indicator Name" [(ngModel)]="indicator.name">
+            <input name="cntlName"
+                   matInput placeholder="Indicator Name"
+                   [(ngModel)]="indicator.wiName"
+                   [disabled]="!isNew">
           </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>On validation failure</mat-label>
-            <mat-select matInput [(ngModel)]="indicator.indicatorString" name="cntlIndicatorString">
-              <mat-option *ngFor="let item of indicatorStrings" value="item.id" >{{item.name}}</mat-option>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Indicator String</mat-label>
+            <mat-select matInput [(ngModel)]="indicator.indicatorString" name="cntlWeighString" (selectionChange)="selectedStringChanged()">
+              <mat-option *ngFor="let iString of indicatorStrings" [value]="iString.stringName">{{iString.stringName}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
         <div fxLayout fxLayoutGap="16px">
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Status</mat-label>
-            <input name="cntlStatus" matInput placeholder="Status" [(ngModel)]="indicator.status">
+            <mat-select matInput [(ngModel)]="indicator.status" name="cntlWeighStatus">
+              <mat-option value="Active">Active</mat-option>
+              <mat-option value="Inactive">Inactive</mat-option>
+            </mat-select>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Weight measuring unit</mat-label>
             <mat-select matInput [(ngModel)]="indicator.measuringUnit" name="cntlMeasuringUnit">
-              <mat-option value="gm">GM</mat-option>
-              <mat-option value="kg">KG</mat-option>
+              <mat-option value="gm">gm</mat-option>
+              <mat-option value="KG">KG</mat-option>
               <mat-option value="quintol">Quintol</mat-option>
               <mat-option value="ton">Ton</mat-option>
             </mat-select>
@@ -69,11 +77,15 @@
           </mat-form-field>
         </div>
         <div fxLayout fxLayoutAlign="space-between center">
-          <button mat-raised-button (click)="verify()">Verify</button>
-          <div fxLayout fxLayoutGap="16px">
-            <button mat-raised-button (click)="save()"><mat-icon>save</mat-icon> Save</button>
-            <button mat-raised-button (click)="cancel()"><mat-icon>cancel</mat-icon> Cancel</button>
+          <div fxLayout fxLayoutGap="32px">
+            <button mat-raised-button color="accent" (click)="verify()">Verify</button>
+            <span class="weight">{{verification_weight}}</span>
           </div>
+        </div>
+        <div fxLayout fxLayoutGap="16px">
+          <!--<button mat-raised-button color="primary" (click)="writeToPortTest()"><mat-icon>adjust</mat-icon> Write to port</button>-->
+          <button mat-raised-button color="primary" [disabled]="!isPortVerified" (click)="save()"><mat-icon>save</mat-icon> Save</button>
+          <button mat-raised-button color="error" (click)="cancel()"><mat-icon>cancel</mat-icon> Cancel</button>
         </div>
       </mat-card-content>
     </form>

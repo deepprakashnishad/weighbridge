@@ -34,9 +34,11 @@ export class AdditionalFieldsComponent implements OnInit {
       }  
     );
 
-    ref.afterClosed().subscribe(result=>{
-      this.additionalFields.push(result);
-      this.dataSource.data = this.additionalFields;
+    ref.afterClosed().subscribe(result => {
+      if (result) {
+        this.additionalFields.push(result);
+        this.dataSource.data = this.additionalFields;
+      }
     });
   }
 

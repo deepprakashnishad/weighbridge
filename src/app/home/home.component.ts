@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, Component, OnInit } from '@angular/core';
+import { MyDbService } from '../my-db.service';
+import { QueryList } from '../query-list';
+import { environment } from "./../../environments/environment";
 
 @Component({
   selector: 'app-home',
@@ -26,9 +29,17 @@ export class HomeComponent implements OnInit {
     {icon: "assets/icons/data-sheet-60.png", title: "Datasheet",route: ""},
   ];
 
-  constructor() { }
+  constructor(
+    private dbService: MyDbService
+  ) { }
 
   ngOnInit() {
+    this.dbService.executeSyncDBStmt("SELECT", QueryList.GET_APP_SETTINGS).then(result => {
+      if (result && result.length > 0) {
+        result.forEach(ele => {
+          sessionStorage.setItem(ele["field"], ele['mValue']);
+        });
+      }
+    });
   }
-
 }

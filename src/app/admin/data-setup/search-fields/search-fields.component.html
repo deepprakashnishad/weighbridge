@@ -1,3 +1,58 @@
-<p>
-  search-fields works!
-</p>
+<div class="container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="32px">
+  <div class="full-width" fxLayout fxLayoutAlign="space-between center">
+    <div class="box-title">Search Fields</div>
+    <app-help [tag]="'SEARCH_FIELDS'"></app-help>
+  </div>
+  <div class="content-box" fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="32px">
+    <mat-checkbox (change)="enableInvoice($event)" [ngModel]="enableInvoiceCreation" class="example-margin">Enable Invoice Creation</mat-checkbox>
+    <form class="full-width" *ngIf="searchField.id">
+      <div fxLayout>
+        <div fxFlex="5"></div>
+        <div fxFlex="30">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Display Name</mat-label>
+            <input name="cntlDisplayName" [(ngModel)]="searchField.displayName" matInput placeholder="Display Name">
+          </mat-form-field>
+        </div>
+        <div fxFlex="25">
+          <mat-select name="cntlEntryMode" [(ngModel)]="searchField.entryMode" appearance="outline">
+            <mat-option value="LIST_SOFT">LIST_SOFT</mat-option>
+            <mat-option value="FREETEXT">FREETEXT</mat-option>
+          </mat-select>
+        </div>
+        <div fxFlex="20">
+          <mat-select name="cntlInOutMode" [(ngModel)]="searchField.inOutMode" appearance="outline">
+            <mat-option value="GENERIC">GENERIC</mat-option>
+            <mat-option value="INBOUND">INBOUND</mat-option>
+            <mat-option value="OUTBOUND">OUTBOUND</mat-option>
+          </mat-select>
+        </div>
+        <div fxFlex="10"><button mat-raised-button color="primary" (click)="save()">Save <mat-icon>save</mat-icon></button></div>
+      </div>
+      
+    </form>
+    <div class="full-width" fxLayout="column">
+      <div fxLayout>
+        <h4 fxFlex="5">S. No.</h4>
+        <h4 fxFlex="30">Display Name</h4>
+        <h4 fxFlex="25">Entry mode</h4>
+        <h4 fxFlex="20">In/Out mode</h4>
+        <h4 fxFlex="20"></h4>
+      </div>
+      <div fxLayout *ngFor="let field of searchFields; let i=index;">
+        <div fxFlex="5">{{i+1}}</div>
+        <div fxFlex="30">{{field.displayName}}</div>
+        <div fxFlex="25">{{field.entryMode}}</div>
+        <div fxFlex="20">{{field.inOutMode}}</div>
+        <div fxFlex="20" fxLayout>
+          <button mat-icon-button color="primary" (click)="openListEditor(field, i)"><mat-icon>view_list</mat-icon></button>
+          <button mat-icon-button color="accent" (click)="edit(field)"><mat-icon>edit</mat-icon></button>
+          <!--<button mat-icon-button color="error" (click)="delete(field, i)"><mat-icon>delete</mat-icon></button>-->
+        </div>
+      </div>
+    </div>
+    <div fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
+      <button mat-raised-button color="primary">Save</button>
+    </div>
+  </div>
+</div>

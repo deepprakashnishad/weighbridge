@@ -1,9 +1,9 @@
 export const environment = {
   production: true,
-  baseurl: "https://master-erp.herokuapp.com",
-  razorpay: {
-    keyId: ""
-  }
+  licenseurl: "https://aesm-license-manager.herokuapp.com",
+  appName: "accubridge",
+  appDisplayName: "Accubridge",
+  firstAutoRefresh: true
 };
 
 

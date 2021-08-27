@@ -21,3 +21,23 @@ a{
   font-size: large;
   font-weight: bold;
 }
+
+.mat-toolbar {
+  min-height: 40px !important;
+  height: 40px !important;
+
+  .menu-button{
+      font-size: medium;
+      font-weight:500;
+  }
+}
+
+.mat-menu-item {
+  line-height:28px;
+  height: 28px;
+}
+
+.mat-toolbar-row {
+  min-height: 40px !important;
+  height: 40px !important;
+}

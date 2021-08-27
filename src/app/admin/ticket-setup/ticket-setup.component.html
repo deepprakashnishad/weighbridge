@@ -1,14 +1,189 @@
 <div class="container">
-  <div fxLayout fxLayoutGap="16px" fxLayoutAlign="start center">
-    <form>
-      <mat-form-field appearance="fill">
-        <mat-label>Template Name</mat-label>
-        <mat-select [(value)]="selectedTemplate">
-          <mat-option *ngFor="let template of templates" value="template">{{template.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+  <div fxLayout fxLayoutGap="16px" fxLayoutAlign="space-between center">
+    <form class="full-width" fxLayout fxLayoutGap="16px" fxLayoutAlign="start center">
+      <mat-select class="template-selector" [(ngModel)]="selectedTemplate" (selectionChange)="selectedTemplateChanged()" placeholder="Template Name" name="cntlTemplate">
+        <mat-option *ngFor="let template of templates" [value]="template">{{template.name}}</mat-option>
+      </mat-select>
+      <button mat-icon-button color="primary" (click)="openAddTicketTemplateDialog()"><mat-icon>add</mat-icon></button>
+      <button mat-icon-button color="primary" *ngIf="selectedTemplate" (click)="openEditTicketTemplateDialog()"><mat-icon>edit</mat-icon></button>
     </form>
-    <button mat-raised-button color="primary" (click)="openAddTicketTemplateDialog()">Add <mat-icon>add</mat-icon></button>
-    <button mat-raised-button color="primary" *ngIf="selectedTemplate">Edit <mat-icon>edit</mat-icon></button>
+    <div fxLayout fxLayoutGap="12px">
+      <button fxFlexAlign="end" mat-raised-button color="primary" *ngIf="selectedTemplate?.id" (click)="saveTemplateDetail()">Save Template Detail</button>
+      <button fxFlexAlign="end" mat-raised-button color="primary" (click)="previewTemplate()">Preview Template</button>
+    </div>
+  </div>
+  <div fxLayout fxLayoutGap="16px">
+    <div fxFlex="47">
+      <h3>Ticket Fields</h3>
+      <mat-table #table [dataSource]="ticketFieldDataSource">
+        <!-- Name Column -->
+        <ng-container matColumnDef="displayString">
+          <mat-header-cell *matHeaderCellDef> Field </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{element.displayName}}
+          </mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="row">
+          <mat-header-cell *matHeaderCellDef> Row </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <mat-form-field floatLabel="never">
+              <input matInput placeholder="Row" [value]="element.row" [(ngModel)]="element.row">
+            </mat-form-field>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="col">
+          <mat-header-cell *matHeaderCellDef> Col </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <mat-form-field floatLabel="never">
+              <input matInput placeholder="Col" [value]="element.col" [(ngModel)]="element.col">
+            </mat-form-field>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Fav Column -->
+        <ng-container matColumnDef="font">
+          <mat-header-cell *matHeaderCellDef> font </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+              <mat-select [(value)]="element.font" placeholder="Font">
+                <mat-option value="R">R</mat-option>
+                <mat-option value="RB">RB</mat-option>
+                <mat-option value="D">D</mat-option>
+                <mat-option value="DB">DB</mat-option>
+              </mat-select>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef> Include </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+              <mat-checkbox [(ngModel)]="element.isIncluded"></mat-checkbox>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+
+    <div fxFlex="47">
+      <h3>Freetext Fields</h3>
+      <mat-table #table [dataSource]="textFieldDataSource">
+        <!-- Name Column -->
+        <ng-container matColumnDef="displayString">
+          <mat-header-cell *matHeaderCellDef> Field </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <mat-form-field floatLabel="never">
+              <input matInput placeholder="Text" [value]="element.displayName" [(ngModel)]="element.displayName">
+            </mat-form-field>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="row">
+          <mat-header-cell *matHeaderCellDef> Row </mat-header-cell>
+          <mat-cell class="row-cell" *matCellDef="let element">
+            <mat-form-field floatLabel="never">
+              <input matInput placeholder="Row" [value]="element.row" [(ngModel)]="element.row">
+            </mat-form-field>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="col">
+          <mat-header-cell *matHeaderCellDef> Col </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <mat-form-field floatLabel="never">
+              <input matInput placeholder="Col" [value]="element.col" [(ngModel)]="element.col">
+            </mat-form-field>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Fav Column -->
+        <ng-container matColumnDef="font">
+          <mat-header-cell *matHeaderCellDef> font </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <mat-select [(value)]="element.font" placeholder="Font">
+              <mat-option value="R">R</mat-option>
+              <mat-option value="RB">RB</mat-option>
+              <mat-option value="D">D</mat-option>
+              <mat-option value="DB">DB</mat-option>
+            </mat-select>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef> Include </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <mat-checkbox [(ngModel)]="element.isIncluded"></mat-checkbox>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+  <div>
+    <div fxFlex="47" *ngIf="includeWeighmentTableField()">
+      <h3>Weighment Table Fields</h3>
+      <mat-table #table [dataSource]="columnFieldDataSource">
+        <!-- Name Column -->
+        <ng-container matColumnDef="displayString">
+          <mat-header-cell *matHeaderCellDef> Field </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <mat-form-field floatLabel="never">
+              <input matInput placeholder="Header" [value]="element.displayName" [(ngModel)]="element.displayName">
+            </mat-form-field>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="row">
+          <mat-header-cell *matHeaderCellDef> Row </mat-header-cell>
+          <mat-cell class="row-cell" *matCellDef="let element">
+            <mat-form-field floatLabel="never">
+              <input matInput placeholder="Row" [value]="element.row" [(ngModel)]="element.row" disabled>
+            </mat-form-field>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="col">
+          <mat-header-cell *matHeaderCellDef> Col </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <mat-form-field floatLabel="never">
+              <input matInput placeholder="Col" [value]="element.col" [(ngModel)]="element.col">
+            </mat-form-field>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Fav Column -->
+        <ng-container matColumnDef="font">
+          <mat-header-cell *matHeaderCellDef> font </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <mat-select [(value)]="element.font" placeholder="Font">
+              <mat-option value="R">R</mat-option>
+              <mat-option value="RB">RB</mat-option>
+              <mat-option value="D">D</mat-option>
+              <mat-option value="DB">DB</mat-option>
+            </mat-select>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef> Include </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <mat-checkbox [(ngModel)]="element.isIncluded"></mat-checkbox>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
   </div>
 </div>

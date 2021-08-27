@@ -1,7 +1,7 @@
 import { Component, OnInit, 
   ViewChild, EventEmitter, 
   ElementRef, Inject, 
-  Input, OnChanges, SimpleChange } from '@angular/core';
+  Input, OnChanges, SimpleChange, Query } from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
 import { MatChipInputEvent, } from '@angular/material/chips';
@@ -9,6 +9,8 @@ import { FormControl } from '@angular/forms';
 import { BehaviorSubject, Observable, of as observableOf } from 'rxjs';
 import { map, startWith, switchMap, filter } from 'rxjs/operators';
 import { Tag } from './tag';
+import { MyDbService } from '../../my-db.service';
+import { QueryList } from '../../query-list';
 
 
 
@@ -28,9 +30,8 @@ public isRemoveOnSeverFlag: boolean = false;
 @Input()
 public isSelection: boolean = false;
 
-
   @Input()
-  selectedValues: Array<Tag>=[];
+  selectedTags: Array<Tag>=[];
   filteredTags: Observable<Tag[]>;
   mControl=new FormControl();
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
@@ -39,6 +40,7 @@ public isSelection: boolean = false;
   @ViewChild('auto') auto: MatAutocomplete;
   
   constructor(
+    private dbService: MyDbService
   ) { }
 
   ngOnInit() {
@@ -54,55 +56,44 @@ public isSelection: boolean = false;
     for (let propName in changes) {
       let changedProp = changes[propName];
       if(!this.isSelection && propName.toLowerCase() === "facet" && changedProp.currentValue !== undefined){
-        this.selectedValues = changedProp.currentValue['values'];
+        this.selectedTags = changedProp.currentValue['values'];
       }
     }
-}
+  }
 
 
   _filter(value:string, list: Array<any>): Array<any>{
     if(list && value && typeof value==="string"){
         const filterValue = value.toLowerCase();
         var list = list.filter(option => option.toLowerCase().includes(filterValue) 
-          && this.selectedValues.indexOf(option)<0);  
+          && this.selectedTags.indexOf(option)<0);  
         return list;
     } else if(list){
       return list.filter(option => this.tags.indexOf(option)<0);
     }
   } 
 
-selected(event: MatAutocompleteSelectedEvent){
-    this.selectedValues.push(event.option.value);
+  selected(event: MatAutocompleteSelectedEvent){
+    this.selectedTags.push(event.option.value);
     this.mControl.setValue(null);
     this.tagInput.nativeElement.value='';
-}
+  }
 
-remove(value: string): void {
-    const index = this.selectedValues.indexOf(value);
-
-    if (index >= 0) {
-      this.selectedValues.splice(index, 1);
+  remove(value: string): void {
+    if (this.isRemoveOnSeverFlag) {
+      
     }
+  }
 
-    if(this.isRemoveOnSeverFlag){
-      this.facetService.updateFacet(this.facet)
-        .subscribe((facet)=>{
-
-        }, (err)=>alert("Failed to delete facet value"));	
-    }
-}
-
-add(event: MatChipInputEvent): void {
+  add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
 
     // Add our facet
     if (value.trim() !== "" && !this.auto.isOpen) {
-      this.selectedValues.push(value);
-      this.facetService.updateFacet(this.facet)
-      .subscribe((facet)=>{
-
-      }, (err)=>alert("Could not create facet value"));
+      this.dbService.executeDBStmt("INSERT_TAG_DONT_SAVE",
+        QueryList.INSERT_TAG.replace("{tagType}", this.tagType).replace("{value}", value)
+      );
     }
 
     // Reset the input value
@@ -112,6 +103,6 @@ add(event: MatChipInputEvent): void {
   }
 
   resetSelectedValues(){
-    this.selectedValues = [];
+    this.selectedTags = [];
   }
 }

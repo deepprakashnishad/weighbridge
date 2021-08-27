@@ -9,6 +9,7 @@ import { TheftDetectionReportComponent } from './theft-detection-report/theft-de
 import { ZeroCheckReportComponent } from './zero-check-report/zero-check-report.component';
 import { ReportRoutingModule } from './report-routing.module';
 import { WeighmentReportComponent } from './weighment-report/weighment-report.component';
+import { PreviewDialogComponent } from './preview-dialog/preview-dialog.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { WeighmentReportComponent } from './weighment-report/weighment-report.co
     TheftDetectionReportComponent,
     WeighmentReportComponent,
     ZeroCheckReportComponent,
+    PreviewDialogComponent
   ],
   exports: [
   ],

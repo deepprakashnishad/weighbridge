@@ -1,0 +1,1413 @@
+[2021-08-17 19:53:52.842] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (160).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:52.868] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (161).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:52.882] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (162).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:52.897] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (163).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:52.910] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (164).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:52.927] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (165).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:52.944] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (166).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:52.964] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (167).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:52.991] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (168).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.015] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (169).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.031] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (170).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.046] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (171).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.066] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (172).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.078] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (173).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.094] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (174).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.113] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (175).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.135] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (176).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.147] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (177).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.160] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (178).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.171] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (179).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.180] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (180).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.194] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (181).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.214] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (182).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.233] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (183).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.246] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (184).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.263] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (185).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.279] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (186).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.292] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (187).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.303] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (188).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.314] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (189).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.327] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (190).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.345] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (191).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.357] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (192).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.374] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (193).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.387] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (194).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.396] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (195).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.409] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (196).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.423] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (197).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.438] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (198).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.452] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (199).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.465] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (200).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.480] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (201).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.497] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (202).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.511] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (203).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.527] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (204).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.543] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (205).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.555] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (206).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.575] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (207).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-17 19:53:53.585] [error] RequestError: Violation of PRIMARY KEY constraint 'PK_search_field_value_1'. Cannot insert duplicate key in object 'dbo.search_field_value'. The duplicate key value is (208).
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-20 10:43:48.619] [error] RequestError: Invalid column name 'undefined'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-20 10:44:22.820] [error] RequestError: Invalid column name 'undefined'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-20 10:44:25.115] [error] RequestError: Invalid column name 'undefined'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-20 10:54:57.969] [error] RequestError: Invalid column name 'undefined'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-20 10:56:02.997] [error] RequestError: Invalid column name 'undefined'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-20 21:35:52.518] [info]  Port status - true
+[2021-08-20 21:44:18.643] [info]  Intialization complete
+[2021-08-20 21:44:18.691] [info]  Port is opened successfully
+[2021-08-20 22:13:28.165] [info]  Port is closed successfully
+[2021-08-20 22:25:29.664] [info]  Intialization complete
+[2021-08-20 22:25:29.726] [info]  Port is opened successfully
+[2021-08-20 22:27:21.577] [info]  Port is closed successfully
+[2021-08-20 22:27:36.323] [info]  Intialization complete
+[2021-08-20 22:27:36.370] [info]  Port is opened successfully
+[2021-08-20 22:39:27.037] [info]  Port is closed successfully
+[2021-08-20 22:40:43.681] [info]  Intialization complete
+[2021-08-20 22:40:43.723] [info]  Port is opened successfully
+[2021-08-21 01:58:21.173] [info]  Port is closed successfully
+[2021-08-21 10:35:21.922] [info]  Intialization complete
+[2021-08-21 10:35:21.926] [error] Error occured on port
+[2021-08-21 10:37:29.315] [info]  Intialization complete
+[2021-08-21 10:37:29.331] [error] Error occured on port
+[2021-08-21 10:40:39.872] [info]  Intialization complete
+[2021-08-21 10:40:39.878] [error] Error occured on port
+[2021-08-21 10:43:45.842] [info]  Intialization complete
+[2021-08-21 10:43:45.854] [error] Error occured on port
+[2021-08-21 10:47:17.892] [info]  Intialization complete
+[2021-08-21 10:47:17.902] [error] Error occured on port
+[2021-08-21 10:52:25.335] [info]  Intialization complete
+[2021-08-21 10:52:25.337] [error] Error occured on port
+[2021-08-21 10:52:28.466] [info]  Intialization complete
+[2021-08-21 10:52:28.482] [error] Error occured on port
+[2021-08-21 10:57:05.778] [info]  Intialization complete
+[2021-08-21 10:57:05.787] [error] Error occured on port
+[2021-08-21 10:58:39.713] [info]  Intialization complete
+[2021-08-21 10:58:39.716] [error] Error occured on port
+[2021-08-21 10:59:40.059] [info]  Intialization complete
+[2021-08-21 10:59:40.063] [error] Error occured on port
+[2021-08-21 12:42:15.690] [info]  Intialization complete
+[2021-08-21 12:42:15.694] [error] Error occured on port
+[2021-08-21 12:49:10.756] [info]  Intialization complete
+[2021-08-21 12:49:10.761] [error] Error occured on port
+[2021-08-21 12:49:14.989] [info]  Intialization complete
+[2021-08-21 12:49:14.991] [error] Error occured on port
+[2021-08-21 13:22:10.478] [info]  Intialization complete
+[2021-08-21 13:22:10.487] [error] Error occured on port
+[2021-08-21 13:42:28.181] [info]  Intialization complete
+[2021-08-21 13:42:28.190] [error] Error occured on port
+[2021-08-21 13:48:41.569] [info]  Intialization complete
+[2021-08-21 13:48:41.573] [error] Error occured on port
+[2021-08-21 13:49:15.884] [info]  Intialization complete
+[2021-08-21 13:49:15.888] [error] Error occured on port
+[2021-08-21 13:49:29.774] [info]  Intialization complete
+[2021-08-21 13:49:29.779] [error] Error occured on port
+[2021-08-21 14:04:17.385] [info]  Intialization complete
+[2021-08-21 14:04:17.394] [error] Error occured on port
+[2021-08-21 14:21:42.293] [info]  Intialization complete
+[2021-08-21 14:21:42.298] [error] Error occured on port
+[2021-08-21 14:24:03.154] [info]  Intialization complete
+[2021-08-21 14:24:03.162] [error] Error occured on port
+[2021-08-21 14:24:10.831] [info]  Intialization complete
+[2021-08-21 14:24:10.835] [error] Error occured on port
+[2021-08-21 14:26:39.881] [info]  Intialization complete
+[2021-08-21 14:26:39.891] [error] Error occured on port
+[2021-08-22 11:30:35.262] [info]  Intialization complete
+[2021-08-22 11:30:35.297] [error] Error occured on port
+[2021-08-22 11:32:05.498] [info]  Intialization complete
+[2021-08-22 11:35:19.057] [error] Error occured on port
+[2021-08-22 11:35:48.789] [info]  Intialization complete
+[2021-08-22 11:35:48.797] [error] Error occured on port
+[2021-08-22 11:36:12.922] [info]  Intialization complete
+[2021-08-22 11:36:12.923] [error] Error occured on port
+[2021-08-22 11:37:09.886] [info]  Intialization complete
+[2021-08-22 11:37:09.888] [error] Error occured on port
+[2021-08-22 11:38:14.318] [info]  Intialization complete
+[2021-08-22 11:38:14.320] [error] Error occured on port
+[2021-08-22 11:39:12.081] [info]  Intialization complete
+[2021-08-22 11:39:12.094] [error] Error occured on port
+[2021-08-22 11:40:30.786] [info]  Intialization complete
+[2021-08-22 11:40:30.802] [error] Error occured on port
+[2021-08-22 11:41:15.775] [info]  Intialization complete
+[2021-08-22 11:41:15.780] [error] Error occured on port
+[2021-08-22 11:41:28.056] [info]  Intialization complete
+[2021-08-22 11:41:28.061] [error] Error occured on port
+[2021-08-22 11:44:54.457] [info]  Intialization complete
+[2021-08-22 11:44:54.464] [error] Error occured on port
+[2021-08-22 11:46:33.441] [info]  Intialization complete
+[2021-08-22 11:46:33.468] [error] Error occured on port
+[2021-08-22 11:47:32.374] [info]  Intialization complete
+[2021-08-22 11:47:32.397] [error] Error occured on port
+[2021-08-22 11:48:59.541] [info]  Intialization complete
+[2021-08-22 11:48:59.543] [error] Error occured on port
+[2021-08-22 11:49:41.226] [info]  Intialization complete
+[2021-08-22 11:49:41.237] [error] Error occured on port
+[2021-08-22 11:51:07.180] [info]  Intialization complete
+[2021-08-22 11:51:07.187] [error] Error occured on port
+[2021-08-22 12:50:03.183] [info]  Intialization complete
+[2021-08-22 12:50:03.185] [error] Error occured on port
+[2021-08-22 13:03:37.075] [info]  Intialization complete
+[2021-08-22 13:03:37.082] [error] Error occured on port
+[2021-08-22 13:40:09.298] [info]  Intialization complete
+[2021-08-22 13:40:09.302] [error] Error occured on port
+[2021-08-22 15:42:53.404] [info]  Intialization complete
+[2021-08-22 15:42:53.405] [error] Error occured on port
+[2021-08-23 11:27:18.380] [info]  Intialization complete
+[2021-08-23 11:27:18.411] [error] Error occured on port
+[2021-08-23 11:56:47.855] [info]  Intialization complete
+[2021-08-23 11:56:47.861] [error] Error occured on port
+[2021-08-23 12:07:45.283] [info]  Intialization complete
+[2021-08-23 12:07:45.289] [error] Error occured on port
+[2021-08-23 12:11:15.096] [info]  Intialization complete
+[2021-08-23 12:11:15.102] [error] Error occured on port
+[2021-08-23 12:19:06.243] [info]  Intialization complete
+[2021-08-23 12:19:06.259] [error] Error occured on port
+[2021-08-23 12:22:56.930] [info]  Intialization complete
+[2021-08-23 12:22:56.938] [error] Error occured on port
+[2021-08-23 12:24:45.635] [info]  Intialization complete
+[2021-08-23 12:24:45.639] [error] Error occured on port
+[2021-08-23 12:25:47.497] [info]  Intialization complete
+[2021-08-23 12:25:47.499] [error] Error occured on port
+[2021-08-23 12:25:52.213] [info]  Intialization complete
+[2021-08-23 12:25:52.223] [error] Error occured on port
+[2021-08-23 12:26:34.079] [info]  Intialization complete
+[2021-08-23 12:26:34.085] [error] Error occured on port
+[2021-08-23 12:28:33.374] [info]  Intialization complete
+[2021-08-23 12:28:33.383] [error] Error occured on port
+[2021-08-23 12:30:28.999] [info]  Intialization complete
+[2021-08-23 12:30:29.001] [error] Error occured on port
+[2021-08-23 12:34:07.784] [info]  Intialization complete
+[2021-08-23 12:34:07.792] [error] Error occured on port
+[2021-08-23 13:01:20.339] [info]  Intialization complete
+[2021-08-23 13:01:20.349] [error] Error occured on port
+[2021-08-23 13:03:32.751] [info]  Intialization complete
+[2021-08-23 13:03:32.762] [error] Error occured on port
+[2021-08-23 13:04:36.303] [info]  Intialization complete
+[2021-08-23 13:04:36.310] [error] Error occured on port
+[2021-08-24 17:27:07.789] [error] ConnectionError: Login failed for user 'admin'.  Reason: The password of the account has expired.
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:2668:20)
+    at Object.onceWrapper (events.js:421:28)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:34:12)
+    at Readable.emit (events.js:315:20)
+[2021-08-24 17:27:13.915] [error] ConnectionError: Login failed for user 'admin'.  Reason: The password of the account has expired.
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:2668:20)
+    at Object.onceWrapper (events.js:421:28)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:34:12)
+    at Readable.emit (events.js:315:20)
+[2021-08-24 18:29:13.736] [error] ConnectionError: Login failed for user 'admin'.  Reason: The password of the account has expired.
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:2668:20)
+    at Object.onceWrapper (events.js:421:28)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:34:12)
+    at Readable.emit (events.js:315:20)
+[2021-08-26 16:02:58.630] [error] ConnectionError: Login failed for user 'admin'.  Reason: The password of the account has expired.
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:2668:20)
+    at Object.onceWrapper (events.js:421:28)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:34:12)
+    at Readable.emit (events.js:315:20)
+[2021-08-26 16:03:17.903] [error] ConnectionError: Login failed for user 'admin'.  Reason: The password of the account has expired.
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:2668:20)
+    at Object.onceWrapper (events.js:421:28)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:34:12)
+    at Readable.emit (events.js:315:20)
+[2021-08-26 16:05:40.784] [error] ConnectionError: Login failed for user 'admin'.  Reason: The password of the account has expired.
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:2668:20)
+    at Object.onceWrapper (events.js:421:28)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:34:12)
+    at Readable.emit (events.js:315:20)
+[2021-08-26 16:05:45.620] [error] ConnectionError: Login failed for user 'admin'.  Reason: The password of the account has expired.
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:2668:20)
+    at Object.onceWrapper (events.js:421:28)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:34:12)
+    at Readable.emit (events.js:315:20)
+[2021-08-26 16:18:10.717] [error] ConnectionError: Login failed for user 'admin'.
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:2668:20)
+    at Object.onceWrapper (events.js:421:28)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:34:12)
+    at Readable.emit (events.js:315:20)
+[2021-08-26 16:18:17.286] [error] ConnectionError: Login failed for user 'admin'.
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:2668:20)
+    at Object.onceWrapper (events.js:421:28)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:34:12)
+    at Readable.emit (events.js:315:20)
+[2021-08-26 17:01:16.660] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:01:19.668] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:01:22.674] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:01:25.677] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:01:28.687] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:01:31.676] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:01:34.685] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:01:37.664] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:01:40.675] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:01:43.683] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:01:46.685] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:01:49.670] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:01:52.679] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:01:55.683] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:01:58.686] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:01.692] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:04.687] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:07.677] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:10.687] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:13.748] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:16.671] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:19.926] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:22.923] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:25.930] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:28.928] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:31.925] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:34.932] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:37.918] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:41.173] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:44.183] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:47.160] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:50.158] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:53.181] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:56.176] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:02:58.980] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:03:01.938] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:03:04.937] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:03:07.946] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:03:42.293] [error] TypeError: The "config.server" property is required and must be of type string.
+    at new Connection (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:342:13)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:64:19
+    at new Promise (<anonymous>)
+    at ConnectionPool._poolCreate (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:12:12)
+    at ConnectionPool._connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:364:10)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:336:19
+    at new Promise (<anonymous>)
+    at ConnectionPool.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:335:12)
+    at Object.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\global-connection.js:59:27)
+    at D:\electron\weighbridge\app\db-service.js:53:26
+[2021-08-26 17:04:59.646] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:05:02.677] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:05:05.658] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:05:08.671] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-26 17:05:11.651] [error] RequestError: Incorrect syntax near the keyword 'ORDER'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-08-27 11:33:22.445] [info]  Port status - true
+[2021-08-27 11:39:09.116] [info]  Intialization complete
+[2021-08-27 11:39:09.125] [error] Error occured on port
+[2021-08-27 11:39:48.003] [info]  Intialization complete
+[2021-08-27 11:39:48.010] [error] Error occured on port
+[2021-08-27 11:40:07.526] [info]  Intialization complete
+[2021-08-27 11:40:07.536] [error] Error occured on port
+[2021-08-27 11:49:46.244] [info]  Intialization complete
+[2021-08-27 11:49:46.246] [error] Error occured on port
+[2021-08-27 11:50:31.560] [info]  Port status - true
+[2021-08-27 11:50:31.568] [error] Error: Opening COM3: Access denied
+[2021-08-27 11:50:34.119] [info]  Port status - true
+[2021-08-27 11:50:43.732] [info]  Intialization complete
+[2021-08-27 11:50:43.773] [info]  Port is opened successfully
+[2021-08-27 11:50:49.779] [info]  Port is closed successfully
+[2021-08-27 11:50:53.137] [info]  Intialization complete
+[2021-08-27 11:50:53.179] [info]  Port is opened successfully
+[2021-08-27 14:09:20.647] [info]  Port is closed successfully
+[2021-08-27 14:15:47.439] [info]  Intialization complete
+[2021-08-27 14:15:47.481] [info]  Port is opened successfully
+[2021-08-27 14:22:30.947] [info]  Port is closed successfully
+[2021-08-27 14:24:59.305] [info]  Intialization complete
+[2021-08-27 14:24:59.352] [info]  Port is opened successfully
+[2021-08-27 14:28:48.460] [info]  Port is closed successfully
+[2021-08-27 14:45:55.265] [info]  Intialization complete
+[2021-08-27 14:45:55.308] [info]  Port is opened successfully
+[2021-08-27 15:59:02.232] [info]  Port is closed successfully
+[2021-08-27 16:00:10.542] [info]  Intialization complete
+[2021-08-27 16:00:10.584] [info]  Port is opened successfully
+[2021-08-27 16:03:00.124] [info]  Port is closed successfully
+[2021-08-27 16:03:48.828] [info]  Intialization complete
+[2021-08-27 16:03:48.870] [info]  Port is opened successfully
+[2021-08-27 16:14:28.003] [info]  Port is closed successfully
+[2021-08-27 16:14:52.458] [info]  Intialization complete
+[2021-08-27 16:14:52.500] [info]  Port is opened successfully
+[2021-08-27 16:16:25.290] [info]  Intialization complete
+[2021-08-27 16:16:25.336] [info]  Port is opened successfully
+[2021-08-27 18:04:11.804] [info]  Port is closed successfully
+[2021-08-27 18:04:15.697] [info]  Intialization complete
+[2021-08-27 18:04:15.739] [info]  Port is opened successfully
+[2021-08-27 20:12:51.165] [error] Error: ENOENT: no such file or directory, open './notamedia/3bbf5c34-cf07-42ff-a4a8-ae4daf5503c0'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:101:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-08-27 20:14:26.830] [error] Error: ENOENT: no such file or directory, open './notamedia/3bbf5c34-cf07-42ff-a4a8-ae4daf5503c0'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:101:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-08-27 20:16:43.720] [error] Error: ENOENT: no such file or directory, open './notamedia/3bbf5c34-cf07-42ff-a4a8-ae4daf5503c0'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:101:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-08-27 20:16:50.720] [error] Error: ENOENT: no such file or directory, open './notamedia/3bbf5c34-cf07-42ff-a4a8-ae4daf5503c0'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:101:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-08-27 20:16:51.319] [info]  Intialization complete
+[2021-08-27 20:16:51.325] [error] Error occured on port
+[2021-08-27 20:17:31.317] [error] Error: ENOENT: no such file or directory, open './notamedia/3bbf5c34-cf07-42ff-a4a8-ae4daf5503c0'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:101:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-08-27 20:18:42.752] [error] Error: ENOENT: no such file or directory, open './notamedia/3bbf5c34-cf07-42ff-a4a8-ae4daf5503c0'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:101:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-08-27 20:18:48.646] [error] Error: ENOENT: no such file or directory, open './notamedia/3bbf5c34-cf07-42ff-a4a8-ae4daf5503c0'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:101:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)

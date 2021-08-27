@@ -9,10 +9,15 @@ import {LoginComponent} from '../login/login.component';
 
 const routes: Routes = [
 	{
-		path: 'login', 
+		path: '', 
 		component: LoginComponent,
 		data: { title: 'Login/Signup'}
-	},	
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    data: { title: 'Login/Signup' }
+  },
 
 	/* {
 		path: 'permission', 
