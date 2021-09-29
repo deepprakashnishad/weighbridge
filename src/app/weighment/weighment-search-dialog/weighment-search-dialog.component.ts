@@ -41,9 +41,12 @@ export class WeighmentSearchDialog implements OnInit {
   }
 
   filter() {
-    console.log(this.vehicleTxt);
     this.filteredRecords = this.records.filter(ele => {
       return (!this.rstSearchTxt || ele.rstNo.toString().indexOf(this.rstSearchTxt) > -1) && (!this.vehicleTxt || ele.vehicleNo.indexOf(this.vehicleTxt) > -1);
     })
+  }
+
+  close() {
+    this.dialogRef.close();
   }
 }

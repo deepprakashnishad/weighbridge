@@ -88,6 +88,12 @@ export class TagSelectorComponent implements OnInit, OnChanges {
   	this.optionSelected.emit($event.option.value);
   }
 
+  clear() {
+    this.selectedTag = undefined;
+    this.optionSelected.emit(undefined);
+    this.mControl.setValue("");
+  }
+
   displayFn(item: any): string | undefined{
     if (item && item.code && item.mValue) {
       return `${item?.code}-${item?.mValue}`;

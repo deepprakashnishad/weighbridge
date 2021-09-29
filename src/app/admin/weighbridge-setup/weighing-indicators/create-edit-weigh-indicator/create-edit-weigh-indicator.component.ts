@@ -73,16 +73,22 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
     }
   }
 
-  verify() {
-    if (this.existingIndicators.some(ele => {
-      if (ele.comPort === this.indicator.comPort) {
-        return true;
-      }
-    })) {
-      this.notifier.notify("error", "One port cannot be used by multiple indicators");
-      return;
-    }
-    this.ipcService.invokeIPC("verify-port", 
+  async verify() {
+    //if (this.existingIndicators.some(ele => {
+    //  if (ele.comPort === this.indicator.comPort) {
+    //    return true;
+    //  }
+    //})) {
+    //  this.notifier.notify("error", "One port cannot be used by multiple indicators");
+    //  return;
+    //}
+
+    await this.ipcService.invokeIPC("close-port-if-path-is", this.indicator.comPort);
+
+    //var isMainPortOpen = await this.ipcService.invokeIPC("is-port-open", this.indicator.comPort);
+    //console.log("Main port - " + isMainPortOpen);
+
+    this.ipcService.invokeIPC("verify-port",
       "verification-weight-recieved",
       {
         weighbridgeName: this.indicator.wiName,
@@ -103,6 +109,7 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
       return;
     }
     var currWeight = this.currWeighData;
+    console.log(currWeight);
     if (currWeight['timestamp'] > (new Date().getTime()) - 1000) {
       this.verification_weight = currWeight['weight'];
       if (this.prevWeight === currWeight['weight']) {
@@ -117,7 +124,6 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
     } else if (this.selectedString.type !== "polling") {
       this.verification_weight = "Err!";
     }
-    
   }
 
   isValid() {
@@ -221,7 +227,6 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
 
   cancel() {
     this.ipcService.invokeIPC("close-verification-port").then(result => {
-      console.log(result);
     });
     this.dialogRef.close();
   }

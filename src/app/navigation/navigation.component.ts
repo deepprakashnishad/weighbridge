@@ -1,5 +1,5 @@
 import { Component, HostListener, Inject, NgZone, OnInit, Renderer2, ViewChild } from '@angular/core';
-import {Router, RoutesRecognized} from '@angular/router';
+import {ActivatedRouteSnapshot, Router, RoutesRecognized} from '@angular/router';
 import {AuthenticationService} from '../authentication/authentication.service';
 import { Title } from '@angular/platform-browser';
 import { trigger, state, style, transition, animate } from '@angular/animations';
@@ -40,13 +40,14 @@ export class NavigationComponent implements OnInit {
 	shrinkToolbar = false;
   elementPosition: any;
   allowedPermissionList: Array<Permission> = [];
+  selectedMenu: string;
 
   	constructor(
 		private authenticationService: AuthenticationService,
     private router: Router,
     private ngZone: NgZone,
 		private titleService: Title,
-		private renderer: Renderer2,
+      private renderer: Renderer2,
 	) { }
 
 	ngOnInit() {
@@ -60,7 +61,7 @@ export class NavigationComponent implements OnInit {
 		this.authenticationService.isLoggedIn.subscribe(value => {
 	      this.isLoggedIn = value;
 	      if(value){
-	      	this.name = this.authenticationService.getTokenOrOtherStoredData("name");
+	      	this.name = this.authenticationService.getTokenOrOtherStoredData("fullname");
 	      }
     });
 
@@ -70,8 +71,20 @@ export class NavigationComponent implements OnInit {
     }
     this.allowedPermissionList = JSON.parse(permissionList);
 
-		this.renderer.listen('window', 'click', (e: Event)=>{});	
-	}
+    this.renderer.listen('window', 'click', (e: Event) => { });
+
+    this.getSelectedButton();
+  }
+
+  getSelectedButton() {
+    if (window.location.href.indexOf("admin")) {
+      this.selectedMenu = "administration"
+    } else if (window.location.href.indexOf("weighment")) {
+      this.selectedMenu = "dataentry";
+    } else if (window.location.href.indexOf("reports")) {
+      this.selectedMenu = "reports";
+    }
+  }
 
 	ngAfterViewInit(): void {
 	}
@@ -89,11 +102,13 @@ export class NavigationComponent implements OnInit {
 		}
 	}
 
-	navigateTo(path){
+	navigateTo(path, selectedMenu="administration"){
     if (path && path !== "logout") {
+      this.selectedMenu = selectedMenu;
       this.ngZone.run(() => {
         this.router.navigate([path]);
       });
+
     } else if (path === "logout") {
       this.ngZone.run(() => {
         this.authenticationService.logout()

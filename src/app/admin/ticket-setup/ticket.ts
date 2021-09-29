@@ -48,10 +48,22 @@ export class TicketField {
 
   constructor() { }
 
+  static generateNewlineTicketField() {
+    var newlineField = new TicketField();
+    newlineField.col = 3;
+    newlineField.displayName = "Newline";
+    newlineField.field = "newline";
+    newlineField.row = 32767;
+    newlineField.isIncluded = true;
+    newlineField.type = "newline";
+    return newlineField;
+  }
+
   static fromJSON(result, isSeparateReqd) {
     var ticketFields = [];
     var freetextFields = [];
     var weighDetailFields = [];
+    var newLineField;
     for (var i = 0; i < result.length; i++) {
       var temp: TicketField = new TicketField();
       temp.col = result[i]['col'];
@@ -68,15 +80,22 @@ export class TicketField {
           ticketFields.push(temp);
         } else if (temp.type === "weighment_detail") {
           weighDetailFields.push(temp);
-        } else {
+        } else if (temp.type === "freetext") {
           freetextFields.push(temp);
+        } else if (temp.type === "newline") {
+          newLineField = temp;
         }
       } else {
         ticketFields.push(temp);
       }
     }
     if (isSeparateReqd) {
-      return { "ticketFields": ticketFields, "freetextFields": freetextFields, "weighDetailFields": weighDetailFields };
+      return {
+        "ticketFields": ticketFields,
+        "freetextFields": freetextFields,
+        "weighDetailFields": weighDetailFields,
+        "newlineField": newLineField
+      };
     } else {
       return ticketFields;
     }    

@@ -33,11 +33,9 @@ ipcMain.handle("initialize-port", async (event, ...args) => {
 
       tempPort.on("open", function () {
         isPortInUse = true;
-        log.info("Port is opened successfully");
       })
       tempPort.on("close", function () {
         isPortInUse = false;
-        log.info("Port is closed successfully");
       })
 
       tempPort.on("error", function () {
@@ -71,7 +69,6 @@ function initializePort() {
       log.error(err);
       win.webContents.send("curr-weight-recieved", [err]);
     });
-    log.info("Intialization complete");
   } catch (err) {
     log.error(err);
   } 
@@ -100,8 +97,8 @@ function onReadData(data) {
     var tempWeight = '';
 
     if (data.length !== weighString['totalChars']) {
-      console.log(data.length);
-      console.log(weighString['totalChars']);
+      log.info("Weigh string data length - "+data.length);
+      log.info("Expected Chars - "+weighString['totalChars']);
       return;
     }
 
@@ -142,4 +139,19 @@ function onReadData(data) {
 ipcMain.handle("close-port", async (event, ...args) => {
   if (tempPort.isOpen)
     tempPort.close();
-})
+});
+
+ipcMain.handle("close-port-if-path-is", async (event, ...args) => {
+  if (tempPort && args[0] === tempPort['path'] && tempPort.isOpen) {
+    tempPort.close();
+  }
+});
+
+ipcMain.handle("is-port-open", async (event, ...args) => {
+  if (tempPort) {
+    return tempPort.isOpen;
+  } else {
+    return false;
+  }
+  
+});

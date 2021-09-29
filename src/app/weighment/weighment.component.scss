@@ -5,6 +5,7 @@
 .container {
   padding: 16px;
   font-size: 14px;
+  border-radius: 15px;
 }
 
 .red {
@@ -13,6 +14,10 @@
 
 .green {
   background-color: #dfffdf;
+}
+
+.white {
+  background-color: #ffffff;
 }
 
 
@@ -26,7 +31,7 @@
 }
 
 ::ng-deep .mat-form-field-flex > .mat-form-field-infix {
-  padding: 0.4em 0px !important;
+  padding: 0.6em 0px !important;
 }
 
 ::ng-deep .mat-form-field-label-wrapper {

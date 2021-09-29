@@ -6,6 +6,7 @@ import { MyDbService } from '../../../my-db.service';
 import { MyIpcService } from '../../../my-ipc.service';
 import { QueryList } from '../../../query-list';
 import { SharedDataService } from '../../../shared-data.service';
+import { ConfirmDialogComponent } from '../../../shared/confirm-dialog/confirm-dialog.component';
 import { WeighIndicator } from '../weigh-indicator';
 import { CreateEditWeighIndicatorComponent } from './create-edit-weigh-indicator/create-edit-weigh-indicator.component';
 
@@ -85,17 +86,29 @@ export class WeighingIndicatorsComponent implements OnInit {
     });
   }
 
-  async delete(field, index) {
-    var result = await this.dbService.executeSyncDBStmt("DELETE", QueryList.DELETE_WEIGH_INDICATOR.replace("{id}", field.id))
-    if (result['error']) {
-      console.log(result['error']);
-      this.notifier.notify("error", "Weigh indicator could not be deleted");
-    } else if (result === true) {
-      this.indicators.splice(index, 1);
-      var envIndicatorStrings = this.indicators.map(ele => ele.wiName);
-      this.ipcService.invokeIPC("saveSingleEnvVar", ["weighIndicators", envIndicatorStrings]);
-      this.notifier.notify("success", "Weigh indicator deleted successfully");
-      this.indicatorTable.renderRows();
-    }
+  delete(field, index) {
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: `Delete weighbridge ${field.name}`,
+        message: `You are about the weighbridge ${field.name}. Are you sure? Please confirm.`
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(async (isConfirmed) => {
+      if (isConfirmed) {
+        var result = await this.dbService.executeSyncDBStmt("DELETE", QueryList.DELETE_WEIGH_INDICATOR.replace("{id}", field.id))
+        if (result['error']) {
+          console.log(result['error']);
+          this.notifier.notify("error", "Weigh indicator could not be deleted");
+        } else if (result === true) {
+          this.indicators.splice(index, 1);
+          var envIndicatorStrings = this.indicators.map(ele => ele.wiName);
+          this.ipcService.invokeIPC("saveSingleEnvVar", ["weighIndicators", envIndicatorStrings]);
+          this.notifier.notify("success", "Weigh indicator deleted successfully");
+          this.indicatorTable.renderRows();
+        }
+      }
+    });
   }
 }

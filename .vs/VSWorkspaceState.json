@@ -1,13 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\notamedia",
+    "\\src",
     "\\src\\app",
-    "\\src\\app\\admin\\data-setup\\search-fields",
-    "\\src\\app\\admin\\ticket-setup\\preview-dialog",
-    "\\src\\app\\authentication\\login",
-    "\\src\\app\\report\\weighment-report"
+    "\\src\\app\\admin",
+    "\\src\\app\\admin\\data-setup"
   ],
-  "SelectedNode": "\\notamedia\\3bbf5c34-cf07-42ff-a4a8-ae4daf5503c0",
+  "SelectedNode": "\\src\\app\\admin\\data-setup\\features",
   "PreviewInSolutionExplorer": false
 }

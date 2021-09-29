@@ -12,6 +12,7 @@ log.transports.file.level = 'info';
 log.transports.file.file = __dirname + 'print-log.log';
 
 async function runCommand(command) {
+  log.info(command);
   const { stdout, stderr, error } = await exec(command);
   if (stderr) { console.error('stderr:', stderr); }
   if (error) { console.error('error:', error); }

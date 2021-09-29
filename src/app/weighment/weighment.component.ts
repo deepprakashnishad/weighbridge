@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, NgZone, OnInit, Query, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
@@ -15,6 +15,7 @@ import { Utils } from '../utils';
 import { Weighment, WeighmentDetail } from './weighment';
 import { WeighmentSearchDialog } from './weighment-search-dialog/weighment-search-dialog.component';
 import { WeighmentSummaryComponent } from './weighment-summary/weighment-summary.component';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-weighment',
@@ -54,6 +55,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   transporter: string;
 
   selectedIndicator: any = { "stringType": "continuous" };
+
+  zeroResetDone: boolean;
   
   constructor(
     private sharedDataService: SharedDataService,
@@ -64,7 +67,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     private printerService: PrinterService,
     private ngZone: NgZone,
     private route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private clipboard: Clipboard,
   ) {
     this.route.queryParams.subscribe(params => {
       if (params['rstNo']) {
@@ -107,15 +111,25 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     } else {
       if (currWeight['timestamp'] > (new Date().getTime()) - 1000) {
         this.currentWeight = currWeight['weight'];
-        if (this.prevWeight === currWeight['weight']) {
-          this.cnt++;
-          if (this.cnt > 1) {
-            this.isWeightStable = true;
+
+        if (Math.abs(parseFloat(this.currentWeight)) <= parseInt(sessionStorage.getItem("zero_tolerance"))) {
+          this.zeroResetDone = true;
+        }
+
+        if (sessionStorage.getItem("enable_stable_weight")) {
+          if (parseInt(sessionStorage.getItem("allowed_variation")) >
+            Math.abs(this.prevWeight - currWeight['weight'])) {
+            this.cnt++;
+            if (this.cnt > 1) {
+              this.isWeightStable = true;
+            }
+          } else {
+            this.cnt = 0;
+            this.prevWeight = this.currentWeight;
+            this.isWeightStable = false;
           }
         } else {
-          this.cnt = 0;
-          this.prevWeight = this.currentWeight;
-          this.isWeightStable = false;
+          this.isWeightStable = true;
         }
       } else {
         this.isWeightStable = false;
@@ -208,6 +222,9 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   postWeighmentProcess() {
     this.sharedDataService.updateData("WEIGHMENT_COMPLETED", true);
     this.notifier.notify("success", "Weighment saved successfully");
+    if (sessionStorage.getItem("enable_zero_check")) {
+      this.zeroResetDone = false;
+    }
     this.displayWeighmentSummary();
   }
 
@@ -321,9 +338,6 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   }
 
   async displayWeighmentSummary() {
-    console.log(this.weighment);
-    console.log(this.weighmentDetail);
-    console.log(this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1]);
     var data = await this.printerService.getPreviewDataWithTemplate(
       this.weighment,
       this.weighment.weighmentDetails[this.weighment.weighmentDetails.length-1]
@@ -356,8 +370,29 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       return false;
     }
 
-    if (this.weighmentDetail.firstWeight === undefined || isNaN(this.weighmentDetail.firstWeight) || this.weighmentDetail.firstWeight<0) {
+    if (this.weighmentDetail.firstWeight === undefined
+      || isNaN(this.weighmentDetail.firstWeight)
+      || this.weighmentDetail.firstWeight < 0) {
       this.notifier.notify("error", "Invalid first weight");
+      return false;
+    }
+
+    if (!sessionStorage.getItem("save_on_zero_weight") &&
+      this.weighmentDetail.firstWeight === 0) {
+      this.notifier.notify("error", "Zero weight not allowed");
+      return false;
+    }
+
+    if (this.weighmentDetail.id &&
+      this.weighmentDetail.secondWeight === 0 &&
+      !sessionStorage.getItem("save_on_zero_weight")) {
+      this.notifier.notify("error", "Zero weight not allowed");
+      return false;
+    }
+
+    if (!sessionStorage.getItem("allow_zero_net_weight") &&
+      this.weighmentDetail.secondWeight === this.weighmentDetail.firstWeight) {
+      this.notifier.notify("error", "Zero net weight not allowed");
       return false;
     }
 
@@ -365,6 +400,11 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       || isNaN(this.weighmentDetail.secondWeight)
       || this.weighmentDetail.secondWeight < 0)) {
       this.notifier.notify("error", "Invalid second weight");
+      return false;
+    }
+
+    if (sessionStorage.getItem("enable_zero_check") && !this.zeroResetDone) {
+      this.notifier.notify("error", "Weighbridge was not set to zero before weighment.");
       return false;
     }
 
@@ -491,5 +531,10 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       height: "600px",
       width: "1100px",
     });
+  }
+
+  copyToClipboard(textToCopy, msg) {
+    this.clipboard.copy(textToCopy);
+    this.notifier.notify("success", msg);
   }
 }

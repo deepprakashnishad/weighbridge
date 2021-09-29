@@ -35,19 +35,21 @@ export class ReportService {
   }
 
   getRawReportText(dataRows: Array<any>, columns: Array<string>, fieldLength) {
-    var mText = "";
+    var mText = " R \"";
     for (var column of columns) {
       if (column !== "action") {
         if (column.toLocaleUpperCase().length <= fieldLength) {
           mText = mText + column + " ".repeat(fieldLength - column.length);
         } else {
-          mText = `${mText} <td>${column.toLocaleUpperCase().substr(0, fieldLength)}</td>`;
+          mText = `${mText} ${column.toLocaleUpperCase().substr(0, fieldLength)}<`;
         }        
       }
     }
+    mText = `${mText}\"`;
     mText = `${mText} newline `;
 
     for (var i in dataRows) {
+      mText = `${mText} R \"`;
       var data = dataRows[i];
       for (var column of columns) {
         if (column === "sNo") {
@@ -55,20 +57,21 @@ export class ReportService {
         } else if (column.indexOf("WeightUser") > -1) {
           var temp = `${data[column]?.fullname?.substr(0, fieldLength) ?
             data[column]?.fullname?.substr(0, fieldLength) : ""}`;
-          if (temp < fieldLength) {
+          if (temp.length < fieldLength) {
             temp = " ".repeat(fieldLength - temp.length);
           }
           mText = mText + temp;
         } else if (column === "action") { } else {
           var temp = `${data[column]?.toString().substr(0, fieldLength) ? data[column]?.toString().substr(0, fieldLength) : ""}`;
-          if (temp < fieldLength) {
-            temp = " ".repeat(fieldLength - temp.length);
+          if (temp.length < fieldLength) {
+            temp = " ".repeat(fieldLength - temp.length) + temp;
           }
           mText = mText + temp;
         }        
       }
+      mText = `${mText}\"`;
       mText = `${mText} newline`;
     }
-    return mText;
+    return `python print.py ${mText}`;
   }
 }

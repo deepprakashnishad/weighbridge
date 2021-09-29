@@ -32,13 +32,13 @@ export class WeighmentDetailComponent implements OnInit, OnChanges, AfterViewIni
       if (keys[i] === "weighmentDetails" && changes[keys[i]].currentValue !== undefined) {
         this.dataSource.data = changes[keys[i]].currentValue;
         if (this.mtable) {
-          this.mtable.renderRows();
+          this.mtable?.renderRows();
         }
       }
     }
   }
 
   ngAfterViewInit() {
-    this.mtable.renderRows();
+    this.mtable?.renderRows();
   }
 }

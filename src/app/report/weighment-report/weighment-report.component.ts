@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MyDbService } from '../../my-db.service';
 import { QueryList } from '../../query-list';
@@ -9,6 +9,9 @@ import { PrinterService } from '../../admin/printer-setup/printer.service';
 import { PreviewDialogComponent } from '../preview-dialog/preview-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ReportService } from '../report.service';
+import { Clipboard } from '@angular/cdk/clipboard';
+import { NotifierService } from 'angular-notifier';
+import { Utils } from '../../utils';
 
 @Component({
   selector: 'app-weighment-report',
@@ -36,19 +39,42 @@ export class WeighmentReportComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   users: any = {};
 
-  maxFieldLength: number=40;
+  maxFieldLength: number = 40;
+
+  printingType: string = "DOT-MATRIX";
 
   range = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
   });
+
+  @ViewChild("cntlMaterial", { static: false }) cntlMaterial;
+  @ViewChild("cntlSupplier", { static: false }) cntlSupplier;
   
   constructor(
     private dbService: MyDbService,
     private printerService: PrinterService,
     private reportService: ReportService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private clipboard: Clipboard,
+    private notifier: NotifierService
   ) { }
+
+  reset() {
+    this.reportType = "all";
+    this.fromTime = undefined;
+    this.toTime = undefined;
+    this.fromRSTNo = undefined;
+    this.toRSTNo = undefined;
+    this.truckNumber = undefined;
+    this.supplier = undefined;
+    this.material = undefined;
+    this.status = undefined;
+    this.range.get("start").setValue("");
+    this.range.get("end").setValue("");
+    this.cntlMaterial.clear();
+    this.cntlSupplier.clear();
+  }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource<any>();
@@ -82,7 +108,7 @@ export class WeighmentReportComponent implements OnInit {
     }
 
     if (this.truckNumber) {
-      stmt = `${stmt} AND vehicleNo LIKE '%${this.truckNumber}%'`;
+      stmt = `${stmt} AND vehicleNo LIKE '%${Utils.removeWhiteSpaces(this.truckNumber)}%'`;
       isCriteriaAdded = true;
     }
 
@@ -105,15 +131,21 @@ export class WeighmentReportComponent implements OnInit {
       var startDate = `${this.range.value.start.getMonth() + 1}/${this.range.value.start.getDate()}/${this.range.value.start.getFullYear()}`;
       if (this.fromTime) {
         startDate = `${startDate} ${this.fromTime}`;
+      } else {
+        startDate = `${startDate} 12:00:00 AM`;
       }
       var endDate = `${this.range.value.end.getMonth() + 1}/${this.range.value.end.getDate()}/${this.range.value.end.getFullYear()}`;
       if (this.toTime) {
         endDate = `${endDate} ${this.toTime}`;
+      } else {
+        endDate = `${endDate} 11:59:59 PM`;
       }
       stmt = `${stmt} AND ${this.searchDateType} >= Convert(datetime, '${startDate}', 101)\
               AND ${this.searchDateType} <= Convert(datetime, '${endDate}', 101)`;
       isCriteriaAdded = true;
     }
+
+    console.log(stmt);
 
     this.data = await this.dbService.executeSyncDBStmt("SELECT", stmt);
     this.replaceUsersWithId();
@@ -128,12 +160,19 @@ export class WeighmentReportComponent implements OnInit {
   }
 
   supplierSelected(event) {
-    this.supplier = `${event.code}-${event.mValue}`;
+    if (event) {
+      this.supplier = `${event.code}-${event.mValue}`;
+    } else {
+      this.supplier = undefined;
+    }
   }
 
   materialSelected(event) {
-    console.log(event);
-    this.material = `${event.code}-${event.mValue}`;
+    if (event) {
+      this.material = `${event.code}-${event.mValue}`;
+    } else {
+      this.material = undefined;
+    }
   }
 
   search() {
@@ -180,14 +219,15 @@ export class WeighmentReportComponent implements OnInit {
       weighmentDetails[weighmentDetails.length-1]
     );
 
+    var rawText = await this.printerService.rawTextPrint(weighment,
+      weighmentDetails[weighmentDetails.length - 1])
     this.dialog.open(PreviewDialogComponent, {
       data: {
+        title: "Ticket Preview",
         'htmlContent': data['content'],
         fontSize: 12,
-        fields: data['ticketFields'],
-        ticketTemplate: data['template'],
-        'weighment': weighment,
-        'weighmentDetail': weighmentDetails[weighmentDetails.length - 1]
+        rawText: rawText,
+        printingType: this.printingType
       }
     });
   }
@@ -198,10 +238,17 @@ export class WeighmentReportComponent implements OnInit {
     console.log(rawText);
     this.dialog.open(PreviewDialogComponent, {
       data: {
+        title: "Weighment Report",
         htmlContent: content,
         rawText: rawText,
         fontSize: 12,
+        printingType: this.printingType
       }
     });
+  }
+
+  copyToClipboard(textToCopy, msg) {
+    this.clipboard.copy(textToCopy);
+    this.notifier.notify("success", msg);
   }
 }

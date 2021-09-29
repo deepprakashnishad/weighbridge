@@ -30,6 +30,8 @@ export class TicketSetupComponent implements OnInit {
   textFieldDataSource: MatTableDataSource<TicketField>;
   columnFieldDataSource: MatTableDataSource<TicketField>;
 
+  newlineField: TicketField = TicketField.generateNewlineTicketField();
+
   constructor(
     private notifier: NotifierService,
     private dbService: MyDbService,
@@ -92,6 +94,8 @@ export class TicketSetupComponent implements OnInit {
     for (var i = 0; i < this.columnFieldDataSource.data.length; i++) {
       this.columnFieldDataSource.data[i]['id'] = await this.insertTicketField(this.columnFieldDataSource.data[i], this.selectedTemplate.id);
     }
+
+    this.newlineField['id'] = await this.insertTicketField(this.newlineField, this.selectedTemplate.id);
     this.notifier.notify("success", "Template details saved successfully");
   }
 
@@ -146,6 +150,7 @@ export class TicketSetupComponent implements OnInit {
       weighment.weighmentDetails[weighment.weighmentDetails.length - 1],
       ticketFields
     ).then(result => {
+      console.log(result);
       this.dialog.open(PreviewDialogComponent, {
         data: {
           htmlContent: result,
@@ -181,6 +186,8 @@ export class TicketSetupComponent implements OnInit {
         }
       }
     }
+
+    ticketFields.push(this.newlineField);
     
     ticketFields = ticketFields.sort(function (a, b) {
       if ((a['row'] - b['row']) === 0) {
@@ -200,6 +207,7 @@ export class TicketSetupComponent implements OnInit {
     var ticketFields = mFields["ticketFields"];
     var freetextFields = mFields["freetextFields"];
     var weighDetailFields = mFields["weighDetailFields"];
+    
     if (ticketFields.length > 0) {
       this.ticketFieldDataSource.data = ticketFields;
     } else {
@@ -212,84 +220,11 @@ export class TicketSetupComponent implements OnInit {
       this.columnFieldDataSource.data = TicketField.generateColumnFieldRecords();
     }
 
+    if (mFields['newlineField']) {
+      this.newlineField = mFields['newlineField'];
+    }
+
     this.textFieldDataSource.data = TicketField.generateFreeTextRecords(freetextFields);
-  }
-
-  preparePreviewText(fields: Array<TicketField>) {
-    var mText = "";
-    var currX = 0, currY = 0;
-
-    for (var i = 0; i < fields.length; i++) {
-      var field = fields[i];
-      if (field.row > currX) {
-        mText = mText + "<br/>".repeat(field.row - currX);
-        currX = field.row;
-        currY = 0;
-      }
-      if (field.col > currY) {
-        mText = mText + "&nbsp;".repeat(field.col - currY);
-        currY = field.col;
-      }
-      if (field.type === "ticket-field") {
-        if (field.font === "RB") {
-          mText = mText + "<b>"+field.displayName + ": " + `{${field.field}}` + "</b>";
-        } else if (field.font === "DB") {
-          mText = mText + "<h3>" + field.displayName + ": " + `{${field.field}}` + "</h3>";
-        } else if (field.font === "D") {
-          mText = mText + "<h3>" + field.displayName + ": " + `{${field.field}}` + "</h3>";
-        } else {
-          mText = mText + field.displayName + ": " + `{${field.field}}`;
-        }
-        
-      } else {
-        if (field.font === "RB" || field.font === "DB") {
-          mText = mText + "<b>" + field.displayName + "</b>";
-        } else {
-          mText = mText + field.displayName;
-        }
-      }
-    }
-    return mText;
-  }
-
-  print(fields: Array<TicketField>) {
-    var mText = "";
-    var currX = 0, currY = 0;
-
-    var bold = [ 0x001B, 0x0045];    // ESC, E
-    var unbold = [ 0x001B, 0x0046];    // ESC, F
-
-    for (var i = 0; i < fields.length; i++) {
-      var field = fields[i];
-      if (field.row > currX) {
-        mText = mText + "\n".repeat(field.row - currX);
-        currX = field.row;
-        currY = 0;
-      }
-      if (field.col > currY) {
-        mText = mText + " ".repeat(field.col - currY);
-        currY = field.col;
-      }
-      if (field.type === "ticket-field") {
-        if (field.font === "RB") {
-          mText = mText + new String(bold) + field.displayName + ": " + `{${field.field}}` + new String(unbold);
-        } else if (field.font === "DB") {
-          mText = mText + new String(bold) + field.displayName + ": " + `{${field.field}}` + new String(unbold);
-        } else if (field.font === "D") {
-          mText = mText + "<h3>" + field.displayName + ": " + `{${field.field}}` + "</h3>";
-        } else {
-          mText = mText + field.displayName + ": " + `{${field.field}}`;
-        }
-
-      } else {
-        if (field.font === "RB" || field.font === "DB") {
-          mText = mText + "<b>" + field.displayName + "</b>";
-        } else {
-          mText = mText + field.displayName;
-        }
-      }
-    }
-    return mText;
   }
 
   includeWeighmentTableField() {

@@ -25,6 +25,8 @@ initializeSqlConfig(env_data);
 
 function initializeSqlConfig(dbDetails){
   try {
+    console.log(dbDetails);
+
     sqlConfig['user'] = dbDetails['database']['username'];
     sqlConfig['password'] = dbDetails['database']['password'];
     sqlConfig['database'] = dbDetails['database']['database'];

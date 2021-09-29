@@ -28,10 +28,60 @@ export class PrinterService {
         "SELECT", QueryList.GET_TICKET_FIELDS.replace("{templateId}", templateId)
       );
 
-      return TicketField.fromJSON(templateDetail, false) as Array<TicketField>;
+      var fields = TicketField.fromJSON(templateDetail, true) as Array<TicketField>;
+      return this.getCurrentFieldData(
+        fields['ticketFields'],
+        fields['freetextFields'],
+        fields['weighDetailFields'],
+        fields['newlineField']
+      );
     } else {
       this.notifier.notify("error", "Ticket template is missing");
     }
+  }
+
+  getCurrentFieldData(ticketFields, freetextFields, weighDetailFields, newlineField) {
+    var fields = [];
+    for (var i = 0; i < ticketFields.length; i++) {
+      var temp = ticketFields[i];
+      if (temp.col !== null && temp.row !== null && temp.isIncluded) {
+        fields.push(temp);
+      }
+    }
+    for (var i = 0; i < freetextFields.length; i++) {
+      var temp = freetextFields[i];
+      if (temp.displayName?.length > 0 && temp.col !== null && temp.row !== null && temp.isIncluded) {
+        fields.push(temp);
+      }
+    }
+    if (this.includeWeighmentTableField(ticketFields)) {
+      for (var i = 0; i < weighDetailFields.length; i++) {
+        var temp = weighDetailFields[i];
+        if (temp.displayName?.length > 0 && temp.col !== null && temp.isIncluded) {
+          fields.push(temp);
+        }
+      }
+    }
+
+    fields.push(newlineField);
+
+    fields = fields.sort(function (a, b) {
+      if ((a['row'] - b['row']) === 0) {
+        return a['col'] - b['col'];
+      }
+      return a['row'] - b['row'];
+    })
+
+    return fields;
+  }
+
+  includeWeighmentTableField(ticketFields) {
+    for (var field of ticketFields) {
+      if (field['field'] ==="weighmentDetails") {
+        return field['isIncluded'];
+      }
+    }
+    return false;
   }
 
   async getPreviewDataWithTemplate(weighment: Weighment, weighmentDetail: WeighmentDetail, fields?) {
@@ -60,6 +110,10 @@ export class PrinterService {
     var mText = "";
     for (var i = 0; i < fields.length; i++) {
       var field = fields[i];
+      if (field.type === "newline") {
+        mText = mText + "<br/>".repeat(field.col);
+        return mText;
+      }
       if (field.row > currX) {
         mText = mText + "<br/>".repeat(field.row - currX);
         currX = field.row;
@@ -69,7 +123,7 @@ export class PrinterService {
         mText = mText + "&nbsp;".repeat(field.col - currY);
         currY = field.col;
       }
-      if (field.type === "ticket-field") {
+      if (field.type === "ticket-field" && (weighment[field.field] || weighmentDetail[field.field.substr("weighDetails_".length)])) {
         if (field.field.indexOf("weighmentDetails") === -1) {
           if (field.font === "RB") {
             mText = mText + "<b>" + field.displayName + ": " + `${weighment[field.field]}` + "</b>";
@@ -93,7 +147,7 @@ export class PrinterService {
           }
           mText = mText + this.preparePreviewWeighmentTableText(weighment.weighmentDetails, wFields);
         }
-      } else if(field.type === "freetext"){
+      } else if (field.type === "freetext") {
         if (field.font === "RB" || field.font === "DB") {
           mText = mText + "<b>" + field.displayName + "</b>";
         } else {
@@ -106,11 +160,11 @@ export class PrinterService {
     return mText;
   }
 
-  async rawTextPrint(weighment: Weighment, weighmentDetail: WeighmentDetail, template) {
+  async rawTextPrint(weighment: Weighment, weighmentDetail: WeighmentDetail, template?) {
     if (!template) {
       var stmt = `SELECT * FROM ticket_template WHERE applicableTo LIKE '%${weighment.weighmentType}%' OR applicableTo='GENERIC'`;
       var templates = await this.dbService.executeSyncDBStmt("SELECT", stmt);
-      template = this.fetchTemplateDetail(templates[0].id);
+      template = await this.fetchTemplateDetail(templates[0].id);
     }
     var mText = this.getPythonRawPrintText(template, weighment, weighmentDetail);
     return mText;
@@ -123,6 +177,11 @@ export class PrinterService {
 
     for (var i = 0; i < fields.length; i++) {
       var field = fields[i];
+      if (field.type === "newline") {
+        mText = mText + " newline ".repeat(field.col);
+        return mText;
+      }
+
       if (field.row > currX) {
         mText = mText + " newline ".repeat(field.row - currX);
         currX = field.row;
@@ -134,7 +193,10 @@ export class PrinterService {
       }
       if (field.type === "ticket-field") {
         if (field.field.indexOf("weighmentDetails") === -1) {
-          mText = `${mText} ${field.font} \"${field.displayName}: ${weighment[field.field]}\"`;
+          if (weighment[field.field]) {
+            mText = `${mText} ${field.font} \"${field.displayName}: ${weighment[field.field]}\"`;
+          }
+          
         } else if (field.field === "weighmentDetails") {
           var wFields = [];
           for (var wField of fields) {
@@ -176,8 +238,9 @@ export class PrinterService {
     var mText = "";
 
     var currY = 0;
-
+    console.log(fields);
     for (var i = 0; i < fields.length; i++) {
+      console.log(fields[i]);
       if (currY <= fields[i].col) {
         mText = mText + " R \"" + " ".repeat(fields[i].col - currY) + "\"";
         mText = mText + " R \"" + fields[i].displayName + "\"";

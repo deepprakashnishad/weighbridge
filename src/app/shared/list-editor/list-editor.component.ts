@@ -104,11 +104,12 @@ export class ListEditorComponent implements OnInit {
       );
       this.selectedItem = {};
     } else {
-      await this.dbService.executeInsertAutoId("search_field_value", "id", QueryList.INSERT_SEARCH_FIELD_VALUE
+      var result = await this.dbService.executeInsertAutoId("search_field_value", "id", QueryList.INSERT_SEARCH_FIELD_VALUE
         .replace("{search_field_id}", this.fieldId.toString())
-        .replace("{mValue}", this.selectedItem.mValue).toUpperCase()
-        .replace("{code}", this.selectedItem.code).toUpperCase()
+        .replace("{mValue}", this.selectedItem.mValue.toUpperCase())
+        .replace("{code}", this.selectedItem.code.toUpperCase())
       );
+      this.selectedItem.id = result['newId'];
       this.items.push(this.selectedItem);
       this.selectedItem = {};
     }

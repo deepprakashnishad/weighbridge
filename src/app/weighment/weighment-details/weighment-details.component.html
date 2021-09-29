@@ -1,4 +1,4 @@
-<div class="table-container">
+<div class="table-container" *ngIf="dataSource.data.length>0">
   <table #mtable mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <tr>
       <ng-container matColumnDef="position">

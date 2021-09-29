@@ -20,7 +20,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dist": "electron-builder",
-    "publish": "electron-builder -w --publish always",
     "postinstall": "electron-builder install-app-deps",
     "electron-start": "electron ./app/electron-main.js"
   },

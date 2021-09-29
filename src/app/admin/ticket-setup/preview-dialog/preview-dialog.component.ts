@@ -23,6 +23,7 @@ export class PreviewDialogComponent implements OnInit {
   selectedPrinter: Printer;
   weighment: Weighment;
   weighmentDetail: WeighmentDetail;
+  printerType: string = "GRAPHICAL";
 
   constructor(
     private notifier: NotifierService,
@@ -44,6 +45,7 @@ export class PreviewDialogComponent implements OnInit {
 
     if (data['ticketTemplate']) {
       this.ticketTemplate = data['ticketTemplate'];
+      this.printerType = this.ticketTemplate.printerType;
     }
 
     if (data['weighment']) {
@@ -76,7 +78,7 @@ export class PreviewDialogComponent implements OnInit {
   }
 
   print() {
-    if (this.ticketTemplate.printerType === "GRAPHICAL") {
+    if (this.printerType === "GRAPHICAL") {
       let element = document.getElementById("ticket-content");
       let range = new Range();
       range.setStart(element, 0);
@@ -90,7 +92,8 @@ export class PreviewDialogComponent implements OnInit {
     } else {
       if (this.weighment) {
         this.printerService.rawTextPrint(this.weighment, this.weighmentDetail, this.fields).then(result => {
-          this.myIPCService.invokeIPC("cmdline-print-ipc", [this.selectedPrinter, result]);
+          console.log(result);
+          this.myIPCService.invokeIPC("cmdline-print-ipc", this.selectedPrinter, result);
         });
       }
     }

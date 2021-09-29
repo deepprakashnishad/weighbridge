@@ -23,14 +23,6 @@ ipcMain.handle("get-available-ports", async (event, ...args) => {
 
 ipcMain.handle("verify-port", async (event, ...args) => {
   if (args[1]['type'] === "serial") {
-    var ports = await serialPort.list();
-    var portStatus = ports.some(port => {
-      if (port["path"] === args[1]['comPort']) {
-        return true;
-      }
-    });
-
-    log.info("Port status - " + portStatus);
     if (tempPort?.isOpen) {
       tempPort.close();
     }
@@ -45,7 +37,7 @@ ipcMain.handle("verify-port", async (event, ...args) => {
         autoOpen: false
       });
     } catch (err) {
-      log.error(err);
+      log.error("Printing error - " + err);
       win.webContents.send("verification-weight-recieved", [{ weight: "Err!", error: "Port initialization failed", timestamp: (new Date()).getTime() }]);
     }
     try {
@@ -64,16 +56,19 @@ ipcMain.handle("verify-port", async (event, ...args) => {
       });
 
       tempPort.on("error", (e) => {
+        log.error("Error occured on port");
         log.error(e);
+        win.webContents.send("verification-weight-recieved", [{ weight: e, error: "Port initialization failed", timestamp: (new Date()).getTime() }]);
       });
     } catch (err) {
+      log.error("Error occured on port printing from catch block");
       log.error(err);
       win.webContents.send("verification-weight-recieved", [{ weight: "Err!", error: "Port initialization failed", timestamp: (new Date()).getTime() }]);
     }
     parser.on('data', onReadData);
     parser.on('error', function (err) {
+      log.error("Error occured in parser");
       log.error(err);
-      console.log("Inside error block");
       win.webContents.send("verification-weight-recieved", [{ weight: "Err!", error: "Port initialization failed", timestamp: (new Date()).getTime() }]);
     });
   }
@@ -102,6 +97,7 @@ ipcMain.handle("write-to-verification-port", async (event, ...args) => {
 function onReadData(data) {
   try {
     data = data.toString();
+    console.log(data);
     if (weighString === undefined) {
       return;
     }
@@ -150,7 +146,7 @@ function onReadData(data) {
 
 ipcMain.handle("close-verification-port", async (event, ...args) => {
   try {
-    tempPort.close();
+    if (tempPort.isOpen)
+      tempPort.close();
   } catch (e) { }
-  
 })

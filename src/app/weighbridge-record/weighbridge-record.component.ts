@@ -1,4 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { MyDbService } from '../my-db.service';
@@ -7,7 +8,7 @@ import { QueryList } from '../query-list';
 import { SharedDataService } from '../shared-data.service';
 import { Weighment } from '../weighment/weighment';
 
-const refreshTime = 3000;
+const refreshTime = 2000;
 
 @Component({
   selector: 'app-weighbridge-record',
@@ -30,6 +31,9 @@ export class WeighbridgeRecordComponent implements OnInit {
   allowedNoOfDays = 8;
 
   orderByPendingRecords: string = "DESC";
+
+  dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
+  displayedColumns: string[] = ['vehicleNo', 'datetime'];
 
   constructor(
     private sharedDataService: SharedDataService,
@@ -112,6 +116,7 @@ export class WeighbridgeRecordComponent implements OnInit {
       `${QueryList.GET_PENDING_RECORDS} ORDER BY createdAt ${this.orderByPendingRecords}`)
       .then(records => {
         this.pendingRecords = records;
+        this.dataSource.data = this.pendingRecords;
       });
   }
 
@@ -164,6 +169,7 @@ export class WeighbridgeRecordComponent implements OnInit {
 
   reverseOrder() {
     this.pendingRecords = this.pendingRecords.reverse();
+    this.dataSource.data = this.pendingRecords;
     if (this.orderByPendingRecords === "ASC") {
       this.orderByPendingRecords = "DESC";
     } else {

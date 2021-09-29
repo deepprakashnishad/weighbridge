@@ -42,7 +42,7 @@ function createWindow () {
       }));
     }    
   });
-
+  
   if (env === "DEV") {
     win.loadURL('http://localhost:4200');
   } else {

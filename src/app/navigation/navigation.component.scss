@@ -23,12 +23,18 @@ a{
 }
 
 .mat-toolbar {
-  min-height: 40px !important;
-  height: 40px !important;
+  padding: 30px 20px 0px 30px;
+  font-size: small;
+  background: rgb(0 0 0 / 0%);
 
-  .menu-button{
-      font-size: medium;
-      font-weight:500;
+  .menu-button {
+    font-size: small;
+    font-weight: 700;
+    border-radius: 25px;
+  }
+
+  .menu-button.selected {
+    background: #87d234;
   }
 }
 
@@ -40,4 +46,9 @@ a{
 .mat-toolbar-row {
   min-height: 40px !important;
   height: 40px !important;
+}
+
+mat-icon {
+  color: #333333;
+  font-size: 24px;
 }

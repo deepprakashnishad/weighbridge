@@ -1,9 +1,42 @@
 .card-container{
     height:90vh;
+    background-color: transparent;
+    padding-left: 15vw;
+    padding-top: 15vh;
+}
+
+mat-card{
+}
+
+//::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+//  background-color: white;
+//  border-radius: 25px;
+//  color: transparent;
+//}
+
+::ng-deep .mat-input-element {
+  border-radius: 25px;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+  border-radius: 25px !important;
+}
+
+::ng-deep .mat-form-field-flex > .mat-form-field-infix {
+  padding: 0.3em 0px !important;
+}
+
+//::ng-deep .mat-form-field-appearance-outline .mat-form-field-label {
+//  margin-top: -15px;
+//  color: transparent;
+//}
+
+::ng-deep label.ng-star-inserted {
+  transform: translateY(-0.59375em) scale(0.75) !important;
 }
 
 .cardForm .font-small {
-  font-size: 0.8rem;
+  font-size: 0.6rem;
 }
 
 .cardForm .z-depth-1a {
@@ -21,4 +54,16 @@ mat-tab-group{
 	border: dashed;
 	padding: 10px;
 	margin:10px;
+}
+
+button.login {
+  background-color: #9be14b;
+  color: dimgrey;
+  border-radius: 25px;
+  padding: 2px 40px;
+  min-height:0px;
+}
+
+button.initial-setup{
+    background-color: transparent;
 }

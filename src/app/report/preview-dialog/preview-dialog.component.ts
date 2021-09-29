@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotifierService } from 'angular-notifier';
 import { MyIpcService } from '../../my-ipc.service';
 import { Printer } from '../../admin/printer-setup/printer';
-import { PrinterService } from '../../admin/printer-setup/printer.service';
+import { PrinterService } from '../../admin/printer-setup/printer.service'; 
 import { TicketService } from '../../admin/ticket-setup/ticket.service';
 import { ReportService } from '../report.service';
 
@@ -19,9 +19,8 @@ export class PreviewDialogComponent implements OnInit {
   rawText: string;
   printers: Array<Printer> = [];
   selectedPrinter: Printer;
-  printingType: string = "GRAPHICAL";
+  printingType: string = "DOT-MATRIX";
   title: string = "Weighment Report";
-
 
   constructor(
     private notifier: NotifierService,
@@ -39,6 +38,14 @@ export class PreviewDialogComponent implements OnInit {
 
     if (data['rawText']) {
       this.rawText = data['rawText'];
+    }
+
+    if (data['title']) {
+      this.title = data['title'];
+    }
+
+    if (data['printingType']) {
+      this.printingType = data['printingType'];
     }
   }
 
@@ -69,13 +76,12 @@ export class PreviewDialogComponent implements OnInit {
       document.getSelection().removeAllRanges();
       document.getSelection().addRange(range);
       var filename = this.title + "_"+(new Date()).getTime();
-      console.log(filename);
       this.myIPCService.invokeIPC("graphical-print-ipc",
         this.selectedPrinter,
         this.htmlContent, `${filename}`
       ).then(result => {});
     } else {
-      this.myIPCService.invokeIPC("cmdline-print-ipc", [this.selectedPrinter, this.rawText? this.rawText: '']);
+      this.myIPCService.invokeIPC("cmdline-print-ipc", this.selectedPrinter, this.rawText? this.rawText: '');
     }
   }
 

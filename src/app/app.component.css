@@ -4,4 +4,15 @@
 
 .main-container{
 	min-height: 100%;
+    max-height: 100%;
+  background-image: url("../assets/images/bg.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.app-bar {
+  position: sticky;
+  top: 0; /* Sets the sticky toolbar to be on top */
+  align-self: flex-start;
+  width:100%;
 }

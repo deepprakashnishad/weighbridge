@@ -1,32 +1,33 @@
-<div class="card-container" fxLayoutAlign="center center" fxFlex="auto">
-  <div class="card-body" fxLayout="column">
-    <div *ngIf="errors.length" class="alert alert-danger">
-      <ul>
-        <li *ngFor="let error of errors">{{error}}</li>
-      </ul>
-    </div>
-      	<mat-card>
-					<mat-card-title>Login</mat-card-title>
-	        <form fxLayout="column" [formGroup]="loginForm">
-	          <mat-form-field appearance="outline">
-	            <input matInput placeholder="Username" type="text" id="inputUsername" formControlName="inputUsername" class="form-control" mdbInputDirective>
-	            <span matPrefix>
-	            	<mat-icon>person</mat-icon>
-	            </span>
-	          </mat-form-field>
-	          <mat-form-field appearance="outline">
-	            <input matInput placeholder="Password" [type]="hide?'password':'text'" id="inputPassword" formControlName="inputPassword" class="form-control">
-	            <span matPrefix>
-	            	<mat-icon>lock</mat-icon>
-	            </span>
-	            <mat-icon class="mouse-hand" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-	          </mat-form-field>
-	          <!-- <mat-checkbox [hidden]="!false" formControlName="inputRememberMe" ngDefaultControl>Remember Me</mat-checkbox> -->
-            <div class="text-center py-4 mt-3" fxLayout fxLayoutAlign="space-between center">
-              <button mat-raised-button type="submit" [disabled]="loginForm.invalid" color="primary" (click)="login();">Login</button>
-              <button mat-raised-button color="primary" (click)="openInitialSetupDialog()">Initial Setup</button>
-            </div>
-	        </form>
-        </mat-card>
-  </div>
+<div class="card-container" fxLayout="column" fxLayoutAlign="space-between start" fxFlex="auto">
+	<div class="card-body" fxLayout="column">
+		<div *ngIf="errors.length" class="alert alert-danger">
+			<ul>
+				<li *ngFor="let error of errors">{{error}}</li>
+			</ul>
+		</div>
+		<mat-card>
+			<mat-card-title>LOGIN</mat-card-title>
+			<form fxLayout="column" [formGroup]="loginForm">
+				<mat-form-field appearance="outline">
+					<input matInput placeholder="Username" type="text" id="inputUsername" formControlName="inputUsername" class="form-control" mdbInputDirective>
+					<span matPrefix>
+						<mat-icon>person</mat-icon>
+					</span>
+				</mat-form-field>
+				<mat-form-field appearance="outline">
+					<input matInput placeholder="Password" [type]="hide?'password':'text'" id="inputPassword" formControlName="inputPassword" class="form-control">
+					<span matPrefix>
+						<mat-icon>lock</mat-icon>
+					</span>
+					<mat-icon class="mouse-hand" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+				</mat-form-field>
+				<!-- <mat-checkbox [hidden]="!false" formControlName="inputRememberMe" ngDefaultControl>Remember Me</mat-checkbox> -->
+				<div class="text-center py-4 mt-3" fxLayout fxLayoutAlign="space-between center">
+					<button class="login" mat-raised-button type="submit" [disabled]="loginForm.invalid" color="primary" (click)="login();">Login</button>
+					<button class="initial-setup" mat-flat-button (click)="openInitialSetupDialog()">Initial Setup</button>
+				</div>
+			</form>
+		</mat-card>
+	</div>
+	<img src="assets/logo.png" width="250" />
 </div>

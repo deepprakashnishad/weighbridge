@@ -40,7 +40,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatDividerModule } from '@angular/material/divider';
-import {ScrollingModule} from '@angular/cdk/scrolling';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   imports: [

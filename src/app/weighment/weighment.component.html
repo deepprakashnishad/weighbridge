@@ -1,5 +1,5 @@
-<div class="container" fxLayout="column" fxLayoutGap="4px">
-  <div class="container" [ngClass]="{'red': weighment.weighmentType === 'inbound', 'green' : weighment.weighmentType.indexOf('outbound')>-1}" fxLayout="column" fxLayoutGap="8px">
+<div class="container" [ngClass]="{'white': weighment.weighmentType === 'others', 'red': weighment.weighmentType === 'inbound', 'green' : weighment.weighmentType.indexOf('outbound')>-1}" fxLayout="column" fxLayoutGap="4px">
+  <div fxLayout="column" fxLayoutGap="8px">
     <div fxLayout fxLayoutAlign="space-between center">
       <mat-radio-group tabindex="-1" [(ngModel)]="weighment.weighmentType" aria-label="Select weightment type" fxLayout fxLayoutGap="32px" fxLayoutAlign="start">
         <mat-radio-button tabindex="-1" value="inbound">Inbound(Purchase)</mat-radio-button>
@@ -17,7 +17,8 @@
           <mat-label>Vehicle No</mat-label>
           <input matInput #vehicleCntl [(ngModel)]="weighment.vehicleNo" name="cntlRequestId"
                  (keyup.enter)="parseQRString(weighment.vehicleNo)"
-                 (blur)="parseQRString(weighment.vehicleNo)" tabindex="0" />
+                  (contextmenu)="copyToClipboard(weighment.vehicleNo, 'Vehicle number copied')"
+                 (blur)="parseQRString(weighment.vehicleNo)" tabindex="0" placeholder="Vehicle No." />
           <button tabindex="-1" mat-icon-button matSuffix color="primary" (click)="openSearchDialog()"><mat-icon>open_in_new</mat-icon></button>
         </mat-form-field>
         <!--<button tabindex="-1" mat-icon-button color="primary" (click)="openSearchDialog()"><mat-icon>open_in_new</mat-icon></button>-->
@@ -59,6 +60,7 @@
         <mat-label>Miscellenous</mat-label>
         <input matInput [(ngModel)]="weighmentDetail.remark" name="cntlMisc"
                (keyup.enter)="parseQRString(weighmentDetail.remark)"
+                (contextmenu)="copyToClipboard(weighmentDetail.remark, 'Misc copied')"
                (blur)="parseQRString(weighmentDetail.remark)" />
       </mat-form-field>
     </div>

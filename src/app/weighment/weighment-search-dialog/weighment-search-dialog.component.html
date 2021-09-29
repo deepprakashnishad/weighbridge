@@ -11,7 +11,7 @@
     </mat-form-field>
   </form>
   <div class="table-container">
-    <mat-table #table [dataSource]="filteredRecords" class="full-width">
+    <mat-table #table [dataSource]="filteredRecords">
 
       <!-- Name Column -->
       <ng-container matColumnDef="rstNo">
@@ -67,9 +67,12 @@
         </mat-cell>
       </ng-container>
 
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
+  </div>
+  <div class="full-width" fxLayout fxLayoutAlign="center center">
+    <button mat-raised-button color="primary" (click)="close()">Close</button>
   </div>
 </div>
