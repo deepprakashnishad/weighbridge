@@ -4,6 +4,10 @@ import {AuthenticationService} from '../authentication/authentication.service';
 import { Title } from '@angular/platform-browser';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Permission } from '../admin/permission/permission';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.component';
+import { HtmlViewerComponent } from '../shared/html-viewer/html-viewer.component';
+import { MyIpcService } from '../my-ipc.service';
 
 
 @Component({
@@ -48,6 +52,8 @@ export class NavigationComponent implements OnInit {
     private ngZone: NgZone,
 		private titleService: Title,
       private renderer: Renderer2,
+      private dialog: MatDialog,
+      private ipcService: MyIpcService
 	) { }
 
 	ngOnInit() {
@@ -102,7 +108,7 @@ export class NavigationComponent implements OnInit {
 		}
 	}
 
-	navigateTo(path, selectedMenu="administration"){
+	navigateTo(path, selectedMenu=""){
     if (path && path !== "logout") {
       this.selectedMenu = selectedMenu;
       this.ngZone.run(() => {
@@ -125,5 +131,34 @@ export class NavigationComponent implements OnInit {
       if (ele1.id === accessListReqd)
           return true;
     });
+  }
+
+  alertLogout() {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: "Confirmation",
+        message: "Are you sure to logout?"
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.navigateTo("logout");
+      }
+    });
+  }
+
+  showInfoAlert() {
+    var infoHtml = "<h2>Product Name: Accubridge</h2><h2>Version: 1.0.0</h2><h2>&copy 2021 Notamedia Private Ltd.</h2><h2>Visit https://notamedia.com </h2>"
+    this.ipcService.invokeIPC("getAppInfo", []).then(results => {
+      this.dialog.open(HtmlViewerComponent, {
+        data: {
+          htmlContent: infoHtml
+            .replace("{appName}", results['name'])
+            .replace("{version}", results['version'])
+        }
+      });
+    });
+    
   }
 }

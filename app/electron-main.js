@@ -11,14 +11,14 @@ require("./file-service.js");
 require("./port-verifier.js");
 require("./mailer.js");
 
-const env = "PROD"; // DEV Or PROD
-//const env = "DEV";
+//const env = "PROD"; // DEV Or PROD
+const env = "DEV";
 
 global.win;
 
 app.allowRendererProcessReuse = false
 
-function createWindow () {
+function createWindow() {
   win = new BrowserWindow({
     width: 800,
     height: 600,
@@ -72,6 +72,21 @@ ipcMain.handle("getMachineDetails", async (event, arg) => {
     return {
       "os": platform,
       "machineId": machineId
+    };
+  }
+  catch (e) {
+    console.log(e);
+    return false;
+  }
+});
+
+ipcMain.handle("getAppInfo", async (event, arg) => {
+  try {
+    var appName = app.getName();
+    var version = app.getVersion();
+    return {
+      "name": appName,
+      "version": machineId
     };
   }
   catch (e) {

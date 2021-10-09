@@ -377,7 +377,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       return false;
     }
 
-    if (!sessionStorage.getItem("save_on_zero_weight") &&
+    if (!JSON.parse(sessionStorage.getItem("save_on_zero_weight")) &&
       this.weighmentDetail.firstWeight === 0) {
       this.notifier.notify("error", "Zero weight not allowed");
       return false;
@@ -385,12 +385,12 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
 
     if (this.weighmentDetail.id &&
       this.weighmentDetail.secondWeight === 0 &&
-      !sessionStorage.getItem("save_on_zero_weight")) {
+      !JSON.parse(sessionStorage.getItem("save_on_zero_weight"))) {
       this.notifier.notify("error", "Zero weight not allowed");
       return false;
     }
 
-    if (!sessionStorage.getItem("allow_zero_net_weight") &&
+    if (!JSON.parse(sessionStorage.getItem("allow_zero_net_weight")) &&
       this.weighmentDetail.secondWeight === this.weighmentDetail.firstWeight) {
       this.notifier.notify("error", "Zero net weight not allowed");
       return false;
@@ -403,7 +403,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       return false;
     }
 
-    if (sessionStorage.getItem("enable_zero_check") && !this.zeroResetDone) {
+    if (JSON.parse(sessionStorage.getItem("enable_zero_check")) && !this.zeroResetDone) {
       this.notifier.notify("error", "Weighbridge was not set to zero before weighment.");
       return false;
     }

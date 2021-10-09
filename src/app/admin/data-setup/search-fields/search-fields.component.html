@@ -1,7 +1,7 @@
-<div class="container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="32px">
+<mat-card class="inner-container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="32px">
   <div class="full-width" fxLayout fxLayoutAlign="space-between center">
     <div class="box-title">Search Fields</div>
-    <app-help [tag]="'SEARCH_FIELDS'"></app-help>
+    <app-help [tag]="'DATA_SETUP'"></app-help>
   </div>
   <div class="content-box" fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="32px">
     <mat-checkbox (change)="enableInvoice($event)" [ngModel]="enableInvoiceCreation" class="example-margin">Enable Invoice Creation</mat-checkbox>
@@ -39,7 +39,7 @@
         <h4 fxFlex="20">In/Out mode</h4>
         <h4 fxFlex="20"></h4>
       </div>
-      <div fxLayout *ngFor="let field of searchFields; let i=index;">
+      <div [ngClass]="{'gray': i%2!==0}" fxLayout fxLayoutAlign="center center" *ngFor="let field of searchFields; let i=index;">
         <div fxFlex="5">{{i+1}}</div>
         <div fxFlex="30">{{field.displayName}}</div>
         <div fxFlex="25">{{field.entryMode}}</div>
@@ -55,4 +55,4 @@
       <button mat-raised-button color="primary">Save</button>
     </div>
   </div>
-</div>
+</mat-card>

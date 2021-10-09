@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { HelpData } from "../../help-data";
+import { MyDbService } from "../../my-db.service";
 import { HtmlViewerComponent } from "../html-viewer/html-viewer.component";
 
 @Component({
@@ -12,7 +13,10 @@ export class HelpComponent implements OnInit {
   @Input('content') content: string;
   @Input('tag') tag: string;
 
-  constructor(private dialog: MatDialog) {
+  constructor(
+    private dialog: MatDialog,
+    private dbService: MyDbService
+  ) {
   }
 
   ngOnInit() {
@@ -23,9 +27,18 @@ export class HelpComponent implements OnInit {
 
   openHTMLViewer() {
     this.dialog.open(HtmlViewerComponent, {
-      width: "600px",
-      height: "500px",
+      width: "100vh",
       data: { "htmlContent": this.content }
     });
+
+    //this.dbService.executeSyncDBStmt(
+    //  "SELECT", `SELECT * from help WHERE id='${this.tag}'`).then(result => {
+    //    console.log(result);
+    //    this.dialog.open(HtmlViewerComponent, {
+    //      width: "100vh",
+    //      data: { "htmlContent": result[0]['content'] }
+    //    });
+    //  });
+    
   }
 }

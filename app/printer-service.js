@@ -12,7 +12,6 @@ log.transports.file.level = 'info';
 log.transports.file.file = __dirname + 'print-log.log';
 
 async function runCommand(command) {
-  log.info(command);
   const { stdout, stderr, error } = await exec(command);
   if (stderr) { console.error('stderr:', stderr); }
   if (error) { console.error('error:', error); }
@@ -41,10 +40,8 @@ ipcMain.handle("graphical-print-ipc", async (e, ...args) => {
         landscape: true,
       }).then((data) => {
         const pdfPath = path.join(os.homedir(), `Desktop/${bootstrap.mConstants.appName}/${args[2]}.pdf`)
-        console.log(data);
         fs.writeFile(pdfPath, data, (error) => {
           if (error) throw error
-          console.log(`Wrote PDF successfully to ${pdfPath}`)
           shell.openExternal('file://' + pdfPath);
         })
       });
@@ -58,6 +55,5 @@ ipcMain.handle("graphical-print-ipc", async (e, ...args) => {
 });
 
 ipcMain.handle("cmdline-print-ipc", async (event, ...args) => {
-  log.info(args);
   await runCommand(args[1]);
 });

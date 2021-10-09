@@ -1,3 +1,4 @@
+
 .mat-header-row, .mat-row {
   min-height: 30px;
   height: 30px;
@@ -20,3 +21,14 @@ mat-icon {
   font-size: 24px;
 }
 
+button.mat-raised-button span.mat-button-wrapper mat-icon{
+    color: white;
+}
+
+.mat-row:nth-child(even) {
+  background-color: lightgray;
+}
+
+.gray{
+  background-color: lightgray;
+}

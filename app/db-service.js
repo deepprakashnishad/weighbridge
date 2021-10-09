@@ -106,7 +106,6 @@ async function initialDataSetup() {
       try {
         await pool.query(stmt);
       } catch (err) {
-        console.log(err);
         log.error(err);
       }      
     }

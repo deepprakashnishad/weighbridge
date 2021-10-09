@@ -1,10 +1,18 @@
-<button mat-raised-button color="primary" (click)="openCreateDialog()">Create New <mat-icon>add</mat-icon></button>
-<div fxLayout="column" fxLayoutGap="16px">
-  <h3>Indicator Strings</h3>
-  <div fxLayout="column" fxLayoutGap="12px">
-    <div *ngFor="let iString of indicatorStrings; let i=index">
-      <button mat-button (click)="openEditDialog(iString, i)">{{iString?.stringName}}</button>
-      <!--<button mat-icon-button color="error" (click)="delete(iString?.stringName, index)"><mat-icon>delete</mat-icon></button>-->
-    </div>
+<mat-card class="inner-container" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="32px">
+  <div class="full-width" fxLayout fxLayoutAlign="space-between center">
+    <div class="box-title">Indicator Strings</div>
+    <app-help [tag]="'DATA_SETUP'"></app-help>
   </div>
-</div>
+    <button mat-raised-button color="primary" (click)="openCreateDialog()">Create New <mat-icon>add</mat-icon></button>
+    <div fxLayout="column" fxLayoutGap="16px">
+      <h3>Indicator Strings</h3>
+      <div fxLayout="row wrap" fxLayoutGap="12px grid">
+        <div *ngFor="let iString of indicatorStrings; let i=index">
+          <button mat-button (click)="openEditDialog(iString, i)">{{iString?.stringName}}</button>
+          <!--<button mat-icon-button color="error" (click)="delete(iString?.stringName, index)"><mat-icon>delete</mat-icon></button>-->
+        </div>
+      </div>
+    </div>
+
+</mat-card>
+

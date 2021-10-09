@@ -1,0 +1,8 @@
+.mat-card.mbox {
+  background: #92e4ba;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: white;
+  border-radius: 5px;
+}

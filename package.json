@@ -19,6 +19,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "dist_32bit": "electron-builder --win --ia32",
     "dist": "electron-builder",
     "postinstall": "electron-builder install-app-deps",
     "electron-start": "electron ./app/electron-main.js"

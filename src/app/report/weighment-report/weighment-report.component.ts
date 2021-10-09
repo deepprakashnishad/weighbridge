@@ -29,7 +29,9 @@ export class WeighmentReportComponent implements OnInit {
   truckNumber: string;
   supplier: string;
   material: string;
-  searchDateType: string ='firstWeightDatetime';
+  searchDateType: string = 'firstWeightDatetime';
+  reqId: string;
+  scrollNo: string;
 
   status: string;
 
@@ -70,6 +72,8 @@ export class WeighmentReportComponent implements OnInit {
     this.supplier = undefined;
     this.material = undefined;
     this.status = undefined;
+    this.scrollNo = undefined;
+    this.reqId = undefined;
     this.range.get("start").setValue("");
     this.range.get("end").setValue("");
     this.cntlMaterial.clear();
@@ -124,6 +128,16 @@ export class WeighmentReportComponent implements OnInit {
 
     if (this.status) {
       stmt = `${stmt} AND status = '${this.status}'`;
+      isCriteriaAdded = true;
+    }
+
+    if (this.reqId) {
+      stmt = `${stmt} AND reqId = '${this.reqId}'`;
+      isCriteriaAdded = true;
+    }
+
+    if (this.scrollNo) {
+      stmt = `${stmt} AND scrollNo LIKE '%${this.scrollNo}%'`;
       isCriteriaAdded = true;
     }
 

@@ -1,38 +1,45 @@
-<div class="container" fxLayout fxLayoutAlign="space-between start">
-  <mat-card>
-    <mat-card-title>Zero weight</mat-card-title>
-    <mat-card-content fxLayout="column">
-      <mat-checkbox [(ngModel)]="saveOnZeroWeight" name="cntlsaveOnZeroWeight">Save on zero weight</mat-checkbox>
-      <mat-checkbox [(ngModel)]="enableZeroCheck" name="cntlZeroCheck">Zero check on weights</mat-checkbox>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Zero Tolerance</mat-label>
-        <input name="cntlZeroTolerance" matInput placeholder="Zero Tolerance" [(ngModel)]="zeroTolerance">
-      </mat-form-field>
-    </mat-card-content>
-  </mat-card>
+<mat-card class="inner-container"  fxLayout="column" fxLayoutGap="12px">
+  <div class="full-width" fxLayout fxLayoutAlign="space-between center">
+    <div class="box-title">Weighbridge System Setup</div>
+    <app-help [tag]="'DATA_SETUP'"></app-help>
+  </div>
+  <div fxLayout fxLayoutAlign="space-between center">
+    <mat-card class="mbox">
+      <mat-card-title>Zero weight</mat-card-title>
+      <mat-card-content fxLayout="column" fxLayoutGap="16px">
+        <mat-checkbox [(ngModel)]="saveOnZeroWeight" name="cntlsaveOnZeroWeight">Save on zero weight</mat-checkbox>
+        <mat-checkbox [(ngModel)]="enableZeroCheck" name="cntlZeroCheck">Zero check on weights</mat-checkbox>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Zero Tolerance</mat-label>
+          <input name="cntlZeroTolerance" matInput placeholder="Zero Tolerance" [(ngModel)]="zeroTolerance">
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
 
-  <mat-card>
-    <mat-card-title>Zero net weight</mat-card-title>
-    <mat-card-content fxLayout="column">
-      <mat-checkbox [(ngModel)]="allowZeroNetWeight" name="cntlAllowZeroNetWeight">Allow zero net weight</mat-checkbox>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Net weight fluctuation</mat-label>
-        <input name="cntlNetWeightFluctuation" matInput placeholder="Net weight fluctuation" [(ngModel)]="netWeightFluctuation">
-      </mat-form-field>
-    </mat-card-content>
-  </mat-card>
+    <mat-card class="mbox">
+      <mat-card-title>Zero net weight</mat-card-title>
+      <mat-card-content fxLayout="column" fxLayoutGap="16px">
+        <mat-checkbox [(ngModel)]="allowZeroNetWeight" name="cntlAllowZeroNetWeight">Allow zero net weight</mat-checkbox>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Net weight fluctuation</mat-label>
+          <input name="cntlNetWeightFluctuation" matInput placeholder="Net weight fluctuation" [(ngModel)]="netWeightFluctuation">
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
 
-  <mat-card>
-    <mat-card-title>Stable weight</mat-card-title>
-    <mat-card-content fxLayout="column">
-      <mat-checkbox [(ngModel)]="enableStableWeight" name="cntlEnableStableWeight">Enable stable weight</mat-checkbox>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Allowed variation</mat-label>
-        <input name="cntle" matInput placeholder="Allowed Variation" [(ngModel)]="allowedVariation">
-      </mat-form-field>
-    </mat-card-content>
-  </mat-card>
-</div>
+    <mat-card class="mbox">
+      <mat-card-title>Stable weight</mat-card-title>
+      <mat-card-content fxLayout="column" fxLayoutGap="16px">
+        <mat-checkbox [(ngModel)]="enableStableWeight" name="cntlEnableStableWeight">Enable stable weight</mat-checkbox>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Allowed variation</mat-label>
+          <input name="cntle" matInput placeholder="Allowed Variation" [(ngModel)]="allowedVariation">
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
+</mat-card>
 <div fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
   <button mat-raised-button color="primary" (click)="save()">Save</button>
 </div>

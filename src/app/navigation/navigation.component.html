@@ -2,7 +2,7 @@
 <mat-toolbar>
 	<mat-toolbar-row fxLayout fxLayoutAlign="space-between end">
 		<div fxLayout fxLayoutAlign="start center">
-			<img src="assets/logo.png" width="200" />
+			<a  (click)="navigateTo('/home', 'home')"><img style="cursor: pointer" src="assets/logo.png" width="200" /></a>
 		</div>
 		<div fxLayout fxLayoutAlign="start end" fxLayoutGap="40px">
 			<button tabindex="-1" class="menu-button" [ngClass]="{'selected': selectedMenu === 'dataentry'}" mat-button [matMenuTriggerFor]="dataentry">Data Entry</button>
@@ -13,7 +13,9 @@
 		<div fxLayout fxLayoutAlign="end center">
 			<button tabindex="-1" class="menu-button" [ngClass]="{'selected': selectedMenu === 'options'}" mat-button [matMenuTriggerFor]="options">{{name}}</button>
 			<!--<button tabindex="-1" mat-icon-button (click)="navigateTo('home')"><mat-icon>home</mat-icon></button>-->
-			<button tabindex="-1" mat-icon-button><mat-icon>info</mat-icon></button>
+			<button tabindex="-1" mat-icon-button (click)="navigateTo('/home', 'home')"><mat-icon [ngClass]="{'colored': selectedMenu === 'home'}">home</mat-icon></button>
+			<button tabindex="-1" mat-icon-button (click)="showInfoAlert()"><mat-icon [ngClass]="{'colored': selectedMenu === 'info'}">info</mat-icon></button>
+			<button tabindex="-1" mat-icon-button (click)="alertLogout()"><mat-icon>power_settings_new</mat-icon></button>
 		</div>
 	</mat-toolbar-row>
 	<mat-menu #dataentry="matMenu">
@@ -47,6 +49,6 @@
 		<button mat-menu-item (click)="navigateTo('logout')">Logout</button>
 	</mat-menu>
 	<mat-menu #help="matMenu">
-		<button mat-menu-item>About</button>
+		<button mat-menu-item (click)="showInfoAlert()">About</button>
 	</mat-menu>
 </mat-toolbar>
