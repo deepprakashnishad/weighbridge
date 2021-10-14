@@ -23,6 +23,7 @@ const ticketPredefinedFields = [
 ]
 
 const weighmentDetailColumnFields = [
+  { displayName: "SNo", field: "sNo" },
   { displayName: "Material", field: "material" },
   { displayName: "Supplier", field: "supplier" },
   { displayName: "First Weight", field: "firstWeight" },
@@ -117,30 +118,65 @@ export class TicketField {
     return freeTextRecords;
   }
 
-  static generateTicketFields() {
+  static generateTicketFields(predefinedFields: Array<TicketField> = []) {
     var ticketFields = [];
     ticketPredefinedFields.forEach(ele => {
       var field = new TicketField();
-      field.displayName = ele['displayName'];
-      field.field = ele['field'];
-      field.type = "ticket-field"
-      field.font = "R";
-      field.isIncluded = false;
-      ticketFields.push(field);
+      var found = false;
+      for (var preEle of predefinedFields) {
+        if (preEle.field === ele.field) {
+          field.id = preEle.id;
+          field.displayName = preEle.displayName;
+          field.field = preEle.field;
+          field.type = preEle.type
+          field.font = preEle.font;
+          field.col = preEle.col;
+          field.row = preEle.row;
+          field.isIncluded = preEle.isIncluded;
+          ticketFields.push(field);
+          found = true;
+        }        
+      }
+      if (!found) {
+        field.displayName = ele['displayName'];
+        field.field = ele['field'];
+        field.type = "ticket-field"
+        field.font = "R";
+        field.isIncluded = false;
+        ticketFields.push(field);
+      }
+      
     });
     return ticketFields;
   }
 
-  static generateColumnFieldRecords() {
+  static generateColumnFieldRecords(predefinedFields: Array<TicketField> = []) {
     var ticketFields = [];
     weighmentDetailColumnFields.forEach(ele => {
       var field = new TicketField();
-      field.displayName = ele['displayName'];
-      field.field = ele['field'];
-      field.type = "weighment_detail"
-      field.font = "R";
-      field.isIncluded = false;
-      ticketFields.push(field);
+      var found = false;
+      for (var preEle of predefinedFields) {
+        if (preEle.field === ele.field) {
+          field.id = preEle.id;
+          field.displayName = preEle.displayName;
+          field.field = preEle.field;
+          field.type = preEle.type
+          field.col = preEle.col;
+          field.row = preEle.row;
+          field.font = preEle.font;
+          field.isIncluded = preEle.isIncluded;
+          ticketFields.push(field);
+          found = true;
+        }
+      }
+      if (!found) {
+        field.displayName = ele['displayName'];
+        field.field = ele['field'];
+        field.type = "weighment_detail"
+        field.font = "R";
+        field.isIncluded = false;
+        ticketFields.push(field);
+      }
     });
     return ticketFields;
   }

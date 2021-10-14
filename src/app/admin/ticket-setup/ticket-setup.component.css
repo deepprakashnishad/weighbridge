@@ -48,3 +48,7 @@ tr.mat-row {
     min-width:100px;
     max-width: 150px;
 }
+
+.box-title{
+    font-size: 24px;
+}

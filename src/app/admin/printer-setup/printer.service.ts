@@ -106,10 +106,13 @@ export class PrinterService {
 
   private preparePreviewText(fields: Array<TicketField>,
     weighment: Weighment, weighmentDetail: WeighmentDetail) {
+    var separator = ": ";
     var currX = 0, currY = 0;
-    var mText = "";
+    var mText = "<div style='font-family: monospace, monospace;'>";
+    var minLabelLength = this.getLargestLabelLength(fields);
     for (var i = 0; i < fields.length; i++) {
       var field = fields[i];
+      var data = "";
       if (field.type === "newline") {
         mText = mText + "<br/>".repeat(field.col);
         return mText;
@@ -124,19 +127,44 @@ export class PrinterService {
         currY = field.col;
       }
       if (field.type === "ticket-field" && (weighment[field.field] || weighmentDetail[field.field.substr("weighDetails_".length)])) {
-        if (field.field.indexOf("weighmentDetails") === -1) {
-          if (field.font === "RB") {
-            mText = mText + "<b>" + field.displayName + ": " + `${weighment[field.field]}` + "</b>";
-          } else if (field.font === "DB") {
-            mText = mText + "<h3>" + field.displayName + ": " + `${weighment[field.field]}` + "</h3>";
-          } else if (field.font === "D") {
-            mText = mText + "<h3>" + field.displayName + ": " + `${weighment[field.field]}` + "</h3>";
+        if (field.field !== "weighmentDetails") {
+          //mText = mText + "<table>";
+          //for (var j = i; j < fields.length;) {
+          //  mText = mText + "<tr>";
+          //  for (var k = j + 1; k < fields.length;) {
+          //    if (fields[k].row === fields[j].row) {
+          //      mText = mText + `<td>${fields[j].displayName}</td><td>${this.getData(weighment, weighmentDetail, fields[j])} </td>`;
+          //      k++; j++; i++;
+          //    } else {
+          //      mText = mText + `<td>${fields[j].displayName}</td><td>${this.getData(weighment, weighmentDetail, fields[j])} </td>`;
+          //      k++; j++; i++;
+          //      mText = mText + "</tr>";
+          //      break;
+          //    }
+          //  }
+          //  if (fields[j + 1].type !== "ticket-field" || fields[j + 1].field === "weighmentDetails") {
+          //    break;
+          //  }
+          //}
+          //mText = mText + "</table>";
+          data = field.displayName + "&nbsp;".repeat(minLabelLength - field.displayName?.length) + separator;
+          var valLength = 0;
+          if (field.field.indexOf("weighDetails") > -1) {
+            data = data + `${weighmentDetail[field.field.substr("weighDetails_".length)]}`;
+            valLength = weighmentDetail[field.field.substr("weighDetails_".length)].toString().length;
           } else {
-            if (field.field.indexOf("weighDetails") > -1) {
-              mText = mText + field.displayName + ": " + `${weighmentDetail[field.field.substr("weighDetails_".length)]}`;
-            } else {
-              mText = mText + field.displayName + ": " + `${weighment[field.field]}`;
-            }
+            data = data + `${weighment[field.field]}`;
+            valLength = weighment[field.field].length;
+          }
+          if (field.font === "RB") {
+            mText = mText + "<b>" + data + "</b>";
+          } else if (field.font === "DB") {
+            mText = mText + "<h3>" + data + "</h3>";
+          } else if (field.font === "D") {
+            mText = mText + "<h3>" + data + "</h3>";
+          } else {
+            currY = currY + separator.length + minLabelLength + valLength;
+            mText = mText + data;
           }
         } else if (field.field === "weighmentDetails") {
           var wFields = [];
@@ -145,7 +173,7 @@ export class PrinterService {
               wFields.push(wField);
             }
           }
-          mText = mText + this.preparePreviewWeighmentTableText(weighment.weighmentDetails, wFields);
+          mText = mText + this.preparePreviewWeighmentTableText(weighment.weighmentDetails, wFields, field.col);
         }
       } else if (field.type === "freetext") {
         if (field.font === "RB" || field.font === "DB") {
@@ -156,12 +184,23 @@ export class PrinterService {
       }
     }
 
-    //this.htmlContent = mText;
+    mText = mText + "</div>";
     return mText;
   }
 
+  getData(weighment, weighmentDetail, field) {
+    var data = "";
+    if (field.field.indexOf("weighDetails") > -1) {
+      data = data + `${weighmentDetail[field.field.substr("weighDetails_".length)]? weighmentDetail[field.field.substr("weighDetails_".length)]:""}`;
+    } else {
+      data = data + `${weighment[field.field] ? weighment[field.field]:""}`;
+    }
+
+    return data?data:"";
+  }
+
   async rawTextPrint(weighment: Weighment, weighmentDetail: WeighmentDetail, template?) {
-    if (!template) {
+    if (!template || template.length===0) {
       var stmt = `SELECT * FROM ticket_template WHERE applicableTo LIKE '%${weighment.weighmentType}%' OR applicableTo='GENERIC'`;
       var templates = await this.dbService.executeSyncDBStmt("SELECT", stmt);
       template = await this.fetchTemplateDetail(templates[0].id);
@@ -175,6 +214,8 @@ export class PrinterService {
     var mText = "python print.py ";
     var currX = 0, currY = 0;
 
+    var minLabelSize = this.getLargestLabelLength(fields);
+
     for (var i = 0; i < fields.length; i++) {
       var field = fields[i];
       if (field.type === "newline") {
@@ -187,16 +228,23 @@ export class PrinterService {
         currX = field.row;
         currY = 0;
       }
-      if (field.col > currY) {
+      if (field.col > currY && field.field !== "weighmentDetails") {
         mText = mText + " R \"" + " ".repeat(field.col - currY) + "\"";
         currY = field.col;
       }
+
       if (field.type === "ticket-field") {
         if (field.field.indexOf("weighmentDetails") === -1) {
-          if (weighment[field.field]) {
-            mText = `${mText} ${field.font} \"${field.displayName}: ${weighment[field.field]}\"`;
+          var data = "";
+          if (field.field.indexOf("weighDetails") > -1) {
+            data = ` ${field.font} \"${field.displayName}${" ".repeat(minLabelSize - field.displayName?.length)}: ${weighmentDetail[field.field.substr("weighDetails_".length)] ? weighmentDetail[field.field.substr("weighDetails_".length)]:""}\"`;
+          } else {
+            if (weighment[field.field]) {
+              data = ` ${field.font} \"${field.displayName}${" ".repeat(minLabelSize - field.displayName.length)}: ${weighment[field.field]}\"`;
+            }
           }
-          
+          mText = `${mText}${data}`;
+          currY = currY + data.length;
         } else if (field.field === "weighmentDetails") {
           var wFields = [];
           for (var wField of fields) {
@@ -204,7 +252,7 @@ export class PrinterService {
               wFields.push(wField);
             }
           }
-          mText = mText + this.prepareWeighmentTableText(weighment.weighmentDetails, wFields);
+          mText = mText + this.prepareWeighmentTableText(weighment.weighmentDetails, wFields, field.col);
         }
       } else if (field.type === "freetext") {
         mText = `${mText} ${field.font} \"${field.displayName}\"`;
@@ -213,50 +261,108 @@ export class PrinterService {
     return mText;
   }
 
-  prepareWeighmentTableText(weighmentDetails: Array<WeighmentDetail>, fields: Array<TicketField>) {
+  //Gets the largest label length for proper adjustment of ticket fields
+  getLargestLabelLength(fields: Array<TicketField>) {
+    var maxLength = 0;
+
+    for (var field of fields) {
+      if (field.type === "ticket-field" && field.field.indexOf("weighmentDetails")) {
+        maxLength = field.displayName?.length > maxLength ? field.displayName.length : maxLength;
+      }      
+    }
+    console.log("Maxlength - " + maxLength);
+    return maxLength;
+  }
+
+  // Gets min length required by each column
+  getMinLengthMap(weighmentDetails: Array<WeighmentDetail>, fields: Array<TicketField>) {
+    var defaultAddedLength = 5;
+    var minLengthMap = {};
+    for (var field of fields) {
+      minLengthMap[field.field] = field.displayName.length;
+    }
+
+    for (var i in weighmentDetails) {
+      var data = weighmentDetails[i];
+      for (var field of fields) {
+        if (field.field === "sNo") {
+          minLengthMap[field.field] = (i + 1).toString()?.length > minLengthMap[field.field] ?
+            (i + 1).toString()?.length : minLengthMap[field.field];
+        } else {
+          minLengthMap[field.field] = data[field.field]?.length > minLengthMap[field.field] ?
+            data[field.field]?.length : minLengthMap[field.field];
+        }        
+      }
+    }
+
+    for (var key of Object.keys(minLengthMap)) {
+      minLengthMap[key] = minLengthMap[key] + defaultAddedLength;
+    }
+    return minLengthMap;
+  }
+
+  prepareWeighmentTableText(weighmentDetails: Array<WeighmentDetail>, fields: Array<TicketField>, padding: number) {
     var mText = "";
-    mText = mText + this.prepareWeighmentDetailsHeader(fields);
-    var currY = 0;
+    var minLengthMap = this.getMinLengthMap(weighmentDetails, fields);
+    mText = mText + this.prepareWeighmentDetailsHeader(fields, minLengthMap, padding);
+    //var currY = 0;
     for (var i = 0; i < weighmentDetails.length; i++) {
+      var mText = `${mText} R \"${" ".repeat(padding)}\"`;
       var wd = weighmentDetails[i];
       for (var field of fields) {
-        if (currY < field.col) {
-          mText = mText + " R \"" + " ".repeat(field.col - currY) + "\"";
-          currY = field.col;
+        if (field.field==="sNo") {
+          var temp = i+1;
+        } else {
+          temp = wd[field.field] ? wd[field.field] : "";
         }
-        mText = `${mText} ${field.font} \"${wd[field.field] ? wd[field.field] : ""}`;
-        currY = currY + (wd[field.field] ? wd[field.field].toString().length : 0);
+        
+        mText = `${mText} ${field.font} \"${temp}`;
+        if (minLengthMap[field.field] > temp.toString().length) {
+          mText = mText + " ".repeat(minLengthMap[field.field] - temp.toString().length) + "\"";
+        }
+        //if (currY < field.col) {
+        //  mText = mText + " R \"" + " ".repeat(field.col - currY) + "\"";
+        //  currY = field.col;
+        //}
+        //mText = `${mText} ${field.font} \"${wd[field.field] ? wd[field.field] : ""}`;
+        //currY = currY + (wd[field.field] ? wd[field.field].toString().length : 0);
       }
       mText = mText + " newline ";
-      currY = 0;
+      //currY = 0;
     }
 
     return mText;
   }
 
-  prepareWeighmentDetailsHeader(fields: Array<TicketField>) {
-    var mText = "";
-
+  prepareWeighmentDetailsHeader(fields: Array<TicketField>, minLengthMap: any, padding: number) {
+    var mText = ` R \"${" ".repeat(padding)}`;
     var currY = 0;
-    console.log(fields);
     for (var i = 0; i < fields.length; i++) {
-      console.log(fields[i]);
-      if (currY <= fields[i].col) {
-        mText = mText + " R \"" + " ".repeat(fields[i].col - currY) + "\"";
-        mText = mText + " R \"" + fields[i].displayName + "\"";
-        currY = fields[i].col + fields[i].displayName.length;
-      } else {
-        mText = mText + " R \"" + fields[i].displayName + "\"";
-        currY = currY + fields[i].displayName.length;
+      mText = mText + fields[i].displayName;
+      if (fields[i].displayName.length < minLengthMap[fields[i].field]) {
+        mText = mText + " ".repeat(minLengthMap[fields[i].field] - fields[i].displayName.length);
       }
     }
-    mText = mText + " newline ";
+    mText = mText + "\" newline ";
     currY = 0;
+
+    //var mText = " ".repeat(padding);
+    //var currY = 0;
+    //for (var i = 0; i < fields.length; i++) {
+    //  mText = mText + " R \"" + fields[i].displayName;
+    //  if (fields[i].displayName.length < minLengthMap[fields[i].field]) {
+    //    mText = mText + " ".repeat(minLengthMap[fields[i].field] - fields[i].displayName.length) + "\"";
+    //  } else {
+    //    mText = mText + "\"";
+    //  }
+    //}
+    //mText = mText + " newline ";
+    //currY = 0;
 
     return mText;
   }
 
-  preparePreviewWeighmentTableText(weighmentDetails: Array<WeighmentDetail>, fields: Array<TicketField>) {
+  preparePreviewWeighmentTableText(weighmentDetails: Array<WeighmentDetail>, fields: Array<TicketField>, padding: number=0) {
 
     var mText = "";
     mText = mText + this.preparePreviewWeighmentDetailsHeader(fields);
@@ -270,24 +376,27 @@ export class PrinterService {
         //  mText = mText + "&nbsp;".repeat(field.col - currY);
         //  currY = field.col;
         //}
-        if (field.font === "RB") {
-          mText = `${mText}<td style="text-align: center"><b>${wd[field.field] ? wd[field.field] : ""}</b></td>`;
-        } else if (field.font === "DB") {
-          mText = `${mText}<td style="text-align: center"><h3>${wd[field.field] ? wd[field.field] : ""}</h3></td>`;
-        } else if (field.font === "D") {
-          mText = `${mText}<td style="text-align: center"><h3>${wd[field.field] ? wd[field.field] : ""}</h3></td>`;
-        } else {
-          mText = `${mText}<td style="text-align: center">${wd[field.field] ? wd[field.field] : ""}</td>`;
+        var data = wd[field.field];
+        if (field.field === "sNo") {
+          data = i + 1;
         }
-        currY = currY + (wd[field.field] ? wd[field.field].toString().length : 0);
+        if (field.font === "RB") {
+          mText = `${mText}<td style="text-align: center"><b>${data ? data : ""}</b></td>`;
+        } else if (field.font === "DB") {
+          mText = `${mText}<td style="text-align: center"><h3>${data ? data : ""}</h3></td>`;
+        } else if (field.font === "D") {
+          mText = `${mText}<td style="text-align: center"><h3>${data ? data : ""}</h3></td>`;
+        } else {
+          mText = `${mText}<td style="text-align: center">${data ? data : ""}</td>`;
+        }
+        currY = currY + (data ? data.toString().length : 0);
       }
       mText = `${mText}</tr>`;
       //mText = mText + " <br/> ";
       currY = 0;
     }
 
-    //return mText;
-    return `<table>${mText}</table>`;
+    return `<table style="margin-left:${padding}ch">${mText}</table>`;
   }
 
   preparePreviewWeighmentDetailsHeader(fields: Array<TicketField>) {

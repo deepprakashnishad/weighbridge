@@ -207,18 +207,20 @@ export class TicketSetupComponent implements OnInit {
     var ticketFields = mFields["ticketFields"];
     var freetextFields = mFields["freetextFields"];
     var weighDetailFields = mFields["weighDetailFields"];
-    
-    if (ticketFields.length > 0) {
-      this.ticketFieldDataSource.data = ticketFields;
-    } else {
-      this.ticketFieldDataSource.data = TicketField.generateTicketFields();
-    }
 
-    if (weighDetailFields.length > 0) {
-      this.columnFieldDataSource.data = weighDetailFields;
-    } else {
-      this.columnFieldDataSource.data = TicketField.generateColumnFieldRecords();
-    }
+    this.ticketFieldDataSource.data = TicketField.generateTicketFields(ticketFields);
+    //if (ticketFields.length > 0) {
+    //  this.ticketFieldDataSource.data = ticketFields;
+    //} else {
+    //  this.ticketFieldDataSource.data = TicketField.generateTicketFields();
+    //}
+
+    this.columnFieldDataSource.data = TicketField.generateColumnFieldRecords(weighDetailFields);
+    //if (weighDetailFields.length > 0) {
+    //  this.columnFieldDataSource.data = weighDetailFields;
+    //} else {
+    //  this.columnFieldDataSource.data = TicketField.generateColumnFieldRecords();
+    //}
 
     if (mFields['newlineField']) {
       this.newlineField = mFields['newlineField'];

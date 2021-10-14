@@ -1,4 +1,8 @@
-<div class="container" fxLayout fxLayoutGap="12px">
+<div class="full-width" fxLayout fxLayoutAlign="space-between center">
+  <div class="box-title">Email Setup</div>
+  <app-help [tag]="'EMAIL_SETUP'"></app-help>
+</div>
+<div class="inner-container" fxLayout fxLayoutGap="12px">
   <mat-card>
     <mat-card-content>
       <form fxLayout="column" fxLayoutGap="16px">
@@ -79,7 +83,7 @@
     <mat-card-title>Email Recipients</mat-card-title>
     <form>
       <mat-card-content class="limit-height">
-        <div fxLayout fxLayoutGap="16px" fxLayoutAlign="start center">
+        <div fxLayout="column" fxLayoutGap="16px" fxLayoutAlign="start center">
           <mat-form-field appearance="outline">
             <mat-label>Recipient Email</mat-label>
             <input matInput placeholder="Email Id" name="cntlEmailId" [(ngModel)]="recipientEmailId" />

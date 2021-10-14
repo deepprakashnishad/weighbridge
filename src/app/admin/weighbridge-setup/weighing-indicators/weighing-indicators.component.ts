@@ -86,29 +86,49 @@ export class WeighingIndicatorsComponent implements OnInit {
     });
   }
 
-  delete(field, index) {
+  async delete(field, index) {
 
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      data: {
-        title: `Delete weighbridge ${field.name}`,
-        message: `You are about the weighbridge ${field.name}. Are you sure? Please confirm.`
-      }
-    });
+    var result = await this.dbService.executeSyncDBStmt("SELECT",
+      QueryList.SELECT_WEIGHMENT_DETAILS_BY_WEIGHBRIDGE
+        .replace('{firstWeighBridge}', field.wiName)
+        .replace('{secondWeighBridge}', field.wiName)
+    );
 
-    dialogRef.afterClosed().subscribe(async (isConfirmed) => {
-      if (isConfirmed) {
-        var result = await this.dbService.executeSyncDBStmt("DELETE", QueryList.DELETE_WEIGH_INDICATOR.replace("{id}", field.id))
-        if (result['error']) {
-          console.log(result['error']);
-          this.notifier.notify("error", "Weigh indicator could not be deleted");
-        } else if (result === true) {
-          this.indicators.splice(index, 1);
-          var envIndicatorStrings = this.indicators.map(ele => ele.wiName);
-          this.ipcService.invokeIPC("saveSingleEnvVar", ["weighIndicators", envIndicatorStrings]);
-          this.notifier.notify("success", "Weigh indicator deleted successfully");
-          this.indicatorTable.renderRows();
+    if (result.length === 0) {
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        data: {
+          title: `Delete weighbridge ${field.wiName}`,
+          message: `You are about the weighbridge ${field.wiName}. Are you sure? Please confirm.`
         }
-      }
-    });
+      });
+      dialogRef.afterClosed().subscribe(async (isConfirmed) => {
+        if (isConfirmed) {
+          var result = await this.dbService.executeSyncDBStmt("DELETE", QueryList.DELETE_WEIGH_INDICATOR.replace("{id}", field.id))
+          if (result['error']) {
+            console.log(result['error']);
+            this.notifier.notify("error", "Weigh indicator could not be deleted");
+          } else if (result === true) {
+            this.indicators.splice(index, 1);
+            var envIndicatorStrings = this.indicators.map(ele => ele.wiName);
+            this.ipcService.invokeIPC("saveSingleEnvVar", ["weighIndicators", envIndicatorStrings]);
+            this.notifier.notify("success", "Weigh indicator deleted successfully");
+            this.indicatorTable.renderRows();
+          }
+        }
+      });
+    } else {
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        data: {
+          title: `Cannot delete weighbridge ${field.wiName}`,
+          message: `Weigh indicator ${field.wiName} cannot be deleted as it has weighment records associated.`,
+          yesButtonText: "Ok",
+          hideNoButton:true
+        }
+      });
+    }
+
+    
+
+    
   }
 }

@@ -7,6 +7,7 @@ import * as XLSX from 'xlsx';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PrinterService } from '../../admin/printer-setup/printer.service';
 import { PreviewDialogComponent } from '../preview-dialog/preview-dialog.component';
+import { PreviewDialogComponent as TicketPreviewComponent } from '../../admin/ticket-setup/preview-dialog/preview-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ReportService } from '../report.service';
 import { Clipboard } from '@angular/cdk/clipboard';
@@ -35,13 +36,13 @@ export class WeighmentReportComponent implements OnInit {
 
   status: string;
 
-  columns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'supplier', 'material', 'firstWeighBridge', 'firstWeight', 'firstWeightDatetime', 'firstWeightUser', 'gatePassNo', 'poDetails', 'secondWeighBridge', 'secondWeight', 'secondWeightDatetime', 'secondWeightUser', 'netWeight', 'status', 'action'];
-  displayedColumns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'supplier', 'material', 'firstWeighBridge', 'firstWeight', 'firstWeightDatetime', 'firstWeightUser', 'gatePassNo', 'poDetails', 'secondWeighBridge', 'secondWeight', 'secondWeightDatetime', 'secondWeightUser', 'netWeight', 'status', 'action'];
+  columns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'weighmentType', 'supplier', 'material', 'firstWeighBridge', 'firstWeight', 'firstWeightDatetime', 'firstWeightUser', 'gatePassNo', 'poDetails', 'secondWeighBridge', 'secondWeight', 'secondWeightDatetime', 'secondWeightUser', 'netWeight', 'status', 'action'];
+  displayedColumns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'material', 'firstWeight', 'firstWeightDatetime', 'secondWeight', 'secondWeightDatetime', 'netWeight', 'action'];
 
   dataSource: MatTableDataSource<any>;
   users: any = {};
 
-  maxFieldLength: number = 40;
+  maxFieldLength: number = 25;
 
   printingType: string = "DOT-MATRIX";
 
@@ -233,28 +234,30 @@ export class WeighmentReportComponent implements OnInit {
       weighmentDetails[weighmentDetails.length-1]
     );
 
-    var rawText = await this.printerService.rawTextPrint(weighment,
-      weighmentDetails[weighmentDetails.length - 1])
-    this.dialog.open(PreviewDialogComponent, {
+    //var rawText = await this.printerService.rawTextPrint(weighment,
+    //  weighmentDetails[weighmentDetails.length - 1]);
+    //console.log(rawText);
+    this.dialog.open(TicketPreviewComponent, {
       data: {
         title: "Ticket Preview",
         'htmlContent': data['content'],
         fontSize: 12,
-        rawText: rawText,
-        printingType: this.printingType
+        printingType: this.printingType,
+        'weighment': weighment,
+        'weighmentDetail': weighmentDetails[weighmentDetails.length - 1]
       }
     });
   }
 
   printReport() {
     var content = this.reportService.getHtmlReportText(this.dataSource.data, this.displayedColumns, this.maxFieldLength);
-    var rawText = this.reportService.getRawReportText(this.dataSource.data, this.displayedColumns, this.maxFieldLength);
-    console.log(rawText);
+    var rawTextArray = this.reportService.getRawTextForFilePrinting(this.dataSource.data, this.displayedColumns, this.maxFieldLength);
+    console.log(rawTextArray);
     this.dialog.open(PreviewDialogComponent, {
       data: {
         title: "Weighment Report",
         htmlContent: content,
-        rawText: rawText,
+        "rawTextArray": rawTextArray,
         fontSize: 12,
         printingType: this.printingType
       }

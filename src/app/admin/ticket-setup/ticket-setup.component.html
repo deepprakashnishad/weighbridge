@@ -1,5 +1,8 @@
-<div class="container">
-  <div fxLayout fxLayoutGap="16px" fxLayoutAlign="space-between center">
+  <div class="full-width" fxLayout fxLayoutAlign="space-between center">
+    <div class="box-title">Ticket Setup</div>
+    <app-help [tag]="'TICKET_FIELD'"></app-help>
+  </div>
+  <div class="inner-container" fxLayout fxLayoutGap="16px" fxLayoutAlign="space-between center">
     <form class="full-width" fxLayout fxLayoutGap="16px" fxLayoutAlign="start center">
       <mat-select class="template-selector" [(ngModel)]="selectedTemplate" (selectionChange)="selectedTemplateChanged()" placeholder="Template Name" name="cntlTemplate">
         <mat-option *ngFor="let template of templates" [value]="template">{{template.name}}</mat-option>
@@ -20,7 +23,10 @@
         <ng-container matColumnDef="displayString">
           <mat-header-cell *matHeaderCellDef> Field </mat-header-cell>
           <mat-cell *matCellDef="let element">
-            {{element.displayName}}
+            <mat-form-field floatLabel="never">
+              <input matInput placeholder="Display Name" [value]="element.displayName" [(ngModel)]="element.displayName">
+            </mat-form-field>
+            <!--element.displayName-->
           </mat-cell>
         </ng-container>
 
@@ -48,19 +54,19 @@
         <ng-container matColumnDef="font">
           <mat-header-cell *matHeaderCellDef> font </mat-header-cell>
           <mat-cell *matCellDef="let element">
-              <mat-select [(value)]="element.font" placeholder="Font">
-                <mat-option value="R">R</mat-option>
-                <mat-option value="RB">RB</mat-option>
-                <mat-option value="D">D</mat-option>
-                <mat-option value="DB">DB</mat-option>
-              </mat-select>
+            <mat-select [(value)]="element.font" placeholder="Font">
+              <mat-option value="R">R</mat-option>
+              <mat-option value="RB">RB</mat-option>
+              <mat-option value="D">D</mat-option>
+              <mat-option value="DB">DB</mat-option>
+            </mat-select>
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="action">
           <mat-header-cell *matHeaderCellDef> Include </mat-header-cell>
           <mat-cell *matCellDef="let element">
-              <mat-checkbox [(ngModel)]="element.isIncluded"></mat-checkbox>
+            <mat-checkbox [(ngModel)]="element.isIncluded"></mat-checkbox>
           </mat-cell>
         </ng-container>
 
@@ -193,4 +199,3 @@
       </mat-form-field>
     </div>
   </div>
-</div>

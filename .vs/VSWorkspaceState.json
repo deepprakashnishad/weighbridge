@@ -1,16 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\app",
+    "\\src",
     "\\src\\app",
-    "\\src\\app\\admin",
-    "\\src\\app\\admin\\data-setup",
-    "\\src\\app\\admin\\data-setup\\search-fields",
-    "\\src\\app\\admin\\weighbridge-setup\\weighbridge-system-setup",
-    "\\src\\app\\shared\\help",
-    "\\src\\app\\shared\\tag-selector",
+    "\\src\\app\\navigation",
+    "\\src\\app\\report\\weighment-report",
+    "\\src\\environments",
     "\\src\\themes"
   ],
-  "SelectedNode": "\\angular.json",
+  "SelectedNode": "\\src\\app\\navigation\\navigation.component.html",
   "PreviewInSolutionExplorer": false
 }

@@ -45,6 +45,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   currentWeight: any = 10000;
   currData: any;
   isWeightStable: boolean = true;
+  stableWeightCheckEnabled: boolean = JSON.parse(sessionStorage.getItem("enable_stable_weight"));
   prevWeight: number;
   cnt: number = 0;
 
@@ -116,7 +117,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
           this.zeroResetDone = true;
         }
 
-        if (sessionStorage.getItem("enable_stable_weight")) {
+        if (this.stableWeightCheckEnabled) {
           if (parseInt(sessionStorage.getItem("allowed_variation")) >
             Math.abs(this.prevWeight - currWeight['weight'])) {
             this.cnt++;
@@ -177,6 +178,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   transporterSelected(event) {
     this.weighment.transporterCode = event.code;
     this.weighment.transporterName = event.mValue;
+    this.transporter = `${event.code}-${event.mValue}`;
+    console.log(this.weighment);
   }
 
   supplierSelected(event){
@@ -256,8 +259,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       .replace("{reqId}", this.weighment.reqId ? this.weighment.reqId.toString() : null)
       .replace("{gatePassNo}", this.weighment.gatePassNo ? this.weighment.gatePassNo.toString() : null)
       .replace("{weighmentType}", this.weighment.weighmentType)
-      .replace("{transporterCode}", this.weighment.transporterCode ? this.weighment.transporterCode.toString(): null)
-      .replace("{transporterName}", this.weighment.transporterName)
+      .replace("{transporterCode}", this.weighment?.transporterCode ? this.weighment?.transporterCode.toString() : "")
+      .replace("{transporterName}", this.weighment?.transporterName ? this.weighment?.transporterName : "")
       .replace("{status}", status)
       .replace("{rstNo}", this.weighment.rstNo.toString())
       .replace("{scrollDate}", this.weighment.scrollDate ? this.weighment.scrollDate:'');
@@ -276,8 +279,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       .replace("{gatePassNo}", this.weighment?.gatePassNo ? this.weighment.gatePassNo.toString() : null)
       .replace("{weighmentType}", this.weighment.weighmentType)
       .replace("{poDetails}", this.weighment?.poDetails ? this.weighment?.poDetails : null)
-      .replace("{transporterCode}", this.weighment?.transporterCode ? this.weighment?.transporterCode.toString() : null)
-      .replace("{transporterName}", this.weighment?.transporterName ? this.weighment?.transporterName : null)
+      .replace("{transporterCode}", this.weighment?.transporterCode ? this.weighment?.transporterCode.toString() : "")
+      .replace("{transporterName}", this.weighment?.transporterName ? this.weighment?.transporterName : "")
       .replace("{status}", status)
       .replace("{scrollDate}", this.weighment.scrollDate ? this.weighment.scrollDate:"");
 
@@ -403,6 +406,13 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       return false;
     }
 
+    if (this.weighmentDetail.id &&
+      (this.weighmentDetail.material === "null" || this.weighmentDetail.material === null || this.weighmentDetail.material === ""
+      || this.weighmentDetail.material === "null" || this.weighmentDetail.supplier === null || this.weighmentDetail.supplier === "")) {
+      this.notifier.notify("error", "Material and supplier are mandatory for second weight.");
+      return false;
+    }
+
     if (JSON.parse(sessionStorage.getItem("enable_zero_check")) && !this.zeroResetDone) {
       this.notifier.notify("error", "Weighbridge was not set to zero before weighment.");
       return false;
@@ -460,7 +470,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   reset() {
     this.weighment = new Weighment();
     this.weighmentDetail = new WeighmentDetail();
-    this.transporter = "";
+    this.transporter = null;
+    this.isComplete = true;
   }
 
   capture() {
@@ -505,10 +516,10 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
         this.weighment.weighmentDetails = WeighmentDetail.fromJSONList(await this.getWeighmentDetails(this.weighment.rstNo));
         if (this.weighment.weighmentDetails.length > 0) {
           this.weighmentDetail = this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1];
+          console.log(this.weighmentDetail);
         }
       });
     }
-    
   }
 
   async getWeighmentDetails(rstNo) {
@@ -534,7 +545,12 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   }
 
   copyToClipboard(textToCopy, msg) {
-    this.clipboard.copy(textToCopy);
+    this.clipboard.beginCopy(textToCopy);
     this.notifier.notify("success", msg);
+  }
+
+  async paste(event: ClipboardEvent) {
+    var data = await navigator.clipboard.readText();
+    this.weighment.vehicleNo = data;
   }
 }

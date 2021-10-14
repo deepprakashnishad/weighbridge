@@ -29,8 +29,6 @@ export class TagSelectorComponent implements OnInit, OnChanges {
 
   options: Array<any> = [];
 
-  limit: number=30;
-  offset: number=0;
   searchStr: string = "";
 
   constructor(
@@ -43,7 +41,7 @@ export class TagSelectorComponent implements OnInit, OnChanges {
     this.filteredOptions = this.mControl.valueChanges
       .pipe(
         startWith(''),
-        map(value => typeof value === 'string' ? value : value.name),
+        map(value => typeof value === 'string' ? value : value?.name),
         map(name => name ? this._filter(name) : this.options.slice())
       );
   }
@@ -58,8 +56,13 @@ export class TagSelectorComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     var keys = Object.keys(changes);
     for (var i = 0; i < keys.length; i++) {
-      if (keys[i] === "selectedTag" && changes[keys[i]]["currentValue"] != "null" && changes[keys[i]]["currentValue"] != "undefined") {
-        this.mControl.setValue(changes[keys[i]]["currentValue"]);
+      if (keys[i] === "selectedTag" && changes[keys[i]]["currentValue"] != "undefined") {
+        if (changes[keys[i]]["currentValue"] != "null") {
+          this.mControl.setValue(changes[keys[i]]["currentValue"]);
+        } else {
+          this.mControl.setValue("");
+        }
+        
       }
       if (keys[i] === "tagTypeId" && changes[keys[i]]["currentValue"]) {
         this.fetchData();
@@ -120,6 +123,8 @@ export class TagSelectorComponent implements OnInit, OnChanges {
     var dialogRef = this.dialog.open(ListEditorComponent, {
       height: "600px",
       width: "800px",
+      hasBackdrop: true,
+      disableClose: true,
       data: {
         title: `Edit values`,
         fieldId: this.tagTypeId,
@@ -130,8 +135,8 @@ export class TagSelectorComponent implements OnInit, OnChanges {
 
     dialogRef.afterClosed().subscribe(async result => {
       if (result) {
-        this.optionSelected.emit(result);
-        this.notifier.notify("success", "Search field updated successfully");
+        this.options = result.items;
+        //this.notifier.notify("success", "Search field updated successfully");
       }
     });
   }

@@ -49,7 +49,6 @@ export class EmailSetupComponent implements OnInit {
     this.collectionEmailTime = sessionStorage.getItem("collection_email_time");
     this.emailCondition = sessionStorage.getItem("email_condition");
     this.recipients = JSON.parse(sessionStorage.getItem("recipients")) ? JSON.parse(sessionStorage.getItem("recipients")) : [];
-    console.log(this.recipients);
   }
 
   save() {
@@ -97,7 +96,7 @@ export class EmailSetupComponent implements OnInit {
         mRecipientsStr
       ]
     ).then(result => {
-
+      console.log(result);
     });
   }
 }

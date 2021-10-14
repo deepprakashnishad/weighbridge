@@ -8,6 +8,7 @@
 			<button tabindex="-1" class="menu-button" [ngClass]="{'selected': selectedMenu === 'dataentry'}" mat-button [matMenuTriggerFor]="dataentry">Data Entry</button>
 			<button tabindex="-1" class="menu-button" [ngClass]="{'selected': selectedMenu === 'reports'}" mat-button [matMenuTriggerFor]="reports">Reports</button>
 			<button tabindex="-1" class="menu-button" [ngClass]="{'selected': selectedMenu === 'administration'}" mat-button [matMenuTriggerFor]="administration">Administration</button>
+			<button tabindex="-1" class="menu-button" [ngClass]="{'selected': selectedMenu === 'options'}" mat-button [matMenuTriggerFor]="options">Options</button>
 			<button tabindex="-1" class="menu-button" [ngClass]="{'selected': selectedMenu === 'help'}" mat-button [matMenuTriggerFor]="help">Help</button>
 		</div>
 		<div fxLayout fxLayoutAlign="end center">
@@ -23,12 +24,12 @@
 	</mat-menu>
 	<mat-menu #reports="matMenu">
 		<button mat-menu-item (click)="navigateTo('reports', 'reports')" *ngIf="isAuthorized(8)">Weightment Reports</button>
-		<button mat-menu-item (click)="navigateTo('reports/audit-log', 'reports')" *ngIf="isAuthorized(8)">Audit Log</button>
+		<!--<button mat-menu-item (click)="navigateTo('reports/audit-log', 'reports')" *ngIf="isAuthorized(8)">Audit Log</button>-->
 		<button mat-menu-item (click)="navigateTo('reports/custom-reports', 'reports')" *ngIf="isAuthorized(8)">Custom Reports</button>
 		<button mat-menu-item (click)="navigateTo('reports/daily-collection-report', 'reports')" *ngIf="isAuthorized(8)">Daily Operator Collection Report</button>
 		<button mat-menu-item (click)="navigateTo('reports/zero-check-report', 'reports')" *ngIf="isAuthorized(8)">Zero Check Report</button>
 		<button mat-menu-item (click)="navigateTo('reports/notification-log', 'reports')" *ngIf="isAuthorized(8)">Notification Log</button>
-		<button mat-menu-item (click)="navigateTo('reports/theft-detection-report', 'reports')" *ngIf="isAuthorized(8)">Theft Detection Report</button>
+		<!--<button mat-menu-item (click)="navigateTo('reports/theft-detection-report', 'reports')" *ngIf="isAuthorized(8)">Theft Detection Report</button>-->
 	</mat-menu>
 	<mat-menu #administration="matMenu">
 		<button mat-menu-item (click)="navigateTo('admin')" *ngIf="isAuthorized(2)">Data Setup</button>
@@ -46,7 +47,7 @@
 	</mat-menu>
 	<mat-menu #options="matMenu">
 		<button mat-menu-item>Change Password</button>
-		<button mat-menu-item (click)="navigateTo('logout')">Logout</button>
+		<button mat-menu-item (click)="alertLogout()">Logout</button>
 	</mat-menu>
 	<mat-menu #help="matMenu">
 		<button mat-menu-item (click)="showInfoAlert()">About</button>

@@ -19,6 +19,7 @@ ipcMain.handle("send-email", async (event, args) => {
     appData.forEach(ele => {
       mData[ele['field']] = ele['mValue'];
     });
+    console.log(mData);
     var transportConfig = {
       host: mData['email_server'],
       port: mData['email_port'],
@@ -38,6 +39,8 @@ ipcMain.handle("send-email", async (event, args) => {
       testMode: false,
       ssl: true
     };
+
+    console.log(transportConfig);
 
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {

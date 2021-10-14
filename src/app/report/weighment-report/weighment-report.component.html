@@ -1,7 +1,12 @@
-<div fxLayout="column" fxLayoutGap="12px">
-  <mat-radio-group fxLayout fxLayoutGap="32px" [(ngModel)]="reportType">
+<div class="full-width" fxLayout fxLayoutAlign="space-between center">
+  <div class="box-title">Report Setup</div>
+  <app-help [tag]="'TICKET_WEIGHMENT'"></app-help>
+</div>
+
+<div class="inner-container" fxLayout="column" fxLayoutGap="12px">
+  <mat-radio-group fxLayout fxLayoutGap="12px" [(ngModel)]="reportType">
     <mat-radio-button value="all">All</mat-radio-button>
-    <mat-radio-button tabindex="-1" value="inbound">Inbound(Purchase)</mat-radio-button>
+    <mat-radio-button tabindex="-1" value="inbound">Inbound</mat-radio-button>
     <mat-radio-button tabindex="-1" value="outbound_export">Outbound(Export)</mat-radio-button>
     <mat-radio-button tabindex="-1" value="outbound_domestic">Outbound(Domestic)</mat-radio-button>
     <mat-radio-button tabindex="-1" value="outbound_subcontract">Outbound(Sub-contract Dispatch)</mat-radio-button>
@@ -80,9 +85,15 @@
       </mat-select>
     </mat-form-field>
     <div fxLayout fxLayoutGap="16px">
-      <button mat-raised-button color="primary" (click)="search()"><mat-icon>search</mat-icon> Search</button>
-      <button mat-raised-button color="primary" (click)="reset()"><mat-icon>power_off</mat-icon> Reset</button>
-      <button mat-raised-button color="primary" (click)="export()"><mat-icon>file_download</mat-icon> Export</button>
+      <button mat-icon-button (click)="search()" #tooltip="matTooltip"
+          matTooltip="Search"
+          matTooltipPosition="below"><mat-icon>search</mat-icon></button>
+      <button mat-icon-button (click)="reset()" #tooltip="matTooltip"
+          matTooltip="Reset form"
+          matTooltipPosition="below"><mat-icon>refresh</mat-icon></button>
+      <button mat-icon-button (click)="export()" #tooltip="matTooltip"
+          matTooltip="Export to excel"
+          matTooltipPosition="below"><mat-icon>file_download</mat-icon></button>
     </div>
   </form>
   <div class="table-container">
@@ -103,7 +114,17 @@
         <ng-container matColumnDef="vehicleNo">
           <th mat-header-cell *matHeaderCellDef> Truck No </th>
           <td mat-cell *matCellDef="let element"
-              (contextmenu)="copyToClipboard(element.vehicleNo, 'Vehicle number copied')"> {{element.vehicleNo}} </td>
+              (contextmenu)="copyToClipboard(element.vehicleNo, 'Vehicle number copied')">
+            {{element.vehicleNo}}
+          </td>
+          <td mat-footer-cell *matFooterCellDef>Total: </td>
+        </ng-container>
+
+        <ng-container matColumnDef="weighmentType">
+          <th mat-header-cell *matHeaderCellDef>Type</th>
+          <td mat-cell *matCellDef="let element">
+            {{element.weighmentType}}
+          </td>
           <td mat-footer-cell *matFooterCellDef>Total: </td>
         </ng-container>
 

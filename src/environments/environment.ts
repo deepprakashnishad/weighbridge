@@ -7,7 +7,8 @@ export const environment = {
   licenseurl: "https://aesm-license-manager.herokuapp.com",
   appName: "accubridge",
   appDisplayName: "Accubridge",
-  firstAutoRefresh: true
+  firstAutoRefresh: true,
+  version: "1.0.0"
 };
 
 

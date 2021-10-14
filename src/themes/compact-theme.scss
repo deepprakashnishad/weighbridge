@@ -21,6 +21,14 @@ mat-icon {
   font-size: 24px;
 }
 
+button.mat-raised-button.mat-primary {
+  background-color: #9be14b;
+  color: dimgrey;
+  border-radius: 25px;
+  padding: 2px 40px;
+  min-height: 0px;
+}
+
 button.mat-raised-button span.mat-button-wrapper mat-icon{
     color: white;
 }

@@ -33,6 +33,7 @@ export class InitialSetupComponent implements OnInit {
     this.mForm = this.fb.group({
       inputDbName: ['', Validators.required],
       inputServer: ['', Validators.required],
+      inputPort: ['1433', Validators.required],
       inputUsername: ['', Validators.required],
       inputPassword: ['', Validators.required]
     });
@@ -42,6 +43,7 @@ export class InitialSetupComponent implements OnInit {
       this.dbName = result['database'];
       this.username = result['username'];
       this.password = result['password'];
+      this.port = result['port'] ? result['port']:1433;
     });
 
     this.licenseService.getLicenseDetails().then(async (result) => {
@@ -82,6 +84,7 @@ export class InitialSetupComponent implements OnInit {
       "database": this.dbName,
       "username": this.username,
       "password": this.password,
+      "port": this.port
     }]).then(res => {
       if (res) {
         this.notifier.notify("success", "Save successful");

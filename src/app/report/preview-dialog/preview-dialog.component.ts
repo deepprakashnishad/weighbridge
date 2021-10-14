@@ -16,7 +16,7 @@ export class PreviewDialogComponent implements OnInit {
 
   fontSize: number = 12;
   htmlContent: string;
-  rawText: string;
+  rawTextArray: Array<string> = [];
   printers: Array<Printer> = [];
   selectedPrinter: Printer;
   printingType: string = "DOT-MATRIX";
@@ -36,8 +36,8 @@ export class PreviewDialogComponent implements OnInit {
       this.fontSize = data['fontSize'];
     }
 
-    if (data['rawText']) {
-      this.rawText = data['rawText'];
+    if (data['rawTextArray']) {
+      this.rawTextArray = data['rawTextArray'];
     }
 
     if (data['title']) {
@@ -81,8 +81,19 @@ export class PreviewDialogComponent implements OnInit {
         this.htmlContent, `${filename}`
       ).then(result => {});
     } else {
-      this.myIPCService.invokeIPC("cmdline-print-ipc", this.selectedPrinter, this.rawText? this.rawText: '');
+      this.myIPCService.invokeIPC("printer-ipc", "print-file", "start /min notepad /P <filename>", this.rawTextArray);
+      //this.myIPCService.invokeIPC("write-print-file", this.selectedPrinter, this.rawTextArray);
+      //this.rawTextArray.forEach(async (cmd) => {
+      //  await this.executePrinting(cmd);
+      //});
     }
+  }
+
+  async executePrinting(cmd) {
+    //console.log("Outside delay" + cmd);
+    //setTimeout(function () { console.log(cmd) }, 3000);
+    
+    await this.myIPCService.invokeIPC("cmdline-print-ipc", this.selectedPrinter, cmd ? cmd : '');
   }
 
   selectedPrinterUpdated() {

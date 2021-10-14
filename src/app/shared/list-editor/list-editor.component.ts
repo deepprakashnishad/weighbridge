@@ -28,6 +28,8 @@ export class ListEditorComponent implements OnInit {
   filteredOptions: Observable<any[]>;
   fileName = 'report.xlsx';
 
+  @Output() listModified: EventEmitter<Array<any>> = new EventEmitter();
+
   constructor(
     private dialogRef: MatDialogRef<ListEditorComponent>,
     private dbService: MyDbService,
@@ -97,12 +99,11 @@ export class ListEditorComponent implements OnInit {
       return;
     }
     if (this.selectedItem.id) {
-      await this.dbService.executeSyncDBStmt("UPDATE", QueryList.UPDATE_SEARCH_FIELD_VALUE
+      var result = await this.dbService.executeSyncDBStmt("UPDATE", QueryList.UPDATE_SEARCH_FIELD_VALUE
         .replace("{id}", this.selectedItem.id)
-        .replace("{mValue}", this.selectedItem.mValue).toUpperCase()
-        .replace("{code}", this.selectedItem.code).toUpperCase()
+        .replace("{mValue}", this.selectedItem.mValue.toUpperCase())
+        .replace("{code}", this.selectedItem.code.toUpperCase())
       );
-      this.selectedItem = {};
     } else {
       var result = await this.dbService.executeInsertAutoId("search_field_value", "id", QueryList.INSERT_SEARCH_FIELD_VALUE
         .replace("{search_field_id}", this.fieldId.toString())
@@ -111,8 +112,8 @@ export class ListEditorComponent implements OnInit {
       );
       this.selectedItem.id = result['newId'];
       this.items.push(this.selectedItem);
-      this.selectedItem = {};
     }
+    this.selectedItem = {};
     this.notifier.notify("success", "Code list updated successfully");
   }
 
@@ -120,11 +121,12 @@ export class ListEditorComponent implements OnInit {
     var result = await this.dbService.executeSyncDBStmt("DELETE", QueryList.DELETE_SEARCH_FIELD_VALUE_BY_ID.replace("{id}", item.id.toString()))
     if (result) {
       this.items.splice(index, 1);
+      this.listModified.emit(this.items);
     }
   }
 
   cancel() {
-    this.dialogRef.close();
+    this.dialogRef.close({ items: this.items });
   }
 
   editItem(item, index) {

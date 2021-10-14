@@ -1,13 +1,14 @@
 
 	<mat-card>
-		<mat-card-title>
-			{{title}}
+		<mat-card-title fxLayout fxLayoutAlign="space-between center">
+			<div>{{title}}</div>
+			<div><button mat-icon-button (click)="cancel()"><mat-icon>close</mat-icon></button></div>
 		</mat-card-title>
 		<mat-card-header>
 			<form fxLayout fxLayoutGap="16px">
 				<mat-form-field appearance="outline">
 					<mat-label>Code</mat-label>
-					<input matInput
+					<input matInput appCapitalize
 								 placeholder="Code"
 								 [disabled]="selectedItem.id"
 								 [(ngModel)]="selectedItem.code"
@@ -17,7 +18,7 @@
 				</mat-form-field>
 				<mat-form-field appearance="outline">
 					<mat-label>{{fieldText}}</mat-label>
-					<input matInput
+					<input matInput appCapitalize
 								 [placeholder]="fieldText"
 								 [(ngModel)]="selectedItem.mValue"
 								 name="cntlName"

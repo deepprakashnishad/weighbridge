@@ -1,3 +1,12 @@
+<div class="inner-container">
+  <div class="full-width" fxLayout fxLayoutAlign="space-between center">
+    <div class="box-title">Truck Weighment</div>
+    <div fxLayout fxLayoutGap="16px" fxLayoutAlign="center center">
+      <app-help [tag]="'TRUCK_WEIGHMENT_DATAENTRY'"></app-help>
+      <h4>Date - {{currDate.getDate()}} / {{currDate.getMonth()}} / {{currDate.getFullYear()}}</h4>
+    </div>
+    
+  </div>
 <div class="container" [ngClass]="{'white': weighment.weighmentType === 'others', 'red': weighment.weighmentType === 'inbound', 'green' : weighment.weighmentType.indexOf('outbound')>-1}" fxLayout="column" fxLayoutGap="4px">
   <div fxLayout="column" fxLayoutGap="8px">
     <div fxLayout fxLayoutAlign="space-between center">
@@ -8,7 +17,7 @@
         <mat-radio-button tabindex="-1" value="outbound_subcontract">Outbound(Sub-contract Dispatch)</mat-radio-button>
         <mat-radio-button tabindex="-1" value="others">Others</mat-radio-button>
       </mat-radio-group>
-      <h3>Date - {{currDate.getDate()}} / {{currDate.getMonth()}} / {{currDate.getFullYear()}}</h3>
+      
     </div>
 
     <div fxLayout fxLayoutAlign="start start" fxLayoutGap="16px">
@@ -17,7 +26,7 @@
           <mat-label>Vehicle No</mat-label>
           <input matInput #vehicleCntl [(ngModel)]="weighment.vehicleNo" name="cntlRequestId"
                  (keyup.enter)="parseQRString(weighment.vehicleNo)"
-                  (contextmenu)="copyToClipboard(weighment.vehicleNo, 'Vehicle number copied')"
+                  (contextmenu)="paste($event)"
                  (blur)="parseQRString(weighment.vehicleNo)" tabindex="0" placeholder="Vehicle No." />
           <button tabindex="-1" mat-icon-button matSuffix color="primary" (click)="openSearchDialog()"><mat-icon>open_in_new</mat-icon></button>
         </mat-form-field>
@@ -102,4 +111,6 @@
     </div>
   </div>
   <app-weighment-details [weighmentDetails]="weighment.weighmentDetails"></app-weighment-details>
+</div>
+
 </div>
