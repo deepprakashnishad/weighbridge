@@ -1,5 +1,4 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
-const { electron } = require('process');
 const os = require("os");
 const url = require('url');
 const path = require('path');

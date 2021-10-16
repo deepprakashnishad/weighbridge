@@ -1,13 +1,20 @@
-const { ipcMain } = require('electron');
+const { ipcMain, app } = require('electron');
 const fs = require('fs');
 const bootstrapData = require("./bootstrap.js");
 const log = require('electron-log');
 log.transports.file.level = 'info';
 log.transports.file.file = __dirname + 'file-log.log';
 
+var env_filepath = app.getPath('userData') +"\\" + bootstrapData.mConstants.appName;
+
 ipcMain.handle("saveEnvironmentVars", async (event, arg) => {
   try {
-    fs.writeFileSync(bootstrapData.mConstants.envFilename, JSON.stringify(arg[0]), 'utf-8');
+    fs.mkdir(env_filepath, { recursive: true }, function (err) {
+      if (err) return cb(err);
+
+      fs.writeFileSync(env_filepath + "\\" + bootstrapData.mConstants.envFilename, JSON.stringify(arg[0]), 'utf-8');
+    });
+    
     return true;
   }
   catch (e) {
@@ -19,10 +26,10 @@ ipcMain.handle("saveEnvironmentVars", async (event, arg) => {
 ipcMain.handle("removeSingleEntry", async (event, arg) => {
   try {
     if (arg[0]) {
-      var data = fs.readFileSync(bootstrapData.mConstants.envFilename, 'utf-8');
+      var data = fs.readFileSync(env_filepath + "\\" + bootstrapData.mConstants.envFilename, 'utf-8');
       data = JSON.parse(data);
       delete data[arg[0]];
-      fs.writeFileSync(bootstrapData.mConstants.envFilename, JSON.stringify(data), 'utf-8');
+      fs.writeFileSync(env_filepath + "\\" + bootstrapData.mConstants.envFilename, JSON.stringify(data), 'utf-8');
       return true;
     } else {
       return false;
@@ -37,10 +44,19 @@ ipcMain.handle("removeSingleEntry", async (event, arg) => {
 ipcMain.handle("saveSingleEnvVar", async (event, arg) => {
   try {
     if (arg[0] && arg[1]) {
-      var data = fs.readFileSync(bootstrapData.mConstants.envFilename, 'utf-8');
-      data = JSON.parse(data);
+      try {
+        var data = fs.readFileSync(env_filepath + "\\" + bootstrapData.mConstants.envFilename, 'utf-8');
+        data = JSON.parse(data);
+      } catch (e) {
+        var data = {};
+      }
       data[arg[0]] = arg[1];
-      fs.writeFileSync(bootstrapData.mConstants.envFilename, JSON.stringify(data), 'utf-8');
+      fs.mkdir(env_filepath, { recursive: true }, function (err) {
+        if (err) return cb(err);
+
+        fs.writeFileSync(env_filepath + "\\" + bootstrapData.mConstants.envFilename, JSON.stringify(data), 'utf-8');
+      });
+      
       return true;
     } else {
       return false;
@@ -54,7 +70,7 @@ ipcMain.handle("saveSingleEnvVar", async (event, arg) => {
 
 ipcMain.handle("loadEnvironmentVars", async (event, arg) => {
   try {
-    var data = fs.readFileSync(bootstrapData.mConstants.envFilename, 'utf-8');
+    var data = fs.readFileSync(env_filepath + "\\" + bootstrapData.mConstants.envFilename, 'utf-8');
     if (arg && arg[0]) {
       return JSON.parse(data)[arg[0]];
     } else {

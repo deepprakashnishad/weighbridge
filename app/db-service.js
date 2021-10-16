@@ -1,4 +1,4 @@
-const { ipcMain } = require('electron');
+const { app, ipcMain } = require('electron');
 const sql = require("mssql");
 const fs = require('fs');
 const bootstrapData = require("./bootstrap.js");
@@ -18,19 +18,23 @@ var sqlConfig = {
   }
 };
 
-var data = fs.readFileSync(bootstrapData.mConstants.envFilename, 'utf-8');
-global.env_data = JSON.parse(data);
+try {
+  var data = fs.readFileSync(app.getPath('userData') + "\\" + bootstrapData.mConstants.appName +"\\" + bootstrapData.mConstants.envFilename, 'utf-8');
+  global.env_data = JSON.parse(data);
 
-initializeSqlConfig(env_data);
+  initializeSqlConfig(env_data);
+} catch (e) {
+  console.log(e);
+}
+
 
 function initializeSqlConfig(dbDetails){
   try {
-    console.log(dbDetails);
-
     sqlConfig['user'] = dbDetails['database']['username'];
     sqlConfig['password'] = dbDetails['database']['password'];
     sqlConfig['database'] = dbDetails['database']['database'];
     sqlConfig['server'] = dbDetails['database']['server'];
+    sqlConfig['port'] = dbDetails['database']['port'];
 
     loadEnvDataFromDB();
   }
@@ -39,6 +43,10 @@ function initializeSqlConfig(dbDetails){
     return false;
   }
 }
+
+ipcMain.handle("initializeDBConfig", async (event, args) => {
+  initializeSqlConfig(args[0]);
+});
 
 ipcMain.on("executeDBQuery", (event, arg) => {
   sql.connect(sqlConfig).then(pool => {

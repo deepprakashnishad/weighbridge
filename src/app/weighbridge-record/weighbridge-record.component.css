@@ -26,9 +26,13 @@ tr.mat-row, tr.mat-header-row{
   cursor: pointer;
 }
 
-tr.mat-row.curr-weight-red{
-  background-color:indianred;
-}
+  tr.mat-row.pending-long {
+    background-color: #F44336;
+  }
+
+  tr.mat-row.pending-long td.mat-cell{
+    color: white;
+  }
 
 .mat-row:nth-child(even) {
   background-color: silver;
@@ -44,11 +48,11 @@ tr.mat-row.curr-weight-red{
 }
 
 .main-container{
-    max-height: 100%;
+    max-height: 98%;
     padding-top: 20px;
 }
 
-.pending-record-container{
+.mat-card{
     max-height: inherit;
     overflow-y: auto;
 }
@@ -69,10 +73,6 @@ tr.mat-row.curr-weight-red{
 .curr-weight-red {
   font-size: 60px;
   color: #ff2f2f;
-}
-
-.mat-list-item.pending-long {
-  background-color: #ff7e7e;
 }
 
 .record-item-left{

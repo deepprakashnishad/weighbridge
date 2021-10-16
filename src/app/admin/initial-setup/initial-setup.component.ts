@@ -87,6 +87,15 @@ export class InitialSetupComponent implements OnInit {
       "port": this.port
     }]).then(res => {
       if (res) {
+        this.ipcService.invokeIPC("initializeDBConfig", [{
+          "database": {
+            "server": this.server,
+            "database": this.dbName,
+            "username": this.username,
+            "password": this.password,
+            "port": this.port
+          }
+        }]);
         this.notifier.notify("success", "Save successful");
       } else {
         this.notifier.notify("error", "Failed to save");

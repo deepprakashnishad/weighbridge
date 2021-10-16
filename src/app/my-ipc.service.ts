@@ -9,7 +9,7 @@ export class MyIpcService {
 
   constructor(
     private _electronService: ElectronService,
-    private _sharedDataService: SharedDataService
+    private _sharedDataService: SharedDataService,
   ) {
     //Subscribe to database events from main process
     this._electronService.ipcRenderer.on('verification-weight-recieved', (event, arg) => {

@@ -26,6 +26,7 @@
                  aria-label="12hr format"
                  [ngxTimepicker]="pickerCollectionEmail"
                  name="cntlCollectionEmailTime"
+                 (ngModelChange)="updateDailyReportScheduler($event)"
                  [(ngModel)]="collectionEmailTime" readonly>
           <ngx-material-timepicker #pickerCollectionEmail [enableKeyboardInput]="true"></ngx-material-timepicker>
         </mat-form-field>
@@ -110,7 +111,7 @@
   </mat-card>
 </div>
 <div fxLayout fxLayoutAlign="space-between center" fxLayoutGap="32px">
-  <mat-radio-group [(ngModel)]="emailCondition" name="radioEmailOn"  fxLayout fxLayoutAlign="center center" fxLayoutGap="16px">
+  <mat-radio-group [(ngModel)]="emailCondition" name="radioEmailOn" fxLayout fxLayoutAlign="center center" fxLayoutGap="16px">
     <mat-radio-button value="emailOnEachWeight">Email on each weight</mat-radio-button>
     <mat-radio-button value="enableDailyEmail">Enable daily email</mat-radio-button>
   </mat-radio-group>

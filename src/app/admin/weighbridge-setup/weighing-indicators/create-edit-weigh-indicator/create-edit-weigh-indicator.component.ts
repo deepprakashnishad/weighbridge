@@ -109,7 +109,6 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
       return;
     }
     var currWeight = this.currWeighData;
-    console.log(currWeight);
     if (currWeight['timestamp'] > (new Date().getTime()) - 1000) {
       this.verification_weight = currWeight['weight'];
       if (this.prevWeight === currWeight['weight']) {
@@ -122,7 +121,9 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
         this.prevWeight = this.verification_weight;
       }
     } else if (this.selectedString.type !== "polling") {
-      this.verification_weight = "Err!";
+      if (!isNaN(parseInt(this.verification_weight))) {
+        this.verification_weight = "Not connected";
+      } 
     }
   }
 
@@ -169,7 +170,8 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
           this.notifier.notify("error", "Weigh indicator could not be updated");
         }
       } else if (result) {
-        this.ipcService.invokeIPC("weighIndicators")
+        //this.ipcService.invokeIPC("weighIndicators")
+        this.addIndicatorToLocalList();
         this.notifier.notify("success", "Weigh indicator updated successfully");
         this.ipcService.invokeIPC("close-verification-port").then(result => {
           console.log(result);
@@ -196,10 +198,7 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
         .replace(undefinedRegExp, "");
       var result = await this.dbService.executeInsertAutoId("weighindicator", "id", stmt);
       if (result['newId']) {
-        var envIndicatorStrings = [];
-        envIndicatorStrings = await this.ipcService.invokeIPC("loadEnvironmentVars", ["weighIndicators"]);
-        envIndicatorStrings.push(this.indicator.wiName);
-        this.ipcService.invokeIPC("saveSingleEnvVar", ["weighIndicators", envIndicatorStrings]);
+        this.addIndicatorToLocalList();
         this.notifier.notify("success", "Weigh indicator created successfully");
         this.ipcService.invokeIPC("close-verification-port").then(result => {
           console.log(result);
@@ -213,6 +212,18 @@ export class CreateEditWeighIndicatorComponent implements OnInit {
         }
       }
     }
+  }
+
+  async addIndicatorToLocalList() {
+    var envIndicatorStrings = [];
+    envIndicatorStrings = await this.ipcService.invokeIPC("loadEnvironmentVars", ["weighIndicators"]);
+    if (envIndicatorStrings === undefined) {
+      envIndicatorStrings = [];
+    }
+    if (envIndicatorStrings.indexOf(this.indicator.wiName) === -1) {
+      envIndicatorStrings.push(this.indicator.wiName);
+      this.ipcService.invokeIPC("saveSingleEnvVar", ["weighIndicators", envIndicatorStrings]);
+    }    
   }
 
   setAsDefault() {

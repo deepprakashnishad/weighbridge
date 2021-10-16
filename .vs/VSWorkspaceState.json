@@ -3,11 +3,8 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\navigation",
-    "\\src\\app\\report\\weighment-report",
-    "\\src\\environments",
-    "\\src\\themes"
+    "\\src\\app\\admin\\ticket-setup\\preview-dialog"
   ],
-  "SelectedNode": "\\src\\app\\navigation\\navigation.component.html",
+  "SelectedNode": "\\src\\app\\weighbridge-record",
   "PreviewInSolutionExplorer": false
 }

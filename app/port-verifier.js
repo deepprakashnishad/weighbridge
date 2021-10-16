@@ -38,7 +38,7 @@ ipcMain.handle("verify-port", async (event, ...args) => {
       });
     } catch (err) {
       log.error("Printing error - " + err);
-      win.webContents.send("verification-weight-recieved", [{ weight: "Err!", error: "Port initialization failed", timestamp: (new Date()).getTime() }]);
+      win.webContents.send("verification-weight-recieved", [{ weight: "Port initialization failed", error: "Port initialization failed", timestamp: (new Date()).getTime() }]);
     }
     try {
       tempPort.open();
@@ -63,13 +63,13 @@ ipcMain.handle("verify-port", async (event, ...args) => {
     } catch (err) {
       log.error("Error occured on port printing from catch block");
       log.error(err);
-      win.webContents.send("verification-weight-recieved", [{ weight: "Err!", error: "Port initialization failed", timestamp: (new Date()).getTime() }]);
+      win.webContents.send("verification-weight-recieved", [{ weight: "Port initialization failed", error: "Port initialization failed", timestamp: (new Date()).getTime() }]);
     }
     parser.on('data', onReadData);
     parser.on('error', function (err) {
       log.error("Error occured in parser");
       log.error(err);
-      win.webContents.send("verification-weight-recieved", [{ weight: "Err!", error: "Port initialization failed", timestamp: (new Date()).getTime() }]);
+      win.webContents.send("verification-weight-recieved", [{ weight: "Parser error", error: "Parser error", timestamp: (new Date()).getTime() }]);
     });
   }
 });
@@ -99,6 +99,8 @@ function onReadData(data) {
     data = data.toString();
     console.log(data);
     if (weighString === undefined) {
+      win.webContents.send("verification-weight-recieved", [{ weight: "Weighstring not set", error: "Weighstring not set", timestamp: (new Date()).getTime() }]);
+      return;
       return;
     }
 
@@ -107,6 +109,7 @@ function onReadData(data) {
     if (data.length !== weighString['totalChars']) {
       console.log("Data length - " + data.length);
       console.log("Expected chars - " + weighString['totalChars']);
+      win.webContents.send("verification-weight-recieved", [{ weight: "String length mismatch", error: "String length mismatch", timestamp: (new Date()).getTime() }]);
       return;
     }
 

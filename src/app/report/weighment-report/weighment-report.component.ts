@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MyDbService } from '../../my-db.service';
 import { QueryList } from '../../query-list';
@@ -8,7 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { PrinterService } from '../../admin/printer-setup/printer.service';
 import { PreviewDialogComponent } from '../preview-dialog/preview-dialog.component';
 import { PreviewDialogComponent as TicketPreviewComponent } from '../../admin/ticket-setup/preview-dialog/preview-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ReportService } from '../report.service';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { NotifierService } from 'angular-notifier';
@@ -267,5 +267,56 @@ export class WeighmentReportComponent implements OnInit {
   copyToClipboard(textToCopy, msg) {
     this.clipboard.copy(textToCopy);
     this.notifier.notify("success", msg);
+  }
+
+  statusUpdated(element, event) {
+    console.log(element);
+    console.log(event);
+  }
+
+  editStatus(row: any, index: number) {
+    const dialogRef = this.dialog.open(StatusDialogComponent, {
+      data: {rstNo: row.rstNo}
+    });
+
+    dialogRef.afterClosed().subscribe(async result => {
+      if (result) {
+        var isUpdated = this.dbService.executeSyncDBStmt("UPDATE",
+          QueryList.UPDATE_WEIGHMENT_STATUS
+            .replace("{status}", result)
+            .replace("{rstNo}", row['rstNo'])
+        );
+
+        if (isUpdated) {
+          var data = this.dataSource.data;
+          data[index]['status'] = result;
+          this.dataSource.data = data;
+          this.notifier.notify("success", "Status successfully updated");
+        } else {
+          this.notifier.notify("error", "Failed to update status");
+        }
+      }
+    });
+  }
+}
+
+@Component({
+  templateUrl: './status-dialog.component.html'
+})
+export class StatusDialogComponent {
+
+  dialogRef: MatDialogRef<StatusDialogComponent>;
+  newStatus: string;
+  title: string;
+
+  constructor(
+    private dialogReference: MatDialogRef<StatusDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) data: any,
+  ) {
+    this.dialogRef = dialogReference;
+
+    if (data.rstNo) {
+      this.title = `Update status(RST No-${data.rstNo})`
+    }
   }
 }

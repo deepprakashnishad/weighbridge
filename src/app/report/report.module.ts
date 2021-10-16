@@ -8,7 +8,7 @@ import { NotificationLogComponent } from './notification-log/notification-log.co
 import { TheftDetectionReportComponent } from './theft-detection-report/theft-detection-report.component';
 import { ZeroCheckReportComponent } from './zero-check-report/zero-check-report.component';
 import { ReportRoutingModule } from './report-routing.module';
-import { WeighmentReportComponent } from './weighment-report/weighment-report.component';
+import { StatusDialogComponent, WeighmentReportComponent } from './weighment-report/weighment-report.component';
 import { PreviewDialogComponent } from './preview-dialog/preview-dialog.component';
 
 @NgModule({
@@ -25,7 +25,8 @@ import { PreviewDialogComponent } from './preview-dialog/preview-dialog.componen
     TheftDetectionReportComponent,
     WeighmentReportComponent,
     ZeroCheckReportComponent,
-    PreviewDialogComponent
+    PreviewDialogComponent,
+    StatusDialogComponent
   ],
   exports: [
   ],

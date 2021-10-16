@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, NgZone, OnInit, Query, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { isString } from 'util';
 import { PrinterService } from '../admin/printer-setup/printer.service';
@@ -70,6 +70,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private dialog: MatDialog,
     private clipboard: Clipboard,
+    private router: Router,
   ) {
     this.route.queryParams.subscribe(params => {
       if (params['rstNo']) {
@@ -145,6 +146,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   }
 
   parseQRString(inputStr: string) {
+    console.log(inputStr);
     if (isString(inputStr) && (inputStr.match(/#/g) || []).length === 2) {
       var inputs = inputStr?.split("#");
       this.weighment.vehicleNo = inputs[1];
@@ -187,7 +189,6 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   }
 
   materialSelected(event) {
-    console.log(event);
     this.weighmentDetail.material = `${event.code}-${event.mValue}`;
   }
 
@@ -223,6 +224,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   }
 
   postWeighmentProcess() {
+    console.log("Starting post weighment processing");
     this.sharedDataService.updateData("WEIGHMENT_COMPLETED", true);
     this.notifier.notify("success", "Weighment saved successfully");
     if (sessionStorage.getItem("enable_zero_check")) {
@@ -246,7 +248,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     if (result['newId']) {
       this.getWeighmentDetails(this.weighment.rstNo).then(result => {
         this.weighment.weighmentDetails = result;
-        this.weighmentDetail = this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1];
+        this.weighmentDetail = Object.assign({}, this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1]);
       });
     } else {
       this.notifier.notify("error", "Failed to create weighment");
@@ -310,7 +312,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     var result = await this.dbService.executeInsertAutoId("weighment_details", "id", stmt);
     if (result['newId']) {
       this.weighment.weighmentDetails = await this.getWeighmentDetails(this.weighment.rstNo);
-      this.weighmentDetail = this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1];
+      this.weighmentDetail = Object.assign({}, this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1]);
       this.postWeighmentProcess();
       //this.notifier.notify("success", "Weighment created successfully");
     } else {
@@ -358,7 +360,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.reset();
+      this.reset(false);
     });
   }
 
@@ -418,8 +420,13 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       return false;
     }
 
-    if (this.weighment.weighmentType === "inbound" && !this.weighment.scrollNo) {
-      this.notifier.notify("error", "Scroll number is required for inbound");
+    if (this.weighment.weighmentType === "inbound" && (!this.weighment.scrollNo || !this.weighment.scrollDate)) {
+      this.notifier.notify("error", "Scroll number and scroll date are required for inbound");
+      return false;
+    }
+
+    if (this.weighment.weighmentType === "inbound" && this.weighment.scrollDate.length!==8) {
+      this.notifier.notify("error", "Scroll date must be of 8 digits");
       return false;
     }
 
@@ -467,11 +474,13 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     return true;
   }
 
-  reset() {
+  reset(isNavigationReqd) {
     this.weighment = new Weighment();
     this.weighmentDetail = new WeighmentDetail();
     this.transporter = null;
     this.isComplete = true;
+
+    this.router.navigate(["weighment"]);
   }
 
   capture() {
@@ -515,8 +524,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
         this.transporter = `${this.weighment.transporterCode}-${this.weighment.transporterName}`;
         this.weighment.weighmentDetails = WeighmentDetail.fromJSONList(await this.getWeighmentDetails(this.weighment.rstNo));
         if (this.weighment.weighmentDetails.length > 0) {
-          this.weighmentDetail = this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1];
-          console.log(this.weighmentDetail);
+          this.weighmentDetail = Object.assign(this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1]);
         }
       });
     }

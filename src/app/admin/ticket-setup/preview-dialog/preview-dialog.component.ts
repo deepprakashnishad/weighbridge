@@ -109,4 +109,15 @@ export class PreviewDialogComponent implements OnInit {
       }
     });
   }
+
+  selectedPrinterTypeUpdated() {
+    this.myIPCService.invokeIPC("saveSingleEnvVar", ["selectedPrinterType", this.printerType])
+      .then(result => {
+        if (result) {
+          this.notifier.notify("success", `Selected printer set to ${this.printerType}`);
+        } else {
+          this.notifier.notify("error", `Failed to update selected printer`);
+        }
+      });
+  }
 }

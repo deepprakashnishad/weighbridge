@@ -1,9 +1,16 @@
 import { Injectable } from "@angular/core";
+import { MyDbService } from "../my-db.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReportService {
+
+  constructor(
+    private dbService: MyDbService
+  ) {
+
+  }
 
   getHtmlReportText(dataRows: Array<any>, columns: Array<string>, fieldLength) {
     var mText = "";
@@ -145,7 +152,7 @@ export class ReportService {
     return mText;
   }
 
-  getMinLengthFieldArray(dataRows: Array<any>, columns: Array<string>, newHeaderColumns: Array<string>, maxFieldLength: number) {
+  private getMinLengthFieldArray(dataRows: Array<any>, columns: Array<string>, newHeaderColumns: Array<string>, maxFieldLength: number) {
     var defaultAddedLength = 1;
     var minLengthMap = {};
     var mText = "";
@@ -204,6 +211,164 @@ export class ReportService {
     return minLengthMap;
   }
 
+  async getWeighmentReport(sql) {
+    var result = await this.dbService.executeSyncDBStmt("SELECT", sql);
+    return this.processResultWithFinalWeight(result);
+  }
+
+  async getHTMLReport(sql) {
+    var reportData = await this.getWeighmentReport(sql);
+
+    var htmlContent = `<style>
+                          * {
+                          font-family: sans-serif;
+                      }
+
+                    /* table wrapper for continuous border */
+                    .table {
+                      width: 100%;
+                      border: solid 1px rgb(221, 221, 221);
+                      border-radius: 4px;
+                      overflow: auto;
+                      text-align: left;
+                    }
+
+                    /* table border */
+                    .table table {
+                      width: 100%;
+                      border-collapse: collapse; /* removes gap between cells */
+                    }
+
+                    .table thead th {
+                      font-weight: bold;
+                      background-color: rgb(245, 245, 245);
+                      border-bottom: solid 1px rgb(221, 221, 221);
+                    }
+
+                    /* cell padding */
+                    .table th, td, .header {
+                      padding: 10px;
+                      text-align: center;
+                    }
+
+                    /* add row hover */
+                    .table tr: hover td {
+                      background-color: rgb(245, 245, 245);
+                    }
+
+                    /* create 1px gap in table for line */
+                    .table tr.line-break td {
+                      position: relative;
+                      top: 1px;
+                    }
+
+                    /* create the line */
+                    .table tr.line-break td: after {
+                      content: '';
+                      position: absolute;
+                      top: -1px;
+                      left: 0px;
+                      height: 1px;
+                      width: 100%;
+                      background-color: rgb(235, 235, 235);
+                    }
+
+                    /* reduce width of line for first and last cells, by cell padding amount */
+                    .table tr.line-break td: first-child: after,
+                    .table tr.line-break td: last-child: after {
+                      width: calc(100% - 10px);
+                    }
+
+                    /* pull line on first cell to the right */
+                    .table tr.line-break td: first-child: after {
+                      right: 0px;
+                      left: auto;
+                    }
+
+                    </style>`;
+    htmlContent = `${htmlContent}<div class='header'>`;
+    if (sessionStorage.getItem("report_header_1")) {
+      htmlContent = `${htmlContent}<h3>${sessionStorage.getItem("report_header_1")}</h3>`;
+    }
+    if (sessionStorage.getItem("report_header_2")) {
+      htmlContent = `${htmlContent}<h3>${sessionStorage.getItem("report_header_2")}</h3>`;
+    }
+
+    if (sessionStorage.getItem("report_print_current_date")) {
+      var currentdate = new Date();
+      var currDate = `${currentdate.getMonth() + 1}/${currentdate.getDate() - 1}/${currentdate.getFullYear()}`;
+      htmlContent = `${htmlContent}<h3>${currDate}</h3>`;
+    }
+    htmlContent = `${htmlContent}</div>`;
+    htmlContent = `${htmlContent}<div class='table'>`;
+    htmlContent = `${htmlContent}<table>`;
+    htmlContent = `${htmlContent}<tr>
+                    <th>Rst No</th>
+                    <th>Vehicle No</th>
+                    <th>WT1</th>
+                    <th>Datetime1</th>
+                    <th>WT2</th>
+                    <th>Datetime2</th>
+                    <th>Net Weight</th>
+                    </tr>`;
+    console.log(reportData);
+    for (var data of reportData) {
+      htmlContent = `${htmlContent}<tr>\
+                    <td>${data['rstNo']}</td>\
+                    <td>${data['vehicleNo']}</td>\
+                    <td>${data['firstWeight']}</td>\
+                    <td>${data['firstWeightDatetime']}</td>\
+                    <td>${data['secondWeight']}</td>\
+                    <td>${data['secondWeightDatetime']}</td>\
+                    <td>${data['netWeight']}</td>\
+                    </tr>`
+    }
+    htmlContent = `${htmlContent}</table>`;
+    htmlContent = `${htmlContent}</div>`;
+    return htmlContent;
+  }
+
+  private processResultWithFinalWeight(dataRows) {
+    var finalResults = [];
+    for (var i = 0; i < dataRows.length;) {
+      var tempArr = [];
+      for (var j = i; j < dataRows.length;) {
+        if (tempArr.length === 0 || tempArr[0]?.rstNo === dataRows[j].rstNo) {
+          tempArr.push(dataRows[j]);
+          i++; j++;
+        } else {
+          break;
+        }
+      }
+      finalResults.push(this.getFormattedFinalWeighment(tempArr));
+    }
+    
+    return finalResults;
+  }
+
+  private getFormattedFinalWeighment(rows) {
+    var data = {};
+    data['rstNo'] = rows[0]['rstNo'];
+    data['vehicleNo'] = rows[0]['vehicleNo'];
+    data['reqId'] = rows[0]['reqId'];
+    data['weighmentType'] = rows[0]['weighmentType'];
+    data['gatePassNo'] = rows[0]['gatePassNo'];
+    data['poDetails'] = rows[0]['poDetails'];
+    data['transporterCode'] = rows[0]['transporterCode'];
+    data['transporterName'] = rows[0]['transporterName'];
+    data['status'] = rows[0]['status'];
+    data['createdAt'] = rows[0]['createdAt'];
+    data['scrollNo'] = rows[0]['scrollNo'];
+    data['scrollDate'] = rows[0]['scrollDate'];
+    data['syncFlag'] = rows[0]['syncFlag'];
+
+    data['firstWeight'] = rows[0]['firstWeight'];
+    data['firstWeightDatetime'] = rows[0]['firstWeightDatetime'];
+    data['secondWeight'] = rows[rows.length - 1]['secondWeight'];
+    data['firstWeightDatetime'] = rows[rows.length - 1]['secondWeightDatetime'];
+    data['netWeight'] = Math.abs(rows[0]['secondWeight'] - rows[rows.length - 1]['firstWeight']);
+    return data;
+  }
   //Deprecated against getRawTextForFilePrinting
   //getRawReportTextArray(dataRows: Array<any>, columns: Array<string>, fieldLength) {
   //  var resArray = [];

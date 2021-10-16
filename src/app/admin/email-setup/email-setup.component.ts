@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NotifierService } from 'angular-notifier';
 import { MyDbService } from '../../my-db.service';
 import { MyIpcService } from '../../my-ipc.service';
+import { EmailService } from './email.service';
 
 @Component({
   selector: 'app-email-setup',
@@ -31,7 +33,9 @@ export class EmailSetupComponent implements OnInit {
 
   constructor(
     private dbService: MyDbService,
-    private ipcService: MyIpcService
+    private ipcService: MyIpcService,
+    private emailService: EmailService,
+    private notifier: NotifierService
   ) { }
 
   ngOnInit() {
@@ -70,6 +74,14 @@ export class EmailSetupComponent implements OnInit {
     ]);
   }
 
+  updateDailyReportScheduler(event) {
+    if (this.enableCollectionEmail) {
+      this.ipcService.invokeIPC("schedule-job", ["daily-weighment-report", event]);
+    } else {
+      this.ipcService.invokeIPC("cancel-job", ["daily-weighment-report"]);
+    }
+  }
+
   addRecipientToList(){
     if(this.recipientEmailId && this.recipientEmailId.length>0){
       this.recipients.push({"email": this.recipientEmailId, "remarks": this.recipientRemarks});
@@ -87,16 +99,22 @@ export class EmailSetupComponent implements OnInit {
   sendTestEmail() {
     var mRecipients = this.recipients.map(ele => ele.email);
     var mRecipientsStr = mRecipients.join(";");
-    console.log(mRecipientsStr);
-    this.ipcService.invokeIPC(
-      "send-email",
-      [
-        "Hare Krishna. This is test content",
-        "Test mail from weighbridge",
-        mRecipientsStr
-      ]
-    ).then(result => {
-      console.log(result);
-    });
+    if (this.emailCondition === 'enableDailyEmail') {
+      this.emailService.emailDailyReport().then(result => {
+        this.notifier.notify("success", "Daily report email sent successfully.");
+      });
+    } else {
+      this.ipcService.invokeIPC(
+        "send-email",
+        [
+          "Hare Krishna. This is test content",
+          "Test mail from weighbridge",
+          mRecipientsStr
+        ]
+      ).then(result => {
+        console.log(result);
+      });
+    }
+    
   }
 }

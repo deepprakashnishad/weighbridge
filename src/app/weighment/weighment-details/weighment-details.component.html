@@ -9,7 +9,14 @@
       <!-- Name Column -->
       <ng-container matColumnDef="material">
         <th mat-header-cell *matHeaderCellDef> Material </th>
-        <!--<td mat-cell *matCellDef="let element"> {{element.material}} </td>-->
+        <td mat-cell *matCellDef="let element let i = index;">
+          <span *ngIf="i==dataSource?.data?.length-1">{{element.material}}</span>
+          <app-tag-selector [tagTypeId]="2"
+                            [selectedTag]="element.material"
+                            [title]="''" *ngIf="i<dataSource?.data?.length-1"
+                            (optionSelected)="materialSelected($event, i, element)">
+  </app-tag-selector>
+        </td>
       </ng-container>
 
       <!-- Weight Column -->

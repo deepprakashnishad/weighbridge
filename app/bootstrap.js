@@ -130,16 +130,16 @@ module.exports = Object.freeze({
     template_detail: [
       { id: 1, templateId: 1, field: "transporterCode", type: "ticket-field", displayName: 'Tranporter Code', row: null, col: null, isIncluded: 0, font: "R" },
       {
-        id: 2, templateId: 1, field: "transporterName", type: "ticket-field", displayName: 'Transporter Name', row: 6, col: 2, isIncluded: 1, font: "R"
+        id: 2, templateId: 1, field: "transporterName", type: "ticket-field", displayName: 'Transporter Name', row: 6, col: 5, isIncluded: 1, font: "R"
       },
       {
         id: 3, templateId: 1, field: "scrollNo", type: "ticket-field", displayName: 'Scroll No', row: null, col: null, isIncluded: 1, font: "R"
       },
       {
-        id: 4, templateId: 1, field: "rstNo", type: "ticket-field", displayName: 'Rst No', row: 4, col: 2, isIncluded: 1, font: "R"
+        id: 4, templateId: 1, field: "rstNo", type: "ticket-field", displayName: 'Rst No', row: 4, col: 5, isIncluded: 1, font: "R"
       },
       {
-        id: 5, templateId: 1, field: "vehicleNo", type: "ticket-field", displayName: 'Vehicle No', row: 5, col: 2, isIncluded: 1, font: "R"
+        id: 5, templateId: 1, field: "vehicleNo", type: "ticket-field", displayName: 'Vehicle No', row: 5, col: 5, isIncluded: 1, font: "R"
       },
       {
         id: 6, templateId: 1, field: "reqId", type: "ticket-field", displayName: 'Request Id', row: null, col: null, isIncluded: 1, font: "R"
@@ -163,7 +163,7 @@ module.exports = Object.freeze({
         id: 12, templateId: 1, field: "weighmentType", type: "ticket-field", displayName: 'Inbound / Outbound', row: null, col: null, isIncluded: 1, font: "R"
       },
       {
-        id: 13, templateId: 1, field: "weighmentDetails", type: "ticket-field", displayName: 'Weighment Details', row: 9, col: 2, isIncluded: 1, font: "R"
+        id: 13, templateId: 1, field: "weighmentDetails", type: "ticket-field", displayName: 'Weighment Details', row: 10, col: 5, isIncluded: 1, font: "R"
       },
       {
         id: 14, templateId: 1, field: "weighDetails_id", type: "ticket-field", displayName: 'Weighslip No', row: null, col: null, isIncluded: 1, font: "R"
@@ -172,30 +172,35 @@ module.exports = Object.freeze({
         id: 15, templateId: 1, field: "weighDetails_material", type: "ticket-field", displayName: 'Material', row: null, col: null, isIncluded: 1, font: "R"
       },
       {
-        id: 16, templateId: 1, field: "weighDetails_supplier", type: "ticket-field", displayName: 'Supplier', row: 5, col: 60, isIncluded: 1, font: "R"
+        id: 16, templateId: 1, field: "weighDetails_supplier", type: "ticket-field", displayName: 'Supplier', row: 5, col: 50, isIncluded: 1, font: "R"
       },
       {
-        id: 17, templateId: 1, field: "weighDetails_firstWeight", type: "ticket-field", displayName: 'Wt1(KG)', row: null, col: null, isIncluded: 1, font: "R"
+        id: 17, templateId: 1, field: "weighDetails_firstWeight", type: "ticket-field", displayName: 'Wt1(KG)', row: 7, col: 5, isIncluded: 1, font: "R"
       },
       {
-        id: 18, templateId: 1, field: "weighDetails_firstWeightDatetime", type: "ticket-field", displayName: 'In Date / Time', row: null, col: null, isIncluded: 1, font: "R"
+        id: 18, templateId: 1, field: "weighDetails_firstWeightDatetime", type: "ticket-field", displayName: 'In Date / Time', row: 7, col: 50, isIncluded: 1, font: "R"
       },
       {
-        id: 19, templateId: 1, field: "weighDetails_secondWeight", type: "ticket-field", displayName: 'Wt2(KG)', row: null, col: null, isIncluded: 1, font: "R"
+        id: 19, templateId: 1, field: "weighDetails_secondWeight", type: "ticket-field", displayName: 'Wt2(KG)', row: 8, col: 5, isIncluded: 1, font: "R"
       },
       {
-        id: 20, templateId: 1, field: "weighDetails_secondWeightDatetime", type: "ticket-field", displayName: 'Out Date / Time', row: null, col: null, isIncluded: 1, font: "R"
+        id: 20, templateId: 1, field: "weighDetails_secondWeightDatetime", type: "ticket-field", displayName: 'Out Date / Time', row: 8, col: 50, isIncluded: 1, font: "R"
       },
       {
-        id: 21, templateId: 1, field: "weighDetails_netWeight", type: "ticket-field", displayName: 'Net Wt(KG)', row: null, col: null, isIncluded: 1, font: "R"
+        id: 21, templateId: 1, field: "weighDetails_netWeight", type: "ticket-field", displayName: 'Net Wt(KG)', row: 9, col: 5, isIncluded: 1, font: "R"
       },
       {
-        id: 22, templateId: 1, field: null, type: "freetext", displayName: 'BHARAT FORGE LIMITED', row: 1, col: 20, isIncluded: 1, font:	"DB"
+        id: 22, templateId: 1, field: null, type: "freetext", displayName: 'BHARAT FORGE LIMITED', row: 1, col: 30, isIncluded: 1, font:	"DB"
       },
       {
-        id: 23, templateId: 1, field: null, type: "freetext", displayName: 'MUNDHWA, PUNE 411036', row: 2, col: 20, isIncluded: 1, font: "DB"
+        id: 23, templateId: 1, field: null, type: "freetext", displayName: 'MUNDHWA, PUNE 411036', row: 2, col: 30, isIncluded: 1, font: "DB"
       },
-      { id: 24, templateId: 1, field: null, type: "freetext", displayName: '---------------------------------------------------------------', row: 3, col: 1, isIncluded: 1, font: "R" }
+      {
+        id: 24, templateId: 1, field: null, type: "freetext", displayName: '---------------------------------------------------------------------------------------------------', row: 3, col: 1, isIncluded: 1, font: "R"
+      },
+      {
+        id: 24, templateId: 1, field: null, type: "freetext", displayName: '---------------------------------------------------------------------------------------------------', row: 11, col: 1, isIncluded: 1, font: "R"
+      }
     ],
     weighstring: [
       {

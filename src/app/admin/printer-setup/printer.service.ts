@@ -105,7 +105,10 @@ export class PrinterService {
   }
 
   private preparePreviewText(fields: Array<TicketField>,
-    weighment: Weighment, weighmentDetail: WeighmentDetail) {
+    weighment: Weighment, origWeighmentDetail: WeighmentDetail) {
+    var weighmentDetail = this.updateWeighmentDetail(
+      origWeighmentDetail, weighment.weighmentDetails
+    );
     var separator = ": ";
     var currX = 0, currY = 0;
     var mText = "<div style='font-family: monospace, monospace;'>";
@@ -210,7 +213,8 @@ export class PrinterService {
     //this.ipcService.invokeIPC("printer-ipc", "print", mText);
   }
 
-  private getPythonRawPrintText(fields: Array<TicketField>, weighment: Weighment, weighmentDetail: WeighmentDetail) {
+  private getPythonRawPrintText(fields: Array<TicketField>, weighment: Weighment, origWeighmentDetail: WeighmentDetail) {
+    var weighmentDetail: WeighmentDetail = this.updateWeighmentDetail(origWeighmentDetail, weighment.weighmentDetails);
     var mText = "python print.py ";
     var currX = 0, currY = 0;
 
@@ -419,5 +423,31 @@ export class PrinterService {
     currY = 0;
     return `<tr>${mText}</tr>`
     //return mText;
+  }
+
+  getTotalNetWeight(weighmentDetails: Array<WeighmentDetail>) {
+    var firstWeight = weighmentDetails[0].firstWeight;
+    var secondWeight, netWeight;
+    if (weighmentDetails[weighmentDetails.length - 1].secondWeight) {
+      secondWeight = weighmentDetails[weighmentDetails.length - 1].secondWeight;
+    } else if (weighmentDetails.length>1 && weighmentDetails[weighmentDetails.length - 2].secondWeight) {
+      secondWeight = weighmentDetails[weighmentDetails.length - 2].secondWeight;
+    }
+
+    if (secondWeight) {
+      netWeight = Math.abs(firstWeight - secondWeight);
+    }
+
+    return { "wt1": firstWeight, "wt2": secondWeight, "netWeight": netWeight };
+  }
+
+  updateWeighmentDetail(weighmentDetail: WeighmentDetail, weighmentDetails: Array<WeighmentDetail>) {
+    var clone = Object.assign({}, weighmentDetail);
+    var result = this.getTotalNetWeight(weighmentDetails);
+    clone.firstWeight = result['wt1'];
+    clone.secondWeight = result['wt2'];
+    clone.netWeight = result['netWeight'];
+
+    return clone;
   }
 }

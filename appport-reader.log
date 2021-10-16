@@ -6689,3 +6689,594 @@
 [2021-10-13 21:51:00.705] [error] Error occured on port
 [2021-10-13 21:54:33.727] [error] Error occured on port
 [2021-10-14 09:31:36.222] [error] Error occured on port
+[2021-10-14 09:39:54.841] [error] Error occured on port
+[2021-10-14 09:41:16.358] [error] Error occured on port
+[2021-10-14 09:42:17.419] [error] Error occured on port
+[2021-10-14 09:42:45.434] [error] Error occured on port
+[2021-10-14 09:49:41.646] [error] Error occured on port
+[2021-10-14 09:53:45.233] [error] Error occured on port
+[2021-10-14 09:54:13.841] [error] Error occured on port
+[2021-10-14 09:54:26.771] [error] Error occured on port
+[2021-10-14 09:56:37.400] [error] Error occured on port
+[2021-10-14 09:57:26.378] [error] Error occured on port
+[2021-10-14 09:58:47.786] [error] Error occured on port
+[2021-10-14 09:59:13.269] [error] Error occured on port
+[2021-10-14 09:59:30.808] [error] Error occured on port
+[2021-10-14 09:59:54.834] [error] Error occured on port
+[2021-10-14 10:00:27.564] [error] Error occured on port
+[2021-10-14 10:00:38.854] [error] Error occured on port
+[2021-10-14 10:00:57.649] [error] Error occured on port
+[2021-10-14 10:01:21.993] [error] Error occured on port
+[2021-10-14 10:01:32.872] [error] Error occured on port
+[2021-10-14 10:02:09.268] [error] Error occured on port
+[2021-10-14 10:14:00.961] [error] Error occured on port
+[2021-10-14 10:16:29.489] [error] Error occured on port
+[2021-10-14 10:28:08.892] [error] Error occured on port
+[2021-10-14 10:28:57.380] [error] Error occured on port
+[2021-10-14 10:29:20.293] [error] Error occured on port
+[2021-10-14 10:30:27.615] [error] Error occured on port
+[2021-10-14 10:30:57.492] [error] Error occured on port
+[2021-10-14 10:31:38.294] [error] Error occured on port
+[2021-10-14 10:33:13.169] [error] Error occured on port
+[2021-10-14 10:33:18.633] [error] Error occured on port
+[2021-10-14 10:34:59.488] [error] Error occured on port
+[2021-10-14 10:35:42.819] [error] Error occured on port
+[2021-10-14 10:36:49.148] [error] Error occured on port
+[2021-10-14 10:38:02.845] [error] Error occured on port
+[2021-10-14 10:43:31.456] [error] Error occured on port
+[2021-10-14 10:43:43.220] [error] Error occured on port
+[2021-10-14 10:50:11.069] [error] Error occured on port
+[2021-10-14 11:27:32.500] [error] Error occured on port
+[2021-10-14 11:27:37.708] [error] Error occured on port
+[2021-10-14 11:28:24.944] [error] Error occured on port
+[2021-10-14 11:29:29.829] [error] Error occured on port
+[2021-10-14 11:31:42.300] [error] Error occured on port
+[2021-10-14 11:35:39.737] [error] Error occured on port
+[2021-10-14 11:36:19.775] [error] Error occured on port
+[2021-10-14 11:36:34.324] [error] RequestError: Incorrect syntax near '}'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-10-14 11:36:40.934] [error] Error occured on port
+[2021-10-14 11:37:48.508] [error] RequestError: Incorrect syntax near '}'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-10-14 11:37:53.639] [error] Error occured on port
+[2021-10-14 11:39:20.306] [error] Error occured on port
+[2021-10-14 11:39:32.693] [error] Error occured on port
+[2021-10-14 11:40:22.363] [error] Error occured on port
+[2021-10-14 11:41:38.730] [error] Error occured on port
+[2021-10-14 11:43:32.220] [error] Error occured on port
+[2021-10-14 11:46:30.690] [error] Error occured on port
+[2021-10-14 11:47:09.143] [error] Error occured on port
+[2021-10-14 11:47:53.753] [error] Error occured on port
+[2021-10-14 11:48:58.028] [error] Error occured on port
+[2021-10-14 11:50:01.824] [error] Error occured on port
+[2021-10-14 11:50:44.701] [error] Error occured on port
+[2021-10-14 11:53:05.070] [error] Error occured on port
+[2021-10-14 11:53:32.322] [error] Error occured on port
+[2021-10-14 11:53:50.408] [error] Error occured on port
+[2021-10-14 11:56:44.102] [error] Error occured on port
+[2021-10-14 12:01:40.434] [error] Error occured on port
+[2021-10-14 12:02:17.429] [error] Error occured on port
+[2021-10-14 12:02:44.293] [error] Error occured on port
+[2021-10-14 13:30:44.560] [error] Error occured on port
+[2021-10-14 13:42:00.325] [error] Error occured on port
+[2021-10-14 13:42:28.097] [error] Error occured on port
+[2021-10-14 13:45:47.601] [error] Error occured on port
+[2021-10-14 13:46:12.381] [error] Error occured on port
+[2021-10-14 13:48:40.884] [info]  Weigh string data length - 10
+[2021-10-14 13:48:40.888] [info]  Expected Chars - 27
+[2021-10-14 13:53:34.978] [error] Error occured on port
+[2021-10-14 13:53:39.015] [error] Error occured on port
+[2021-10-14 13:53:39.114] [error] Error: Opening COM6: Access denied
+[2021-10-14 13:53:59.464] [error] Error occured on port
+[2021-10-14 13:53:59.471] [error] Error: Opening COM6: File not found
+[2021-10-14 13:54:08.227] [error] Error occured on port
+[2021-10-14 13:54:08.230] [error] Error: Opening COM6: File not found
+[2021-10-14 13:54:10.315] [error] Error occured on port
+[2021-10-14 13:54:10.321] [error] Error: Opening COM6: File not found
+[2021-10-14 13:54:13.426] [error] Error occured on port
+[2021-10-14 13:54:13.429] [error] Error: Opening COM6: File not found
+[2021-10-14 13:54:14.273] [error] Error occured on port
+[2021-10-14 13:54:14.279] [error] Error: Opening COM6: File not found
+[2021-10-14 13:54:14.868] [error] Error occured on port
+[2021-10-14 13:54:14.873] [error] Error: Opening COM6: File not found
+[2021-10-14 13:54:15.045] [error] Error occured on port
+[2021-10-14 13:54:15.048] [error] Error: Opening COM6: File not found
+[2021-10-14 13:54:25.941] [error] Error occured on port
+[2021-10-14 13:54:25.944] [error] Error: Opening COM6: Access denied
+[2021-10-14 13:54:27.412] [error] Error occured on port
+[2021-10-14 13:54:27.416] [error] Error: Opening COM6: Access denied
+[2021-10-14 13:54:28.303] [error] Error occured on port
+[2021-10-14 13:54:28.307] [error] Error: Opening COM6: Access denied
+[2021-10-14 13:54:29.219] [error] Error occured on port
+[2021-10-14 13:54:29.222] [error] Error: Opening COM6: Access denied
+[2021-10-14 13:56:08.685] [error] Error occured on port
+[2021-10-14 13:56:13.364] [error] Error occured on port
+[2021-10-14 13:56:13.367] [error] Error: Opening COM6: Access denied
+[2021-10-14 13:58:06.303] [error] Error occured on port
+[2021-10-14 13:58:06.309] [error] Error: Opening COM6: Access denied
+[2021-10-14 13:58:14.287] [error] Error occured on port
+[2021-10-14 13:58:14.311] [error] Error: Opening COM6: Access denied
+[2021-10-14 13:58:15.080] [error] Error occured on port
+[2021-10-14 13:58:15.084] [error] Error: Opening COM6: Access denied
+[2021-10-14 13:58:35.982] [error] Error occured on port
+[2021-10-14 13:58:35.993] [error] Error: Opening COM6: Access denied
+[2021-10-14 14:01:06.985] [error] Error occured on port
+[2021-10-14 14:01:06.989] [error] Error: Opening COM6: Access denied
+[2021-10-14 14:02:12.264] [error] Error occured on port
+[2021-10-14 14:02:12.269] [error] Error: Opening COM6: Access denied
+[2021-10-14 14:02:15.883] [error] Error occured on port
+[2021-10-14 14:02:15.890] [error] Error: Opening COM6: Access denied
+[2021-10-14 14:02:21.270] [error] Error occured on port
+[2021-10-14 14:02:21.273] [error] Error: Opening COM6: Access denied
+[2021-10-14 14:07:21.102] [error] Error occured on port
+[2021-10-14 14:07:21.104] [error] Error: Opening COM6: Access denied
+[2021-10-14 14:07:30.036] [error] Error occured on port
+[2021-10-14 14:07:30.042] [error] Error: Opening COM6: Access denied
+[2021-10-14 14:07:37.646] [error] Error occured on port
+[2021-10-14 14:07:37.654] [error] Error: Opening COM6: Access denied
+[2021-10-14 14:42:58.831] [error] Error: ENOENT: no such file or directory, open '/Accubridge/env.json'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:57:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-14 15:26:12.182] [error] Error: ENOENT: no such file or directory, open 'C:\Users\Admin\AppData\Roaming\Electron/Accubridge/env.json'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:59:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-14 15:26:54.348] [error] Error: ENOENT: no such file or directory, open 'C:\Users\Admin\AppData\Roaming\Electron/Accubridge/env.json'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:42:21
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-14 15:29:21.262] [error] Error: ENOENT: no such file or directory, open 'C:\Users\Admin\AppData\Roaming\Electron/Accubridge/env.json'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:42:21
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-14 15:30:04.878] [error] Error: ENOENT: no such file or directory, open 'C:\Users\Admin\AppData\Roaming\Electron/Accubridge/env.json'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:63:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-14 15:30:21.378] [error] Error: ENOENT: no such file or directory, open 'C:\Users\Admin\AppData\Roaming\Electron/Accubridge/env.json'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.writeFileSync (fs.js:1467:35)
+    at D:\electron\weighbridge\app\file-service.js:49:10
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-14 15:40:02.004] [error] Error: ENOENT: no such file or directory, open 'C:\Users\Admin\AppData\Roaming\Electron/Accubridge/env.json'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.writeFileSync (fs.js:1467:35)
+    at D:\electron\weighbridge\app\file-service.js:49:10
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-14 15:46:34.954] [error] Error: ENOENT: no such file or directory, open 'C:\Users\Admin\AppData\Roaming\Electron/Accubridge'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:73:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-14 15:48:26.632] [error] Error: ENOENT: no such file or directory, open 'C:\Users\Admin\AppData\Roaming\Electron\Accubridge'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:73:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-14 15:51:53.710] [error] Error: ENOENT: no such file or directory, open 'C:\Users\Admin\AppData\Roaming\Electron\Accubridge\Accubridge'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:73:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-14 15:53:02.840] [error] Error: EISDIR: illegal operation on a directory, read
+    at Object.readSync (fs.js:592:3)
+    at tryReadSync (fs.js:366:20)
+    at Object.readFileSync (fs.js:403:19)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:73:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-14 15:55:09.360] [error] Error: ENOENT: no such file or directory, open 'C:\Users\Admin\AppData\Roaming\Electron\Accubridge\env.json'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:73:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-14 15:58:22.940] [error] Error: ENOENT: no such file or directory, open 'C:\Users\Admin\AppData\Roaming\Electron\Accubridge\env.json'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:73:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-14 15:59:57.549] [error] Error: ENOENT: no such file or directory, open 'C:\Users\Admin\AppData\Roaming\Electron\Accubridge\env.json'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:73:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-14 16:01:23.202] [error] TypeError: The "config.server" property is required and must be of type string.
+    at new Connection (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:342:13)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:64:19
+    at new Promise (<anonymous>)
+    at ConnectionPool._poolCreate (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:12:12)
+    at ConnectionPool._connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:364:10)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:336:19
+    at new Promise (<anonymous>)
+    at ConnectionPool.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:335:12)
+    at Object.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\global-connection.js:59:27)
+    at D:\electron\weighbridge\app\db-service.js:63:26
+[2021-10-14 16:02:34.596] [error] TypeError: The "config.server" property is required and must be of type string.
+    at new Connection (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:342:13)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:64:19
+    at new Promise (<anonymous>)
+    at ConnectionPool._poolCreate (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:12:12)
+    at ConnectionPool._connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:364:10)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:336:19
+    at new Promise (<anonymous>)
+    at ConnectionPool.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:335:12)
+    at Object.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\global-connection.js:59:27)
+    at D:\electron\weighbridge\app\db-service.js:63:26
+[2021-10-14 16:06:00.340] [error] TypeError: The "config.server" property is required and must be of type string.
+    at new Connection (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:342:13)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:64:19
+    at new Promise (<anonymous>)
+    at ConnectionPool._poolCreate (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:12:12)
+    at ConnectionPool._connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:364:10)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:336:19
+    at new Promise (<anonymous>)
+    at ConnectionPool.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:335:12)
+    at Object.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\global-connection.js:59:27)
+    at D:\electron\weighbridge\app\db-service.js:64:26
+[2021-10-14 16:06:01.875] [error] Error: ENOENT: no such file or directory, open 'C:\Users\Admin\AppData\Roaming\Electron\Accubridge\env.json'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:73:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-14 16:06:24.168] [error] TypeError: The "config.server" property is required and must be of type string.
+    at new Connection (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:342:13)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:64:19
+    at new Promise (<anonymous>)
+    at ConnectionPool._poolCreate (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:12:12)
+    at ConnectionPool._connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:364:10)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:336:19
+    at new Promise (<anonymous>)
+    at ConnectionPool.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:335:12)
+    at Object.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\global-connection.js:59:27)
+    at D:\electron\weighbridge\app\db-service.js:64:26
+[2021-10-14 16:11:40.930] [error] TypeError: Cannot read property 'database' of undefined
+    at initializeSqlConfig (D:\electron\weighbridge\app\db-service.js:34:34)
+    at D:\electron\weighbridge\app\db-service.js:50:3
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-14 16:13:06.606] [error] Error: ENOENT: no such file or directory, open 'C:\Users\Admin\AppData\Roaming\Electron\Accubridge\env.json'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:73:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-14 16:13:46.288] [error] TypeError: The "config.server" property is required and must be of type string.
+    at new Connection (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:342:13)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:64:19
+    at new Promise (<anonymous>)
+    at ConnectionPool._poolCreate (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:12:12)
+    at ConnectionPool._connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:364:10)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:336:19
+    at new Promise (<anonymous>)
+    at ConnectionPool.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:335:12)
+    at Object.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\global-connection.js:59:27)
+    at D:\electron\weighbridge\app\db-service.js:63:26
+[2021-10-14 16:14:01.989] [error] TypeError: The "config.server" property is required and must be of type string.
+    at new Connection (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:342:13)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:64:19
+    at new Promise (<anonymous>)
+    at ConnectionPool._poolCreate (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:12:12)
+    at ConnectionPool._connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:364:10)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:336:19
+    at new Promise (<anonymous>)
+    at ConnectionPool.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:335:12)
+    at Object.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\global-connection.js:59:27)
+    at D:\electron\weighbridge\app\db-service.js:63:26
+[2021-10-14 16:14:03.608] [error] TypeError: The "config.server" property is required and must be of type string.
+    at new Connection (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:342:13)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:64:19
+    at new Promise (<anonymous>)
+    at ConnectionPool._poolCreate (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:12:12)
+    at ConnectionPool._connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:364:10)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:336:19
+    at new Promise (<anonymous>)
+    at ConnectionPool.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:335:12)
+    at Object.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\global-connection.js:59:27)
+    at D:\electron\weighbridge\app\db-service.js:63:26
+[2021-10-14 16:14:03.850] [error] TypeError: The "config.server" property is required and must be of type string.
+    at new Connection (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:342:13)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:64:19
+    at new Promise (<anonymous>)
+    at ConnectionPool._poolCreate (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:12:12)
+    at ConnectionPool._connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:364:10)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:336:19
+    at new Promise (<anonymous>)
+    at ConnectionPool.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:335:12)
+    at Object.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\global-connection.js:59:27)
+    at D:\electron\weighbridge\app\db-service.js:63:26
+[2021-10-14 16:14:03.953] [error] TypeError: The "config.server" property is required and must be of type string.
+    at new Connection (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:342:13)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:64:19
+    at new Promise (<anonymous>)
+    at ConnectionPool._poolCreate (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:12:12)
+    at ConnectionPool._connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:364:10)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:336:19
+    at new Promise (<anonymous>)
+    at ConnectionPool.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:335:12)
+    at Object.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\global-connection.js:59:27)
+    at D:\electron\weighbridge\app\db-service.js:63:26
+[2021-10-14 16:14:15.061] [error] TypeError: The "config.server" property is required and must be of type string.
+    at new Connection (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:342:13)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:64:19
+    at new Promise (<anonymous>)
+    at ConnectionPool._poolCreate (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:12:12)
+    at ConnectionPool._connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:364:10)
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:336:19
+    at new Promise (<anonymous>)
+    at ConnectionPool.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\base\connection-pool.js:335:12)
+    at Object.connect (D:\electron\weighbridge\app\node_modules\mssql\lib\global-connection.js:59:27)
+    at D:\electron\weighbridge\app\db-service.js:63:26
+[2021-10-14 16:16:46.702] [error] Error: ENOENT: no such file or directory, open 'C:\Users\Admin\AppData\Roaming\Electron\Accubridge\env.json'
+    at Object.openSync (fs.js:476:3)
+    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1846)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8872)
+    at D:\electron\weighbridge\app\file-service.js:73:19
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-14 21:12:49.140] [error] RequestError: Incorrect syntax near the keyword 'SELECT'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-10-15 09:47:16.624] [error] Error: Invalid login: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials k17sm3881192pfk.16 - gsmtp
+    at SMTPConnection._formatError (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:784:19)
+    at SMTPConnection._actionAUTHComplete (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:1536:34)
+    at SMTPConnection.<anonymous> (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:540:26)
+    at SMTPConnection._processResponse (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:947:20)
+    at SMTPConnection._onData (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:749:14)
+    at TLSSocket.SMTPConnection._onSocketData (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:189:44)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9)
+    at TLSSocket.Readable.push (internal/streams/readable.js:223:10)
+[2021-10-15 09:51:14.396] [error] ReferenceError: recipients is not defined
+    at mailSender (D:\electron\weighbridge\app\mailer.js:35:13)
+    at D:\electron\weighbridge\app\mailer.js:25:5
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-15 09:55:13.406] [error] ReferenceError: recipients is not defined
+    at mailSender (D:\electron\weighbridge\app\mailer.js:35:13)
+    at D:\electron\weighbridge\app\mailer.js:25:5
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-15 09:56:00.975] [info]  Email sent: 250 2.0.0 OK  1634271961 o29sm3511737pgd.16 - gsmtp
+[2021-10-15 10:34:57.547] [error] ReferenceError: app is not defined
+    at D:\electron\weighbridge\app\mailer.js:36:16
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-15 10:36:08.934] [error] ReferenceError: bootstrapData is not defined
+    at D:\electron\weighbridge\app\mailer.js:37:49
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-15 14:56:11.372] [info]  Email sent: 250 2.0.0 OK  1634289971 pc3sm4697195pjb.2 - gsmtp
+[2021-10-15 17:07:49.752] [error] TypeError: temp.split is not a function
+    at getCronTimeString (D:\electron\weighbridge\app\mailer.js:198:19)
+    at D:\electron\weighbridge\app\mailer.js:24:37
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-10-15 17:31:01.953] [error] Error: Invalid login: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials m28sm4720093pgl.9 - gsmtp
+    at SMTPConnection._formatError (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:784:19)
+    at SMTPConnection._actionAUTHComplete (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:1536:34)
+    at SMTPConnection.<anonymous> (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:540:26)
+    at SMTPConnection._processResponse (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:947:20)
+    at SMTPConnection._onData (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:749:14)
+    at TLSSocket.SMTPConnection._onSocketData (D:\electron\weighbridge\app\node_modules\nodemailer\lib\smtp-connection\index.js:189:44)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9)
+    at TLSSocket.Readable.push (internal/streams/readable.js:223:10)
+[2021-10-16 14:04:11.268] [error] Error occured on port
+[2021-10-16 14:04:11.301] [error] Error: Opening COM3: Access denied
+[2021-10-16 14:23:31.449] [error] Error occured on port
+[2021-10-16 14:32:23.427] [error] RequestError: String or binary data would be truncated in table 'weighbridge.dbo.weighment', column 'scrollDate'. Truncated value: '23422321'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-10-16 14:45:30.338] [error] Error occured on port
+[2021-10-16 15:55:32.815] [error] Error occured on port
+[2021-10-16 15:55:37.453] [error] Error occured on port
+[2021-10-16 16:23:36.506] [info]  Weigh string data length - 1
+[2021-10-16 16:23:36.515] [info]  Expected Chars - 9
+[2021-10-16 16:33:31.468] [error] Error occured on port
+[2021-10-16 16:34:30.311] [error] RequestError: Arithmetic overflow error for data type smallint, value = 56565.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-10-16 17:23:34.384] [error] Error occured on port
+[2021-10-16 17:24:05.420] [info]  Email sent: 250 2.0.0 OK  1634385246 i7sm7520578pfr.218 - gsmtp
+[2021-10-16 17:48:12.132] [error] Error occured on port
+[2021-10-16 17:55:30.941] [error] Error occured on port
+[2021-10-16 17:56:31.364] [error] Error occured on port
+[2021-10-16 17:59:29.974] [error] Error occured on port
+[2021-10-16 17:59:59.858] [error] Error occured on port
+[2021-10-16 18:02:07.120] [error] Error occured on port
+[2021-10-16 18:02:29.023] [error] Error occured on port
+[2021-10-16 18:02:56.010] [error] Error occured on port
+[2021-10-16 18:03:08.807] [error] Error occured on port
+[2021-10-16 18:03:31.497] [error] Error occured on port
+[2021-10-16 18:03:54.964] [error] Error occured on port
+[2021-10-16 18:04:23.249] [error] Error occured on port
+[2021-10-16 18:04:47.453] [error] Error occured on port
+[2021-10-16 18:05:54.439] [error] Error occured on port
+[2021-10-16 18:06:18.866] [error] Error occured on port
+[2021-10-16 18:10:11.392] [error] Error occured on port
+[2021-10-16 18:10:32.067] [error] Error occured on port
+[2021-10-16 18:12:07.481] [error] Error occured on port
+[2021-10-16 18:30:39.800] [error] Error occured on port
+[2021-10-16 18:31:32.190] [error] Error occured on port
+[2021-10-16 18:32:44.278] [error] Error occured on port
+[2021-10-16 18:33:36.720] [error] Error occured on port
+[2021-10-16 18:33:58.221] [error] Error occured on port
+[2021-10-16 18:59:38.445] [error] ConnectionError: Failed to connect to 192.168.1.5:1433 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2021-10-16 18:59:38.485] [error] ConnectionError: Failed to connect to 192.168.1.5:1433 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2021-10-16 18:59:53.712] [error] ConnectionError: Failed to connect to 192.168.1.5:1433 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2021-10-16 19:00:57.406] [error] ConnectionError: Failed to connect to ADMIN-PC\SQLEXPRESS in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2021-10-16 19:07:21.016] [error] ConnectionError: Failed to connect to ADMIN-PC\SQLEXPRESS in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2021-10-16 19:08:21.286] [error] ConnectionError: Failed to connect to ADMIN-PC\SQLEXPRESS in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)

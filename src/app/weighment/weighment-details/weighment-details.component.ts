@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewChild, AfterViewInit } from "@angular/core";
 import { MatTable, MatTableDataSource } from "@angular/material/table";
+import { NotifierService } from "angular-notifier";
+import { MyDbService } from "../../my-db.service";
+import { QueryList } from "../../query-list";
 import { Weighment, WeighmentDetail } from "../weighment";
 
 @Component({
@@ -19,7 +22,10 @@ export class WeighmentDetailComponent implements OnInit, OnChanges, AfterViewIni
   @ViewChild("mtable", { static: false }) mtable: MatTable<any>;
 
 
-  constructor() {
+  constructor(
+    private dbService: MyDbService,
+    private notifier: NotifierService
+  ) {
     this.dataSource = new MatTableDataSource(this.weighmentDetails);
   }
 
@@ -40,5 +46,19 @@ export class WeighmentDetailComponent implements OnInit, OnChanges, AfterViewIni
 
   ngAfterViewInit() {
     this.mtable?.renderRows();
+  }
+
+  async materialSelected(event, index, row) {
+    var newMaterial = `${event.code}-${event.mValue}`;
+    var result = this.dbService.executeSyncDBStmt("UPDATE",
+      QueryList.UPDATE_WEIGHMENT_DETAIL
+        .replace("{values}", `material='${newMaterial}'`)
+        .replace("{id}", row['id'])
+    );
+    if (result) {
+      this.notifier.notify("success", `Material update successfully to ${newMaterial}`);
+    } else {
+      this.notifier.notify("error", `Material could not be updated. Try again`);
+    }
   }
 }

@@ -1,0 +1,13 @@
+<mat-card fxLayout="column" fxLayoutGap="16px">
+  <mat-card-title>{{title}}</mat-card-title>
+  <mat-card-content>
+    <mat-radio-group fxLayout fxLayoutGap="24px" aria-label="Select new status" [(ngModel)]="newStatus">
+      <mat-radio-button value="complete">Complete</mat-radio-button>
+      <mat-radio-button value="abort">Abort</mat-radio-button>
+    </mat-radio-group>
+  </mat-card-content>
+  <div fxLayout fxLayoutGap="12px">
+    <button mat-raised-button color="primary" (click)="dialogRef.close(newStatus)">Ok</button>
+    <button mat-raised-button color="accent" (click)="dialogRef.close()">Cancel</button>
+  </div>
+</mat-card>

@@ -9,15 +9,15 @@
 }
 
 .red {
-  background-color: #ffe7e7;
+  background-color: #ffe6e6;
 }
 
 .green {
-  background-color: #dfffdf;
+  background-color: #e1fbf0;
 }
 
-.white {
-  background-color: #ffffff;
+.blue {
+  background-color: #e0e9f9;
 }
 
 
@@ -85,6 +85,15 @@ button.mat-icon-button {
   display: table-row;
 }
 
-.inner-container{
+//.outer-container {
+//  border-radius: 15px !important;
+//  margin: 20px 20px 20px 20px;
+//  max-height: 80vh;
+//  overflow: no-display;
+//}
 
-}
+//.container {
+//  padding: 16px 16px 16px 16px;
+//  max-height: 78vh;
+//  overflow: auto;
+//}

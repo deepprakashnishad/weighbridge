@@ -1,5 +1,5 @@
 <div class="full-height main-container" fxLayout="column">
-  <mat-card>
+  <mat-card class="weight-container">
     <div class="box-title" fxLayout fxLayoutAlign="space-between center">
       <mat-select [(ngModel)]="selectedIndicator" (selectionChange)="selectedIndicatorUpdated()">
         <mat-option *ngFor="let indicator of weighIndicators" [value]="indicator">
@@ -42,7 +42,10 @@
         </tr>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns; let i=index;" (click)="navigateTo('weighment', row.rstNo)"></tr>
+        <tr mat-row
+            *matRowDef="let row; columns: displayedColumns; let i=index;"
+            (click)="navigateTo('weighment', row.rstNo)"
+            [class.pending-long] = "isPendingForLong(row)"></tr>
       </table>
       <!--<mat-list dense>
         <mat-list-item [class.pending-long] = "isPendingForLong(record)" *ngFor="let record of pendingRecords" (click)="navigateTo('weighment', record.rstNo)">
