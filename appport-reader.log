@@ -7280,3 +7280,77 @@
     at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
     at listOnTimeout (internal/timers.js:554:17)
     at processTimers (internal/timers.js:497:7)
+[2021-10-17 10:46:35.560] [error] ConnectionError: Failed to lookup instance on ADMIN-PC - getaddrinfo ENOTFOUND ADMIN-PC
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1089:16
+    at D:\electron\weighbridge\app\node_modules\tedious\lib\instance-lookup.js:116:20
+    at GetAddrInfoReqWrap.callback (D:\electron\weighbridge\app\node_modules\tedious\lib\sender.js:140:16)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (dns.js:75:17)
+[2021-10-17 10:47:06.080] [error] ConnectionError: Failed to lookup instance on ADMIN-PC - getaddrinfo ENOTFOUND ADMIN-PC
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1089:16
+    at D:\electron\weighbridge\app\node_modules\tedious\lib\instance-lookup.js:116:20
+    at GetAddrInfoReqWrap.callback (D:\electron\weighbridge\app\node_modules\tedious\lib\sender.js:140:16)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (dns.js:75:17)
+[2021-10-17 10:47:06.090] [error] ConnectionError: Failed to lookup instance on ADMIN-PC - getaddrinfo ENOTFOUND ADMIN-PC
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1089:16
+    at D:\electron\weighbridge\app\node_modules\tedious\lib\instance-lookup.js:116:20
+    at GetAddrInfoReqWrap.callback (D:\electron\weighbridge\app\node_modules\tedious\lib\sender.js:140:16)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (dns.js:75:17)
+[2021-10-17 10:47:40.247] [error] Error occured on port
+[2021-10-17 10:51:01.855] [info]  Weigh string data length - 3
+[2021-10-17 10:51:01.857] [info]  Expected Chars - 9
+[2021-10-17 11:15:34.768] [error] Error occured on port
+[2021-10-17 11:16:49.949] [error] Error occured on port
+[2021-10-17 11:19:02.228] [error] Error occured on port
+[2021-10-17 11:22:18.316] [error] Error occured on port
+[2021-10-17 11:23:51.626] [error] Error occured on port
+[2021-10-17 11:25:14.419] [error] Error occured on port
+[2021-10-17 11:26:00.389] [error] Error occured on port
+[2021-10-17 11:26:50.049] [error] Error occured on port
+[2021-10-17 11:27:01.413] [error] Error occured on port
+[2021-10-17 11:29:07.555] [error] Error occured on port
+[2021-10-17 11:29:46.184] [error] Error occured on port
+[2021-10-17 11:30:12.673] [error] Error occured on port
+[2021-10-17 11:30:29.179] [error] Error occured on port
+[2021-10-17 11:31:31.001] [error] Error occured on port
+[2021-10-17 11:31:47.903] [error] Error occured on port
+[2021-10-17 11:32:05.022] [error] Error occured on port
+[2021-10-17 11:32:28.602] [error] Error occured on port
+[2021-10-17 11:33:31.004] [error] Error occured on port
+[2021-10-17 11:33:49.611] [error] Error occured on port
+[2021-10-17 11:34:12.382] [error] Error occured on port
+[2021-10-17 16:17:30.417] [error] Error occured on port
+[2021-10-17 17:24:05.759] [info]  Email sent: 250 2.0.0 OK  1634471646 d14sm9895102pfr.123 - gsmtp
+[2021-10-17 18:40:57.119] [error] Error occured on port
+[2021-10-18 09:04:47.881] [error] Error occured on port
+[2021-10-18 09:05:55.249] [error] Error occured on port
+[2021-10-18 09:06:09.717] [error] Error occured on port
+[2021-10-18 09:06:31.973] [error] Error occured on port
+[2021-10-18 09:06:47.255] [error] Error occured on port
+[2021-10-18 09:08:17.696] [error] Error occured on port
+[2021-10-18 09:08:32.253] [error] Error occured on port
+[2021-10-18 09:08:50.388] [error] Error occured on port
+[2021-10-18 09:08:59.757] [error] Error occured on port
+[2021-10-18 09:09:13.588] [error] Error occured on port
+[2021-10-18 09:09:53.934] [error] Error occured on port
+[2021-10-18 09:10:10.271] [error] Error occured on port
+[2021-10-18 09:10:23.004] [error] Error occured on port
+[2021-10-18 09:10:36.932] [error] Error occured on port
+[2021-10-18 09:10:47.916] [error] Error occured on port
+[2021-10-18 09:11:17.617] [error] Error occured on port
+[2021-10-18 09:11:38.636] [error] Error occured on port
+[2021-10-18 09:11:56.648] [error] Error occured on port

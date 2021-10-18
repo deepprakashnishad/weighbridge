@@ -427,18 +427,20 @@ export class PrinterService {
 
   getTotalNetWeight(weighmentDetails: Array<WeighmentDetail>) {
     var firstWeight = weighmentDetails[0].firstWeight;
-    var secondWeight, netWeight;
+    var secondWeight, netWeight, secondWeightDatetime;
     if (weighmentDetails[weighmentDetails.length - 1].secondWeight) {
       secondWeight = weighmentDetails[weighmentDetails.length - 1].secondWeight;
+      secondWeightDatetime = weighmentDetails[weighmentDetails.length - 1].secondWeightDatetime;
     } else if (weighmentDetails.length>1 && weighmentDetails[weighmentDetails.length - 2].secondWeight) {
       secondWeight = weighmentDetails[weighmentDetails.length - 2].secondWeight;
+      secondWeightDatetime = weighmentDetails[weighmentDetails.length - 2].secondWeightDatetime;
     }
 
     if (secondWeight) {
       netWeight = Math.abs(firstWeight - secondWeight);
     }
 
-    return { "wt1": firstWeight, "wt2": secondWeight, "netWeight": netWeight };
+    return { "wt1": firstWeight, "wt2": secondWeight, "netWeight": netWeight, "wt2Datetime": secondWeightDatetime };
   }
 
   updateWeighmentDetail(weighmentDetail: WeighmentDetail, weighmentDetails: Array<WeighmentDetail>) {
@@ -447,7 +449,8 @@ export class PrinterService {
     clone.firstWeight = result['wt1'];
     clone.secondWeight = result['wt2'];
     clone.netWeight = result['netWeight'];
-
+    clone.firstWeightDatetime = weighmentDetails[0].firstWeightDatetime;
+    clone.secondWeightDatetime = result['wt2Datetime'];
     return clone;
   }
 }

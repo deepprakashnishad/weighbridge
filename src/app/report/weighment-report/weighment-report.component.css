@@ -21,16 +21,26 @@ button {
 }
 
 .container {
-  padding: 16px;
+  padding: 16px 16px 16px 16px;
+  border-radius: 15px !important;
+  background-color: #f7f7f7;
+  margin: 20px 20px 20px 20px;
+  overflow: auto;
   font-size: 14px;
+}
+
+.my-inner-container {
+  padding: 16px;
+  border-radius: 25px !important;
+  background-color: white;
+  margin: 20px 20px 20px 20px;
 }
 
 .table-container {
   width: inherit;
   overflow: auto;
-  max-height:45vh;
+  max-height: 40vh;
 }
-
 
 .mat-table {
   overflow-x: scroll;

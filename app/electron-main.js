@@ -10,8 +10,8 @@ require("./file-service.js");
 require("./port-verifier.js");
 require("./mailer.js");
 
-//const env = "PROD"; // DEV Or PROD
-const env = "DEV";
+const env = "PROD"; // DEV Or PROD
+//const env = "DEV";
 
 global.win;
 

@@ -3,7 +3,7 @@
   <app-help [tag]="'TICKET_WEIGHMENT'"></app-help>
 </div>
 
-<div class="inner-container" fxLayout="column" fxLayoutGap="12px">
+<div class="my-inner-container" fxLayout="column" fxLayoutGap="12px">
   <mat-radio-group fxLayout fxLayoutGap="12px" [(ngModel)]="reportType">
     <mat-radio-button value="all">All</mat-radio-button>
     <mat-radio-button tabindex="-1" value="inbound">Inbound</mat-radio-button>
@@ -61,8 +61,6 @@
     </mat-form-field>
     <app-tag-selector #cntlMaterial [tagTypeId]="2" [title]="'Material'" (optionSelected)="materialSelected($event)"></app-tag-selector>
     <app-tag-selector #cntlSupplier [tagTypeId]="1" [title]="'Supplier'" (optionSelected)="supplierSelected($event)"></app-tag-selector>
-  </div>
-  <form fxLayout fxLayoutGap="16px" fxLayoutAlign="start center">
     <mat-form-field appearance="fill">
       <mat-label>Status</mat-label>
       <mat-select [(ngModel)]="status" name="cntlSelectStatus">
@@ -71,12 +69,7 @@
         <mat-option [value]="'complete'">Completed</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Columns</mat-label>
-      <mat-select multiple [(ngModel)]="displayedColumns" name="cntlSelectDisplayedColumns">
-        <mat-option *ngFor="let column of columns" [value]="column">{{column}}</mat-option>
-      </mat-select>
-    </mat-form-field>
+
     <mat-form-field appearance="fill">
       <mat-label>Search by</mat-label>
       <mat-select [(ngModel)]="searchDateType" name="cntlSearchDateType">
@@ -84,18 +77,34 @@
         <mat-option value="secondWeightDatetime">Date completion</mat-option>
       </mat-select>
     </mat-form-field>
+  </div>
+    
+  <div fxLayout>
+    <mat-form-field appearance="fill">
+      <mat-label>Columns</mat-label>
+      <mat-select multiple [(ngModel)]="displayedColumns" name="cntlSelectDisplayedColumns">
+        <mat-option *ngFor="let column of columns" [value]="column">{{column}}</mat-option>
+      </mat-select>
+    </mat-form-field>
     <div fxLayout fxLayoutGap="16px">
       <button mat-icon-button (click)="search()" #tooltip="matTooltip"
-          matTooltip="Search"
-          matTooltipPosition="below"><mat-icon>search</mat-icon></button>
+              matTooltip="Search"
+              matTooltipPosition="below">
+        <mat-icon>search</mat-icon>
+      </button>
       <button mat-icon-button (click)="reset()" #tooltip="matTooltip"
-          matTooltip="Reset form"
-          matTooltipPosition="below"><mat-icon>refresh</mat-icon></button>
+              matTooltip="Reset form"
+              matTooltipPosition="below">
+        <mat-icon>refresh</mat-icon>
+      </button>
       <button mat-icon-button (click)="export()" #tooltip="matTooltip"
-          matTooltip="Export to excel"
-          matTooltipPosition="below"><mat-icon>file_download</mat-icon></button>
+              matTooltip="Export to excel"
+              matTooltipPosition="below">
+        <mat-icon>file_download</mat-icon>
+      </button>
     </div>
-  </form>
+  </div>
+ 
   <div class="table-container">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" id="reports-table">
       <tr>
@@ -226,8 +235,8 @@
           <td mat-cell *matCellDef="let element; let i=index">
             <mat-icon class="pointer" (click)="previewTicket(element)">print</mat-icon>
             <mat-icon class="pointer" *ngIf="element.status==='pending'" (click)="editStatus(element, i)" #tooltip="matTooltip"
-            matTooltip="Update status"
-            matTooltipPosition="below">edit</mat-icon>
+                      matTooltip="Update status"
+                      matTooltipPosition="below">edit</mat-icon>
           </td>
           <td mat-footer-cell *matFooterCellDef></td>
         </ng-container>

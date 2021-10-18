@@ -160,8 +160,6 @@ export class WeighmentReportComponent implements OnInit {
       isCriteriaAdded = true;
     }
 
-    console.log(stmt);
-
     this.data = await this.dbService.executeSyncDBStmt("SELECT", stmt);
     this.replaceUsersWithId();
     this.dataSource.data = this.data;
