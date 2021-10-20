@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app",
-    "\\src\\app\\admin\\ticket-setup\\preview-dialog"
+    "\\src\\app"
   ],
-  "SelectedNode": "\\src\\app\\weighbridge-record",
+  "SelectedNode": "\\print.py",
   "PreviewInSolutionExplorer": false
 }

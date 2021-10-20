@@ -101,7 +101,30 @@ export class PrinterService {
       fields = await this.fetchTemplateDetail(templates[0].id);
       fields = this.ticketService.getSortedFields(fields);
     }
+    
     return this.preparePreviewText(fields, weighment, weighmentDetail);
+  }
+
+  private trimDatetimeWeighmentDetails(weighmentDetails: Array<WeighmentDetail>) {
+    var tempArr: Array<WeighmentDetail> = [];
+
+    for (var i = 0; i < weighmentDetails.length; i++) {
+      var wd: WeighmentDetail = Object.assign({}, weighmentDetails[i]);
+      if (wd.firstWeightDatetime) {
+        var temp: string = wd.firstWeightDatetime;
+        temp = `${temp.substr(0, 10)} ${temp.substr(12, 4)}${temp.substr(-2)}`;
+        wd.firstWeightDatetime = temp;
+      }
+
+      if (wd.secondWeightDatetime) {
+        var temp: string = wd.secondWeightDatetime;
+        temp = `${temp.substr(0, 10)} ${temp.substr(12, 4)}${temp.substr(-2)}`;
+        wd.secondWeightDatetime = temp;
+      }
+      tempArr.push(wd);
+    }
+
+    return tempArr;
   }
 
   private preparePreviewText(fields: Array<TicketField>,
@@ -122,34 +145,15 @@ export class PrinterService {
       }
       if (field.row > currX) {
         mText = mText + "<br/>".repeat(field.row - currX);
-        currX = field.row;
+        currX = parseInt(field.row.toString());
         currY = 0;
       }
       if (field.col > currY) {
         mText = mText + "&nbsp;".repeat(field.col - currY);
-        currY = field.col;
+        currY = parseInt(field.col.toString());
       }
       if (field.type === "ticket-field" && (weighment[field.field] || weighmentDetail[field.field.substr("weighDetails_".length)])) {
         if (field.field !== "weighmentDetails") {
-          //mText = mText + "<table>";
-          //for (var j = i; j < fields.length;) {
-          //  mText = mText + "<tr>";
-          //  for (var k = j + 1; k < fields.length;) {
-          //    if (fields[k].row === fields[j].row) {
-          //      mText = mText + `<td>${fields[j].displayName}</td><td>${this.getData(weighment, weighmentDetail, fields[j])} </td>`;
-          //      k++; j++; i++;
-          //    } else {
-          //      mText = mText + `<td>${fields[j].displayName}</td><td>${this.getData(weighment, weighmentDetail, fields[j])} </td>`;
-          //      k++; j++; i++;
-          //      mText = mText + "</tr>";
-          //      break;
-          //    }
-          //  }
-          //  if (fields[j + 1].type !== "ticket-field" || fields[j + 1].field === "weighmentDetails") {
-          //    break;
-          //  }
-          //}
-          //mText = mText + "</table>";
           data = field.displayName + "&nbsp;".repeat(minLabelLength - field.displayName?.length) + separator;
           var valLength = 0;
           if (field.field.indexOf("weighDetails") > -1) {
@@ -157,7 +161,7 @@ export class PrinterService {
             valLength = weighmentDetail[field.field.substr("weighDetails_".length)].toString().length;
           } else {
             data = data + `${weighment[field.field]}`;
-            valLength = weighment[field.field].length;
+            valLength = weighment[field.field].toString().length;
           }
           if (field.font === "RB") {
             mText = mText + "<b>" + data + "</b>";
@@ -184,6 +188,7 @@ export class PrinterService {
         } else {
           mText = mText + field.displayName;
         }
+        currY = currY + field.displayName.length;
       }
     }
 
@@ -229,12 +234,12 @@ export class PrinterService {
 
       if (field.row > currX) {
         mText = mText + " newline ".repeat(field.row - currX);
-        currX = field.row;
+        currX = parseInt(field.row.toString());
         currY = 0;
       }
       if (field.col > currY && field.field !== "weighmentDetails") {
         mText = mText + " R \"" + " ".repeat(field.col - currY) + "\"";
-        currY = field.col;
+        currY = parseInt(field.col.toString());
       }
 
       if (field.type === "ticket-field") {
@@ -260,6 +265,7 @@ export class PrinterService {
         }
       } else if (field.type === "freetext") {
         mText = `${mText} ${field.font} \"${field.displayName}\"`;
+        currY = currY + field.displayName.length;
       }
     }
     return mText;
@@ -280,7 +286,7 @@ export class PrinterService {
 
   // Gets min length required by each column
   getMinLengthMap(weighmentDetails: Array<WeighmentDetail>, fields: Array<TicketField>) {
-    var defaultAddedLength = 5;
+    var defaultAddedLength = 2;
     var minLengthMap = {};
     for (var field of fields) {
       minLengthMap[field.field] = field.displayName.length;
@@ -307,12 +313,14 @@ export class PrinterService {
 
   prepareWeighmentTableText(weighmentDetails: Array<WeighmentDetail>, fields: Array<TicketField>, padding: number) {
     var mText = "";
-    var minLengthMap = this.getMinLengthMap(weighmentDetails, fields);
-    mText = mText + this.prepareWeighmentDetailsHeader(fields, minLengthMap, padding);
+    var newWeighmentDetails: Array<WeighmentDetail> = this.trimDatetimeWeighmentDetails(weighmentDetails);
+    var minLengthMap = this.getMinLengthMap(newWeighmentDetails, fields);
+    mText = mText + this.prepareWeighmentDetailsHeader(fields, minLengthMap, 0);
     //var currY = 0;
-    for (var i = 0; i < weighmentDetails.length; i++) {
-      var mText = `${mText} R \"${" ".repeat(padding)}\"`;
-      var wd = weighmentDetails[i];
+    console.log(newWeighmentDetails);
+    for (var i = 0; i < newWeighmentDetails.length; i++) {
+      //var mText = `${mText} R \"${" ".repeat(padding)}\"`;
+      var wd = newWeighmentDetails[i];
       for (var field of fields) {
         if (field.field==="sNo") {
           var temp = i+1;
@@ -331,7 +339,7 @@ export class PrinterService {
         //mText = `${mText} ${field.font} \"${wd[field.field] ? wd[field.field] : ""}`;
         //currY = currY + (wd[field.field] ? wd[field.field].toString().length : 0);
       }
-      mText = mText + " newline ";
+      mText = mText + " newline";
       //currY = 0;
     }
 
@@ -371,9 +379,9 @@ export class PrinterService {
     var mText = "";
     mText = mText + this.preparePreviewWeighmentDetailsHeader(fields);
     var currY = 0;
-
-    for (var i = 0; i < weighmentDetails.length; i++) {
-      var wd = weighmentDetails[i];
+    var newWeighmentDetails: Array<WeighmentDetail> = this.trimDatetimeWeighmentDetails(weighmentDetails);
+    for (var i = 0; i < newWeighmentDetails.length; i++) {
+      var wd = newWeighmentDetails[i];
       mText = `${mText}<tr>`;
       for (var field of fields) {
         //if (currY < field.col) {

@@ -7354,3 +7354,105 @@
 [2021-10-18 09:11:17.617] [error] Error occured on port
 [2021-10-18 09:11:38.636] [error] Error occured on port
 [2021-10-18 09:11:56.648] [error] Error occured on port
+[2021-10-18 15:12:57.169] [error] Error occured on port
+[2021-10-18 15:12:57.178] [error] Error: Opening COM3: Access denied
+[2021-10-18 15:13:04.049] [error] Error occured on port
+[2021-10-18 15:13:04.052] [error] Error: Opening COM3: Access denied
+[2021-10-18 15:13:04.695] [error] Error occured on port
+[2021-10-18 15:13:04.697] [error] Error: Opening COM3: Access denied
+[2021-10-18 15:13:09.198] [error] Error occured on port
+[2021-10-18 15:13:09.801] [error] Error: Opening COM3: Access denied
+[2021-10-18 15:13:31.810] [error] Error occured on port
+[2021-10-18 15:13:31.813] [error] Error: Opening COM3: Access denied
+[2021-10-18 15:13:33.363] [error] Error occured on port
+[2021-10-18 15:13:33.372] [error] Error: Opening COM3: Access denied
+[2021-10-18 15:16:05.328] [error] Error occured on port
+[2021-10-18 15:16:05.337] [error] Error: Opening COM3: Access denied
+[2021-10-18 15:16:17.209] [error] Error occured on port
+[2021-10-18 15:16:17.214] [error] Error: Opening COM3: Access denied
+[2021-10-18 15:16:19.053] [error] Error occured on port
+[2021-10-18 15:16:19.076] [error] Error: Opening COM3: Access denied
+[2021-10-18 15:16:22.334] [error] Error occured on port
+[2021-10-18 15:16:25.215] [error] Error: Opening COM3: Access denied
+[2021-10-18 15:16:28.975] [error] Error occured on port
+[2021-10-18 15:16:28.979] [error] Error: Opening COM3: Access denied
+[2021-10-18 15:16:30.129] [error] Error occured on port
+[2021-10-18 15:16:30.135] [error] Error: Opening COM3: Access denied
+[2021-10-18 15:16:30.808] [error] Error occured on port
+[2021-10-18 15:16:31.023] [error] Error: Opening COM3: Access denied
+[2021-10-18 15:16:31.954] [error] Error occured on port
+[2021-10-18 15:16:38.232] [error] Error: Opening COM3: Access denied
+[2021-10-18 15:16:38.393] [error] Error occured on port
+[2021-10-18 15:16:38.396] [error] Error: Opening COM3: Access denied
+[2021-10-18 15:16:38.473] [error] Error occured on port
+[2021-10-18 15:16:38.477] [error] Error: Opening COM3: Access denied
+[2021-10-18 15:16:38.491] [error] Error occured on port
+[2021-10-18 15:16:38.497] [error] Error: Opening COM3: Access denied
+[2021-10-18 15:16:38.502] [error] Error occured on port
+[2021-10-18 15:16:38.516] [error] Error: Opening COM3: Access denied
+[2021-10-18 15:16:38.702] [error] Error occured on port
+[2021-10-18 15:16:38.706] [error] Error: Opening COM3: Access denied
+[2021-10-18 15:17:49.769] [error] Error occured on port
+[2021-10-18 15:17:54.150] [error] Error occured on port
+[2021-10-18 15:18:02.222] [error] Error occured on port
+[2021-10-18 15:18:30.112] [info]  Weigh string data length - 25
+[2021-10-18 15:18:30.130] [info]  Expected Chars - 26
+[2021-10-18 15:57:09.140] [info]  Weigh string data length - 25
+[2021-10-18 15:57:09.203] [info]  Expected Chars - 26
+[2021-10-18 16:01:40.926] [info]  Weigh string data length - 4
+[2021-10-18 16:01:40.937] [info]  Expected Chars - 26
+[2021-10-18 16:03:03.671] [info]  Weigh string data length - 25
+[2021-10-18 16:03:03.673] [info]  Expected Chars - 26
+[2021-10-18 16:07:53.923] [info]  Weigh string data length - 25
+[2021-10-18 16:07:53.925] [info]  Expected Chars - 26
+[2021-10-18 16:28:57.549] [error] Error occured on port
+[2021-10-18 16:39:20.192] [error] Error occured on port
+[2021-10-18 16:44:22.318] [error] Error occured on port
+[2021-10-18 16:57:22.953] [error] Error occured on port
+[2021-10-18 17:12:22.779] [error] Error occured on port
+[2021-10-18 17:14:07.997] [error] Error occured on port
+[2021-10-18 17:16:25.708] [error] Error occured on port
+[2021-10-18 17:16:28.345] [error] Error occured on port
+[2021-10-18 17:16:28.650] [error] Error occured on port
+[2021-10-18 19:04:05.483] [error] Error occured on port
+[2021-10-18 19:05:10.624] [error] Error: queryA ETIMEOUT smtp.gmail.com
+    at QueryReqWrap.onresolve [as oncomplete] (dns.js:203:19)
+[2021-10-19 15:25:02.022] [error] Error occured on port
+[2021-10-19 15:29:56.496] [error] Error occured on port
+[2021-10-19 15:32:54.778] [error] Error occured on port
+[2021-10-19 15:39:52.360] [error] Error occured on port
+[2021-10-19 16:01:26.060] [error] Error occured on port
+[2021-10-19 16:13:39.018] [error] Error occured on port
+[2021-10-20 11:47:22.000] [error] Error occured on port
+[2021-10-20 12:00:23.237] [error] Error occured on port
+[2021-10-20 12:03:51.815] [error] Error occured on port
+[2021-10-20 12:27:36.458] [error] Error occured on port
+[2021-10-20 12:31:20.071] [error] Error occured on port
+[2021-10-20 12:32:58.996] [error] Error occured on port
+[2021-10-20 13:06:57.327] [error] Error occured on port
+[2021-10-20 13:09:55.985] [error] Error occured on port
+[2021-10-20 13:17:59.078] [error] Error occured on port
+[2021-10-20 13:18:07.081] [error] Error occured on port
+[2021-10-20 13:18:25.189] [error] Error occured on port
+[2021-10-20 13:21:08.458] [error] Error occured on port
+[2021-10-20 13:25:25.475] [error] Error occured on port
+[2021-10-20 13:27:25.811] [error] Error occured on port
+[2021-10-20 13:28:59.514] [error] Error occured on port
+[2021-10-20 13:39:11.812] [error] Error occured on port
+[2021-10-20 13:40:55.040] [error] Error occured on port
+[2021-10-20 13:41:42.929] [error] Error occured on port
+[2021-10-20 13:41:56.235] [error] Error occured on port
+[2021-10-20 13:42:32.904] [error] Error occured on port
+[2021-10-20 13:45:22.448] [error] Error occured on port
+[2021-10-20 13:47:45.701] [error] Error occured on port
+[2021-10-20 13:50:35.096] [error] Error occured on port
+[2021-10-20 13:57:22.347] [error] Error occured on port
+[2021-10-20 14:03:48.565] [error] Error occured on port
+[2021-10-20 14:07:45.279] [error] Error occured on port
+[2021-10-20 14:08:01.942] [error] Error occured on port
+[2021-10-20 14:09:52.986] [error] Error occured on port
+[2021-10-20 14:27:22.342] [error] Error occured on port
+[2021-10-20 14:29:53.971] [error] Error occured on port
+[2021-10-20 18:13:53.418] [error] Error: getaddrinfo ENOTFOUND smtp.gmail.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26)
+[2021-10-20 20:53:47.469] [error] Error occured on port

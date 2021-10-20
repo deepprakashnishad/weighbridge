@@ -28,9 +28,7 @@ def formatData(args):
       
     cnt = cnt+2;
 
-  print("Came out")
   mBytes = bytes(byteArr)
-  print(mBytes)
   return mBytes
     
 

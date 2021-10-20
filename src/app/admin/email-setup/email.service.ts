@@ -25,7 +25,7 @@ export class EmailService {
 
   async emailDailyReport() {
     var currentdate = new Date();
-    var currDate = `${currentdate.getMonth() + 1}/${currentdate.getDate()-2}/${currentdate.getFullYear()}`;
+    var currDate = `${currentdate.getMonth() + 1}/${currentdate.getDate()}/${currentdate.getFullYear()}`;
     var startDate = `${currDate} 12:00:00 AM`;
     var endDate = `${currDate} 11:59:59 PM`;
 
