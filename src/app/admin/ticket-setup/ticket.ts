@@ -20,6 +20,7 @@ const ticketPredefinedFields = [
   { displayName: "Wt2(KG)", field: "weighDetails_secondWeight" },
   { displayName: "Out Date/Time", field: "weighDetails_secondWeightDatetime" },
   { displayName: "Net Wt(KG)", field: "weighDetails_netWeight" },
+  { displayName: "Misc", field: "misc" },
 ]
 
 const weighmentDetailColumnFields = [

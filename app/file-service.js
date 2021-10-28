@@ -142,6 +142,42 @@ ipcMain.handle("removeLicense", async (event, args) => {
   }  
 });
 
+ipcMain.handle("writeToExcel", async (event, args) => {
+  var path = app.getPath('userData') + "\\" + bootstrapData.mConstants.appName + "\\daily-reports";
+  fs.mkdirSync(path, { recursive: true });
+  var filename = args[0]['filename'];
+  try {
+    var xl = require('excel4node');
+    var wb = new xl.Workbook();
+
+    var ws = wb.addWorksheet('Sheet 1');
+    var headers = args[0]['headers'];
+    var keys = Object.keys(headers);
+
+    for (var i = 0; i < keys.length; i++) {
+      ws.cell(1, i + 1).string(keys[i]);
+    }
+    for (var i = 0; i < args[0]['data'].length; i++) {
+      for (var j = 0; j < keys.length; j++) {
+        if (headers[keys[j]] === "sNo") {
+          ws.cell(i + 2, j + 1).number(i + 1);
+        } else if (args[0]['data'][i][headers[keys[j]]]) {
+          ws.cell(i + 2, j + 1).string(args[0]['data'][i][headers[keys[j]]].toString());
+        }
+      }
+    }
+  } catch (e) {
+    console.log(e);
+  } finally {
+    wb.write(`${path}/${filename}`);
+    return { filename: filename, fullpath: `${path}/${filename}` };
+  }
+  //fs.mkdir(path, { recursive: true }, function (err) {
+  //  if (err) return cb(err);
+    
+  //});
+});
+
 function getHash(key, data){
   const crypto = require('crypto');
   return crypto.createHmac('sha256', key)

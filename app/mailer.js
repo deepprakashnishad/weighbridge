@@ -119,6 +119,25 @@ ipcMain.handle("send-html-attachment-email", async (event, args) => {
   }
 });
 
+ipcMain.handle("send-email-with-attachment", async (event, args) => {
+  try {
+    if (!transporter) {
+      await initializeTransporter();
+    }
+    var mRecipients = (JSON.parse(mData.recipients)).map(ele => ele.email);
+
+    mailSender(
+      mData['sender_email_id'],
+      mRecipients,
+      args[0]['subject'],
+      args[0]['text'],
+      args[0]['attachments']
+    )
+  } catch (ex){
+    console.log(ex);
+  }
+});
+
 function pdfSettings() {
   var paperSizeArray = ["A4", "A5"];
   var option = {
@@ -155,6 +174,7 @@ function mailSender(from, recipients, subject, text = "", attachments = [], html
         log.info('Email sent: ' + info.response);
       }
     });
+    console.log("Mail sent successfully");
   } catch (ex) {
     log.error(ex);
   }

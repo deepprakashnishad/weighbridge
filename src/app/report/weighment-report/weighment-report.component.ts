@@ -37,7 +37,7 @@ export class WeighmentReportComponent implements OnInit {
   status: string;
 
   columns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'weighmentType', 'supplier', 'material', 'firstWeighBridge', 'firstWeight', 'firstWeightDatetime', 'firstWeightUser', 'gatePassNo', 'poDetails', 'secondWeighBridge', 'secondWeight', 'secondWeightDatetime', 'secondWeightUser', 'netWeight', 'status', 'action'];
-  displayedColumns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'material', 'firstWeight', 'firstWeightDatetime', 'secondWeight', 'secondWeightDatetime', 'netWeight', 'action'];
+  displayedColumns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'weighmentType', 'supplier', 'material', 'firstWeighBridge', 'firstWeight', 'firstWeightDatetime', 'firstWeightUser', 'gatePassNo', 'poDetails', 'secondWeighBridge', 'secondWeight', 'secondWeightDatetime', 'secondWeightUser', 'netWeight', 'status', 'action'];
 
   dataSource: MatTableDataSource<any>;
   users: any = {};
@@ -92,14 +92,12 @@ export class WeighmentReportComponent implements OnInit {
   }
 
   async fetchData() {
-    var isCriteriaAdded = false;
-    var stmt = QueryList.GET_WEIGHMENTS_WITH_LATEST_DETAIL + " WHERE ";
+    var isCriteriaAdded = true;
+    var stmt = QueryList.GET_WEIGHMENTS_WITH_LATEST_DETAIL + " WHERE w.rstNo = wd.weighmentRstNo ";
 
     if (this.reportType && this.reportType != 'all') {
-      stmt = `${stmt} weighmentType LIKE '${this.reportType}%'`;
+      stmt = `${stmt} weighmentType = '${this.reportType}%'`;
       isCriteriaAdded = true;
-    } else {
-      stmt = `${stmt} weighmentType LIKE '%%'`;
     }
 
     if (this.fromRSTNo) {
@@ -113,7 +111,7 @@ export class WeighmentReportComponent implements OnInit {
     }
 
     if (this.truckNumber) {
-      stmt = `${stmt} AND vehicleNo LIKE '%${Utils.removeWhiteSpaces(this.truckNumber)}%'`;
+      stmt = `${stmt} AND vehicleNo = '${Utils.removeWhiteSpaces(this.truckNumber)}'`;
       isCriteriaAdded = true;
     }
 
@@ -138,7 +136,7 @@ export class WeighmentReportComponent implements OnInit {
     }
 
     if (this.scrollNo) {
-      stmt = `${stmt} AND scrollNo LIKE '%${this.scrollNo}%'`;
+      stmt = `${stmt} AND scrollNo = '${this.scrollNo}'`;
       isCriteriaAdded = true;
     }
 
@@ -160,6 +158,8 @@ export class WeighmentReportComponent implements OnInit {
       isCriteriaAdded = true;
     }
 
+    stmt = `${stmt} ORDER BY w.rstNo DESC`;
+    console.log(stmt);
     this.data = await this.dbService.executeSyncDBStmt("SELECT", stmt);
     this.replaceUsersWithId();
     this.dataSource.data = this.data;

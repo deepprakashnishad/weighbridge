@@ -265,6 +265,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       .replace("{transporterName}", this.weighment?.transporterName ? this.weighment?.transporterName : "")
       .replace("{status}", status)
       .replace("{rstNo}", this.weighment.rstNo.toString())
+      .replace("{misc}", this.weighment.misc ? this.weighment.misc:'')
       .replace("{scrollDate}", this.weighment.scrollDate ? this.weighment.scrollDate:'');
 
     var result = await this.dbService.executeSyncDBStmt("UPDATE", stmt);
@@ -283,6 +284,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       .replace("{poDetails}", this.weighment?.poDetails ? this.weighment?.poDetails : null)
       .replace("{transporterCode}", this.weighment?.transporterCode ? this.weighment?.transporterCode.toString() : "")
       .replace("{transporterName}", this.weighment?.transporterName ? this.weighment?.transporterName : "")
+      .replace("{misc}", this.weighment.misc ? this.weighment.misc : '')
       .replace("{status}", status)
       .replace("{scrollDate}", this.weighment.scrollDate ? this.weighment.scrollDate:"");
 

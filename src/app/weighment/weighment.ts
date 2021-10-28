@@ -16,6 +16,7 @@ export class Weighment{
   createdAt: string;
   weighmentDetails: Array<WeighmentDetail>;
   scrollDate: string;
+  misc: string;
 
   constructor(){
     this.weighmentType = "inbound";
@@ -34,6 +35,7 @@ export class Weighment{
     weighment.transporterCode = data['transporterCode'] != null ? data['transporterCode'] : undefined;
     weighment.transporterName = data['transporterName'] != null ? data['transporterName'] : undefined;
     weighment.status = data['status'];
+    weighment.misc = data['misc'];
     weighment.scrollNo = data['scrollNo'] !== null ? data['scrollNo'] : undefined;
     weighment.scrollDate = data['scrollDate'] !== null ? data['scrollDate'] : undefined;
     return weighment;

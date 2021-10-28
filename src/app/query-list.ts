@@ -3,10 +3,12 @@ export class QueryList{
   //Weighment
   static readonly INSERT_WEIGHMENT: string = "INSERT INTO weighment(rstNo, vehicleNo, scrollNo, \
   reqId, gatePassNo, weighmentType, poDetails, transporterCode, transporterName, status, \
-  createdAt, scrollDate) \
+  createdAt, scrollDate, misc) \
   VALUES({rstNo}, '{vehicleNo}', '{scrollNo}', {reqId}, {gatePassNo}, '{weighmentType}', \
-  '{poDetails}', {transporterCode}, '{transporterName}', '{status}', GETDATE(), '{scrollDate}');";
-  static readonly UPDATE_WEIGHMENT: string = "UPDATE weighment SET scrollNo='{scrollNo}', reqId={reqId}, gatePassNo={gatePassNo}, weighmentType='{weighmentType}', transporterCode='{transporterCode}', transporterName='{transporterName}', status='{status}', scrollDate='{scrollDate}' WHERE rstNo={rstNo}";
+  '{poDetails}', {transporterCode}, '{transporterName}', '{status}', GETDATE(), '{scrollDate}', '{misc}');";
+  static readonly UPDATE_WEIGHMENT: string = "UPDATE weighment SET scrollNo='{scrollNo}', reqId={reqId}, \
+        gatePassNo={gatePassNo}, weighmentType='{weighmentType}', transporterCode='{transporterCode}',\
+        transporterName='{transporterName}', status='{status}', scrollDate='{scrollDate}', misc='{misc}' WHERE rstNo={rstNo}";
   static readonly UPDATE_WEIGHMENT_STATUS: string = "UPDATE weighment SET status='{status}' WHERE rstNo={rstNo}";
   //Weighment Details
   static readonly INSERT_WEIGHMENT_DETAIL: string = "INSERT INTO weighment_details(id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser, secondWeighBridge, secondWeight, secondUnit, secondWeightDatetime, secondWeightUser, remark, netWeight) VALUES({id}, {weighmentRstNo}, '{material}', '{supplier}', '{firstWeighBridge}', {firstWeight}, '{firstUnit}', {firstWeightDatetime}, {firstWeightUser}, {secondWeighBridge}, {secondWeight}, '{secondUnit}', {secondWeightDatetime}, {secondWeightUser}, '{remark}', {netWeight})";
@@ -22,12 +24,17 @@ export class QueryList{
     convert(varchar, secondWeightDatetime, 20) as secondWeightDatetime, secondWeightUser, remark, netWeight \
     FROM weighment_details WHERE weighmentRstNo={rstNo} ORDER BY id";
 
-  static readonly GET_WEIGHMENTS_WITH_LATEST_DETAIL = "SELECT * FROM weighment w RIGHT JOIN  \
-      (SELECT id, weighmentRstNo, material, supplier, firstWeighBridge, firstUnit, firstWeight, \
-    convert(varchar, firstWeightDatetime, 20) as firstWeightDatetime, firstWeightUser, secondWeighBridge, secondUnit, secondWeight, \
-    convert(varchar, secondWeightDatetime, 20) as secondWeightDatetime, secondWeightUser, remark, netWeight FROM weighment_details wd RIGHT JOIN \
-      (SELECT max(id) as maxid from weighment_details group by weighmentRstNo)\
-      as wd1 on wd.id = wd1.maxid) as wd2 on w.rstNo = wd2.weighmentRstNo";
+  static readonly GET_WEIGHMENTS_WITH_LATEST_DETAIL = "SELECT w.*, id, weighmentRstNo, material, supplier, \
+    firstWeighBridge, firstUnit, firstWeight, convert(varchar, firstWeightDatetime, 20) as firstWeightDatetime, \
+    firstWeightUser, secondWeighBridge, secondUnit, secondWeight, convert(varchar, secondWeightDatetime, 20) as secondWeightDatetime, \
+    secondWeightUser, remark, netWeight FROM weighment w, weighment_details wd";
+
+  //static readonly GET_WEIGHMENTS_WITH_LATEST_DETAIL = "SELECT * FROM weighment w  RIGHT JOIN  \
+  //    (SELECT id, weighmentRstNo, material, supplier, firstWeighBridge, firstUnit, firstWeight, \
+  //  convert(varchar, firstWeightDatetime, 20) as firstWeightDatetime, firstWeightUser, secondWeighBridge, secondUnit, secondWeight, \
+  //  convert(varchar, secondWeightDatetime, 20) as secondWeightDatetime, secondWeightUser, remark, netWeight FROM weighment_details wd RIGHT JOIN \
+  //    (SELECT max(id) as maxid from weighment_details group by weighmentRstNo)\
+  //    as wd1 on wd.id = wd1.maxid) as wd2 on w.rstNo = wd2.weighmentRstNo";
 
   // Weighbridges
   static readonly GET_WEIGHBRIDGES: string = "Select * from weighbridge";

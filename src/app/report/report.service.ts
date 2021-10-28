@@ -213,7 +213,8 @@ export class ReportService {
 
   async getWeighmentReport(sql) {
     var result = await this.dbService.executeSyncDBStmt("SELECT", sql);
-    return this.processResultWithFinalWeight(result);
+    return result;
+    //return this.processResultWithFinalWeight(result);
   }
 
   async getHTMLReport(sql) {

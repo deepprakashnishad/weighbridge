@@ -22,7 +22,12 @@
       <!-- Weight Column -->
       <ng-container matColumnDef="remark">
         <th mat-header-cell *matHeaderCellDef> Remark </th>
-        <td mat-cell *matCellDef="let element"> {{element.remark}} </td>
+        <td mat-cell *matCellDef="let element">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Remark</mat-label>
+            <input matInput [(ngModel)]="element.remark" />
+          </mat-form-field>
+        </td>
       </ng-container>
 
       <!-- Symbol Column -->

@@ -77,7 +77,7 @@ export class TicketService {
     }
 
     result = result.sort(function (a, b) {
-      if ((a['row'] - b['row']) === 0) {
+      if (a['row']===null || b['row']===null || ((a['row'] - b['row']) === 0)) {
         return a['col'] - b['col'];
       }
       return a['row'] - b['row'];

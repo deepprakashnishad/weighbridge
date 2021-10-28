@@ -10,8 +10,8 @@ require("./file-service.js");
 require("./port-verifier.js");
 require("./mailer.js");
 
-//const env = "PROD"; // DEV Or PROD
-const env = "DEV";
+const env = "PROD"; // DEV Or PROD
+//const env = "DEV";
 
 global.win;
 
@@ -45,7 +45,7 @@ function createWindow() {
   if (env === "DEV") {
     win.loadURL('http://localhost:4200');
   } else {
-    //win.setMenu(null);
+    win.setMenu(null);
     win.loadFile("./dist/index.html");
   }
 }
