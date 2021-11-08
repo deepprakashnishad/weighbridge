@@ -22,6 +22,8 @@ export class InitialSetupComponent implements OnInit {
   isLicenseActive: boolean = false;
   licenseNumber: string;
 
+  validTill: string;
+
   constructor(
     private notifier: NotifierService,
     private fb: FormBuilder,
@@ -46,11 +48,22 @@ export class InitialSetupComponent implements OnInit {
       this.port = result['port'] ? result['port']:1433;
     });
 
+    this.getLicenseDetails();
+  }
+
+  getLicenseDetails() {
     this.licenseService.getLicenseDetails().then(async (result) => {
       if (result && result !== null) {
         this.licenseNumber = this.formatLicenseNumber(result['license']);
+        console.log(result);
+        var expDate = new Date(result['validTill'] * 1000);
+
+        this.validTill = `${expDate.getDate()}/${expDate.getMonth() + 1}/${expDate.getFullYear()}`;
         var licenseStatus = await this.licenseService.validateLicenseDetail(result);
         this.isLicenseActive = licenseStatus['success'];
+        if (!this.isLicenseActive) {
+          this.validTill = licenseStatus['msg'];
+        }
       } else {
         this.isLicenseActive = false;
       }
@@ -121,8 +134,10 @@ export class InitialSetupComponent implements OnInit {
     this.licenseService.activateLicense(machineDetails).subscribe(result => {
       if (result["success"]) {
         this.isLicenseActive = true;
+
         this.ipcService.invokeIPC("saveLicense", [machineDetails['machineId'], result["token"]]).then(result => {
           this.notifier.notify("success", "License successfully activated");
+          this.getLicenseDetails();
         });
         //this.ipcService.invokeIPC("saveSingleEnvVar", ["token", result["token"]]).then(result => {
         //  this.notifier.notify("success", "License successfully activated");

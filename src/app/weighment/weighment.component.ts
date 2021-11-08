@@ -146,7 +146,6 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   }
 
   parseQRString(inputStr: string) {
-    console.log(inputStr);
     if (isString(inputStr) && (inputStr.match(/#/g) || []).length === 2) {
       var inputs = inputStr?.split("#");
       this.weighment.vehicleNo = inputs[1];
@@ -219,6 +218,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
           this.weighmentDetail.secondUnit,
           this.authService.getTokenOrOtherStoredData("id")
         );
+        await this.updateWeighment(status);
       }
     }
   }

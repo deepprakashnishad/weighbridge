@@ -1,9 +1,12 @@
 {
   "ExpandedNodes": [
     "",
+    "\\app",
     "\\src",
-    "\\src\\app"
+    "\\src\\app",
+    "\\src\\app\\admin\\initial-setup",
+    "\\src\\app\\weighment"
   ],
-  "SelectedNode": "\\print.py",
+  "SelectedNode": "\\src\\app\\weighment\\weighment.component.ts",
   "PreviewInSolutionExplorer": false
 }

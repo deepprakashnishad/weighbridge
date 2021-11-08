@@ -35,7 +35,7 @@ export class LicenseService {
   }
 
   async validateLicenseDetail(payload) {
-    var currentTimestamp = Math.floor((new Date()).getTime());
+    var currentTimestamp = Math.floor((new Date()).getTime())/1000;
     if (currentTimestamp > payload['validTill']) {
       return { success: false, msg: "License expired" };
     } else {

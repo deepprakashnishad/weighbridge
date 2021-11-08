@@ -47,6 +47,7 @@
           <input license-mask name="cntlLicenseNumber" [disabled]="isLicenseActive" [(ngModel)]="licenseNumber" matInput placeholder="License Number">
         </mat-form-field>
       </form>
+      <h5>Valid till - {{validTill}}</h5>
     </mat-card-content>
     <mat-card-action fxLayout fxLayoutGap="16px">
       <button mat-raised-button [disabled]="isLicenseActive" (click)="activateLicense()">Activate</button>

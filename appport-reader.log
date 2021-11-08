@@ -4170,3 +4170,10 @@
     at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
 [2021-10-28 18:59:43.086] [error] Error occured on port
 [2021-10-28 19:04:45.402] [error] Error occured on port
+[2021-10-28 19:47:39.641] [error] Error occured on port
+[2021-10-28 19:49:45.678] [error] Error occured on port
+[2021-10-28 19:53:07.485] [error] Error occured on port
+[2021-10-28 20:00:51.631] [error] Error occured on port
+[2021-10-28 20:02:24.760] [error] Error occured on port
+[2021-10-28 20:02:37.267] [error] Error occured on port
+[2021-10-30 14:23:11.407] [error] Error occured on port
