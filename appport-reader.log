@@ -4177,3 +4177,355 @@
 [2021-10-28 20:02:24.760] [error] Error occured on port
 [2021-10-28 20:02:37.267] [error] Error occured on port
 [2021-10-30 14:23:11.407] [error] Error occured on port
+[2021-11-11 03:44:28.554] [error] Error occured on port
+[2021-11-11 03:45:05.829] [error] RequestError: Incorrect syntax near 'weighmentType'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-11-11 03:45:10.709] [error] RequestError: Incorrect syntax near 'weighmentType'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-11-11 03:45:11.385] [error] RequestError: Incorrect syntax near 'weighmentType'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-11-11 03:45:11.540] [error] RequestError: Incorrect syntax near 'weighmentType'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-11-11 03:45:42.809] [error] RequestError: Incorrect syntax near 'weighmentType'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-11-11 03:45:43.876] [error] RequestError: Incorrect syntax near 'weighmentType'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-11-11 03:45:43.943] [error] RequestError: Incorrect syntax near 'weighmentType'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-11-11 03:46:52.201] [error] RequestError: Incorrect syntax near 'weighmentType'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-11-11 03:48:17.693] [error] Error occured on port
+[2021-11-11 03:48:55.523] [error] RequestError: Incorrect syntax near 'weighmentType'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-11-11 03:51:59.315] [error] Error occured on port
+[2021-11-11 03:52:49.785] [error] Error occured on port
+[2021-11-11 03:57:36.347] [error] Error occured on port
+[2021-11-11 04:02:43.089] [error] Error occured on port
+[2021-11-11 05:52:57.635] [error] Error occured on port
+[2021-11-11 08:40:37.442] [error] Error occured on port
+[2021-11-11 09:20:24.414] [error] Error occured on port
+[2021-11-12 11:09:30.627] [error] Error: getaddrinfo ENOTFOUND smtp.gmail.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26)
+[2021-11-12 11:10:06.770] [error] Error occured on port
+[2021-11-12 12:22:04.526] [error] Error occured on port
+[2021-11-17 14:13:31.885] [error] Error occured on port
+[2021-11-17 14:14:22.081] [error] Error occured on port
+[2021-11-17 14:15:27.593] [error] Error occured on port
+[2021-11-17 14:16:45.887] [error] Error occured on port
+[2021-11-17 14:26:31.698] [error] Error occured on port
+[2021-11-17 14:26:44.229] [error] Error occured on port
+[2021-11-17 14:33:36.632] [error] Error occured on port
+[2021-11-17 14:34:08.261] [error] RequestError: Incorrect syntax near 'wd'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-11-17 14:34:24.953] [error] RequestError: Incorrect syntax near 'wd'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-11-17 14:34:28.669] [error] Error occured on port
+[2021-11-17 14:40:22.388] [error] Error occured on port
+[2021-11-17 14:50:43.620] [error] Error occured on port
+[2021-11-17 15:24:28.673] [error] Error occured on port
+[2021-11-17 15:54:19.489] [error] Error occured on port
+[2021-11-17 15:54:29.510] [error] RequestError: Incorrect syntax near the keyword 'FROM'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-11-17 15:54:44.389] [error] RequestError: Incorrect syntax near the keyword 'FROM'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-11-17 15:55:12.374] [error] Error occured on port
+[2021-11-17 15:56:57.360] [error] Error occured on port
+[2021-11-17 15:58:03.242] [error] Error occured on port
+[2021-11-17 16:01:01.086] [error] Error occured on port
+[2021-11-17 16:02:58.424] [error] Error occured on port
+[2021-11-17 16:05:20.199] [error] Error occured on port
+[2021-11-19 19:10:47.005] [error] ConnectionError: Login failed for user 'admin'.  Reason: The password of the account has expired.
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:2668:20)
+    at Object.onceWrapper (events.js:421:28)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:34:12)
+    at Readable.emit (events.js:315:20)
+[2021-11-20 05:09:34.622] [error] ConnectionError: Login failed for user 'admin'.  Reason: The password of the account has expired.
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:2668:20)
+    at Object.onceWrapper (events.js:421:28)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:34:12)
+    at Readable.emit (events.js:315:20)
+[2021-11-20 05:15:36.233] [error] ConnectionError: Failed to connect to localhost:1433 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2021-11-20 05:17:37.821] [error] ConnectionError: Login failed for user 'admin'.  Reason: The password of the account has expired.
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:2668:20)
+    at Object.onceWrapper (events.js:421:28)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:34:12)
+    at Readable.emit (events.js:315:20)
+[2021-11-20 05:18:03.938] [error] ConnectionError: Login failed for user 'admin'.  Reason: The password of the account has expired.
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:2668:20)
+    at Object.onceWrapper (events.js:421:28)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:34:12)
+    at Readable.emit (events.js:315:20)
+[2021-11-20 05:18:26.789] [error] ConnectionError: Login failed for user 'admin'.  Reason: The password of the account has expired.
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:2668:20)
+    at Object.onceWrapper (events.js:421:28)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:34:12)
+    at Readable.emit (events.js:315:20)
+[2021-11-20 05:30:25.107] [error] Error occured on port
+[2021-11-20 05:35:12.149] [error] Error occured on port
+[2021-11-20 05:35:57.696] [error] Error occured on port
+[2021-11-20 05:37:21.900] [error] Error occured on port
+[2021-11-20 05:44:39.555] [error] Error occured on port
+[2021-11-20 05:45:40.302] [error] Error occured on port
+[2021-11-20 05:54:21.172] [error] Error occured on port
+[2021-11-20 05:56:02.241] [error] Error occured on port
+[2021-11-20 05:56:14.313] [error] RequestError: Invalid column name 'undefined'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-11-20 05:57:49.234] [error] Error occured on port
+[2021-11-20 05:57:56.979] [error] RequestError: Invalid column name 'undefined'.
+    at handleError (D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\request.js:374:15)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Parser.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1160:12)
+    at Parser.emit (events.js:315:20)
+    at Readable.<anonymous> (D:\electron\weighbridge\app\node_modules\tedious\lib\token\token-stream-parser.js:27:14)
+    at Readable.emit (events.js:315:20)
+    at addChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:298:12)
+    at readableAddChunk (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:280:11)
+    at Readable.push (D:\electron\weighbridge\app\node_modules\tedious\node_modules\readable-stream\lib\_stream_readable.js:241:10)
+[2021-11-20 06:01:43.415] [error] Error occured on port
+[2021-11-20 06:35:59.972] [error] Error occured on port
+[2021-12-03 11:33:21.056] [error] ConnectionError: Failed to connect to localhost:1433 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2021-12-03 15:33:21.993] [error] TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+    at Object.writeFileSync (fs.js:1460:5)
+    at D:\electron\weighbridge\app\file-service.js:96:8
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-12-03 15:34:08.511] [error] TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+    at Object.writeFileSync (fs.js:1460:5)
+    at D:\electron\weighbridge\app\file-service.js:96:8
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-12-03 15:45:34.506] [error] TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+    at Object.writeFileSync (fs.js:1460:5)
+    at D:\electron\weighbridge\app\file-service.js:96:8
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-12-03 15:45:47.996] [error] TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+    at Object.writeFileSync (fs.js:1460:5)
+    at D:\electron\weighbridge\app\file-service.js:96:8
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-12-03 15:56:49.590] [error] TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+    at Object.writeFileSync (fs.js:1460:5)
+    at D:\electron\weighbridge\app\file-service.js:96:8
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-12-03 15:58:18.635] [error] TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+    at Object.writeFileSync (fs.js:1460:5)
+    at D:\electron\weighbridge\app\file-service.js:96:8
+    at electron/js2c/browser_init.js:197:579
+    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
+    at Object.emit (events.js:315:20)
+[2021-12-03 16:00:49.403] [error] Error occured on port
+[2021-12-03 16:05:25.961] [error] Error occured on port
+[2021-12-03 16:06:50.954] [error] Error occured on port
+[2021-12-03 16:07:34.861] [error] Error occured on port
+[2021-12-03 16:07:46.219] [error] Error occured on port
+[2021-12-03 16:11:59.672] [error] Error occured on port
+[2021-12-03 17:25:22.874] [error] Error: queryA ETIMEOUT smtp.gmail.com
+    at QueryReqWrap.onresolve [as oncomplete] (dns.js:203:19)
+[2021-12-03 19:33:33.231] [error] Error occured on port
+[2021-12-03 20:37:58.618] [error] Error occured on port
+[2021-12-04 05:16:14.105] [error] Error occured on port
+[2021-12-04 08:44:54.256] [error] ConnectionError: Failed to connect to localhost:1433 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2021-12-04 11:57:35.553] [error] Error occured on port
+[2021-12-05 15:06:10.090] [error] Error: getaddrinfo ENOTFOUND smtp.gmail.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26)
+[2021-12-05 15:06:29.069] [error] Error occured on port
+[2021-12-05 17:25:16.169] [error] Error: queryA ETIMEOUT smtp.gmail.com
+    at QueryReqWrap.onresolve [as oncomplete] (dns.js:203:19)
+[2021-12-05 17:52:25.410] [error] Error occured on port
+[2021-12-05 17:55:23.293] [error] Error occured on port
+[2021-12-05 17:57:15.401] [error] Error occured on port
+[2021-12-05 17:59:49.790] [error] Error occured on port
+[2021-12-05 18:00:08.604] [error] Error occured on port
+[2021-12-05 18:00:38.861] [error] Error occured on port
+[2021-12-05 18:20:11.461] [error] Error occured on port

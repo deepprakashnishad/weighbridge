@@ -15,7 +15,7 @@ export class WeighmentSearchDialog implements OnInit {
 
   records: Array<any> = [];
   filteredRecords: Array<any> = [];
-  displayedColumns: Array<string> = ["rstNo", "vehicleNo", "mdateTime", "material", "supplier", "transporter", "action"];
+  displayedColumns: Array<string> = ["rstNo", "vehicleNo", "mdateTime", "material", "supplier", "transporter"];
 
   rstSearchTxt: string;
   vehicleTxt: string;
@@ -27,7 +27,7 @@ export class WeighmentSearchDialog implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.dbService.executeSyncDBStmt("SELECT", QueryList.GET_WEIGHMENTS_WITH_LATEST_DETAIL + " WHERE status='pending'").then(
+    this.dbService.executeSyncDBStmt("SELECT", QueryList.GET_WEIGHMENTS_WITH_LATEST_DETAIL + " AND status='pending'").then(
       result => {
         this.records = result;
         this.filteredRecords = this.records;

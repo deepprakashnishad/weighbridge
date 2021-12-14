@@ -114,6 +114,18 @@ export class LoginComponent implements OnInit{
     if (this.loginForm.valid) {
       this.errors = [];
 
+      const username = this.loginForm.get('inputUsername').value;
+      const password = this.loginForm.get('inputPassword').value;
+      this.rememberMe = this.loginForm.controls['inputRememberMe'].value;
+
+      //this.authService.login({ username: username, password: password }).then(result => {
+      //  if (result) {
+      //    this.ngZone.run(() => {
+      //      this.router.navigate(["/home"]);
+      //    });
+      //  }
+      //});
+
       this.licenseService.isLicenseValid().then((result) => {
         if (!result["success"]) {
           this.notifier.notify("error", result['msg']);

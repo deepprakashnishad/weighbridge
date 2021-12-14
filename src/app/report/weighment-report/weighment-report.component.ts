@@ -93,10 +93,10 @@ export class WeighmentReportComponent implements OnInit {
 
   async fetchData() {
     var isCriteriaAdded = true;
-    var stmt = QueryList.GET_WEIGHMENTS_WITH_LATEST_DETAIL + " WHERE w.rstNo = wd.weighmentRstNo ";
+    var stmt = QueryList.GET_WEIGHMENTS_WITH_LATEST_DETAIL;
 
     if (this.reportType && this.reportType != 'all') {
-      stmt = `${stmt} weighmentType = '${this.reportType}%'`;
+      stmt = `${stmt} AND weighmentType = '${this.reportType}'`;
       isCriteriaAdded = true;
     }
 
@@ -161,6 +161,7 @@ export class WeighmentReportComponent implements OnInit {
     stmt = `${stmt} ORDER BY w.rstNo DESC`;
     console.log(stmt);
     this.data = await this.dbService.executeSyncDBStmt("SELECT", stmt);
+    console.log(this.data);
     this.replaceUsersWithId();
     this.dataSource.data = this.data;
   }

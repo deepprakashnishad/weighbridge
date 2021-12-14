@@ -9,7 +9,6 @@ export class ReportService {
   constructor(
     private dbService: MyDbService
   ) {
-
   }
 
   getHtmlReportText(dataRows: Array<any>, columns: Array<string>, fieldLength) {
@@ -214,7 +213,6 @@ export class ReportService {
   async getWeighmentReport(sql) {
     var result = await this.dbService.executeSyncDBStmt("SELECT", sql);
     return result;
-    //return this.processResultWithFinalWeight(result);
   }
 
   async getHTMLReport(sql) {
@@ -329,7 +327,7 @@ export class ReportService {
     return htmlContent;
   }
 
-  private processResultWithFinalWeight(dataRows) {
+  public processResultWithFinalWeight(dataRows) {
     var finalResults = [];
     for (var i = 0; i < dataRows.length;) {
       var tempArr = [];
@@ -349,27 +347,69 @@ export class ReportService {
 
   private getFormattedFinalWeighment(rows) {
     var data = {};
-    data['rstNo'] = rows[0]['rstNo'];
-    data['vehicleNo'] = rows[0]['vehicleNo'];
-    data['reqId'] = rows[0]['reqId'];
-    data['weighmentType'] = rows[0]['weighmentType'];
-    data['gatePassNo'] = rows[0]['gatePassNo'];
-    data['poDetails'] = rows[0]['poDetails'];
-    data['transporterCode'] = rows[0]['transporterCode'];
-    data['transporterName'] = rows[0]['transporterName'];
-    data['status'] = rows[0]['status'];
-    data['createdAt'] = rows[0]['createdAt'];
-    data['scrollNo'] = rows[0]['scrollNo'];
-    data['scrollDate'] = rows[0]['scrollDate'];
-    data['syncFlag'] = rows[0]['syncFlag'];
+    data['WEIGHMENT_RST_NO'] = rows[0]['rstNo'];
+    data['VEHICLE_NO'] = this.insertSpace(rows[0]['vehicleNo'].toUpperCase());
+    data['REQ_ID'] = rows[0]['reqId'] == null || rows[0]['reqId'] == undefined ? "" : rows[0]['reqId'];
+    data['WEIGHMENT_TYPE'] = rows[0]['weighmentType'].toUpperCase();
+    data['GATE_PASS_NO'] = rows[0]['gatePassNo'] == null || rows[0]['gatePassNo'] == undefined ? "" : rows[0]['gatePassNo'].toString().toUpperCase();
+    data['PO_DETAILS'] = rows[0]['poDetails'] == null || rows[0]['poDetails'] == undefined ? "" : rows[0]['poDetails'].toString().toUpperCase();
+    data['TRANSPORTER_CODE'] = rows[0]['transporterCode'].toString().toUpperCase();
+    data['TRANSPORTER_NAME'] = rows[0]['transporterName'].toUpperCase();
+    data['WEIGHMENT_STATUS'] = rows[0]['status'].toUpperCase();
+    data['CREATED_AT_DATE'] = rows[0]['createdAtDate'];
+    data['CREATED_AT_TIME'] = rows[0]['createdAtTime']?.toString().replaceAll(":", "");
+    data['SCROLL_NO'] = rows[0]['scrollNo'] == null || rows[0]['scrollNo'] == undefined ? "" : rows[0]['scrollNo'].toUpperCase();
+    data['SCROLL_DATE'] = rows[0]['scrollDate'] == null || rows[0]['scrollDate'] == undefined ? "" : rows[0]['scrollDate'];
+    data['SYNC_FLAG'] = rows[0]['syncFlag'];
 
-    data['firstWeight'] = rows[0]['firstWeight'];
-    data['firstWeightDatetime'] = rows[0]['firstWeightDatetime'];
-    data['secondWeight'] = rows[rows.length - 1]['secondWeight'];
-    data['firstWeightDatetime'] = rows[rows.length - 1]['secondWeightDatetime'];
-    data['netWeight'] = Math.abs(rows[0]['secondWeight'] - rows[rows.length - 1]['firstWeight']);
+    data['FIRST_WEIGH_BRIDGE'] = rows[0]['firstWeighBridge']!=null && rows[0]['firstWeighBridge'] ? rows[0]['firstWeighBridge'].toUpperCase() : "";
+    data['FIRST_WEIGHT'] = rows[0]['firstWeight']!=null && rows[0]['firstWeight'] ? rows[0]['firstWeight'] : "";
+    data['FIRST_WEIGHT_UNIT'] = rows[0]['firstUnit'] != null && rows[0]['firstUnit'] ? rows[0]['firstUnit'].toUpperCase() : "";
+    data['FIRST_WEIGHT_DATE'] = rows[0]['firstWeightDate'] && rows[0]['firstWeightDate'] ? rows[0]['firstWeightDate'] : "";
+    data['FIRST_WEIGHT_TIME'] = rows[0]['firstWeightTime']?.toString().replaceAll(":", "") && rows[0]['firstWeightTime']?.toString().replaceAll(":", "") ? rows[0]['firstWeightTime']?.toString().replaceAll(":", "") : "";
+    data['FIRST_WEIGHT_USER'] = rows[0]['firstWeightUsername'] == null || rows[0]['firstWeightUsername'] == undefined ? rows[0]['firstWeightUsername'].toUpperCase() : "";
+
+    data['SECOND_WEIGH_BRIDGE'] = rows[0]['secondWeighBridge'] == null || rows[0]['secondWeighBridge']==undefined ?"": rows[0]['secondWeighBridge'].toUpperCase();
+    data['SECOND_WEIGHT'] = rows[0]['secondWeight']!=null && rows[0]['secondWeight'] ? rows[0]['secondWeight'] : "";
+    data['SECOND_WEIGHT_UNIT'] = rows[0]['secondUnit'] != null && rows[0]['secondUnit'] ? rows[0]['secondUnit'].toUpperCase() : "";
+    data['SECOND_WEIGHT_DATE'] = rows[0]['secondWeightDate'];
+    data['SECOND_WEIGHT_TIME'] = rows[0]['secondWeightTime']?.toString().replaceAll(":", "") && rows[0]['secondWeightTime']?.toString().replaceAll(":", "");
+    data['SECOND_WEIGHT_USER'] = rows[0]['secondWeightUserName'] != null && rows[0]['secondWeightUserName'] ? rows[0]['secondWeightUserName'].toUpperCase() : "";
+
+    data['WEIGHMENT_RST_NO_ID'] = rows.map(ele => ele['id']).join(",");
+    data['MATERIAL_CODE'] = rows.map(ele => ele['material']).join(",").toUpperCase();
+    data['SUPPLIER_CUSTOMER_CODE'] = rows.map(ele => ele['supplier']).join(",").toUpperCase();
+    data['REMARK_TEXT'] = rows[0]['misc'] == null || rows[0]['misc'] == undefined ? "" : rows[0]['misc'].toString().toUpperCase();
+
+    data['NET_WEIGHT'] = Math.abs(rows[rows.length - 1]['secondWeight'] - rows[0]['firstWeight']);
+
+    console.log(data);
     return data;
   }
+
+  insertSpace(str:string) {
+    var currChar, prevChar;
+    var newStr = "";
+    for (var i = 0; i < str.length; i++) {
+      currChar = this.isLetter(str.charAt(i));
+      console.log(currChar);
+      if (prevChar === undefined) {
+        newStr = newStr.concat(str[i]);
+      } else if (prevChar !== currChar) {
+        newStr = newStr.concat(` ${str[i]}`);
+      } else {
+        newStr = newStr.concat(str[i]);
+      }
+
+      prevChar = currChar;
+    }
+    return newStr;
+  }
+
+  isLetter(str) {
+    return str.toUpperCase() !== str.toLowerCase();
+  }
+
   //Deprecated against getRawTextForFilePrinting
   //getRawReportTextArray(dataRows: Array<any>, columns: Array<string>, fieldLength) {
   //  var resArray = [];

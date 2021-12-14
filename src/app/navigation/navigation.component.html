@@ -21,6 +21,7 @@
 	</mat-toolbar-row>
 	<mat-menu #dataentry="matMenu">
 		<button mat-menu-item (click)="navigateTo('weighment', 'dataentry')" *ngIf="isAuthorized(1)">Weightment</button>
+		<button mat-menu-item (click)="syncWithSAP()" *ngIf="isAuthorized(1)">Sync With SAP</button>
 	</mat-menu>
 	<mat-menu #reports="matMenu">
 		<button mat-menu-item (click)="navigateTo('reports', 'reports')" *ngIf="isAuthorized(8)">Weightment Reports</button>

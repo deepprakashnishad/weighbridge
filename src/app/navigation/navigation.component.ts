@@ -9,6 +9,9 @@ import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.
 import { HtmlViewerComponent } from '../shared/html-viewer/html-viewer.component';
 import { MyIpcService } from '../my-ipc.service';
 import { environment } from '../../environments/environment';
+import { MyDbService } from '../my-db.service';
+import { QueryList } from '../query-list';
+import { ReportService } from '../report/report.service';
 
 
 @Component({
@@ -48,14 +51,16 @@ export class NavigationComponent implements OnInit {
   selectedMenu: string;
 
   	constructor(
-		private authenticationService: AuthenticationService,
-    private router: Router,
-    private ngZone: NgZone,
-		private titleService: Title,
+		  private authenticationService: AuthenticationService,
+      private router: Router,
+      private ngZone: NgZone,
+		  private titleService: Title,
       private renderer: Renderer2,
       private dialog: MatDialog,
-      private ipcService: MyIpcService
-	) { }
+      private ipcService: MyIpcService,
+      private dbService: MyDbService,
+      private reportService: ReportService
+	  ) { }
 
 	ngOnInit() {
 		this.router.events.subscribe((data) => {
@@ -160,6 +165,20 @@ export class NavigationComponent implements OnInit {
         }
       });
     });
-    
+  }
+
+  async syncWithSAP() {
+    var sql = "SELECT w.*, wd.*, u1.username firstWeightUsername, u2.username secondWeightUserName, \
+              convert(varchar, createdAt, 112) createdAtDate, convert(varchar, createdAt, 8) createdAtTime, \
+              convert(varchar, firstWeightDatetime, 112) firstWeightDate, convert(varchar, firstWeightDatetime, 8) firstWeightTime, \
+              convert(varchar, secondWeightDatetime, 112) secondWeightDate, convert(varchar, secondWeightDatetime, 8) secondWeightTime \
+              FROM weighment w, weighment_details wd, app_user u1, app_user u2 \
+              WHERE w.rstNo = wd.weighmentRstNo AND w.status = 'complete' AND w.syncFlag = 0 \
+              AND u1.id = wd.firstWeightUser AND u2.id = wd.secondWeightUser \
+              ORDER BY w.rstNo, wd.id";
+    var dataRows = await this.dbService.executeSyncDBStmt("GET", sql);
+    dataRows = this.reportService.processResultWithFinalWeight(dataRows);
+
+    this.ipcService.invokeIPC("sendDataToSAP", [dataRows]);
   }
 }

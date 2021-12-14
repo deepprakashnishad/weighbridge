@@ -16,6 +16,7 @@ import { Weighment, WeighmentDetail } from './weighment';
 import { WeighmentSearchDialog } from './weighment-search-dialog/weighment-search-dialog.component';
 import { WeighmentSummaryComponent } from './weighment-summary/weighment-summary.component';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { ReportService } from '../report/report.service';
 
 @Component({
   selector: 'app-weighment',
@@ -70,6 +71,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private dialog: MatDialog,
     private clipboard: Clipboard,
+    private reportService: ReportService,
     private router: Router,
   ) {
     this.route.queryParams.subscribe(params => {
@@ -180,7 +182,6 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     this.weighment.transporterCode = event.code;
     this.weighment.transporterName = event.mValue;
     this.transporter = `${event.code}-${event.mValue}`;
-    console.log(this.weighment);
   }
 
   supplierSelected(event){
@@ -233,16 +234,31 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     this.displayWeighmentSummary();
   }
 
+  async sendDataToSAP() {
+    console.log("About to send data to SAP");
+    var sql = `SELECT w.*, wd.*, u1.username firstWeightUsername, u2.username secondWeightUserName, \
+              convert(varchar, createdAt, 112) createdAtDate, convert(varchar, createdAt, 8) createdAtTime, \
+              convert(varchar, firstWeightDatetime, 112) firstWeightDate, convert(varchar, firstWeightDatetime, 8) firstWeightTime, \
+              convert(varchar, secondWeightDatetime, 112) secondWeightDate, convert(varchar, secondWeightDatetime, 8) secondWeightTime \
+              FROM weighment w, weighment_details wd, app_user u1, app_user u2 \
+              WHERE w.rstNo = wd.weighmentRstNo AND w.status = 'complete' AND w.syncFlag = 0 \
+              AND u1.id = wd.firstWeightUser AND u2.id = wd.secondWeightUser AND w.rstNo=${this.weighment.rstNo} \
+              ORDER BY w.rstNo, wd.id`;
+    var dataRows = await this.dbService.executeSyncDBStmt("GET", sql);
+    dataRows = this.reportService.processResultWithFinalWeight(dataRows);
+    this.ipcService.invokeIPC("sendDataToSAP", [dataRows]);
+  }
+
   async insertFirstWeighmentForPartial(weighBridge, firstWeight, firstUnit, user) {
     var stmt = QueryList.INSERT_FIRST_WEIGHMENT_DETAIL
       .replace("{weighmentRstNo}", this.weighment.rstNo.toString())
-      .replace("{supplier}", this.weighmentDetail.supplier)
+      .replace("{supplier}", this.dbService.escapeString(this.weighmentDetail.supplier))
       .replace("{material}", null)
-      .replace("{firstWeighBridge}", weighBridge)
+      .replace("{firstWeighBridge}", this.dbService.escapeString(weighBridge))
       .replace("{firstWeight}", firstWeight.toString())
       .replace("{firstUnit}", this.weighmentDetail.firstUnit)
       .replace("{firstWeightUser}", user)
-      .replace("{remark}", this.weighmentDetail.remark != null ? this.weighmentDetail.remark: "");
+      .replace("{remark}", this.dbService.escapeString(this.weighmentDetail.remark));
 
     var result = await this.dbService.executeInsertAutoId("weighment_details", "id", stmt);
     if (result['newId']) {
@@ -262,10 +278,10 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       .replace("{gatePassNo}", this.weighment.gatePassNo ? this.weighment.gatePassNo.toString() : null)
       .replace("{weighmentType}", this.weighment.weighmentType)
       .replace("{transporterCode}", this.weighment?.transporterCode ? this.weighment?.transporterCode.toString() : "")
-      .replace("{transporterName}", this.weighment?.transporterName ? this.weighment?.transporterName : "")
+      .replace("{transporterName}", this.dbService.escapeString(this.weighment?.transporterName))
       .replace("{status}", status)
       .replace("{rstNo}", this.weighment.rstNo.toString())
-      .replace("{misc}", this.weighment.misc ? this.weighment.misc:'')
+      .replace("{misc}", this.dbService.escapeString(this.weighment.misc))
       .replace("{scrollDate}", this.weighment.scrollDate ? this.weighment.scrollDate:'');
 
     var result = await this.dbService.executeSyncDBStmt("UPDATE", stmt);
@@ -283,8 +299,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       .replace("{weighmentType}", this.weighment.weighmentType)
       .replace("{poDetails}", this.weighment?.poDetails ? this.weighment?.poDetails : null)
       .replace("{transporterCode}", this.weighment?.transporterCode ? this.weighment?.transporterCode.toString() : "")
-      .replace("{transporterName}", this.weighment?.transporterName ? this.weighment?.transporterName : "")
-      .replace("{misc}", this.weighment.misc ? this.weighment.misc : '')
+      .replace("{transporterName}", this.dbService.escapeString(this.weighment?.transporterName))
+      .replace("{misc}", this.dbService.escapeString(this.weighment.misc))
       .replace("{status}", status)
       .replace("{scrollDate}", this.weighment.scrollDate ? this.weighment.scrollDate:"");
 
@@ -303,13 +319,13 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   async insertFirstWeighment() {
     var stmt = QueryList.INSERT_FIRST_WEIGHMENT_DETAIL
       .replace("{weighmentRstNo}", this.weighment.rstNo.toString())
-      .replace("{material}", this.weighmentDetail.material ? this.weighmentDetail.material : null)
-      .replace("{supplier}", this.weighmentDetail.supplier ? this.weighmentDetail.supplier : null)
+      .replace("{material}", this.dbService.escapeString(this.weighmentDetail.material))
+      .replace("{supplier}", this.dbService.escapeString(this.weighmentDetail.supplier))
       .replace("{firstWeighBridge}", this.weighbridge)
       .replace("{firstWeight}", this.weighmentDetail.firstWeight.toString())
       .replace("{firstUnit}", this.weighmentDetail.firstUnit)
       .replace("{firstWeightUser}", this.authService.getTokenOrOtherStoredData("id"))
-      .replace("{remark}", this.weighmentDetail.remark != null ? this.weighmentDetail.remark : "");
+      .replace("{remark}", this.dbService.escapeString(this.weighmentDetail.remark));
 
     var result = await this.dbService.executeInsertAutoId("weighment_details", "id", stmt);
     if (result['newId']) {
@@ -331,7 +347,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       .replace("{secondUnit}", this.weighmentDetail.secondUnit ? this.weighmentDetail.secondUnit: "Kg")
       .replace("{secondWeightUser}", this.authService.getTokenOrOtherStoredData("id"))
       .replace("{netWeight}", this.weighmentDetail.netWeight ? this.weighmentDetail.netWeight?.toString() : null)
-      .replace("{remark}", this.weighmentDetail.remark ? this.weighmentDetail.remark : "")
+      .replace("{remark}", this.dbService.escapeString(this.weighmentDetail.remark))
       .replace("{id}", this.weighment.weighmentDetails[this.weighment.weighmentDetails.length-1].id.toString());
 
     var result = await this.dbService.executeSyncDBStmt("UPDATE", stmt);
@@ -362,6 +378,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.sendDataToSAP();
       this.reset(false);
     });
   }
@@ -551,6 +568,10 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     var dialogRef = this.dialog.open(WeighmentSearchDialog, {
       height: "600px",
       width: "1100px",
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getWeighment({ "rstNo": result });
     });
   }
 

@@ -27,7 +27,7 @@ export class QueryList{
   static readonly GET_WEIGHMENTS_WITH_LATEST_DETAIL = "SELECT w.*, id, weighmentRstNo, material, supplier, \
     firstWeighBridge, firstUnit, firstWeight, convert(varchar, firstWeightDatetime, 20) as firstWeightDatetime, \
     firstWeightUser, secondWeighBridge, secondUnit, secondWeight, convert(varchar, secondWeightDatetime, 20) as secondWeightDatetime, \
-    secondWeightUser, remark, netWeight FROM weighment w, weighment_details wd";
+    secondWeightUser, remark, netWeight FROM weighment w, weighment_details wd WHERE w.rstNo=wd.weighmentRstNo";
 
   //static readonly GET_WEIGHMENTS_WITH_LATEST_DETAIL = "SELECT * FROM weighment w  RIGHT JOIN  \
   //    (SELECT id, weighmentRstNo, material, supplier, firstWeighBridge, firstUnit, firstWeight, \

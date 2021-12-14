@@ -14,7 +14,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --live-reload",
-    "build": "ng build --prod --base-href ./",
+    "build": "ng build --prod --base-href ./ --aot --vendor-chunk --common-chunk --delete-output-path --build-optimizer && tar -zcvf archive.tar.gz app/dist/*",
     "rebuild": "electron-rebuild",
     "test": "ng test",
     "lint": "ng lint",

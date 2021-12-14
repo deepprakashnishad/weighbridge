@@ -9,6 +9,7 @@ require("./printer-service.js");
 require("./file-service.js");
 require("./port-verifier.js");
 require("./mailer.js");
+require("./sap-integration.js");
 
 const env = "PROD"; // DEV Or PROD
 //const env = "DEV";
@@ -45,7 +46,7 @@ function createWindow() {
   if (env === "DEV") {
     win.loadURL('http://localhost:4200');
   } else {
-    win.setMenu(null);
+    //win.setMenu(null);
     win.loadFile("./dist/index.html");
   }
 }

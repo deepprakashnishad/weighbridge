@@ -4,9 +4,10 @@
     "\\app",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\admin\\initial-setup",
-    "\\src\\app\\weighment"
+    "\\src\\app\\weighment",
+    "\\src\\app\\weighment\\weighment-search-dialog",
+    "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\app\\weighment\\weighment.component.ts",
+  "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
 }

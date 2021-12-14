@@ -3,7 +3,7 @@ import { MatTable, MatTableDataSource } from "@angular/material/table";
 import { NotifierService } from "angular-notifier";
 import { MyDbService } from "../../my-db.service";
 import { QueryList } from "../../query-list";
-import { Weighment, WeighmentDetail } from "../weighment";
+import { WeighmentDetail } from "../weighment";
 
 @Component({
   selector: 'app-weighment-details',

@@ -15,9 +15,7 @@
   "asar": true,
   "win": {
     "target": [
-      "nsis",
-      "nsis-web",
-      "portable"
+      "nsis"
     ]
   },
   "nsis": {
