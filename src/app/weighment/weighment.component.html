@@ -56,6 +56,10 @@
                    (keyup.enter)="parseQRString(weighment.scrollDate)"
                    (blur)="parseQRString(weighment.scrollDate)" maxlength="8" />
           </mat-form-field>
+          <mat-form-field fxFlex appearance="outline" *ngIf="weighment.weighmentType.indexOf('outbound')>-1">
+            <mat-label>Request Id Date</mat-label>
+            <input matInput [(ngModel)]="weighment.reqIdDate" name="cntlReqIdDate" maxlength="8" />
+          </mat-form-field>
           <mat-form-field appearance="outline" fxFlex>
             <mat-label>Remark</mat-label>
             <input matInput [(ngModel)]="weighmentDetail.remark" />
@@ -106,7 +110,7 @@
             Capture
           </button>
           <div fxLayout fxLayoutGap="32px" fxLayoutAlign="center center">
-            <mat-checkbox *ngIf="weighmentDetail.secondWeight && weighmentDetail.firstWeight" [(ngModel)]="isComplete">Is Complete</mat-checkbox>
+            <mat-checkbox *ngIf="weighmentDetail.secondWeight && weighmentDetail.firstWeight!=undefined && weighmentDetail.firstWeight!=null" [(ngModel)]="isComplete">Is Complete</mat-checkbox>
             <button mat-raised-button color="primary" (click)="save()">Save</button>
             <button mat-raised-button color="error" (click)="reset(true)">Reset</button>
           </div>

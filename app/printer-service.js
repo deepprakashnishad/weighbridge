@@ -20,22 +20,30 @@ async function runCommand(command) {
 }
 
 function getPrinters() {
-  var printers = win.webContents.getPrinters();
-  return printers;
+  try {
+    var printers = win.webContents.getPrinters();
+    log.info(printers);
+    return printers;
+  } catch (err) {
+    log.error(err);
+  }
+  
 }
 
 ipcMain.handle("printer-ipc", async (event, ...args) => {
   if (args[0] === "getPrinters") {
     return getPrinters();
   } else if (args[0] === "print") {
+    log.info(agrs[1]);
     await runCommand(args[1]);
   } else if (args[0] === "print-file") {
     var filename = "temp_file_for_print.txt";
+    log.info(agrs[2]);
     createPrintFile(filename, args[2]);
     var command = args[1].replace("<filename>", filename);
     const result = await runCommand(command);
     fs.unlink(filename, function () { console.log('Deleted avatar') });
-    console.log(result);
+    log.info(result);
   }
 })
 
@@ -63,6 +71,7 @@ ipcMain.handle("graphical-print-ipc", async (e, ...args) => {
 });
 
 ipcMain.handle("cmdline-print-ipc", async (event, ...args) => {
+  log.info(args[1]);
   await runCommand(args[1]);
 });
 

@@ -32,9 +32,11 @@ ipcMain.handle("initialize-port", async (event, ...args) => {
       });
 
       tempPort.on("open", function () {
+        log.info("Port opened successfully");
         isPortInUse = true;
       })
       tempPort.on("close", function () {
+        log.info("Port closed successfully");
         isPortInUse = false;
       })
 
@@ -69,6 +71,7 @@ function initializePort() {
       log.error(err);
       win.webContents.send("curr-weight-recieved", [err]);
     });
+    log.info("Port initialization complete");
   } catch (err) {
     log.error(err);
   } 

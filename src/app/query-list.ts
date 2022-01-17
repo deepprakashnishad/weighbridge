@@ -3,12 +3,12 @@ export class QueryList{
   //Weighment
   static readonly INSERT_WEIGHMENT: string = "INSERT INTO weighment(rstNo, vehicleNo, scrollNo, \
   reqId, gatePassNo, weighmentType, poDetails, transporterCode, transporterName, status, \
-  createdAt, scrollDate, misc) \
-  VALUES({rstNo}, '{vehicleNo}', '{scrollNo}', {reqId}, {gatePassNo}, '{weighmentType}', \
-  '{poDetails}', {transporterCode}, '{transporterName}', '{status}', GETDATE(), '{scrollDate}', '{misc}');";
-  static readonly UPDATE_WEIGHMENT: string = "UPDATE weighment SET scrollNo='{scrollNo}', reqId={reqId}, \
-        gatePassNo={gatePassNo}, weighmentType='{weighmentType}', transporterCode='{transporterCode}',\
-        transporterName='{transporterName}', status='{status}', scrollDate='{scrollDate}', misc='{misc}' WHERE rstNo={rstNo}";
+  createdAt, scrollDate, reqIdDate, misc) \
+  VALUES({rstNo}, '{vehicleNo}', '{scrollNo}', '{reqId}', '{gatePassNo}', '{weighmentType}', \
+  '{poDetails}', {transporterCode}, '{transporterName}', '{status}', GETDATE(), '{scrollDate}', '{reqIdDate}', '{misc}');";
+  static readonly UPDATE_WEIGHMENT: string = "UPDATE weighment SET scrollNo='{scrollNo}', reqId='{reqId}', \
+        gatePassNo='{gatePassNo}', weighmentType='{weighmentType}', transporterCode='{transporterCode}',\
+        transporterName='{transporterName}', status='{status}', scrollDate='{scrollDate}', reqIdDate='{reqIdDate}', misc='{misc}' WHERE rstNo={rstNo}";
   static readonly UPDATE_WEIGHMENT_STATUS: string = "UPDATE weighment SET status='{status}' WHERE rstNo={rstNo}";
   //Weighment Details
   static readonly INSERT_WEIGHMENT_DETAIL: string = "INSERT INTO weighment_details(id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser, secondWeighBridge, secondWeight, secondUnit, secondWeightDatetime, secondWeightUser, remark, netWeight) VALUES({id}, {weighmentRstNo}, '{material}', '{supplier}', '{firstWeighBridge}', {firstWeight}, '{firstUnit}', {firstWeightDatetime}, {firstWeightUser}, {secondWeighBridge}, {secondWeight}, '{secondUnit}', {secondWeightDatetime}, {secondWeightUser}, '{remark}', {netWeight})";

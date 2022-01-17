@@ -18,6 +18,7 @@ var options = {
 ipcMain.handle("sendDataToSAP", async (event, args) => {
   try {
     //dummyDriver(args[0]);
+    log.info(args[0]);
     sendToSAP(args[0]);
   } catch (err) {
     log.error(err);
@@ -48,6 +49,10 @@ function sendToSAP(data) {
       }
     }
     //Create SOAP client
+    log.info("Sending data to SAP");
+    log.info(RequestData);
+    //log.info("SAP Endpoint - " + url);
+    //log.info(username+":"+password);
     soap.createClient(url, options, function (err, client) {
       if (err) {
         log.error(err);
@@ -60,10 +65,11 @@ function sendToSAP(data) {
       //wsdl Service call 
       client.SI_WEIGHBRIDGE_WEIGHT_DATAService.HTTP_Port.SI_WEIGHBRIDGE_WEIGHT_DATA(RequestData, function (err, response, envelope) {
         if (err) {
-          console.log(err);
           log.error(err);
           return err;
         } else {
+          log.info("Respose from SAP");
+          log.info(response);
           if (response['WEIGHBRIDGE_TAB']['WEIGHBRIDGE_DATA']) {
             var itemsResponse = [];
             itemsResponse = response['WEIGHBRIDGE_TAB']['WEIGHBRIDGE_DATA'];
@@ -81,6 +87,5 @@ function sendToSAP(data) {
 
 function updateSyncFlag(data){
   var stmt = `UPDATE weighment SET syncFlag=1 WHERE rstNo=${data['WEIGHMENT_RST_NO']}`;
-  console.log(stmt);
   db.stmtExecutor("UPDATE", stmt);
 }

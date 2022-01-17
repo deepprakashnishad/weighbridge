@@ -158,10 +158,11 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     if (isString(inputStr) && (inputStr.match(/:/g) || []).length === 4) {
       var inputs = inputStr?.split(":");
       this.weighment.reqId = parseInt(inputs[0]);
-      this.weighment.gatePassNo = parseInt(inputs[1]);
-      this.weighment.vehicleNo = inputs[2];
-      this.weighment.transporterCode = parseInt(inputs[3]);
-      this.weighment.transporterName = inputs[4];
+      this.weighment.reqIdDate = inputs[1];
+      this.weighment.gatePassNo = parseInt(inputs[2]);
+      this.weighment.vehicleNo = inputs[3];
+      this.weighment.transporterCode = parseInt(inputs[4]);
+      this.weighment.transporterName = inputs[5];
       this.transporter = `${this.weighment.transporterCode}-${this.weighment.transporterName}`;
       this.weighment.weighmentType = "outbound_domestic";
     }
@@ -235,7 +236,6 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   }
 
   async sendDataToSAP() {
-    console.log("About to send data to SAP");
     var sql = `SELECT w.*, wd.*, u1.username firstWeightUsername, u2.username secondWeightUserName, \
               convert(varchar, createdAt, 112) createdAtDate, convert(varchar, createdAt, 8) createdAtTime, \
               convert(varchar, firstWeightDatetime, 112) firstWeightDate, convert(varchar, firstWeightDatetime, 8) firstWeightTime, \
@@ -282,7 +282,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       .replace("{status}", status)
       .replace("{rstNo}", this.weighment.rstNo.toString())
       .replace("{misc}", this.dbService.escapeString(this.weighment.misc))
-      .replace("{scrollDate}", this.weighment.scrollDate ? this.weighment.scrollDate:'');
+      .replace("{scrollDate}", this.weighment.scrollDate ? this.weighment.scrollDate : '')
+      .replace("{reqIdDate}", this.weighment.reqIdDate ? this.weighment.reqIdDate : '');
 
     var result = await this.dbService.executeSyncDBStmt("UPDATE", stmt);
     if (result > 0) {
@@ -302,7 +303,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       .replace("{transporterName}", this.dbService.escapeString(this.weighment?.transporterName))
       .replace("{misc}", this.dbService.escapeString(this.weighment.misc))
       .replace("{status}", status)
-      .replace("{scrollDate}", this.weighment.scrollDate ? this.weighment.scrollDate:"");
+      .replace("{scrollDate}", this.weighment.scrollDate ? this.weighment.scrollDate : "")
+      .replace("{reqIdDate}", this.weighment.reqIdDate ? this.weighment.reqIdDate : "");
 
     var result = await this.dbService.executeInsertAutoId("weighment", "rstNo", stmt);
     if (result['newId'] === undefined) {
@@ -472,6 +474,14 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       }
       if (!this.weighment.reqId) {
         this.notifier.notify("error", "Request id is required for outbound");
+        return false;
+      }
+      if (!this.weighment.reqIdDate) {
+        this.notifier.notify("error", "Request id date is required for outbound");
+        return false;
+      }
+      if (this.weighment.reqIdDate.length !== 8) {
+        this.notifier.notify("error", "Request id date must be of 8 digits");
         return false;
       }
       if (!this.weighment.gatePassNo) {

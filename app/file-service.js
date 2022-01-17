@@ -10,9 +10,13 @@ var env_filepath = app.getPath('userData') +"\\" + bootstrapData.mConstants.appN
 ipcMain.handle("saveEnvironmentVars", async (event, arg) => {
   try {
     fs.mkdir(env_filepath, { recursive: true }, function (err) {
-      if (err) return cb(err);
+      if (err) {
+        log.error(err);
+        return cb(err);
+      }
 
       fs.writeFileSync(env_filepath + "\\" + bootstrapData.mConstants.envFilename, JSON.stringify(arg[0]), 'utf-8');
+      log.info("File writing completed");
     });
     
     return true;
@@ -30,6 +34,7 @@ ipcMain.handle("removeSingleEntry", async (event, arg) => {
       data = JSON.parse(data);
       delete data[arg[0]];
       fs.writeFileSync(env_filepath + "\\" + bootstrapData.mConstants.envFilename, JSON.stringify(data), 'utf-8');
+      log.info("File entry removed");
       return true;
     } else {
       return false;
@@ -49,12 +54,17 @@ ipcMain.handle("saveSingleEnvVar", async (event, arg) => {
         data = JSON.parse(data);
       } catch (e) {
         var data = {};
+        log.error(e);
       }
       data[arg[0]] = arg[1];
       fs.mkdir(env_filepath, { recursive: true }, function (err) {
-        if (err) return cb(err);
+        if (err) {
+          log.error(err);
+          return cb(err);
+        }
 
         fs.writeFileSync(env_filepath + "\\" + bootstrapData.mConstants.envFilename, JSON.stringify(data), 'utf-8');
+        log.info("Single entry saved to environment file.");
       });
       
       return true;
@@ -71,6 +81,7 @@ ipcMain.handle("saveSingleEnvVar", async (event, arg) => {
 ipcMain.handle("loadEnvironmentVars", async (event, arg) => {
   try {
     var data = fs.readFileSync(env_filepath + "\\" + bootstrapData.mConstants.envFilename, 'utf-8');
+
     if (arg && arg[0]) {
       return JSON.parse(data)[arg[0]];
     } else {
@@ -85,7 +96,7 @@ ipcMain.handle("loadEnvironmentVars", async (event, arg) => {
 
 ipcMain.handle("saveLicense", async (event, args) => {
   try {
-    const dir = './notamedia';
+    const dir = env_filepath + '\\notamedia';
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, {
         recursive: true
@@ -98,6 +109,8 @@ ipcMain.handle("saveLicense", async (event, args) => {
     var birthtime = stats['birthtime'];
     var hash = getHash(args[0], birthtime.toISOString());
     fs.appendFileSync(`${dir}/${args[0]}`, "." + hash);
+
+    log.info("Licence saved successfully to " + filepath)
     return true;
   } catch (e) {
     log.error(e);
@@ -108,7 +121,8 @@ ipcMain.handle("saveLicense", async (event, args) => {
 
 ipcMain.handle("getLicense", async (event, args) => {
   try {
-    const dir = './notamedia';
+    const dir = env_filepath + '\\notamedia';
+    log.info("Reading licence from - " + dir);
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, {
         recursive: true
@@ -133,7 +147,7 @@ ipcMain.handle("getLicense", async (event, args) => {
 });
 
 ipcMain.handle("removeLicense", async (event, args) => {
-  const dir = './notamedia';
+  const dir = env_filepath + '\\notamedia';
   var filepath = `${dir}/${args[0]}`;
   try {
     fs.rmSync(filepath);
@@ -167,7 +181,7 @@ ipcMain.handle("writeToExcel", async (event, args) => {
       }
     }
   } catch (e) {
-    console.log(e);
+    log.error(e);
   } finally {
     wb.write(`${path}/${filename}`);
     return { filename: filename, fullpath: `${path}/${filename}` };

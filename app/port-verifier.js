@@ -13,6 +13,7 @@ var tempPort;
 ipcMain.handle("get-available-ports", async (event, ...args) => {
   try {
     var ports = await serialPort.list();
+    log.info(ports);
     return ports;
   } catch (err) {
     log.error("Unable to read ports. Please see below error logged");
@@ -151,5 +152,8 @@ ipcMain.handle("close-verification-port", async (event, ...args) => {
   try {
     if (tempPort.isOpen)
       tempPort.close();
-  } catch (e) { }
+  } catch (e) {
+    log.error("Error on closing verfication port");
+    log.error(e);
+  }
 })

@@ -16,6 +16,7 @@ export class Weighment{
   createdAt: string;
   weighmentDetails: Array<WeighmentDetail>;
   scrollDate: string;
+  reqIdDate: string;
   misc: string;
 
   constructor(){

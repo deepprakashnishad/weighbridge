@@ -177,6 +177,7 @@ export class NavigationComponent implements OnInit {
               AND u1.id = wd.firstWeightUser AND u2.id = wd.secondWeightUser \
               ORDER BY w.rstNo, wd.id";
     var dataRows = await this.dbService.executeSyncDBStmt("GET", sql);
+    console.log(dataRows);
     dataRows = this.reportService.processResultWithFinalWeight(dataRows);
 
     this.ipcService.invokeIPC("sendDataToSAP", [dataRows]);
