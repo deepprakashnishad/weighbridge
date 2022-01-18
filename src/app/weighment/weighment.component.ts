@@ -155,7 +155,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       this.weighment.scrollNo = inputs[2];
       this.weighment.weighmentType = "inbound";
     }
-    if (isString(inputStr) && (inputStr.match(/:/g) || []).length === 4) {
+    if (isString(inputStr) && (inputStr.match(/:/g) || []).length === 5) {
       var inputs = inputStr?.split(":");
       this.weighment.reqId = parseInt(inputs[0]);
       this.weighment.reqIdDate = inputs[1];

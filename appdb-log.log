@@ -5,3 +5,31 @@
 [2022-01-15 20:49:41.850] [info]  Database - weighbridge
 [2022-01-15 20:49:41.853] [info]  Server - MSSQLSERVER01
 [2022-01-15 20:49:41.854] [info]  Port - 1433
+[2022-01-18 04:38:26.656] [info]  Environment file path:
+[2022-01-18 04:38:26.670] [info]  C:\Users\Admin\AppData\Roaming\Electron\Accubridge\env.json
+[2022-01-18 04:38:26.683] [info]  User - root
+[2022-01-18 04:38:26.688] [info]  Password - admin
+[2022-01-18 04:38:26.713] [info]  Database - weighbridge
+[2022-01-18 04:38:26.719] [info]  Server - DESKTOP-13G3LGM\MSSQLSERVER01
+[2022-01-18 04:38:26.723] [info]  Port - 1433
+[2022-01-18 05:33:25.406] [info]  Environment file path:
+[2022-01-18 05:33:25.417] [info]  C:\Users\Admin\AppData\Roaming\Electron\Accubridge\env.json
+[2022-01-18 05:33:25.428] [info]  User - root
+[2022-01-18 05:33:25.439] [info]  Password - admin
+[2022-01-18 05:33:25.452] [info]  Database - weighbridge
+[2022-01-18 05:33:25.460] [info]  Server - DESKTOP-13G3LGM\MSSQLSERVER01
+[2022-01-18 05:33:25.467] [info]  Port - 1433
+[2022-01-18 06:20:12.705] [info]  Environment file path:
+[2022-01-18 06:20:12.713] [info]  C:\Users\Admin\AppData\Roaming\Electron\Accubridge\env.json
+[2022-01-18 06:20:12.718] [info]  User - root
+[2022-01-18 06:20:12.723] [info]  Password - admin
+[2022-01-18 06:20:12.727] [info]  Database - weighbridge
+[2022-01-18 06:20:12.732] [info]  Server - DESKTOP-13G3LGM\MSSQLSERVER01
+[2022-01-18 06:20:12.737] [info]  Port - 1433
+[2022-01-18 16:14:41.760] [info]  Environment file path:
+[2022-01-18 16:14:41.796] [info]  C:\Users\Admin\AppData\Roaming\Electron\Accubridge\env.json
+[2022-01-18 16:14:41.799] [info]  User - root
+[2022-01-18 16:14:41.804] [info]  Password - admin
+[2022-01-18 16:14:41.811] [info]  Database - weighbridge
+[2022-01-18 16:14:41.814] [info]  Server - DESKTOP-13G3LGM\MSSQLSERVER01
+[2022-01-18 16:14:41.820] [info]  Port - 1433

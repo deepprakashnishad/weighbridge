@@ -350,6 +350,7 @@ export class ReportService {
     data['WEIGHMENT_RST_NO'] = rows[0]['rstNo'];
     data['VEHICLE_NO'] = this.insertSpace(rows[0]['vehicleNo'].toUpperCase());
     data['REQ_ID'] = rows[0]['reqId'] == null || rows[0]['reqId'] == undefined ? "" : rows[0]['reqId'];
+    data['REQ_ID_DATE'] = rows[0]['reqIdDate'] == null || rows[0]['reqIdDate'] == undefined ? "" : rows[0]['reqIdDate'];
     data['WEIGHMENT_TYPE'] = rows[0]['weighmentType'].toUpperCase();
     data['GATE_PASS_NO'] = rows[0]['gatePassNo'] == null || rows[0]['gatePassNo'] == undefined ? "" : rows[0]['gatePassNo'];
     data['PO_DETAILS'] = rows[0]['poDetails'] == null || rows[0]['poDetails'] == undefined ? "" : rows[0]['poDetails'];
@@ -361,6 +362,7 @@ export class ReportService {
     data['SCROLL_NO'] = rows[0]['scrollNo'] == null || rows[0]['scrollNo'] == undefined ? "" : rows[0]['scrollNo'];
     data['SCROLL_DATE'] = rows[0]['scrollDate'] == null || rows[0]['scrollDate'] == undefined ? "" : rows[0]['scrollDate'];
     data['SYNC_FLAG'] = rows[0]['syncFlag'];
+    data['MISC_TEXT'] = rows[0]['misc'] == null || rows[0]['misc'] == undefined ? "" : rows[0]['misc'];
 
     data['FIRST_WEIGH_BRIDGE'] = rows[0]['firstWeighBridge']!=null && rows[0]['firstWeighBridge'] ? rows[0]['firstWeighBridge'] : "";
     data['FIRST_WEIGHT'] = rows[0]['firstWeight']!=null && rows[0]['firstWeight'] ? rows[0]['firstWeight'] : "";
@@ -379,7 +381,8 @@ export class ReportService {
     data['WEIGHMENT_RST_NO_ID'] = rows.map(ele => ele['id']).join(",");
     data['MATERIAL_CODE'] = rows.map(ele => ele['material']).join(",");
     data['SUPPLIER_CUSTOMER_CODE'] = rows.map(ele => ele['supplier']).join(",");
-    data['REMARK_TEXT'] = rows[0]['misc'] == null || rows[0]['misc'] == undefined ? "" : rows[0]['misc'];
+    data['REMARK_TEXT'] = rows[0]['remark'] == null || rows[0]['remark'] == undefined ? "" :
+                          rows.map(ele=> ele['remark']).join(":");
 
     data['NET_WEIGHT'] = Math.abs(rows[rows.length - 1]['secondWeight'] - rows[0]['firstWeight']);
 

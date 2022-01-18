@@ -10,7 +10,7 @@ import { AuthenticationService } from './authentication/authentication.service';
 })
 export class AppComponent {
 
-  title = 'Bharat Forge - Weighbridge';
+  title = 'Accubridge';
   isLoggedIn = false;
 
   constructor(

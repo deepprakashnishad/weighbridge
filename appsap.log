@@ -38,3 +38,1954 @@
 [2022-01-15 20:55:15.302] [info]  Database - weighbridge
 [2022-01-15 20:55:15.308] [info]  Server - DESKTOP-13G3LGM\MSSQLSERVER01
 [2022-01-15 20:55:15.312] [info]  Port - 1433
+[2022-01-18 05:33:40.517] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:00.429] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:38:00.436] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-01-18 05:38:15.248] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:15.251] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:15.261] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:15.272] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:15.280] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:15.288] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:15.295] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:15.303] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:15.309] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:31.246] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:31.249] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:31.256] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:31.262] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:31.270] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:31.283] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:31.293] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:31.299] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:47.259] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:47.262] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:47.273] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:47.287] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:47.314] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:47.326] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:47.333] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:38:47.361] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:39:04.117] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:39:04.134] [error] ConnectionError: Failed to connect to DESKTOP-13G3LGM\MSSQLSERVER01 in 15000ms
+    at D:\electron\weighbridge\app\node_modules\mssql\lib\tedious\connection-pool.js:71:17
+    at Connection.onConnect (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1027:9)
+    at Object.onceWrapper (events.js:422:26)
+    at Connection.emit (events.js:315:20)
+    at Connection.emit (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1055:18)
+    at Connection.connectTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1514:10)
+    at Timeout._onTimeout (D:\electron\weighbridge\app\node_modules\tedious\lib\connection.js:1459:12)
+    at listOnTimeout (internal/timers.js:554:17)
+    at processTimers (internal/timers.js:497:7)
+[2022-01-18 05:41:15.780] [info]  Reading licence from - C:\Users\Admin\AppData\Roaming\Electron\Accubridge\notamedia
+[2022-01-18 05:46:11.019] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:46:11.022] [info]  SELECT * FROM app_user WHERE username='admin' AND password='Admin123'
+[2022-01-18 05:46:11.295] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:46:11.297] [info]  SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid=1
+[2022-01-18 05:46:11.460] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:46:11.462] [info]  SELECT * FROM app_data
+[2022-01-18 05:46:11.617] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:46:11.621] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-01-18 05:46:16.539] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:46:16.541] [info]  SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-01-18 05:46:16.546] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:46:16.550] [info]  SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-01-18 05:46:16.574] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:46:16.576] [info]  SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-01-18 05:50:38.418] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:50:38.444] [info]  SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-01-18 05:50:38.453] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:50:38.464] [info]  SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-01-18 05:50:38.473] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:50:38.489] [info]  SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-01-18 05:50:38.831] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:50:38.833] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-01-18 05:51:54.166] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:51:54.169] [info]  SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-01-18 05:51:54.175] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:51:54.182] [info]  SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-01-18 05:51:54.191] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:51:54.196] [info]  SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-01-18 05:51:54.495] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:51:54.497] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-01-18 05:52:57.986] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:52:57.989] [info]  SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-01-18 05:52:57.994] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:52:57.997] [info]  SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-01-18 05:52:58.003] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:52:58.012] [info]  SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-01-18 05:52:58.363] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:52:58.368] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-01-18 05:56:05.463] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:56:05.467] [info]  SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-01-18 05:56:05.478] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:56:05.488] [info]  SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-01-18 05:56:05.490] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:56:05.497] [info]  SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-01-18 05:56:05.967] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:56:05.979] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-01-18 05:56:41.360] [info]  INSERT INTO weighment(rstNo, vehicleNo, scrollNo,   reqId, gatePassNo, weighmentType, poDetails, transporterCode, transporterName, status,   createdAt, scrollDate, reqIdDate, misc)   VALUES(1, 'MH12DZ4503', '', '104', '1', 'outbound_domestic',   'null', 40003, 'ATO (I) LIMITED', 'pending', GETDATE(), '', '20220111', '');
+[2022-01-18 05:56:41.415] [info]  INSERT INTO weighment_details(id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser, remark) VALUES(1, 1, '001-STEEL BAR', '014-PARTY', '', 10000, 'Kg', GETDATE(), 1, '')
+[2022-01-18 05:56:41.479] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:56:41.482] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 05:56:41.518] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:56:41.520] [info]  SELECT * FROM ticket_template WHERE applicableTo LIKE '%outbound_domestic%' OR applicableTo='GENERIC'
+[2022-01-18 05:56:41.736] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:56:41.754] [info]  SELECT * FROM template_detail WHERE templateId=1
+[2022-01-18 05:56:45.831] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 05:56:45.836] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 06:00:11.500] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:00:11.538] [info]  SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-01-18 06:00:11.581] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:00:11.588] [info]  SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-01-18 06:00:11.589] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:00:11.605] [info]  SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-01-18 06:00:12.172] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:00:12.195] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-01-18 06:00:12.533] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:00:12.542] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 06:00:17.460] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:00:17.474] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 06:05:13.692] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:05:13.695] [info]  SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-01-18 06:05:13.699] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:05:13.717] [info]  SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-01-18 06:05:13.748] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:05:13.750] [info]  SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-01-18 06:05:14.298] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:05:14.342] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-01-18 06:05:14.682] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:05:14.715] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 06:05:28.480] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:05:28.492] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 06:06:10.480] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:06:10.484] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 06:06:10.524] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:06:10.529] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 06:06:10.561] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:06:10.574] [info]  SELECT * FROM ticket_template WHERE applicableTo LIKE '%outbound_domestic%' OR applicableTo='GENERIC'
+[2022-01-18 06:06:10.656] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:06:10.668] [info]  SELECT * FROM template_detail WHERE templateId=1
+[2022-01-18 06:11:51.899] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:11:51.902] [info]  SELECT * FROM ticket_template
+[2022-01-18 06:12:02.111] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:12:02.119] [info]  SELECT * FROM template_detail WHERE templateId=1
+[2022-01-18 06:12:18.969] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:12:18.972] [info]  SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-01-18 06:12:18.978] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:12:18.980] [info]  SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-01-18 06:12:18.998] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:12:19.001] [info]  SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-01-18 06:12:51.456] [info]  INSERT INTO weighment(rstNo, vehicleNo, scrollNo,   reqId, gatePassNo, weighmentType, poDetails, transporterCode, transporterName, status,   createdAt, scrollDate, reqIdDate, misc)   VALUES(2, 'MH12DZ4503', '', '104', '1', 'outbound_domestic',   'null', 40003, 'ATO (I) LIMITED', 'pending', GETDATE(), '', '20220111', '');
+[2022-01-18 06:12:51.498] [info]  INSERT INTO weighment_details(id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser, remark) VALUES(2, 2, '001-STEEL BAR', '014-PARTY', '', 20000, 'Kg', GETDATE(), 1, '')
+[2022-01-18 06:12:51.567] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:12:51.571] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 06:12:51.613] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:12:51.632] [info]  SELECT * FROM ticket_template WHERE applicableTo LIKE '%outbound_domestic%' OR applicableTo='GENERIC'
+[2022-01-18 06:12:51.712] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:12:51.715] [info]  SELECT * FROM template_detail WHERE templateId=1
+[2022-01-18 06:16:25.173] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:16:25.187] [info]  SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-01-18 06:16:25.193] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:16:25.208] [info]  SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-01-18 06:16:25.212] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:16:25.215] [info]  SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-01-18 06:16:25.801] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:16:25.803] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-01-18 06:16:32.490] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:16:32.495] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 06:16:44.976] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:16:44.980] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 06:16:45.011] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:16:45.013] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 06:16:45.035] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:16:45.038] [info]  SELECT * FROM ticket_template WHERE applicableTo LIKE '%outbound_domestic%' OR applicableTo='GENERIC'
+[2022-01-18 06:16:45.164] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:16:45.170] [info]  SELECT * FROM template_detail WHERE templateId=1
+[2022-01-18 06:17:49.321] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:17:49.368] [info]  SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-01-18 06:20:24.435] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:20:24.444] [info]  SELECT * FROM app_user WHERE username='admin' AND password='Admin123'
+[2022-01-18 06:20:24.483] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:20:24.485] [info]  SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid=1
+[2022-01-18 06:20:24.654] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:20:24.682] [info]  SELECT * FROM app_data
+[2022-01-18 06:20:24.847] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:20:24.854] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-01-18 06:20:29.289] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:20:29.292] [info]  SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-01-18 06:20:29.298] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:20:29.301] [info]  SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-01-18 06:20:29.318] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:20:29.324] [info]  SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-01-18 06:21:34.261] [info]  INSERT INTO weighment(rstNo, vehicleNo, scrollNo,   reqId, gatePassNo, weighmentType, poDetails, transporterCode, transporterName, status,   createdAt, scrollDate, reqIdDate, misc)   VALUES(3, 'MH12DZ4503', '', '104', '1', 'outbound_domestic',   'null', 40003, 'ATO (I) LIMITED', 'pending', GETDATE(), '', '20220111', '');
+[2022-01-18 06:21:34.309] [info]  INSERT INTO weighment_details(id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser, remark) VALUES(3, 3, '001-STEEL BAR', '014-PARTY', '', 30000, 'Kg', GETDATE(), 1, '')
+[2022-01-18 06:21:34.342] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:21:34.344] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 06:21:34.372] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:21:34.383] [info]  SELECT * FROM ticket_template WHERE applicableTo LIKE '%outbound_domestic%' OR applicableTo='GENERIC'
+[2022-01-18 06:21:51.343] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:21:51.345] [info]  SELECT * FROM template_detail WHERE templateId=1
+[2022-01-18 06:24:08.924] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:24:08.927] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 06:24:17.999] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:24:18.002] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 06:24:18.033] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:24:18.035] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 06:24:18.072] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:24:18.082] [info]  SELECT * FROM ticket_template WHERE applicableTo LIKE '%outbound_domestic%' OR applicableTo='GENERIC'
+[2022-01-18 06:24:18.135] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:24:18.140] [info]  SELECT * FROM template_detail WHERE templateId=1
+[2022-01-18 06:30:50.343] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:30:50.352] [info]  SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-01-18 06:30:50.361] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:30:50.378] [info]  SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-01-18 06:30:50.381] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:30:50.385] [info]  SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-01-18 06:30:50.834] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:30:50.860] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-01-18 06:31:44.270] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:31:44.274] [info]  SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-01-18 06:31:44.286] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:31:44.319] [info]  SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-01-18 06:31:44.322] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:31:44.327] [info]  SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-01-18 06:31:44.846] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:31:44.879] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-01-18 06:32:14.456] [info]  INSERT INTO weighment(rstNo, vehicleNo, scrollNo,   reqId, gatePassNo, weighmentType, poDetails, transporterCode, transporterName, status,   createdAt, scrollDate, reqIdDate, misc)   VALUES(4, 'MH12DZ4503', '', '104', '1', 'outbound_domestic',   'null', 40003, 'ATO (I) LIMITED', 'pending', GETDATE(), '', '20220111', '');
+[2022-01-18 06:32:14.503] [info]  INSERT INTO weighment_details(id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser, remark) VALUES(4, 4, '001-STEEL BAR', '014-PARTY', '', 10000, 'Kg', GETDATE(), 1, '')
+[2022-01-18 06:32:14.538] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:32:14.544] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 06:32:14.575] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:32:14.578] [info]  SELECT * FROM ticket_template WHERE applicableTo LIKE '%outbound_domestic%' OR applicableTo='GENERIC'
+[2022-01-18 06:32:14.718] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:32:14.720] [info]  SELECT * FROM template_detail WHERE templateId=1
+[2022-01-18 06:32:41.181] [info]  []
+[2022-01-18 06:33:38.033] [info]  [
+  {
+    WEIGHMENT_RST_NO: 1,
+    VEHICLE_NO: 'MH 12 DZ 4503',
+    REQ_ID: '104',
+    REQ_ID_DATE: '20220111',
+    WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+    GATE_PASS_NO: '1',
+    PO_DETAILS: 'null',
+    TRANSPORTER_CODE: '40003',
+    TRANSPORTER_NAME: 'ATO (I) LIMITED',
+    WEIGHMENT_STATUS: 'COMPLETE',
+    CREATED_AT_DATE: '20220118',
+    CREATED_AT_TIME: '055641',
+    SCROLL_NO: '',
+    SCROLL_DATE: '',
+    SYNC_FLAG: 0,
+    FIRST_WEIGH_BRIDGE: '',
+    FIRST_WEIGHT: 10000,
+    FIRST_WEIGHT_UNIT: 'KG',
+    FIRST_WEIGHT_DATE: '20220118',
+    FIRST_WEIGHT_TIME: '055641',
+    FIRST_WEIGHT_USER: 'admin',
+    SECOND_WEIGH_BRIDGE: '',
+    SECOND_WEIGHT: 15000,
+    SECOND_WEIGHT_UNIT: 'KG',
+    SECOND_WEIGHT_DATE: '20220118',
+    SECOND_WEIGHT_TIME: '060610',
+    SECOND_WEIGHT_USER: 'admin',
+    WEIGHMENT_RST_NO_ID: '1',
+    MATERIAL_CODE: '001-STEEL BAR',
+    SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+    REMARK_TEXT: 'Govind',
+    NET_WEIGHT: 5000
+  },
+  {
+    WEIGHMENT_RST_NO: 2,
+    VEHICLE_NO: 'MH 12 DZ 4503',
+    REQ_ID: '104',
+    REQ_ID_DATE: '20220111',
+    WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+    GATE_PASS_NO: '1',
+    PO_DETAILS: 'null',
+    TRANSPORTER_CODE: '40003',
+    TRANSPORTER_NAME: 'ATO (I) LIMITED',
+    WEIGHMENT_STATUS: 'COMPLETE',
+    CREATED_AT_DATE: '20220118',
+    CREATED_AT_TIME: '061251',
+    SCROLL_NO: '',
+    SCROLL_DATE: '',
+    SYNC_FLAG: 0,
+    FIRST_WEIGH_BRIDGE: '',
+    FIRST_WEIGHT: 20000,
+    FIRST_WEIGHT_UNIT: 'KG',
+    FIRST_WEIGHT_DATE: '20220118',
+    FIRST_WEIGHT_TIME: '061251',
+    FIRST_WEIGHT_USER: 'admin',
+    SECOND_WEIGH_BRIDGE: '',
+    SECOND_WEIGHT: 25000,
+    SECOND_WEIGHT_UNIT: 'KG',
+    SECOND_WEIGHT_DATE: '20220118',
+    SECOND_WEIGHT_TIME: '061644',
+    SECOND_WEIGHT_USER: 'admin',
+    WEIGHMENT_RST_NO_ID: '2',
+    MATERIAL_CODE: '001-STEEL BAR',
+    SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+    REMARK_TEXT: '',
+    NET_WEIGHT: 5000
+  },
+  {
+    WEIGHMENT_RST_NO: 3,
+    VEHICLE_NO: 'MH 12 DZ 4503',
+    REQ_ID: '104',
+    REQ_ID_DATE: '20220111',
+    WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+    GATE_PASS_NO: '1',
+    PO_DETAILS: 'null',
+    TRANSPORTER_CODE: '40003',
+    TRANSPORTER_NAME: 'ATO (I) LIMITED',
+    WEIGHMENT_STATUS: 'COMPLETE',
+    CREATED_AT_DATE: '20220118',
+    CREATED_AT_TIME: '062134',
+    SCROLL_NO: '',
+    SCROLL_DATE: '',
+    SYNC_FLAG: 0,
+    FIRST_WEIGH_BRIDGE: '',
+    FIRST_WEIGHT: 30000,
+    FIRST_WEIGHT_UNIT: 'KG',
+    FIRST_WEIGHT_DATE: '20220118',
+    FIRST_WEIGHT_TIME: '062134',
+    FIRST_WEIGHT_USER: 'admin',
+    SECOND_WEIGH_BRIDGE: '',
+    SECOND_WEIGHT: 35000,
+    SECOND_WEIGHT_UNIT: 'KG',
+    SECOND_WEIGHT_DATE: '20220118',
+    SECOND_WEIGHT_TIME: '062417',
+    SECOND_WEIGHT_USER: 'admin',
+    WEIGHMENT_RST_NO_ID: '3',
+    MATERIAL_CODE: '001-STEEL BAR',
+    SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+    REMARK_TEXT: '',
+    NET_WEIGHT: 5000
+  }
+]
+[2022-01-18 06:33:38.047] [info]  Sending data to SAP
+[2022-01-18 06:33:38.053] [info]  {
+  MT_WEIGHBRIDGE_WEIGHT_DATA_REQ: {
+    WEIGHBRIDGE_TAB: {
+      WEIGHBRIDGE_DATA: [
+        {
+          WEIGHMENT_RST_NO: 1,
+          VEHICLE_NO: 'MH 12 DZ 4503',
+          REQ_ID: '104',
+          REQ_ID_DATE: '20220111',
+          WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+          GATE_PASS_NO: '1',
+          PO_DETAILS: 'null',
+          TRANSPORTER_CODE: '40003',
+          TRANSPORTER_NAME: 'ATO (I) LIMITED',
+          WEIGHMENT_STATUS: 'COMPLETE',
+          CREATED_AT_DATE: '20220118',
+          CREATED_AT_TIME: '055641',
+          SCROLL_NO: '',
+          SCROLL_DATE: '',
+          SYNC_FLAG: 0,
+          FIRST_WEIGH_BRIDGE: '',
+          FIRST_WEIGHT: 10000,
+          FIRST_WEIGHT_UNIT: 'KG',
+          FIRST_WEIGHT_DATE: '20220118',
+          FIRST_WEIGHT_TIME: '055641',
+          FIRST_WEIGHT_USER: 'admin',
+          SECOND_WEIGH_BRIDGE: '',
+          SECOND_WEIGHT: 15000,
+          SECOND_WEIGHT_UNIT: 'KG',
+          SECOND_WEIGHT_DATE: '20220118',
+          SECOND_WEIGHT_TIME: '060610',
+          SECOND_WEIGHT_USER: 'admin',
+          WEIGHMENT_RST_NO_ID: '1',
+          MATERIAL_CODE: '001-STEEL BAR',
+          SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+          REMARK_TEXT: 'Govind',
+          NET_WEIGHT: 5000
+        },
+        {
+          WEIGHMENT_RST_NO: 2,
+          VEHICLE_NO: 'MH 12 DZ 4503',
+          REQ_ID: '104',
+          REQ_ID_DATE: '20220111',
+          WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+          GATE_PASS_NO: '1',
+          PO_DETAILS: 'null',
+          TRANSPORTER_CODE: '40003',
+          TRANSPORTER_NAME: 'ATO (I) LIMITED',
+          WEIGHMENT_STATUS: 'COMPLETE',
+          CREATED_AT_DATE: '20220118',
+          CREATED_AT_TIME: '061251',
+          SCROLL_NO: '',
+          SCROLL_DATE: '',
+          SYNC_FLAG: 0,
+          FIRST_WEIGH_BRIDGE: '',
+          FIRST_WEIGHT: 20000,
+          FIRST_WEIGHT_UNIT: 'KG',
+          FIRST_WEIGHT_DATE: '20220118',
+          FIRST_WEIGHT_TIME: '061251',
+          FIRST_WEIGHT_USER: 'admin',
+          SECOND_WEIGH_BRIDGE: '',
+          SECOND_WEIGHT: 25000,
+          SECOND_WEIGHT_UNIT: 'KG',
+          SECOND_WEIGHT_DATE: '20220118',
+          SECOND_WEIGHT_TIME: '061644',
+          SECOND_WEIGHT_USER: 'admin',
+          WEIGHMENT_RST_NO_ID: '2',
+          MATERIAL_CODE: '001-STEEL BAR',
+          SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+          REMARK_TEXT: '',
+          NET_WEIGHT: 5000
+        },
+        {
+          WEIGHMENT_RST_NO: 3,
+          VEHICLE_NO: 'MH 12 DZ 4503',
+          REQ_ID: '104',
+          REQ_ID_DATE: '20220111',
+          WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+          GATE_PASS_NO: '1',
+          PO_DETAILS: 'null',
+          TRANSPORTER_CODE: '40003',
+          TRANSPORTER_NAME: 'ATO (I) LIMITED',
+          WEIGHMENT_STATUS: 'COMPLETE',
+          CREATED_AT_DATE: '20220118',
+          CREATED_AT_TIME: '062134',
+          SCROLL_NO: '',
+          SCROLL_DATE: '',
+          SYNC_FLAG: 0,
+          FIRST_WEIGH_BRIDGE: '',
+          FIRST_WEIGHT: 30000,
+          FIRST_WEIGHT_UNIT: 'KG',
+          FIRST_WEIGHT_DATE: '20220118',
+          FIRST_WEIGHT_TIME: '062134',
+          FIRST_WEIGHT_USER: 'admin',
+          SECOND_WEIGH_BRIDGE: '',
+          SECOND_WEIGHT: 35000,
+          SECOND_WEIGHT_UNIT: 'KG',
+          SECOND_WEIGHT_DATE: '20220118',
+          SECOND_WEIGHT_TIME: '062417',
+          SECOND_WEIGHT_USER: 'admin',
+          WEIGHMENT_RST_NO_ID: '3',
+          MATERIAL_CODE: '001-STEEL BAR',
+          SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+          REMARK_TEXT: '',
+          NET_WEIGHT: 5000
+        }
+      ]
+    }
+  }
+}
+[2022-01-18 06:33:38.202] [error] Error: getaddrinfo ENOTFOUND bfpdv1.kalyanicorp.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26)
+[2022-01-18 06:34:32.586] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:34:32.609] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 06:34:44.103] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:34:44.107] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 06:34:44.197] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:34:44.219] [info]  SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-01-18 06:34:44.300] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:34:44.345] [info]  SELECT * FROM ticket_template WHERE applicableTo LIKE '%outbound_domestic%' OR applicableTo='GENERIC'
+[2022-01-18 06:34:44.465] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:34:44.474] [info]  SELECT * FROM template_detail WHERE templateId=1
+[2022-01-18 06:34:59.105] [info]  [
+  {
+    WEIGHMENT_RST_NO: 4,
+    VEHICLE_NO: 'MH 12 DZ 4503',
+    REQ_ID: '104',
+    REQ_ID_DATE: '20220111',
+    WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+    GATE_PASS_NO: '1',
+    PO_DETAILS: 'null',
+    TRANSPORTER_CODE: '40003',
+    TRANSPORTER_NAME: 'ATO (I) LIMITED',
+    WEIGHMENT_STATUS: 'COMPLETE',
+    CREATED_AT_DATE: '20220118',
+    CREATED_AT_TIME: '063214',
+    SCROLL_NO: '',
+    SCROLL_DATE: '',
+    SYNC_FLAG: 0,
+    FIRST_WEIGH_BRIDGE: '',
+    FIRST_WEIGHT: 10000,
+    FIRST_WEIGHT_UNIT: 'KG',
+    FIRST_WEIGHT_DATE: '20220118',
+    FIRST_WEIGHT_TIME: '063214',
+    FIRST_WEIGHT_USER: 'admin',
+    SECOND_WEIGH_BRIDGE: '',
+    SECOND_WEIGHT: 15000,
+    SECOND_WEIGHT_UNIT: 'KG',
+    SECOND_WEIGHT_DATE: '20220118',
+    SECOND_WEIGHT_TIME: '063444',
+    SECOND_WEIGHT_USER: 'admin',
+    WEIGHMENT_RST_NO_ID: '4',
+    MATERIAL_CODE: '001-STEEL BAR',
+    SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+    REMARK_TEXT: '',
+    NET_WEIGHT: 5000
+  }
+]
+[2022-01-18 06:34:59.114] [info]  Sending data to SAP
+[2022-01-18 06:34:59.135] [info]  {
+  MT_WEIGHBRIDGE_WEIGHT_DATA_REQ: {
+    WEIGHBRIDGE_TAB: {
+      WEIGHBRIDGE_DATA: [
+        {
+          WEIGHMENT_RST_NO: 4,
+          VEHICLE_NO: 'MH 12 DZ 4503',
+          REQ_ID: '104',
+          REQ_ID_DATE: '20220111',
+          WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+          GATE_PASS_NO: '1',
+          PO_DETAILS: 'null',
+          TRANSPORTER_CODE: '40003',
+          TRANSPORTER_NAME: 'ATO (I) LIMITED',
+          WEIGHMENT_STATUS: 'COMPLETE',
+          CREATED_AT_DATE: '20220118',
+          CREATED_AT_TIME: '063214',
+          SCROLL_NO: '',
+          SCROLL_DATE: '',
+          SYNC_FLAG: 0,
+          FIRST_WEIGH_BRIDGE: '',
+          FIRST_WEIGHT: 10000,
+          FIRST_WEIGHT_UNIT: 'KG',
+          FIRST_WEIGHT_DATE: '20220118',
+          FIRST_WEIGHT_TIME: '063214',
+          FIRST_WEIGHT_USER: 'admin',
+          SECOND_WEIGH_BRIDGE: '',
+          SECOND_WEIGHT: 15000,
+          SECOND_WEIGHT_UNIT: 'KG',
+          SECOND_WEIGHT_DATE: '20220118',
+          SECOND_WEIGHT_TIME: '063444',
+          SECOND_WEIGHT_USER: 'admin',
+          WEIGHMENT_RST_NO_ID: '4',
+          MATERIAL_CODE: '001-STEEL BAR',
+          SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+          REMARK_TEXT: '',
+          NET_WEIGHT: 5000
+        }
+      ]
+    }
+  }
+}
+[2022-01-18 06:34:59.156] [error] Error: getaddrinfo ENOTFOUND bfpdv1.kalyanicorp.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26)
+[2022-01-18 06:35:24.309] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:35:24.312] [info]  SELECT * FROM ticket_template
+[2022-01-18 06:35:32.072] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:35:32.075] [info]  SELECT * FROM template_detail WHERE templateId=1
+[2022-01-18 06:37:17.207] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:37:17.214] [info]  SELECT * FROM ticket_template
+[2022-01-18 06:37:19.442] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:37:19.447] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-01-18 06:37:30.299] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:37:30.305] [info]  SELECT * FROM ticket_template
+[2022-01-18 06:37:32.173] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:37:32.177] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-01-18 06:38:05.710] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:38:05.719] [info]  SELECT * FROM ticket_template
+[2022-01-18 06:38:08.158] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:38:08.167] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-01-18 06:40:18.579] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:40:18.588] [info]  SELECT * FROM ticket_template
+[2022-01-18 06:40:20.042] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 06:40:20.049] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-01-18 16:15:12.727] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 16:15:12.753] [info]  SELECT * FROM app_user WHERE username='admin' AND password='Admin123'
+[2022-01-18 16:15:12.814] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 16:15:12.824] [info]  SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid=1
+[2022-01-18 16:15:12.990] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 16:15:12.992] [info]  SELECT * FROM app_data
+[2022-01-18 16:15:13.162] [info]  {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-18 16:15:13.164] [info]  SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-01-18 16:15:30.223] [info]  [
+  {
+    WEIGHMENT_RST_NO: 1,
+    VEHICLE_NO: 'MH 12 DZ 4503',
+    REQ_ID: '104',
+    REQ_ID_DATE: '20220111',
+    WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+    GATE_PASS_NO: '1',
+    PO_DETAILS: 'null',
+    TRANSPORTER_CODE: '40003',
+    TRANSPORTER_NAME: 'ATO (I) LIMITED',
+    WEIGHMENT_STATUS: 'COMPLETE',
+    CREATED_AT_DATE: '20220118',
+    CREATED_AT_TIME: '055641',
+    SCROLL_NO: '',
+    SCROLL_DATE: '',
+    SYNC_FLAG: 0,
+    MISC_TEXT: 'Govind',
+    FIRST_WEIGH_BRIDGE: '',
+    FIRST_WEIGHT: 10000,
+    FIRST_WEIGHT_UNIT: 'KG',
+    FIRST_WEIGHT_DATE: '20220118',
+    FIRST_WEIGHT_TIME: '055641',
+    FIRST_WEIGHT_USER: 'admin',
+    SECOND_WEIGH_BRIDGE: '',
+    SECOND_WEIGHT: 15000,
+    SECOND_WEIGHT_UNIT: 'KG',
+    SECOND_WEIGHT_DATE: '20220118',
+    SECOND_WEIGHT_TIME: '060610',
+    SECOND_WEIGHT_USER: 'admin',
+    WEIGHMENT_RST_NO_ID: '1',
+    MATERIAL_CODE: '001-STEEL BAR',
+    SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+    REMARK_TEXT: 'Hare Krishna',
+    NET_WEIGHT: 5000
+  },
+  {
+    WEIGHMENT_RST_NO: 2,
+    VEHICLE_NO: 'MH 12 DZ 4503',
+    REQ_ID: '104',
+    REQ_ID_DATE: '20220111',
+    WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+    GATE_PASS_NO: '1',
+    PO_DETAILS: 'null',
+    TRANSPORTER_CODE: '40003',
+    TRANSPORTER_NAME: 'ATO (I) LIMITED',
+    WEIGHMENT_STATUS: 'COMPLETE',
+    CREATED_AT_DATE: '20220118',
+    CREATED_AT_TIME: '061251',
+    SCROLL_NO: '',
+    SCROLL_DATE: '',
+    SYNC_FLAG: 0,
+    MISC_TEXT: '',
+    FIRST_WEIGH_BRIDGE: '',
+    FIRST_WEIGHT: 20000,
+    FIRST_WEIGHT_UNIT: 'KG',
+    FIRST_WEIGHT_DATE: '20220118',
+    FIRST_WEIGHT_TIME: '061251',
+    FIRST_WEIGHT_USER: 'admin',
+    SECOND_WEIGH_BRIDGE: '',
+    SECOND_WEIGHT: 25000,
+    SECOND_WEIGHT_UNIT: 'KG',
+    SECOND_WEIGHT_DATE: '20220118',
+    SECOND_WEIGHT_TIME: '061644',
+    SECOND_WEIGHT_USER: 'admin',
+    WEIGHMENT_RST_NO_ID: '2',
+    MATERIAL_CODE: '001-STEEL BAR',
+    SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+    REMARK_TEXT: '',
+    NET_WEIGHT: 5000
+  },
+  {
+    WEIGHMENT_RST_NO: 3,
+    VEHICLE_NO: 'MH 12 DZ 4503',
+    REQ_ID: '104',
+    REQ_ID_DATE: '20220111',
+    WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+    GATE_PASS_NO: '1',
+    PO_DETAILS: 'null',
+    TRANSPORTER_CODE: '40003',
+    TRANSPORTER_NAME: 'ATO (I) LIMITED',
+    WEIGHMENT_STATUS: 'COMPLETE',
+    CREATED_AT_DATE: '20220118',
+    CREATED_AT_TIME: '062134',
+    SCROLL_NO: '',
+    SCROLL_DATE: '',
+    SYNC_FLAG: 0,
+    MISC_TEXT: '',
+    FIRST_WEIGH_BRIDGE: '',
+    FIRST_WEIGHT: 30000,
+    FIRST_WEIGHT_UNIT: 'KG',
+    FIRST_WEIGHT_DATE: '20220118',
+    FIRST_WEIGHT_TIME: '062134',
+    FIRST_WEIGHT_USER: 'admin',
+    SECOND_WEIGH_BRIDGE: '',
+    SECOND_WEIGHT: 35000,
+    SECOND_WEIGHT_UNIT: 'KG',
+    SECOND_WEIGHT_DATE: '20220118',
+    SECOND_WEIGHT_TIME: '062417',
+    SECOND_WEIGHT_USER: 'admin',
+    WEIGHMENT_RST_NO_ID: '3',
+    MATERIAL_CODE: '001-STEEL BAR',
+    SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+    REMARK_TEXT: '',
+    NET_WEIGHT: 5000
+  },
+  {
+    WEIGHMENT_RST_NO: 4,
+    VEHICLE_NO: 'MH 12 DZ 4503',
+    REQ_ID: '104',
+    REQ_ID_DATE: '20220111',
+    WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+    GATE_PASS_NO: '1',
+    PO_DETAILS: 'null',
+    TRANSPORTER_CODE: '40003',
+    TRANSPORTER_NAME: 'ATO (I) LIMITED',
+    WEIGHMENT_STATUS: 'COMPLETE',
+    CREATED_AT_DATE: '20220118',
+    CREATED_AT_TIME: '063214',
+    SCROLL_NO: '',
+    SCROLL_DATE: '',
+    SYNC_FLAG: 0,
+    MISC_TEXT: '',
+    FIRST_WEIGH_BRIDGE: '',
+    FIRST_WEIGHT: 10000,
+    FIRST_WEIGHT_UNIT: 'KG',
+    FIRST_WEIGHT_DATE: '20220118',
+    FIRST_WEIGHT_TIME: '063214',
+    FIRST_WEIGHT_USER: 'admin',
+    SECOND_WEIGH_BRIDGE: '',
+    SECOND_WEIGHT: 15000,
+    SECOND_WEIGHT_UNIT: 'KG',
+    SECOND_WEIGHT_DATE: '20220118',
+    SECOND_WEIGHT_TIME: '063444',
+    SECOND_WEIGHT_USER: 'admin',
+    WEIGHMENT_RST_NO_ID: '4',
+    MATERIAL_CODE: '001-STEEL BAR',
+    SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+    REMARK_TEXT: '',
+    NET_WEIGHT: 5000
+  }
+]
+[2022-01-18 16:15:30.232] [info]  Sending data to SAP
+[2022-01-18 16:15:30.243] [info]  {
+  MT_WEIGHBRIDGE_WEIGHT_DATA_REQ: {
+    WEIGHBRIDGE_TAB: {
+      WEIGHBRIDGE_DATA: [
+        {
+          WEIGHMENT_RST_NO: 1,
+          VEHICLE_NO: 'MH 12 DZ 4503',
+          REQ_ID: '104',
+          REQ_ID_DATE: '20220111',
+          WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+          GATE_PASS_NO: '1',
+          PO_DETAILS: 'null',
+          TRANSPORTER_CODE: '40003',
+          TRANSPORTER_NAME: 'ATO (I) LIMITED',
+          WEIGHMENT_STATUS: 'COMPLETE',
+          CREATED_AT_DATE: '20220118',
+          CREATED_AT_TIME: '055641',
+          SCROLL_NO: '',
+          SCROLL_DATE: '',
+          SYNC_FLAG: 0,
+          MISC_TEXT: 'Govind',
+          FIRST_WEIGH_BRIDGE: '',
+          FIRST_WEIGHT: 10000,
+          FIRST_WEIGHT_UNIT: 'KG',
+          FIRST_WEIGHT_DATE: '20220118',
+          FIRST_WEIGHT_TIME: '055641',
+          FIRST_WEIGHT_USER: 'admin',
+          SECOND_WEIGH_BRIDGE: '',
+          SECOND_WEIGHT: 15000,
+          SECOND_WEIGHT_UNIT: 'KG',
+          SECOND_WEIGHT_DATE: '20220118',
+          SECOND_WEIGHT_TIME: '060610',
+          SECOND_WEIGHT_USER: 'admin',
+          WEIGHMENT_RST_NO_ID: '1',
+          MATERIAL_CODE: '001-STEEL BAR',
+          SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+          REMARK_TEXT: 'Hare Krishna',
+          NET_WEIGHT: 5000
+        },
+        {
+          WEIGHMENT_RST_NO: 2,
+          VEHICLE_NO: 'MH 12 DZ 4503',
+          REQ_ID: '104',
+          REQ_ID_DATE: '20220111',
+          WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+          GATE_PASS_NO: '1',
+          PO_DETAILS: 'null',
+          TRANSPORTER_CODE: '40003',
+          TRANSPORTER_NAME: 'ATO (I) LIMITED',
+          WEIGHMENT_STATUS: 'COMPLETE',
+          CREATED_AT_DATE: '20220118',
+          CREATED_AT_TIME: '061251',
+          SCROLL_NO: '',
+          SCROLL_DATE: '',
+          SYNC_FLAG: 0,
+          MISC_TEXT: '',
+          FIRST_WEIGH_BRIDGE: '',
+          FIRST_WEIGHT: 20000,
+          FIRST_WEIGHT_UNIT: 'KG',
+          FIRST_WEIGHT_DATE: '20220118',
+          FIRST_WEIGHT_TIME: '061251',
+          FIRST_WEIGHT_USER: 'admin',
+          SECOND_WEIGH_BRIDGE: '',
+          SECOND_WEIGHT: 25000,
+          SECOND_WEIGHT_UNIT: 'KG',
+          SECOND_WEIGHT_DATE: '20220118',
+          SECOND_WEIGHT_TIME: '061644',
+          SECOND_WEIGHT_USER: 'admin',
+          WEIGHMENT_RST_NO_ID: '2',
+          MATERIAL_CODE: '001-STEEL BAR',
+          SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+          REMARK_TEXT: '',
+          NET_WEIGHT: 5000
+        },
+        {
+          WEIGHMENT_RST_NO: 3,
+          VEHICLE_NO: 'MH 12 DZ 4503',
+          REQ_ID: '104',
+          REQ_ID_DATE: '20220111',
+          WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+          GATE_PASS_NO: '1',
+          PO_DETAILS: 'null',
+          TRANSPORTER_CODE: '40003',
+          TRANSPORTER_NAME: 'ATO (I) LIMITED',
+          WEIGHMENT_STATUS: 'COMPLETE',
+          CREATED_AT_DATE: '20220118',
+          CREATED_AT_TIME: '062134',
+          SCROLL_NO: '',
+          SCROLL_DATE: '',
+          SYNC_FLAG: 0,
+          MISC_TEXT: '',
+          FIRST_WEIGH_BRIDGE: '',
+          FIRST_WEIGHT: 30000,
+          FIRST_WEIGHT_UNIT: 'KG',
+          FIRST_WEIGHT_DATE: '20220118',
+          FIRST_WEIGHT_TIME: '062134',
+          FIRST_WEIGHT_USER: 'admin',
+          SECOND_WEIGH_BRIDGE: '',
+          SECOND_WEIGHT: 35000,
+          SECOND_WEIGHT_UNIT: 'KG',
+          SECOND_WEIGHT_DATE: '20220118',
+          SECOND_WEIGHT_TIME: '062417',
+          SECOND_WEIGHT_USER: 'admin',
+          WEIGHMENT_RST_NO_ID: '3',
+          MATERIAL_CODE: '001-STEEL BAR',
+          SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+          REMARK_TEXT: '',
+          NET_WEIGHT: 5000
+        },
+        {
+          WEIGHMENT_RST_NO: 4,
+          VEHICLE_NO: 'MH 12 DZ 4503',
+          REQ_ID: '104',
+          REQ_ID_DATE: '20220111',
+          WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+          GATE_PASS_NO: '1',
+          PO_DETAILS: 'null',
+          TRANSPORTER_CODE: '40003',
+          TRANSPORTER_NAME: 'ATO (I) LIMITED',
+          WEIGHMENT_STATUS: 'COMPLETE',
+          CREATED_AT_DATE: '20220118',
+          CREATED_AT_TIME: '063214',
+          SCROLL_NO: '',
+          SCROLL_DATE: '',
+          SYNC_FLAG: 0,
+          MISC_TEXT: '',
+          FIRST_WEIGH_BRIDGE: '',
+          FIRST_WEIGHT: 10000,
+          FIRST_WEIGHT_UNIT: 'KG',
+          FIRST_WEIGHT_DATE: '20220118',
+          FIRST_WEIGHT_TIME: '063214',
+          FIRST_WEIGHT_USER: 'admin',
+          SECOND_WEIGH_BRIDGE: '',
+          SECOND_WEIGHT: 15000,
+          SECOND_WEIGHT_UNIT: 'KG',
+          SECOND_WEIGHT_DATE: '20220118',
+          SECOND_WEIGHT_TIME: '063444',
+          SECOND_WEIGHT_USER: 'admin',
+          WEIGHMENT_RST_NO_ID: '4',
+          MATERIAL_CODE: '001-STEEL BAR',
+          SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+          REMARK_TEXT: '',
+          NET_WEIGHT: 5000
+        }
+      ]
+    }
+  }
+}
+[2022-01-18 16:15:30.375] [error] Error: getaddrinfo ENOTFOUND bfpdv1.kalyanicorp.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26)

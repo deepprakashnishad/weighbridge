@@ -62,8 +62,9 @@ export class PrinterService {
         }
       }
     }
-
-    fields.push(newlineField);
+    if (newlineField != undefined && newlineField != null) {
+      fields.push(newlineField);
+    }
 
     fields = fields.sort(function (a, b) {
       if ((a['row'] - b['row']) === 0) {

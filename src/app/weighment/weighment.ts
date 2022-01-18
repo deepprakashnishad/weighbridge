@@ -29,7 +29,8 @@ export class Weighment{
     weighment.createdAt = data['createdAt'];
     weighment.gatePassNo = data['gatePassNo'] !== null ? data['gatePassNo']: undefined;
     weighment.poDetails = data['poDetails'] != null? data['poDetails']: undefined;
-    weighment.reqId = data['reqId']!=null? data['reqId']: undefined;
+    weighment.reqId = data['reqId'] != null ? data['reqId'] : undefined;
+    weighment.reqIdDate = data['reqIdDate'] != null ? data['reqIdDate'] : undefined;
     weighment.rstNo = data['rstNo'];
     weighment.vehicleNo = data['vehicleNo'];
     weighment.weighmentType = data['weighmentType'];
