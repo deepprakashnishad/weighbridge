@@ -180,6 +180,7 @@ export class NavigationComponent implements OnInit {
     console.log(dataRows);
     dataRows = this.reportService.processResultWithFinalWeight(dataRows);
 
-    this.ipcService.invokeIPC("sendDataToSAP", [dataRows]);
+    //this.ipcService.invokeIPC("sendDataToSAP", [dataRows]);
+    this.ipcService.sendDataToSAP(dataRows);
   }
 }

@@ -1,0 +1,5646 @@
+[2022-01-31 15:26:18.754] [info]  Environment file path:
+[2022-01-31 15:26:18.765] [info]  C:\Users\Admin\AppData\Roaming\Electron\Accubridge\env.json
+[2022-01-31 15:26:18.766] [info]  User - root
+[2022-01-31 15:26:18.771] [info]  Password - admin
+[2022-01-31 15:26:18.772] [info]  Database - weighbridge
+[2022-01-31 15:26:18.773] [info]  Server - DESKTOP-13G3LGM\MSSQLSERVER01
+[2022-01-31 15:26:18.774] [info]  Port - 1433
+[2022-01-31 15:31:29.374] [info]  Environment file path:
+[2022-01-31 15:31:29.383] [info]  C:\Users\Admin\AppData\Roaming\Electron\Accubridge\env.json
+[2022-01-31 15:31:29.390] [info]  User - root
+[2022-01-31 15:31:29.393] [info]  Password - admin
+[2022-01-31 15:31:29.400] [info]  Database - weighbridge
+[2022-01-31 15:31:29.406] [info]  Server - DESKTOP-13G3LGM\MSSQLSERVER01
+[2022-01-31 15:31:29.412] [info]  Port - 1433
+[2022-01-31 18:51:57.355] [debug] Reading licence from - C:\Users\Admin\AppData\Roaming\Electron\Accubridge\notamedia
+[2022-01-31 18:51:57.440] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-31 18:51:57.444] [debug] SELECT * FROM app_user WHERE username='admin' AND password='Admin123'
+[2022-01-31 18:51:57.462] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-31 18:51:57.463] [debug] SELECT p.* FROM permission p, user_permission up WHERE p.id=up.permissionid AND up.userid=1
+[2022-01-31 18:51:57.525] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-31 18:51:57.528] [debug] SELECT * FROM app_data
+[2022-01-31 18:51:57.592] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-01-31 18:51:57.595] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-01 10:28:02.749] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-01 10:28:02.767] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-01 10:28:19.732] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-01 10:28:19.735] [debug] UPDATE app_data set mValue='true' WHERE field='enableSAPIntegration'
+[2022-02-01 10:28:19.770] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-01 10:28:19.773] [debug] UPDATE app_data set mValue='http://bfpdv1.krishnacorp.com:50000/dir/wsdl?p=ic/c50e2242ef723dee8dfebc7dbcedb0f6' WHERE field='sapEndpoint'
+[2022-02-01 10:28:19.794] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-01 10:28:19.798] [debug] UPDATE app_data set mValue='Hare' WHERE field='sapUsername'
+[2022-02-01 10:28:19.820] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-01 10:28:19.826] [debug] UPDATE app_data set mValue='U2FsdGVkX19Pwl71+BbYuf86k/sFtcSolGhP5xy/mKk=' WHERE field='sapPassword'
+[2022-02-01 10:28:35.222] [debug] Endpoint - http://bfpdv1.krishnacorp.com:50000/dir/wsdl?p=ic/c50e2242ef723dee8dfebc7dbcedb0f6
+[2022-02-01 10:28:35.225] [debug] Username - Hare
+[2022-02-01 10:28:35.229] [debug] Password - Krishna
+[2022-02-01 10:28:35.231] [debug] Sending data to SAP
+[2022-02-01 10:28:35.237] [debug] {
+  MT_WEIGHBRIDGE_WEIGHT_DATA_REQ: {
+    WEIGHBRIDGE_TAB: {
+      WEIGHBRIDGE_DATA: [
+        {
+          WEIGHMENT_RST_NO: 1,
+          VEHICLE_NO: 'MH 12 DZ 4503',
+          REQ_ID: '104',
+          REQ_ID_DATE: '20220111',
+          WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+          GATE_PASS_NO: '1',
+          PO_DETAILS: 'null',
+          TRANSPORTER_CODE: '40003',
+          TRANSPORTER_NAME: 'ATO (I) LIMITED',
+          WEIGHMENT_STATUS: 'COMPLETE',
+          CREATED_AT_DATE: '20220118',
+          CREATED_AT_TIME: '055641',
+          SCROLL_NO: '',
+          SCROLL_DATE: '',
+          SYNC_FLAG: 0,
+          MISC_TEXT: 'Govind',
+          FIRST_WEIGH_BRIDGE: '',
+          FIRST_WEIGHT: 10000,
+          FIRST_WEIGHT_UNIT: 'KG',
+          FIRST_WEIGHT_DATE: '20220118',
+          FIRST_WEIGHT_TIME: '055641',
+          FIRST_WEIGHT_USER: 'admin',
+          SECOND_WEIGH_BRIDGE: '',
+          SECOND_WEIGHT: 15000,
+          SECOND_WEIGHT_UNIT: 'KG',
+          SECOND_WEIGHT_DATE: '20220118',
+          SECOND_WEIGHT_TIME: '060610',
+          SECOND_WEIGHT_USER: 'admin',
+          WEIGHMENT_RST_NO_ID: '1',
+          MATERIAL_CODE: '001-STEEL BAR',
+          SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+          REMARK_TEXT: 'Hare Krishna',
+          NET_WEIGHT: 5000
+        },
+        {
+          WEIGHMENT_RST_NO: 2,
+          VEHICLE_NO: 'MH 12 DZ 4503',
+          REQ_ID: '104',
+          REQ_ID_DATE: '20220111',
+          WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+          GATE_PASS_NO: '1',
+          PO_DETAILS: 'null',
+          TRANSPORTER_CODE: '40003',
+          TRANSPORTER_NAME: 'ATO (I) LIMITED',
+          WEIGHMENT_STATUS: 'COMPLETE',
+          CREATED_AT_DATE: '20220118',
+          CREATED_AT_TIME: '061251',
+          SCROLL_NO: '',
+          SCROLL_DATE: '',
+          SYNC_FLAG: 0,
+          MISC_TEXT: '',
+          FIRST_WEIGH_BRIDGE: '',
+          FIRST_WEIGHT: 20000,
+          FIRST_WEIGHT_UNIT: 'KG',
+          FIRST_WEIGHT_DATE: '20220118',
+          FIRST_WEIGHT_TIME: '061251',
+          FIRST_WEIGHT_USER: 'admin',
+          SECOND_WEIGH_BRIDGE: '',
+          SECOND_WEIGHT: 25000,
+          SECOND_WEIGHT_UNIT: 'KG',
+          SECOND_WEIGHT_DATE: '20220118',
+          SECOND_WEIGHT_TIME: '061644',
+          SECOND_WEIGHT_USER: 'admin',
+          WEIGHMENT_RST_NO_ID: '2',
+          MATERIAL_CODE: '001-STEEL BAR',
+          SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+          REMARK_TEXT: '',
+          NET_WEIGHT: 5000
+        },
+        {
+          WEIGHMENT_RST_NO: 3,
+          VEHICLE_NO: 'MH 12 DZ 4503',
+          REQ_ID: '104',
+          REQ_ID_DATE: '20220111',
+          WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+          GATE_PASS_NO: '1',
+          PO_DETAILS: 'null',
+          TRANSPORTER_CODE: '40003',
+          TRANSPORTER_NAME: 'ATO (I) LIMITED',
+          WEIGHMENT_STATUS: 'COMPLETE',
+          CREATED_AT_DATE: '20220118',
+          CREATED_AT_TIME: '062134',
+          SCROLL_NO: '',
+          SCROLL_DATE: '',
+          SYNC_FLAG: 0,
+          MISC_TEXT: '',
+          FIRST_WEIGH_BRIDGE: '',
+          FIRST_WEIGHT: 30000,
+          FIRST_WEIGHT_UNIT: 'KG',
+          FIRST_WEIGHT_DATE: '20220118',
+          FIRST_WEIGHT_TIME: '062134',
+          FIRST_WEIGHT_USER: 'admin',
+          SECOND_WEIGH_BRIDGE: '',
+          SECOND_WEIGHT: 35000,
+          SECOND_WEIGHT_UNIT: 'KG',
+          SECOND_WEIGHT_DATE: '20220118',
+          SECOND_WEIGHT_TIME: '062417',
+          SECOND_WEIGHT_USER: 'admin',
+          WEIGHMENT_RST_NO_ID: '3',
+          MATERIAL_CODE: '001-STEEL BAR',
+          SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+          REMARK_TEXT: '',
+          NET_WEIGHT: 5000
+        },
+        {
+          WEIGHMENT_RST_NO: 4,
+          VEHICLE_NO: 'MH 12 DZ 4503',
+          REQ_ID: '104',
+          REQ_ID_DATE: '20220111',
+          WEIGHMENT_TYPE: 'OUTBOUND_DOMESTIC',
+          GATE_PASS_NO: '1',
+          PO_DETAILS: 'null',
+          TRANSPORTER_CODE: '40003',
+          TRANSPORTER_NAME: 'ATO (I) LIMITED',
+          WEIGHMENT_STATUS: 'COMPLETE',
+          CREATED_AT_DATE: '20220118',
+          CREATED_AT_TIME: '063214',
+          SCROLL_NO: '',
+          SCROLL_DATE: '',
+          SYNC_FLAG: 0,
+          MISC_TEXT: '',
+          FIRST_WEIGH_BRIDGE: '',
+          FIRST_WEIGHT: 10000,
+          FIRST_WEIGHT_UNIT: 'KG',
+          FIRST_WEIGHT_DATE: '20220118',
+          FIRST_WEIGHT_TIME: '063214',
+          FIRST_WEIGHT_USER: 'admin',
+          SECOND_WEIGH_BRIDGE: '',
+          SECOND_WEIGHT: 15000,
+          SECOND_WEIGHT_UNIT: 'KG',
+          SECOND_WEIGHT_DATE: '20220118',
+          SECOND_WEIGHT_TIME: '063444',
+          SECOND_WEIGHT_USER: 'admin',
+          WEIGHMENT_RST_NO_ID: '4',
+          MATERIAL_CODE: '001-STEEL BAR',
+          SUPPLIER_CUSTOMER_CODE: '014-PARTY',
+          REMARK_TEXT: '',
+          NET_WEIGHT: 5000
+        }
+      ]
+    }
+  }
+}
+[2022-02-01 10:28:35.570] [error] Error: getaddrinfo ENOTFOUND bfpdv1.krishnacorp.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26)
+[2022-02-01 10:29:17.526] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-01 10:29:17.529] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-01 11:43:32.812] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-01 11:43:32.814] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-03 11:44:24.116] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-03 11:44:24.330] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-09 15:22:40.386] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:22:40.416] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-09 15:22:50.122] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:22:50.125] [debug] SELECT * FROM weighstring
+[2022-02-09 15:22:50.138] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:22:50.144] [debug] SELECT * FROM weighindicator
+[2022-02-09 15:22:50.151] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:22:50.155] [debug] SELECT * FROM weighstring
+[2022-02-09 15:22:50.201] [debug] {
+  recordsets: [
+    [
+      {
+        stringName: 'Avery11',
+        totalChars: 25,
+        variableLength: false,
+        type: 'polling',
+        pollingCommand: '05',
+        baudRate: 1200,
+        dataBits: 7,
+        stopBits: 1,
+        parity: 'even',
+        flowControl: 'None',
+        weightCharPosition1: 3,
+        weightCharPosition2: 4,
+        weightCharPosition3: 5,
+        weightCharPosition4: 6,
+        weightCharPosition5: 7,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'D',
+        endChar3: 'A',
+        signCharPosition: 1,
+        negativeSignValue: '-',
+        delimeter: null
+      },
+      {
+        stringName: 'Avery7',
+        totalChars: 27,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 2400,
+        dataBits: 7,
+        stopBits: 1,
+        parity: 'even',
+        flowControl: 'None',
+        weightCharPosition1: 5,
+        weightCharPosition2: 6,
+        weightCharPosition3: 7,
+        weightCharPosition4: 8,
+        weightCharPosition5: 9,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'D',
+        endChar3: 'A',
+        signCharPosition: 3,
+        negativeSignValue: '-',
+        delimeter: null
+      },
+      {
+        stringName: 'Avery8',
+        totalChars: 19,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 1200,
+        dataBits: 7,
+        stopBits: 1,
+        parity: 'even',
+        flowControl: 'None',
+        weightCharPosition1: 5,
+        weightCharPosition2: 6,
+        weightCharPosition3: 7,
+        weightCharPosition4: 8,
+        weightCharPosition5: 9,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'D',
+        endChar3: 'A',
+        signCharPosition: 3,
+        negativeSignValue: '-',
+        delimeter: null
+      },
+      {
+        stringName: 'String13',
+        totalChars: 8,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 2400,
+        dataBits: 8,
+        stopBits: 1,
+        parity: 'none',
+        flowControl: 'None',
+        weightCharPosition1: 2,
+        weightCharPosition2: 3,
+        weightCharPosition3: 4,
+        weightCharPosition4: 5,
+        weightCharPosition5: 6,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'D',
+        endChar3: 'A',
+        signCharPosition: 1,
+        negativeSignValue: '-',
+        delimeter: null
+      },
+      {
+        stringName: 'String15',
+        totalChars: 9,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 2400,
+        dataBits: 8,
+        stopBits: 1,
+        parity: 'None',
+        flowControl: 'None',
+        weightCharPosition1: 2,
+        weightCharPosition2: 3,
+        weightCharPosition3: 4,
+        weightCharPosition4: 5,
+        weightCharPosition5: 6,
+        weightCharPosition6: 7,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'null',
+        endChar3: 'null',
+        signCharPosition: 1,
+        negativeSignValue: '-',
+        delimeter: null
+      },
+      {
+        stringName: 'UNP',
+        totalChars: 13,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 9600,
+        dataBits: 8,
+        stopBits: 1,
+        parity: 'None',
+        flowControl: 'None',
+        weightCharPosition1: 3,
+        weightCharPosition2: 4,
+        weightCharPosition3: 5,
+        weightCharPosition4: 6,
+        weightCharPosition5: 7,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'null',
+        endChar3: 'null',
+        signCharPosition: 2,
+        negativeSignValue: '-',
+        delimeter: null
+      }
+    ]
+  ],
+  output: {},
+  rowsAffected: [ 6 ]
+}
+[2022-02-09 15:22:50.239] [debug] { recordsets: [ [] ], output: {}, rowsAffected: [ 0 ] }
+[2022-02-09 15:22:50.260] [debug] {
+  recordsets: [
+    [
+      {
+        stringName: 'Avery11',
+        totalChars: 25,
+        variableLength: false,
+        type: 'polling',
+        pollingCommand: '05',
+        baudRate: 1200,
+        dataBits: 7,
+        stopBits: 1,
+        parity: 'even',
+        flowControl: 'None',
+        weightCharPosition1: 3,
+        weightCharPosition2: 4,
+        weightCharPosition3: 5,
+        weightCharPosition4: 6,
+        weightCharPosition5: 7,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'D',
+        endChar3: 'A',
+        signCharPosition: 1,
+        negativeSignValue: '-',
+        delimeter: null
+      },
+      {
+        stringName: 'Avery7',
+        totalChars: 27,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 2400,
+        dataBits: 7,
+        stopBits: 1,
+        parity: 'even',
+        flowControl: 'None',
+        weightCharPosition1: 5,
+        weightCharPosition2: 6,
+        weightCharPosition3: 7,
+        weightCharPosition4: 8,
+        weightCharPosition5: 9,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'D',
+        endChar3: 'A',
+        signCharPosition: 3,
+        negativeSignValue: '-',
+        delimeter: null
+      },
+      {
+        stringName: 'Avery8',
+        totalChars: 19,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 1200,
+        dataBits: 7,
+        stopBits: 1,
+        parity: 'even',
+        flowControl: 'None',
+        weightCharPosition1: 5,
+        weightCharPosition2: 6,
+        weightCharPosition3: 7,
+        weightCharPosition4: 8,
+        weightCharPosition5: 9,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'D',
+        endChar3: 'A',
+        signCharPosition: 3,
+        negativeSignValue: '-',
+        delimeter: null
+      },
+      {
+        stringName: 'String13',
+        totalChars: 8,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 2400,
+        dataBits: 8,
+        stopBits: 1,
+        parity: 'none',
+        flowControl: 'None',
+        weightCharPosition1: 2,
+        weightCharPosition2: 3,
+        weightCharPosition3: 4,
+        weightCharPosition4: 5,
+        weightCharPosition5: 6,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'D',
+        endChar3: 'A',
+        signCharPosition: 1,
+        negativeSignValue: '-',
+        delimeter: null
+      },
+      {
+        stringName: 'String15',
+        totalChars: 9,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 2400,
+        dataBits: 8,
+        stopBits: 1,
+        parity: 'None',
+        flowControl: 'None',
+        weightCharPosition1: 2,
+        weightCharPosition2: 3,
+        weightCharPosition3: 4,
+        weightCharPosition4: 5,
+        weightCharPosition5: 6,
+        weightCharPosition6: 7,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'null',
+        endChar3: 'null',
+        signCharPosition: 1,
+        negativeSignValue: '-',
+        delimeter: null
+      },
+      {
+        stringName: 'UNP',
+        totalChars: 13,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 9600,
+        dataBits: 8,
+        stopBits: 1,
+        parity: 'None',
+        flowControl: 'None',
+        weightCharPosition1: 3,
+        weightCharPosition2: 4,
+        weightCharPosition3: 5,
+        weightCharPosition4: 6,
+        weightCharPosition5: 7,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'null',
+        endChar3: 'null',
+        signCharPosition: 2,
+        negativeSignValue: '-',
+        delimeter: null
+      }
+    ]
+  ],
+  output: {},
+  rowsAffected: [ 6 ]
+}
+[2022-02-09 15:23:03.496] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:23:03.498] [debug] SELECT * FROM weighstring
+[2022-02-09 15:23:03.556] [debug] [
+  {
+    path: 'COM3',
+    manufacturer: 'Prolific',
+    serialNumber: '5&23fccade&0&1',
+    pnpId: 'USB\\VID_067B&PID_2303\\5&23FCCADE&0&1',
+    locationId: 'Port_#0001.Hub_#0001',
+    vendorId: '067B',
+    productId: '2303'
+  }
+]
+[2022-02-09 15:23:16.965] [debug]  000000
+ 000000
+ 000
+[2022-02-09 15:23:16.983] [debug] 27
+[2022-02-09 15:23:17.039] [debug] {
+  totalChars: 27,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 3,
+  stringName: 'Avery7',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 5,
+  weightCharPosition2: 6,
+  weightCharPosition3: 7,
+  weightCharPosition4: 8,
+  weightCharPosition5: 9,
+  weightCharPosition6: null
+}
+[2022-02-09 15:23:17.046] [debug] Character 0 - 
+[2022-02-09 15:23:17.048] [debug] Character 1 -  
+[2022-02-09 15:23:17.050] [debug] Character 2 - 0
+[2022-02-09 15:23:17.052] [debug] Character 3 - 0
+[2022-02-09 15:23:17.053] [debug] Character 4 - 0
+[2022-02-09 15:23:17.055] [debug] Character 5 - 0
+[2022-02-09 15:23:17.056] [debug] Character 6 - 0
+[2022-02-09 15:23:17.058] [debug] Character 7 - 0
+[2022-02-09 15:23:17.059] [debug] Character 8 - 
+[2022-02-09 15:23:17.061] [debug] Character 9 - 
+[2022-02-09 15:23:17.062] [debug] Character 10 - 
+
+[2022-02-09 15:23:17.064] [debug] Character 11 - 
+[2022-02-09 15:23:17.065] [debug] Character 12 -  
+[2022-02-09 15:23:17.066] [debug] Character 13 - 0
+[2022-02-09 15:23:17.067] [debug] Character 14 - 0
+[2022-02-09 15:23:17.068] [debug] Character 15 - 0
+[2022-02-09 15:23:17.070] [debug] Character 16 - 0
+[2022-02-09 15:23:17.071] [debug] Character 17 - 0
+[2022-02-09 15:23:17.072] [debug] Character 18 - 0
+[2022-02-09 15:23:17.073] [debug] Character 19 - 
+[2022-02-09 15:23:17.075] [debug] Character 20 - 
+[2022-02-09 15:23:17.076] [debug] Character 21 - 
+
+[2022-02-09 15:23:17.077] [debug] Character 22 - 
+[2022-02-09 15:23:17.078] [debug] Character 23 -  
+[2022-02-09 15:23:17.080] [debug] Character 24 - 0
+[2022-02-09 15:23:17.081] [debug] Character 25 - 0
+[2022-02-09 15:23:17.082] [debug] Character 26 - 0
+[2022-02-09 15:23:17.733] [debug] 000
+ 000000
+ 000000
+[2022-02-09 15:23:17.738] [debug] 27
+[2022-02-09 15:23:17.763] [debug] {
+  totalChars: 27,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 3,
+  stringName: 'Avery7',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 5,
+  weightCharPosition2: 6,
+  weightCharPosition3: 7,
+  weightCharPosition4: 8,
+  weightCharPosition5: 9,
+  weightCharPosition6: null
+}
+[2022-02-09 15:23:17.792] [debug] Character 0 - 0
+[2022-02-09 15:23:17.819] [debug] Character 1 - 0
+[2022-02-09 15:23:17.822] [debug] Character 2 - 0
+[2022-02-09 15:23:17.828] [debug] Character 3 - 
+[2022-02-09 15:23:17.834] [debug] Character 4 - 
+[2022-02-09 15:23:17.836] [debug] Character 5 - 
+
+[2022-02-09 15:23:17.839] [debug] Character 6 - 
+[2022-02-09 15:23:17.842] [debug] Character 7 -  
+[2022-02-09 15:23:17.844] [debug] Character 8 - 0
+[2022-02-09 15:23:17.846] [debug] Character 9 - 0
+[2022-02-09 15:23:17.848] [debug] Character 10 - 0
+[2022-02-09 15:23:17.849] [debug] Character 11 - 0
+[2022-02-09 15:23:17.850] [debug] Character 12 - 0
+[2022-02-09 15:23:17.851] [debug] Character 13 - 0
+[2022-02-09 15:23:17.853] [debug] Character 14 - 
+[2022-02-09 15:23:17.854] [debug] Character 15 - 
+[2022-02-09 15:23:17.855] [debug] Character 16 - 
+
+[2022-02-09 15:23:17.859] [debug] Character 17 - 
+[2022-02-09 15:23:17.860] [debug] Character 18 -  
+[2022-02-09 15:23:17.862] [debug] Character 19 - 0
+[2022-02-09 15:23:17.863] [debug] Character 20 - 0
+[2022-02-09 15:23:17.865] [debug] Character 21 - 0
+[2022-02-09 15:23:17.867] [debug] Character 22 - 0
+[2022-02-09 15:23:17.868] [debug] Character 23 - 0
+[2022-02-09 15:23:17.869] [debug] Character 24 - 0
+[2022-02-09 15:23:17.871] [debug] Character 25 - 
+[2022-02-09 15:23:17.875] [debug] Character 26 - 
+[2022-02-09 15:23:18.822] [debug] 
+ 000000
+ 000000
+ 00
+[2022-02-09 15:23:18.827] [debug] 27
+[2022-02-09 15:23:18.838] [debug] {
+  totalChars: 27,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 3,
+  stringName: 'Avery7',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 5,
+  weightCharPosition2: 6,
+  weightCharPosition3: 7,
+  weightCharPosition4: 8,
+  weightCharPosition5: 9,
+  weightCharPosition6: null
+}
+[2022-02-09 15:23:18.884] [debug] Character 0 - 
+
+[2022-02-09 15:23:18.900] [debug] Character 1 - 
+[2022-02-09 15:23:18.905] [debug] Character 2 -  
+[2022-02-09 15:23:18.912] [debug] Character 3 - 0
+[2022-02-09 15:23:18.917] [debug] Character 4 - 0
+[2022-02-09 15:23:18.919] [debug] Character 5 - 0
+[2022-02-09 15:23:18.921] [debug] Character 6 - 0
+[2022-02-09 15:23:18.923] [debug] Character 7 - 0
+[2022-02-09 15:23:18.924] [debug] Character 8 - 0
+[2022-02-09 15:23:18.926] [debug] Character 9 - 
+[2022-02-09 15:23:18.928] [debug] Character 10 - 
+[2022-02-09 15:23:18.930] [debug] Character 11 - 
+
+[2022-02-09 15:23:18.932] [debug] Character 12 - 
+[2022-02-09 15:23:18.933] [debug] Character 13 -  
+[2022-02-09 15:23:18.937] [debug] Character 14 - 0
+[2022-02-09 15:23:18.940] [debug] Character 15 - 0
+[2022-02-09 15:23:18.941] [debug] Character 16 - 0
+[2022-02-09 15:23:18.942] [debug] Character 17 - 0
+[2022-02-09 15:23:18.943] [debug] Character 18 - 0
+[2022-02-09 15:23:18.944] [debug] Character 19 - 0
+[2022-02-09 15:23:18.946] [debug] Character 20 - 
+[2022-02-09 15:23:18.948] [debug] Character 21 - 
+[2022-02-09 15:23:18.950] [debug] Character 22 - 
+
+[2022-02-09 15:23:18.953] [debug] Character 23 - 
+[2022-02-09 15:23:18.954] [debug] Character 24 -  
+[2022-02-09 15:23:18.956] [debug] Character 25 - 0
+[2022-02-09 15:23:18.957] [debug] Character 26 - 0
+[2022-02-09 15:23:19.593] [debug] 0000
+ 000000
+ 000000
+[2022-02-09 15:23:19.602] [debug] 27
+[2022-02-09 15:23:19.639] [debug] {
+  totalChars: 27,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 3,
+  stringName: 'Avery7',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 5,
+  weightCharPosition2: 6,
+  weightCharPosition3: 7,
+  weightCharPosition4: 8,
+  weightCharPosition5: 9,
+  weightCharPosition6: null
+}
+[2022-02-09 15:23:19.652] [debug] Character 0 - 0
+[2022-02-09 15:23:19.660] [debug] Character 1 - 0
+[2022-02-09 15:23:19.663] [debug] Character 2 - 0
+[2022-02-09 15:23:19.664] [debug] Character 3 - 0
+[2022-02-09 15:23:19.666] [debug] Character 4 - 
+[2022-02-09 15:23:19.667] [debug] Character 5 - 
+[2022-02-09 15:23:19.668] [debug] Character 6 - 
+
+[2022-02-09 15:23:19.670] [debug] Character 7 - 
+[2022-02-09 15:23:19.672] [debug] Character 8 -  
+[2022-02-09 15:23:19.674] [debug] Character 9 - 0
+[2022-02-09 15:23:19.675] [debug] Character 10 - 0
+[2022-02-09 15:23:19.677] [debug] Character 11 - 0
+[2022-02-09 15:23:19.678] [debug] Character 12 - 0
+[2022-02-09 15:23:19.679] [debug] Character 13 - 0
+[2022-02-09 15:23:19.681] [debug] Character 14 - 0
+[2022-02-09 15:23:19.682] [debug] Character 15 - 
+[2022-02-09 15:23:19.684] [debug] Character 16 - 
+[2022-02-09 15:23:19.685] [debug] Character 17 - 
+
+[2022-02-09 15:23:19.688] [debug] Character 18 - 
+[2022-02-09 15:23:19.689] [debug] Character 19 -  
+[2022-02-09 15:23:19.691] [debug] Character 20 - 0
+[2022-02-09 15:23:19.692] [debug] Character 21 - 0
+[2022-02-09 15:23:19.693] [debug] Character 22 - 0
+[2022-02-09 15:23:19.695] [debug] Character 23 - 0
+[2022-02-09 15:23:19.696] [debug] Character 24 - 0
+[2022-02-09 15:23:19.698] [debug] Character 25 - 0
+[2022-02-09 15:23:19.699] [debug] Character 26 - 
+[2022-02-09 15:23:20.683] [debug] 
+ 000000
+ 000000
+ 0
+[2022-02-09 15:23:20.688] [debug] 27
+[2022-02-09 15:23:20.724] [debug] {
+  totalChars: 27,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 3,
+  stringName: 'Avery7',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 5,
+  weightCharPosition2: 6,
+  weightCharPosition3: 7,
+  weightCharPosition4: 8,
+  weightCharPosition5: 9,
+  weightCharPosition6: null
+}
+[2022-02-09 15:23:20.744] [debug] Character 0 - 
+[2022-02-09 15:23:20.750] [debug] Character 1 - 
+
+[2022-02-09 15:23:20.770] [debug] Character 2 - 
+[2022-02-09 15:23:20.774] [debug] Character 3 -  
+[2022-02-09 15:23:20.776] [debug] Character 4 - 0
+[2022-02-09 15:23:20.778] [debug] Character 5 - 0
+[2022-02-09 15:23:20.782] [debug] Character 6 - 0
+[2022-02-09 15:23:20.784] [debug] Character 7 - 0
+[2022-02-09 15:23:20.785] [debug] Character 8 - 0
+[2022-02-09 15:23:20.786] [debug] Character 9 - 0
+[2022-02-09 15:23:20.787] [debug] Character 10 - 
+[2022-02-09 15:23:20.789] [debug] Character 11 - 
+[2022-02-09 15:23:20.790] [debug] Character 12 - 
+
+[2022-02-09 15:23:20.791] [debug] Character 13 - 
+[2022-02-09 15:23:20.793] [debug] Character 14 -  
+[2022-02-09 15:23:20.799] [debug] Character 15 - 0
+[2022-02-09 15:23:20.800] [debug] Character 16 - 0
+[2022-02-09 15:23:20.802] [debug] Character 17 - 0
+[2022-02-09 15:23:20.803] [debug] Character 18 - 0
+[2022-02-09 15:23:20.805] [debug] Character 19 - 0
+[2022-02-09 15:23:20.807] [debug] Character 20 - 0
+[2022-02-09 15:23:20.810] [debug] Character 21 - 
+[2022-02-09 15:23:20.812] [debug] Character 22 - 
+[2022-02-09 15:23:20.814] [debug] Character 23 - 
+
+[2022-02-09 15:23:20.816] [debug] Character 24 - 
+[2022-02-09 15:23:20.817] [debug] Character 25 -  
+[2022-02-09 15:23:20.819] [debug] Character 26 - 0
+[2022-02-09 15:23:21.453] [debug] 00000
+ 000000
+ 000000
+[2022-02-09 15:23:21.458] [debug] 27
+[2022-02-09 15:23:21.477] [debug] {
+  totalChars: 27,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 3,
+  stringName: 'Avery7',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 5,
+  weightCharPosition2: 6,
+  weightCharPosition3: 7,
+  weightCharPosition4: 8,
+  weightCharPosition5: 9,
+  weightCharPosition6: null
+}
+[2022-02-09 15:23:21.517] [debug] Character 0 - 0
+[2022-02-09 15:23:21.526] [debug] Character 1 - 0
+[2022-02-09 15:23:21.528] [debug] Character 2 - 0
+[2022-02-09 15:23:21.531] [debug] Character 3 - 0
+[2022-02-09 15:23:21.533] [debug] Character 4 - 0
+[2022-02-09 15:23:21.534] [debug] Character 5 - 
+[2022-02-09 15:23:21.536] [debug] Character 6 - 
+[2022-02-09 15:23:21.538] [debug] Character 7 - 
+
+[2022-02-09 15:23:21.541] [debug] Character 8 - 
+[2022-02-09 15:23:21.542] [debug] Character 9 -  
+[2022-02-09 15:23:21.544] [debug] Character 10 - 0
+[2022-02-09 15:23:21.545] [debug] Character 11 - 0
+[2022-02-09 15:23:21.547] [debug] Character 12 - 0
+[2022-02-09 15:23:21.548] [debug] Character 13 - 0
+[2022-02-09 15:23:21.549] [debug] Character 14 - 0
+[2022-02-09 15:23:21.550] [debug] Character 15 - 0
+[2022-02-09 15:23:21.551] [debug] Character 16 - 
+[2022-02-09 15:23:21.552] [debug] Character 17 - 
+[2022-02-09 15:23:21.554] [debug] Character 18 - 
+
+[2022-02-09 15:23:21.557] [debug] Character 19 - 
+[2022-02-09 15:23:21.559] [debug] Character 20 -  
+[2022-02-09 15:23:21.560] [debug] Character 21 - 0
+[2022-02-09 15:23:21.561] [debug] Character 22 - 0
+[2022-02-09 15:23:21.563] [debug] Character 23 - 0
+[2022-02-09 15:23:21.564] [debug] Character 24 - 0
+[2022-02-09 15:23:21.565] [debug] Character 25 - 0
+[2022-02-09 15:23:21.566] [debug] Character 26 - 0
+[2022-02-09 15:23:22.553] [debug] 
+ 000000
+ 000000
+ 
+[2022-02-09 15:23:22.558] [debug] 27
+[2022-02-09 15:23:22.585] [debug] {
+  totalChars: 27,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 3,
+  stringName: 'Avery7',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 5,
+  weightCharPosition2: 6,
+  weightCharPosition3: 7,
+  weightCharPosition4: 8,
+  weightCharPosition5: 9,
+  weightCharPosition6: null
+}
+[2022-02-09 15:23:22.612] [debug] Character 0 - 
+[2022-02-09 15:23:22.623] [debug] Character 1 - 
+[2022-02-09 15:23:22.645] [debug] Character 2 - 
+
+[2022-02-09 15:23:22.653] [debug] Character 3 - 
+[2022-02-09 15:23:22.660] [debug] Character 4 -  
+[2022-02-09 15:23:22.663] [debug] Character 5 - 0
+[2022-02-09 15:23:22.667] [debug] Character 6 - 0
+[2022-02-09 15:23:22.669] [debug] Character 7 - 0
+[2022-02-09 15:23:22.670] [debug] Character 8 - 0
+[2022-02-09 15:23:22.672] [debug] Character 9 - 0
+[2022-02-09 15:23:22.673] [debug] Character 10 - 0
+[2022-02-09 15:23:22.674] [debug] Character 11 - 
+[2022-02-09 15:23:22.676] [debug] Character 12 - 
+[2022-02-09 15:23:22.678] [debug] Character 13 - 
+
+[2022-02-09 15:23:22.680] [debug] Character 14 - 
+[2022-02-09 15:23:22.681] [debug] Character 15 -  
+[2022-02-09 15:23:22.682] [debug] Character 16 - 0
+[2022-02-09 15:23:22.684] [debug] Character 17 - 0
+[2022-02-09 15:23:22.685] [debug] Character 18 - 0
+[2022-02-09 15:23:22.686] [debug] Character 19 - 0
+[2022-02-09 15:23:22.687] [debug] Character 20 - 0
+[2022-02-09 15:23:22.688] [debug] Character 21 - 0
+[2022-02-09 15:23:22.689] [debug] Character 22 - 
+[2022-02-09 15:23:22.690] [debug] Character 23 - 
+[2022-02-09 15:23:22.692] [debug] Character 24 - 
+
+[2022-02-09 15:23:22.693] [debug] Character 25 - 
+[2022-02-09 15:23:22.694] [debug] Character 26 -  
+[2022-02-09 15:23:22.806] [error] Error occured on port
+[2022-02-09 15:23:22.809] [error] Error: Opening COM3: Access denied
+[2022-02-09 15:23:28.553] [debug] �������
+[2022-02-09 15:23:28.571] [debug] 9
+[2022-02-09 15:23:28.574] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:28.583] [debug] Character 0 - �
+[2022-02-09 15:23:28.584] [debug] Character 1 - �
+[2022-02-09 15:23:28.586] [debug] Character 2 - �
+[2022-02-09 15:23:28.588] [debug] Character 3 - �
+[2022-02-09 15:23:28.589] [debug] Character 4 - �
+[2022-02-09 15:23:28.591] [debug] Character 5 - �
+[2022-02-09 15:23:28.592] [debug] Character 6 - �
+[2022-02-09 15:23:28.594] [debug] Character 7 - 
+[2022-02-09 15:23:28.604] [debug] Character 8 - 
+[2022-02-09 15:23:28.920] [debug] 
+ 000000
+[2022-02-09 15:23:28.949] [debug] 9
+[2022-02-09 15:23:28.983] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:28.992] [debug] Character 0 - 
+
+[2022-02-09 15:23:29.005] [debug] Character 1 - 
+[2022-02-09 15:23:29.010] [debug] Character 2 -  
+[2022-02-09 15:23:29.015] [debug] Character 3 - 0
+[2022-02-09 15:23:29.018] [debug] Character 4 - 0
+[2022-02-09 15:23:29.019] [debug] Character 5 - 0
+[2022-02-09 15:23:29.021] [debug] Character 6 - 0
+[2022-02-09 15:23:29.024] [debug] Character 7 - 0
+[2022-02-09 15:23:29.027] [debug] Character 8 - 0
+[2022-02-09 15:23:29.287] [debug] 
+ 0000
+[2022-02-09 15:23:29.291] [debug] 9
+[2022-02-09 15:23:29.319] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:29.342] [debug] Character 0 - 
+[2022-02-09 15:23:29.366] [debug] Character 1 - 
+[2022-02-09 15:23:29.372] [debug] Character 2 - 
+
+[2022-02-09 15:23:29.377] [debug] Character 3 - 
+[2022-02-09 15:23:29.386] [debug] Character 4 -  
+[2022-02-09 15:23:29.390] [debug] Character 5 - 0
+[2022-02-09 15:23:29.391] [debug] Character 6 - 0
+[2022-02-09 15:23:29.394] [debug] Character 7 - 0
+[2022-02-09 15:23:29.395] [debug] Character 8 - 0
+[2022-02-09 15:23:29.654] [debug] 00
+ 00
+[2022-02-09 15:23:29.658] [debug] 9
+[2022-02-09 15:23:29.671] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:29.689] [debug] Character 0 - 0
+[2022-02-09 15:23:29.711] [debug] Character 1 - 0
+[2022-02-09 15:23:29.720] [debug] Character 2 - 
+[2022-02-09 15:23:29.728] [debug] Character 3 - 
+[2022-02-09 15:23:29.735] [debug] Character 4 - 
+
+[2022-02-09 15:23:29.743] [debug] Character 5 - 
+[2022-02-09 15:23:29.748] [debug] Character 6 -  
+[2022-02-09 15:23:29.757] [debug] Character 7 - 0
+[2022-02-09 15:23:29.760] [debug] Character 8 - 0
+[2022-02-09 15:23:30.020] [debug] 0000
+ 
+[2022-02-09 15:23:30.024] [debug] 9
+[2022-02-09 15:23:30.042] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:30.074] [debug] Character 0 - 0
+[2022-02-09 15:23:30.095] [debug] Character 1 - 0
+[2022-02-09 15:23:30.107] [debug] Character 2 - 0
+[2022-02-09 15:23:30.112] [debug] Character 3 - 0
+[2022-02-09 15:23:30.125] [debug] Character 4 - 
+[2022-02-09 15:23:30.137] [debug] Character 5 - 
+[2022-02-09 15:23:30.138] [debug] Character 6 - 
+
+[2022-02-09 15:23:30.140] [debug] Character 7 - 
+[2022-02-09 15:23:30.142] [debug] Character 8 -  
+[2022-02-09 15:23:30.149] [debug] 000000
+
+[2022-02-09 15:23:30.151] [debug] 9
+[2022-02-09 15:23:30.153] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:30.156] [debug] Character 0 - 0
+[2022-02-09 15:23:30.157] [debug] Character 1 - 0
+[2022-02-09 15:23:30.163] [debug] Character 2 - 0
+[2022-02-09 15:23:30.165] [debug] Character 3 - 0
+[2022-02-09 15:23:30.166] [debug] Character 4 - 0
+[2022-02-09 15:23:30.167] [debug] Character 5 - 0
+[2022-02-09 15:23:30.169] [debug] Character 6 - 
+[2022-02-09 15:23:30.170] [debug] Character 7 - 
+[2022-02-09 15:23:30.171] [debug] Character 8 - 
+
+[2022-02-09 15:23:30.414] [debug]  000000
+[2022-02-09 15:23:30.418] [debug] 9
+[2022-02-09 15:23:30.444] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:30.471] [debug] Character 0 - 
+[2022-02-09 15:23:30.490] [debug] Character 1 -  
+[2022-02-09 15:23:30.496] [debug] Character 2 - 0
+[2022-02-09 15:23:30.500] [debug] Character 3 - 0
+[2022-02-09 15:23:30.504] [debug] Character 4 - 0
+[2022-02-09 15:23:30.506] [debug] Character 5 - 0
+[2022-02-09 15:23:30.509] [debug] Character 6 - 0
+[2022-02-09 15:23:30.511] [debug] Character 7 - 0
+[2022-02-09 15:23:30.514] [debug] Character 8 - 
+[2022-02-09 15:23:30.780] [debug] 
+ 00000
+[2022-02-09 15:23:30.784] [debug] 9
+[2022-02-09 15:23:30.802] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:30.845] [debug] Character 0 - 
+[2022-02-09 15:23:30.867] [debug] Character 1 - 
+
+[2022-02-09 15:23:30.874] [debug] Character 2 - 
+[2022-02-09 15:23:30.877] [debug] Character 3 -  
+[2022-02-09 15:23:30.884] [debug] Character 4 - 0
+[2022-02-09 15:23:30.886] [debug] Character 5 - 0
+[2022-02-09 15:23:30.888] [debug] Character 6 - 0
+[2022-02-09 15:23:30.890] [debug] Character 7 - 0
+[2022-02-09 15:23:30.892] [debug] Character 8 - 0
+[2022-02-09 15:23:31.147] [debug] 0
+ 000
+[2022-02-09 15:23:31.152] [debug] 9
+[2022-02-09 15:23:31.164] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:31.202] [debug] Character 0 - 0
+[2022-02-09 15:23:31.223] [debug] Character 1 - 
+[2022-02-09 15:23:31.227] [debug] Character 2 - 
+[2022-02-09 15:23:31.235] [debug] Character 3 - 
+
+[2022-02-09 15:23:31.244] [debug] Character 4 - 
+[2022-02-09 15:23:31.248] [debug] Character 5 -  
+[2022-02-09 15:23:31.250] [debug] Character 6 - 0
+[2022-02-09 15:23:31.255] [debug] Character 7 - 0
+[2022-02-09 15:23:31.257] [debug] Character 8 - 0
+[2022-02-09 15:23:31.513] [debug] 000
+ 0
+[2022-02-09 15:23:31.519] [debug] 9
+[2022-02-09 15:23:31.526] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:31.542] [debug] Character 0 - 0
+[2022-02-09 15:23:31.567] [debug] Character 1 - 0
+[2022-02-09 15:23:31.575] [debug] Character 2 - 0
+[2022-02-09 15:23:31.580] [debug] Character 3 - 
+[2022-02-09 15:23:31.597] [debug] Character 4 - 
+[2022-02-09 15:23:31.603] [debug] Character 5 - 
+
+[2022-02-09 15:23:31.607] [debug] Character 6 - 
+[2022-02-09 15:23:31.611] [debug] Character 7 -  
+[2022-02-09 15:23:31.617] [debug] Character 8 - 0
+[2022-02-09 15:23:31.883] [debug] 00000
+
+[2022-02-09 15:23:31.889] [debug] 9
+[2022-02-09 15:23:31.912] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:31.953] [debug] Character 0 - 0
+[2022-02-09 15:23:31.961] [debug] Character 1 - 0
+[2022-02-09 15:23:31.966] [debug] Character 2 - 0
+[2022-02-09 15:23:31.968] [debug] Character 3 - 0
+[2022-02-09 15:23:31.970] [debug] Character 4 - 0
+[2022-02-09 15:23:31.973] [debug] Character 5 - 
+[2022-02-09 15:23:31.974] [debug] Character 6 - 
+[2022-02-09 15:23:31.976] [debug] Character 7 - 
+
+[2022-02-09 15:23:31.978] [debug] Character 8 - 
+[2022-02-09 15:23:31.982] [debug]  000000
+[2022-02-09 15:23:31.984] [debug] 9
+[2022-02-09 15:23:31.985] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:31.989] [debug] Character 0 -  
+[2022-02-09 15:23:31.991] [debug] Character 1 - 0
+[2022-02-09 15:23:31.992] [debug] Character 2 - 0
+[2022-02-09 15:23:31.994] [debug] Character 3 - 0
+[2022-02-09 15:23:31.995] [debug] Character 4 - 0
+[2022-02-09 15:23:31.996] [debug] Character 5 - 0
+[2022-02-09 15:23:31.999] [debug] Character 6 - 0
+[2022-02-09 15:23:32.000] [debug] Character 7 - 
+[2022-02-09 15:23:32.001] [debug] Character 8 - 
+[2022-02-09 15:23:32.284] [debug] 
+ 000000
+[2022-02-09 15:23:32.290] [debug] 9
+[2022-02-09 15:23:32.309] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:32.344] [debug] Character 0 - 
+
+[2022-02-09 15:23:32.361] [debug] Character 1 - 
+[2022-02-09 15:23:32.366] [debug] Character 2 -  
+[2022-02-09 15:23:32.368] [debug] Character 3 - 0
+[2022-02-09 15:23:32.369] [debug] Character 4 - 0
+[2022-02-09 15:23:32.371] [debug] Character 5 - 0
+[2022-02-09 15:23:32.372] [debug] Character 6 - 0
+[2022-02-09 15:23:32.373] [debug] Character 7 - 0
+[2022-02-09 15:23:32.375] [debug] Character 8 - 0
+[2022-02-09 15:23:32.641] [debug] 
+ 0000
+[2022-02-09 15:23:32.644] [debug] 9
+[2022-02-09 15:23:32.660] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:32.716] [debug] Character 0 - 
+[2022-02-09 15:23:32.726] [debug] Character 1 - 
+[2022-02-09 15:23:32.733] [debug] Character 2 - 
+
+[2022-02-09 15:23:32.740] [debug] Character 3 - 
+[2022-02-09 15:23:32.742] [debug] Character 4 -  
+[2022-02-09 15:23:32.745] [debug] Character 5 - 0
+[2022-02-09 15:23:32.748] [debug] Character 6 - 0
+[2022-02-09 15:23:32.750] [debug] Character 7 - 0
+[2022-02-09 15:23:32.752] [debug] Character 8 - 0
+[2022-02-09 15:23:33.007] [debug] 00
+ 00
+[2022-02-09 15:23:33.012] [debug] 9
+[2022-02-09 15:23:33.027] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:33.061] [debug] Character 0 - 0
+[2022-02-09 15:23:33.086] [debug] Character 1 - 0
+[2022-02-09 15:23:33.090] [debug] Character 2 - 
+[2022-02-09 15:23:33.093] [debug] Character 3 - 
+[2022-02-09 15:23:33.097] [debug] Character 4 - 
+
+[2022-02-09 15:23:33.105] [debug] Character 5 - 
+[2022-02-09 15:23:33.108] [debug] Character 6 -  
+[2022-02-09 15:23:33.110] [debug] Character 7 - 0
+[2022-02-09 15:23:33.112] [debug] Character 8 - 0
+[2022-02-09 15:23:33.373] [debug] 0000
+ 
+[2022-02-09 15:23:33.376] [debug] 9
+[2022-02-09 15:23:33.406] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:33.416] [debug] Character 0 - 0
+[2022-02-09 15:23:33.439] [debug] Character 1 - 0
+[2022-02-09 15:23:33.443] [debug] Character 2 - 0
+[2022-02-09 15:23:33.447] [debug] Character 3 - 0
+[2022-02-09 15:23:33.450] [debug] Character 4 - 
+[2022-02-09 15:23:33.453] [debug] Character 5 - 
+[2022-02-09 15:23:33.456] [debug] Character 6 - 
+
+[2022-02-09 15:23:33.463] [debug] Character 7 - 
+[2022-02-09 15:23:33.467] [debug] Character 8 -  
+[2022-02-09 15:23:33.470] [debug] 000000
+
+[2022-02-09 15:23:33.473] [debug] 9
+[2022-02-09 15:23:33.476] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:33.481] [debug] Character 0 - 0
+[2022-02-09 15:23:33.482] [debug] Character 1 - 0
+[2022-02-09 15:23:33.484] [debug] Character 2 - 0
+[2022-02-09 15:23:33.486] [debug] Character 3 - 0
+[2022-02-09 15:23:33.492] [debug] Character 4 - 0
+[2022-02-09 15:23:33.493] [debug] Character 5 - 0
+[2022-02-09 15:23:33.495] [debug] Character 6 - 
+[2022-02-09 15:23:33.497] [debug] Character 7 - 
+[2022-02-09 15:23:33.499] [debug] Character 8 - 
+
+[2022-02-09 15:23:33.778] [debug]  000000
+[2022-02-09 15:23:33.782] [debug] 9
+[2022-02-09 15:23:33.812] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:33.838] [debug] Character 0 - 
+[2022-02-09 15:23:33.847] [debug] Character 1 -  
+[2022-02-09 15:23:33.849] [debug] Character 2 - 0
+[2022-02-09 15:23:33.851] [debug] Character 3 - 0
+[2022-02-09 15:23:33.853] [debug] Character 4 - 0
+[2022-02-09 15:23:33.854] [debug] Character 5 - 0
+[2022-02-09 15:23:33.856] [debug] Character 6 - 0
+[2022-02-09 15:23:33.857] [debug] Character 7 - 0
+[2022-02-09 15:23:33.858] [debug] Character 8 - 
+[2022-02-09 15:23:34.143] [debug] 
+ 00000
+[2022-02-09 15:23:34.148] [debug] 9
+[2022-02-09 15:23:34.169] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:34.176] [debug] Character 0 - 
+[2022-02-09 15:23:34.179] [debug] Character 1 - 
+
+[2022-02-09 15:23:34.186] [debug] Character 2 - 
+[2022-02-09 15:23:34.190] [debug] Character 3 -  
+[2022-02-09 15:23:34.191] [debug] Character 4 - 0
+[2022-02-09 15:23:34.193] [debug] Character 5 - 0
+[2022-02-09 15:23:34.195] [debug] Character 6 - 0
+[2022-02-09 15:23:34.198] [debug] Character 7 - 0
+[2022-02-09 15:23:34.199] [debug] Character 8 - 0
+[2022-02-09 15:23:34.510] [debug] 0
+ 000
+[2022-02-09 15:23:34.514] [debug] 9
+[2022-02-09 15:23:34.546] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:34.585] [debug] Character 0 - 0
+[2022-02-09 15:23:34.600] [debug] Character 1 - 
+[2022-02-09 15:23:34.602] [debug] Character 2 - 
+[2022-02-09 15:23:34.604] [debug] Character 3 - 
+
+[2022-02-09 15:23:34.610] [debug] Character 4 - 
+[2022-02-09 15:23:34.615] [debug] Character 5 -  
+[2022-02-09 15:23:34.616] [debug] Character 6 - 0
+[2022-02-09 15:23:34.619] [debug] Character 7 - 0
+[2022-02-09 15:23:34.622] [debug] Character 8 - 0
+[2022-02-09 15:23:34.877] [debug] 000
+ 0
+[2022-02-09 15:23:34.881] [debug] 9
+[2022-02-09 15:23:34.910] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:34.940] [debug] Character 0 - 0
+[2022-02-09 15:23:34.958] [debug] Character 1 - 0
+[2022-02-09 15:23:34.961] [debug] Character 2 - 0
+[2022-02-09 15:23:34.965] [debug] Character 3 - 
+[2022-02-09 15:23:34.968] [debug] Character 4 - 
+[2022-02-09 15:23:34.970] [debug] Character 5 - 
+
+[2022-02-09 15:23:34.972] [debug] Character 6 - 
+[2022-02-09 15:23:34.975] [debug] Character 7 -  
+[2022-02-09 15:23:34.977] [debug] Character 8 - 0
+[2022-02-09 15:23:35.233] [debug] 00000
+
+[2022-02-09 15:23:35.238] [debug] 9
+[2022-02-09 15:23:35.267] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:35.281] [debug] Character 0 - 0
+[2022-02-09 15:23:35.285] [debug] Character 1 - 0
+[2022-02-09 15:23:35.293] [debug] Character 2 - 0
+[2022-02-09 15:23:35.296] [debug] Character 3 - 0
+[2022-02-09 15:23:35.297] [debug] Character 4 - 0
+[2022-02-09 15:23:35.299] [debug] Character 5 - 
+[2022-02-09 15:23:35.303] [debug] Character 6 - 
+[2022-02-09 15:23:35.305] [debug] Character 7 - 
+
+[2022-02-09 15:23:35.306] [debug] Character 8 - 
+[2022-02-09 15:23:35.309] [debug]  000000
+[2022-02-09 15:23:35.310] [debug] 9
+[2022-02-09 15:23:35.311] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:35.314] [debug] Character 0 -  
+[2022-02-09 15:23:35.315] [debug] Character 1 - 0
+[2022-02-09 15:23:35.319] [debug] Character 2 - 0
+[2022-02-09 15:23:35.325] [debug] Character 3 - 0
+[2022-02-09 15:23:35.326] [debug] Character 4 - 0
+[2022-02-09 15:23:35.327] [debug] Character 5 - 0
+[2022-02-09 15:23:35.329] [debug] Character 6 - 0
+[2022-02-09 15:23:35.330] [debug] Character 7 - 
+[2022-02-09 15:23:35.331] [debug] Character 8 - 
+[2022-02-09 15:23:35.637] [debug] 
+ 000000
+[2022-02-09 15:23:35.641] [debug] 9
+[2022-02-09 15:23:35.662] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:35.711] [debug] Character 0 - 
+
+[2022-02-09 15:23:35.726] [debug] Character 1 - 
+[2022-02-09 15:23:35.730] [debug] Character 2 -  
+[2022-02-09 15:23:35.732] [debug] Character 3 - 0
+[2022-02-09 15:23:35.737] [debug] Character 4 - 0
+[2022-02-09 15:23:35.738] [debug] Character 5 - 0
+[2022-02-09 15:23:35.742] [debug] Character 6 - 0
+[2022-02-09 15:23:35.744] [debug] Character 7 - 0
+[2022-02-09 15:23:35.748] [debug] Character 8 - 0
+[2022-02-09 15:23:36.004] [debug] 
+ 0000
+[2022-02-09 15:23:36.008] [debug] 9
+[2022-02-09 15:23:36.041] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:36.080] [debug] Character 0 - 
+[2022-02-09 15:23:36.084] [debug] Character 1 - 
+[2022-02-09 15:23:36.087] [debug] Character 2 - 
+
+[2022-02-09 15:23:36.089] [debug] Character 3 - 
+[2022-02-09 15:23:36.091] [debug] Character 4 -  
+[2022-02-09 15:23:36.093] [debug] Character 5 - 0
+[2022-02-09 15:23:36.097] [debug] Character 6 - 0
+[2022-02-09 15:23:36.100] [debug] Character 7 - 0
+[2022-02-09 15:23:36.104] [debug] Character 8 - 0
+[2022-02-09 15:23:36.372] [debug] 00
+ 00
+[2022-02-09 15:23:36.376] [debug] 9
+[2022-02-09 15:23:36.394] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:36.409] [debug] Character 0 - 0
+[2022-02-09 15:23:36.434] [debug] Character 1 - 0
+[2022-02-09 15:23:36.438] [debug] Character 2 - 
+[2022-02-09 15:23:36.446] [debug] Character 3 - 
+[2022-02-09 15:23:36.450] [debug] Character 4 - 
+
+[2022-02-09 15:23:36.453] [debug] Character 5 - 
+[2022-02-09 15:23:36.455] [debug] Character 6 -  
+[2022-02-09 15:23:36.459] [debug] Character 7 - 0
+[2022-02-09 15:23:36.461] [debug] Character 8 - 0
+[2022-02-09 15:23:36.738] [debug] 0000
+ 
+[2022-02-09 15:23:36.743] [debug] 9
+[2022-02-09 15:23:36.754] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:36.784] [debug] Character 0 - 0
+[2022-02-09 15:23:36.797] [debug] Character 1 - 0
+[2022-02-09 15:23:36.806] [debug] Character 2 - 0
+[2022-02-09 15:23:36.810] [debug] Character 3 - 0
+[2022-02-09 15:23:36.816] [debug] Character 4 - 
+[2022-02-09 15:23:36.822] [debug] Character 5 - 
+[2022-02-09 15:23:36.825] [debug] Character 6 - 
+
+[2022-02-09 15:23:36.827] [debug] Character 7 - 
+[2022-02-09 15:23:36.829] [debug] Character 8 -  
+[2022-02-09 15:23:36.834] [debug] 000000
+
+[2022-02-09 15:23:36.836] [debug] 9
+[2022-02-09 15:23:36.838] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:36.842] [debug] Character 0 - 0
+[2022-02-09 15:23:36.843] [debug] Character 1 - 0
+[2022-02-09 15:23:36.846] [debug] Character 2 - 0
+[2022-02-09 15:23:36.851] [debug] Character 3 - 0
+[2022-02-09 15:23:36.853] [debug] Character 4 - 0
+[2022-02-09 15:23:36.854] [debug] Character 5 - 0
+[2022-02-09 15:23:36.855] [debug] Character 6 - 
+[2022-02-09 15:23:36.856] [debug] Character 7 - 
+[2022-02-09 15:23:36.858] [debug] Character 8 - 
+
+[2022-02-09 15:23:37.140] [debug]  000000
+[2022-02-09 15:23:37.142] [debug] 9
+[2022-02-09 15:23:37.153] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:37.173] [debug] Character 0 - 
+[2022-02-09 15:23:37.189] [debug] Character 1 -  
+[2022-02-09 15:23:37.192] [debug] Character 2 - 0
+[2022-02-09 15:23:37.194] [debug] Character 3 - 0
+[2022-02-09 15:23:37.199] [debug] Character 4 - 0
+[2022-02-09 15:23:37.202] [debug] Character 5 - 0
+[2022-02-09 15:23:37.206] [debug] Character 6 - 0
+[2022-02-09 15:23:37.208] [debug] Character 7 - 0
+[2022-02-09 15:23:37.209] [debug] Character 8 - 
+[2022-02-09 15:23:37.497] [debug] 
+ 00000
+[2022-02-09 15:23:37.507] [debug] 9
+[2022-02-09 15:23:37.539] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:37.571] [debug] Character 0 - 
+[2022-02-09 15:23:37.574] [debug] Character 1 - 
+
+[2022-02-09 15:23:37.575] [debug] Character 2 - 
+[2022-02-09 15:23:37.577] [debug] Character 3 -  
+[2022-02-09 15:23:37.580] [debug] Character 4 - 0
+[2022-02-09 15:23:37.582] [debug] Character 5 - 0
+[2022-02-09 15:23:37.583] [debug] Character 6 - 0
+[2022-02-09 15:23:37.584] [debug] Character 7 - 0
+[2022-02-09 15:23:37.586] [debug] Character 8 - 0
+[2022-02-09 15:23:37.865] [debug] 0
+ 000
+[2022-02-09 15:23:37.875] [debug] 9
+[2022-02-09 15:23:37.882] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:37.888] [debug] Character 0 - 0
+[2022-02-09 15:23:37.891] [debug] Character 1 - 
+[2022-02-09 15:23:37.893] [debug] Character 2 - 
+[2022-02-09 15:23:37.894] [debug] Character 3 - 
+
+[2022-02-09 15:23:37.902] [debug] Character 4 - 
+[2022-02-09 15:23:37.904] [debug] Character 5 -  
+[2022-02-09 15:23:37.906] [debug] Character 6 - 0
+[2022-02-09 15:23:37.907] [debug] Character 7 - 0
+[2022-02-09 15:23:37.909] [debug] Character 8 - 0
+[2022-02-09 15:23:38.231] [debug] 000
+ 0
+[2022-02-09 15:23:38.235] [debug] 9
+[2022-02-09 15:23:38.269] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:38.293] [debug] Character 0 - 0
+[2022-02-09 15:23:38.318] [debug] Character 1 - 0
+[2022-02-09 15:23:38.330] [debug] Character 2 - 0
+[2022-02-09 15:23:38.338] [debug] Character 3 - 
+[2022-02-09 15:23:38.341] [debug] Character 4 - 
+[2022-02-09 15:23:38.343] [debug] Character 5 - 
+
+[2022-02-09 15:23:38.346] [debug] Character 6 - 
+[2022-02-09 15:23:38.348] [debug] Character 7 -  
+[2022-02-09 15:23:38.350] [debug] Character 8 - 0
+[2022-02-09 15:23:38.597] [debug] 00000
+
+[2022-02-09 15:23:38.601] [debug] 9
+[2022-02-09 15:23:38.613] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:38.634] [debug] Character 0 - 0
+[2022-02-09 15:23:38.657] [debug] Character 1 - 0
+[2022-02-09 15:23:38.663] [debug] Character 2 - 0
+[2022-02-09 15:23:38.671] [debug] Character 3 - 0
+[2022-02-09 15:23:38.680] [debug] Character 4 - 0
+[2022-02-09 15:23:38.684] [debug] Character 5 - 
+[2022-02-09 15:23:38.686] [debug] Character 6 - 
+[2022-02-09 15:23:38.689] [debug] Character 7 - 
+
+[2022-02-09 15:23:38.690] [debug] Character 8 - 
+[2022-02-09 15:23:38.694] [debug]  000000
+[2022-02-09 15:23:38.696] [debug] 9
+[2022-02-09 15:23:38.698] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:38.707] [debug] Character 0 -  
+[2022-02-09 15:23:38.709] [debug] Character 1 - 0
+[2022-02-09 15:23:38.710] [debug] Character 2 - 0
+[2022-02-09 15:23:38.712] [debug] Character 3 - 0
+[2022-02-09 15:23:38.716] [debug] Character 4 - 0
+[2022-02-09 15:23:38.720] [debug] Character 5 - 0
+[2022-02-09 15:23:38.721] [debug] Character 6 - 0
+[2022-02-09 15:23:38.722] [debug] Character 7 - 
+[2022-02-09 15:23:38.724] [debug] Character 8 - 
+[2022-02-09 15:23:39.001] [debug] 
+ 000000
+[2022-02-09 15:23:39.005] [debug] 9
+[2022-02-09 15:23:39.021] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:39.064] [debug] Character 0 - 
+
+[2022-02-09 15:23:39.082] [debug] Character 1 - 
+[2022-02-09 15:23:39.085] [debug] Character 2 -  
+[2022-02-09 15:23:39.087] [debug] Character 3 - 0
+[2022-02-09 15:23:39.089] [debug] Character 4 - 0
+[2022-02-09 15:23:39.091] [debug] Character 5 - 0
+[2022-02-09 15:23:39.093] [debug] Character 6 - 0
+[2022-02-09 15:23:39.096] [debug] Character 7 - 0
+[2022-02-09 15:23:39.099] [debug] Character 8 - 0
+[2022-02-09 15:23:39.367] [debug] 
+ 0000
+[2022-02-09 15:23:39.372] [debug] 9
+[2022-02-09 15:23:39.420] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:39.427] [debug] Character 0 - 
+[2022-02-09 15:23:39.433] [debug] Character 1 - 
+[2022-02-09 15:23:39.435] [debug] Character 2 - 
+
+[2022-02-09 15:23:39.437] [debug] Character 3 - 
+[2022-02-09 15:23:39.444] [debug] Character 4 -  
+[2022-02-09 15:23:39.447] [debug] Character 5 - 0
+[2022-02-09 15:23:39.449] [debug] Character 6 - 0
+[2022-02-09 15:23:39.451] [debug] Character 7 - 0
+[2022-02-09 15:23:39.452] [debug] Character 8 - 0
+[2022-02-09 15:23:39.725] [debug] 00
+ 00
+[2022-02-09 15:23:39.729] [debug] 9
+[2022-02-09 15:23:39.770] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:39.798] [debug] Character 0 - 0
+[2022-02-09 15:23:39.812] [debug] Character 1 - 0
+[2022-02-09 15:23:39.815] [debug] Character 2 - 
+[2022-02-09 15:23:39.818] [debug] Character 3 - 
+[2022-02-09 15:23:39.819] [debug] Character 4 - 
+
+[2022-02-09 15:23:39.822] [debug] Character 5 - 
+[2022-02-09 15:23:39.824] [debug] Character 6 -  
+[2022-02-09 15:23:39.825] [debug] Character 7 - 0
+[2022-02-09 15:23:39.827] [debug] Character 8 - 0
+[2022-02-09 15:23:40.090] [debug] 0000
+ 
+[2022-02-09 15:23:40.095] [debug] 9
+[2022-02-09 15:23:40.123] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:40.154] [debug] Character 0 - 0
+[2022-02-09 15:23:40.176] [debug] Character 1 - 0
+[2022-02-09 15:23:40.178] [debug] Character 2 - 0
+[2022-02-09 15:23:40.182] [debug] Character 3 - 0
+[2022-02-09 15:23:40.184] [debug] Character 4 - 
+[2022-02-09 15:23:40.185] [debug] Character 5 - 
+[2022-02-09 15:23:40.188] [debug] Character 6 - 
+
+[2022-02-09 15:23:40.191] [debug] Character 7 - 
+[2022-02-09 15:23:40.193] [debug] Character 8 -  
+[2022-02-09 15:23:40.197] [debug] 000000
+
+[2022-02-09 15:23:40.199] [debug] 9
+[2022-02-09 15:23:40.200] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:40.203] [debug] Character 0 - 0
+[2022-02-09 15:23:40.204] [debug] Character 1 - 0
+[2022-02-09 15:23:40.209] [debug] Character 2 - 0
+[2022-02-09 15:23:40.212] [debug] Character 3 - 0
+[2022-02-09 15:23:40.216] [debug] Character 4 - 0
+[2022-02-09 15:23:40.217] [debug] Character 5 - 0
+[2022-02-09 15:23:40.218] [debug] Character 6 - 
+[2022-02-09 15:23:40.221] [debug] Character 7 - 
+[2022-02-09 15:23:40.223] [debug] Character 8 - 
+
+[2022-02-09 15:23:40.494] [debug]  000000
+[2022-02-09 15:23:40.497] [debug] 9
+[2022-02-09 15:23:40.506] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:23:40.516] [debug] Character 0 - 
+[2022-02-09 15:23:40.522] [debug] Character 1 -  
+[2022-02-09 15:23:40.523] [debug] Character 2 - 0
+[2022-02-09 15:23:40.526] [debug] Character 3 - 0
+[2022-02-09 15:23:40.529] [debug] Character 4 - 0
+[2022-02-09 15:23:40.531] [debug] Character 5 - 0
+[2022-02-09 15:23:40.532] [debug] Character 6 - 0
+[2022-02-09 15:23:40.535] [debug] Character 7 - 0
+[2022-02-09 15:23:40.536] [debug] Character 8 - 
+[2022-02-09 15:23:40.586] [error] Error occured on port
+[2022-02-09 15:23:40.590] [error] Error: Opening COM3: Access denied
+[2022-02-09 15:23:44.204] [debug] AsAsAsAs
+[2022-02-09 15:23:44.211] [debug] 25
+[2022-02-09 15:23:44.239] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:23:44.256] [debug] Character 0 - 
+[2022-02-09 15:23:44.267] [debug] Character 1 - 
+[2022-02-09 15:23:44.271] [debug] Character 2 - 
+[2022-02-09 15:23:44.275] [debug] Character 3 - 
+[2022-02-09 15:23:44.281] [debug] Character 4 - A
+[2022-02-09 15:23:44.285] [debug] Character 5 - s
+[2022-02-09 15:23:44.289] [debug] Character 6 - 
+[2022-02-09 15:23:44.294] [debug] Character 7 - 
+[2022-02-09 15:23:44.313] [debug] Character 8 - 
+[2022-02-09 15:23:44.316] [debug] Character 9 - 
+[2022-02-09 15:23:44.318] [debug] Character 10 - A
+[2022-02-09 15:23:44.320] [debug] Character 11 - s
+[2022-02-09 15:23:44.321] [debug] Character 12 - 
+[2022-02-09 15:23:44.323] [debug] Character 13 - 
+[2022-02-09 15:23:44.325] [debug] Character 14 - 
+[2022-02-09 15:23:44.326] [debug] Character 15 - 
+[2022-02-09 15:23:44.329] [debug] Character 16 - A
+[2022-02-09 15:23:44.331] [debug] Character 17 - s
+[2022-02-09 15:23:44.332] [debug] Character 18 - 
+[2022-02-09 15:23:44.334] [debug] Character 19 - 
+[2022-02-09 15:23:44.335] [debug] Character 20 - 
+[2022-02-09 15:23:44.336] [debug] Character 21 - 
+[2022-02-09 15:23:44.338] [debug] Character 22 - A
+[2022-02-09 15:23:44.339] [debug] Character 23 - s
+[2022-02-09 15:23:44.340] [debug] Character 24 - 
+[2022-02-09 15:23:45.701] [debug] AsAsAsAs
+[2022-02-09 15:23:45.705] [debug] 25
+[2022-02-09 15:23:45.728] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:23:45.753] [debug] Character 0 - 
+[2022-02-09 15:23:45.776] [debug] Character 1 - 
+[2022-02-09 15:23:45.783] [debug] Character 2 - 
+[2022-02-09 15:23:45.787] [debug] Character 3 - A
+[2022-02-09 15:23:45.799] [debug] Character 4 - s
+[2022-02-09 15:23:45.807] [debug] Character 5 - 
+[2022-02-09 15:23:45.814] [debug] Character 6 - 
+[2022-02-09 15:23:45.816] [debug] Character 7 - 
+[2022-02-09 15:23:45.818] [debug] Character 8 - 
+[2022-02-09 15:23:45.821] [debug] Character 9 - A
+[2022-02-09 15:23:45.822] [debug] Character 10 - s
+[2022-02-09 15:23:45.824] [debug] Character 11 - 
+[2022-02-09 15:23:45.825] [debug] Character 12 - 
+[2022-02-09 15:23:45.827] [debug] Character 13 - 
+[2022-02-09 15:23:45.828] [debug] Character 14 - 
+[2022-02-09 15:23:45.830] [debug] Character 15 - A
+[2022-02-09 15:23:45.832] [debug] Character 16 - s
+[2022-02-09 15:23:45.833] [debug] Character 17 - 
+[2022-02-09 15:23:45.835] [debug] Character 18 - 
+[2022-02-09 15:23:45.836] [debug] Character 19 - 
+[2022-02-09 15:23:45.837] [debug] Character 20 - 
+[2022-02-09 15:23:45.838] [debug] Character 21 - A
+[2022-02-09 15:23:45.839] [debug] Character 22 - s
+[2022-02-09 15:23:45.840] [debug] Character 23 - 
+[2022-02-09 15:23:45.841] [debug] Character 24 - 
+[2022-02-09 15:23:47.199] [debug] AsAsAsAs
+[2022-02-09 15:23:47.204] [debug] 25
+[2022-02-09 15:23:47.212] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:23:47.256] [debug] Character 0 - 
+[2022-02-09 15:23:47.274] [debug] Character 1 - 
+[2022-02-09 15:23:47.278] [debug] Character 2 - A
+[2022-02-09 15:23:47.284] [debug] Character 3 - s
+[2022-02-09 15:23:47.292] [debug] Character 4 - 
+[2022-02-09 15:23:47.298] [debug] Character 5 - 
+[2022-02-09 15:23:47.306] [debug] Character 6 - 
+[2022-02-09 15:23:47.308] [debug] Character 7 - 
+[2022-02-09 15:23:47.311] [debug] Character 8 - A
+[2022-02-09 15:23:47.316] [debug] Character 9 - s
+[2022-02-09 15:23:47.318] [debug] Character 10 - 
+[2022-02-09 15:23:47.321] [debug] Character 11 - 
+[2022-02-09 15:23:47.322] [debug] Character 12 - 
+[2022-02-09 15:23:47.324] [debug] Character 13 - 
+[2022-02-09 15:23:47.325] [debug] Character 14 - A
+[2022-02-09 15:23:47.327] [debug] Character 15 - s
+[2022-02-09 15:23:47.331] [debug] Character 16 - 
+[2022-02-09 15:23:47.332] [debug] Character 17 - 
+[2022-02-09 15:23:47.334] [debug] Character 18 - 
+[2022-02-09 15:23:47.335] [debug] Character 19 - 
+[2022-02-09 15:23:47.336] [debug] Character 20 - A
+[2022-02-09 15:23:47.338] [debug] Character 21 - s
+[2022-02-09 15:23:47.339] [debug] Character 22 - 
+[2022-02-09 15:23:47.340] [debug] Character 23 - 
+[2022-02-09 15:23:47.341] [debug] Character 24 - 
+[2022-02-09 15:23:48.708] [debug] AsAsAsAs
+[2022-02-09 15:23:48.713] [debug] 25
+[2022-02-09 15:23:48.737] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:23:48.766] [debug] Character 0 - 
+[2022-02-09 15:23:48.770] [debug] Character 1 - A
+[2022-02-09 15:23:48.775] [debug] Character 2 - s
+[2022-02-09 15:23:48.780] [debug] Character 3 - 
+[2022-02-09 15:23:48.785] [debug] Character 4 - 
+[2022-02-09 15:23:48.790] [debug] Character 5 - 
+[2022-02-09 15:23:48.795] [debug] Character 6 - 
+[2022-02-09 15:23:48.798] [debug] Character 7 - A
+[2022-02-09 15:23:48.800] [debug] Character 8 - s
+[2022-02-09 15:23:48.803] [debug] Character 9 - 
+[2022-02-09 15:23:48.805] [debug] Character 10 - 
+[2022-02-09 15:23:48.807] [debug] Character 11 - 
+[2022-02-09 15:23:48.809] [debug] Character 12 - 
+[2022-02-09 15:23:48.811] [debug] Character 13 - A
+[2022-02-09 15:23:48.812] [debug] Character 14 - s
+[2022-02-09 15:23:48.814] [debug] Character 15 - 
+[2022-02-09 15:23:48.815] [debug] Character 16 - 
+[2022-02-09 15:23:48.817] [debug] Character 17 - 
+[2022-02-09 15:23:48.819] [debug] Character 18 - 
+[2022-02-09 15:23:48.820] [debug] Character 19 - A
+[2022-02-09 15:23:48.821] [debug] Character 20 - s
+[2022-02-09 15:23:48.823] [debug] Character 21 - 
+[2022-02-09 15:23:48.828] [debug] Character 22 - 
+[2022-02-09 15:23:48.829] [debug] Character 23 - 
+[2022-02-09 15:23:48.831] [debug] Character 24 - 
+[2022-02-09 15:23:50.204] [debug] AsAsAsAsA
+[2022-02-09 15:23:50.209] [debug] 25
+[2022-02-09 15:23:50.240] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:23:50.248] [debug] Character 0 - A
+[2022-02-09 15:23:50.252] [debug] Character 1 - s
+[2022-02-09 15:23:50.253] [debug] Character 2 - 
+[2022-02-09 15:23:50.255] [debug] Character 3 - 
+[2022-02-09 15:23:50.257] [debug] Character 4 - 
+[2022-02-09 15:23:50.264] [debug] Character 5 - 
+[2022-02-09 15:23:50.266] [debug] Character 6 - A
+[2022-02-09 15:23:50.267] [debug] Character 7 - s
+[2022-02-09 15:23:50.268] [debug] Character 8 - 
+[2022-02-09 15:23:50.269] [debug] Character 9 - 
+[2022-02-09 15:23:50.270] [debug] Character 10 - 
+[2022-02-09 15:23:50.271] [debug] Character 11 - 
+[2022-02-09 15:23:50.272] [debug] Character 12 - A
+[2022-02-09 15:23:50.274] [debug] Character 13 - s
+[2022-02-09 15:23:50.277] [debug] Character 14 - 
+[2022-02-09 15:23:50.279] [debug] Character 15 - 
+[2022-02-09 15:23:50.280] [debug] Character 16 - 
+[2022-02-09 15:23:50.281] [debug] Character 17 - 
+[2022-02-09 15:23:50.282] [debug] Character 18 - A
+[2022-02-09 15:23:50.283] [debug] Character 19 - s
+[2022-02-09 15:23:50.284] [debug] Character 20 - 
+[2022-02-09 15:23:50.285] [debug] Character 21 - 
+[2022-02-09 15:23:50.286] [debug] Character 22 - 
+[2022-02-09 15:23:50.287] [debug] Character 23 - 
+[2022-02-09 15:23:50.291] [debug] Character 24 - A
+[2022-02-09 15:23:51.713] [debug] sAsAsAsAs
+[2022-02-09 15:23:51.718] [debug] 25
+[2022-02-09 15:23:51.727] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:23:51.767] [debug] Character 0 - s
+[2022-02-09 15:23:51.786] [debug] Character 1 - 
+[2022-02-09 15:23:51.792] [debug] Character 2 - 
+[2022-02-09 15:23:51.798] [debug] Character 3 - 
+[2022-02-09 15:23:51.802] [debug] Character 4 - 
+[2022-02-09 15:23:51.806] [debug] Character 5 - A
+[2022-02-09 15:23:51.812] [debug] Character 6 - s
+[2022-02-09 15:23:51.815] [debug] Character 7 - 
+[2022-02-09 15:23:51.818] [debug] Character 8 - 
+[2022-02-09 15:23:51.821] [debug] Character 9 - 
+[2022-02-09 15:23:51.823] [debug] Character 10 - 
+[2022-02-09 15:23:51.825] [debug] Character 11 - A
+[2022-02-09 15:23:51.827] [debug] Character 12 - s
+[2022-02-09 15:23:51.829] [debug] Character 13 - 
+[2022-02-09 15:23:51.831] [debug] Character 14 - 
+[2022-02-09 15:23:51.832] [debug] Character 15 - 
+[2022-02-09 15:23:51.834] [debug] Character 16 - 
+[2022-02-09 15:23:51.835] [debug] Character 17 - A
+[2022-02-09 15:23:51.836] [debug] Character 18 - s
+[2022-02-09 15:23:51.839] [debug] Character 19 - 
+[2022-02-09 15:23:51.840] [debug] Character 20 - 
+[2022-02-09 15:23:51.841] [debug] Character 21 - 
+[2022-02-09 15:23:51.842] [debug] Character 22 - 
+[2022-02-09 15:23:51.844] [debug] Character 23 - A
+[2022-02-09 15:23:51.845] [debug] Character 24 - s
+[2022-02-09 15:23:53.272] [debug] AsAsAsAs
+[2022-02-09 15:23:53.277] [debug] 25
+[2022-02-09 15:23:53.291] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:23:53.331] [debug] Character 0 - 
+[2022-02-09 15:23:53.353] [debug] Character 1 - 
+[2022-02-09 15:23:53.367] [debug] Character 2 - 
+[2022-02-09 15:23:53.373] [debug] Character 3 - 
+[2022-02-09 15:23:53.375] [debug] Character 4 - A
+[2022-02-09 15:23:53.377] [debug] Character 5 - s
+[2022-02-09 15:23:53.379] [debug] Character 6 - 
+[2022-02-09 15:23:53.381] [debug] Character 7 - 
+[2022-02-09 15:23:53.383] [debug] Character 8 - 
+[2022-02-09 15:23:53.385] [debug] Character 9 - 
+[2022-02-09 15:23:53.388] [debug] Character 10 - A
+[2022-02-09 15:23:53.390] [debug] Character 11 - s
+[2022-02-09 15:23:53.392] [debug] Character 12 - 
+[2022-02-09 15:23:53.393] [debug] Character 13 - 
+[2022-02-09 15:23:53.394] [debug] Character 14 - 
+[2022-02-09 15:23:53.396] [debug] Character 15 - 
+[2022-02-09 15:23:53.397] [debug] Character 16 - A
+[2022-02-09 15:23:53.398] [debug] Character 17 - s
+[2022-02-09 15:23:53.399] [debug] Character 18 - 
+[2022-02-09 15:23:53.401] [debug] Character 19 - 
+[2022-02-09 15:23:53.404] [debug] Character 20 - 
+[2022-02-09 15:23:53.406] [debug] Character 21 - 
+[2022-02-09 15:23:53.407] [debug] Character 22 - A
+[2022-02-09 15:23:53.408] [debug] Character 23 - s
+[2022-02-09 15:23:53.410] [debug] Character 24 - 
+[2022-02-09 15:23:54.665] [debug] AsAsAsAs
+[2022-02-09 15:23:54.669] [debug] 25
+[2022-02-09 15:23:54.693] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:23:54.720] [debug] Character 0 - 
+[2022-02-09 15:23:54.738] [debug] Character 1 - 
+[2022-02-09 15:23:54.743] [debug] Character 2 - 
+[2022-02-09 15:23:54.752] [debug] Character 3 - A
+[2022-02-09 15:23:54.758] [debug] Character 4 - s
+[2022-02-09 15:23:54.762] [debug] Character 5 - 
+[2022-02-09 15:23:54.766] [debug] Character 6 - 
+[2022-02-09 15:23:54.768] [debug] Character 7 - 
+[2022-02-09 15:23:54.770] [debug] Character 8 - 
+[2022-02-09 15:23:54.772] [debug] Character 9 - A
+[2022-02-09 15:23:54.774] [debug] Character 10 - s
+[2022-02-09 15:23:54.775] [debug] Character 11 - 
+[2022-02-09 15:23:54.777] [debug] Character 12 - 
+[2022-02-09 15:23:54.779] [debug] Character 13 - 
+[2022-02-09 15:23:54.780] [debug] Character 14 - 
+[2022-02-09 15:23:54.782] [debug] Character 15 - A
+[2022-02-09 15:23:54.783] [debug] Character 16 - s
+[2022-02-09 15:23:54.784] [debug] Character 17 - 
+[2022-02-09 15:23:54.786] [debug] Character 18 - 
+[2022-02-09 15:23:54.787] [debug] Character 19 - 
+[2022-02-09 15:23:54.789] [debug] Character 20 - 
+[2022-02-09 15:23:54.790] [debug] Character 21 - A
+[2022-02-09 15:23:54.791] [debug] Character 22 - s
+[2022-02-09 15:23:54.792] [debug] Character 23 - 
+[2022-02-09 15:23:54.793] [debug] Character 24 - 
+[2022-02-09 15:23:56.162] [debug] AsAsAsAs
+[2022-02-09 15:23:56.168] [debug] 25
+[2022-02-09 15:23:56.197] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:23:56.214] [debug] Character 0 - 
+[2022-02-09 15:23:56.240] [debug] Character 1 - 
+[2022-02-09 15:23:56.245] [debug] Character 2 - A
+[2022-02-09 15:23:56.252] [debug] Character 3 - s
+[2022-02-09 15:23:56.257] [debug] Character 4 - 
+[2022-02-09 15:23:56.261] [debug] Character 5 - 
+[2022-02-09 15:23:56.264] [debug] Character 6 - 
+[2022-02-09 15:23:56.267] [debug] Character 7 - 
+[2022-02-09 15:23:56.270] [debug] Character 8 - A
+[2022-02-09 15:23:56.272] [debug] Character 9 - s
+[2022-02-09 15:23:56.274] [debug] Character 10 - 
+[2022-02-09 15:23:56.275] [debug] Character 11 - 
+[2022-02-09 15:23:56.277] [debug] Character 12 - 
+[2022-02-09 15:23:56.279] [debug] Character 13 - 
+[2022-02-09 15:23:56.281] [debug] Character 14 - A
+[2022-02-09 15:23:56.282] [debug] Character 15 - s
+[2022-02-09 15:23:56.283] [debug] Character 16 - 
+[2022-02-09 15:23:56.285] [debug] Character 17 - 
+[2022-02-09 15:23:56.287] [debug] Character 18 - 
+[2022-02-09 15:23:56.288] [debug] Character 19 - 
+[2022-02-09 15:23:56.289] [debug] Character 20 - A
+[2022-02-09 15:23:56.291] [debug] Character 21 - s
+[2022-02-09 15:23:56.294] [debug] Character 22 - 
+[2022-02-09 15:23:56.296] [debug] Character 23 - 
+[2022-02-09 15:23:56.297] [debug] Character 24 - 
+[2022-02-09 15:23:57.659] [debug] AsAsAsAs
+[2022-02-09 15:23:57.665] [debug] 25
+[2022-02-09 15:23:57.676] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:23:57.707] [debug] Character 0 - 
+[2022-02-09 15:23:57.715] [debug] Character 1 - A
+[2022-02-09 15:23:57.737] [debug] Character 2 - s
+[2022-02-09 15:23:57.741] [debug] Character 3 - 
+[2022-02-09 15:23:57.746] [debug] Character 4 - 
+[2022-02-09 15:23:57.751] [debug] Character 5 - 
+[2022-02-09 15:23:57.755] [debug] Character 6 - 
+[2022-02-09 15:23:57.761] [debug] Character 7 - A
+[2022-02-09 15:23:57.764] [debug] Character 8 - s
+[2022-02-09 15:23:57.766] [debug] Character 9 - 
+[2022-02-09 15:23:57.772] [debug] Character 10 - 
+[2022-02-09 15:23:57.774] [debug] Character 11 - 
+[2022-02-09 15:23:57.780] [debug] Character 12 - 
+[2022-02-09 15:23:57.782] [debug] Character 13 - A
+[2022-02-09 15:23:57.783] [debug] Character 14 - s
+[2022-02-09 15:23:57.785] [debug] Character 15 - 
+[2022-02-09 15:23:57.786] [debug] Character 16 - 
+[2022-02-09 15:23:57.788] [debug] Character 17 - 
+[2022-02-09 15:23:57.790] [debug] Character 18 - 
+[2022-02-09 15:23:57.791] [debug] Character 19 - A
+[2022-02-09 15:23:57.792] [debug] Character 20 - s
+[2022-02-09 15:23:57.793] [debug] Character 21 - 
+[2022-02-09 15:23:57.794] [debug] Character 22 - 
+[2022-02-09 15:23:57.796] [debug] Character 23 - 
+[2022-02-09 15:23:57.797] [debug] Character 24 - 
+[2022-02-09 15:23:59.167] [debug] AsAsAsAsA
+[2022-02-09 15:23:59.172] [debug] 25
+[2022-02-09 15:23:59.186] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:23:59.224] [debug] Character 0 - A
+[2022-02-09 15:23:59.243] [debug] Character 1 - s
+[2022-02-09 15:23:59.251] [debug] Character 2 - 
+[2022-02-09 15:23:59.256] [debug] Character 3 - 
+[2022-02-09 15:23:59.258] [debug] Character 4 - 
+[2022-02-09 15:23:59.264] [debug] Character 5 - 
+[2022-02-09 15:23:59.265] [debug] Character 6 - A
+[2022-02-09 15:23:59.267] [debug] Character 7 - s
+[2022-02-09 15:23:59.269] [debug] Character 8 - 
+[2022-02-09 15:23:59.270] [debug] Character 9 - 
+[2022-02-09 15:23:59.271] [debug] Character 10 - 
+[2022-02-09 15:23:59.273] [debug] Character 11 - 
+[2022-02-09 15:23:59.274] [debug] Character 12 - A
+[2022-02-09 15:23:59.278] [debug] Character 13 - s
+[2022-02-09 15:23:59.279] [debug] Character 14 - 
+[2022-02-09 15:23:59.280] [debug] Character 15 - 
+[2022-02-09 15:23:59.281] [debug] Character 16 - 
+[2022-02-09 15:23:59.283] [debug] Character 17 - 
+[2022-02-09 15:23:59.284] [debug] Character 18 - A
+[2022-02-09 15:23:59.285] [debug] Character 19 - s
+[2022-02-09 15:23:59.286] [debug] Character 20 - 
+[2022-02-09 15:23:59.287] [debug] Character 21 - 
+[2022-02-09 15:23:59.288] [debug] Character 22 - 
+[2022-02-09 15:23:59.289] [debug] Character 23 - 
+[2022-02-09 15:23:59.290] [debug] Character 24 - A
+[2022-02-09 15:24:00.664] [debug] sAsAsAsAs
+[2022-02-09 15:24:00.666] [debug] 25
+[2022-02-09 15:24:00.672] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:24:00.678] [debug] Character 0 - s
+[2022-02-09 15:24:00.683] [debug] Character 1 - 
+[2022-02-09 15:24:00.685] [debug] Character 2 - 
+[2022-02-09 15:24:00.694] [debug] Character 3 - 
+[2022-02-09 15:24:00.696] [debug] Character 4 - 
+[2022-02-09 15:24:00.700] [debug] Character 5 - A
+[2022-02-09 15:24:00.702] [debug] Character 6 - s
+[2022-02-09 15:24:00.703] [debug] Character 7 - 
+[2022-02-09 15:24:00.706] [debug] Character 8 - 
+[2022-02-09 15:24:00.708] [debug] Character 9 - 
+[2022-02-09 15:24:00.709] [debug] Character 10 - 
+[2022-02-09 15:24:00.710] [debug] Character 11 - A
+[2022-02-09 15:24:00.712] [debug] Character 12 - s
+[2022-02-09 15:24:00.714] [debug] Character 13 - 
+[2022-02-09 15:24:00.715] [debug] Character 14 - 
+[2022-02-09 15:24:00.716] [debug] Character 15 - 
+[2022-02-09 15:24:00.717] [debug] Character 16 - 
+[2022-02-09 15:24:00.718] [debug] Character 17 - A
+[2022-02-09 15:24:00.719] [debug] Character 18 - s
+[2022-02-09 15:24:00.720] [debug] Character 19 - 
+[2022-02-09 15:24:00.723] [debug] Character 20 - 
+[2022-02-09 15:24:00.724] [debug] Character 21 - 
+[2022-02-09 15:24:00.726] [debug] Character 22 - 
+[2022-02-09 15:24:00.727] [debug] Character 23 - A
+[2022-02-09 15:24:00.728] [debug] Character 24 - s
+[2022-02-09 15:24:02.486] [debug] AsAsAsAs
+[2022-02-09 15:24:02.487] [debug] 25
+[2022-02-09 15:24:02.496] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:24:02.501] [debug] Character 0 - 
+[2022-02-09 15:24:02.503] [debug] Character 1 - 
+[2022-02-09 15:24:02.525] [debug] Character 2 - 
+[2022-02-09 15:24:02.530] [debug] Character 3 - 
+[2022-02-09 15:24:02.532] [debug] Character 4 - A
+[2022-02-09 15:24:02.533] [debug] Character 5 - s
+[2022-02-09 15:24:02.534] [debug] Character 6 - 
+[2022-02-09 15:24:02.535] [debug] Character 7 - 
+[2022-02-09 15:24:02.537] [debug] Character 8 - 
+[2022-02-09 15:24:02.539] [debug] Character 9 - 
+[2022-02-09 15:24:02.540] [debug] Character 10 - A
+[2022-02-09 15:24:02.541] [debug] Character 11 - s
+[2022-02-09 15:24:02.542] [debug] Character 12 - 
+[2022-02-09 15:24:02.543] [debug] Character 13 - 
+[2022-02-09 15:24:02.544] [debug] Character 14 - 
+[2022-02-09 15:24:02.545] [debug] Character 15 - 
+[2022-02-09 15:24:02.547] [debug] Character 16 - A
+[2022-02-09 15:24:02.548] [debug] Character 17 - s
+[2022-02-09 15:24:02.549] [debug] Character 18 - 
+[2022-02-09 15:24:02.550] [debug] Character 19 - 
+[2022-02-09 15:24:02.551] [debug] Character 20 - 
+[2022-02-09 15:24:02.552] [debug] Character 21 - 
+[2022-02-09 15:24:02.554] [debug] Character 22 - A
+[2022-02-09 15:24:02.556] [debug] Character 23 - s
+[2022-02-09 15:24:02.557] [debug] Character 24 - 
+[2022-02-09 15:24:03.994] [debug] AsAsAsAs
+[2022-02-09 15:24:03.997] [debug] 25
+[2022-02-09 15:24:04.003] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:24:04.012] [debug] Character 0 - 
+[2022-02-09 15:24:04.017] [debug] Character 1 - 
+[2022-02-09 15:24:04.020] [debug] Character 2 - 
+[2022-02-09 15:24:04.029] [debug] Character 3 - A
+[2022-02-09 15:24:04.034] [debug] Character 4 - s
+[2022-02-09 15:24:04.039] [debug] Character 5 - 
+[2022-02-09 15:24:04.040] [debug] Character 6 - 
+[2022-02-09 15:24:04.041] [debug] Character 7 - 
+[2022-02-09 15:24:04.046] [debug] Character 8 - 
+[2022-02-09 15:24:04.049] [debug] Character 9 - A
+[2022-02-09 15:24:04.051] [debug] Character 10 - s
+[2022-02-09 15:24:04.055] [debug] Character 11 - 
+[2022-02-09 15:24:04.061] [debug] Character 12 - 
+[2022-02-09 15:24:04.063] [debug] Character 13 - 
+[2022-02-09 15:24:04.068] [debug] Character 14 - 
+[2022-02-09 15:24:04.070] [debug] Character 15 - A
+[2022-02-09 15:24:04.076] [debug] Character 16 - s
+[2022-02-09 15:24:04.079] [debug] Character 17 - 
+[2022-02-09 15:24:04.083] [debug] Character 18 - 
+[2022-02-09 15:24:04.085] [debug] Character 19 - 
+[2022-02-09 15:24:04.088] [debug] Character 20 - 
+[2022-02-09 15:24:04.092] [debug] Character 21 - A
+[2022-02-09 15:24:04.094] [debug] Character 22 - s
+[2022-02-09 15:24:04.095] [debug] Character 23 - 
+[2022-02-09 15:24:04.097] [debug] Character 24 - 
+[2022-02-09 15:24:05.493] [debug] AsAsAsAs
+[2022-02-09 15:24:05.494] [debug] 25
+[2022-02-09 15:24:05.502] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:24:05.510] [debug] Character 0 - 
+[2022-02-09 15:24:05.512] [debug] Character 1 - 
+[2022-02-09 15:24:05.516] [debug] Character 2 - A
+[2022-02-09 15:24:05.523] [debug] Character 3 - s
+[2022-02-09 15:24:05.526] [debug] Character 4 - 
+[2022-02-09 15:24:05.530] [debug] Character 5 - 
+[2022-02-09 15:24:05.533] [debug] Character 6 - 
+[2022-02-09 15:24:05.536] [debug] Character 7 - 
+[2022-02-09 15:24:05.539] [debug] Character 8 - A
+[2022-02-09 15:24:05.540] [debug] Character 9 - s
+[2022-02-09 15:24:05.542] [debug] Character 10 - 
+[2022-02-09 15:24:05.545] [debug] Character 11 - 
+[2022-02-09 15:24:05.547] [debug] Character 12 - 
+[2022-02-09 15:24:05.551] [debug] Character 13 - 
+[2022-02-09 15:24:05.554] [debug] Character 14 - A
+[2022-02-09 15:24:05.555] [debug] Character 15 - s
+[2022-02-09 15:24:05.556] [debug] Character 16 - 
+[2022-02-09 15:24:05.557] [debug] Character 17 - 
+[2022-02-09 15:24:05.558] [debug] Character 18 - 
+[2022-02-09 15:24:05.560] [debug] Character 19 - 
+[2022-02-09 15:24:05.561] [debug] Character 20 - A
+[2022-02-09 15:24:05.563] [debug] Character 21 - s
+[2022-02-09 15:24:05.564] [debug] Character 22 - 
+[2022-02-09 15:24:05.567] [debug] Character 23 - 
+[2022-02-09 15:24:05.568] [debug] Character 24 - 
+[2022-02-09 15:27:05.817] [debug] AsAsAsAs
+[2022-02-09 15:27:05.824] [debug] 25
+[2022-02-09 15:27:05.851] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:27:05.862] [debug] Character 0 - 
+[2022-02-09 15:27:05.869] [debug] Character 1 - A
+[2022-02-09 15:27:05.876] [debug] Character 2 - s
+[2022-02-09 15:27:05.880] [debug] Character 3 - 
+[2022-02-09 15:27:05.893] [debug] Character 4 - 
+[2022-02-09 15:27:05.898] [debug] Character 5 - 
+[2022-02-09 15:27:05.904] [debug] Character 6 - 
+[2022-02-09 15:27:05.909] [debug] Character 7 - A
+[2022-02-09 15:27:05.912] [debug] Character 8 - s
+[2022-02-09 15:27:05.914] [debug] Character 9 - 
+[2022-02-09 15:27:05.917] [debug] Character 10 - 
+[2022-02-09 15:27:05.919] [debug] Character 11 - 
+[2022-02-09 15:27:05.922] [debug] Character 12 - 
+[2022-02-09 15:27:05.925] [debug] Character 13 - A
+[2022-02-09 15:27:05.927] [debug] Character 14 - s
+[2022-02-09 15:27:05.931] [debug] Character 15 - 
+[2022-02-09 15:27:05.932] [debug] Character 16 - 
+[2022-02-09 15:27:05.934] [debug] Character 17 - 
+[2022-02-09 15:27:05.935] [debug] Character 18 - 
+[2022-02-09 15:27:05.936] [debug] Character 19 - A
+[2022-02-09 15:27:05.939] [debug] Character 20 - s
+[2022-02-09 15:27:05.940] [debug] Character 21 - 
+[2022-02-09 15:27:05.941] [debug] Character 22 - 
+[2022-02-09 15:27:05.942] [debug] Character 23 - 
+[2022-02-09 15:27:05.944] [debug] Character 24 - 
+[2022-02-09 15:27:07.314] [debug] AsAsAsAsA
+[2022-02-09 15:27:07.319] [debug] 25
+[2022-02-09 15:27:07.333] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:27:07.369] [debug] Character 0 - A
+[2022-02-09 15:27:07.386] [debug] Character 1 - s
+[2022-02-09 15:27:07.394] [debug] Character 2 - 
+[2022-02-09 15:27:07.401] [debug] Character 3 - 
+[2022-02-09 15:27:07.413] [debug] Character 4 - 
+[2022-02-09 15:27:07.419] [debug] Character 5 - 
+[2022-02-09 15:27:07.424] [debug] Character 6 - A
+[2022-02-09 15:27:07.427] [debug] Character 7 - s
+[2022-02-09 15:27:07.429] [debug] Character 8 - 
+[2022-02-09 15:27:07.431] [debug] Character 9 - 
+[2022-02-09 15:27:07.433] [debug] Character 10 - 
+[2022-02-09 15:27:07.435] [debug] Character 11 - 
+[2022-02-09 15:27:07.437] [debug] Character 12 - A
+[2022-02-09 15:27:07.438] [debug] Character 13 - s
+[2022-02-09 15:27:07.440] [debug] Character 14 - 
+[2022-02-09 15:27:07.444] [debug] Character 15 - 
+[2022-02-09 15:27:07.445] [debug] Character 16 - 
+[2022-02-09 15:27:07.447] [debug] Character 17 - 
+[2022-02-09 15:27:07.449] [debug] Character 18 - A
+[2022-02-09 15:27:07.450] [debug] Character 19 - s
+[2022-02-09 15:27:07.452] [debug] Character 20 - 
+[2022-02-09 15:27:07.453] [debug] Character 21 - 
+[2022-02-09 15:27:07.455] [debug] Character 22 - 
+[2022-02-09 15:27:07.460] [debug] Character 23 - 
+[2022-02-09 15:27:07.461] [debug] Character 24 - A
+[2022-02-09 15:27:08.812] [debug] sAsAsAsAs
+[2022-02-09 15:27:08.817] [debug] 25
+[2022-02-09 15:27:08.848] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:27:08.873] [debug] Character 0 - s
+[2022-02-09 15:27:08.893] [debug] Character 1 - 
+[2022-02-09 15:27:08.914] [debug] Character 2 - 
+[2022-02-09 15:27:08.927] [debug] Character 3 - 
+[2022-02-09 15:27:08.931] [debug] Character 4 - 
+[2022-02-09 15:27:08.934] [debug] Character 5 - A
+[2022-02-09 15:27:08.936] [debug] Character 6 - s
+[2022-02-09 15:27:08.937] [debug] Character 7 - 
+[2022-02-09 15:27:08.940] [debug] Character 8 - 
+[2022-02-09 15:27:08.943] [debug] Character 9 - 
+[2022-02-09 15:27:08.944] [debug] Character 10 - 
+[2022-02-09 15:27:08.946] [debug] Character 11 - A
+[2022-02-09 15:27:08.947] [debug] Character 12 - s
+[2022-02-09 15:27:08.948] [debug] Character 13 - 
+[2022-02-09 15:27:08.949] [debug] Character 14 - 
+[2022-02-09 15:27:08.951] [debug] Character 15 - 
+[2022-02-09 15:27:08.952] [debug] Character 16 - 
+[2022-02-09 15:27:08.955] [debug] Character 17 - A
+[2022-02-09 15:27:08.956] [debug] Character 18 - s
+[2022-02-09 15:27:08.958] [debug] Character 19 - 
+[2022-02-09 15:27:08.959] [debug] Character 20 - 
+[2022-02-09 15:27:08.960] [debug] Character 21 - 
+[2022-02-09 15:27:08.961] [debug] Character 22 - 
+[2022-02-09 15:27:08.962] [debug] Character 23 - A
+[2022-02-09 15:27:08.964] [debug] Character 24 - s
+[2022-02-09 15:27:10.645] [debug] AsAsAsAs
+[2022-02-09 15:27:10.650] [debug] 25
+[2022-02-09 15:27:10.665] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:27:10.714] [debug] Character 0 - 
+[2022-02-09 15:27:10.733] [debug] Character 1 - 
+[2022-02-09 15:27:10.741] [debug] Character 2 - 
+[2022-02-09 15:27:10.748] [debug] Character 3 - 
+[2022-02-09 15:27:10.752] [debug] Character 4 - A
+[2022-02-09 15:27:10.754] [debug] Character 5 - s
+[2022-02-09 15:27:10.757] [debug] Character 6 - 
+[2022-02-09 15:27:10.759] [debug] Character 7 - 
+[2022-02-09 15:27:10.761] [debug] Character 8 - 
+[2022-02-09 15:27:10.763] [debug] Character 9 - 
+[2022-02-09 15:27:10.764] [debug] Character 10 - A
+[2022-02-09 15:27:10.765] [debug] Character 11 - s
+[2022-02-09 15:27:10.766] [debug] Character 12 - 
+[2022-02-09 15:27:10.768] [debug] Character 13 - 
+[2022-02-09 15:27:10.769] [debug] Character 14 - 
+[2022-02-09 15:27:10.773] [debug] Character 15 - 
+[2022-02-09 15:27:10.774] [debug] Character 16 - A
+[2022-02-09 15:27:10.776] [debug] Character 17 - s
+[2022-02-09 15:27:10.777] [debug] Character 18 - 
+[2022-02-09 15:27:10.778] [debug] Character 19 - 
+[2022-02-09 15:27:10.779] [debug] Character 20 - 
+[2022-02-09 15:27:10.781] [debug] Character 21 - 
+[2022-02-09 15:27:10.782] [debug] Character 22 - A
+[2022-02-09 15:27:10.783] [debug] Character 23 - s
+[2022-02-09 15:27:10.785] [debug] Character 24 - 
+[2022-02-09 15:27:13.265] [debug] AsAsAsAs
+[2022-02-09 15:27:13.270] [debug] 25
+[2022-02-09 15:27:13.293] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:27:13.319] [debug] Character 0 - 
+[2022-02-09 15:27:13.343] [debug] Character 1 - 
+[2022-02-09 15:27:13.347] [debug] Character 2 - 
+[2022-02-09 15:27:13.352] [debug] Character 3 - A
+[2022-02-09 15:27:13.358] [debug] Character 4 - s
+[2022-02-09 15:27:13.365] [debug] Character 5 - 
+[2022-02-09 15:27:13.370] [debug] Character 6 - 
+[2022-02-09 15:27:13.373] [debug] Character 7 - 
+[2022-02-09 15:27:13.375] [debug] Character 8 - 
+[2022-02-09 15:27:13.377] [debug] Character 9 - A
+[2022-02-09 15:27:13.378] [debug] Character 10 - s
+[2022-02-09 15:27:13.380] [debug] Character 11 - 
+[2022-02-09 15:27:13.382] [debug] Character 12 - 
+[2022-02-09 15:27:13.384] [debug] Character 13 - 
+[2022-02-09 15:27:13.386] [debug] Character 14 - 
+[2022-02-09 15:27:13.387] [debug] Character 15 - A
+[2022-02-09 15:27:13.389] [debug] Character 16 - s
+[2022-02-09 15:27:13.390] [debug] Character 17 - 
+[2022-02-09 15:27:13.391] [debug] Character 18 - 
+[2022-02-09 15:27:13.395] [debug] Character 19 - 
+[2022-02-09 15:27:13.396] [debug] Character 20 - 
+[2022-02-09 15:27:13.398] [debug] Character 21 - A
+[2022-02-09 15:27:13.399] [debug] Character 22 - s
+[2022-02-09 15:27:13.401] [debug] Character 23 - 
+[2022-02-09 15:27:13.402] [debug] Character 24 - 
+[2022-02-09 15:27:16.261] [debug] AsAs$As$As$
+[2022-02-09 15:27:16.266] [debug] 25
+[2022-02-09 15:27:16.281] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:27:16.312] [debug] Character 0 - 
+[2022-02-09 15:27:16.320] [debug] Character 1 - 
+[2022-02-09 15:27:16.324] [debug] Character 2 - A
+[2022-02-09 15:27:16.330] [debug] Character 3 - s
+[2022-02-09 15:27:16.341] [debug] Character 4 - 
+[2022-02-09 15:27:16.346] [debug] Character 5 - 
+[2022-02-09 15:27:16.351] [debug] Character 6 - 
+[2022-02-09 15:27:16.357] [debug] Character 7 - 
+[2022-02-09 15:27:16.365] [debug] Character 8 - A
+[2022-02-09 15:27:16.368] [debug] Character 9 - s
+[2022-02-09 15:27:16.370] [debug] Character 10 - 
+[2022-02-09 15:27:16.372] [debug] Character 11 - 
+[2022-02-09 15:27:16.376] [debug] Character 12 - $
+[2022-02-09 15:27:16.378] [debug] Character 13 - 
+[2022-02-09 15:27:16.381] [debug] Character 14 - A
+[2022-02-09 15:27:16.383] [debug] Character 15 - s
+[2022-02-09 15:27:16.385] [debug] Character 16 - 
+[2022-02-09 15:27:16.386] [debug] Character 17 - 
+[2022-02-09 15:27:16.388] [debug] Character 18 - $
+[2022-02-09 15:27:16.389] [debug] Character 19 - 
+[2022-02-09 15:27:16.392] [debug] Character 20 - A
+[2022-02-09 15:27:16.393] [debug] Character 21 - s
+[2022-02-09 15:27:16.395] [debug] Character 22 - 
+[2022-02-09 15:27:16.396] [debug] Character 23 - 
+[2022-02-09 15:27:16.397] [debug] Character 24 - $
+[2022-02-09 15:27:17.759] [debug] AsEAsEAs%As%
+[2022-02-09 15:27:17.765] [debug] 25
+[2022-02-09 15:27:17.769] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:27:17.808] [debug] Character 0 - 
+[2022-02-09 15:27:17.816] [debug] Character 1 - A
+[2022-02-09 15:27:17.822] [debug] Character 2 - s
+[2022-02-09 15:27:17.828] [debug] Character 3 - 
+[2022-02-09 15:27:17.833] [debug] Character 4 - 
+[2022-02-09 15:27:17.838] [debug] Character 5 - E
+[2022-02-09 15:27:17.847] [debug] Character 6 - 
+[2022-02-09 15:27:17.852] [debug] Character 7 - A
+[2022-02-09 15:27:17.855] [debug] Character 8 - s
+[2022-02-09 15:27:17.859] [debug] Character 9 - 
+[2022-02-09 15:27:17.861] [debug] Character 10 - 
+[2022-02-09 15:27:17.863] [debug] Character 11 - E
+[2022-02-09 15:27:17.865] [debug] Character 12 - 
+[2022-02-09 15:27:17.867] [debug] Character 13 - A
+[2022-02-09 15:27:17.869] [debug] Character 14 - s
+[2022-02-09 15:27:17.871] [debug] Character 15 - 
+[2022-02-09 15:27:17.873] [debug] Character 16 - 
+[2022-02-09 15:27:17.875] [debug] Character 17 - %
+[2022-02-09 15:27:17.877] [debug] Character 18 - 
+[2022-02-09 15:27:17.878] [debug] Character 19 - A
+[2022-02-09 15:27:17.879] [debug] Character 20 - s
+[2022-02-09 15:27:17.881] [debug] Character 21 - 
+[2022-02-09 15:27:17.882] [debug] Character 22 - 
+[2022-02-09 15:27:17.883] [debug] Character 23 - %
+[2022-02-09 15:27:17.886] [debug] Character 24 - 
+[2022-02-09 15:27:19.256] [debug] AsAsAsAsA
+[2022-02-09 15:27:19.261] [debug] 25
+[2022-02-09 15:27:19.282] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:27:19.302] [debug] Character 0 - A
+[2022-02-09 15:27:19.323] [debug] Character 1 - s
+[2022-02-09 15:27:19.329] [debug] Character 2 - 
+[2022-02-09 15:27:19.334] [debug] Character 3 - 
+[2022-02-09 15:27:19.347] [debug] Character 4 - 
+[2022-02-09 15:27:19.353] [debug] Character 5 - 
+[2022-02-09 15:27:19.357] [debug] Character 6 - A
+[2022-02-09 15:27:19.359] [debug] Character 7 - s
+[2022-02-09 15:27:19.361] [debug] Character 8 - 
+[2022-02-09 15:27:19.363] [debug] Character 9 - 
+[2022-02-09 15:27:19.364] [debug] Character 10 - 
+[2022-02-09 15:27:19.366] [debug] Character 11 - 
+[2022-02-09 15:27:19.367] [debug] Character 12 - A
+[2022-02-09 15:27:19.369] [debug] Character 13 - s
+[2022-02-09 15:27:19.371] [debug] Character 14 - 
+[2022-02-09 15:27:19.372] [debug] Character 15 - 
+[2022-02-09 15:27:19.373] [debug] Character 16 - 
+[2022-02-09 15:27:19.375] [debug] Character 17 - 
+[2022-02-09 15:27:19.376] [debug] Character 18 - A
+[2022-02-09 15:27:19.378] [debug] Character 19 - s
+[2022-02-09 15:27:19.379] [debug] Character 20 - 
+[2022-02-09 15:27:19.380] [debug] Character 21 - 
+[2022-02-09 15:27:19.381] [debug] Character 22 - 
+[2022-02-09 15:27:19.382] [debug] Character 23 - 
+[2022-02-09 15:27:19.383] [debug] Character 24 - A
+[2022-02-09 15:27:20.764] [debug] sAsAsAsAs
+[2022-02-09 15:27:20.769] [debug] 25
+[2022-02-09 15:27:20.803] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:27:20.808] [debug] Character 0 - s
+[2022-02-09 15:27:20.811] [debug] Character 1 - 
+[2022-02-09 15:27:20.817] [debug] Character 2 - 
+[2022-02-09 15:27:20.818] [debug] Character 3 - 
+[2022-02-09 15:27:20.820] [debug] Character 4 - 
+[2022-02-09 15:27:20.822] [debug] Character 5 - A
+[2022-02-09 15:27:20.823] [debug] Character 6 - s
+[2022-02-09 15:27:20.824] [debug] Character 7 - 
+[2022-02-09 15:27:20.827] [debug] Character 8 - 
+[2022-02-09 15:27:20.828] [debug] Character 9 - 
+[2022-02-09 15:27:20.830] [debug] Character 10 - 
+[2022-02-09 15:27:20.831] [debug] Character 11 - A
+[2022-02-09 15:27:20.832] [debug] Character 12 - s
+[2022-02-09 15:27:20.833] [debug] Character 13 - 
+[2022-02-09 15:27:20.835] [debug] Character 14 - 
+[2022-02-09 15:27:20.836] [debug] Character 15 - 
+[2022-02-09 15:27:20.837] [debug] Character 16 - 
+[2022-02-09 15:27:20.839] [debug] Character 17 - A
+[2022-02-09 15:27:20.840] [debug] Character 18 - s
+[2022-02-09 15:27:20.843] [debug] Character 19 - 
+[2022-02-09 15:27:20.844] [debug] Character 20 - 
+[2022-02-09 15:27:20.846] [debug] Character 21 - 
+[2022-02-09 15:27:20.847] [debug] Character 22 - 
+[2022-02-09 15:27:20.849] [debug] Character 23 - A
+[2022-02-09 15:27:20.850] [debug] Character 24 - s
+[2022-02-09 15:27:45.734] [debug] AsAsAsAs
+[2022-02-09 15:27:45.738] [debug] 25
+[2022-02-09 15:27:45.746] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:27:45.763] [debug] Character 0 - 
+[2022-02-09 15:27:45.765] [debug] Character 1 - 
+[2022-02-09 15:27:45.766] [debug] Character 2 - 
+[2022-02-09 15:27:45.768] [debug] Character 3 - 
+[2022-02-09 15:27:45.770] [debug] Character 4 - A
+[2022-02-09 15:27:45.771] [debug] Character 5 - s
+[2022-02-09 15:27:45.773] [debug] Character 6 - 
+[2022-02-09 15:27:45.779] [debug] Character 7 - 
+[2022-02-09 15:27:45.780] [debug] Character 8 - 
+[2022-02-09 15:27:45.781] [debug] Character 9 - 
+[2022-02-09 15:27:45.782] [debug] Character 10 - A
+[2022-02-09 15:27:45.784] [debug] Character 11 - s
+[2022-02-09 15:27:45.785] [debug] Character 12 - 
+[2022-02-09 15:27:45.788] [debug] Character 13 - 
+[2022-02-09 15:27:45.791] [debug] Character 14 - 
+[2022-02-09 15:27:45.796] [debug] Character 15 - 
+[2022-02-09 15:27:45.799] [debug] Character 16 - A
+[2022-02-09 15:27:45.800] [debug] Character 17 - s
+[2022-02-09 15:27:45.801] [debug] Character 18 - 
+[2022-02-09 15:27:45.802] [debug] Character 19 - 
+[2022-02-09 15:27:45.805] [debug] Character 20 - 
+[2022-02-09 15:27:45.807] [debug] Character 21 - 
+[2022-02-09 15:27:45.808] [debug] Character 22 - A
+[2022-02-09 15:27:45.809] [debug] Character 23 - s
+[2022-02-09 15:27:45.811] [debug] Character 24 - 
+[2022-02-09 15:27:47.232] [debug] AsAsAsAs
+[2022-02-09 15:27:47.237] [debug] 25
+[2022-02-09 15:27:47.248] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:27:47.283] [debug] Character 0 - 
+[2022-02-09 15:27:47.300] [debug] Character 1 - 
+[2022-02-09 15:27:47.303] [debug] Character 2 - 
+[2022-02-09 15:27:47.306] [debug] Character 3 - A
+[2022-02-09 15:27:47.307] [debug] Character 4 - s
+[2022-02-09 15:27:47.309] [debug] Character 5 - 
+[2022-02-09 15:27:47.310] [debug] Character 6 - 
+[2022-02-09 15:27:47.315] [debug] Character 7 - 
+[2022-02-09 15:27:47.317] [debug] Character 8 - 
+[2022-02-09 15:27:47.318] [debug] Character 9 - A
+[2022-02-09 15:27:47.320] [debug] Character 10 - s
+[2022-02-09 15:27:47.322] [debug] Character 11 - 
+[2022-02-09 15:27:47.324] [debug] Character 12 - 
+[2022-02-09 15:27:47.325] [debug] Character 13 - 
+[2022-02-09 15:27:47.327] [debug] Character 14 - 
+[2022-02-09 15:27:47.330] [debug] Character 15 - A
+[2022-02-09 15:27:47.334] [debug] Character 16 - s
+[2022-02-09 15:27:47.335] [debug] Character 17 - 
+[2022-02-09 15:27:47.337] [debug] Character 18 - 
+[2022-02-09 15:27:47.338] [debug] Character 19 - 
+[2022-02-09 15:27:47.339] [debug] Character 20 - 
+[2022-02-09 15:27:47.340] [debug] Character 21 - A
+[2022-02-09 15:27:47.341] [debug] Character 22 - s
+[2022-02-09 15:27:47.342] [debug] Character 23 - 
+[2022-02-09 15:27:47.345] [debug] Character 24 - 
+[2022-02-09 15:27:48.740] [debug] AsAsAsAs
+[2022-02-09 15:27:48.745] [debug] 25
+[2022-02-09 15:27:48.756] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:27:48.768] [debug] Character 0 - 
+[2022-02-09 15:27:48.792] [debug] Character 1 - 
+[2022-02-09 15:27:48.796] [debug] Character 2 - A
+[2022-02-09 15:27:48.800] [debug] Character 3 - s
+[2022-02-09 15:27:48.804] [debug] Character 4 - 
+[2022-02-09 15:27:48.810] [debug] Character 5 - 
+[2022-02-09 15:27:48.820] [debug] Character 6 - 
+[2022-02-09 15:27:48.827] [debug] Character 7 - 
+[2022-02-09 15:27:48.831] [debug] Character 8 - A
+[2022-02-09 15:27:48.836] [debug] Character 9 - s
+[2022-02-09 15:27:48.840] [debug] Character 10 - 
+[2022-02-09 15:27:48.845] [debug] Character 11 - 
+[2022-02-09 15:27:48.853] [debug] Character 12 - 
+[2022-02-09 15:27:48.856] [debug] Character 13 - 
+[2022-02-09 15:27:48.860] [debug] Character 14 - A
+[2022-02-09 15:27:48.863] [debug] Character 15 - s
+[2022-02-09 15:27:48.865] [debug] Character 16 - 
+[2022-02-09 15:27:48.867] [debug] Character 17 - 
+[2022-02-09 15:27:48.869] [debug] Character 18 - 
+[2022-02-09 15:27:48.873] [debug] Character 19 - 
+[2022-02-09 15:27:48.875] [debug] Character 20 - A
+[2022-02-09 15:27:48.876] [debug] Character 21 - s
+[2022-02-09 15:27:48.879] [debug] Character 22 - 
+[2022-02-09 15:27:48.880] [debug] Character 23 - 
+[2022-02-09 15:27:48.882] [debug] Character 24 - 
+[2022-02-09 15:27:50.238] [debug] As$AsAsEAsE
+[2022-02-09 15:27:50.244] [debug] 25
+[2022-02-09 15:27:50.252] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:27:50.297] [debug] Character 0 - 
+[2022-02-09 15:27:50.335] [debug] Character 1 - A
+[2022-02-09 15:27:50.339] [debug] Character 2 - s
+[2022-02-09 15:27:50.341] [debug] Character 3 - 
+[2022-02-09 15:27:50.343] [debug] Character 4 - 
+[2022-02-09 15:27:50.345] [debug] Character 5 - $
+[2022-02-09 15:27:50.347] [debug] Character 6 - 
+[2022-02-09 15:27:50.348] [debug] Character 7 - A
+[2022-02-09 15:27:50.350] [debug] Character 8 - s
+[2022-02-09 15:27:50.352] [debug] Character 9 - 
+[2022-02-09 15:27:50.354] [debug] Character 10 - 
+[2022-02-09 15:27:50.355] [debug] Character 11 - 
+[2022-02-09 15:27:50.356] [debug] Character 12 - 
+[2022-02-09 15:27:50.358] [debug] Character 13 - A
+[2022-02-09 15:27:50.359] [debug] Character 14 - s
+[2022-02-09 15:27:50.360] [debug] Character 15 - 
+[2022-02-09 15:27:50.361] [debug] Character 16 - 
+[2022-02-09 15:27:50.362] [debug] Character 17 - E
+[2022-02-09 15:27:50.364] [debug] Character 18 - 
+[2022-02-09 15:27:50.365] [debug] Character 19 - A
+[2022-02-09 15:27:50.366] [debug] Character 20 - s
+[2022-02-09 15:27:50.368] [debug] Character 21 - 
+[2022-02-09 15:27:50.369] [debug] Character 22 - 
+[2022-02-09 15:27:50.370] [debug] Character 23 - E
+[2022-02-09 15:27:50.371] [debug] Character 24 - 
+[2022-02-09 15:27:51.735] [debug] AsEAsEAsEAsEA
+[2022-02-09 15:27:51.742] [debug] 25
+[2022-02-09 15:27:51.764] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:27:51.795] [debug] Character 0 - A
+[2022-02-09 15:27:51.799] [debug] Character 1 - s
+[2022-02-09 15:27:51.815] [debug] Character 2 - 
+[2022-02-09 15:27:51.827] [debug] Character 3 - 
+[2022-02-09 15:27:51.833] [debug] Character 4 - E
+[2022-02-09 15:27:51.845] [debug] Character 5 - 
+[2022-02-09 15:27:51.847] [debug] Character 6 - A
+[2022-02-09 15:27:51.850] [debug] Character 7 - s
+[2022-02-09 15:27:51.854] [debug] Character 8 - 
+[2022-02-09 15:27:51.855] [debug] Character 9 - 
+[2022-02-09 15:27:51.857] [debug] Character 10 - E
+[2022-02-09 15:27:51.858] [debug] Character 11 - 
+[2022-02-09 15:27:51.863] [debug] Character 12 - A
+[2022-02-09 15:27:51.872] [debug] Character 13 - s
+[2022-02-09 15:27:51.876] [debug] Character 14 - 
+[2022-02-09 15:27:51.880] [debug] Character 15 - 
+[2022-02-09 15:27:51.882] [debug] Character 16 - E
+[2022-02-09 15:27:51.884] [debug] Character 17 - 
+[2022-02-09 15:27:51.886] [debug] Character 18 - A
+[2022-02-09 15:27:51.887] [debug] Character 19 - s
+[2022-02-09 15:27:51.889] [debug] Character 20 - 
+[2022-02-09 15:27:51.894] [debug] Character 21 - 
+[2022-02-09 15:27:51.903] [debug] Character 22 - E
+[2022-02-09 15:27:51.905] [debug] Character 23 - 
+[2022-02-09 15:27:51.906] [debug] Character 24 - A
+[2022-02-09 15:27:52.979] [debug] sEAsEAsEAsEAs
+[2022-02-09 15:27:52.980] [debug] 25
+[2022-02-09 15:27:52.990] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:27:52.994] [debug] Character 0 - s
+[2022-02-09 15:27:52.997] [debug] Character 1 - 
+[2022-02-09 15:27:53.001] [debug] Character 2 - 
+[2022-02-09 15:27:53.007] [debug] Character 3 - E
+[2022-02-09 15:27:53.012] [debug] Character 4 - 
+[2022-02-09 15:27:53.015] [debug] Character 5 - A
+[2022-02-09 15:27:53.019] [debug] Character 6 - s
+[2022-02-09 15:27:53.023] [debug] Character 7 - 
+[2022-02-09 15:27:53.025] [debug] Character 8 - 
+[2022-02-09 15:27:53.027] [debug] Character 9 - E
+[2022-02-09 15:27:53.028] [debug] Character 10 - 
+[2022-02-09 15:27:53.029] [debug] Character 11 - A
+[2022-02-09 15:27:53.030] [debug] Character 12 - s
+[2022-02-09 15:27:53.031] [debug] Character 13 - 
+[2022-02-09 15:27:53.033] [debug] Character 14 - 
+[2022-02-09 15:27:53.035] [debug] Character 15 - E
+[2022-02-09 15:27:53.038] [debug] Character 16 - 
+[2022-02-09 15:27:53.040] [debug] Character 17 - A
+[2022-02-09 15:27:53.043] [debug] Character 18 - s
+[2022-02-09 15:27:53.044] [debug] Character 19 - 
+[2022-02-09 15:27:53.046] [debug] Character 20 - 
+[2022-02-09 15:27:53.047] [debug] Character 21 - E
+[2022-02-09 15:27:53.048] [debug] Character 22 - 
+[2022-02-09 15:27:53.050] [debug] Character 23 - A
+[2022-02-09 15:27:53.052] [debug] Character 24 - s
+[2022-02-09 15:27:54.688] [debug] EAsEAsEAsEAs
+[2022-02-09 15:27:54.694] [debug] 25
+[2022-02-09 15:27:54.717] [debug] {
+  totalChars: 25,
+  parity: 'even',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 7,
+  baudRate: 1200,
+  stopBits: 1,
+  type: 'polling',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'Avery11',
+  negativeSignValue: '-',
+  pollingCommand: '05',
+  endChar2: 'D',
+  endChar3: 'A',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 3,
+  weightCharPosition2: 4,
+  weightCharPosition3: 5,
+  weightCharPosition4: 6,
+  weightCharPosition5: 7,
+  weightCharPosition6: null
+}
+[2022-02-09 15:27:54.740] [debug] Character 0 - 
+[2022-02-09 15:27:54.747] [debug] Character 1 - 
+[2022-02-09 15:27:54.748] [debug] Character 2 - E
+[2022-02-09 15:27:54.750] [debug] Character 3 - 
+[2022-02-09 15:27:54.752] [debug] Character 4 - A
+[2022-02-09 15:27:54.753] [debug] Character 5 - s
+[2022-02-09 15:27:54.754] [debug] Character 6 - 
+[2022-02-09 15:27:54.755] [debug] Character 7 - 
+[2022-02-09 15:27:54.758] [debug] Character 8 - E
+[2022-02-09 15:27:54.759] [debug] Character 9 - 
+[2022-02-09 15:27:54.761] [debug] Character 10 - A
+[2022-02-09 15:27:54.762] [debug] Character 11 - s
+[2022-02-09 15:27:54.763] [debug] Character 12 - 
+[2022-02-09 15:27:54.766] [debug] Character 13 - 
+[2022-02-09 15:27:54.767] [debug] Character 14 - E
+[2022-02-09 15:27:54.769] [debug] Character 15 - 
+[2022-02-09 15:27:54.770] [debug] Character 16 - A
+[2022-02-09 15:27:54.771] [debug] Character 17 - s
+[2022-02-09 15:27:54.774] [debug] Character 18 - 
+[2022-02-09 15:27:54.775] [debug] Character 19 - 
+[2022-02-09 15:27:54.777] [debug] Character 20 - E
+[2022-02-09 15:27:54.778] [debug] Character 21 - 
+[2022-02-09 15:27:54.779] [debug] Character 22 - A
+[2022-02-09 15:27:54.780] [debug] Character 23 - s
+[2022-02-09 15:27:54.781] [debug] Character 24 - 
+[2022-02-09 15:27:55.870] [error] Error occured on port
+[2022-02-09 15:27:55.873] [error] Error: Opening COM3: Access denied
+[2022-02-09 15:27:57.706] [debug]  007935
+[2022-02-09 15:27:57.710] [debug] 9
+[2022-02-09 15:27:57.757] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:27:57.762] [debug] Character 0 - 
+[2022-02-09 15:27:57.770] [debug] Character 1 -  
+[2022-02-09 15:27:57.772] [debug] Character 2 - 0
+[2022-02-09 15:27:57.774] [debug] Character 3 - 0
+[2022-02-09 15:27:57.781] [debug] Character 4 - 7
+[2022-02-09 15:27:57.782] [debug] Character 5 - 9
+[2022-02-09 15:27:57.784] [debug] Character 6 - 3
+[2022-02-09 15:27:57.786] [debug] Character 7 - 5
+[2022-02-09 15:27:57.788] [debug] Character 8 - 
+[2022-02-09 15:27:58.072] [debug] 
+ 00793
+[2022-02-09 15:27:58.076] [debug] 9
+[2022-02-09 15:27:58.115] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:27:58.129] [debug] Character 0 - 
+[2022-02-09 15:27:58.135] [debug] Character 1 - 
+
+[2022-02-09 15:27:58.142] [debug] Character 2 - 
+[2022-02-09 15:27:58.143] [debug] Character 3 -  
+[2022-02-09 15:27:58.145] [debug] Character 4 - 0
+[2022-02-09 15:27:58.146] [debug] Character 5 - 0
+[2022-02-09 15:27:58.147] [debug] Character 6 - 7
+[2022-02-09 15:27:58.148] [debug] Character 7 - 9
+[2022-02-09 15:27:58.151] [debug] Character 8 - 3
+[2022-02-09 15:27:58.438] [debug] 5
+ 007
+[2022-02-09 15:27:58.443] [debug] 9
+[2022-02-09 15:27:58.460] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:27:58.501] [debug] Character 0 - 5
+[2022-02-09 15:27:58.518] [debug] Character 1 - 
+[2022-02-09 15:27:58.523] [debug] Character 2 - 
+[2022-02-09 15:27:58.525] [debug] Character 3 - 
+
+[2022-02-09 15:27:58.527] [debug] Character 4 - 
+[2022-02-09 15:27:58.529] [debug] Character 5 -  
+[2022-02-09 15:27:58.531] [debug] Character 6 - 0
+[2022-02-09 15:27:58.533] [debug] Character 7 - 0
+[2022-02-09 15:27:58.534] [debug] Character 8 - 7
+[2022-02-09 15:27:58.806] [debug] 935
+ 0
+[2022-02-09 15:27:58.810] [debug] 9
+[2022-02-09 15:27:58.848] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:27:58.878] [debug] Character 0 - 9
+[2022-02-09 15:27:58.896] [debug] Character 1 - 3
+[2022-02-09 15:27:58.911] [debug] Character 2 - 5
+[2022-02-09 15:27:58.912] [debug] Character 3 - 
+[2022-02-09 15:27:58.914] [debug] Character 4 - 
+[2022-02-09 15:27:58.916] [debug] Character 5 - 
+
+[2022-02-09 15:27:58.918] [debug] Character 6 - 
+[2022-02-09 15:27:58.920] [debug] Character 7 -  
+[2022-02-09 15:27:58.921] [debug] Character 8 - 0
+[2022-02-09 15:27:59.172] [debug] 07935
+
+[2022-02-09 15:27:59.176] [debug] 9
+[2022-02-09 15:27:59.186] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:27:59.200] [debug] Character 0 - 0
+[2022-02-09 15:27:59.233] [debug] Character 1 - 7
+[2022-02-09 15:27:59.237] [debug] Character 2 - 9
+[2022-02-09 15:27:59.246] [debug] Character 3 - 3
+[2022-02-09 15:27:59.255] [debug] Character 4 - 5
+[2022-02-09 15:27:59.260] [debug] Character 5 - 
+[2022-02-09 15:27:59.266] [debug] Character 6 - 
+[2022-02-09 15:27:59.268] [debug] Character 7 - 
+
+[2022-02-09 15:27:59.270] [debug] Character 8 - 
+[2022-02-09 15:27:59.275] [debug]  007935
+[2022-02-09 15:27:59.276] [debug] 9
+[2022-02-09 15:27:59.278] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:27:59.282] [debug] Character 0 -  
+[2022-02-09 15:27:59.283] [debug] Character 1 - 0
+[2022-02-09 15:27:59.285] [debug] Character 2 - 0
+[2022-02-09 15:27:59.287] [debug] Character 3 - 7
+[2022-02-09 15:27:59.290] [debug] Character 4 - 9
+[2022-02-09 15:27:59.291] [debug] Character 5 - 3
+[2022-02-09 15:27:59.292] [debug] Character 6 - 5
+[2022-02-09 15:27:59.293] [debug] Character 7 - 
+[2022-02-09 15:27:59.294] [debug] Character 8 - 
+[2022-02-09 15:27:59.565] [debug] 
+ 007935
+[2022-02-09 15:27:59.569] [debug] 9
+[2022-02-09 15:27:59.607] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:27:59.631] [debug] Character 0 - 
+
+[2022-02-09 15:27:59.647] [debug] Character 1 - 
+[2022-02-09 15:27:59.651] [debug] Character 2 -  
+[2022-02-09 15:27:59.654] [debug] Character 3 - 0
+[2022-02-09 15:27:59.656] [debug] Character 4 - 0
+[2022-02-09 15:27:59.659] [debug] Character 5 - 7
+[2022-02-09 15:27:59.660] [debug] Character 6 - 9
+[2022-02-09 15:27:59.662] [debug] Character 7 - 3
+[2022-02-09 15:27:59.663] [debug] Character 8 - 5
+[2022-02-09 15:27:59.932] [debug] 
+ 0079
+[2022-02-09 15:27:59.936] [debug] 9
+[2022-02-09 15:27:59.953] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:27:59.987] [debug] Character 0 - 
+[2022-02-09 15:28:00.009] [debug] Character 1 - 
+[2022-02-09 15:28:00.013] [debug] Character 2 - 
+
+[2022-02-09 15:28:00.018] [debug] Character 3 - 
+[2022-02-09 15:28:00.021] [debug] Character 4 -  
+[2022-02-09 15:28:00.027] [debug] Character 5 - 0
+[2022-02-09 15:28:00.029] [debug] Character 6 - 0
+[2022-02-09 15:28:00.031] [debug] Character 7 - 7
+[2022-02-09 15:28:00.033] [debug] Character 8 - 9
+[2022-02-09 15:28:00.298] [debug] 35
+ 00
+[2022-02-09 15:28:00.302] [debug] 9
+[2022-02-09 15:28:00.334] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:28:00.364] [debug] Character 0 - 3
+[2022-02-09 15:28:00.393] [debug] Character 1 - 5
+[2022-02-09 15:28:00.397] [debug] Character 2 - 
+[2022-02-09 15:28:00.401] [debug] Character 3 - 
+[2022-02-09 15:28:00.405] [debug] Character 4 - 
+
+[2022-02-09 15:28:00.410] [debug] Character 5 - 
+[2022-02-09 15:28:00.412] [debug] Character 6 -  
+[2022-02-09 15:28:00.416] [debug] Character 7 - 0
+[2022-02-09 15:28:00.417] [debug] Character 8 - 0
+[2022-02-09 15:28:00.665] [debug] 7935
+ 
+[2022-02-09 15:28:00.670] [debug] 9
+[2022-02-09 15:28:00.700] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:28:00.732] [debug] Character 0 - 7
+[2022-02-09 15:28:00.750] [debug] Character 1 - 9
+[2022-02-09 15:28:00.753] [debug] Character 2 - 3
+[2022-02-09 15:28:00.757] [debug] Character 3 - 5
+[2022-02-09 15:28:00.759] [debug] Character 4 - 
+[2022-02-09 15:28:00.761] [debug] Character 5 - 
+[2022-02-09 15:28:00.763] [debug] Character 6 - 
+
+[2022-02-09 15:28:00.765] [debug] Character 7 - 
+[2022-02-09 15:28:00.766] [debug] Character 8 -  
+[2022-02-09 15:28:00.769] [debug] 007935
+
+[2022-02-09 15:28:00.772] [debug] 9
+[2022-02-09 15:28:00.773] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:28:00.777] [debug] Character 0 - 0
+[2022-02-09 15:28:00.778] [debug] Character 1 - 0
+[2022-02-09 15:28:00.779] [debug] Character 2 - 7
+[2022-02-09 15:28:00.780] [debug] Character 3 - 9
+[2022-02-09 15:28:00.781] [debug] Character 4 - 3
+[2022-02-09 15:28:00.782] [debug] Character 5 - 5
+[2022-02-09 15:28:00.783] [debug] Character 6 - 
+[2022-02-09 15:28:00.789] [debug] Character 7 - 
+[2022-02-09 15:28:00.790] [debug] Character 8 - 
+
+[2022-02-09 15:28:01.070] [debug]  007935
+[2022-02-09 15:28:01.074] [debug] 9
+[2022-02-09 15:28:01.110] [debug] {
+  totalChars: 9,
+  parity: 'None',
+  flowControl: 'None',
+  variableLength: false,
+  dataBits: 8,
+  baudRate: 2400,
+  stopBits: 1,
+  type: 'continuous',
+  startChar1: '2',
+  endChar1: '3',
+  delimeter: null,
+  signCharPosition: 1,
+  stringName: 'String15',
+  negativeSignValue: '-',
+  pollingCommand: 'null',
+  endChar2: 'null',
+  endChar3: 'null',
+  startChar2: 'null',
+  startChar3: 'null',
+  startChar4: 'null',
+  weightCharPosition1: 2,
+  weightCharPosition2: 3,
+  weightCharPosition3: 4,
+  weightCharPosition4: 5,
+  weightCharPosition5: 6,
+  weightCharPosition6: 7
+}
+[2022-02-09 15:28:01.147] [debug] Character 0 - 
+[2022-02-09 15:28:01.155] [debug] Character 1 -  
+[2022-02-09 15:28:01.161] [debug] Character 2 - 0
+[2022-02-09 15:28:01.163] [debug] Character 3 - 0
+[2022-02-09 15:28:01.171] [debug] Character 4 - 7
+[2022-02-09 15:28:01.173] [debug] Character 5 - 9
+[2022-02-09 15:28:01.178] [debug] Character 6 - 3
+[2022-02-09 15:28:01.179] [debug] Character 7 - 5
+[2022-02-09 15:28:01.180] [debug] Character 8 - 
+[2022-02-09 15:28:01.288] [debug] INSERT INTO weighindicator(id, weighstring, port, status, measuringUnit, decimalPoint, type, httpType, comPort, wiName, ipAddress) VALUES(1, 'String15', 8080, 'Active', 'KG', 0, 'serial', '', 'COM3', 'test', '')
+[2022-02-09 15:28:01.402] [debug] Single entry saved to environment file.
+[2022-02-09 15:28:13.909] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:28:13.911] [debug] SELECT * FROM weighstring WHERE stringName='String15'
+[2022-02-09 15:28:13.943] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:28:13.945] [debug] UPDATE weighstring SET totalChars=9, variableLength=0, type='continuous', pollingCommand='null', baudRate=2400, dataBits=8, stopBits=1, parity='None', flowControl='None', weightCharPosition1=2, weightCharPosition2=3, weightCharPosition3=4, weightCharPosition4=5, weightCharPosition5=6, weightCharPosition6=7, startChar1='2', startChar2='null', startChar3='null', startChar4='null', endChar1='3', endChar2='null', endChar3='null', signCharPosition=1, negativeSignValue='-', delimeter='newline' WHERE stringName='String15'
+[2022-02-09 15:28:17.860] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:28:17.862] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-09 15:28:17.927] [debug] Port initialization complete
+[2022-02-09 15:28:17.970] [debug] Port opened successfully
+[2022-02-09 15:28:23.690] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:28:23.692] [debug] SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-02-09 15:28:23.696] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:28:23.703] [debug] SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-02-09 15:28:23.713] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:28:23.716] [debug] SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-02-09 15:30:49.157] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:30:49.159] [debug] SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-02-09 15:30:49.167] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:30:49.169] [debug] SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-02-09 15:30:49.174] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:30:49.176] [debug] SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-02-09 15:30:49.643] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:30:49.667] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-09 15:30:49.893] [debug] Port closed successfully
+[2022-02-09 15:35:13.255] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:35:13.257] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-09 15:35:13.276] [debug] Port initialization complete
+[2022-02-09 15:35:13.318] [debug] Port opened successfully
+[2022-02-09 15:45:41.415] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:45:41.417] [debug] SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-02-09 15:45:41.436] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:45:41.452] [debug] SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-02-09 15:45:41.457] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:45:41.470] [debug] SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-02-09 15:45:42.242] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:45:42.247] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-09 15:45:42.526] [debug] Port closed successfully
+[2022-02-09 15:45:48.643] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:45:48.645] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-09 15:45:48.662] [debug] Port initialization complete
+[2022-02-09 15:45:48.703] [debug] Port opened successfully
+[2022-02-09 15:45:56.364] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:45:56.367] [debug] SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-02-09 15:45:56.386] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:45:56.395] [debug] SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-02-09 15:45:56.417] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:45:56.422] [debug] SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-02-09 15:45:56.835] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:45:56.848] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-09 15:45:57.081] [debug] Port closed successfully
+[2022-02-09 15:46:03.112] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:46:03.115] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-09 15:46:03.140] [debug] Port initialization complete
+[2022-02-09 15:46:03.181] [debug] Port opened successfully
+[2022-02-09 15:49:50.137] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:49:50.140] [debug] SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-02-09 15:49:50.144] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:49:50.163] [debug] SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-02-09 15:49:50.166] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:49:50.178] [debug] SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-02-09 15:49:50.663] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:49:50.669] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-09 15:49:50.858] [debug] Port closed successfully
+[2022-02-09 15:49:56.517] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:49:56.520] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-09 15:49:56.537] [debug] Port initialization complete
+[2022-02-09 15:49:56.580] [debug] Port opened successfully
+[2022-02-09 15:50:46.636] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:50:46.638] [debug] SELECT * FROM search_field
+[2022-02-09 15:51:04.807] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:51:04.809] [debug] SELECT * FROM weighstring
+[2022-02-09 15:51:04.819] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:51:04.821] [debug] SELECT * FROM weighindicator
+[2022-02-09 15:51:04.823] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-09 15:51:04.824] [debug] SELECT * FROM weighstring
+[2022-02-09 15:51:04.842] [debug] {
+  recordsets: [
+    [
+      {
+        stringName: 'Avery11',
+        totalChars: 25,
+        variableLength: false,
+        type: 'polling',
+        pollingCommand: '05',
+        baudRate: 1200,
+        dataBits: 7,
+        stopBits: 1,
+        parity: 'even',
+        flowControl: 'None',
+        weightCharPosition1: 3,
+        weightCharPosition2: 4,
+        weightCharPosition3: 5,
+        weightCharPosition4: 6,
+        weightCharPosition5: 7,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'D',
+        endChar3: 'A',
+        signCharPosition: 1,
+        negativeSignValue: '-',
+        delimeter: null
+      },
+      {
+        stringName: 'Avery7',
+        totalChars: 27,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 2400,
+        dataBits: 7,
+        stopBits: 1,
+        parity: 'even',
+        flowControl: 'None',
+        weightCharPosition1: 5,
+        weightCharPosition2: 6,
+        weightCharPosition3: 7,
+        weightCharPosition4: 8,
+        weightCharPosition5: 9,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'D',
+        endChar3: 'A',
+        signCharPosition: 3,
+        negativeSignValue: '-',
+        delimeter: null
+      },
+      {
+        stringName: 'Avery8',
+        totalChars: 19,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 1200,
+        dataBits: 7,
+        stopBits: 1,
+        parity: 'even',
+        flowControl: 'None',
+        weightCharPosition1: 5,
+        weightCharPosition2: 6,
+        weightCharPosition3: 7,
+        weightCharPosition4: 8,
+        weightCharPosition5: 9,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'D',
+        endChar3: 'A',
+        signCharPosition: 3,
+        negativeSignValue: '-',
+        delimeter: null
+      },
+      {
+        stringName: 'String13',
+        totalChars: 8,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 2400,
+        dataBits: 8,
+        stopBits: 1,
+        parity: 'none',
+        flowControl: 'None',
+        weightCharPosition1: 2,
+        weightCharPosition2: 3,
+        weightCharPosition3: 4,
+        weightCharPosition4: 5,
+        weightCharPosition5: 6,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'D',
+        endChar3: 'A',
+        signCharPosition: 1,
+        negativeSignValue: '-',
+        delimeter: null
+      },
+      {
+        stringName: 'String15',
+        totalChars: 9,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 2400,
+        dataBits: 8,
+        stopBits: 1,
+        parity: 'None',
+        flowControl: 'None',
+        weightCharPosition1: 2,
+        weightCharPosition2: 3,
+        weightCharPosition3: 4,
+        weightCharPosition4: 5,
+        weightCharPosition5: 6,
+        weightCharPosition6: 7,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'null',
+        endChar3: 'null',
+        signCharPosition: 1,
+        negativeSignValue: '-',
+        delimeter: 'newline'
+      },
+      {
+        stringName: 'UNP',
+        totalChars: 13,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 9600,
+        dataBits: 8,
+        stopBits: 1,
+        parity: 'None',
+        flowControl: 'None',
+        weightCharPosition1: 3,
+        weightCharPosition2: 4,
+        weightCharPosition3: 5,
+        weightCharPosition4: 6,
+        weightCharPosition5: 7,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'null',
+        endChar3: 'null',
+        signCharPosition: 2,
+        negativeSignValue: '-',
+        delimeter: null
+      }
+    ]
+  ],
+  output: {},
+  rowsAffected: [ 6 ]
+}
+[2022-02-09 15:51:04.868] [debug] {
+  recordsets: [
+    [
+      {
+        id: 1,
+        weighstring: 'String15',
+        port: 8080,
+        status: 'Active',
+        measuringUnit: 'KG',
+        decimalPoint: 0,
+        type: 'serial',
+        httpType: '',
+        comPort: 'COM3',
+        wiName: 'test',
+        ipAddress: ''
+      }
+    ]
+  ],
+  output: {},
+  rowsAffected: [ 1 ]
+}
+[2022-02-09 15:51:04.880] [debug] {
+  recordsets: [
+    [
+      {
+        stringName: 'Avery11',
+        totalChars: 25,
+        variableLength: false,
+        type: 'polling',
+        pollingCommand: '05',
+        baudRate: 1200,
+        dataBits: 7,
+        stopBits: 1,
+        parity: 'even',
+        flowControl: 'None',
+        weightCharPosition1: 3,
+        weightCharPosition2: 4,
+        weightCharPosition3: 5,
+        weightCharPosition4: 6,
+        weightCharPosition5: 7,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'D',
+        endChar3: 'A',
+        signCharPosition: 1,
+        negativeSignValue: '-',
+        delimeter: null
+      },
+      {
+        stringName: 'Avery7',
+        totalChars: 27,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 2400,
+        dataBits: 7,
+        stopBits: 1,
+        parity: 'even',
+        flowControl: 'None',
+        weightCharPosition1: 5,
+        weightCharPosition2: 6,
+        weightCharPosition3: 7,
+        weightCharPosition4: 8,
+        weightCharPosition5: 9,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'D',
+        endChar3: 'A',
+        signCharPosition: 3,
+        negativeSignValue: '-',
+        delimeter: null
+      },
+      {
+        stringName: 'Avery8',
+        totalChars: 19,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 1200,
+        dataBits: 7,
+        stopBits: 1,
+        parity: 'even',
+        flowControl: 'None',
+        weightCharPosition1: 5,
+        weightCharPosition2: 6,
+        weightCharPosition3: 7,
+        weightCharPosition4: 8,
+        weightCharPosition5: 9,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'D',
+        endChar3: 'A',
+        signCharPosition: 3,
+        negativeSignValue: '-',
+        delimeter: null
+      },
+      {
+        stringName: 'String13',
+        totalChars: 8,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 2400,
+        dataBits: 8,
+        stopBits: 1,
+        parity: 'none',
+        flowControl: 'None',
+        weightCharPosition1: 2,
+        weightCharPosition2: 3,
+        weightCharPosition3: 4,
+        weightCharPosition4: 5,
+        weightCharPosition5: 6,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'D',
+        endChar3: 'A',
+        signCharPosition: 1,
+        negativeSignValue: '-',
+        delimeter: null
+      },
+      {
+        stringName: 'String15',
+        totalChars: 9,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 2400,
+        dataBits: 8,
+        stopBits: 1,
+        parity: 'None',
+        flowControl: 'None',
+        weightCharPosition1: 2,
+        weightCharPosition2: 3,
+        weightCharPosition3: 4,
+        weightCharPosition4: 5,
+        weightCharPosition5: 6,
+        weightCharPosition6: 7,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'null',
+        endChar3: 'null',
+        signCharPosition: 1,
+        negativeSignValue: '-',
+        delimeter: 'newline'
+      },
+      {
+        stringName: 'UNP',
+        totalChars: 13,
+        variableLength: false,
+        type: 'continuous',
+        pollingCommand: 'null',
+        baudRate: 9600,
+        dataBits: 8,
+        stopBits: 1,
+        parity: 'None',
+        flowControl: 'None',
+        weightCharPosition1: 3,
+        weightCharPosition2: 4,
+        weightCharPosition3: 5,
+        weightCharPosition4: 6,
+        weightCharPosition5: 7,
+        weightCharPosition6: null,
+        startChar1: '2',
+        startChar2: 'null',
+        startChar3: 'null',
+        startChar4: 'null',
+        endChar1: '3',
+        endChar2: 'null',
+        endChar3: 'null',
+        signCharPosition: 2,
+        negativeSignValue: '-',
+        delimeter: null
+      }
+    ]
+  ],
+  output: {},
+  rowsAffected: [ 6 ]
+}

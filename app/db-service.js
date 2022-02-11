@@ -2,9 +2,9 @@ const { app, ipcMain } = require('electron');
 const sql = require("mssql");
 const fs = require('fs');
 const bootstrapData = require("./bootstrap.js");
-const log = require('electron-log');
-log.transports.file.level = 'info';
-log.transports.file.file = __dirname + 'db-log.log';
+//const log = require('electron-log');
+//log.transports.file.level = 'info';
+//log.transports.file.file = __dirname + 'db-log.log';
 
 var sqlConfig = {
   pool: {
@@ -20,8 +20,8 @@ var sqlConfig = {
 
 try {
   var data = fs.readFileSync(app.getPath('userData') + "\\" + bootstrapData.mConstants.appName + "\\" + bootstrapData.mConstants.envFilename, 'utf-8');
-  log.info("Environment file path:");
-  log.info(app.getPath('userData') + "\\" + bootstrapData.mConstants.appName + "\\" + bootstrapData.mConstants.envFilename);
+  log.debug("Environment file path:");
+  log.debug(app.getPath('userData') + "\\" + bootstrapData.mConstants.appName + "\\" + bootstrapData.mConstants.envFilename);
   global.env_data = JSON.parse(data);
 
   initializeSqlConfig(env_data);
@@ -37,11 +37,11 @@ function initializeSqlConfig(dbDetails){
     sqlConfig['database'] = dbDetails['database']['database'];
     sqlConfig['server'] = dbDetails['database']['server'];
     sqlConfig['port'] = dbDetails['database']['port'];
-    log.info(`User - ${sqlConfig['user']}`);
-    log.info(`Password - ${sqlConfig['password']}`);
-    log.info(`Database - ${sqlConfig['database']}`);
-    log.info(`Server - ${sqlConfig['server']}`);
-    log.info(`Port - ${sqlConfig['port']}`);
+    log.debug(`User - ${sqlConfig['user']}`);
+    log.debug(`Password - ${sqlConfig['password']}`);
+    log.debug(`Database - ${sqlConfig['database']}`);
+    log.debug(`Server - ${sqlConfig['server']}`);
+    log.debug(`Port - ${sqlConfig['port']}`);
     loadEnvDataFromDB();
   }
   catch (e) {
@@ -51,17 +51,17 @@ function initializeSqlConfig(dbDetails){
 }
 
 ipcMain.handle("initializeDBConfig", async (event, args) => {
-  log.info("Initialize SQL Configuration");
+  log.debug("Initialize SQL Configuration");
   initializeSqlConfig(args[0]);
 });
 
 ipcMain.on("executeDBQuery", (event, arg) => {
-  log.info(sqlConfig);
-  log.info(arg[1]);
+  log.debug(sqlConfig);
+  log.debug(arg[1]);
   sql.connect(sqlConfig).then(pool => {
     return pool.query(arg[1]);
   }).then(results => {
-    log.info(results);
+    log.debug(results);
     event.sender.send("db-reply", [arg[0], results['recordset']]);
   }).catch(e=>{
     log.error(e);
@@ -71,8 +71,8 @@ ipcMain.on("executeDBQuery", (event, arg) => {
 ipcMain.handle("executeSyncStmt", async (event, arg) => {
   try {
     if (arg[1].indexOf("weighment")===-1) {
-      log.info(sqlConfig);
-      log.info(arg[1]);
+      log.debug(sqlConfig);
+      log.debug(arg[1]);
     }
     var pool = await sql.connect(sqlConfig);
     var results = await pool.query(arg[1]);
@@ -94,7 +94,7 @@ ipcMain.handle("executeSyncInsertAutoId", async (event, arg) => {
   }
   var mQuery = arg[2].replace(`{${arg[1]}}`, newId);
   try {
-    log.info(mQuery);
+    log.debug(mQuery);
     var results = await pool.query(mQuery);
   } catch (err) {
     log.error(err);

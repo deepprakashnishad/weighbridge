@@ -15,6 +15,7 @@ import { ReportSetupComponent } from './report-setup/report-setup.component';
 import { EmailSetupComponent } from './email-setup/email-setup.component';
 import { DbBackupComponent } from './db-backup/db-backup.component';
 import { UserManagement } from './user-management/user-management.component';
+import { SapConfigComponent } from './sap-config/sap-config.component';
 
 const routes: Routes = [
 	
@@ -73,6 +74,13 @@ const routes: Routes = [
 				canActivate: [AuthGuardService], 
 				canDeactivate:[CanDeactivateGuardService],
 				data: { title: 'DB Backup'}
+      },
+      {
+        path: 'sap-config',
+        component: SapConfigComponent,
+        canActivate: [AuthGuardService],
+        canDeactivate: [CanDeactivateGuardService],
+        data: { title: 'SAP Configuration' }
       },
       {
         path: 'user-management',

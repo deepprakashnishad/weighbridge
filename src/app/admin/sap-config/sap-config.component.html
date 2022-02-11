@@ -1,0 +1,41 @@
+<div class="container" fxLayout="row" fxLayoutGap="16px">
+  <div class="card-body" fxLayout="column" fxFlex="70">
+    <mat-card>
+      <h3>SAP Configuration</h3>
+      <form fxLayout="column" fxLayoutGap="12px" [formGroup]="mForm">
+        <mat-checkbox formControlName="inputEnableSAP" [checked]="enableSAPIntegration" (change)="updateEnableSAPIntegration($event)" name="cboxEnableSAPIntegration">Enable SAP Integration</mat-checkbox>
+        <mat-form-field appearance="outline" *ngIf="enableSAPIntegration">
+          <!--<mat-label>Endpoint</mat-label>-->
+          <input matInput placeholder="SAP Url" [(ngModel)]="sapEndpoint" type="text" formControlName="inputSapEndpoint" class="form-control">
+        </mat-form-field>
+        <mat-form-field appearance="outline" *ngIf="enableSAPIntegration">
+          <!--<mat-label>Username</mat-label>-->
+          <input matInput placeholder="Username" [(ngModel)]="username" type="text" formControlName="inputUsername" class="form-control">
+        </mat-form-field>
+        <mat-form-field appearance="outline" *ngIf="enableSAPIntegration">
+          <!--<mat-label>Password</mat-label>-->
+          <input matInput placeholder="Password" [(ngModel)]="password" type="password" formControlName="inputPassword" class="form-control">
+        </mat-form-field>
+      </form>
+      <mat-card-action class="full-width" fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
+        <button mat-raised-button [disabled]="mForm.invalid" type="submit" color="primary" (click)="save();">Save</button>
+      </mat-card-action>
+    </mat-card>
+    
+  </div>
+  <mat-card fxFlex fxLayout="column" fxLayoutGap="16px">
+    <h3>Select Log Level</h3>
+    <mat-select [(ngModel)]="logLevel">
+      <mat-option value="error">Error</mat-option>
+      <mat-option value="warn">Warn</mat-option>
+      <mat-option value="info">Info</mat-option>
+      <mat-option value="verbose">Verbose</mat-option>
+      <mat-option value="debug">Debug</mat-option>
+      <mat-option value="silly">Silly</mat-option>
+    </mat-select>
+    <mat-card-action class="full-width" fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
+      <button mat-raised-button [disabled]="mForm.invalid" color="primary" (click)="updateLogLevel();">Save</button>
+    </mat-card-action>
+  </mat-card>
+</div>
+

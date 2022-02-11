@@ -31,6 +31,7 @@ import { TagChipInputComponent } from './tag-chip-input/tag-chip-input.component
 import { PreviewDialogComponent } from './ticket-setup/preview-dialog/preview-dialog.component';
 import { UserManagement } from './user-management/user-management.component';
 import { AddEditUserDialogComponent } from './user-management/add-edit-user-dialog/add-edit-user-dialog.component';
+import { SapConfigComponent } from './sap-config/sap-config.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { AddEditUserDialogComponent } from './user-management/add-edit-user-dial
     DbBackupComponent,
     TagChipInputComponent,
     UserManagement,
-    AddEditUserDialogComponent
+    AddEditUserDialogComponent,
+    SapConfigComponent
   ],
   imports: [
     SharedModule,

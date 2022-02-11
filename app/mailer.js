@@ -4,10 +4,10 @@ const fs = require('fs');
 const bootstrapData = require("./bootstrap.js");
 
 var nodemailer = require('nodemailer');
-const log = require('electron-log');
 
-log.transports.file.level = 'info';
-log.transports.file.file = __dirname + 'port-reader.log';
+//const log = require('electron-log');
+//log.transports.file.level = 'info';
+//log.transports.file.file = __dirname + 'port-reader.log';
 
 const DAILY_REPORT_JOB = "daily-weighment-report";
 
@@ -171,7 +171,7 @@ function mailSender(from, recipients, subject, text = "", attachments = [], html
       if (error) {
         log.error(error);
       } else {
-        log.info('Email sent: ' + info.response);
+        log.debug('Email sent: ' + info.response);
       }
     });
     console.log("Mail sent successfully");

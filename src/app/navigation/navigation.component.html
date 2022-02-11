@@ -44,6 +44,7 @@
 		<button mat-menu-item *ngIf="isAuthorized(2)">REST Setup</button>
 		<button mat-menu-item (click)="navigateTo('admin/user-management')" *ngIf="isAuthorized(10)">User Management</button>
 		<button mat-menu-item (click)="navigateTo('admin/db-backup')" *ngIf="isAuthorized(5)">Database Backup</button>
+		<button mat-menu-item (click)="navigateTo('admin/sap-config')" *ngIf="isAuthorized(14)">SAP Config</button>
 		<button mat-menu-item *ngIf="isAuthorized(2)">Digital IO Controller Setup</button>
 	</mat-menu>
 	<mat-menu #options="matMenu">

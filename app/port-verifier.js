@@ -2,10 +2,10 @@ const { ipcMain } = require("electron");
 const serialPort = require('serialport');
 const Readline = require('@serialport/parser-readline')
 const ByteLength = require('@serialport/parser-byte-length')
-const log = require('electron-log');
 
-log.transports.file.level = 'info';
-log.transports.file.file = __dirname + 'port-verifier.log';
+//const log = require('electron-log');
+//log.transports.file.level = 'info';
+//log.transports.file.file = __dirname + 'port-verifier.log';
 
 var weighString;
 var tempPort;
@@ -13,7 +13,7 @@ var tempPort;
 ipcMain.handle("get-available-ports", async (event, ...args) => {
   try {
     var ports = await serialPort.list();
-    log.info(ports);
+    log.debug(ports);
     return ports;
   } catch (err) {
     log.error("Unable to read ports. Please see below error logged");
@@ -95,53 +95,79 @@ ipcMain.handle("write-to-verification-port", async (event, ...args) => {
   }
 });
 
-function onReadData(data) {
+function onReadData(rawData) {
   try {
-    data = data.toString();
-    console.log(data);
+    data = rawData.toString();
+    if (logLevel==="debug") {
+      log.debug(data);
+      log.debug(data.length);
+      log.debug(weighString);
+      for (var i = 0; i < data.length; i++) {
+        log.debug("Character " + i + " - " + data[i]);
+      }
+    }
     if (weighString === undefined) {
       win.webContents.send("verification-weight-recieved", [{ weight: "Weighstring not set", error: "Weighstring not set", timestamp: (new Date()).getTime() }]);
-      return;
       return;
     }
 
     var tempWeight = '';
 
-    if (data.length !== weighString['totalChars']) {
-      console.log("Data length - " + data.length);
-      console.log("Expected chars - " + weighString['totalChars']);
+    if (data.length !== weighString['totalChars'] && weighString['variableLength']===0) {
+      log.debug("Weigh string data length - " + data.length);
+      log.debug("Expected Chars - " + weighString['totalChars']);
       win.webContents.send("verification-weight-recieved", [{ weight: "String length mismatch", error: "String length mismatch", timestamp: (new Date()).getTime() }]);
       return;
     }
 
-    if (data.charCodeAt(weighString['signCharPosition']) === weighString['negativeSignValue'] ||
-      data.charAt(weighString['signCharPosition']) === weighString['negativeSignValue']) {
-      tempWeight = '-';
+    if (weighString['variableLength'] == 0) {
+      if (data.charCodeAt(weighString['signCharPosition']) === weighString['negativeSignValue'] ||
+        data.charAt(weighString['signCharPosition']) === weighString['negativeSignValue']) {
+        tempWeight = '-';
+      }
+
+      if (weighString['weightCharPosition1'] !== null) {
+        tempWeight = tempWeight + data.charAt(weighString['weightCharPosition1']);
+      }
+
+      if (weighString['weightCharPosition2'] !== null) {
+        tempWeight = tempWeight + data.charAt(weighString['weightCharPosition2']);
+      }
+
+      if (weighString['weightCharPosition3'] !== null) {
+        tempWeight = tempWeight + data.charAt(weighString['weightCharPosition3']);
+      }
+
+      if (weighString['weightCharPosition4'] !== null) {
+        tempWeight = tempWeight + data.charAt(weighString['weightCharPosition4']);
+      }
+
+      if (weighString['weightCharPosition5'] !== null) {
+        tempWeight = tempWeight + data.charAt(weighString['weightCharPosition5']);
+      }
+
+      if (weighString['weightCharPosition6'] && weighString['weightCharPosition6'] !== null) {
+        tempWeight = tempWeight + data.charAt(weighString['weightCharPosition6']);
+      }
+    } else {
+      var weighStartFlag = false;
+      log.debug("Printing ASCII");
+      for (var i = 0; i < data.length; i++) {
+        log.debug(data.charCodeAt(i));
+
+        if (data.charCodeAt(i) == 32 || data.charCodeAt(i) == 0 || data.charCodeAt(i) == 2) {
+          continue;
+        }
+        if ((48 <= data.charCodeAt(i) && data.charCodeAt(i) <= 57) || (data.charCodeAt(i) == 45 && weighStartFlag==false)) {
+          weighStartFlag = true;
+          tempWeight = tempWeight + data.charAt(i);
+        } else if (weighStartFlag === true && (48 >= data.charCodeAt(i) || data.charCodeAt(i) >= 57)) {
+          break;
+        }
+      }
     }
 
-    if (weighString['weightCharPosition1'] !== null) {
-      tempWeight = tempWeight + data.charAt(weighString['weightCharPosition1']);
-    }
-
-    if (weighString['weightCharPosition2'] !== null) {
-      tempWeight = tempWeight + data.charAt(weighString['weightCharPosition2']);
-    }
-
-    if (weighString['weightCharPosition3'] !== null) {
-      tempWeight = tempWeight + data.charAt(weighString['weightCharPosition3']);
-    }
-
-    if (weighString['weightCharPosition4'] !== null) {
-      tempWeight = tempWeight + data.charAt(weighString['weightCharPosition4']);
-    }
-
-    if (weighString['weightCharPosition5'] !== null) {
-      tempWeight = tempWeight + data.charAt(weighString['weightCharPosition5']);
-    }
-
-    if (weighString['weightCharPosition6'] && weighString['weightCharPosition6'] !== null) {
-      tempWeight = tempWeight + data.charAt(weighString['weightCharPosition6']);
-    }
+    
     win.webContents.send("verification-weight-recieved", [{ weight: tempWeight, timestamp: (new Date()).getTime() }]);
   } catch (err) {
     log.error(err);

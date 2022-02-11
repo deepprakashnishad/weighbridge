@@ -3,6 +3,13 @@ const os = require("os");
 const url = require('url');
 const path = require('path');
 const machine = require("node-machine-id");
+
+global.log = require('electron-log');
+global.logLevel = "error";
+log.transports.file.file = __dirname + 'master_log.log';
+log.transports.console.level = "error";
+log.transports.file.level = 'error';
+
 require("./db-service.js");
 require("./my-port-reader.js");
 require("./printer-service.js");
@@ -92,5 +99,16 @@ ipcMain.handle("getAppInfo", async (event, arg) => {
   catch (e) {
     console.log(e);
     return false;
+  }
+});
+
+ipcMain.handle("updateLogLevel", async (event, arg) => {
+  try {
+    log.transports.console.level = arg[0];
+    log.transports.file.level = arg[0];
+    logLevel = arg[0];
+  }
+  catch (e) {
+    console.log(e);
   }
 });

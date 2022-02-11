@@ -128,11 +128,11 @@ export class WeighbridgeRecordComponent implements OnInit {
     }
     var currWeight = this.currData;
 
-    if (currWeight['timestamp'] > (new Date().getTime()) - 1000) {
+    if (currWeight['timestamp'] >= (new Date().getTime()) - 3000) {
       this.currentWeight = currWeight['weight'];
       if (this.prevWeight === currWeight['weight']) {
         this.cnt++;
-        if (this.cnt > 1) {
+        if (this.cnt >= 3) {
           this.isWeightStable = true;
         }
       } else {
@@ -141,7 +141,6 @@ export class WeighbridgeRecordComponent implements OnInit {
         this.isWeightStable = false;
       }
     } else if ( this.selectedIndicator['stringType'] !== 'polling') {
-      
       this.currentWeight = "Err!";
       this.isWeightStable = false;
     }

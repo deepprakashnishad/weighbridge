@@ -2,10 +2,10 @@ const { ipcMain } = require("electron");
 const serialPort = require('serialport');
 const Readline = require('@serialport/parser-readline')
 const ByteLength = require('@serialport/parser-byte-length')
-const log = require('electron-log');
 
-log.transports.file.level = 'info';
-log.transports.file.file = __dirname + 'port-reader.log';
+//const log = require('electron-log');
+//log.transports.file.level = 'info';
+//log.transports.file.file = __dirname + 'port-reader.log';
 
 var weighString;
 var tempPort;
@@ -32,11 +32,11 @@ ipcMain.handle("initialize-port", async (event, ...args) => {
       });
 
       tempPort.on("open", function () {
-        log.info("Port opened successfully");
+        log.debug("Port opened successfully");
         isPortInUse = true;
       })
       tempPort.on("close", function () {
-        log.info("Port closed successfully");
+        log.debug("Port closed successfully");
         isPortInUse = false;
       })
 
@@ -71,7 +71,7 @@ function initializePort() {
       log.error(err);
       win.webContents.send("curr-weight-recieved", [err]);
     });
-    log.info("Port initialization complete");
+    log.debug("Port initialization complete");
   } catch (err) {
     log.error(err);
   } 
@@ -99,39 +99,56 @@ function onReadData(data) {
     }
     var tempWeight = '';
 
-    if (data.length !== weighString['totalChars']) {
-      log.info("Weigh string data length - "+data.length);
-      log.info("Expected Chars - "+weighString['totalChars']);
+    if (data.length !== weighString['totalChars'] && weighString['variableLength'] === 0) {
+      log.debug("Weigh string data length - "+data.length);
+      log.debug("Expected Chars - "+weighString['totalChars']);
       return;
     }
 
-    if (data.charCodeAt(weighString['signCharPosition']) === weighString['negativeSignValue'] ||
-      data.charAt(weighString['signCharPosition']) === weighString['negativeSignValue']) {
-      tempWeight = '-';
-    }
+    if (weighString['variableLength'] == 0) {
+      if (data.charCodeAt(weighString['signCharPosition']) === weighString['negativeSignValue'] ||
+        data.charAt(weighString['signCharPosition']) === weighString['negativeSignValue']) {
+        tempWeight = '-';
+      }
 
-    if (weighString['weightCharPosition1'] !== null) {
-      tempWeight = tempWeight + data.charAt(weighString['weightCharPosition1']);
-    }
+      if (weighString['weightCharPosition1'] !== null) {
+        tempWeight = tempWeight + data.charAt(weighString['weightCharPosition1']);
+      }
 
-    if (weighString['weightCharPosition2'] !== null) {
-      tempWeight = tempWeight + data.charAt(weighString['weightCharPosition2']);
-    }
+      if (weighString['weightCharPosition2'] !== null) {
+        tempWeight = tempWeight + data.charAt(weighString['weightCharPosition2']);
+      }
 
-    if (weighString['weightCharPosition3'] !== null) {
-      tempWeight = tempWeight + data.charAt(weighString['weightCharPosition3']);
-    }
+      if (weighString['weightCharPosition3'] !== null) {
+        tempWeight = tempWeight + data.charAt(weighString['weightCharPosition3']);
+      }
 
-    if (weighString['weightCharPosition4'] !== null) {
-      tempWeight = tempWeight + data.charAt(weighString['weightCharPosition4']);
-    }
+      if (weighString['weightCharPosition4'] !== null) {
+        tempWeight = tempWeight + data.charAt(weighString['weightCharPosition4']);
+      }
 
-    if (weighString['weightCharPosition5'] !== null) {
-      tempWeight = tempWeight + data.charAt(weighString['weightCharPosition5']);
-    }
+      if (weighString['weightCharPosition5'] !== null) {
+        tempWeight = tempWeight + data.charAt(weighString['weightCharPosition5']);
+      }
 
-    if (weighString['weightCharPosition6'] && weighString['weightCharPosition6'] !== null) {
-      tempWeight = tempWeight + data.charAt(weighString['weightCharPosition6']);
+      if (weighString['weightCharPosition6'] && weighString['weightCharPosition6'] !== null) {
+        tempWeight = tempWeight + data.charAt(weighString['weightCharPosition6']);
+      }
+    } else {
+      var weighStartFlag = false;
+      log.debug("Printing ASCII");
+      for (var i = 0; i < data.length; i++) {
+        log.debug(data.charCodeAt(i));
+        if (data.charCodeAt(i) == 32 || data.charCodeAt(i) == 0 || data.charCodeAt(i) == 2) {
+          continue;
+        }
+        if ((48 <= data.charCodeAt(i) && data.charCodeAt(i) <= 57) || (data.charCodeAt(i) == 45 && weighStartFlag == false)) {
+          weighStartFlag = true;
+          tempWeight = tempWeight + data.charAt(i);
+        } else if (weighStartFlag === true && (48 >= data.charCodeAt(i) || data.charCodeAt(i) >= 57)) {
+          break;
+        }
+      }
     }
     win.webContents.send("curr-weight-recieved", [{ weight: tempWeight, timestamp: (new Date()).getTime() }]);
   } catch (err) {

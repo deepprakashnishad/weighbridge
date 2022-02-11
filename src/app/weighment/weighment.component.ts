@@ -49,6 +49,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   stableWeightCheckEnabled: boolean = JSON.parse(sessionStorage.getItem("enable_stable_weight"));
   prevWeight: number;
   cnt: number = 0;
+  minReadingCountForStableWeight = 3;
 
   weighbridge: string = "";
 
@@ -113,18 +114,20 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       this.isWeightStable = true;
       this.capture();
     } else {
-      if (currWeight['timestamp'] > (new Date().getTime()) - 1000) {
+      if (currWeight['timestamp'] > (new Date().getTime()) - 3000) {
         this.currentWeight = currWeight['weight'];
 
         if (Math.abs(parseFloat(this.currentWeight)) <= parseInt(sessionStorage.getItem("zero_tolerance"))) {
           this.zeroResetDone = true;
         }
 
+        console.log(this.cnt);
+        console.log(this.isWeightStable);
         if (this.stableWeightCheckEnabled) {
-          if (parseInt(sessionStorage.getItem("allowed_variation")) >
+          if (parseInt(sessionStorage.getItem("allowed_variation")) >=
             Math.abs(this.prevWeight - currWeight['weight'])) {
             this.cnt++;
-            if (this.cnt > 1) {
+            if (this.cnt >= this.minReadingCountForStableWeight) {
               this.isWeightStable = true;
             }
           } else {
@@ -246,7 +249,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
               ORDER BY w.rstNo, wd.id`;
     var dataRows = await this.dbService.executeSyncDBStmt("GET", sql);
     dataRows = this.reportService.processResultWithFinalWeight(dataRows);
-    this.ipcService.invokeIPC("sendDataToSAP", [dataRows]);
+    //this.ipcService.invokeIPC("sendDataToSAP", [dataRows]);
+    this.ipcService.sendDataToSAP(dataRows);
   }
 
   async insertFirstWeighmentForPartial(weighBridge, firstWeight, firstUnit, user) {

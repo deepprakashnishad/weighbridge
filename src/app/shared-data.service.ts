@@ -10,6 +10,10 @@ export class SharedDataService {
   private dataSource = new  BehaviorSubject(this.data);
   currentData = this.dataSource.asObservable();
 
+  isWeightStable = false;
+  prevWeight: number;
+  cnt: number = 0;
+
   constructor() { }
   
   updateData(key: any, value: any) {

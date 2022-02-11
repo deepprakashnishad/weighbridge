@@ -56,8 +56,8 @@ export class MyDbService {
     if (successCnt === fieldArr.length) {
       this._notifier.notify("success", "App settings updated successfully");
     } else {
-      if (failedFields.length <= 2) {
-        this._notifier.notify("error", `App setting could not be updated for ${result.join(", ")} fields`);
+      if (failedFields.length >0) {
+        this._notifier.notify("error", `App setting could not be updated for ${failedFields.join(", ")} fields`);
       } else {
         this._notifier.notify("error", "App settings could not be updated");
       }

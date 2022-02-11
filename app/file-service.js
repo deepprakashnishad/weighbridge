@@ -1,9 +1,9 @@
 const { ipcMain, app } = require('electron');
 const fs = require('fs');
 const bootstrapData = require("./bootstrap.js");
-const log = require('electron-log');
-log.transports.file.level = 'info';
-log.transports.file.file = __dirname + 'file-log.log';
+//const log = require('electron-log');
+//log.transports.file.level = 'info';
+//log.transports.file.file = __dirname + 'file-log.log';
 
 var env_filepath = app.getPath('userData') +"\\" + bootstrapData.mConstants.appName;
 
@@ -16,7 +16,7 @@ ipcMain.handle("saveEnvironmentVars", async (event, arg) => {
       }
 
       fs.writeFileSync(env_filepath + "\\" + bootstrapData.mConstants.envFilename, JSON.stringify(arg[0]), 'utf-8');
-      log.info("File writing completed");
+      log.debug("File writing completed");
     });
     
     return true;
@@ -34,7 +34,7 @@ ipcMain.handle("removeSingleEntry", async (event, arg) => {
       data = JSON.parse(data);
       delete data[arg[0]];
       fs.writeFileSync(env_filepath + "\\" + bootstrapData.mConstants.envFilename, JSON.stringify(data), 'utf-8');
-      log.info("File entry removed");
+      log.debug("File entry removed");
       return true;
     } else {
       return false;
@@ -64,7 +64,7 @@ ipcMain.handle("saveSingleEnvVar", async (event, arg) => {
         }
 
         fs.writeFileSync(env_filepath + "\\" + bootstrapData.mConstants.envFilename, JSON.stringify(data), 'utf-8');
-        log.info("Single entry saved to environment file.");
+        log.debug("Single entry saved to environment file.");
       });
       
       return true;
@@ -110,7 +110,7 @@ ipcMain.handle("saveLicense", async (event, args) => {
     var hash = getHash(args[0], birthtime.toISOString());
     fs.appendFileSync(`${dir}/${args[0]}`, "." + hash);
 
-    log.info("Licence saved successfully to " + filepath)
+    log.debug("Licence saved successfully to " + filepath)
     return true;
   } catch (e) {
     log.error(e);
@@ -122,7 +122,7 @@ ipcMain.handle("saveLicense", async (event, args) => {
 ipcMain.handle("getLicense", async (event, args) => {
   try {
     const dir = env_filepath + '\\notamedia';
-    log.info("Reading licence from - " + dir);
+    log.debug("Reading licence from - " + dir);
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, {
         recursive: true

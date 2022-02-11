@@ -1,5 +1,6 @@
 import { AfterContentChecked, AfterViewInit, Component, OnInit } from '@angular/core';
 import { MyDbService } from '../my-db.service';
+import { MyIpcService } from '../my-ipc.service';
 import { QueryList } from '../query-list';
 import { environment } from "./../../environments/environment";
 
@@ -30,7 +31,8 @@ export class HomeComponent implements OnInit {
   ];
 
   constructor(
-    private dbService: MyDbService
+    private dbService: MyDbService,
+    private ipc: MyIpcService
   ) { }
 
   ngOnInit() {
@@ -38,6 +40,13 @@ export class HomeComponent implements OnInit {
       if (result && result.length > 0) {
         result.forEach(ele => {
           sessionStorage.setItem(ele["field"], ele['mValue']);
+          try {
+            if (ele['field'] === "logLevel") {
+              this.ipc.invokeIPC("updateLogLevel", [ele['mValue']]);
+            }
+          } catch (e) {
+
+          }
         });
       }
     });

@@ -7,9 +7,9 @@ const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 const bootstrap = require("./bootstrap");
 
-const log = require('electron-log');
-log.transports.file.level = 'info';
-log.transports.file.file = __dirname + 'print-log.log';
+//const log = require('electron-log');
+//log.transports.file.level = 'info';
+//log.transports.file.file = __dirname + 'print-log.log';
 
 async function runCommand(command) {
   console.log(command);
@@ -22,7 +22,7 @@ async function runCommand(command) {
 function getPrinters() {
   try {
     var printers = win.webContents.getPrinters();
-    log.info(printers);
+    log.debug(printers);
     return printers;
   } catch (err) {
     log.error(err);
@@ -34,16 +34,16 @@ ipcMain.handle("printer-ipc", async (event, ...args) => {
   if (args[0] === "getPrinters") {
     return getPrinters();
   } else if (args[0] === "print") {
-    log.info(agrs[1]);
+    log.debug(agrs[1]);
     await runCommand(args[1]);
   } else if (args[0] === "print-file") {
     var filename = "temp_file_for_print.txt";
-    log.info(agrs[2]);
+    log.debug(agrs[2]);
     createPrintFile(filename, args[2]);
     var command = args[1].replace("<filename>", filename);
     const result = await runCommand(command);
     fs.unlink(filename, function () { console.log('Deleted avatar') });
-    log.info(result);
+    log.debug(result);
   }
 })
 
@@ -71,7 +71,7 @@ ipcMain.handle("graphical-print-ipc", async (e, ...args) => {
 });
 
 ipcMain.handle("cmdline-print-ipc", async (event, ...args) => {
-  log.info(args[1]);
+  log.debug(args[1]);
   await runCommand(args[1]);
 });
 

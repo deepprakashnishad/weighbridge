@@ -118,32 +118,32 @@ export class LoginComponent implements OnInit{
       const password = this.loginForm.get('inputPassword').value;
       this.rememberMe = this.loginForm.controls['inputRememberMe'].value;
 
-      this.authService.login({ username: username, password: password }).then(result => {
-        if (result) {
-          this.ngZone.run(() => {
-            this.router.navigate(["/home"]);
-          });
-        }
-      });
-
-      //this.licenseService.isLicenseValid().then((result) => {
-      //  if (!result["success"]) {
-      //    this.notifier.notify("error", result['msg']);
-      //    this.notifier.notify("error", "Please activate using Initial Setup");
-      //    return;
+      //this.authService.login({ username: username, password: password }).then(result => {
+      //  if (result) {
+      //    this.ngZone.run(() => {
+      //      this.router.navigate(["/home"]);
+      //    });
       //  }
-      //  const username = this.loginForm.get('inputUsername').value;
-      //  const password = this.loginForm.get('inputPassword').value;
-      //  this.rememberMe = this.loginForm.controls['inputRememberMe'].value;
-
-      //  this.authService.login({ username: username, password: password }).then(result => {
-      //    if (result) {
-      //      this.ngZone.run(() => {
-      //        this.router.navigate(["/home"]);
-      //      });
-      //    }
-      //  });
       //});
+
+      this.licenseService.isLicenseValid().then((result) => {
+        if (!result["success"]) {
+          this.notifier.notify("error", result['msg']);
+          this.notifier.notify("error", "Please activate using Initial Setup");
+          return;
+        }
+        const username = this.loginForm.get('inputUsername').value;
+        const password = this.loginForm.get('inputPassword').value;
+        this.rememberMe = this.loginForm.controls['inputRememberMe'].value;
+
+        this.authService.login({ username: username, password: password }).then(result => {
+          if (result) {
+            this.ngZone.run(() => {
+              this.router.navigate(["/home"]);
+            });
+          }
+        });
+      });
     }
   }
 

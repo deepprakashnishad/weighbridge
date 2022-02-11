@@ -5,6 +5,7 @@ module.exports = Object.freeze({
   },
   seed: {
     app_data: [
+      { field: "logLevel", mValue: "error" },
       { field: "enable_invoice_creation", mValue: "true" },
       { field: "enable_inbound_challan_weight", mValue: "false" },
       { field: "enable_inbound_validation", mValue: "false" },
@@ -61,6 +62,12 @@ module.exports = Object.freeze({
       { field: "email_port", mValue: "" },
       { field: "email_protocol", mValue: "" },
       { field: "recipients", mValue: "" },
+
+      //SAP Configuration
+      { field: "enableSAPIntegration", mValue: "false" },
+      { field: "sapUsername", mValue: "" },
+      { field: "sapPassword", mValue: "" },
+      { field: "sapEndpoint", mValue: "" }
     ],
     app_user: [{
       "id": 1,
@@ -92,6 +99,7 @@ module.exports = Object.freeze({
       { id: 11, permission: "Change Password" },
       { id: 12, permission: "Partial Weighment" },
       { id: 13, permission: "Theft Detection Setup" },
+      { id: 14, permission: "SAP Configuration" },
     ],
     user_permission: [
       { userid: 1, permissionid: 1},
@@ -106,7 +114,8 @@ module.exports = Object.freeze({
       { userid: 1, permissionid: 10},
       { userid: 1, permissionid: 11},
       { userid: 1, permissionid: 12},
-      { userid: 1, permissionid: 13},
+      { userid: 1, permissionid: 13 },
+      { userid: 1, permissionid: 14 },
       { userid: 2, permissionid: 1},
       { userid: 2, permissionid: 2},
       { userid: 2, permissionid: 3},

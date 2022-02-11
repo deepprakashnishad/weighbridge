@@ -1,25 +1,18 @@
 var soap = require('strong-soap').soap;
 const { app, ipcMain } = require('electron');
 const db = require('./db-service.js');
-const log = require('electron-log');
-log.transports.file.level = 'info';
-log.transports.file.file = __dirname + 'sap.log';
+//const log = require('electron-log');
+//log.transports.file.level = 'info';
+//log.transports.file.file = __dirname + 'sap.log';
 
-const username = 'bflpidev';
-const password = 'pi1234';
-const sapEndpoint = "http://bfpdv1.kalyanicorp.com:50000/dir/wsdl?p=ic/c50e2242ef723dee8dfebc7dbcedb0f6";
-
-var options = {
-  wsdl_headers: {
-    'Authorization': 'Basic ' + new Buffer(username + ':' + password).toString('base64'),
-  }
-};
+//const username = 'bflpidev';
+//const password = 'pi1234';
+//const sapEndpoint = "http://bfpdv1.kalyanicorp.com:50000/dir/wsdl?p=ic/c50e2242ef723dee8dfebc7dbcedb0f6";
 
 ipcMain.handle("sendDataToSAP", async (event, args) => {
   try {
     //dummyDriver(args[0]);
-    log.info(args[0]);
-    sendToSAP(args[0]);
+    sendToSAP(args[0], args[1], args[2], args[3]);
   } catch (err) {
     log.error(err);
     return { error: err.message };
@@ -33,10 +26,13 @@ ipcMain.handle("sendDataToSAP", async (event, args) => {
 //  }
 //}
 
-function sendToSAP(data) {
+function sendToSAP(data, sapEndpoint, username, password) {
+  log.debug("Endpoint - " + sapEndpoint);
+  log.debug("Username - " + username);
+  log.debug("Password - " + password);
+
   //Data in Request Body
   if (data.length) {
-    
     //wsdl service
     var url = sapEndpoint;
     
@@ -49,10 +45,16 @@ function sendToSAP(data) {
       }
     }
     //Create SOAP client
-    log.info("Sending data to SAP");
-    log.info(RequestData);
-    //log.info("SAP Endpoint - " + url);
-    //log.info(username+":"+password);
+    log.debug("Sending data to SAP");
+    log.debug(RequestData);
+    //log.debug("SAP Endpoint - " + url);
+    //log.debug(username+":"+password);
+
+    var options = {
+      wsdl_headers: {
+        'Authorization': 'Basic ' + new Buffer(username + ':' + password).toString('base64'),
+      }
+    };
     soap.createClient(url, options, function (err, client) {
       if (err) {
         log.error(err);
@@ -68,8 +70,8 @@ function sendToSAP(data) {
           log.error(err);
           return err;
         } else {
-          log.info("Respose from SAP");
-          log.info(response);
+          log.debug("Respose from SAP");
+          log.debug(response);
           if (response['WEIGHBRIDGE_TAB']['WEIGHBRIDGE_DATA']) {
             var itemsResponse = [];
             itemsResponse = response['WEIGHBRIDGE_TAB']['WEIGHBRIDGE_DATA'];

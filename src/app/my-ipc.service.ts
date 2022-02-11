@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
 import { SharedDataService } from './shared-data.service';
+import * as CryptoJS from 'crypto-js';
+import { SAP_ENCRYPTION_KEY } from './admin/sap-config/sap-config.component';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +27,21 @@ export class MyIpcService {
   async invokeIPC(channelName, ...args) {
     var reply = await this._electronService.ipcRenderer.invoke(channelName, ...args);
     return reply;
+  }
+
+  sendDataToSAP(data: any) {
+    var originalPassword = CryptoJS.AES.decrypt(
+      sessionStorage.getItem("sapPassword"), SAP_ENCRYPTION_KEY
+    ).toString(CryptoJS.enc.Utf8);
+    if (sessionStorage.getItem("enableSAPIntegration")==="true") {
+      this.invokeIPC("sendDataToSAP",
+        [
+          data,
+          sessionStorage.getItem("sapEndpoint"),
+          sessionStorage.getItem("sapUsername"),
+          originalPassword
+        ]
+      );
+    }
   }
 }
