@@ -5,6 +5,7 @@ module.exports = Object.freeze({
   },
   seed: {
     app_data: [
+      { field: "date_format", mValue: "113" },
       { field: "logLevel", mValue: "error" },
       { field: "enable_invoice_creation", mValue: "true" },
       { field: "enable_inbound_challan_weight", mValue: "false" },

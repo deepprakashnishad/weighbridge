@@ -27,7 +27,10 @@ export class WeighmentSearchDialog implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.dbService.executeSyncDBStmt("SELECT", QueryList.GET_WEIGHMENTS_WITH_LATEST_DETAIL + " AND status='pending'").then(
+    this.dbService.executeSyncDBStmt("SELECT",
+      QueryList.GET_WEIGHMENTS_WITH_LATEST_DETAIL
+        .replace(/{date_format_code}/gi, sessionStorage.getItem("date_format") != null ?
+          sessionStorage.getItem("date_format") : "113") + " AND status='pending'").then(
       result => {
         this.records = result;
         this.filteredRecords = this.records;

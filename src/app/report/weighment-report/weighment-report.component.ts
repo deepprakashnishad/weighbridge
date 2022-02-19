@@ -93,7 +93,8 @@ export class WeighmentReportComponent implements OnInit {
 
   async fetchData() {
     var isCriteriaAdded = true;
-    var stmt = QueryList.GET_WEIGHMENTS_WITH_LATEST_DETAIL;
+    var stmt = QueryList.GET_WEIGHMENTS_WITH_LATEST_DETAIL
+      .replace(/{date_format_code}/gi, sessionStorage.getItem("date_format") != null ? sessionStorage.getItem("date_format") :"113");
 
     if (this.reportType && this.reportType != 'all') {
       stmt = `${stmt} AND weighmentType = '${this.reportType}'`;
@@ -225,6 +226,7 @@ export class WeighmentReportComponent implements OnInit {
     var weighmentDetails = await this.dbService.executeSyncDBStmt(
       "SELECT",
       QueryList.GET_WEIGHMENT_DETAILS.replace("{rstNo}", weighment.rstNo)
+        .replace(/{date_format_code}/gi, sessionStorage.getItem("date_format") != null ? sessionStorage.getItem("date_format") : "113")
     );
     weighment['weighmentDetails'] = weighmentDetails;
 

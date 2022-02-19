@@ -348,7 +348,7 @@ export class ReportService {
   private getFormattedFinalWeighment(rows) {
     var data = {};
     data['WEIGHMENT_RST_NO'] = rows[0]['rstNo'];
-    data['VEHICLE_NO'] = this.insertSpace(rows[0]['vehicleNo'].toUpperCase());
+    data['VEHICLE_NO'] = rows[0]['vehicleNo'];
     data['REQ_ID'] = rows[0]['reqId'] == null || rows[0]['reqId'] == undefined ? "" : rows[0]['reqId'];
     data['REQ_ID_DATE'] = rows[0]['reqIdDate'] == null || rows[0]['reqIdDate'] == undefined ? "" : rows[0]['reqIdDate'];
     data['WEIGHMENT_TYPE'] = rows[0]['weighmentType'].toUpperCase();

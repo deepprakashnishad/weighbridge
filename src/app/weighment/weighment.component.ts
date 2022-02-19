@@ -566,7 +566,10 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   async getWeighmentDetails(rstNo) {
     var result = new Array<WeighmentDetail>();
     if (rstNo) {
-      result = await this.dbService.executeSyncDBStmt("SELECT", QueryList.GET_WEIGHMENT_DETAILS.replace("{rstNo}", rstNo));
+      result = await this.dbService.executeSyncDBStmt("SELECT",
+        QueryList.GET_WEIGHMENT_DETAILS.replace("{rstNo}", rstNo)
+          .replace(/{date_format_code}/gi, sessionStorage.getItem("date_format") != null ? sessionStorage.getItem("date_format") : "113")
+      );
       for (var i = 0; i < result.length; i++) {
         var temp = result[i];
         if (temp['firstWeightUser']!==null)

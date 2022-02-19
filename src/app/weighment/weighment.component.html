@@ -24,7 +24,7 @@
           <div fxLayout fxLayoutGap="16px" fxLayoutAlign="center start">
             <mat-form-field appearance="outline">
               <mat-label>Vehicle No</mat-label>
-              <input matInput appCapitalize #vehicleCntl [(ngModel)]="weighment.vehicleNo" name="cntlRequestId"
+              <input vehicleMask matInput  #vehicleCntl [(ngModel)]="weighment.vehicleNo" name="cntlRequestId"
                      (keyup.enter)="parseQRString(weighment.vehicleNo)"
                      (contextmenu)="paste($event)"
                      (blur)="parseQRString(weighment.vehicleNo)" tabindex="0" placeholder="Vehicle No." />

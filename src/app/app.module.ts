@@ -19,6 +19,7 @@ import { WeighmentDetailComponent } from './weighment/weighment-details/weighmen
 import { InitialSetupComponent } from './admin/initial-setup/initial-setup.component';
 import { WeighmentSearchDialog } from './weighment/weighment-search-dialog/weighment-search-dialog.component';
 import { LicenseMaskDirective } from './directives/license-mask';
+import { VehicleMaskDirective } from './directives/vehicle-mask';
 
 const notifierDefaultOptions: NotifierOptions = {
   position: {
@@ -71,7 +72,8 @@ const notifierDefaultOptions: NotifierOptions = {
     WeighmentSummaryComponent,
     WeighmentSearchDialog,
     InitialSetupComponent,
-    LicenseMaskDirective
+    LicenseMaskDirective,
+    VehicleMaskDirective
    ],
   imports: [
     BrowserModule,
