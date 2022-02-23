@@ -25,7 +25,6 @@ export class VehicleMaskDirective {
       prevChar = currChar;
     }
     input.value = newStr.toUpperCase().trim();
-
   }
 
   isLetter(str) {

@@ -20,15 +20,15 @@ export class QueryList{
   static readonly GET_PENDING_RECORDS = "SELECT rstNo, vehicleNo, weighmentType, convert(varchar, createdAt, 20) as createdAt\
       FROM weighment WHERE status='Pending'";
   static readonly GET_WEIGHMENT_DETAILS = "SELECT id, weighmentRstNo, material, supplier, firstWeighBridge, firstUnit, firstWeight, \
-    convert(varchar, firstWeightDatetime, {date_format_code}) as firstWeightDatetime, firstWeightUser, secondWeighBridge, secondUnit, secondWeight, \
-    convert(varchar, secondWeightDatetime, {date_format_code}) as secondWeightDatetime, secondWeightUser, remark, netWeight \
+    FORMAT(firstWeightDatetime, '{date_format_code}') as firstWeightDatetime, firstWeightUser, secondWeighBridge, secondUnit, secondWeight, \
+    FORMAT(secondWeightDatetime, '{date_format_code}') as secondWeightDatetime, secondWeightUser, remark, netWeight \
     FROM weighment_details WHERE weighmentRstNo={rstNo} ORDER BY id";
 
   static readonly GET_WEIGHMENTS_WITH_LATEST_DETAIL = "SELECT w.*, id, weighmentRstNo, material, supplier, \
     firstWeighBridge, firstUnit, firstWeight, \
-    convert(varchar, firstWeightDatetime, {date_format_code}) as firstWeightDatetime, \
+    FORMAT(firstWeightDatetime, '{date_format_code}') as firstWeightDatetime, \
     firstWeightUser, secondWeighBridge, secondUnit, secondWeight, \
-    convert(varchar, secondWeightDatetime, {date_format_code}) as secondWeightDatetime, \
+    FORMAT(secondWeightDatetime, '{date_format_code}') as secondWeightDatetime, \
     secondWeightUser, remark, netWeight FROM weighment w, weighment_details wd WHERE w.rstNo=wd.weighmentRstNo";
 
   //static readonly GET_WEIGHMENTS_WITH_LATEST_DETAIL = "SELECT * FROM weighment w  RIGHT JOIN  \

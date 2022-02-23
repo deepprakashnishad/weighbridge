@@ -107,6 +107,7 @@ export class PrinterService {
   }
 
   private trimDatetimeWeighmentDetails(weighmentDetails: Array<WeighmentDetail>) {
+    return weighmentDetails;
     var tempArr: Array<WeighmentDetail> = [];
 
     for (var i = 0; i < weighmentDetails.length; i++) {

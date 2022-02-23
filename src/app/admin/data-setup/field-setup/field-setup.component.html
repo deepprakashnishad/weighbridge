@@ -3,9 +3,14 @@
     <div class="box-title">Field Setup</div>
     <!--<app-help [tag]="'DATA_SETUP'"></app-help>-->
   </div>
-  <div class="content-box">
-        <mat-select [(ngModel)]="dateFormat" placeholder="Date format for report and ticket">
-          <mat-option value=0>Mon dd yyyy hh:mm AM/PM</mat-option>
+  <div class="content-box" fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>Date Format</mat-label>
+        <input name="cntlDateFormat" [(ngModel)]="dateFormat" matInput placeholder="Date format for report and ticket">
+      </mat-form-field>
+      <mat-checkbox name="cntEnableWhiteSpacesInVehicle" [(ngModel)]="enableWhiteSpacesInVehicle" class="example-margin">Enable whitespace in vehicle number</mat-checkbox>
+        <!--<mat-select [(ngModel)]="dateFormat" placeholder="Date format for report and ticket">
+          <mat-option value="MMM">Mon dd yyyy hh:mm AM/PM</mat-option>
           <mat-option value=9>Mon dd yyyy hh:mm:ss:nnn AM/PM</mat-option>
           <mat-option value=13>dd Mon yyyy hh:mm:ss:nnn AM/PM</mat-option>
           <mat-option value=20>yyyy-mm-dd hh:mm:ss</mat-option>
@@ -19,7 +24,7 @@
           <mat-option value=121>yyyy-mm-dd hh:mm:ss:nnn</mat-option>
           <mat-option value=126>yyyy-mm-dd T hh:mm:ss:nnn</mat-option>
           <mat-option value=127>yyyy-mm-dd T hh:mm:ss:nnn</mat-option>
-        </mat-select>
+        </mat-select>-->
     <div fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
       <button mat-raised-button color="primary" (click)="save()">Save</button>
     </div>

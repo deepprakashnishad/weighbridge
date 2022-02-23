@@ -8752,3 +8752,559 @@
   port: 1433
 }
 [2022-02-19 21:53:44.982] [debug] SELECT fullname, id, username, status, role FROM app_user WHERE id=1
+[2022-02-22 07:13:36.159] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:13:36.219] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-22 07:13:36.358] [debug] Port initialization complete
+[2022-02-22 07:13:36.410] [error] Error occured on port
+[2022-02-22 07:13:42.746] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:13:42.749] [debug] SELECT * FROM app_user
+[2022-02-22 07:13:42.785] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:13:42.788] [debug] SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-02-22 07:13:42.798] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:13:42.822] [debug] SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-02-22 07:13:48.402] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:13:48.426] [debug] SELECT * FROM ticket_template WHERE applicableTo LIKE '%outbound_domestic%' OR applicableTo='GENERIC'
+[2022-02-22 07:13:48.478] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:13:48.480] [debug] SELECT * FROM template_detail WHERE templateId=1
+[2022-02-22 07:15:30.683] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:15:30.695] [debug] SELECT * FROM app_user
+[2022-02-22 07:15:30.857] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:15:30.860] [debug] SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-02-22 07:15:30.875] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:15:30.881] [debug] SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-02-22 07:15:31.978] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:15:31.981] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-22 07:15:32.175] [debug] Port initialization complete
+[2022-02-22 07:15:32.178] [error] Error occured on port
+[2022-02-22 07:20:56.077] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:20:56.079] [debug] SELECT * FROM app_user
+[2022-02-22 07:20:56.128] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:20:56.130] [debug] SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-02-22 07:20:56.138] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:20:56.339] [debug] SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-02-22 07:20:56.842] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:20:56.870] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-22 07:20:57.071] [debug] Port initialization complete
+[2022-02-22 07:20:57.112] [error] Error occured on port
+[2022-02-22 07:21:02.959] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:21:02.962] [debug] SELECT * FROM ticket_template WHERE applicableTo LIKE '%outbound_domestic%' OR applicableTo='GENERIC'
+[2022-02-22 07:21:03.053] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:21:03.056] [debug] SELECT * FROM template_detail WHERE templateId=1
+[2022-02-22 07:21:21.072] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:21:21.075] [debug] SELECT * FROM search_field
+[2022-02-22 07:40:10.786] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:40:10.796] [debug] SELECT * FROM search_field
+[2022-02-22 07:40:11.234] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:40:11.265] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-22 07:40:11.429] [debug] Port initialization complete
+[2022-02-22 07:40:11.435] [error] Error occured on port
+[2022-02-22 07:40:28.723] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:40:28.750] [debug] SELECT * FROM search_field
+[2022-02-22 07:40:29.425] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:40:29.427] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-22 07:40:29.717] [debug] Port initialization complete
+[2022-02-22 07:40:29.722] [error] Error occured on port
+[2022-02-22 07:43:13.642] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:43:13.735] [debug] SELECT * FROM search_field
+[2022-02-22 07:43:14.099] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:43:14.105] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-22 07:43:14.190] [debug] Port initialization complete
+[2022-02-22 07:43:14.195] [error] Error occured on port
+[2022-02-22 07:43:19.290] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:43:19.298] [debug] SELECT * FROM search_field
+[2022-02-22 07:43:19.824] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:43:19.829] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-22 07:43:19.882] [debug] Port initialization complete
+[2022-02-22 07:43:19.889] [error] Error occured on port
+[2022-02-22 07:44:30.004] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:44:30.007] [debug] UPDATE app_data set mValue='dd-MM-yyyy hh:mm' WHERE field='date_format'
+[2022-02-22 07:45:24.377] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:45:24.425] [debug] SELECT * FROM search_field
+[2022-02-22 07:45:24.859] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:45:24.864] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-22 07:45:24.989] [debug] Port initialization complete
+[2022-02-22 07:45:25.001] [error] Error occured on port
+[2022-02-22 07:45:34.537] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:45:34.539] [debug] SELECT * FROM app_user
+[2022-02-22 07:45:34.572] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:45:34.574] [debug] SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-02-22 07:45:34.580] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:45:34.587] [debug] SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-02-22 07:45:42.388] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:45:42.390] [debug] SELECT * FROM ticket_template WHERE applicableTo LIKE '%outbound_domestic%' OR applicableTo='GENERIC'
+[2022-02-22 07:45:42.459] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:45:42.464] [debug] SELECT * FROM template_detail WHERE templateId=1
+[2022-02-22 07:45:59.895] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:45:59.899] [debug] SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-02-22 07:45:59.904] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:45:59.937] [debug] SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-02-22 07:45:59.939] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:45:59.941] [debug] SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-02-22 07:50:14.760] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:50:14.762] [debug] SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-02-22 07:50:14.774] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:50:14.785] [debug] SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-02-22 07:50:14.794] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:50:14.798] [debug] SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-02-22 07:50:15.189] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:50:15.210] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-22 07:50:15.368] [debug] Port initialization complete
+[2022-02-22 07:50:15.375] [error] Error occured on port
+[2022-02-22 07:52:40.795] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:52:40.829] [debug] SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-02-22 07:52:40.835] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:52:40.841] [debug] SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-02-22 07:52:40.847] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:52:40.852] [debug] SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-02-22 07:52:41.302] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:52:41.324] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-22 07:52:41.505] [debug] Port initialization complete
+[2022-02-22 07:52:41.538] [error] Error occured on port
+[2022-02-22 07:53:24.271] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:53:24.285] [debug] SELECT * FROM search_field_value WHERE search_field_id=1
+[2022-02-22 07:53:24.300] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:53:24.304] [debug] SELECT * FROM search_field_value WHERE search_field_id=3
+[2022-02-22 07:53:24.317] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:53:24.334] [debug] SELECT * FROM search_field_value WHERE search_field_id=2
+[2022-02-22 07:53:24.812] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:53:24.849] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-22 07:53:24.969] [debug] Port initialization complete
+[2022-02-22 07:53:24.987] [error] Error occured on port
+[2022-02-22 07:55:07.292] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 07:55:07.295] [debug] SELECT * FROM search_field
+[2022-02-22 08:03:17.627] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 08:03:17.657] [debug] SELECT * FROM search_field
+[2022-02-22 08:03:18.319] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 08:03:18.324] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-22 08:03:18.461] [debug] Port initialization complete
+[2022-02-22 08:03:18.476] [error] Error occured on port
+[2022-02-22 08:03:46.038] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 08:03:46.040] [debug] SELECT * FROM search_field
+[2022-02-22 08:03:46.583] [debug] {
+  pool: { max: 10, min: 0, idleTimeoutMillis: 30000 },
+  options: { encrypt: false, trustServerCertificate: true },
+  user: 'root',
+  password: 'admin',
+  database: 'weighbridge',
+  server: 'DESKTOP-13G3LGM\\MSSQLSERVER01',
+  port: 1433
+}
+[2022-02-22 08:03:46.585] [debug] SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN ('Krishna','Balaram','test') AND wi.weighString=ws.stringName AND wi.status='Active'
+[2022-02-22 08:03:46.700] [debug] Port initialization complete
+[2022-02-22 08:03:46.702] [error] Error occured on port

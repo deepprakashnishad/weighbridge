@@ -11,11 +11,13 @@
       <div fxLayout="column" fxLayoutGap="8px">
         <div fxLayout fxLayoutAlign="space-between center">
           <mat-radio-group tabindex="-1" [(ngModel)]="weighment.weighmentType" aria-label="Select weightment type" fxLayout fxLayoutGap="32px" fxLayoutAlign="start">
-            <mat-radio-button tabindex="-1" value="inbound">Inbound(Purchase)</mat-radio-button>
-            <mat-radio-button tabindex="-1" value="outbound_export">Outbound(Export)</mat-radio-button>
-            <mat-radio-button tabindex="-1" value="outbound_domestic">Outbound(Domestic)</mat-radio-button>
-            <mat-radio-button tabindex="-1" value="outbound_subcontract">Outbound(Sub-contract Dispatch)</mat-radio-button>
-            <mat-radio-button tabindex="-1" value="others">Others</mat-radio-button>
+            <mat-radio-button *ngIf="enableInbound" tabindex="-1" value="inbound">Inbound(Purchase)</mat-radio-button>
+            <mat-radio-button *ngIf="enableOutbound" tabindex="-1" value="outbound">Outbound</mat-radio-button>
+            <mat-radio-button *ngIf="enableOutboundExport" tabindex="-1" value="outbound_export">Outbound(Export)</mat-radio-button>
+            <mat-radio-button *ngIf="enableOutboundDomestic" tabindex="-1" value="outbound_domestic">Outbound(Domestic)</mat-radio-button>
+            <mat-radio-button *ngIf="enableOutboundSubcontract" tabindex="-1" value="outbound_subcontract">Outbound(Sub-contract Dispatch)</mat-radio-button>
+            <mat-radio-button *ngIf="enableInternal" tabindex="-1" value="internal">Internal</mat-radio-button>
+            <mat-radio-button *ngIf="enableOthers" tabindex="-1" value="others">Others</mat-radio-button>
           </mat-radio-group>
 
         </div>
@@ -24,7 +26,11 @@
           <div fxLayout fxLayoutGap="16px" fxLayoutAlign="center start">
             <mat-form-field appearance="outline">
               <mat-label>Vehicle No</mat-label>
-              <input vehicleMask matInput  #vehicleCntl [(ngModel)]="weighment.vehicleNo" name="cntlRequestId"
+              <input *ngIf="enableWhiteSpacesInVehicle" vehicleMask matInput #vehicleCntl [(ngModel)]="weighment.vehicleNo" name="cntlRequestId"
+                     (keyup.enter)="parseQRString(weighment.vehicleNo)"
+                     (contextmenu)="paste($event)"
+                     (blur)="parseQRString(weighment.vehicleNo)" tabindex="0" placeholder="Vehicle No." />
+              <input *ngIf="!enableWhiteSpacesInVehicle" vehicleMask matInput #vehicleCntl [(ngModel)]="weighment.vehicleNo" name="cntlRequestId"
                      (keyup.enter)="parseQRString(weighment.vehicleNo)"
                      (contextmenu)="paste($event)"
                      (blur)="parseQRString(weighment.vehicleNo)" tabindex="0" placeholder="Vehicle No." />

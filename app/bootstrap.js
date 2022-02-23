@@ -5,7 +5,14 @@ module.exports = Object.freeze({
   },
   seed: {
     app_data: [
-      { field: "date_format", mValue: "113" },
+      { field: "date_format", mValue: "dd-MM-yyyy hh:mm" },
+      { "field": "enableInbound", "mValue": "true" },
+      { "field": "enableOutbound", "mValue": "false" },
+      { "field": "enableOutboundExport", "mValue": "true" },
+      { "field": "enableOutboundDomestic", "mValue": "true" },
+      { "field": "enableOutboundSubcontract", "mValue": "true" },
+      { "field": "enableOthers", "mValue": "true" },
+      { "field": "enableInternal", "mValue": "false" },
       { field: "logLevel", mValue: "error" },
       { field: "enable_invoice_creation", mValue: "true" },
       { field: "enable_inbound_challan_weight", mValue: "false" },

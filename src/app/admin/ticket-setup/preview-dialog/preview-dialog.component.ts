@@ -59,7 +59,6 @@ export class PreviewDialogComponent implements OnInit {
 
   ngOnInit() {
     this.myIPCService.invokeIPC("loadEnvironmentVars", ["printers"]).then(printers => {
-      console.log(printers);
       if (printers) {
         for (var key of Object.keys(printers)) {
           this.printers.push(printers[key]);

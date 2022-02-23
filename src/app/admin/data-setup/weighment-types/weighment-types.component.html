@@ -1,0 +1,18 @@
+<mat-card class="inner-container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="32px">
+  <div class="full-width" fxLayout fxLayoutAlign="space-between center">
+    <div class="box-title">Field Setup</div>
+    <!--<app-help [tag]="'DATA_SETUP'"></app-help>-->
+  </div>
+  <div class="content-box" fxLayout="column">
+    <mat-checkbox name="cntInbound" [(ngModel)]="enableInbound" class="example-margin">Inbound</mat-checkbox>
+    <mat-checkbox name="cntOutbound" [(ngModel)]="enableOutbound" class="example-margin">Outbound</mat-checkbox>
+    <mat-checkbox name="cntOBExport" [(ngModel)]="enableOutboundExport" class="example-margin">Outbound Export</mat-checkbox>
+    <mat-checkbox name="cntOBDeomestic" [(ngModel)]="enableOutboundDomestic" class="example-margin">Outbound Domestic</mat-checkbox>
+    <mat-checkbox name="cntOBSubContract" [(ngModel)]="enableOutboundSubcontract" class="example-margin">Outbound-Subcontract</mat-checkbox>
+    <mat-checkbox name="cntOthers" [(ngModel)]="enableOthers" class="example-margin">Others</mat-checkbox>
+    <mat-checkbox name="cntInternal" [(ngModel)]="enableInternal" class="example-margin">Internal</mat-checkbox>
+    <div fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
+      <button mat-raised-button color="primary" (click)="save()">Save</button>
+    </div>
+  </div>
+</mat-card>

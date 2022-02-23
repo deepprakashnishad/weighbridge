@@ -28,6 +28,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   weighment: Weighment = new Weighment();
   weighmentDetail: WeighmentDetail = new WeighmentDetail();
   weighmentDetails: Array<WeighmentDetail> = [];
+  enableWhiteSpacesInVehicle: boolean = true;
 
   @ViewChild('vehicleCntl') vehicleCntl: ElementRef;
 
@@ -60,6 +61,14 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   selectedIndicator: any = { "stringType": "continuous" };
 
   zeroResetDone: boolean;
+
+  enableInbound: boolean;
+  enableOutbound: boolean;
+  enableOutboundExport: boolean;
+  enableOutboundDomestic: boolean;
+  enableOutboundSubcontract: boolean;
+  enableOthers: boolean;
+  enableInternal: boolean;
   
   constructor(
     private sharedDataService: SharedDataService,
@@ -83,6 +92,16 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+
+    this.enableWhiteSpacesInVehicle = sessionStorage.getItem("enableWhiteSpacesInVehicle") == "true";
+
+    this.enableInbound = sessionStorage.getItem("enableInbound") == "true";
+    this.enableOutbound = sessionStorage.getItem("enableOutbound") == "true";
+    this.enableOutboundDomestic = sessionStorage.getItem("enableOutboundDomestic") == "true";
+    this.enableOutboundExport = sessionStorage.getItem("enableOutboundExport") == "true";
+    this.enableOutboundSubcontract = sessionStorage.getItem("enableOutboundSubcontract") == "true";
+    this.enableOthers = sessionStorage.getItem("enableOthers") == "true";
+    this.enableInternal = sessionStorage.getItem("enableInternal") == "true";
 
     if (this.selectedIndicator?.stringType === "continuous") {
       setInterval(this.updateCurrentWeight.bind(this), 1000);
@@ -171,7 +190,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     }
 
     if (this.weighment.vehicleNo) {
-      this.weighment.vehicleNo = Utils.removeWhiteSpaces(this.weighment.vehicleNo);
+      //this.weighment.vehicleNo = Utils.removeWhiteSpaces(this.weighment.vehicleNo);
       this.getWeighment({ vehicleNo: this.weighment.vehicleNo, status: "pending" });
     } else if (this.weighment.rstNo) {
       this.getWeighment({ rstNo: this.weighment.rstNo, status: "pending" });
