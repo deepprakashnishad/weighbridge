@@ -12,14 +12,15 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { ReportService } from '../report.service';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { NotifierService } from 'angular-notifier';
+import { StatusDialogComponent } from '../weighment-report/weighment-report.component';
 import { Utils } from '../../utils';
 
 @Component({
-  selector: 'app-weighment-report',
-  templateUrl: './weighment-report.component.html',
-  styleUrls: ['./weighment-report.component.css']
+ selector: 'app-complete-weighment-report',
+  templateUrl: './complete-weighment-report.component.html',
+  styleUrls: ['./complete-weighment-report.component.css']
 })
-export class WeighmentReportComponent implements OnInit {
+export class CompleteWeighmentReportComponent implements OnInit {
 
   data: Array<Weighment> = [];
   reportType: string = "all";
@@ -30,13 +31,13 @@ export class WeighmentReportComponent implements OnInit {
   truckNumber: string;
   supplier: string;
   material: string;
-  searchDateType: string = 'firstWeightDatetime';
+  searchDateType: string = 'secondWeightDatetime';
   reqId: string;
   scrollNo: string;
 
   status: string;
 
-  columns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'weighmentType', 'supplier', 'material', 'firstWeighBridge', 'firstWeight', 'firstWeightDatetime', 'firstWeightUser', 'gatePassNo', 'poDetails', 'secondWeighBridge', 'secondWeight', 'secondWeightDatetime', 'secondWeightUser', 'netWeight', 'scrollDate', 'reqIdDate', 'misc','syncFlag', 'status', 'action'];
+  columns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'weighmentType', 'supplier', 'material', 'firstWeighBridge', 'firstWeight', 'firstWeightDatetime', 'firstWeightUser', 'gatePassNo', 'poDetails', 'secondWeighBridge', 'secondWeight', 'secondWeightDatetime', 'secondWeightUser', 'netWeight', 'scrollDate', 'reqIdDate', 'syncFlag', 'status', 'action'];
   displayedColumns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'weighmentType', 'supplier', 'material', 'firstWeighBridge', 'firstWeight', 'firstWeightDatetime', 'firstWeightUser', 'gatePassNo', 'poDetails', 'secondWeighBridge', 'secondWeight', 'secondWeightDatetime', 'secondWeightUser', 'netWeight', 'status', 'action'];
 
   dataSource: MatTableDataSource<any>;
@@ -53,7 +54,7 @@ export class WeighmentReportComponent implements OnInit {
 
   @ViewChild("cntlMaterial", { static: false }) cntlMaterial;
   @ViewChild("cntlSupplier", { static: false }) cntlSupplier;
-  
+
   constructor(
     private dbService: MyDbService,
     private printerService: PrinterService,
@@ -93,8 +94,9 @@ export class WeighmentReportComponent implements OnInit {
 
   async fetchData() {
     var isCriteriaAdded = true;
-    var stmt = QueryList.GET_WEIGHMENTS_WITH_LATEST_DETAIL
-      .replace(/{date_format_code}/gi, sessionStorage.getItem("date_format") != null ? sessionStorage.getItem("date_format") :"113");
+    var stmt = QueryList.GET_COMPLETED_RECORDS
+      .replace(/{date_format_code}/gi,
+        sessionStorage.getItem("date_format") != null ? sessionStorage.getItem("date_format") : "113");
 
     if (this.reportType && this.reportType != 'all') {
       stmt = `${stmt} AND weighmentType = '${this.reportType}'`;
@@ -126,11 +128,6 @@ export class WeighmentReportComponent implements OnInit {
       isCriteriaAdded = true;
     }
 
-    if (this.status) {
-      stmt = `${stmt} AND status = '${this.status}'`;
-      isCriteriaAdded = true;
-    }
-
     if (this.reqId) {
       stmt = `${stmt} AND reqId = '${this.reqId}'`;
       isCriteriaAdded = true;
@@ -159,11 +156,10 @@ export class WeighmentReportComponent implements OnInit {
       isCriteriaAdded = true;
     }
 
-    stmt = `${stmt} ORDER BY w.rstNo ASC`;
+    stmt = `${stmt}  GROUP BY weighmentRstNo) ORDER BY wd.weighmentRstNo ASC, wd.secondWeightDatetime ASC`;
     console.log(stmt);
     this.data = await this.dbService.executeSyncDBStmt("SELECT", stmt);
     console.log(this.data);
-    this.replaceUsersWithId();
     this.dataSource.data = this.data;
   }
 
@@ -206,7 +202,7 @@ export class WeighmentReportComponent implements OnInit {
     /* save to file */
     var timestamp = new Date().getTime();
     var filename = `weighment_report_${timestamp}.xlsx`;
-    XLSX.writeFile(wb, filename);``
+    XLSX.writeFile(wb, filename); ``
   }
 
   getTotalWeight(weightType) {
@@ -232,7 +228,7 @@ export class WeighmentReportComponent implements OnInit {
 
     var data = await this.printerService.getPreviewDataWithTemplate(
       weighment,
-      weighmentDetails[weighmentDetails.length-1]
+      weighmentDetails[weighmentDetails.length - 1]
     );
 
     //var rawText = await this.printerService.rawTextPrint(weighment,
@@ -277,7 +273,7 @@ export class WeighmentReportComponent implements OnInit {
 
   editStatus(row: any, index: number) {
     const dialogRef = this.dialog.open(StatusDialogComponent, {
-      data: {rstNo: row.rstNo}
+      data: { rstNo: row.rstNo }
     });
 
     dialogRef.afterClosed().subscribe(async result => {
@@ -298,26 +294,5 @@ export class WeighmentReportComponent implements OnInit {
         }
       }
     });
-  }
-}
-
-@Component({
-  templateUrl: './status-dialog.component.html'
-})
-export class StatusDialogComponent {
-
-  dialogRef: MatDialogRef<StatusDialogComponent>;
-  newStatus: string;
-  title: string;
-
-  constructor(
-    private dialogReference: MatDialogRef<StatusDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) data: any,
-  ) {
-    this.dialogRef = dialogReference;
-
-    if (data.rstNo) {
-      this.title = `Update status(RST No-${data.rstNo})`
-    }
   }
 }

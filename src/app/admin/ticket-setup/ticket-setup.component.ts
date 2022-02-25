@@ -31,6 +31,8 @@ export class TicketSetupComponent implements OnInit {
   columnFieldDataSource: MatTableDataSource<TicketField>;
 
   newlineField: TicketField = TicketField.generateNewlineTicketField();
+  reverseFeedField: TicketField = TicketField.generateReverseFeedTicketField();
+
 
   constructor(
     private notifier: NotifierService,
@@ -96,6 +98,7 @@ export class TicketSetupComponent implements OnInit {
     }
 
     this.newlineField['id'] = await this.insertTicketField(this.newlineField, this.selectedTemplate.id);
+    this.reverseFeedField['id'] = await this.insertTicketField(this.reverseFeedField, this.selectedTemplate.id);
     this.notifier.notify("success", "Template details saved successfully");
   }
 
@@ -188,7 +191,7 @@ export class TicketSetupComponent implements OnInit {
     }
 
     ticketFields.push(this.newlineField);
-    
+    ticketFields.push(this.reverseFeedField);
     ticketFields = ticketFields.sort(function (a, b) {
       if ((a['row'] - b['row']) === 0) {
         return a['col'] - b['col'];
@@ -224,6 +227,10 @@ export class TicketSetupComponent implements OnInit {
 
     if (mFields['newlineField']) {
       this.newlineField = mFields['newlineField'];
+    }
+
+    if (mFields['reverseFeedField']) {
+      this.reverseFeedField = mFields['reverseFeedField'];
     }
 
     this.textFieldDataSource.data = TicketField.generateFreeTextRecords(freetextFields);

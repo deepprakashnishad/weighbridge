@@ -3,9 +3,25 @@ import win32print
 
 def formatData(args):
   cnt = 1;
+  decimal_form_feed = 12
+  decimal_line_feed = 10
+  decimal_carriage_return = 13
+
   byteArr = bytearray()
+
+  # Reverse feed
+  # byteArr.extend(bytes("\u001bj2", "utf-8"))
+
+  # byteArr.extend(bytes("\u001b$0", "utf-8"))
+
+  # ESC J Advance print position vertically
+  # param n where 0 <= n <=255
+  # Advances vertical position n/216 or n/180 inches
+
+  # Set page size in terms of line numbers
+  # byteArr.extend(bytes("\u001bC10", "utf-8"))
+  print(len(args))
   while(cnt < len(args)):
-    print(cnt)
     if args[cnt]=="R":
       temp = bytes (args[cnt+1], "utf-8")
       byteArr.extend(temp)
@@ -25,9 +41,23 @@ def formatData(args):
       byteArr.extend(temp);
       cnt = cnt+1
       continue
+    elif args[cnt]=="lf":
+      mCnt = 0
+      while mCnt < int(args[cnt+1]):
+        mCnt = mCnt+1
+        byteArr.extend(bytes("\n", "utf-8"))
+        #byteArr.extend(bytes("\u001bJ1", "utf-8"))
+    elif args[cnt]=="rf":
+      mCnt = 0
+      while mCnt < int(args[cnt+1]):
+        byteArr.extend(bytes("\u001bj2", "utf-8"))
+        mCnt = mCnt+1
       
     cnt = cnt+2;
-
+  #byteArr.extend(decimal_form_feed .to_bytes(2, 'big'))
+  byteArr.extend(decimal_carriage_return.to_bytes(2, 'big'))
+  byteArr.extend(decimal_line_feed.to_bytes(2, 'big'))
+  print(byteArr)
   mBytes = bytes(byteArr)
   return mBytes
     

@@ -25,12 +25,13 @@
 	</mat-menu>
 	<mat-menu #reports="matMenu">
 		<button mat-menu-item (click)="navigateTo('reports', 'reports')" *ngIf="isAuthorized(8)">Weightment Reports</button>
-		<!--<button mat-menu-item (click)="navigateTo('reports/audit-log', 'reports')" *ngIf="isAuthorized(8)">Audit Log</button>-->
+		<button mat-menu-item (click)="navigateTo('reports/complete-weighment-report', 'reports')" *ngIf="isAuthorized(8)">Completed Weighments Report</button>
+		<button mat-menu-item (click)="navigateTo('reports/audit-log', 'reports')" *ngIf="isAuthorized(8)">Audit Log</button>
 		<button mat-menu-item (click)="navigateTo('reports/custom-reports', 'reports')" *ngIf="isAuthorized(8)">Custom Reports</button>
-		<button mat-menu-item (click)="navigateTo('reports/daily-collection-report', 'reports')" *ngIf="isAuthorized(8)">Daily Operator Collection Report</button>
-		<button mat-menu-item (click)="navigateTo('reports/zero-check-report', 'reports')" *ngIf="isAuthorized(8)">Zero Check Report</button>
-		<button mat-menu-item (click)="navigateTo('reports/notification-log', 'reports')" *ngIf="isAuthorized(8)">Notification Log</button>
-		<!--<button mat-menu-item (click)="navigateTo('reports/theft-detection-report', 'reports')" *ngIf="isAuthorized(8)">Theft Detection Report</button>-->
+	<button mat-menu-item (click)="navigateTo('reports/daily-collection-report', 'reports')" *ngIf="isAuthorized(8)">Daily Operator Collection Report</button>
+	<button mat-menu-item (click)="navigateTo('reports/zero-check-report', 'reports')" *ngIf="isAuthorized(8)">Zero Check Report</button>
+	<button mat-menu-item (click)="navigateTo('reports/notification-log', 'reports')" *ngIf="isAuthorized(8)">Notification Log</button>
+	<button mat-menu-item (click)="navigateTo('reports/theft-detection-report', 'reports')" *ngIf="isAuthorized(8)">Theft Detection Report</button>
 	</mat-menu>
 	<mat-menu #administration="matMenu">
 		<button mat-menu-item (click)="navigateTo('admin')" *ngIf="isAuthorized(2)">Data Setup</button>

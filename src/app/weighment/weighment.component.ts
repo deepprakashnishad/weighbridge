@@ -139,9 +139,6 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
         if (Math.abs(parseFloat(this.currentWeight)) <= parseInt(sessionStorage.getItem("zero_tolerance"))) {
           this.zeroResetDone = true;
         }
-
-        console.log(this.cnt);
-        console.log(this.isWeightStable);
         if (this.stableWeightCheckEnabled) {
           if (parseInt(sessionStorage.getItem("allowed_variation")) >=
             Math.abs(this.prevWeight - currWeight['weight'])) {
@@ -371,10 +368,12 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       .replace("{secondWeight}", this.weighmentDetail.secondWeight.toString())
       .replace("{secondUnit}", this.weighmentDetail.secondUnit ? this.weighmentDetail.secondUnit: "Kg")
       .replace("{secondWeightUser}", this.authService.getTokenOrOtherStoredData("id"))
-      .replace("{netWeight}", this.weighmentDetail.netWeight ? this.weighmentDetail.netWeight?.toString() : null)
+      .replace("{netWeight}",
+        this.weighmentDetail.netWeight ? this.weighmentDetail.netWeight?.toString() :
+          Math.abs(this.weighmentDetail.firstWeight - this.weighmentDetail.secondWeight).toString())
       .replace("{remark}", this.dbService.escapeString(this.weighmentDetail.remark))
       .replace("{id}", this.weighment.weighmentDetails[this.weighment.weighmentDetails.length-1].id.toString());
-
+    console.log(stmt);
     var result = await this.dbService.executeSyncDBStmt("UPDATE", stmt);
     if (result) {
       this.weighment.weighmentDetails = await this.getWeighmentDetails(this.weighment.rstNo);

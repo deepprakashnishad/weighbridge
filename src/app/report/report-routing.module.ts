@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from './../authentication/auth-guard.service';
 import { CanDeactivateGuardService } from './../authentication/can-deactivate-guard.service';
 import { AuditLogComponent } from './audit-log/audit-log.component';
+import { CompleteWeighmentReportComponent } from './complete-weighment-report/complete-weighment-report.component';
 import { CustomReportsComponent } from './custom-reports/custom-reports.component';
 import { DailyCollectionReportComponent } from './daily-collection-report/daily-collection-report.component';
 import { NotificationLogComponent } from './notification-log/notification-log.component';
@@ -31,7 +32,14 @@ const routes: Routes = [
 				canActivate: [AuthGuardService], 
 				canDeactivate:[CanDeactivateGuardService],
 				data: { title: 'Audit log', permissions: []}
-			},
+      },
+      {
+        path: 'complete-weighment-report',
+        component: CompleteWeighmentReportComponent,
+        canActivate: [AuthGuardService],
+        canDeactivate: [CanDeactivateGuardService],
+        data: { title: 'Complete Weighment Report', permissions: [] }
+      },
 			{
 				path: 'custom-reports', 
 				component: CustomReportsComponent,

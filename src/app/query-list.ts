@@ -31,6 +31,17 @@ export class QueryList{
     FORMAT(secondWeightDatetime, '{date_format_code}') as secondWeightDatetime, \
     secondWeightUser, remark, netWeight FROM weighment w, weighment_details wd WHERE w.rstNo=wd.weighmentRstNo";
 
+  static readonly GET_COMPLETED_RECORDS = "SELECT w.*, id, weighmentRstNo, material, supplier, \
+    firstWeighBridge, firstUnit, firstWeight, \
+    FORMAT(firstWeightDatetime, '{date_format_code}') as firstWeightDatetime, \
+    firstWeightUser, secondWeighBridge, secondUnit, secondWeight, \
+    FORMAT(secondWeightDatetime, '{date_format_code}') as secondWeightDatetime, \
+    secondWeightUser, remark, netWeight FROM weighment w, weighment_details wd \
+    WHERE w.rstNo = wd.weighmentRstNo AND w.status = 'complete' AND wd.weighmentRstNo IN ( \
+    SELECT MAX(weighmentRstNo) \
+    FROM weighment w, weighment_details wd \
+    WHERE w.rstNo = wd.weighmentRstNo";
+
   //static readonly GET_WEIGHMENTS_WITH_LATEST_DETAIL = "SELECT * FROM weighment w  RIGHT JOIN  \
   //    (SELECT id, weighmentRstNo, material, supplier, firstWeighBridge, firstUnit, firstWeight, \
   //  convert(varchar, firstWeightDatetime, 20) as firstWeightDatetime, firstWeightUser, secondWeighBridge, secondUnit, secondWeight, \

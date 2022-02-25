@@ -57,6 +57,7 @@ export class Weighment{
     weighment.transporterName = Utils.randomStringGenerator(12);
     weighment.vehicleNo = Utils.randomStringGenerator(2) + Utils.randomNumberGenerator(2) + Utils.randomStringGenerator(2) + Utils.randomNumberGenerator(4);
     weighment.weighmentType = weighmentType;
+    weighment.misc = Utils.randomStringGenerator(12);
     var min = 10000;
     var max = 99999;
     for (var i = 0; i < weighmentDetailCnt; i++) {

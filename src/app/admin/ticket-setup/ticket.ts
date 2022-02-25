@@ -61,11 +61,23 @@ export class TicketField {
     return newlineField;
   }
 
+  static generateReverseFeedTicketField() {
+    var reverseFeedField = new TicketField();
+    reverseFeedField.col = 7;
+    reverseFeedField.displayName = "Reverse Feed";
+    reverseFeedField.field = "reverseFeed";
+    reverseFeedField.row = -1;
+    reverseFeedField.isIncluded = true;
+    reverseFeedField.type = "reverseFeed";
+    return reverseFeedField;
+  }
+
   static fromJSON(result, isSeparateReqd) {
     var ticketFields = [];
     var freetextFields = [];
     var weighDetailFields = [];
     var newLineField;
+    var reverseFeedField;
     for (var i = 0; i < result.length; i++) {
       var temp: TicketField = new TicketField();
       temp.col = result[i]['col'];
@@ -86,6 +98,8 @@ export class TicketField {
           freetextFields.push(temp);
         } else if (temp.type === "newline") {
           newLineField = temp;
+        } else if (temp.type === "reverseFeed") {
+          reverseFeedField = temp;
         }
       } else {
         ticketFields.push(temp);
@@ -96,7 +110,8 @@ export class TicketField {
         "ticketFields": ticketFields,
         "freetextFields": freetextFields,
         "weighDetailFields": weighDetailFields,
-        "newlineField": newLineField
+        "newlineField": newLineField,
+        "reverseFeedField": reverseFeedField
       };
     } else {
       return ticketFields;

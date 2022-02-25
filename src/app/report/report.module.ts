@@ -10,6 +10,7 @@ import { ZeroCheckReportComponent } from './zero-check-report/zero-check-report.
 import { ReportRoutingModule } from './report-routing.module';
 import { StatusDialogComponent, WeighmentReportComponent } from './weighment-report/weighment-report.component';
 import { PreviewDialogComponent } from './preview-dialog/preview-dialog.component';
+import { CompleteWeighmentReportComponent } from './complete-weighment-report/complete-weighment-report.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { PreviewDialogComponent } from './preview-dialog/preview-dialog.componen
     WeighmentReportComponent,
     ZeroCheckReportComponent,
     PreviewDialogComponent,
-    StatusDialogComponent
+    StatusDialogComponent,
+    CompleteWeighmentReportComponent
   ],
   exports: [
   ],

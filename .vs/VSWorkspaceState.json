@@ -4,10 +4,10 @@
     "\\app",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\weighment",
-    "\\src\\app\\weighment\\weighment-search-dialog",
+    "\\src\\app\\admin",
+    "\\src\\app\\admin\\ticket-setup",
     "\\src\\environments"
   ],
-  "SelectedNode": "\\package.json",
+  "SelectedNode": "\\app\\electron-main.js",
   "PreviewInSolutionExplorer": false
 }
