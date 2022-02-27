@@ -49,9 +49,9 @@ def formatData(args):
         #byteArr.extend(bytes("\u001bJ1", "utf-8"))
     elif args[cnt]=="rf":
       mCnt = 0
-      while mCnt < int(args[cnt+1]):
-        byteArr.extend(bytes("\u001bj2", "utf-8"))
-        mCnt = mCnt+1
+      # while mCnt < int(args[cnt+1]):
+      #  byteArr.extend(bytes("\u001bj2", "utf-8"))
+      #  mCnt = mCnt+1
       
     cnt = cnt+2;
   #byteArr.extend(decimal_form_feed .to_bytes(2, 'big'))

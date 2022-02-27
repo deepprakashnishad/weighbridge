@@ -55,6 +55,9 @@ export class PreviewDialogComponent implements OnInit {
     if (data['weighmentDetail']) {
       this.weighmentDetail = data['weighmentDetail'];
     }
+    if (data['printingType']) {
+      this.printerType = data['printingType'];
+    }
   }
 
   ngOnInit() {

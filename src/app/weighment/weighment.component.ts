@@ -121,6 +121,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   }
 
   updateCurrentWeight() {
+    return;
     if (!this.currData) {
       this.isWeightStable = false;
       this.currentWeight = "Err!";
@@ -297,6 +298,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       .replace("{reqId}", this.weighment.reqId ? this.weighment.reqId.toString() : null)
       .replace("{gatePassNo}", this.weighment.gatePassNo ? this.weighment.gatePassNo.toString() : null)
       .replace("{weighmentType}", this.weighment.weighmentType)
+      .replace("{vehicleNo}", this.weighment.vehicleNo)
       .replace("{transporterCode}", this.weighment?.transporterCode ? this.weighment?.transporterCode.toString() : "")
       .replace("{transporterName}", this.dbService.escapeString(this.weighment?.transporterName))
       .replace("{status}", status)

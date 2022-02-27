@@ -7,7 +7,7 @@ export class QueryList{
   VALUES({rstNo}, '{vehicleNo}', '{scrollNo}', '{reqId}', '{gatePassNo}', '{weighmentType}', \
   '{poDetails}', {transporterCode}, '{transporterName}', '{status}', GETDATE(), '{scrollDate}', '{reqIdDate}', '{misc}');";
   static readonly UPDATE_WEIGHMENT: string = "UPDATE weighment SET scrollNo='{scrollNo}', reqId='{reqId}', \
-        gatePassNo='{gatePassNo}', weighmentType='{weighmentType}', transporterCode='{transporterCode}',\
+        gatePassNo='{gatePassNo}', weighmentType='{weighmentType}', transporterCode='{transporterCode}', vehicleNo='{vehicleNo}'\
         transporterName='{transporterName}', status='{status}', scrollDate='{scrollDate}', reqIdDate='{reqIdDate}', misc='{misc}' WHERE rstNo={rstNo}";
   static readonly UPDATE_WEIGHMENT_STATUS: string = "UPDATE weighment SET status='{status}' WHERE rstNo={rstNo}";
   //Weighment Details
