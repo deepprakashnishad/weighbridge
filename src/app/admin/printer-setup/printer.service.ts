@@ -6,6 +6,9 @@ import { QueryList } from '../../query-list';
 import { Weighment, WeighmentDetail } from '../../weighment/weighment';
 import { TicketField } from '../ticket-setup/ticket';
 import { TicketService } from '../ticket-setup/ticket.service';
+import { User } from '../user-management/user';
+
+const USER_PRINT_FIELD = "username";
 
 @Injectable({
   providedIn: 'root'
@@ -147,9 +150,6 @@ export class PrinterService {
       var field = fields[i];
       var data = "";
       if (field.type === "newline") {
-        console.log(field.col)
-        console.log(currY)
-        console.log(currY - field.col)
         if (field.col > currY) {
           mText = mText + "<br/>".repeat(field.col-currY);
         } else {
@@ -171,8 +171,14 @@ export class PrinterService {
           data = field.displayName + "&nbsp;".repeat(minLabelLength - field.displayName?.length) + separator;
           var valLength = 0;
           if (field.field.indexOf("weighDetails") > -1) {
-            data = data + `${weighmentDetail[field.field.substr("weighDetails_".length)]}`;
-            valLength = weighmentDetail[field.field.substr("weighDetails_".length)].toString().length;
+            if (field.field.substr("weighDetails_".length) === "firstWeightUser" || field.field.substr("weighDetails_".length) === "secondWeightUser") {
+              data = data + `${weighmentDetail[field.field.substr("weighDetails_".length)][USER_PRINT_FIELD]}`;
+              valLength = weighmentDetail[field.field.substr("weighDetails_".length)][USER_PRINT_FIELD]?.toString().length;
+            } else if (weighmentDetail[field.field.substr("weighDetails_".length)] != null &&
+              weighmentDetail[field.field.substr("weighDetails_".length)] != undefined) {
+              data = data + `${weighmentDetail[field.field.substr("weighDetails_".length)]}`;
+              valLength = weighmentDetail[field.field.substr("weighDetails_".length)].toString().length;
+            }            
           } else {
             data = data + `${weighment[field.field]}`;
             valLength = weighment[field.field].toString().length;
@@ -246,9 +252,6 @@ export class PrinterService {
       }
 
       if (field.type === "newline") {
-        console.log(field.col)
-        console.log(currY)
-        console.log(currY-field.col)
         if (field.col > currY) {
           mText = mText + " lf " + (field.col - currY);
         } else {
@@ -271,7 +274,12 @@ export class PrinterService {
         if (field.field.indexOf("weighmentDetails") === -1) {
           var data = "";
           if (field.field.indexOf("weighDetails") > -1) {
-            data = ` ${field.font} \"${field.displayName}${" ".repeat(minLabelSize - field.displayName?.length)}: ${weighmentDetail[field.field.substr("weighDetails_".length)]!=undefined ? weighmentDetail[field.field.substr("weighDetails_".length)]:""}\"`;
+            if (field.field.substr("weighDetails_".length) === "firstWeightUser" || field.field.substr("weighDetails_".length) === "secondWeightUser") {
+              //data = data + `${weighmentDetail[field.field.substr("weighDetails_".length)][USER_PRINT_FIELD]}`;
+              data = ` ${field.font} \"${field.displayName}${" ".repeat(minLabelSize - field.displayName?.length)}: ${weighmentDetail[field.field.substr("weighDetails_".length)] != undefined ? weighmentDetail[field.field.substr("weighDetails_".length)][USER_PRINT_FIELD] : ""}\"`;
+            } else {
+              data = ` ${field.font} \"${field.displayName}${" ".repeat(minLabelSize - field.displayName?.length)}: ${weighmentDetail[field.field.substr("weighDetails_".length)] != undefined ? weighmentDetail[field.field.substr("weighDetails_".length)] : ""}\"`;
+            }
           } else {
             if (weighment[field.field]!==undefined) {
               data = ` ${field.font} \"${field.displayName}${" ".repeat(minLabelSize - field.displayName.length)}: ${weighment[field.field]}\"`;
@@ -305,13 +313,12 @@ export class PrinterService {
         maxLength = field.displayName?.length > maxLength ? field.displayName.length : maxLength;
       }      
     }
-    console.log("Maxlength - " + maxLength);
     return maxLength;
   }
 
   // Gets min length required by each column
   getMinLengthMap(weighmentDetails: Array<WeighmentDetail>, fields: Array<TicketField>) {
-    var defaultAddedLength = 2;
+    var defaultAddedLength = 3;
     var minLengthMap = {};
     for (var field of fields) {
       minLengthMap[field.field] = field.displayName.length;
@@ -324,8 +331,8 @@ export class PrinterService {
           minLengthMap[field.field] = (i + 1).toString()?.length > minLengthMap[field.field] ?
             (i + 1).toString()?.length : minLengthMap[field.field];
         } else {
-          minLengthMap[field.field] = data[field.field]?.length > minLengthMap[field.field] ?
-            data[field.field]?.length : minLengthMap[field.field];
+          minLengthMap[field.field] = data[field.field]?.toString().length > minLengthMap[field.field] ?
+            data[field.field]?.toString().length : minLengthMap[field.field];
         }        
       }
     }
@@ -433,7 +440,7 @@ export class PrinterService {
       currY = 0;
     }
 
-    return `<table style="margin-left:${padding}ch">${mText}</table>`;
+    return `<table style="width:100%; margin-left:${padding}ch">${mText}</table>`;
   }
 
   preparePreviewWeighmentDetailsHeader(fields: Array<TicketField>) {
@@ -460,30 +467,46 @@ export class PrinterService {
 
   getTotalNetWeight(weighmentDetails: Array<WeighmentDetail>) {
     var firstWeight = weighmentDetails[0].firstWeight;
-    var secondWeight, netWeight, secondWeightDatetime;
+    var firstWeightUser = weighmentDetails[0].firstWeightUser;
+
+    var secondWeight, netWeight, secondWeightDatetime, secondWeightUser;
     if (weighmentDetails[weighmentDetails.length - 1].secondWeight != null && weighmentDetails[weighmentDetails.length - 1].secondWeight != undefined) {
       secondWeight = weighmentDetails[weighmentDetails.length - 1].secondWeight;
       secondWeightDatetime = weighmentDetails[weighmentDetails.length - 1].secondWeightDatetime;
+      secondWeightUser = weighmentDetails[weighmentDetails.length - 1].secondWeightUser;
     } else if (weighmentDetails.length > 1 && weighmentDetails[weighmentDetails.length - 2].secondWeight != null && weighmentDetails[weighmentDetails.length - 1].secondWeight != undefined) {
       secondWeight = weighmentDetails[weighmentDetails.length - 2].secondWeight;
       secondWeightDatetime = weighmentDetails[weighmentDetails.length - 2].secondWeightDatetime;
+      secondWeightUser = weighmentDetails[weighmentDetails.length - 2].secondWeightUser;
     }
 
     if (secondWeight != undefined && secondWeight != null) {
       netWeight = Math.abs(firstWeight - secondWeight);
     }
 
-    return { "wt1": firstWeight, "wt2": secondWeight, "netWeight": netWeight, "wt2Datetime": secondWeightDatetime };
+    return {
+      "wt1": firstWeight,
+      "wt2": secondWeight,
+      "netWeight": netWeight,
+      "wt2Datetime": secondWeightDatetime,
+      'firstWeightUser': firstWeightUser,
+      'secondWeightUser': secondWeightUser,
+    };
   }
 
   updateWeighmentDetail(weighmentDetail: WeighmentDetail, weighmentDetails: Array<WeighmentDetail>) {
     var clone = Object.assign({}, weighmentDetail);
     var result = this.getTotalNetWeight(weighmentDetails);
+    console.log(result);
     clone.firstWeight = result['wt1'];
     clone.secondWeight = result['wt2'];
     clone.netWeight = result['netWeight'];
     clone.firstWeightDatetime = weighmentDetails[0].firstWeightDatetime;
     clone.secondWeightDatetime = result['wt2Datetime'];
+    clone.firstWeightUser = result['firstWeightUser'];
+    clone.secondWeightUser = result['secondWeightUser'];
+
+    console.log(clone);
     return clone;
   }
 }

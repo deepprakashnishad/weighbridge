@@ -44,7 +44,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row
             *matRowDef="let row; columns: displayedColumns; let i=index;"
-            (click)="navigateTo('weighment', row.rstNo)"
+            (dblclick)="navigateTo('weighment', row.rstNo)"
             [class.pending-long] = "isPendingForLong(row)"></tr>
       </table>
       <!--<mat-list dense>

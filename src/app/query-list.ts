@@ -7,35 +7,46 @@ export class QueryList{
   VALUES({rstNo}, '{vehicleNo}', '{scrollNo}', '{reqId}', '{gatePassNo}', '{weighmentType}', \
   '{poDetails}', {transporterCode}, '{transporterName}', '{status}', GETDATE(), '{scrollDate}', '{reqIdDate}', '{misc}');";
   static readonly UPDATE_WEIGHMENT: string = "UPDATE weighment SET scrollNo='{scrollNo}', reqId='{reqId}', \
-        gatePassNo='{gatePassNo}', weighmentType='{weighmentType}', transporterCode='{transporterCode}', vehicleNo='{vehicleNo}'\
+        gatePassNo='{gatePassNo}', weighmentType='{weighmentType}', transporterCode='{transporterCode}', vehicleNo='{vehicleNo}', \
         transporterName='{transporterName}', status='{status}', scrollDate='{scrollDate}', reqIdDate='{reqIdDate}', misc='{misc}' WHERE rstNo={rstNo}";
   static readonly UPDATE_WEIGHMENT_STATUS: string = "UPDATE weighment SET status='{status}' WHERE rstNo={rstNo}";
   //Weighment Details
-  static readonly INSERT_WEIGHMENT_DETAIL: string = "INSERT INTO weighment_details(id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser, secondWeighBridge, secondWeight, secondUnit, secondWeightDatetime, secondWeightUser, remark, netWeight) VALUES({id}, {weighmentRstNo}, '{material}', '{supplier}', '{firstWeighBridge}', {firstWeight}, '{firstUnit}', {firstWeightDatetime}, {firstWeightUser}, {secondWeighBridge}, {secondWeight}, '{secondUnit}', {secondWeightDatetime}, {secondWeightUser}, '{remark}', {netWeight})";
+  static readonly INSERT_WEIGHMENT_DETAIL: string = "INSERT INTO weighment_details( \
+    id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser, \
+    secondWeighBridge, secondWeight, secondUnit, secondWeightDatetime, secondWeightUser, remark, netWeight, customer) \
+    VALUES({id}, {weighmentRstNo}, '{material}', '{supplier}', '{firstWeighBridge}', {firstWeight}, '{firstUnit}', \
+    {firstWeightDatetime}, {firstWeightUser}, {secondWeighBridge}, {secondWeight}, '{secondUnit}', {secondWeightDatetime}, \
+    {secondWeightUser}, '{remark}', {netWeight}, '{customer}')";
   static readonly SELECT_WEIGHMENT_DETAILS_BY_WEIGHBRIDGE: string = "SELECT * FROM weighment_details WHERE firstWeighBridge='{firstWeighBridge}' OR secondWeighBridge='{secondWeighBridge}'";
-  static readonly INSERT_FIRST_WEIGHMENT_DETAIL: string = "INSERT INTO weighment_details(id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser, remark) VALUES({id}, {weighmentRstNo}, '{material}', '{supplier}', '{firstWeighBridge}', {firstWeight}, '{firstUnit}', GETDATE(), {firstWeightUser}, '{remark}')";
-  static readonly UPDATE_SECOND_WEIGHMENT_DETAIL: string = "UPDATE weighment_details SET material='{material}', supplier='{supplier}', secondWeighBridge='{secondWeighBridge}', secondWeight={secondWeight}, secondUnit='{secondUnit}', secondWeightDatetime=GETDATE(), secondWeightUser={secondWeightUser}, remark='{remark}', netWeight={netWeight} WHERE id={id}";
+  static readonly INSERT_FIRST_WEIGHMENT_DETAIL: string = "INSERT INTO weighment_details( \
+  id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser, remark, customer) \
+  VALUES({id}, {weighmentRstNo}, '{material}', '{supplier}', '{firstWeighBridge}', {firstWeight}, '{firstUnit}', \
+  GETDATE(), {firstWeightUser}, '{remark}', '{customer}') ";
+  static readonly UPDATE_SECOND_WEIGHMENT_DETAIL: string = "UPDATE weighment_details SET material='{material}', \
+  supplier = '{supplier}', secondWeighBridge = '{secondWeighBridge}', secondWeight = {secondWeight}, \
+  secondUnit = '{secondUnit}', secondWeightDatetime = GETDATE(), secondWeightUser = {secondWeightUser}, remark = '{remark}', \
+  netWeight = {netWeight}, customer='{customer}' WHERE id = {id}";
   static readonly UPDATE_WEIGHMENT_DETAIL: string = "UPDATE weighment_details SET {values} WHERE id='{id}'";
   static readonly GET_WEIGHMENTS = "SELECT * FROM weighment ";
   static readonly GET_PENDING_RECORDS = "SELECT rstNo, vehicleNo, weighmentType, convert(varchar, createdAt, 20) as createdAt\
       FROM weighment WHERE status='Pending'";
   static readonly GET_WEIGHMENT_DETAILS = "SELECT id, weighmentRstNo, material, supplier, firstWeighBridge, firstUnit, firstWeight, \
     FORMAT(firstWeightDatetime, '{date_format_code}') as firstWeightDatetime, firstWeightUser, secondWeighBridge, secondUnit, secondWeight, \
-    FORMAT(secondWeightDatetime, '{date_format_code}') as secondWeightDatetime, secondWeightUser, remark, netWeight \
+    FORMAT(secondWeightDatetime, '{date_format_code}') as secondWeightDatetime, secondWeightUser, remark, netWeight, customer \
     FROM weighment_details WHERE weighmentRstNo={rstNo} ORDER BY id";
 
   static readonly GET_WEIGHMENTS_WITH_LATEST_DETAIL = "SELECT w.*, id, weighmentRstNo, material, supplier, \
     firstWeighBridge, firstUnit, firstWeight, \
     FORMAT(firstWeightDatetime, '{date_format_code}') as firstWeightDatetime, \
     firstWeightUser, secondWeighBridge, secondUnit, secondWeight, \
-    FORMAT(secondWeightDatetime, '{date_format_code}') as secondWeightDatetime, \
+    FORMAT(secondWeightDatetime, '{date_format_code}') as secondWeightDatetime, customer, \
     secondWeightUser, remark, netWeight FROM weighment w, weighment_details wd WHERE w.rstNo=wd.weighmentRstNo";
 
   static readonly GET_COMPLETED_RECORDS = "SELECT w.*, id, weighmentRstNo, material, supplier, \
     firstWeighBridge, firstUnit, firstWeight, \
     FORMAT(firstWeightDatetime, '{date_format_code}') as firstWeightDatetime, \
     firstWeightUser, secondWeighBridge, secondUnit, secondWeight, \
-    FORMAT(secondWeightDatetime, '{date_format_code}') as secondWeightDatetime, \
+    FORMAT(secondWeightDatetime, '{date_format_code}') as secondWeightDatetime, customer  \
     secondWeightUser, remark, netWeight FROM weighment w, weighment_details wd \
     WHERE w.rstNo = wd.weighmentRstNo AND w.status = 'complete' AND wd.weighmentRstNo IN ( \
     SELECT MAX(weighmentRstNo) \
@@ -60,7 +71,7 @@ export class QueryList{
   //SearchFields
   static readonly INSERT_SEARCH_FIELD: string = "INSERT INTO search_field(id, displayName, entryMode, inOutMode) VALUES({id}, '{displayName}', '{entryMode}', '{inOutMode}')";
   //static readonly UPDATE_SEARCH_FIELD: string = "UPDATE search_field(displayName, entryMode, inOutMode, mValues) SET VALUES('{displayName}', '{entryMode}', '{inOutMode}', '{mValues}') WHERE id={id}";
-  static readonly UPDATE_SEARCH_FIELD: string = "UPDATE search_field  SET displayName='{displayName}', entryMode='{entryMode}', inOutMode='{inOutMode}' WHERE id={id}";
+  static readonly UPDATE_SEARCH_FIELD: string = "UPDATE search_field  SET displayName='{displayName}',fieldName='{fieldName}', entryMode='{entryMode}', inOutMode='{inOutMode}', enable={enable} WHERE id={id}";
   static readonly DELETE_SEARCH_FIELD: string = "DELETE search_field where id={id}";
   static readonly GET_ALL_SEARCH_FIELD: string = "SELECT * FROM search_field";
 
@@ -113,6 +124,7 @@ export class QueryList{
 
   //Application data
   static readonly GET_APP_SETTINGS: string = "SELECT * FROM app_data";
+  static readonly GET_SEARCH_FIELDS: string = "SELECT * FROM search_field";
   static readonly UPDATE_APP_SETTING: string = "UPDATE app_data set mValue='{mValue}' WHERE field='{field}'"
 
   //DB Backup

@@ -35,10 +35,11 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   @ViewChild('transporterCntl') transporterCntl: TagSelectorComponent;
 
   currDate = new Date();
-  gatePassNo: string;
-  poDetails: string;
-  supplier: string;
-  material: string;
+  gatePassNo: string="";
+  poDetails: string="";
+  supplier: string = "";
+  material: string = "";
+  customer: string = "";
   firstWeight: number;
   secondWeight: number;
   netWeight: number;
@@ -69,6 +70,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   enableOutboundSubcontract: boolean;
   enableOthers: boolean;
   enableInternal: boolean;
+
+  searchFields: any = JSON.parse(sessionStorage.getItem("search_fields"));
   
   constructor(
     private sharedDataService: SharedDataService,
@@ -118,10 +121,19 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
         this.weighbridge = this.selectedIndicator.wiName;
       }
     });
+
+    setInterval(() => {
+      this.currDate = new Date();
+    }, 1000*60);
+  }
+
+  isSeachFieldEnabled(searchFieldName) {
+    return Object.keys(this.searchFields).indexOf(searchFieldName) > -1 &&
+      (this.searchFields[searchFieldName]["inOutMode"] === "GENERIC" ||
+        this.weighment.weighmentType.toLowerCase().indexOf(this.searchFields[searchFieldName]["inOutMode"].toLowerCase())>-1);
   }
 
   updateCurrentWeight() {
-    return;
     if (!this.currData) {
       this.isWeightStable = false;
       this.currentWeight = "Err!";
@@ -168,27 +180,26 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   }
 
   parseQRString(inputStr: string) {
-    if (isString(inputStr) && (inputStr.match(/#/g) || []).length === 2) {
-      var inputs = inputStr?.split("#");
-      this.weighment.vehicleNo = inputs[1];
-      this.weighment.scrollDate = inputs[0];
-      this.weighment.scrollNo = inputs[2];
-      this.weighment.weighmentType = "inbound";
-    }
-    if (isString(inputStr) && (inputStr.match(/:/g) || []).length === 5) {
-      var inputs = inputStr?.split(":");
-      this.weighment.reqId = parseInt(inputs[0]);
-      this.weighment.reqIdDate = inputs[1];
-      this.weighment.gatePassNo = parseInt(inputs[2]);
-      this.weighment.vehicleNo = inputs[3];
-      this.weighment.transporterCode = parseInt(inputs[4]);
-      this.weighment.transporterName = inputs[5];
-      this.transporter = `${this.weighment.transporterCode}-${this.weighment.transporterName}`;
-      this.weighment.weighmentType = "outbound_domestic";
-    }
+    //if (isString(inputStr) && (inputStr.match(/#/g) || []).length === 2) {
+    //  var inputs = inputStr?.split("#");
+    //  this.weighment.vehicleNo = inputs[1];
+    //  this.weighment.scrollDate = inputs[0];
+    //  this.weighment.scrollNo = inputs[2];
+    //  this.weighment.weighmentType = "inbound";
+    //}
+    //if (isString(inputStr) && (inputStr.match(/:/g) || []).length === 5) {
+    //  var inputs = inputStr?.split(":");
+    //  this.weighment.reqId = parseInt(inputs[0]);
+    //  this.weighment.reqIdDate = inputs[1];
+    //  this.weighment.gatePassNo = parseInt(inputs[2]);
+    //  this.weighment.vehicleNo = inputs[3];
+    //  this.weighment.transporterCode = parseInt(inputs[4]);
+    //  this.weighment.transporterName = inputs[5];
+    //  this.transporter = `${this.weighment.transporterCode}-${this.weighment.transporterName}`;
+    //  this.weighment.weighmentType = "outbound_domestic";
+    //}
 
     if (this.weighment.vehicleNo) {
-      //this.weighment.vehicleNo = Utils.removeWhiteSpaces(this.weighment.vehicleNo);
       this.getWeighment({ vehicleNo: this.weighment.vehicleNo, status: "pending" });
     } else if (this.weighment.rstNo) {
       this.getWeighment({ rstNo: this.weighment.rstNo, status: "pending" });
@@ -211,6 +222,10 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
 
   materialSelected(event) {
     this.weighmentDetail.material = `${event.code}-${event.mValue}`;
+  }
+
+  customerSelected(event) {
+    this.weighmentDetail.customer = `${event.code}-${event.mValue}`;
   }
 
   async save() {
@@ -274,6 +289,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     var stmt = QueryList.INSERT_FIRST_WEIGHMENT_DETAIL
       .replace("{weighmentRstNo}", this.weighment.rstNo.toString())
       .replace("{supplier}", this.dbService.escapeString(this.weighmentDetail.supplier))
+      .replace("{customer}", this.dbService.escapeString(this.weighmentDetail.customer))
       .replace("{material}", null)
       .replace("{firstWeighBridge}", this.dbService.escapeString(weighBridge))
       .replace("{firstWeight}", firstWeight.toString())
@@ -306,7 +322,6 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       .replace("{misc}", this.dbService.escapeString(this.weighment.misc))
       .replace("{scrollDate}", this.weighment.scrollDate ? this.weighment.scrollDate : '')
       .replace("{reqIdDate}", this.weighment.reqIdDate ? this.weighment.reqIdDate : '');
-
     var result = await this.dbService.executeSyncDBStmt("UPDATE", stmt);
     if (result > 0) {
       this.notifier.notify("success", "Weighment updated successfully");
@@ -366,6 +381,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     var stmt = QueryList.UPDATE_SECOND_WEIGHMENT_DETAIL
       .replace("{material}", this.weighmentDetail.material ? this.weighmentDetail.material: null)
       .replace("{supplier}", this.weighmentDetail.supplier)
+      .replace("{customer}", this.weighmentDetail.customer ? this.weighmentDetail.customer:null)
       .replace("{secondWeighBridge}", this.weighbridge)
       .replace("{secondWeight}", this.weighmentDetail.secondWeight.toString())
       .replace("{secondUnit}", this.weighmentDetail.secondUnit ? this.weighmentDetail.secondUnit: "Kg")
@@ -465,15 +481,15 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       return false;
     }
 
-    if (this.weighment.weighmentType === "inbound" && (!this.weighment.scrollNo || !this.weighment.scrollDate)) {
-      this.notifier.notify("error", "Scroll number and scroll date are required for inbound");
-      return false;
-    }
+    //if (this.weighment.weighmentType === "inbound" && (!this.weighment.scrollNo || !this.weighment.scrollDate)) {
+    //  this.notifier.notify("error", "Scroll number and scroll date are required for inbound");
+    //  return false;
+    //}
 
-    if (this.weighment.weighmentType === "inbound" && this.weighment.scrollDate.length!==8) {
-      this.notifier.notify("error", "Scroll date must be of 8 digits");
-      return false;
-    }
+    //if (this.weighment.weighmentType === "inbound" && this.weighment.scrollDate.length!==8) {
+    //  this.notifier.notify("error", "Scroll date must be of 8 digits");
+    //  return false;
+    //}
 
     if (this.weighment.weighmentType === "inbound" &&
       this.weighmentDetail.secondWeight > this.weighmentDetail.firstWeight) {
@@ -496,18 +512,18 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
         this.notifier.notify("error", "Transporter name is required for outbound");
         return false;
       }
-      if (!this.weighment.reqId) {
-        this.notifier.notify("error", "Request id is required for outbound");
-        return false;
-      }
-      if (!this.weighment.reqIdDate) {
-        this.notifier.notify("error", "Request id date is required for outbound");
-        return false;
-      }
-      if (this.weighment.reqIdDate.length !== 8) {
-        this.notifier.notify("error", "Request id date must be of 8 digits");
-        return false;
-      }
+      //if (!this.weighment.reqId) {
+      //  this.notifier.notify("error", "Request id is required for outbound");
+      //  return false;
+      //}
+      //if (!this.weighment.reqIdDate) {
+      //  this.notifier.notify("error", "Request id date is required for outbound");
+      //  return false;
+      //}
+      //if (this.weighment.reqIdDate.length !== 8) {
+      //  this.notifier.notify("error", "Request id date must be of 8 digits");
+      //  return false;
+      //}
       if (!this.weighment.gatePassNo) {
         this.notifier.notify("error", "Gate pass no is required for outbound");
         return false;

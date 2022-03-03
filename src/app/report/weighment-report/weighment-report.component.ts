@@ -33,11 +33,14 @@ export class WeighmentReportComponent implements OnInit {
   searchDateType: string = 'firstWeightDatetime';
   reqId: string;
   scrollNo: string;
+  transporter: string;
+  transporterCode: string;
+  customer: string;
 
   status: string;
 
-  columns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'weighmentType', 'supplier', 'material', 'firstWeighBridge', 'firstWeight', 'firstWeightDatetime', 'firstWeightUser', 'gatePassNo', 'poDetails', 'secondWeighBridge', 'secondWeight', 'secondWeightDatetime', 'secondWeightUser', 'netWeight', 'scrollDate', 'reqIdDate', 'misc','syncFlag', 'status', 'action'];
-  displayedColumns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'weighmentType', 'supplier', 'material', 'firstWeighBridge', 'firstWeight', 'firstWeightDatetime', 'firstWeightUser', 'gatePassNo', 'poDetails', 'secondWeighBridge', 'secondWeight', 'secondWeightDatetime', 'secondWeightUser', 'netWeight', 'status', 'action'];
+  columns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'weighmentType', 'transporterCode','transporterName','customer','supplier', 'material', 'firstWeighBridge', 'firstWeight', 'firstWeightDatetime', 'firstWeightUser', 'gatePassNo', 'poDetails', 'secondWeighBridge', 'secondWeight', 'secondWeightDatetime', 'secondWeightUser', 'netWeight', 'scrollDate', 'reqIdDate', 'misc','syncFlag', 'status', 'action'];
+  displayedColumns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'weighmentType', 'transporterCode', 'transporterName', 'customer','supplier', 'material', 'firstWeighBridge', 'firstWeight', 'firstWeightDatetime', 'firstWeightUser', 'gatePassNo', 'poDetails', 'secondWeighBridge', 'secondWeight', 'secondWeightDatetime', 'secondWeightUser', 'netWeight', 'status', 'action'];
 
   dataSource: MatTableDataSource<any>;
   users: any = {};
@@ -53,6 +56,8 @@ export class WeighmentReportComponent implements OnInit {
 
   @ViewChild("cntlMaterial", { static: false }) cntlMaterial;
   @ViewChild("cntlSupplier", { static: false }) cntlSupplier;
+
+  searchFields: any = JSON.parse(sessionStorage.getItem("search_fields"));
   
   constructor(
     private dbService: MyDbService,
@@ -112,7 +117,7 @@ export class WeighmentReportComponent implements OnInit {
     }
 
     if (this.truckNumber) {
-      stmt = `${stmt} AND vehicleNo = '${Utils.removeWhiteSpaces(this.truckNumber)}'`;
+      stmt = `${stmt} AND vehicleNo = '${this.truckNumber }'`;
       isCriteriaAdded = true;
     }
 
@@ -141,6 +146,16 @@ export class WeighmentReportComponent implements OnInit {
       isCriteriaAdded = true;
     }
 
+    if (this.transporterCode) {
+      stmt = `${stmt} AND transporterCode = '${this.transporterCode}'`;
+      isCriteriaAdded = true;
+    }
+
+    if (this.customer) {
+      stmt = `${stmt} AND customer = '${this.customer}'`;
+      isCriteriaAdded = true;
+    }
+
     if (this.range.value.start && this.range.value.end) {
       var startDate = `${this.range.value.start.getMonth() + 1}/${this.range.value.start.getDate()}/${this.range.value.start.getFullYear()}`;
       if (this.fromTime) {
@@ -162,16 +177,28 @@ export class WeighmentReportComponent implements OnInit {
     stmt = `${stmt} ORDER BY w.rstNo ASC`;
     console.log(stmt);
     this.data = await this.dbService.executeSyncDBStmt("SELECT", stmt);
+    this.data = this.replaceUsersWithId(this.data);
     console.log(this.data);
-    this.replaceUsersWithId();
     this.dataSource.data = this.data;
   }
 
-  replaceUsersWithId() {
-    for (var i in this.data) {
-      this.data[i]['firstWeightUser'] = this.users[this.data[i]['firstWeightUser']];
-      this.data[i]['secondWeightUser'] = this.users[this.data[i]['secondWeightUser']];
+  replaceUsersWithId(weighmentDetails) {
+    for (var i in weighmentDetails) {
+      weighmentDetails[i]['firstWeightUser'] = this.users[weighmentDetails[i]['firstWeightUser']];
+      weighmentDetails[i]['secondWeightUser'] = this.users[weighmentDetails[i]['secondWeightUser']];
     }
+    return weighmentDetails;
+  }
+
+  transporterSelected(event) {
+    this.transporterCode = event?.code;
+    if (event?.code) {
+      this.transporter = `${event.code}-${event.mValue}`;
+    }
+  }
+
+  customerSelected(event) {
+    this.customer = `${event.code}-${event.mValue}`;
   }
 
   supplierSelected(event) {
@@ -188,6 +215,10 @@ export class WeighmentReportComponent implements OnInit {
     } else {
       this.material = undefined;
     }
+  }
+
+  isSeachFieldEnabled(searchFieldName) {
+    return Object.keys(this.searchFields).indexOf(searchFieldName) > -1;
   }
 
   search() {
@@ -228,6 +259,7 @@ export class WeighmentReportComponent implements OnInit {
       QueryList.GET_WEIGHMENT_DETAILS.replace("{rstNo}", weighment.rstNo)
         .replace(/{date_format_code}/gi, sessionStorage.getItem("date_format") != null ? sessionStorage.getItem("date_format") : "113")
     );
+    weighmentDetails = this.replaceUsersWithId(weighmentDetails);
     weighment['weighmentDetails'] = weighmentDetails;
 
     var data = await this.printerService.getPreviewDataWithTemplate(

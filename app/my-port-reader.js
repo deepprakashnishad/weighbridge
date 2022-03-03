@@ -100,8 +100,8 @@ function onReadData(data) {
     var tempWeight = '';
 
     if (data.length !== weighString['totalChars'] && weighString['variableLength'] === 0) {
-      log.verbose("Weigh string data length - " + data.length);
-      log.verbose("Expected Chars - "+weighString['totalChars']);
+      log.silly("Weigh string data length - " + data.length);
+      log.silly("Expected Chars - "+weighString['totalChars']);
       return;
     }
 
@@ -136,9 +136,9 @@ function onReadData(data) {
       }
     } else {
       var weighStartFlag = false;
-      log.verbose("Printing Charters");
+      log.silly("Printing Charters");
       for (var i = 0; i < data.length; i++) {
-        log.verbose(data.charAt(i));
+        log.silly(data.charAt(i));
         if (data.charCodeAt(i) == 32 || data.charCodeAt(i) == 0 || data.charCodeAt(i) == 2) {
           continue;
         }

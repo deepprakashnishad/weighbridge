@@ -59,7 +59,7 @@ export class WeighbridgeRecordComponent implements OnInit {
       })
       indicatorNames = indicatorNames.replace(/.$/, ")");
       var stmt = "SELECT wi.*, wi.type as wiType, ws.*, ws.type as stringType FROM weighindicator wi, weighstring ws WHERE wiName IN {weighIndicators} AND wi.weighString=ws.stringName AND wi.status='Active'".replace("{weighIndicators}", indicatorNames);
-      var result = await this.dbService.executeSyncDBStmt("SELECT", stmt);
+      var result = await this.dbService.executeSyncDBStmt("SELECT", stmt, "SILLY");
       if (result['error']) {
         this.notifier.notify("error", "Database error - " + result['error']);
         return;
@@ -113,7 +113,9 @@ export class WeighbridgeRecordComponent implements OnInit {
   fetchPendingRecords() {
     this.dbService.executeSyncDBStmt(
       "SELECT",
-      `${QueryList.GET_PENDING_RECORDS} ORDER BY createdAt ${this.orderByPendingRecords}`)
+      `${QueryList.GET_PENDING_RECORDS} ORDER BY createdAt ${this.orderByPendingRecords}`,
+      sessionStorage.getItem("logLevel")
+    )
       .then(records => {
         this.pendingRecords = records;
         this.dataSource.data = this.pendingRecords;

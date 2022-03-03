@@ -1,8 +1,11 @@
+import { MyDbService } from "./my-db.service";
+import { QueryList } from "./query-list";
+
 export class Utils{
 
-    constructor(){
-
-    }
+  constructor(private dbService: MyDbService,){
+    
+  }
 
     static randomNumberGenerator(length: number = 4, min: number = 0, max: number=999999){
         var result=9999999;

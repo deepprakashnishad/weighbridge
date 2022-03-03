@@ -25,8 +25,9 @@ export class ListEditorComponent implements OnInit {
   hint: string = "";
   codeLength: number = 3;
   items: Array<any> = [];
-  filteredOptions: Observable<any[]>;
+  filterStr = "";
   fileName = 'report.xlsx';
+  filters: Array<any> = [];
 
   @Output() listModified: EventEmitter<Array<any>> = new EventEmitter();
 
@@ -61,20 +62,7 @@ export class ListEditorComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.filteredOptions = this.mControl.valueChanges
-    //  .pipe(
-    //    startWith(''),
-    //    map(value => typeof value === 'string' ? value : value.name),
-    //    map(mValue => mValue ? this._filter(mValue) : this.items.slice())
-    //  );
   }
-
-  //private _filter(value: string): string[] {
-  //  const filterValue = value.toLowerCase();
-
-  //  return this.items.filter(option => (option?.mValue.toLowerCase().includes(filterValue) ||
-  //    option?.code.toLowerCase().includes(filterValue)));
-  //}
 
   async fetchFieldValues() {
     this.items = await this.dbService.executeSyncDBStmt("SELECT", QueryList.GET_SEARCH_FIELD_VALUES_BY_SEARCH_FIELD_ID.replace("{search_field_id}", this.fieldId.toString()));

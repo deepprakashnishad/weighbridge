@@ -79,6 +79,13 @@ export class SearchFieldsComponent implements OnInit {
     
   }
 
+  camelize(str) {
+    return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function (match, index) {
+      if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
+      return index === 0 ? match.toLowerCase() : match.toUpperCase();
+    });
+  }
+
   save() {
     if (this.searchField.id) {
       this.dbService.executeSyncDBStmt(
@@ -87,6 +94,8 @@ export class SearchFieldsComponent implements OnInit {
           .replace("{displayName}", this.searchField.displayName)
           .replace("{entryMode}", this.searchField.entryMode)
           .replace("{inOutMode}", this.searchField.inOutMode)
+          .replace("{fieldName}", this.camelize(this.searchField.displayName))
+          .replace("{enable}", this.searchField.enable?"1":"0")
           .replace("{id}", this.searchField.id.toString())
       ).then(isOperated => {
         if (isOperated) {
@@ -108,6 +117,7 @@ export class SearchFieldsComponent implements OnInit {
           .replace("{displayName}", this.searchField.displayName)
           .replace("{entryMode}", this.searchField.entryMode)
           .replace("{inOutMode}", this.searchField.inOutMode)
+          .replace("{enable}", this.searchField.enable.toString())
       ).then(result => {
         if (result['newId']) {
           this.searchField.id = result['newId'];

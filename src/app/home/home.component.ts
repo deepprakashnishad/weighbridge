@@ -50,5 +50,17 @@ export class HomeComponent implements OnInit {
         });
       }
     });
+
+    this.dbService.executeSyncDBStmt("SELECT", QueryList.GET_SEARCH_FIELDS).then(result => {
+      if (result && result.length > 0) {
+        var search_fields = {};
+        result.forEach(ele => {
+          if (ele['enable'] === 1) {
+            search_fields[ele['fieldName']] = ele;
+          }
+        });
+        sessionStorage.setItem("search_fields", JSON.stringify(search_fields));
+      }
+    });
   }
 }

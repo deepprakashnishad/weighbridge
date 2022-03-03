@@ -30,8 +30,14 @@ export class MyDbService {
     this._electronService.ipcRenderer.send("executeDBQuery", [entity, query]);
   }
 
-  async executeSyncDBStmt(queryType, query) {
-    var result = await this._electronService.ipcRenderer.invoke("executeSyncStmt", [queryType, query]);
+  async executeSyncDBStmt(queryType, query, loglevel = "") {
+    console.log(query);
+    if (loglevel !== "") {
+      var result = await this._electronService.ipcRenderer.invoke("executeSyncStmt", [queryType, query, loglevel]);
+    } else {
+      var result = await this._electronService.ipcRenderer.invoke("executeSyncStmt", [queryType, query]);
+    }
+    
     return result;
   }
 

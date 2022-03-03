@@ -14,18 +14,21 @@
             <input name="cntlDisplayName" [(ngModel)]="searchField.displayName" matInput placeholder="Display Name">
           </mat-form-field>
         </div>
-        <div fxFlex="25">
+        <!--<div fxFlex="25">
           <mat-select name="cntlEntryMode" [(ngModel)]="searchField.entryMode" appearance="outline">
             <mat-option value="LIST_SOFT">LIST_SOFT</mat-option>
             <mat-option value="FREETEXT">FREETEXT</mat-option>
           </mat-select>
-        </div>
+        </div>-->
         <div fxFlex="20">
           <mat-select name="cntlInOutMode" [(ngModel)]="searchField.inOutMode" appearance="outline">
             <mat-option value="GENERIC">GENERIC</mat-option>
             <mat-option value="INBOUND">INBOUND</mat-option>
             <mat-option value="OUTBOUND">OUTBOUND</mat-option>
           </mat-select>
+        </div>
+        <div fxFlex="20">
+          <mat-checkbox name="isEnabled" [(ngModel)]="searchField.enable" [checked]="searchField.enable===1">Enabled</mat-checkbox>
         </div>
         <div fxFlex="10"><button mat-raised-button color="primary" (click)="save()">Save <mat-icon>save</mat-icon></button></div>
       </div>
@@ -44,15 +47,18 @@
         <div fxFlex="30">{{field.displayName}}</div>
         <div fxFlex="25">{{field.entryMode}}</div>
         <div fxFlex="20">{{field.inOutMode}}</div>
-        <div fxFlex="20" fxLayout>
-          <button mat-icon-button color="primary" (click)="openListEditor(field, i)"><mat-icon>view_list</mat-icon></button>
-          <button mat-icon-button color="accent" (click)="edit(field)"><mat-icon>edit</mat-icon></button>
-          <!--<button mat-icon-button color="error" (click)="delete(field, i)"><mat-icon>delete</mat-icon></button>-->
+          <div fxFlex="20" fxLayout fxLayoutAlign="center center">
+            <button mat-icon-button color="primary" (click)="openListEditor(field, i)"><mat-icon>view_list</mat-icon></button>
+            <button mat-icon-button color="accent" (click)="edit(field)"><mat-icon>edit</mat-icon></button>
+            <div>
+              <mat-checkbox disabled [(ngModel)]="field.enable" [checked]="field.enable===1"></mat-checkbox>
+            </div>
+            <!--<button mat-icon-button color="error" (click)="delete(field, i)"><mat-icon>delete</mat-icon></button>-->
+          </div>
         </div>
-      </div>
     </div>
-    <div fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
-      <button mat-raised-button color="primary">Save</button>
-    </div>
+    <!--<div fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
+      <button mat-raised-button color="primary" (click)="save()">Save</button>
+    </div>-->
   </div>
 </mat-card>

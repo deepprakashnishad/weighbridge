@@ -72,6 +72,10 @@ ipcMain.handle("executeSyncStmt", async (event, arg) => {
   try {
     if (arg[1].indexOf("weighment")===-1) {
       log.debug(sqlConfig);
+    }
+    if (arg.length === 3 && arg[2] == "SILLY") {
+      log.silly(arg[1]);
+    } else {
       log.debug(arg[1]);
     }
     var pool = await sql.connect(sqlConfig);

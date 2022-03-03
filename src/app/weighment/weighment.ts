@@ -96,6 +96,7 @@ export class WeighmentDetail {
   secondWeightUser: User;
   remark: string;
   netWeight: number;
+  customer: string;
 
   constructor() {
     this.firstUnit = "Kg";
@@ -124,6 +125,8 @@ export class WeighmentDetail {
     weighmentDetails.secondWeightDatetime = data['secondWeightDatetime'];
     weighmentDetails.secondWeightUser = data['secondWeightUser'];
 
+    weighmentDetails.customer = data['customer'];
+
     weighmentDetails.remark = data['remark'] != "null" ? data['remark']: undefined;
     weighmentDetails.netWeight = data['netWeight'];
     return weighmentDetails;
@@ -149,6 +152,7 @@ export class WeighmentDetail {
 
     weighmentDetail.material = Utils.randomStringGenerator(8);
     weighmentDetail.supplier = Utils.randomStringGenerator(15);
+    weighmentDetail.customer = Utils.randomStringGenerator(15);
     weighmentDetail.remark = Utils.randomStringGenerator(25);
     weighmentDetail.id = Utils.randomNumberGenerator(4);
     weighmentDetail.weighmentRstNo = rstNo;
