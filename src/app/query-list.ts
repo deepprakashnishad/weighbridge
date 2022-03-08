@@ -5,9 +5,9 @@ export class QueryList{
   reqId, gatePassNo, weighmentType, poDetails, transporterCode, transporterName, status, \
   createdAt, scrollDate, reqIdDate, misc) \
   VALUES({rstNo}, '{vehicleNo}', '{scrollNo}', '{reqId}', '{gatePassNo}', '{weighmentType}', \
-  '{poDetails}', {transporterCode}, '{transporterName}', '{status}', GETDATE(), '{scrollDate}', '{reqIdDate}', '{misc}');";
+  '{poDetails}', '{transporterCode}', '{transporterName}', '{status}', GETDATE(), '{scrollDate}', '{reqIdDate}', '{misc}');";
   static readonly UPDATE_WEIGHMENT: string = "UPDATE weighment SET scrollNo='{scrollNo}', reqId='{reqId}', \
-        gatePassNo='{gatePassNo}', weighmentType='{weighmentType}', transporterCode='{transporterCode}', vehicleNo='{vehicleNo}'\
+        gatePassNo='{gatePassNo}', weighmentType='{weighmentType}', transporterCode='{transporterCode}', vehicleNo='{vehicleNo}',\
         transporterName='{transporterName}', status='{status}', scrollDate='{scrollDate}', reqIdDate='{reqIdDate}', misc='{misc}' WHERE rstNo={rstNo}";
   static readonly UPDATE_WEIGHMENT_STATUS: string = "UPDATE weighment SET status='{status}' WHERE rstNo={rstNo}";
   //Weighment Details
@@ -17,7 +17,8 @@ export class QueryList{
   static readonly UPDATE_SECOND_WEIGHMENT_DETAIL: string = "UPDATE weighment_details SET material='{material}', supplier='{supplier}', secondWeighBridge='{secondWeighBridge}', secondWeight={secondWeight}, secondUnit='{secondUnit}', secondWeightDatetime=GETDATE(), secondWeightUser={secondWeightUser}, remark='{remark}', netWeight={netWeight} WHERE id={id}";
   static readonly UPDATE_WEIGHMENT_DETAIL: string = "UPDATE weighment_details SET {values} WHERE id='{id}'";
   static readonly GET_WEIGHMENTS = "SELECT * FROM weighment ";
-  static readonly GET_PENDING_RECORDS = "SELECT rstNo, vehicleNo, weighmentType, convert(varchar, createdAt, 20) as createdAt\
+  static readonly GET_PENDING_RECORDS = "SELECT rstNo, vehicleNo, weighmentType, FORMAT(createdAt, '{date_format_code}') as createdAt, \
+      convert(varchar, createdAt, 20) as createdAt1\
       FROM weighment WHERE status='Pending'";
   static readonly GET_WEIGHMENT_DETAILS = "SELECT id, weighmentRstNo, material, supplier, firstWeighBridge, firstUnit, firstWeight, \
     FORMAT(firstWeightDatetime, '{date_format_code}') as firstWeightDatetime, firstWeightUser, secondWeighBridge, secondUnit, secondWeight, \

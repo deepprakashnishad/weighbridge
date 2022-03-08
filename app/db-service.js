@@ -70,7 +70,7 @@ ipcMain.on("executeDBQuery", (event, arg) => {
 
 ipcMain.handle("executeSyncStmt", async (event, arg) => {
   try {
-    if (arg[1].indexOf("weighment")===-1) {
+    if (arg[2] !== "silly") {
       log.debug(sqlConfig);
       log.debug(arg[1]);
     }

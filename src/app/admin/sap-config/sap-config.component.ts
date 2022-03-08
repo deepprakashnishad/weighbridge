@@ -3,9 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { NotifierService } from 'angular-notifier';
 import { MyDbService } from '../../my-db.service';
 import { MyIpcService } from '../../my-ipc.service';
+import { SAP_ENCRYPTION_KEY } from './../../utils';
 import * as CryptoJS from 'crypto-js';
-
-export const SAP_ENCRYPTION_KEY = "ninn34nunown32ondo23neono2i323nnos";
 
 @Component({
   selector: 'sap-config',

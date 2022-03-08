@@ -16,7 +16,7 @@ import { StatusDialogComponent } from '../weighment-report/weighment-report.comp
 import { Utils } from '../../utils';
 
 @Component({
- selector: 'app-complete-weighment-report',
+  selector: 'app-complete-weighment-report',
   templateUrl: './complete-weighment-report.component.html',
   styleUrls: ['./complete-weighment-report.component.css']
 })
@@ -34,11 +34,14 @@ export class CompleteWeighmentReportComponent implements OnInit {
   searchDateType: string = 'secondWeightDatetime';
   reqId: string;
   scrollNo: string;
+  transporter: string;
+  transporterCode: string;
+  //customer: string;
 
   status: string;
 
-  columns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'weighmentType', 'supplier', 'material', 'firstWeighBridge', 'firstWeight', 'firstWeightDatetime', 'firstWeightUser', 'gatePassNo', 'poDetails', 'secondWeighBridge', 'secondWeight', 'secondWeightDatetime', 'secondWeightUser', 'netWeight', 'scrollDate', 'reqIdDate', 'syncFlag', 'status', 'action'];
-  displayedColumns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'weighmentType', 'supplier', 'material', 'firstWeighBridge', 'firstWeight', 'firstWeightDatetime', 'firstWeightUser', 'gatePassNo', 'poDetails', 'secondWeighBridge', 'secondWeight', 'secondWeightDatetime', 'secondWeightUser', 'netWeight', 'status', 'action'];
+  columns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'weighmentType', 'supplier', 'material', 'transporterCode', 'transporterName', 'firstWeighBridge', 'firstWeight', 'firstWeightDatetime', 'firstWeightUser', 'gatePassNo', 'poDetails', 'secondWeighBridge', 'secondWeight', 'secondWeightDatetime', 'secondWeightUser', 'netWeight', 'scrollDate', 'reqIdDate', 'syncFlag', 'status', 'action'];
+  displayedColumns: string[] = ['sNo', 'rstNo', 'vehicleNo', 'weighmentType', 'supplier', 'material', 'transporterName', 'firstWeighBridge', 'firstWeight', 'firstWeightDatetime', 'firstWeightUser', 'gatePassNo', 'poDetails', 'secondWeighBridge', 'secondWeight', 'secondWeightDatetime', 'secondWeightUser', 'netWeight', 'status', 'action'];
 
   dataSource: MatTableDataSource<any>;
   users: any = {};
@@ -54,6 +57,8 @@ export class CompleteWeighmentReportComponent implements OnInit {
 
   @ViewChild("cntlMaterial", { static: false }) cntlMaterial;
   @ViewChild("cntlSupplier", { static: false }) cntlSupplier;
+
+  searchFields: any = JSON.parse(sessionStorage.getItem("search_fields"));
 
   constructor(
     private dbService: MyDbService,
@@ -114,7 +119,7 @@ export class CompleteWeighmentReportComponent implements OnInit {
     }
 
     if (this.truckNumber) {
-      stmt = `${stmt} AND vehicleNo = '${Utils.removeWhiteSpaces(this.truckNumber)}'`;
+      stmt = `${stmt} AND vehicleNo = '${this.truckNumber}'`;
       isCriteriaAdded = true;
     }
 
@@ -122,6 +127,16 @@ export class CompleteWeighmentReportComponent implements OnInit {
       stmt = `${stmt} AND supplier = '${this.supplier}'`;
       isCriteriaAdded = true;
     }
+
+    if (this.transporterCode) {
+      stmt = `${stmt} AND transporterCode = '${this.transporterCode}'`;
+      isCriteriaAdded = true;
+    }
+
+    //if (this.customer) {
+    //  stmt = `${stmt} AND customer = '${this.customer}'`;
+    //  isCriteriaAdded = true;
+    //}
 
     if (this.material) {
       stmt = `${stmt} AND material = '${this.material}'`;
@@ -159,15 +174,26 @@ export class CompleteWeighmentReportComponent implements OnInit {
     stmt = `${stmt}  GROUP BY weighmentRstNo) ORDER BY wd.weighmentRstNo ASC, wd.secondWeightDatetime ASC`;
     console.log(stmt);
     this.data = await this.dbService.executeSyncDBStmt("SELECT", stmt);
+    this.data = this.replaceUsersWithId(this.data);
     console.log(this.data);
     this.dataSource.data = this.data;
   }
 
-  replaceUsersWithId() {
-    for (var i in this.data) {
-      this.data[i]['firstWeightUser'] = this.users[this.data[i]['firstWeightUser']];
-      this.data[i]['secondWeightUser'] = this.users[this.data[i]['secondWeightUser']];
+  replaceUsersWithId(weighmentDetails) {
+    for (var i in weighmentDetails) {
+      weighmentDetails[i]['firstWeightUser'] = this.users[weighmentDetails[i]['firstWeightUser']];
+      weighmentDetails[i]['secondWeightUser'] = this.users[weighmentDetails[i]['secondWeightUser']];
     }
+    return weighmentDetails;
+  }
+
+  transporterSelected(event) {
+    this.transporterCode = event.code;
+    this.transporter = `${event.code}-${event.mValue}`;
+  }
+
+  customerSelected(event) {
+    //this.customer = `${event.code}-${event.mValue}`;
   }
 
   supplierSelected(event) {
@@ -183,6 +209,14 @@ export class CompleteWeighmentReportComponent implements OnInit {
       this.material = `${event.code}-${event.mValue}`;
     } else {
       this.material = undefined;
+    }
+  }
+
+  isSeachFieldEnabled(searchFieldName) {
+    if (this.searchFields != null && this.searchFields !== undefined) {
+      return Object.keys(this.searchFields).indexOf(searchFieldName) > -1;
+    } else {
+      return true;
     }
   }
 
@@ -224,6 +258,7 @@ export class CompleteWeighmentReportComponent implements OnInit {
       QueryList.GET_WEIGHMENT_DETAILS.replace("{rstNo}", weighment.rstNo)
         .replace(/{date_format_code}/gi, sessionStorage.getItem("date_format") != null ? sessionStorage.getItem("date_format") : "113")
     );
+    weighmentDetails = this.replaceUsersWithId(weighmentDetails);
     weighment['weighmentDetails'] = weighmentDetails;
 
     var data = await this.printerService.getPreviewDataWithTemplate(

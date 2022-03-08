@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NotifierService } from 'angular-notifier';
+import { session } from 'electron';
 import { ElectronService } from 'ngx-electron';
 import { QueryList } from './query-list';
 import { SharedDataService } from './shared-data.service';
@@ -30,8 +31,10 @@ export class MyDbService {
     this._electronService.ipcRenderer.send("executeDBQuery", [entity, query]);
   }
 
-  async executeSyncDBStmt(queryType, query) {
-    var result = await this._electronService.ipcRenderer.invoke("executeSyncStmt", [queryType, query]);
+  async executeSyncDBStmt(queryType, query, logLevel = "") {
+    //var mLogLevel = sessionStorage.getItem("logLevel") ? sessionStorage.getItem("logLevel") : "error";
+    
+    var result = await this._electronService.ipcRenderer.invoke("executeSyncStmt", [queryType, query, logLevel]);
     return result;
   }
 

@@ -118,10 +118,13 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
         this.weighbridge = this.selectedIndicator.wiName;
       }
     });
+
+    setInterval(() => {
+      this.currDate = new Date();
+    }, 60000);
   }
 
   updateCurrentWeight() {
-    return;
     if (!this.currData) {
       this.isWeightStable = false;
       this.currentWeight = "Err!";
@@ -181,7 +184,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       this.weighment.reqIdDate = inputs[1];
       this.weighment.gatePassNo = parseInt(inputs[2]);
       this.weighment.vehicleNo = inputs[3];
-      this.weighment.transporterCode = parseInt(inputs[4]);
+      this.weighment.transporterCode = inputs[4];
       this.weighment.transporterName = inputs[5];
       this.transporter = `${this.weighment.transporterCode}-${this.weighment.transporterName}`;
       this.weighment.weighmentType = "outbound_domestic";

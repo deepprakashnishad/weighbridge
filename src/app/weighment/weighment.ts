@@ -10,7 +10,7 @@ export class Weighment{
   gatePassNo: number;
   poDetails: string;
   scrollNo: string;
-  transporterCode: number;
+  transporterCode: string;
   transporterName: string;
   status: string;
   createdAt: string;
@@ -53,7 +53,7 @@ export class Weighment{
     weighment.reqId = Utils.randomNumberGenerator(4, 1000, 9999);
     weighment.rstNo = Utils.randomNumberGenerator(4, 1000, 9999);
     weighment.status = status;
-    weighment.transporterCode = Utils.randomNumberGenerator(4, 1000, 9999);
+    weighment.transporterCode = Utils.randomNumberGenerator(4, 1000, 9999).toString();
     weighment.transporterName = Utils.randomStringGenerator(12);
     weighment.vehicleNo = Utils.randomStringGenerator(2) + Utils.randomNumberGenerator(2) + Utils.randomStringGenerator(2) + Utils.randomNumberGenerator(4);
     weighment.weighmentType = weighmentType;

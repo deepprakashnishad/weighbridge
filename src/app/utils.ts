@@ -1,3 +1,5 @@
+export const SAP_ENCRYPTION_KEY = "ninn34nunown32ondo23neono2i323nnos";
+
 export class Utils{
 
     constructor(){

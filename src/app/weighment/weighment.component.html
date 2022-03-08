@@ -4,7 +4,7 @@
       <div class="box-title">Truck Weighment</div>
       <div fxLayout fxLayoutGap="16px" fxLayoutAlign="center center">
         <app-help [tag]="'TRUCK_WEIGHMENT_DATAENTRY'"></app-help>
-        <h4>Date - {{currDate.getDate()}} / {{currDate.getMonth()}} / {{currDate.getFullYear()}}</h4>
+        <h4>Date - {{currDate.getDate()}} / {{currDate.getMonth()+1}} / {{currDate.getFullYear()}} {{currDate.getHours()}}:{{currDate.getMinutes()}}</h4>
       </div>
     </div>
     <div class="inner-container" [ngClass]="{'red': weighment.weighmentType === 'others', 'blue': weighment.weighmentType === 'inbound', 'green' : weighment.weighmentType.indexOf('outbound')>-1}" fxLayout="column" fxLayoutGap="4px">
@@ -90,11 +90,11 @@
           <app-tag-selector [tagTypeId]="2" [selectedTag]="weighmentDetail.material" [title]="'Material*'" (optionSelected)="materialSelected($event)"></app-tag-selector>
           <mat-form-field appearance="outline" class="weight">
             <mat-label>First Weight</mat-label>
-            <input matInput [(ngModel)]="weighmentDetail.firstWeight" name="cntlFirstWt"  tabindex="-1" />
+            <input matInput [(ngModel)]="weighmentDetail.firstWeight" name="cntlFirstWt" readonly tabindex="-1" />
           </mat-form-field>
           <mat-form-field appearance="outline" class="weight">
             <mat-label>Second Weight</mat-label>
-            <input matInput [(ngModel)]="weighmentDetail.secondWeight" name="cntlSecondWt"  tabindex="-1" />
+            <input matInput [(ngModel)]="weighmentDetail.secondWeight" name="cntlSecondWt" readonly tabindex="-1" />
           </mat-form-field>
           <mat-form-field appearance="outline" class="weight">
             <mat-label>Net Weight</mat-label>

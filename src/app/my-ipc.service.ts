@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
 import { SharedDataService } from './shared-data.service';
 import * as CryptoJS from 'crypto-js';
-import { SAP_ENCRYPTION_KEY } from './admin/sap-config/sap-config.component';
+import { SAP_ENCRYPTION_KEY } from './utils';
 
 @Injectable({
   providedIn: 'root'
