@@ -12,6 +12,7 @@ import { environment } from '../../environments/environment';
 import { MyDbService } from '../my-db.service';
 import { QueryList } from '../query-list';
 import { ReportService } from '../report/report.service';
+import { LicenseService } from '../license.service';
 
 
 @Component({
@@ -49,6 +50,7 @@ export class NavigationComponent implements OnInit {
   elementPosition: any;
   allowedPermissionList: Array<Permission> = [];
   selectedMenu: string;
+  isLicenseValid: boolean;
 
   	constructor(
 		  private authenticationService: AuthenticationService,
@@ -59,6 +61,7 @@ export class NavigationComponent implements OnInit {
       private dialog: MatDialog,
       private ipcService: MyIpcService,
       private dbService: MyDbService,
+      private licenseService: LicenseService,
       private reportService: ReportService
 	  ) { }
 
@@ -77,6 +80,9 @@ export class NavigationComponent implements OnInit {
 	      }
     });
 
+    this.licenseService.isLicenseValid().then(result => {
+      this.isLicenseValid = result['success'];
+    });
     let permissionList: any = this.authenticationService.getTokenOrOtherStoredData('permissions')
     if (permissionList === undefined) {
       return false;

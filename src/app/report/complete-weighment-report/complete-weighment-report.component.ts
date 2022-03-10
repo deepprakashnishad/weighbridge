@@ -55,6 +55,14 @@ export class CompleteWeighmentReportComponent implements OnInit {
     end: new FormControl()
   });
 
+  enableInbound: boolean = sessionStorage.getItem("enableInbound") == "true";
+  enableOutbound: boolean = sessionStorage.getItem("enableOutbound") == "true";
+  enableOutboundDomestic: boolean = sessionStorage.getItem("enableOutboundDomestic") == "true";
+  enableOutboundExport: boolean = sessionStorage.getItem("enableOutboundExport") == "true";
+  enableOutboundSubcontract: boolean = sessionStorage.getItem("enableOutboundSubcontract") == "true";
+  enableOthers: boolean = sessionStorage.getItem("enableOthers") == "true";
+  enableInternal: boolean = sessionStorage.getItem("enableInternal") == "true";
+
   @ViewChild("cntlMaterial", { static: false }) cntlMaterial;
   @ViewChild("cntlSupplier", { static: false }) cntlSupplier;
 

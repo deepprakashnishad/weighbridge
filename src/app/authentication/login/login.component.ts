@@ -130,7 +130,7 @@ export class LoginComponent implements OnInit{
         if (!result["success"]) {
           this.notifier.notify("error", result['msg']);
           this.notifier.notify("error", "Please activate using Initial Setup");
-          return;
+          //return;
         }
         const username = this.loginForm.get('inputUsername').value;
         const password = this.loginForm.get('inputPassword').value;

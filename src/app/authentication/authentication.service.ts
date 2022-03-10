@@ -41,7 +41,6 @@ export class AuthenticationService {
     if (loginStatus === 'true') {
       this.isLoggedIn.next(loginStatus);
     }
-    
   }
 
   authorizeUser(accessListReqd: string[]):boolean{

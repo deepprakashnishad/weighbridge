@@ -6,11 +6,19 @@
 <div class="my-inner-container" fxLayout="column" fxLayoutGap="12px">
   <mat-radio-group fxLayout fxLayoutGap="12px" [(ngModel)]="reportType">
     <mat-radio-button value="all">All</mat-radio-button>
-    <mat-radio-button tabindex="-1" value="inbound">Inbound</mat-radio-button>
+    <!--<mat-radio-button tabindex="-1" value="inbound">Inbound</mat-radio-button>
     <mat-radio-button tabindex="-1" value="outbound_export">Outbound(Export)</mat-radio-button>
     <mat-radio-button tabindex="-1" value="outbound_domestic">Outbound(Domestic)</mat-radio-button>
     <mat-radio-button tabindex="-1" value="outbound_subcontract">Outbound(Sub-contract Dispatch)</mat-radio-button>
-    <mat-radio-button tabindex="-1" value="others">Others</mat-radio-button>
+    <mat-radio-button tabindex="-1" value="others">Others</mat-radio-button>-->
+
+    <mat-radio-button *ngIf="enableInbound" tabindex="-1" value="inbound">Inbound(Purchase)</mat-radio-button>
+    <mat-radio-button *ngIf="enableOutbound" tabindex="-1" value="outbound">Outbound</mat-radio-button>
+    <mat-radio-button *ngIf="enableOutboundExport" tabindex="-1" value="outbound_export">Outbound(Export)</mat-radio-button>
+    <mat-radio-button *ngIf="enableOutboundDomestic" tabindex="-1" value="outbound_domestic">Outbound(Domestic)</mat-radio-button>
+    <mat-radio-button *ngIf="enableOutboundSubcontract" tabindex="-1" value="outbound_subcontract">Outbound(Sub-contract Dispatch)</mat-radio-button>
+    <mat-radio-button *ngIf="enableInternal" tabindex="-1" value="internal">Internal</mat-radio-button>
+    <mat-radio-button *ngIf="enableOthers" tabindex="-1" value="others">Others</mat-radio-button>
   </mat-radio-group>
   <div fxLayout="row wrap" fxLayoutGap="32px">
     <mat-form-field appearance="fill">

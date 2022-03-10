@@ -6,6 +6,7 @@ import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { environment } from "../environments/environment";
 import { MyIpcService } from "./my-ipc.service";
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,8 @@ import { MyIpcService } from "./my-ipc.service";
 export class LicenseService {
 
   licenseUrl: string;
+
+  validLicence: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
     private ipcService: MyIpcService,
@@ -37,13 +40,16 @@ export class LicenseService {
   async validateLicenseDetail(payload) {
     var currentTimestamp = Math.floor((new Date()).getTime())/1000;
     if (currentTimestamp > payload['validTill']) {
+      this.validLicence.next(false);
       return { success: false, msg: "License expired" };
     } else {
       var machineDetails = await this.ipcService.invokeIPC("getMachineDetails", []);
       if (payload['machineId'] !== machineDetails["machineId"]) {
+        this.validLicence.next(false);
         return { success: false, msg: "License invalid for this machine" };
       }
       else
+        this.validLicence.next(true);
         return { success: true, msg: "License verified" };
     }
   }

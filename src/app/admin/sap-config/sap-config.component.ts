@@ -4,8 +4,7 @@ import { NotifierService } from 'angular-notifier';
 import { MyDbService } from '../../my-db.service';
 import { MyIpcService } from '../../my-ipc.service';
 import * as CryptoJS from 'crypto-js';
-
-export const SAP_ENCRYPTION_KEY = "ninn34nunown32ondo23neono2i323nnos";
+import { SAP_ENCRYPTION_KEY } from '../../utils';
 
 @Component({
   selector: 'sap-config',

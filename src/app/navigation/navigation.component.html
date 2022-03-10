@@ -5,7 +5,7 @@
 			<a  (click)="navigateTo('/home', 'home')"><img style="cursor: pointer" src="assets/logo.png" width="200" /></a>
 		</div>
 		<div fxLayout fxLayoutAlign="start end" fxLayoutGap="40px">
-			<button tabindex="-1" class="menu-button" [ngClass]="{'selected': selectedMenu === 'dataentry'}" mat-button [matMenuTriggerFor]="dataentry">Data Entry</button>
+			<button tabindex="-1" *ngIf="isLicenseValid" class="menu-button" [ngClass]="{'selected': selectedMenu === 'dataentry'}" mat-button [matMenuTriggerFor]="dataentry">Data Entry</button>
 			<button tabindex="-1" class="menu-button" [ngClass]="{'selected': selectedMenu === 'reports'}" mat-button [matMenuTriggerFor]="reports">Reports</button>
 			<button tabindex="-1" class="menu-button" [ngClass]="{'selected': selectedMenu === 'administration'}" mat-button [matMenuTriggerFor]="administration">Administration</button>
 			<button tabindex="-1" class="menu-button" [ngClass]="{'selected': selectedMenu === 'options'}" mat-button [matMenuTriggerFor]="options">Options</button>

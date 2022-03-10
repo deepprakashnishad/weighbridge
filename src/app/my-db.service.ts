@@ -31,7 +31,6 @@ export class MyDbService {
   }
 
   async executeSyncDBStmt(queryType, query, loglevel = "") {
-    console.log(query);
     if (loglevel !== "") {
       var result = await this._electronService.ipcRenderer.invoke("executeSyncStmt", [queryType, query, loglevel]);
     } else {

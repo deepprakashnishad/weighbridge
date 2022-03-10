@@ -1,6 +1,8 @@
 import { MyDbService } from "./my-db.service";
 import { QueryList } from "./query-list";
 
+export const SAP_ENCRYPTION_KEY = "ninn34nunown32ondo23neono2i323nnos";
+
 export class Utils{
 
   constructor(private dbService: MyDbService,){
