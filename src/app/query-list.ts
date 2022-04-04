@@ -17,8 +17,7 @@ export class QueryList{
   static readonly UPDATE_SECOND_WEIGHMENT_DETAIL: string = "UPDATE weighment_details SET material='{material}', supplier='{supplier}', secondWeighBridge='{secondWeighBridge}', secondWeight={secondWeight}, secondUnit='{secondUnit}', secondWeightDatetime=GETDATE(), secondWeightUser={secondWeightUser}, remark='{remark}', netWeight={netWeight} WHERE id={id}";
   static readonly UPDATE_WEIGHMENT_DETAIL: string = "UPDATE weighment_details SET {values} WHERE id='{id}'";
   static readonly GET_WEIGHMENTS = "SELECT * FROM weighment ";
-  static readonly GET_PENDING_RECORDS = "SELECT rstNo, vehicleNo, weighmentType, FORMAT(createdAt, '{date_format_code}') as createdAt, \
-      convert(varchar, createdAt, 20) as createdAt1\
+  static readonly GET_PENDING_RECORDS = "SELECT rstNo, vehicleNo, weighmentType, FORMAT(createdAt, '{date_format_code}') as createdAt1 \
       FROM weighment WHERE status='Pending'";
   static readonly GET_WEIGHMENT_DETAILS = "SELECT id, weighmentRstNo, material, supplier, firstWeighBridge, firstUnit, firstWeight, \
     FORMAT(firstWeightDatetime, '{date_format_code}') as firstWeightDatetime, firstWeightUser, secondWeighBridge, secondUnit, secondWeight, \
