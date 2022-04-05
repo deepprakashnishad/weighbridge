@@ -44,6 +44,11 @@ export class LicenseService {
       return { success: false, msg: "License expired" };
     } else {
       var machineDetails = await this.ipcService.invokeIPC("getMachineDetails", []);
+      if (machineDetails === false) {
+        machineDetails = {};
+        machineDetails['machineId'] = "machine-id-not-found";
+        machineDetails['os'] = "windows";
+      }
       if (payload['machineId'] !== machineDetails["machineId"]) {
         this.validLicence.next(false);
         return { success: false, msg: "License invalid for this machine" };
@@ -56,11 +61,21 @@ export class LicenseService {
 
   async getLicenseToken() {
     var machineDetails = await this.ipcService.invokeIPC("getMachineDetails", []);
+    if (machineDetails === false) {
+      machineDetails = {};
+      machineDetails['machineId'] = "machine-id-not-found";
+      machineDetails['os'] = "windows";
+    }
     return await this.ipcService.invokeIPC("getLicense", [machineDetails['machineId']]);
   }
 
   async getLicenseDetails() {
     var machineDetails = await this.ipcService.invokeIPC("getMachineDetails", []);
+    if (machineDetails === false) {
+      machineDetails = {};
+      machineDetails['machineId'] = "machine-id-not-found";
+      machineDetails['os'] = "windows";
+    }
     var token = await this.ipcService.invokeIPC("getLicense", [machineDetails['machineId']]);
     if (token) {
       return jwtDecode(token);

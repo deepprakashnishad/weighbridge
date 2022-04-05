@@ -113,9 +113,10 @@ export class WeighbridgeRecordComponent implements OnInit {
   fetchPendingRecords() {
     this.dbService.executeSyncDBStmt(
       "SELECT",
-      `${QueryList.GET_PENDING_RECORDS} ORDER BY createdAt ${this.orderByPendingRecords}`,
-      sessionStorage.getItem("logLevel")
-    )
+      `${QueryList.GET_PENDING_RECORDS
+        .replace(/{date_format_code}/gi, sessionStorage.getItem("date_format") != null ?
+          sessionStorage.getItem("date_format") : "dd MMM yyyy HH:mm")
+      } ORDER BY createdAt ${this.orderByPendingRecords}`, "silly")
       .then(records => {
         this.pendingRecords = records;
         this.dataSource.data = this.pendingRecords;

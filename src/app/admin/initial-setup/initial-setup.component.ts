@@ -126,6 +126,11 @@ export class InitialSetupComponent implements OnInit {
 
   async activateLicense() {
     var machineDetails = await this.ipcService.invokeIPC("getMachineDetails", []);
+    if (machineDetails === false) {
+      machineDetails = {};
+      machineDetails['machineId'] = "machine-id-not-found";
+      machineDetails['os'] = "windows";
+    }
     machineDetails['license'] = this.licenseNumber?.replace(/-/g, '');
     if (machineDetails['license']?.length !== 24) {
       this.notifier.notify("error", "Invalid license number");
@@ -150,6 +155,11 @@ export class InitialSetupComponent implements OnInit {
 
   async deactivateLicenseForMachine() {
     var machineDetails = await this.ipcService.invokeIPC("getMachineDetails", []);
+    if (machineDetails === false) {
+      machineDetails = {};
+      machineDetails['machineId'] = "machine-id-not-found";
+      machineDetails['os'] = "windows";
+    }
     machineDetails['license'] = this.licenseNumber?.replace(/-/g, '');
     if (machineDetails['license']?.length !== 24) {
       this.notifier.notify("error", "Invalid license number");
