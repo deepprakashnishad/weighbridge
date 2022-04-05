@@ -279,7 +279,7 @@
           <th mat-header-cell *matHeaderCellDef> Action </th>
           <td mat-cell *matCellDef="let element; let i=index">
             <mat-icon class="pointer" (click)="previewTicket(element)">print</mat-icon>
-            <mat-icon class="pointer" *ngIf="element.status==='pending'" (click)="editStatus(element, i)" #tooltip="matTooltip"
+            <mat-icon class="pointer" *ngIf="element.status!=='complete' && element.status!=='abort'" (click)="editStatus(element, i)" #tooltip="matTooltip"
                       matTooltip="Update status"
                       matTooltipPosition="below">edit</mat-icon>
           </td>
