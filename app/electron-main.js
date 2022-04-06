@@ -82,8 +82,11 @@ ipcMain.handle("getMachineDetails", async (event, arg) => {
     };
   }
   catch (e) {
-    console.log(e);
-    return false;
+    log.error(e);
+    return {
+      "os": "windows",
+      "machineId": "machine-id-not-found"
+    };
   }
 });
 
@@ -97,7 +100,7 @@ ipcMain.handle("getAppInfo", async (event, arg) => {
     };
   }
   catch (e) {
-    console.log(e);
+    log.error(e);
     return false;
   }
 });
@@ -109,6 +112,6 @@ ipcMain.handle("updateLogLevel", async (event, arg) => {
     logLevel = arg[0];
   }
   catch (e) {
-    console.log(e);
+    log.error(e);
   }
 });

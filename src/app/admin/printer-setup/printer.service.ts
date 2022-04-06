@@ -250,13 +250,11 @@ export class PrinterService {
     for (var i = 0; i < fields.length; i++) {
       var field = fields[i];
       if (field.type === "reverseFeed") {
+        var pageWidth = field.col;
         mText = mText + " rf "+(field.col);
       }
 
       if (field.type === "newline") {
-        console.log(field.col)
-        console.log(currY)
-        console.log(currY-field.col)
         if (field.col > currY) {
           mText = mText + " lf " + (field.col - currY);
         } else {
@@ -285,8 +283,15 @@ export class PrinterService {
               data = ` ${field.font} \"${field.displayName}${" ".repeat(minLabelSize - field.displayName?.length)}: ${weighmentDetail[field.field.substr("weighDetails_".length)] != undefined ? weighmentDetail[field.field.substr("weighDetails_".length)] : ""}\"`;
             }
           } else {
-            if (weighment[field.field]!==undefined) {
-              data = ` ${field.font} \"${field.displayName}${" ".repeat(minLabelSize - field.displayName.length)}: ${weighment[field.field]}\"`;
+            if (weighment[field.field] !== undefined) {
+              var tempText = `${field.displayName}${" ".repeat(minLabelSize - field.displayName.length)}: ${weighment[field.field]}`;
+              if (currY + tempText.length > pageWidth) {
+                var text1 = tempText.substring(0, pageWidth - currY-1);
+                var text2 = tempText.substring(pageWidth - currY);
+                data = ` ${field.font} \"${text1}\" newline ${field.font} \"${text2}\" `;
+              } else {
+                data = ` ${field.font} \"${tempText}\"`;
+              }              
             }
           }
           mText = `${mText}${data}`;

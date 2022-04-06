@@ -12,6 +12,7 @@ import { environment } from '../../environments/environment';
 import { MyDbService } from '../my-db.service';
 import { QueryList } from '../query-list';
 import { ReportService } from '../report/report.service';
+import { LicenseService } from '../license.service';
 
 
 @Component({
@@ -49,6 +50,7 @@ export class NavigationComponent implements OnInit {
   elementPosition: any;
   allowedPermissionList: Array<Permission> = [];
   selectedMenu: string;
+  isLicenseValid = false;
 
   	constructor(
 		  private authenticationService: AuthenticationService,
@@ -59,7 +61,8 @@ export class NavigationComponent implements OnInit {
       private dialog: MatDialog,
       private ipcService: MyIpcService,
       private dbService: MyDbService,
-      private reportService: ReportService
+      private reportService: ReportService,
+      private licenseService: LicenseService
 	  ) { }
 
 	ngOnInit() {
@@ -75,6 +78,10 @@ export class NavigationComponent implements OnInit {
 	      if(value){
 	      	this.name = this.authenticationService.getTokenOrOtherStoredData("fullname");
 	      }
+    });
+
+    this.licenseService.isLicenseValid().then(res => {
+      this.isLicenseValid = res["success"];
     });
 
     let permissionList: any = this.authenticationService.getTokenOrOtherStoredData('permissions')
