@@ -118,7 +118,7 @@ export class WeighmentReportComponent implements OnInit {
     }
 
     if (this.truckNumber) {
-      stmt = `${stmt} AND vehicleNo = '${this.truckNumber}'`;
+      stmt = `${stmt} AND vehicleNo like '%${this.truckNumber}%'`;
       isCriteriaAdded = true;
     }
 
