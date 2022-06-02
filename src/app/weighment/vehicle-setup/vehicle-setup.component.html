@@ -1,0 +1,91 @@
+<div class="outer-container">
+  <div class="container">
+    <div class="full-width" fxLayout fxLayoutAlign="space-between center">
+      <div class="box-title">Truck Weighment</div>
+      <div fxLayout fxLayoutGap="16px" fxLayoutAlign="center center">
+        <app-help [tag]="'TRUCK_WEIGHMENT_DATAENTRY'"></app-help>
+        <h4>Date - {{currDate.getDate()}} / {{currDate.getMonth()+1}} / {{currDate.getFullYear()}} {{currDate.getHours()}}:{{currDate.getMinutes()}}</h4>
+      </div>
+    </div>
+    <div class="inner-container"  fxLayout="column" fxLayoutGap="4px">
+      <div fxLayout="column" fxLayoutGap="8px">
+        <div fxLayout fxLayoutAlign="start start" fxLayoutGap="16px">
+          <div fxLayout fxLayoutGap="16px" fxLayoutAlign="center start">
+            <mat-form-field appearance="outline">
+              <mat-label>Vehicle No</mat-label>
+              <input *ngIf="enableWhiteSpacesInVehicle" vehicleMask matInput #vehicleCntl [(ngModel)]="vehicleNo" name="cntlRequestId"
+                     (contextmenu)="paste($event)"
+                     (keyup)="applyFilter($event.target.value)"  tabindex="0" placeholder="Vehicle No." />
+              <input *ngIf="!enableWhiteSpacesInVehicle" appCapitalize matInput #vehicleCntl [(ngModel)]="vehicleNo" name="cntlRequestId"
+                     tabindex="0" placeholder="Vehicle No." (keyup)="applyFilter($event.target.value)" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="weight">
+              <mat-label>Weight</mat-label>
+              <input matInput [(ngModel)]="weight" name="cntlWeight" tabindex="-1" />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="full-width" fxLayout fxLayoutGap="32px" fxLayoutAlign="space-between center">
+          <button mat-raised-button class="capture-button" color="primary"
+                  *ngIf="selectedIndicator && selectedIndicator['stringType']!=='polling'"
+                  [disabled]="(stableWeightCheckEnabled && !isWeightStable)" (click)="capture()">
+            Capture
+          </button>
+          <button mat-raised-button class="capture-button" color="primary"
+                  *ngIf="selectedIndicator && selectedIndicator['stringType']==='polling'" (click)="getWeight()">
+            Capture
+          </button>
+          <div fxLayout fxLayoutGap="32px" fxLayoutAlign="center center">
+            <button mat-raised-button color="primary" (click)="save()">Save</button>
+          </div>
+        </div>
+        <div class="table-container">
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" id="reports-table">
+            <tr>
+              <ng-container matColumnDef="sNo">
+                <th mat-header-cell *matHeaderCellDef> SNo. </th>
+                <td mat-cell *matCellDef="let element; let i=index"> {{i+1}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="vehicleNo">
+                <th mat-header-cell *matHeaderCellDef> Truck No </th>
+                <td mat-cell *matCellDef="let element"
+                    (contextmenu)="copyToClipboard(element.vehicleNo, 'Vehicle number copied')">
+                  {{element.vehicleNo}}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="weight">
+                <th mat-header-cell *matHeaderCellDef>Weight</th>
+                <td mat-cell *matCellDef="let element">
+                  {{element.weight}}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="createdBy">
+                <th mat-header-cell *matHeaderCellDef> Created By </th>
+                <td mat-cell *matCellDef="let element"> {{element.createdBy}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="weighbridge">
+                <th mat-header-cell *matHeaderCellDef> Weighbridge </th>
+                <td mat-cell *matCellDef="let element"> {{element.weighbridge}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="action" [stickyEnd]="true">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element; let i=index">
+                  <mat-icon class="pointer" color="error" (click)="remove(element, i)" #tooltip="matTooltip"
+                            matTooltip="Delete"
+                            matTooltipPosition="below">delete</mat-icon>
+                </td>
+              </ng-container>
+            </tr>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns; let i=index;"></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

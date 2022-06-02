@@ -1,0 +1,57 @@
+<div class="full-width" fxLayout fxLayoutAlign="space-between center">
+  <div class="box-title">Blocked Weighment Report</div>
+  <button *ngIf="dataSource.data.length>0" mat-raised-button color="primary" (click)="abortAll()">Abort All</button>
+</div>
+
+<div class="my-inner-container" fxLayout="column" fxLayoutGap="12px">
+  <h3 *ngIf="dataSource.data.length==0">No records found</h3>
+  <div class="table-container" *ngIf="dataSource.data.length>0">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" id="reports-table">
+      <tr>
+        <ng-container matColumnDef="sNo">
+          <th mat-header-cell *matHeaderCellDef> SNo. </th>
+          <td mat-cell *matCellDef="let element; let i=index"> {{i+1}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="rstNo">
+          <th mat-header-cell *matHeaderCellDef> RSTNo </th>
+          <td mat-cell *matCellDef="let element"> {{element.rstNo}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="vehicleNo">
+          <th mat-header-cell *matHeaderCellDef> Truck No </th>
+          <td mat-cell *matCellDef="let element"
+              (contextmenu)="copyToClipboard(element.vehicleNo, 'Vehicle number copied')">
+            {{element.vehicleNo}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="weighmentType">
+          <th mat-header-cell *matHeaderCellDef>Type</th>
+          <td mat-cell *matCellDef="let element">
+            {{element.weighmentType}}
+          </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> status </th>
+          <td mat-cell *matCellDef="let element">
+            <span>{{element.status}}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action" [stickyEnd]="true">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let element; let i=index">
+            <mat-icon class="pointer" *ngIf="element.status!=='abort'" (click)="abort(element, i)" #tooltip="matTooltip"
+                      matTooltip="Abort"
+                      matTooltipPosition="below">delete</mat-icon>
+          </td>
+        </ng-container>
+      </tr>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns; let i=index;"></tr>
+    </table>
+  </div>
+</div>

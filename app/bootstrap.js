@@ -5,6 +5,7 @@ module.exports = Object.freeze({
   },
   seed: {
     app_data: [
+      { "field": "additional_fields", mValue: "[]" },
       { field: "date_format", mValue: "dd-MM-yyyy hh:mm" },
       { "field": "enableInbound", "mValue": "true" },
       { "field": "enableOutbound", "mValue": "false" },

@@ -5,3 +5,32 @@
 td {
   text-align: center;
 }
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #non-printable, #cdk-describedby-message-container,
+  .cdk-overlay-container, .cdk-global-overlay-wrapper, .cdk-overlay-pane,
+  mat-dialog-container, app-preview-dialog, head *, mat-dialog-actions{
+    display: none;
+    visibility: hidden;
+  }
+
+  #ticket-content, #ticket-content * {
+    visibility: visible;
+  }
+
+  #ticket-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
+
+.only-for-print{
+    display: none;
+    visibility: hidden;
+}

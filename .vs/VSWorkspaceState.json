@@ -5,6 +5,7 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\admin",
+    "\\src\\app\\admin\\initial-setup",
     "\\src\\app\\admin\\ticket-setup",
     "\\src\\environments"
   ],

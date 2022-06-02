@@ -82,7 +82,6 @@ export class TicketService {
       }
       return a['row'] - b['row'];
     })
-
     return result;
   }
 

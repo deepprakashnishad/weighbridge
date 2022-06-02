@@ -9,6 +9,7 @@ import { DailyCollectionReportComponent } from './daily-collection-report/daily-
 import { NotificationLogComponent } from './notification-log/notification-log.component';
 import { ReportComponent } from './report.component';
 import { TheftDetectionReportComponent } from './theft-detection-report/theft-detection-report.component';
+import { WastedReportComponent } from './wasted-report/wasted-report.component';
 import { WeighmentReportComponent } from './weighment-report/weighment-report.component';
 import { ZeroCheckReportComponent } from './zero-check-report/zero-check-report.component';
 
@@ -25,7 +26,14 @@ const routes: Routes = [
 				canActivate: [AuthGuardService], 
 				canDeactivate:[CanDeactivateGuardService],
 				data: { title: 'Weighment report', permissions: []}
-			},
+      },
+      {
+        path: 'wasted-report',
+        component: WastedReportComponent,
+        canActivate: [AuthGuardService],
+        canDeactivate: [CanDeactivateGuardService],
+        data: { title: 'Wasted report', permissions: [] }
+      },
 			{
 				path: 'audit-log', 
 				component: AuditLogComponent,

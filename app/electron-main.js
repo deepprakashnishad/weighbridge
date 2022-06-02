@@ -36,7 +36,9 @@ function createWindow() {
     }
   })
   win.maximize();
-  win.show();
+  win.once('ready-to-show', () => {
+    win.show()
+  })
 
   win.webContents.on('did-fail-load', () => {
     if (env === "DEV") {

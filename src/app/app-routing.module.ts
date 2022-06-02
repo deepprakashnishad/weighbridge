@@ -9,6 +9,7 @@ import { RoleComponent } from './admin/role/role.component';
 import { ActivityLogComponent } from './admin/activity-log/activity-log.component';
 import { DbBackupComponent } from './admin/db-backup/db-backup.component';
 import { WeighmentComponent } from './weighment/weighment.component';
+import { VehicleSetupComponent } from './weighment/vehicle-setup/vehicle-setup.component';
 
 const routes: Routes = [
 	{
@@ -50,8 +51,15 @@ const routes: Routes = [
 		component: WeighmentComponent,
 		canActivate: [AuthGuardService], 
 		canDeactivate:[CanDeactivateGuardService],
-		data: { title: 'DB Backup'}
-	},	
+		data: { title: 'Weighment'}
+  },
+  {
+    path: 'vehicle-setup',
+    component: VehicleSetupComponent,
+    canActivate: [AuthGuardService],
+    canDeactivate: [CanDeactivateGuardService],
+    data: { title: 'Vehicle Setup' }
+  },
 	{path: 'person', loadChildren: './../person/person.module#PersonModule', canLoad: [AuthGuardService],
 		data:{title: 'Person', resources: ['CREATE_PERSON', 'UPDATE_PERSON', 'DELETE_PERSON']}},
 ];

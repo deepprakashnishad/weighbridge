@@ -192,6 +192,23 @@ ipcMain.handle("writeToExcel", async (event, args) => {
   //});
 });
 
+ipcMain.handle("writeToHtml", async (event, args) => {
+  var path = app.getPath('userData') + "\\" + bootstrapData.mConstants.appName + "\\daily-reports";
+  fs.mkdirSync(path, { recursive: true });
+  var filename = "\\temp.html";
+  try {
+    fs.writeFileSync(path+filename, args, 'utf-8');
+  } catch (e) {
+    log.error(e);
+  } finally {
+    return `${path}/${filename}`;
+  }
+  //fs.mkdir(path, { recursive: true }, function (err) {
+  //  if (err) return cb(err);
+
+  //});
+});
+
 function getHash(key, data){
   const crypto = require('crypto');
   return crypto.createHmac('sha256', key)

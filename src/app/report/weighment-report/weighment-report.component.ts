@@ -183,10 +183,8 @@ export class WeighmentReportComponent implements OnInit {
     }
 
     stmt = `${stmt} ORDER BY w.rstNo ASC`;
-    console.log(stmt);
     this.data = await this.dbService.executeSyncDBStmt("SELECT", stmt);
     this.data = this.replaceUsersWithId(this.data);
-    console.log(this.data);
     this.dataSource.data = this.data;
   }
 
@@ -274,7 +272,6 @@ export class WeighmentReportComponent implements OnInit {
       weighment,
       weighmentDetails[weighmentDetails.length-1]
     );
-
     //var rawText = await this.printerService.rawTextPrint(weighment,
     //  weighmentDetails[weighmentDetails.length - 1]);
     //console.log(rawText);

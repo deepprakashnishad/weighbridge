@@ -2,7 +2,6 @@ import { AfterViewInit, Component, ElementRef, NgZone, OnInit, Query, ViewChild 
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
-import { isString } from 'util';
 import { PrinterService } from '../admin/printer-setup/printer.service';
 import { PreviewDialogComponent } from '../admin/ticket-setup/preview-dialog/preview-dialog.component';
 import { AuthenticationService } from '../authentication/authentication.service';
@@ -11,12 +10,11 @@ import { MyIpcService } from '../my-ipc.service';
 import { QueryList } from '../query-list';
 import { SharedDataService } from '../shared-data.service';
 import { TagSelectorComponent } from '../shared/tag-selector/tag-selector.component';
-import { Utils } from '../utils';
 import { Weighment, WeighmentDetail } from './weighment';
 import { WeighmentSearchDialog } from './weighment-search-dialog/weighment-search-dialog.component';
-import { WeighmentSummaryComponent } from './weighment-summary/weighment-summary.component';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { ReportService } from '../report/report.service';
+import { AdditionalField } from '../admin/data-setup/additional-fields/additional-field';
 
 @Component({
   selector: 'app-weighment',
@@ -72,6 +70,13 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   enableInternal: boolean;
 
   searchFields: any = JSON.parse(sessionStorage.getItem("search_fields"));
+
+  presetVehicles: Array<any> = [];
+
+  isPresetVehicle: boolean = false;
+  presetVehicle: any;
+
+  additionalFields: Array<AdditionalField> = [];
   
   constructor(
     private sharedDataService: SharedDataService,
@@ -106,6 +111,9 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     this.enableOthers = sessionStorage.getItem("enableOthers") == "true";
     this.enableInternal = sessionStorage.getItem("enableInternal") == "true";
 
+    this.additionalFields = JSON.parse(sessionStorage.getItem("additionalFields"));
+
+
     if (this.selectedIndicator?.stringType === "continuous") {
       setInterval(this.updateCurrentWeight.bind(this), 1000);
     }
@@ -124,7 +132,13 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
 
     setInterval(() => {
       this.currDate = new Date();
-    }, 1000*60);
+    }, 1000 * 60);
+
+    this.fetchPresetVehicles();
+  }
+
+  async fetchPresetVehicles() {
+    this.presetVehicles = await this.dbService.executeSyncDBStmt("SELECT", QueryList.GET_VEHICLE_TARE_WEIGHT);
   }
 
   isSeachFieldEnabled(searchFieldName) {
@@ -134,6 +148,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   }
 
   updateCurrentWeight() {
+    //this.currData = { weight: 15000, timestamp: (new Date()).getTime() };
     if (!this.currData) {
       this.isWeightStable = false;
       this.currentWeight = "Err!";
@@ -237,16 +252,13 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       status = "complete";
     }
     //Initial weighment
-    if (this.weighment.rstNo ===undefined) {
-      await this.createWeighment(status);
+    if (this.weighment.rstNo === undefined) {
+      await this.createWeighment(status);      
     }
     //First weight has been done and second has to be done
     else if (this.weighment.rstNo && this.weighmentDetail.firstWeight) {
       await this.updateSecondWeighment();
-      if (status === "complete") {
-        //Update weighment transaction as complete
-        await this.updateWeighment(status);
-      } else {
+      if (status !== "complete") {
         //Create new Weighment detail record for first weight with data of second weighment
         // of prev record
         await this.insertFirstWeighmentForPartial(
@@ -255,8 +267,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
           this.weighmentDetail.secondUnit,
           this.authService.getTokenOrOtherStoredData("id")
         );
-        await this.updateWeighment(status);
       }
+      await this.updateWeighment(status);
     }
   }
 
@@ -350,8 +362,49 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     } else {
       this.ngZone.run(() => {
         this.weighment.rstNo = result['newId'];
-      });      
-      this.insertFirstWeighment();
+      });
+      if (this.isPresetVehicle) {
+        this.insertPresetVehicleWeighmentDetail(status);
+      } else {
+        this.insertFirstWeighment();
+      }
+    }
+  }
+
+  async insertPresetVehicleWeighmentDetail(status: string) {
+    var stmt = QueryList.INSERT_PRESET_VEHICLE_WEIGHMENT_DETAIL
+      .replace("{weighmentRstNo}", this.weighment.rstNo.toString())
+      .replace("{material}", this.dbService.escapeString(this.weighmentDetail.material))
+      .replace("{supplier}", this.dbService.escapeString(this.weighmentDetail.supplier))
+      .replace("{firstWeighBridge}", this.presetVehicle.weighbridge)
+      .replace("{firstWeight}", this.presetVehicle.weight.toString())
+      .replace("{firstUnit}", this.weighmentDetail.firstUnit)
+      .replace("{firstWeightUser}", this.presetVehicle.userid)
+      .replace("{secondWeighBridge}", this.weighbridge)
+      .replace("{secondWeight}", this.weighmentDetail.secondWeight.toString())
+      .replace("{secondUnit}", this.weighmentDetail.secondUnit)
+      .replace("{secondWeightUser}", this.authService.getTokenOrOtherStoredData("id"))
+      .replace("{remark}", this.dbService.escapeString(this.weighmentDetail.remark))
+      .replace("{netWeight}", 
+          Math.abs(this.weighmentDetail.firstWeight - this.weighmentDetail.secondWeight).toString());
+    var result = await this.dbService.executeInsertAutoId("weighment_details", "id", stmt);
+    if (result['newId']) {
+      this.weighment.weighmentDetails = await this.getWeighmentDetails(this.weighment.rstNo);
+      this.weighmentDetail = Object.assign({}, this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1]);
+      if (status !== "complete") {
+        //Create new Weighment detail record for first weight with data of second weighment
+        // of prev record
+        await this.insertFirstWeighmentForPartial(
+          this.weighbridge,
+          this.weighmentDetail.secondWeight,
+          this.weighmentDetail.secondUnit,
+          this.authService.getTokenOrOtherStoredData("id")
+        );
+      }
+      this.postWeighmentProcess();
+      //this.notifier.notify("success", "Weighment created successfully");
+    } else {
+      this.notifier.notify("error", "Failed to create weighment");
     }
   }
 
@@ -391,7 +444,6 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
           Math.abs(this.weighmentDetail.firstWeight - this.weighmentDetail.secondWeight).toString())
       .replace("{remark}", this.dbService.escapeString(this.weighmentDetail.remark))
       .replace("{id}", this.weighment.weighmentDetails[this.weighment.weighmentDetails.length-1].id.toString());
-    console.log(stmt);
     var result = await this.dbService.executeSyncDBStmt("UPDATE", stmt);
     if (result) {
       this.weighment.weighmentDetails = await this.getWeighmentDetails(this.weighment.rstNo);
@@ -504,14 +556,14 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     }
 
     if (this.weighment.weighmentType.indexOf("outbound") > -1) {
-      if (!this.weighment.transporterCode) {
-        this.notifier.notify("error", "Transporter code is required for outbound");
-        return false;
-      }
-      if (!this.weighment.transporterName) {
-        this.notifier.notify("error", "Transporter name is required for outbound");
-        return false;
-      }
+      //if (!this.weighment.transporterCode) {
+      //  this.notifier.notify("error", "Transporter code is required for outbound");
+      //  return false;
+      //}
+      //if (!this.weighment.transporterName) {
+      //  this.notifier.notify("error", "Transporter name is required for outbound");
+      //  return false;
+      //}
       //if (!this.weighment.reqId) {
       //  this.notifier.notify("error", "Request id is required for outbound");
       //  return false;
@@ -524,10 +576,10 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       //  this.notifier.notify("error", "Request id date must be of 8 digits");
       //  return false;
       //}
-      if (!this.weighment.gatePassNo) {
-        this.notifier.notify("error", "Gate pass no is required for outbound");
-        return false;
-      }
+      //if (!this.weighment.gatePassNo) {
+      //  this.notifier.notify("error", "Gate pass no is required for outbound");
+      //  return false;
+      //}
     }
 
     //if (this.supplier === undefined || this.supplier.length < 0) {
@@ -596,7 +648,25 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
           this.weighmentDetail = Object.assign(this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1]);
         }
       });
+      this.isPresetVehicle = false;
+    } else if (keys[0] === "vehicleNo") {
+      var presetVehicle = this.getPresetVehicle(criteria[keys[0]]);
+      if (presetVehicle) {
+        this.isPresetVehicle = true;
+        this.weighmentDetail.firstWeighBridge = presetVehicle.weighbridge;
+        this.weighmentDetail.firstWeight = presetVehicle.weight;
+        this.weighmentDetail.firstWeightDatetime = new Date();
+        this.weighmentDetail.firstWeightUser = presetVehicle.userid;
+        this.weighment.weighmentDetails.push(this.weighmentDetail);
+      } else {
+        this.isPresetVehicle = false;
+      }
     }
+  }
+
+  getPresetVehicle(vehicleNo) {
+    this.presetVehicle = this.presetVehicles.find(ele => ele.vehicleNo === vehicleNo);
+    return this.presetVehicle;
   }
 
   async getWeighmentDetails(rstNo) {

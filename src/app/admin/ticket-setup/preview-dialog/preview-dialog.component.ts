@@ -77,20 +77,22 @@ export class PreviewDialogComponent implements OnInit {
         });
       });
     });
+
+    this.myIPCService.invokeIPC("loadEnvironmentVars", ["selectedPrinterType"])
+      .then(printerType => {
+        this.printerType = printerType;
+      });
   }
 
   print() {
     if (this.printerType === "GRAPHICAL") {
-      let element = document.getElementById("ticket-content");
-      let range = new Range();
-      range.setStart(element, 0);
-      range.setEndAfter(element);
-      document.getSelection().removeAllRanges();
-      document.getSelection().addRange(range);
-      this.myIPCService.invokeIPC("graphical-print-ipc",
-        this.selectedPrinter,
-        this.htmlContent, this.weighment.rstNo.toString()
-      ).then(result => {});
+      let printContent = document.getElementById("ticket-content").innerHTML;
+      this.myIPCService.invokeIPC("writeToHtml", printContent).then(path => {
+        this.myIPCService.invokeIPC("graphical-print-ipc",
+          this.selectedPrinter,
+          path, this.weighment.rstNo.toString()
+        ).then(result => { });
+      });
     } else {
       if (this.weighment) {
         this.printerService.rawTextPrint(this.weighment, this.weighmentDetail, this.fields).then(result => {
@@ -105,7 +107,7 @@ export class PreviewDialogComponent implements OnInit {
     this.myIPCService.invokeIPC("saveSingleEnvVar", ["selectedPrinter", this.selectedPrinter])
     .then(result => {
       if (result) {
-        this.notifier.notify("success", `Selected printer set to ${this.selectedPrinter.name}`);
+        //this.notifier.notify("success", `Selected printer set to ${this.selectedPrinter.name}`);
       } else {
         this.notifier.notify("error", `Failed to update selected printer`);
       }
@@ -116,7 +118,7 @@ export class PreviewDialogComponent implements OnInit {
     this.myIPCService.invokeIPC("saveSingleEnvVar", ["selectedPrinterType", this.printerType])
       .then(result => {
         if (result) {
-          this.notifier.notify("success", `Selected printer set to ${this.printerType}`);
+          //this.notifier.notify("success", `Selected printer set to ${this.printerType}`);
         } else {
           this.notifier.notify("error", `Failed to update selected printer`);
         }

@@ -200,6 +200,9 @@ export class PrinterService {
               wFields.push(wField);
             }
           }
+          wFields = wFields.sort(function (a, b) {
+            return a['col'] - b['col'];
+          });
           mText = mText + this.preparePreviewWeighmentTableText(weighment.weighmentDetails, wFields, field.col);
         }
       } else if (field.type === "freetext") {
@@ -213,6 +216,7 @@ export class PrinterService {
     }
 
     mText = mText + "</div>";
+    console.log(mText);
     return mText;
   }
 
@@ -447,7 +451,6 @@ export class PrinterService {
     var mText = "";
 
     var currY = 0;
-
     for (var i = 0; i < fields.length; i++) {
       mText = mText + `<th><b>${fields[i].displayName.toUpperCase()}</b></th>`;
       //if (currY < fields[i].col) {
@@ -497,7 +500,6 @@ export class PrinterService {
   updateWeighmentDetail(weighmentDetail: WeighmentDetail, weighmentDetails: Array<WeighmentDetail>) {
     var clone = Object.assign({}, weighmentDetail);
     var result = this.getTotalNetWeight(weighmentDetails);
-    console.log(result);
     clone.firstWeight = result['wt1'];
     clone.secondWeight = result['wt2'];
     clone.netWeight = result['netWeight'];
@@ -506,7 +508,6 @@ export class PrinterService {
     clone.firstWeightUser = result['firstWeightUser'];
     clone.secondWeightUser = result['secondWeightUser'];
 
-    console.log(clone);
     return clone;
   }
 }

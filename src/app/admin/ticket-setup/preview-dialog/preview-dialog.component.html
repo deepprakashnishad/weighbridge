@@ -1,12 +1,11 @@
-<div fxLayout fxLayoutAlign="space-between center">
+<div fxLayout fxLayoutAlign="space-between center" id="non-printable">
   <h3 matDialogTitle>Ticket Preview</h3>
   <button mat-icon-button matDialogClose color="accent"><mat-icon>close</mat-icon></button>
 </div>
 
-<mat-dialog-content>
-  <div id="ticket-content" class="ticket" [ngStyle]="{'font-size': fontSize+'px'}" [innerHtml]="htmlContent | safeHtml"></div>
-</mat-dialog-content>
-<mat-dialog-actions fxLayout fxLayoutGap="32px" fxLayoutAlign="center center">
+<div id="ticket-content" class="ticket" [ngStyle]="{'font-size': fontSize+'px'}" [innerHtml]="htmlContent | safeHtml"></div>
+
+<mat-dialog-actions fxLayout fxLayoutGap="32px" fxLayoutAlign="center center" id="non-printable">
   <mat-form-field appearance="outline">
     <mat-label>Printer Type</mat-label>
     <mat-select [(ngModel)]="printerType" (ngModelChange)="selectedPrinterTypeUpdated()" name="cntlPrintingType">

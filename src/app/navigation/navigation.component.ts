@@ -52,6 +52,8 @@ export class NavigationComponent implements OnInit {
   selectedMenu: string;
   isLicenseValid: boolean;
 
+  isSAPSyncEnabled: boolean = false;
+
   	constructor(
 		  private authenticationService: AuthenticationService,
       private router: Router,
@@ -183,7 +185,6 @@ export class NavigationComponent implements OnInit {
               AND u1.id = wd.firstWeightUser AND u2.id = wd.secondWeightUser \
               ORDER BY w.rstNo, wd.id";
     var dataRows = await this.dbService.executeSyncDBStmt("GET", sql);
-    console.log(dataRows);
     dataRows = this.reportService.processResultWithFinalWeight(dataRows);
 
     //this.ipcService.invokeIPC("sendDataToSAP", [dataRows]);
