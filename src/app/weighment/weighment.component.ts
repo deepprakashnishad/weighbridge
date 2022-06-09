@@ -142,13 +142,15 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   }
 
   isSeachFieldEnabled(searchFieldName) {
-    return Object.keys(this.searchFields).indexOf(searchFieldName) > -1 &&
-      (this.searchFields[searchFieldName]["inOutMode"] === "GENERIC" ||
-        this.weighment.weighmentType.toLowerCase().indexOf(this.searchFields[searchFieldName]["inOutMode"].toLowerCase())>-1);
+    if (this.searchFields) {
+      return Object.keys(this.searchFields).indexOf(searchFieldName) > -1 &&
+        (this.searchFields[searchFieldName]["inOutMode"] === "GENERIC" ||
+          this.weighment.weighmentType.toLowerCase().indexOf(this.searchFields[searchFieldName]["inOutMode"].toLowerCase()) > -1);
+    }
   }
 
   updateCurrentWeight() {
-    //this.currData = { weight: 15000, timestamp: (new Date()).getTime() };
+    //this.currData = { weight: 10000, timestamp: (new Date()).getTime() };
     if (!this.currData) {
       this.isWeightStable = false;
       this.currentWeight = "Err!";
@@ -248,7 +250,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       return;
     }
     var status = "pending";
-    if (this.isComplete && this.weighmentDetail.secondWeight && this.weighmentDetail.firstWeight) {
+    if (this.isComplete && typeof (this.weighmentDetail.secondWeight) === "number"
+      && typeof(this.weighmentDetail.firstWeight)==="number") {
       status = "complete";
     }
     //Initial weighment
@@ -256,7 +259,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       await this.createWeighment(status);      
     }
     //First weight has been done and second has to be done
-    else if (this.weighment.rstNo && this.weighmentDetail.firstWeight) {
+    else if (this.weighment.rstNo && typeof(this.weighmentDetail.firstWeight)==="number") {
       await this.updateSecondWeighment();
       if (status !== "complete") {
         //Create new Weighment detail record for first weight with data of second weighment

@@ -3,17 +3,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MyDbService } from '../../my-db.service';
 import { QueryList } from '../../query-list';
 import { Weighment } from '../../weighment/weighment';
-import * as XLSX from 'xlsx';
-import { FormControl, FormGroup } from '@angular/forms';
-import { PrinterService } from '../../admin/printer-setup/printer.service';
-import { PreviewDialogComponent } from '../preview-dialog/preview-dialog.component';
-import { PreviewDialogComponent as TicketPreviewComponent } from '../../admin/ticket-setup/preview-dialog/preview-dialog.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ReportService } from '../report.service';
-import { Clipboard } from '@angular/cdk/clipboard';
 import { NotifierService } from 'angular-notifier';
-import { Utils } from '../../utils';
-import { StatusDialogComponent } from '../weighment-report/weighment-report.component';
 
 @Component({
   selector: 'app-wasted-report',
