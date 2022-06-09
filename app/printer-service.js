@@ -48,26 +48,47 @@ ipcMain.handle("printer-ipc", async (event, ...args) => {
 })
 
 ipcMain.handle("graphical-print-ipc", async (e, ...args) => {
-  let window = BrowserWindow.fromWebContents(e.sender);
-  if (args[0]['name'].indexOf("PDF") > -1) {
-    try {
-      window.webContents.printToPDF({
-        printSelectionOnly: true,
-        landscape: true,
-      }).then((data) => {
-        const pdfPath = path.join(os.homedir(), `Desktop/${bootstrap.mConstants.appName}/${args[2]}.pdf`)
-        fs.writeFile(pdfPath, data, (error) => {
-          if (error) throw error
-          shell.openExternal('file://' + pdfPath);
-        })
-      });
-    } catch (e) {
-      log.error(e);
+  let window = new BrowserWindow({
+    width: 800,
+    height: 600,
+    show: false,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false
     }
-    
-  } else {
-    window.webContents.print();
-  }  
+  });
+
+  window.loadFile(args[1]);
+  window.once('ready-to-show', () => {
+    if (args[0]['name'].indexOf("PDF") > -1) {
+      try {
+        window.webContents.printToPDF({
+          landscape: true,
+        }).then((data) => {
+          const pdfPath = path.join(os.homedir(), `Desktop/${bootstrap.mConstants.appName}/${args[2]}.pdf`)
+          fs.writeFile(pdfPath, data, (error) => {
+            if (error) throw error
+            shell.openExternal('file://' + pdfPath);
+          }).then(() => {
+            window.close();
+          });
+        });
+      } catch (e) {
+        log.error(e);
+      }
+    } else {
+      log.info(args[0]['name']);
+      window.webContents.print({
+        silent: true,
+        deviceName: args[0]['name'],
+        landscape: true
+      }, (success, errorType) => {
+        if (!success) console.log(errorType)
+
+        window.close();
+      });
+    }
+  });
 });
 
 ipcMain.handle("cmdline-print-ipc", async (event, ...args) => {

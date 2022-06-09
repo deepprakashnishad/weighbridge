@@ -4,10 +4,13 @@
     "\\app",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\admin",
-    "\\src\\app\\admin\\ticket-setup",
+    "\\src\\app\\navigation",
+    "\\src\\app\\report",
+    "\\src\\app\\report\\wasted-report",
+    "\\src\\app\\weighment",
+    "\\src\\app\\weighment\\vehicle-setup",
     "\\src\\environments"
   ],
-  "SelectedNode": "\\app\\electron-main.js",
+  "SelectedNode": "\\src\\app\\app-routing.module.ts",
   "PreviewInSolutionExplorer": false
 }

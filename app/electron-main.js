@@ -18,8 +18,8 @@ require("./port-verifier.js");
 require("./mailer.js");
 require("./sap-integration.js");
 
-const env = "PROD"; // DEV Or PROD
-//const env = "DEV";
+//const env = "PROD"; // DEV Or PROD
+const env = "DEV";
 
 global.win;
 

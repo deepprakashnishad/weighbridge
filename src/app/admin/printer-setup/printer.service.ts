@@ -202,6 +202,9 @@ export class PrinterService {
               wFields.push(wField);
             }
           }
+          wFields = wFields.sort(function (a, b) {
+            return a['col'] - b['col'];
+          });
           mText = mText + this.preparePreviewWeighmentTableText(weighment.weighmentDetails, wFields, field.col);
         }
       } else if (field.type === "freetext") {

@@ -117,4 +117,18 @@ export class QueryList{
 
   //DB Backup
   static readonly BACKUP: string = "BACKUP DATABASE weighbridge TO DISK = '{path}'";
+
+  static readonly INSERT_VEHICLE_TARE_WEIGHT = "INSERT INTO vehicle_tare_weight(vehicleNo, weighbridge, weight, createdBy) \
+                  VALUES('{vehicleNo}', '{weighbridge}', {weight}, {createdBy})";
+
+  static readonly UPDATE_VEHICLE_TARE_WEIGHT = "UPDATE vehicle_tare_weight set weighbridge='{weighbridge}', \
+                  weight={weight}, createdBy={createdBy} WHERE vehicleNo='{vehicleNo}'";
+
+  static readonly GET_VEHICLE_TARE_WEIGHT = "SELECT v.vehicleNo, u.username createdBy, v.weighbridge, \
+                  v.weight, v.createdBy as userid FROM vehicle_tare_weight v, app_user u WHERE u.id=v.createdBy";
+
+  static readonly DELETE_VEHICLE_TARE_WEIGHT = "DELETE vehicle_tare_weight WHERE vehicleNo='{vehicleNo}'";
+
+  static readonly SELECT_WEIGHMENT_WITHOUT_DETAILS =
+    "SELECT * FROM weighment WHERE rstNo NOT IN (SELECT weighmentRstNo FROM weighment_details) AND status!='abort'";
 }
