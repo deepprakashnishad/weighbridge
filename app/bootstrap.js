@@ -14,6 +14,7 @@ module.exports = Object.freeze({
       { "field": "enableOthers", "mValue": "true" },
       { "field": "enableInternal", "mValue": "false" },
       { field: "enableWhiteSpacesInVehicle", "mValue": "false" },
+      { field: "enableWeightEditing", "mValue": "false" },
       { field: "logLevel", mValue: "error" },
       { field: "enable_invoice_creation", mValue: "true" },
       { field: "enable_inbound_challan_weight", mValue: "false" },

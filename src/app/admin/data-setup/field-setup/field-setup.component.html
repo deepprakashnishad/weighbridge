@@ -9,22 +9,7 @@
         <input name="cntlDateFormat" [(ngModel)]="dateFormat" matInput placeholder="Date format for report and ticket">
       </mat-form-field>
       <mat-checkbox name="cntEnableWhiteSpacesInVehicle" [(ngModel)]="enableWhiteSpacesInVehicle" class="example-margin">Enable whitespace in vehicle number</mat-checkbox>
-        <!--<mat-select [(ngModel)]="dateFormat" placeholder="Date format for report and ticket">
-          <mat-option value="MMM">Mon dd yyyy hh:mm AM/PM</mat-option>
-          <mat-option value=9>Mon dd yyyy hh:mm:ss:nnn AM/PM</mat-option>
-          <mat-option value=13>dd Mon yyyy hh:mm:ss:nnn AM/PM</mat-option>
-          <mat-option value=20>yyyy-mm-dd hh:mm:ss</mat-option>
-          <mat-option value=21>yyyy-mm-dd hh:mm:ss:nnn</mat-option>
-          <mat-option value=22>mm/dd/yy hh:mm:ss AM/PM</mat-option>
-          <mat-option value=25>yyyy-mm-dd hh:mm:ss:nnn</mat-option>
-          <mat-option value=100>Mon dd yyyy hh:mm AM/PM</mat-option>
-          <mat-option value=109>Mon dd yyyy hh:mm:ss:nnn AM/PM</mat-option>
-          <mat-option value=113>dd Mon yyyy hh:mm:ss:nnn</mat-option>
-          <mat-option value=120>yyyy-mm-dd hh:mm:ss</mat-option>
-          <mat-option value=121>yyyy-mm-dd hh:mm:ss:nnn</mat-option>
-          <mat-option value=126>yyyy-mm-dd T hh:mm:ss:nnn</mat-option>
-          <mat-option value=127>yyyy-mm-dd T hh:mm:ss:nnn</mat-option>
-        </mat-select>-->
+      <mat-checkbox name="cntEnableWeightEditing" [(ngModel)]="enableWeightEditing" class="example-margin">Enable freetext weight</mat-checkbox>        
     <div fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
       <button mat-raised-button color="primary" (click)="save()">Save</button>
     </div>
