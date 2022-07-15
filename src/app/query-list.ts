@@ -9,6 +9,7 @@ export class QueryList{
   static readonly UPDATE_WEIGHMENT: string = "UPDATE weighment SET scrollNo='{scrollNo}', reqId='{reqId}', \
         gatePassNo='{gatePassNo}', weighmentType='{weighmentType}', transporterCode='{transporterCode}', vehicleNo='{vehicleNo}', \
         transporterName='{transporterName}', status='{status}', scrollDate='{scrollDate}', reqIdDate='{reqIdDate}', misc='{misc}' WHERE rstNo={rstNo}";
+  static readonly DELETE_WEIGHMENT = "DELETE weighment WHERE rstNo='{rstNo}'";
   static readonly UPDATE_WEIGHMENT_STATUS: string = "UPDATE weighment SET status='{status}' WHERE rstNo={rstNo}";
   //Weighment Details
   static readonly INSERT_WEIGHMENT_DETAIL: string = "INSERT INTO weighment_details( \
@@ -22,6 +23,13 @@ export class QueryList{
   id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser, remark, customer) \
   VALUES({id}, {weighmentRstNo}, '{material}', '{supplier}', '{firstWeighBridge}', {firstWeight}, '{firstUnit}', \
   GETDATE(), {firstWeightUser}, '{remark}', '{customer}') ";
+
+  static readonly INSERT_COMPLETE_WEIGHMENT_DETAIL: string = "INSERT INTO weighment_details( \
+  id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser,\
+  secondWeighBridge, secondWeight, secondUnit, secondWeightDatetime, secondWeightUser, remark, customer) \
+  VALUES({id}, {weighmentRstNo}, '{material}', '{supplier}', \
+  '{firstWeighBridge}', {firstWeight}, '{firstUnit}', GETDATE(), {firstWeightUser},\
+  '{secondWeighBridge}', {secondWeight}, '{secondUnit}', GETDATE(), {secondWeightUser}, '{remark}', '{customer}') ";
 
   static readonly INSERT_PRESET_VEHICLE_WEIGHMENT_DETAIL: string = "INSERT INTO weighment_details( \
   id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser, \

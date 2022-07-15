@@ -70,12 +70,14 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   enableInternal: boolean;
 
   searchFields: any = JSON.parse(sessionStorage.getItem("search_fields"));
+  enableWeightEditing: boolean = JSON.parse(sessionStorage.getItem("enableWeightEditing"));
+  enterFirstWeightManually: boolean = JSON.parse(sessionStorage.getItem("enterFirstWeightManually"));
 
   presetVehicles: Array<any> = [];
 
   isPresetVehicle: boolean = false;
   presetVehicle: any;
-
+  enableWeighmentTypes: string;
   additionalFields: Array<AdditionalField> = [];
   
   constructor(
@@ -112,7 +114,12 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     this.enableInternal = sessionStorage.getItem("enableInternal") == "true";
 
     this.additionalFields = JSON.parse(sessionStorage.getItem("additionalFields"));
+    this.enableWeighmentTypes = sessionStorage.getItem("enableWeighmentTypes") ?
+      sessionStorage.getItem("enableWeighmentTypes") : "yes";
 
+    if (this.enableWeighmentTypes !== "yes") {
+      this.weighment.weighmentType = "others";
+    }
 
     if (this.selectedIndicator?.stringType === "continuous") {
       setInterval(this.updateCurrentWeight.bind(this), 1000);
@@ -187,7 +194,9 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       } else {
         this.isWeightStable = false;
         this.currentWeight = "Err!";
-        this.capture();
+        if (!this.enterFirstWeightManually) {
+          this.capture();
+        }        
       }
     }
   }
@@ -250,8 +259,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       return;
     }
     var status = "pending";
-    if (this.isComplete && typeof (this.weighmentDetail.secondWeight) === "number"
-      && typeof(this.weighmentDetail.firstWeight)==="number") {
+    if ((this.isComplete && typeof (this.weighmentDetail.secondWeight) === "number"
+      && typeof (this.weighmentDetail.firstWeight) === "number") || this.enterFirstWeightManually) {
       status = "complete";
     }
     //Initial weighment
@@ -276,7 +285,6 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   }
 
   postWeighmentProcess() {
-    console.log("Starting post weighment processing");
     this.sharedDataService.updateData("WEIGHMENT_COMPLETED", true);
     this.notifier.notify("success", "Weighment saved successfully");
     if (sessionStorage.getItem("enable_zero_check")) {
@@ -369,8 +377,45 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       if (this.isPresetVehicle) {
         this.insertPresetVehicleWeighmentDetail(status);
       } else {
-        this.insertFirstWeighment();
+        if (this.enterFirstWeightManually) {
+          await this.insertCompleteWeighmentDetail();
+        } else {
+          this.insertFirstWeighment();
+        }        
       }
+    }
+  }
+
+  weightUpdated(value, weightType) {
+    this.weighmentDetail.netWeight = Math.abs(this.weighmentDetail.firstWeight - this.weighmentDetail.secondWeight);
+  }
+
+  async insertCompleteWeighmentDetail() {
+    var stmt = QueryList.INSERT_COMPLETE_WEIGHMENT_DETAIL
+      .replace("{weighmentRstNo}", this.weighment.rstNo.toString())
+      .replace("{material}", this.dbService.escapeString(this.weighmentDetail.material))
+      .replace("{supplier}", this.dbService.escapeString(this.weighmentDetail.supplier))
+      .replace("{firstWeighBridge}", this.weighbridge)
+      .replace("{firstWeight}", this.weighmentDetail.firstWeight.toString())
+      .replace("{firstUnit}", this.weighmentDetail.firstUnit)
+      .replace("{firstWeightUser}", this.authService.getTokenOrOtherStoredData("id"))
+      .replace("{secondWeighBridge}", this.weighbridge)
+      .replace("{secondWeight}", this.weighmentDetail.secondWeight.toString())
+      .replace("{secondUnit}", this.weighmentDetail.firstUnit)
+      .replace("{customer}", this.weighmentDetail.customer)
+      .replace("{secondWeightUser}", this.authService.getTokenOrOtherStoredData("id"))
+      .replace("{remark}", this.dbService.escapeString(this.weighmentDetail.remark));
+    console.log(stmt);
+    var result = await this.dbService.executeInsertAutoId("weighment_details", "id", stmt);
+    if (result['newId']) {
+      this.weighment.weighmentDetails = await this.getWeighmentDetails(this.weighment.rstNo);
+      this.weighmentDetail = Object.assign({}, this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1]);
+      this.postWeighmentProcess();
+      //this.notifier.notify("success", "Weighment created successfully");
+    } else {
+      await this.dbService.executeSyncDBStmt("DELETE", QueryList.DELETE_WEIGHMENT
+        .replace("{rstNo}", this.weighment.rstNo.toString()));
+      this.notifier.notify("error", "Failed to create weighment");
     }
   }
 
@@ -603,18 +648,21 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     this.weighmentDetail = new WeighmentDetail();
     this.transporter = null;
     this.isComplete = true;
-
+    if (this.enableWeighmentTypes !== "yes") {
+      this.weighment.weighmentType = "others";
+    }
     this.router.navigate(["weighment"]);
   }
 
   capture() {
-    //this.currentWeight = Utils.randomNumberGenerator(5, 10000, 50000);
-    if (this.weighment?.weighmentDetails[this.weighment?.weighmentDetails?.length - 1]?.firstWeight===undefined) {
+    if (this.weighment?.weighmentDetails[this.weighment?.weighmentDetails?.length - 1]?.firstWeight === undefined) {
       this.weighmentDetail.firstWeight = this.currentWeight;
     } else {
-      this.weighmentDetail.firstWeight = this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1].firstWeight;
       this.weighmentDetail.secondWeight = this.currentWeight;
-      this.weighmentDetail.netWeight = Math.abs(this.weighmentDetail.secondWeight - this.weighmentDetail.firstWeight);
+      if (!this.enterFirstWeightManually) {
+        this.weighmentDetail.firstWeight = this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1].firstWeight;
+        this.weighmentDetail.netWeight = Math.abs(this.weighmentDetail.secondWeight - this.weighmentDetail.firstWeight);
+      }
     }
   }
 

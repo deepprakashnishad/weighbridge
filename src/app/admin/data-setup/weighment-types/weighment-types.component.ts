@@ -15,6 +15,7 @@ export class WeighmentTypesComponent implements OnInit {
   enableOutboundSubcontract: boolean;
   enableOthers: boolean;
   enableInternal: boolean;
+  enableWeighmentTypes: string;
 
   constructor(private dbService: MyDbService) { }
 
@@ -26,6 +27,7 @@ export class WeighmentTypesComponent implements OnInit {
     this.enableOutboundSubcontract = sessionStorage.getItem("enableOutboundSubcontract") == "true";
     this.enableOthers = sessionStorage.getItem("enableOthers") == "true";
     this.enableInternal = sessionStorage.getItem("enableInternal") == "true";
+    this.enableWeighmentTypes = sessionStorage.getItem("enableWeighmentTypes") ? sessionStorage.getItem("enableWeighmentTypes"):"yes";
   }
 
   save() {
@@ -37,6 +39,7 @@ export class WeighmentTypesComponent implements OnInit {
       { "field": "enableOutboundSubcontract", "mValue": this.enableOutboundSubcontract },
       { "field": "enableOthers", "mValue": this.enableOthers },
       { "field": "enableInternal", "mValue": this.enableInternal },
+      { "field": "enableWeighmentTypes", "mValue": this.enableWeighmentTypes },
     ]);
   }
 }

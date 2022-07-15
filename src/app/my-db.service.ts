@@ -45,9 +45,6 @@ export class MyDbService {
     var failedFields = [];
     for (var i = 0; i < fieldArr.length; i++) {
       var ele = fieldArr[i];
-      console.log(QueryList.UPDATE_APP_SETTING
-        .replace("{mValue}", ele['mValue'])
-        .replace("{field}", ele['field']));
       var result = await this.executeSyncDBStmt("UPDATE",
         QueryList.UPDATE_APP_SETTING
           .replace("{mValue}", ele['mValue'])
@@ -100,11 +97,9 @@ export class MyDbService {
   }
 
   async executeInsertAutoId(tablename, primaryColumnName, query) {
-    console.log("Making call");
     var result = await this._electronService.ipcRenderer.invoke(
       "executeSyncInsertAutoId", [tablename, primaryColumnName, query]
     );
-    console.log("Call returned");
     return result;
   }
 }
