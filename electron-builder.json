@@ -1,7 +1,7 @@
 {
   "appId": "com.notamedia.accubridge",
   "productName": "Accubridge",
-  "buildVersion": "0.0.1",
+  "buildVersion": "1.0.1",
   "files": [
     "**/*"
   ],

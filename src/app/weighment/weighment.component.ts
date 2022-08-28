@@ -249,7 +249,6 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   }
 
   postWeighmentProcess() {
-    console.log("Starting post weighment processing");
     this.sharedDataService.updateData("WEIGHMENT_COMPLETED", true);
     this.notifier.notify("success", "Weighment saved successfully");
     if (sessionStorage.getItem("enable_zero_check")) {
@@ -392,7 +391,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   async displayWeighmentSummary() {
     var data = await this.printerService.getPreviewDataWithTemplate(
       this.weighment,
-      this.weighment.weighmentDetails[this.weighment.weighmentDetails.length-1]
+      this.weighment.weighmentDetails[this.weighment.weighmentDetails.length - 1],
+      undefined, false
     );
 
     const dialogRef = this.dialog.open(PreviewDialogComponent, {
@@ -402,7 +402,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
         fields: data['ticketFields'],
         ticketTemplate: data['template'],
         'weighment': this.weighment,
-        'weighmentDetail': this.weighmentDetail
+        'weighmentDetail': this.weighmentDetail,
+        'isDuplicate': false
       }
     });
 

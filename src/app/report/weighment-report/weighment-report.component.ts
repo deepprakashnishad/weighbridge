@@ -273,7 +273,8 @@ export class WeighmentReportComponent implements OnInit {
         fontSize: 12,
         printingType: this.printingType,
         'weighment': weighment,
-        'weighmentDetail': weighmentDetails[weighmentDetails.length - 1]
+        'weighmentDetail': weighmentDetails[weighmentDetails.length - 1],
+        'isDuplicate': true
       }
     });
   }
@@ -281,7 +282,6 @@ export class WeighmentReportComponent implements OnInit {
   printReport() {
     var content = this.reportService.getHtmlReportText(this.dataSource.data, this.displayedColumns, this.maxFieldLength);
     var rawTextArray = this.reportService.getRawTextForFilePrinting(this.dataSource.data, this.displayedColumns, this.maxFieldLength);
-    console.log(rawTextArray);
     this.dialog.open(PreviewDialogComponent, {
       data: {
         title: "Weighment Report",

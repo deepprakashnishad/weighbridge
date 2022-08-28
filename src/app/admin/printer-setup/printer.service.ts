@@ -92,25 +92,30 @@ export class PrinterService {
     return false;
   }
 
-  async getPreviewDataWithTemplate(weighment: Weighment, weighmentDetail: WeighmentDetail, fields?) {
+  async getPreviewDataWithTemplate(weighment: Weighment,
+    weighmentDetail: WeighmentDetail, fields?, isDuplicate: boolean = true) {
     if (!fields) {
       var stmt = `SELECT * FROM ticket_template WHERE applicableTo LIKE '%${weighment.weighmentType}%' OR applicableTo='GENERIC'`;
       var templates = await this.dbService.executeSyncDBStmt("SELECT", stmt);
       fields = await this.fetchTemplateDetail(templates[0].id);
       fields = this.ticketService.getSortedFields(fields);
     }
-    return {template: templates[0], ticketFields: fields, content: this.preparePreviewText(fields, weighment, weighmentDetail) };
+    return {
+      template: templates[0], ticketFields: fields,
+      content: this.preparePreviewText(fields, weighment, weighmentDetail, isDuplicate)
+    };
   }
 
-  async getPreviewText(weighment: Weighment, weighmentDetail: WeighmentDetail, fields?) {
+  async getPreviewText(weighment: Weighment,
+    weighmentDetail: WeighmentDetail, fields?, isDuplicate: boolean = true) {
     if (!fields) {
       var stmt = `SELECT * FROM ticket_template WHERE applicableTo LIKE '%${weighment.weighmentType}%' OR applicableTo='GENERIC'`;
       var templates = await this.dbService.executeSyncDBStmt("SELECT", stmt);
       fields = await this.fetchTemplateDetail(templates[0].id);
       fields = this.ticketService.getSortedFields(fields);
     }
-    
-    return this.preparePreviewText(fields, weighment, weighmentDetail);
+
+    return this.preparePreviewText(fields, weighment, weighmentDetail, isDuplicate);
   }
 
   private trimDatetimeWeighmentDetails(weighmentDetails: Array<WeighmentDetail>) {
@@ -137,7 +142,7 @@ export class PrinterService {
   }
 
   private preparePreviewText(fields: Array<TicketField>,
-    weighment: Weighment, origWeighmentDetail: WeighmentDetail) {
+    weighment: Weighment, origWeighmentDetail: WeighmentDetail, isDuplicate: boolean = true) {
     var weighmentDetail = this.updateWeighmentDetail(
       origWeighmentDetail, weighment.weighmentDetails
     );
@@ -149,9 +154,9 @@ export class PrinterService {
       var field = fields[i];
       var data = "";
       if (field.type === "newline") {
-        console.log(field.col)
-        console.log(currY)
-        console.log(currY - field.col)
+        //console.log(field.col)
+        //console.log(currY)
+        //console.log(currY - field.col)
         if (field.col > currY) {
           mText = mText + "<br/>".repeat(field.col-currY);
         } else {
@@ -168,12 +173,21 @@ export class PrinterService {
         mText = mText + "&nbsp;".repeat(field.col - currY);
         currY = parseInt(field.col.toString());
       }
-      if (field.type === "ticket-field" && (weighment[field.field] || weighmentDetail[field.field.substr("weighDetails_".length)]!==undefined)) {
+      if (field.type === "ticket-field" && (
+        weighment[field.field] ||
+        weighmentDetail[field.field.substr("weighDetails_".length)] !== undefined ||
+        field.field === "printedAt" ||
+        field.field === "printDuplicateWord"
+      )) {
         if (field.field !== "weighmentDetails") {
+          if (field.field === "printDuplicateWord" && !isDuplicate) {
+            continue;
+          }
           data = field.displayName + "&nbsp;".repeat(minLabelLength - field.displayName?.length) + separator;
           var valLength = 0;
           if (field.field.indexOf("weighDetails") > -1) {
-            if (field.field.substr("weighDetails_".length) === "firstWeightUser" || field.field.substr("weighDetails_".length) === "secondWeightUser") {
+            if (field.field.substr("weighDetails_".length) === "firstWeightUser" ||
+              (field.field.substr("weighDetails_".length) === "secondWeightUser" && weighmentDetail['secondWeightUser']!== null)) {
               data = data + `${weighmentDetail[field.field.substr("weighDetails_".length)][USER_PRINT_FIELD]}`;
               valLength = weighmentDetail[field.field.substr("weighDetails_".length)][USER_PRINT_FIELD]?.toString().length;
             } else if (weighmentDetail[field.field.substr("weighDetails_".length)] != null &&
@@ -181,6 +195,12 @@ export class PrinterService {
               data = data + `${weighmentDetail[field.field.substr("weighDetails_".length)]}`;
               valLength = weighmentDetail[field.field.substr("weighDetails_".length)].toString().length;
             }
+          } else if (field.field === "printedAt") {
+            var printingTime = this.getCurrentDatetime();
+            data = data + printingTime;
+            valLength = printingTime.toString().length;
+          } else if (field.field === "printDuplicateWord") {
+            valLength = 0;
           } else {
             data = data + `${weighment[field.field]}`;
             valLength = weighment[field.field].toString().length;
@@ -221,6 +241,17 @@ export class PrinterService {
     return mText;
   }
 
+  getCurrentDatetime() {
+    var currentdate = new Date();
+    var datetime = currentdate.getDate() + "/"
+      + (currentdate.getMonth() + 1) + "/"
+      + currentdate.getFullYear() + " "
+      + currentdate.getHours() + ":"
+      + currentdate.getMinutes() + ":"
+      + currentdate.getSeconds();
+    return datetime;
+  }
+
   getData(weighment, weighmentDetail, field) {
     var data = "";
     if (field.field.indexOf("weighDetails") > -1) {
@@ -232,18 +263,20 @@ export class PrinterService {
     return data?data:"";
   }
 
-  async rawTextPrint(weighment: Weighment, weighmentDetail: WeighmentDetail, template?) {
+  async rawTextPrint(weighment: Weighment,
+    weighmentDetail: WeighmentDetail, template?, isDuplicate: boolean = true) {
     if (!template || template.length===0) {
       var stmt = `SELECT * FROM ticket_template WHERE applicableTo LIKE '%${weighment.weighmentType}%' OR applicableTo='GENERIC'`;
       var templates = await this.dbService.executeSyncDBStmt("SELECT", stmt);
       template = await this.fetchTemplateDetail(templates[0].id);
     }
-    var mText = this.getPythonRawPrintText(template, weighment, weighmentDetail);
+    var mText = this.getPythonRawPrintText(template, weighment, weighmentDetail, isDuplicate);
     return mText;
     //this.ipcService.invokeIPC("printer-ipc", "print", mText);
   }
 
-  private getPythonRawPrintText(fields: Array<TicketField>, weighment: Weighment, origWeighmentDetail: WeighmentDetail) {
+  private getPythonRawPrintText(fields: Array<TicketField>,
+    weighment: Weighment, origWeighmentDetail: WeighmentDetail, isDuplicate: boolean = true) {
     var weighmentDetail: WeighmentDetail = this.updateWeighmentDetail(origWeighmentDetail, weighment.weighmentDetails);
     var mText = "python print.py ";
     var currX = 0, currY = 0;
@@ -261,7 +294,7 @@ export class PrinterService {
         if (field.col > currY) {
           mText = mText + " lf " + (field.col - currY);
         } else {
-          mText = mText + " lf 1";
+          mText = mText + " newline ";
         }
         return mText;
       }
@@ -277,6 +310,9 @@ export class PrinterService {
       }
 
       if (field.type === "ticket-field") {
+        if (field.field === "printDuplicateWord" && !isDuplicate) {
+          continue;
+        }
         if (field.field.indexOf("weighmentDetails") === -1) {
           var data = "";
           if (field.field.indexOf("weighDetails") > -1) {
@@ -285,6 +321,18 @@ export class PrinterService {
             } else {
               data = ` ${field.font} \"${field.displayName}${" ".repeat(minLabelSize - field.displayName?.length)}: ${weighmentDetail[field.field.substr("weighDetails_".length)] != undefined ? weighmentDetail[field.field.substr("weighDetails_".length)] : ""}\"`;
             }
+          } else if (field.field === "printedAt") {
+            var printingTime = this.getCurrentDatetime();
+            var tempText = `${field.displayName}${" ".repeat(minLabelSize - field.displayName.length)}: ${printingTime}`;
+            if (currY + tempText.length > pageWidth) {
+              var text1 = tempText.substring(0, pageWidth - currY - 1);
+              var text2 = tempText.substring(pageWidth - currY);
+              data = ` ${field.font} \"${text1}\" newline ${field.font} \"${text2}\" `;
+            } else {
+              data = ` ${field.font} \"${tempText}\"`;
+            }
+          } else if (field.field === "printDuplicateWord") {
+            data = ` ${field.font} \"${field.displayName}${" ".repeat(minLabelSize - field.displayName?.length)}\"`;
           } else {
             if (weighment[field.field] !== undefined) {
               var tempText = `${field.displayName}${" ".repeat(minLabelSize - field.displayName.length)}: ${weighment[field.field]}`;

@@ -18,8 +18,10 @@ require("./port-verifier.js");
 require("./mailer.js");
 require("./sap-integration.js");
 
-//const env = "PROD"; // DEV Or PROD
-const env = "DEV";
+const appName = "Accubridge"
+const version = "1.0.1";
+const env = "PROD"; // DEV Or PROD
+//const env = "DEV";
 
 global.win;
 
@@ -92,11 +94,9 @@ ipcMain.handle("getMachineDetails", async (event, arg) => {
 
 ipcMain.handle("getAppInfo", async (event, arg) => {
   try {
-    var appName = app.getName();
-    var version = app.getVersion();
     return {
       "name": appName,
-      "version": machineId
+      "version": version
     };
   }
   catch (e) {

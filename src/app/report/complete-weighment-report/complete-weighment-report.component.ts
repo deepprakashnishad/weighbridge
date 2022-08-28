@@ -276,7 +276,8 @@ export class CompleteWeighmentReportComponent implements OnInit {
         fontSize: 12,
         printingType: this.printingType,
         'weighment': weighment,
-        'weighmentDetail': weighmentDetails[weighmentDetails.length - 1]
+        'weighmentDetail': weighmentDetails[weighmentDetails.length - 1],
+        'isDuplicate': true
       }
     });
   }

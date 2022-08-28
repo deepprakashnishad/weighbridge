@@ -11,6 +11,7 @@ import { NotifierService } from 'angular-notifier';
 import { MatDialog } from '@angular/material/dialog';
 import { InitialSetupComponent } from '../../admin/initial-setup/initial-setup.component';
 import { LicenseService } from '../../license.service';
+import { MyIpcService } from '../../my-ipc.service';
 
 const MismatchPasswordValidator: ValidatorFn = (fg: FormGroup): ValidationErrors | null => {
   const pass = fg.get('materialFormCardPasswordEx');
@@ -33,7 +34,8 @@ export class LoginComponent implements OnInit{
     authResponse: AuthResponse;
     isPassword = true;
     passwordOrText = 'password';
-    hide=true;
+    hide = true;
+  version = "";
     private rememberMe=false;
 
   constructor(
@@ -45,6 +47,7 @@ export class LoginComponent implements OnInit{
     private ngZone: NgZone,
     private notifier: NotifierService,
     private licenseService: LicenseService,
+    private ipcService: MyIpcService,
     private route: ActivatedRoute) {
     this.cardForm = fb.group({
       materialFormCardNameEx: ['', [Validators.required, Validators.minLength(4)]],
@@ -72,6 +75,10 @@ export class LoginComponent implements OnInit{
           this.notifier.notify("error", val);
         }
       });
+    this.ipcService.invokeIPC("getAppInfo", []).then(results => {
+      this.version = results['version'];
+    });
+
   }
 
   onSubmit(): void {

@@ -249,7 +249,13 @@ module.exports = Object.freeze({
       },
       {
         id: 35, templateId: 1, field: "netWeight", type: "weighment_detail", displayName: 'Nt Wt', row: null, col: 13, isIncluded: 1, font: "R"
-      }
+      },
+      {
+        id: 36, templateId: 1, field: "printedAt", type: "ticket-field", displayName: 'Printed At', row: null, col: null, isIncluded: 1, font: "R"
+      },
+      {
+        id: 37, templateId: 1, field: "printDuplicateWord", type: "ticket-field", displayName: 'Print Duplicate', row: null, col: null, isIncluded: 1, font: "R"
+      },
     ],
     weighstring: [
       {

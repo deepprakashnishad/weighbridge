@@ -10,7 +10,6 @@ import { HtmlViewerComponent } from '../shared/html-viewer/html-viewer.component
 import { MyIpcService } from '../my-ipc.service';
 import { environment } from '../../environments/environment';
 import { MyDbService } from '../my-db.service';
-import { QueryList } from '../query-list';
 import { ReportService } from '../report/report.service';
 import { LicenseService } from '../license.service';
 
@@ -162,7 +161,7 @@ export class NavigationComponent implements OnInit {
   }
 
   showInfoAlert() {
-    var infoHtml = `<h2>Product Name: Accubridge</h2><h2>Version: ${environment.version}</h2><h2>&copy 2021 Notamedia Private Ltd.</h2><h2>Visit https://notamedia.com </h2>`;
+    var infoHtml = `<h2>Product Name: {appName}</h2><h2>Version: {version}</h2><h2>&copy 2021 Notamedia Private Ltd.</h2><h2>Visit https://notamedia.com </h2>`;
     this.ipcService.invokeIPC("getAppInfo", []).then(results => {
       this.dialog.open(HtmlViewerComponent, {
         data: {

@@ -24,6 +24,8 @@ const ticketPredefinedFields = [
   { displayName: "Wt2 Operator", field: "weighDetails_secondWeightUser" },
   { displayName: "Customer", field: "weighDetails_customer" },
   { displayName: "Misc", field: "misc" },
+  { displayName: "Printed At", field: "printedAt" },
+  { displayName: "Printed Duplicate", field: "printDuplicateWord" },
 ]
 
 const weighmentDetailColumnFields = [
@@ -201,19 +203,3 @@ export class TicketField {
   }
 
 }
-
-
-//export class Ticket{
-//    gatePassNo: string;
-//    poDetails: string;
-//    currentDateTime: string;
-//    date1: Date;
-//    date2: Date;
-//    duration: number;
-//    ticketType: string;
-//    invoiceDateTime: Date;
-//    netWeight: number;
-//    totalPrint: number;
-//    invoicePrint: string;
-//    weighingPrint: string;
-//}

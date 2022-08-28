@@ -24,6 +24,7 @@ export class PreviewDialogComponent implements OnInit {
   weighment: Weighment;
   weighmentDetail: WeighmentDetail;
   printerType: string = "GRAPHICAL";
+  isDuplicate: boolean = true;
 
   constructor(
     private notifier: NotifierService,
@@ -57,6 +58,9 @@ export class PreviewDialogComponent implements OnInit {
     }
     if (data['printingType']) {
       this.printerType = data['printingType'];
+    }
+    if (data['isDuplicate'] !== undefined && data['isDuplicate'] !==null) {
+      this.isDuplicate = data['isDuplicate'];
     }
   }
 
@@ -93,9 +97,12 @@ export class PreviewDialogComponent implements OnInit {
       ).then(result => {});
     } else {
       if (this.weighment) {
-        this.printerService.rawTextPrint(this.weighment, this.weighmentDetail, this.fields).then(result => {
-          console.log(result);
-          this.myIPCService.invokeIPC("cmdline-print-ipc", this.selectedPrinter, result);
+        this.printerService.rawTextPrint(
+          this.weighment,
+          this.weighmentDetail,
+          this.fields, this.isDuplicate).then(result => {
+            console.log(result);
+            this.myIPCService.invokeIPC("cmdline-print-ipc", this.selectedPrinter, result);
         });
       }
     }
