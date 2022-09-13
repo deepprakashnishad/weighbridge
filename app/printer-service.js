@@ -64,6 +64,7 @@ ipcMain.handle("graphical-print-ipc", async (e, ...args) => {
         window.webContents.printToPDF({
           landscape: true,
         }).then((data) => {
+          console.log(data);
           const pdfPath = path.join(os.homedir(), `Desktop/${bootstrap.mConstants.appName}/${args[2]}.pdf`)
           fs.writeFile(pdfPath, data, (error) => {
             if (error) throw error

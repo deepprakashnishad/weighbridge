@@ -8,6 +8,8 @@ import { environment } from "../environments/environment";
 import { MyIpcService } from "./my-ipc.service";
 import { BehaviorSubject } from 'rxjs';
 
+//var ipcamera = require('node-hikvision-api');
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,10 +19,12 @@ export class LicenseService {
 
   validLicence: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
+  
+
   constructor(
     private ipcService: MyIpcService,
     private notifier: NotifierService,
-    private http: HttpClient
+    private http: HttpClient,
   ) {
     this.licenseUrl = environment.licenseurl + "/License";
   }
@@ -100,6 +104,22 @@ export class LicenseService {
     })
       .pipe(
         catchError(this.handleError('Inactivate machine', null)));
+  }
+
+  getPicture(pictureUrl:string="", username="", password=""): Observable<any> {    
+    var authHeader = 'Basic ' + new Buffer("admin"+ ':' + "NoPassword").toString('base64');
+    return this.http.get(pictureUrl, {
+      headers: { 'Authorization': authHeader },
+      responseType: "blob"
+    })
+  }
+
+  connectToCamera(pictureUrl: string = "", username = "", password = ""): Observable<any> {
+    var authHeader = 'Basic ' + new Buffer("admin" + ':' + "NoPassword").toString('base64');
+    return this.http.get(pictureUrl, {
+      headers: { 'Authorization': authHeader },
+      responseType: "blob"
+    })
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

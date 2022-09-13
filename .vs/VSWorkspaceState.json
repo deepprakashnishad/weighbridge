@@ -5,10 +5,12 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\admin",
-    "\\src\\app\\admin\\initial-setup",
+    "\\src\\app\\admin\\printer-setup",
     "\\src\\app\\admin\\ticket-setup",
+    "\\src\\app\\authentication",
+    "\\src\\app\\authentication\\login",
     "\\src\\environments"
   ],
-  "SelectedNode": "\\app\\electron-main.js",
+  "SelectedNode": "\\app\\file-service.js",
   "PreviewInSolutionExplorer": false
 }

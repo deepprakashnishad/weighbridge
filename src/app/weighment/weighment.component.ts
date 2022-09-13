@@ -15,6 +15,7 @@ import { WeighmentSearchDialog } from './weighment-search-dialog/weighment-searc
 import { Clipboard } from '@angular/cdk/clipboard';
 import { ReportService } from '../report/report.service';
 import { AdditionalField } from '../admin/data-setup/additional-fields/additional-field';
+import { LicenseService } from '../license.service';
 
 @Component({
   selector: 'app-weighment',
@@ -92,6 +93,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     private dialog: MatDialog,
     private clipboard: Clipboard,
     private reportService: ReportService,
+    private licenseService: LicenseService,
     private router: Router,
   ) {
     this.route.queryParams.subscribe(params => {
@@ -254,7 +256,16 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     this.weighmentDetail.customer = `${event.code}-${event.mValue}`;
   }
 
+  getPicture() {
+    this.ipcService.invokeIPC("loadEnvironmentVars", ["camera"]).then(result => {
+      this.ipcService.invokeIPC("captureImage", result)
+    });
+  }
+
   async save() {
+
+    this.getPicture();
+    return;
     if (!this.isValid()) {
       return;
     }
@@ -282,6 +293,12 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       }
       await this.updateWeighment(status);
     }
+  }
+
+  captureImage() {
+    this.ipcService.invokeIPC("loadEnvironmentVars", ["camera"]).then(result => {
+      this.ipcService.invokeIPC("captureImage", result);
+    });
   }
 
   postWeighmentProcess() {

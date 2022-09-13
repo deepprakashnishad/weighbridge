@@ -29,6 +29,7 @@ export class TicketSetupComponent implements OnInit {
   ticketFieldDataSource: MatTableDataSource<TicketField>;
   textFieldDataSource: MatTableDataSource<TicketField>;
   columnFieldDataSource: MatTableDataSource<TicketField>;
+  imageFieldDataSource: MatTableDataSource<TicketField>;
 
   newlineField: TicketField = TicketField.generateNewlineTicketField();
   reverseFeedField: TicketField = TicketField.generateReverseFeedTicketField();
@@ -43,6 +44,7 @@ export class TicketSetupComponent implements OnInit {
     this.textFieldDataSource = new MatTableDataSource(TicketField.generateFreeTextRecords([]));
     this.columnFieldDataSource = new MatTableDataSource(TicketField.generateColumnFieldRecords());
     this.ticketFieldDataSource = new MatTableDataSource(TicketField.generateTicketFields());
+    this.imageFieldDataSource = new MatTableDataSource(TicketField.generateImageFields());
   }
 
   ngOnInit() {
@@ -95,6 +97,10 @@ export class TicketSetupComponent implements OnInit {
     }
     for (var i = 0; i < this.columnFieldDataSource.data.length; i++) {
       this.columnFieldDataSource.data[i]['id'] = await this.insertTicketField(this.columnFieldDataSource.data[i], this.selectedTemplate.id);
+    }
+
+    for (var i = 0; i < this.imageFieldDataSource.data.length; i++) {
+      this.imageFieldDataSource.data[i]['id'] = await this.insertTicketField(this.imageFieldDataSource.data[i], this.selectedTemplate.id);
     }
 
     this.newlineField['id'] = await this.insertTicketField(this.newlineField, this.selectedTemplate.id);
@@ -181,6 +187,13 @@ export class TicketSetupComponent implements OnInit {
         ticketFields.push(temp);
       }
     }
+
+    for (var i = 0; i < this.imageFieldDataSource.data.length; i++) {
+      var temp = this.imageFieldDataSource.data[i];
+      if (temp.displayName?.length > 0 && temp.col !== null && temp.row !== null && temp.isIncluded) {
+        ticketFields.push(temp);
+      }
+    }
     if (this.includeWeighmentTableField()) {
       for (var i = 0; i < this.columnFieldDataSource.data.length; i++) {
         var temp = this.columnFieldDataSource.data[i];
@@ -210,20 +223,13 @@ export class TicketSetupComponent implements OnInit {
     var ticketFields = mFields["ticketFields"];
     var freetextFields = mFields["freetextFields"];
     var weighDetailFields = mFields["weighDetailFields"];
+    var imageFields = mFields['imageFields'];
 
     this.ticketFieldDataSource.data = TicketField.generateTicketFields(ticketFields);
-    //if (ticketFields.length > 0) {
-    //  this.ticketFieldDataSource.data = ticketFields;
-    //} else {
-    //  this.ticketFieldDataSource.data = TicketField.generateTicketFields();
-    //}
 
     this.columnFieldDataSource.data = TicketField.generateColumnFieldRecords(weighDetailFields);
-    //if (weighDetailFields.length > 0) {
-    //  this.columnFieldDataSource.data = weighDetailFields;
-    //} else {
-    //  this.columnFieldDataSource.data = TicketField.generateColumnFieldRecords();
-    //}
+
+    this.imageFieldDataSource.data = TicketField.generateImageFields(imageFields);
 
     if (mFields['newlineField']) {
       this.newlineField = mFields['newlineField'];

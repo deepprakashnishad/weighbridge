@@ -252,7 +252,20 @@ module.exports = Object.freeze({
       },
       {
         id: 35, templateId: 1, field: "netWeight", type: "weighment_detail", displayName: 'Nt Wt', row: null, col: 13, isIncluded: 1, font: "R"
+      },
+      {
+        id: 36, templateId: 1, field: "img1", type: "image-field", displayName: 'Image 1', row: null, col: null, isIncluded: 0, font: "R"
+      },
+      {
+        id: 37, templateId: 1, field: "img2", type: "image-field", displayName: 'Image 2', row: null, col: null, isIncluded: 0, font: "R"
+      },
+      {
+        id: 38, templateId: 1, field: "img3", type: "image-field", displayName: 'Image 3', row: null, col: null, isIncluded: 0, font: "R"
+      },
+      {
+        id: 39, templateId: 1, field: "img4", type: "image-field", displayName: 'Image 4', row: null, col: null, isIncluded: 0, font: "R"
       }
+
     ],
     weighstring: [
       {

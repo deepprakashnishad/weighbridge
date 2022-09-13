@@ -1,7 +1,9 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
+import { LicenseService } from '../license.service';
 import { MyDbService } from '../my-db.service';
 import { MyIpcService } from '../my-ipc.service';
 import { QueryList } from '../query-list';
@@ -35,6 +37,8 @@ export class WeighbridgeRecordComponent implements OnInit {
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
   displayedColumns: string[] = ['vehicleNo', 'datetime'];
 
+  image: any;
+
   constructor(
     private sharedDataService: SharedDataService,
     private dbService: MyDbService,
@@ -42,11 +46,32 @@ export class WeighbridgeRecordComponent implements OnInit {
     private ngZone: NgZone,
     private notifier: NotifierService,
     private router: Router,
+    private licenseService: LicenseService,
+    private sanitizer: DomSanitizer,
   ) { }
 
   ngOnInit() {
     this.initializePendingRecords();
     this.fetchWeighIndicators();
+    //setInterval(()=>this.getPicture(), 5000)
+  }
+
+  getPicture() {
+    this.ipcService.invokeIPC("loadEnvironmentVars", ["camera"]).then(result => {
+      this.licenseService.getPicture(result['pictureUrl'], result['user'], result['password']).subscribe(blob => {
+        let objectURL = URL.createObjectURL(blob);
+        this.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+      })
+    });
+  }
+
+  connectCam() {
+    this.ipcService.invokeIPC("loadEnvironmentVars", ["camera"]).then(result => {
+      this.licenseService.connectToCamera(result['pictureUrl'], result['user'], result['password']).subscribe(blob => {
+        let objectURL = URL.createObjectURL(blob);
+        this.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+      })
+    });
   }
 
   async fetchWeighIndicators() {

@@ -191,17 +191,76 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
     </div>
-    <div fxFlex="47">
-      <h3>Page Setup for printing</h3>
-      <div fxLayout="column">
-        <mat-form-field>
-          <mat-label>Total page size in terms of lines</mat-label>
-          <input matInput placeholder="Page Size(In lines)" [(ngModel)]="newlineField.col">
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Reverse Feed Count</mat-label>
-          <input matInput placeholder="Reverse Feed Count" [(ngModel)]="reverseFeedField.col">
-        </mat-form-field>
+    <div fxFlex="47" fxLayout="column">
+      <div>
+        <h3>Image Fields(Only for graphical printers)</h3>
+        <mat-table #table [dataSource]="imageFieldDataSource">
+          <!-- Name Column -->
+          <ng-container matColumnDef="displayString">
+            <mat-header-cell *matHeaderCellDef> Field </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <mat-form-field floatLabel="never">
+                <input matInput placeholder="Text" [value]="element.displayName" [(ngModel)]="element.displayName">
+              </mat-form-field>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="row">
+            <mat-header-cell *matHeaderCellDef> Row </mat-header-cell>
+            <mat-cell class="row-cell" *matCellDef="let element">
+              <mat-form-field floatLabel="never">
+                <input matInput placeholder="Row" [value]="element.row" [(ngModel)]="element.row">
+              </mat-form-field>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="col">
+            <mat-header-cell *matHeaderCellDef> Col </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <mat-form-field floatLabel="never">
+                <input matInput placeholder="Col" [value]="element.col" [(ngModel)]="element.col">
+              </mat-form-field>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Fav Column -->
+          <ng-container matColumnDef="font">
+            <mat-header-cell *matHeaderCellDef> font </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <mat-select [(value)]="element.font" placeholder="Font">
+                <mat-option value="R">R</mat-option>
+                <mat-option value="RB">RB</mat-option>
+                <mat-option value="D">D</mat-option>
+                <mat-option value="DB">DB</mat-option>
+              </mat-select>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef> Include </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <mat-checkbox [(ngModel)]="element.isIncluded"></mat-checkbox>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+      <div>
+        <h3>Page Setup for printing</h3>
+        <div fxLayout="column">
+          <mat-form-field>
+            <mat-label>Total page size in terms of lines</mat-label>
+            <input matInput placeholder="Page Size(In lines)" [(ngModel)]="newlineField.col">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Reverse Feed Count</mat-label>
+            <input matInput placeholder="Reverse Feed Count" [(ngModel)]="reverseFeedField.col">
+          </mat-form-field>
+        </div>
       </div>
     </div>
   </div>

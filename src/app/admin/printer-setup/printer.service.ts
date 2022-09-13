@@ -137,7 +137,7 @@ export class PrinterService {
     return tempArr;
   }
 
-  private preparePreviewText(fields: Array<TicketField>,
+  private async preparePreviewText(fields: Array<TicketField>,
     weighment: Weighment, origWeighmentDetail: WeighmentDetail) {
     var weighmentDetail = this.updateWeighmentDetail(
       origWeighmentDetail, weighment.weighmentDetails
@@ -166,7 +166,7 @@ export class PrinterService {
         mText = mText + "&nbsp;".repeat(field.col - currY);
         currY = parseInt(field.col.toString());
       }
-      if (field.type === "ticket-field" && (weighment[field.field] || weighmentDetail[field.field.substr("weighDetails_".length)]!==undefined)) {
+      if (field.type === "ticket-field" && (weighment[field.field] || weighmentDetail[field.field.substr("weighDetails_".length)] !== undefined)) {
         if (field.field !== "weighmentDetails") {
           data = field.displayName + "&nbsp;".repeat(minLabelLength - field.displayName?.length) + separator;
           var valLength = 0;
@@ -178,7 +178,7 @@ export class PrinterService {
               weighmentDetail[field.field.substr("weighDetails_".length)] != undefined) {
               data = data + `${weighmentDetail[field.field.substr("weighDetails_".length)]}`;
               valLength = weighmentDetail[field.field.substr("weighDetails_".length)].toString().length;
-            }            
+            }
           } else {
             data = data + `${weighment[field.field]}`;
             valLength = weighment[field.field].toString().length;
@@ -212,6 +212,9 @@ export class PrinterService {
           mText = mText + field.displayName;
         }
         currY = currY + field.displayName.length;
+      } else if (field.type === "image-field") {
+        var res = await this.ipcService.invokeIPC("loadImage", []);
+        mText = `${mText}${res}`;
       }
     }
 

@@ -1,6 +1,7 @@
 const { ipcMain, app } = require('electron');
 const fs = require('fs');
 const bootstrapData = require("./bootstrap.js");
+const axios = require('axios');
 //const log = require('electron-log');
 //log.transports.file.level = 'info';
 //log.transports.file.file = __dirname + 'file-log.log';
@@ -208,6 +209,43 @@ ipcMain.handle("writeToHtml", async (event, args) => {
 
   //});
 });
+
+ipcMain.handle("captureImage", async (event, args) => {
+  var basicAuth = 'Basic ' + Buffer.from(args['user'] + ':' + args['password']).toString('base64');
+  
+  let axiosConfig = {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      'Authorization': basicAuth
+    },
+    responseType: "arraybuffer"
+  };
+  axios.get(args['pictureUrl'], axiosConfig)
+    .then(response => {
+      console.log(response.data)
+      saveBlob(response.data, "d:/test.jpg");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
+
+ipcMain.handle("loadImage", async (event, args) => {
+  var _img = fs.readFileSync("d:/test.jpg").toString('base64');
+  //example for .png
+  var _out = '<img width=200 height=200 src="data:image/png;base64,' + _img + '" />';
+  return _out;
+});
+
+function saveBlob(blob, path) {
+  var writer = fs.createWriteStream(path);
+  fs.writeFile(path, blob, function (err) {
+    if (err) {
+      console.log(err);
+    }
+    console.log("Saved")
+  });
+}
 
 function getHash(key, data){
   const crypto = require('crypto');

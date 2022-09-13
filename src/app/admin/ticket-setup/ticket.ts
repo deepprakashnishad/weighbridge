@@ -26,6 +26,13 @@ const ticketPredefinedFields = [
   { displayName: "Misc", field: "misc" },
 ]
 
+const predefinedImageFields = [
+  { displayName: "Image 1", field: "img1" },
+  { displayName: "Image 2", field: "img2" },
+  { displayName: "Image 3", field: "img3" },
+  { displayName: "Image 4", field: "img4" },
+]
+
 const weighmentDetailColumnFields = [
   { displayName: "SNo", field: "sNo" },
   { displayName: "Material", field: "material" },
@@ -54,6 +61,38 @@ export class TicketField {
 
   constructor() { }
 
+  static generateImageFields(predefinedFields: Array<TicketField> = []) {
+    var imageFields = [];
+    predefinedImageFields.forEach(ele => {
+      var field = new TicketField();
+      var found = false;
+      for (var preEle of predefinedFields) {
+        if (preEle.field === ele.field) {
+          field.id = preEle.id;
+          field.displayName = preEle.displayName;
+          field.field = preEle.field;
+          field.type = preEle.type
+          field.font = preEle.font;
+          field.col = preEle.col;
+          field.row = preEle.row;
+          field.isIncluded = preEle.isIncluded;
+          imageFields.push(field);
+          found = true;
+        }
+      }
+      if (!found) {
+        field.displayName = ele['displayName'];
+        field.field = ele['field'];
+        field.type = "image-field"
+        field.font = "R";
+        field.isIncluded = false;
+        imageFields.push(field);
+      }
+
+    });
+    return imageFields;
+  }
+
   static generateNewlineTicketField() {
     var newlineField = new TicketField();
     newlineField.col = 3;
@@ -80,6 +119,7 @@ export class TicketField {
     var ticketFields = [];
     var freetextFields = [];
     var weighDetailFields = [];
+    var imageFields = [];
     var newLineField;
     var reverseFeedField;
     for (var i = 0; i < result.length; i++) {
@@ -104,6 +144,8 @@ export class TicketField {
           newLineField = temp;
         } else if (temp.type === "reverseFeed") {
           reverseFeedField = temp;
+        } else if (temp.type === "image-field") {
+          imageFields.push(temp);
         }
       } else {
         ticketFields.push(temp);
@@ -115,7 +157,8 @@ export class TicketField {
         "freetextFields": freetextFields,
         "weighDetailFields": weighDetailFields,
         "newlineField": newLineField,
-        "reverseFeedField": reverseFeedField
+        "reverseFeedField": reverseFeedField,
+        "imageFields": imageFields
       };
     } else {
       return ticketFields;
@@ -202,19 +245,3 @@ export class TicketField {
   }
 
 }
-
-
-//export class Ticket{
-//    gatePassNo: string;
-//    poDetails: string;
-//    currentDateTime: string;
-//    date1: Date;
-//    date2: Date;
-//    duration: number;
-//    ticketType: string;
-//    invoiceDateTime: Date;
-//    netWeight: number;
-//    totalPrint: number;
-//    invoicePrint: string;
-//    weighingPrint: string;
-//}

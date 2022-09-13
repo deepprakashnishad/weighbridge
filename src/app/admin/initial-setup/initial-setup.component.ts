@@ -12,12 +12,17 @@ import { MyIpcService } from '../../my-ipc.service';
 export class InitialSetupComponent implements OnInit {
 
   mForm: FormGroup;
+  camForm: FormGroup;
 
   server: string;
   port: string;
   dbName: string;
   username: string;
   password: string;
+
+  camPictureUrl: string;
+  camUser: string;
+  camPassword: string;
 
   isLicenseActive: boolean = false;
   licenseNumber: string;
@@ -40,12 +45,24 @@ export class InitialSetupComponent implements OnInit {
       inputPassword: ['', Validators.required]
     });
 
+    this.camForm = this.fb.group({
+      inputPicUrl: [''],
+      inputCamUsername: [''],
+      inputCamPassword: ['']
+    });
+
     this.ipcService.invokeIPC("loadEnvironmentVars", ["database"]).then(result => {
       this.server = result['server'];
       this.dbName = result['database'];
       this.username = result['username'];
       this.password = result['password'];
       this.port = result['port'] ? result['port']:1433;
+    });
+
+    this.ipcService.invokeIPC("loadEnvironmentVars", ["camera"]).then(result => {
+      this.camUser = result['user'];
+      this.camPassword = result['password'];
+      this.camPictureUrl = result['pictureUrl'];
     });
 
     this.getLicenseDetails();
@@ -89,6 +106,20 @@ export class InitialSetupComponent implements OnInit {
       temp.push(licenseNumber.substr(20, 4));
 
     return temp.join('-');
+  }
+
+  saveCameraSettings() {
+    this.ipcService.invokeIPC("saveSingleEnvVar", ["camera", {
+      "user": this.camUser,
+      "pictureUrl": this.camPictureUrl,
+      "password": this.camPassword
+    }]).then(res => {
+      if (res) {
+        this.notifier.notify("success", "Save successful");
+      } else {
+        this.notifier.notify("error", "Failed to save");
+      }
+    });
   }
 
   save() {

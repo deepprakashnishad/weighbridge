@@ -38,20 +38,45 @@
       <button mat-raised-button type="submit" color="primary" (click)="loadInitialData();">Load Initial Data</button>
     </mat-card-action>
   </div>
-  <mat-card fxFlex>
-    <mat-card-content>
-      <h3>License Details</h3>
-      <form>
-        <mat-form-field class="full-width" appearance="fill">
-          <mat-label>License Number</mat-label>
-          <input license-mask name="cntlLicenseNumber" [disabled]="isLicenseActive" [(ngModel)]="licenseNumber" matInput placeholder="License Number">
+  <div fxFlex>
+    <mat-card>
+      <mat-card-content>
+        <h3>License Details</h3>
+        <form>
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>License Number</mat-label>
+            <input license-mask name="cntlLicenseNumber" [disabled]="isLicenseActive" [(ngModel)]="licenseNumber" matInput placeholder="License Number">
+          </mat-form-field>
+        </form>
+        <h5>Valid till - {{validTill}}</h5>
+      </mat-card-content>
+      <mat-card-action fxLayout fxLayoutGap="16px">
+        <button mat-raised-button [disabled]="isLicenseActive" (click)="activateLicense()">Activate</button>
+        <button mat-raised-button [disabled]="!isLicenseActive" (click)="deactivateLicenseForMachine()">De-activate</button>
+      </mat-card-action>
+    </mat-card>
+    <mat-card>
+      <h3>Hik Vision Camera Settings</h3>
+      <form fxLayout="col" fxLayoutGap="12px" [formGroup]="camForm">
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Picture Url" [(ngModel)]="camPictureUrl" type="text" formControlName="inputPicUrl" class="form-control">
         </mat-form-field>
+        <div fxLayout="row">
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Username" [(ngModel)]="camUser" type="text" formControlName="inputCamUsername" class="form-control">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Password" [(ngModel)]="camPassword" type="password" formControlName="inputCamPassword" class="form-control">
+          </mat-form-field>
+        </div>
+
       </form>
-      <h5>Valid till - {{validTill}}</h5>
-    </mat-card-content>
-    <mat-card-action fxLayout fxLayoutGap="16px">
-      <button mat-raised-button [disabled]="isLicenseActive" (click)="activateLicense()">Activate</button>
-      <button mat-raised-button [disabled]="!isLicenseActive" (click)="deactivateLicenseForMachine()">De-activate</button>
-    </mat-card-action>
-  </mat-card>
+      <mat-card-action class="full-width" fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
+        <button mat-raised-button [disabled]="mForm.invalid" type="submit" color="primary" (click)="saveCameraSettings();">Save</button>
+      </mat-card-action>
+    </mat-card>
+    
+  </div>
+  
+
 </div>
