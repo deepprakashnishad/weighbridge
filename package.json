@@ -22,6 +22,7 @@
     "dist_32bit": "electron-builder --win --ia32",
     "dist": "electron-builder",
     "distc": "npm run build && npm run dist_32bit && npm run dist",
+    "dist64": "npm run build && npm run dist",
     "postinstall": "electron-builder install-app-deps",
     "electron-start": "electron ./app/electron-main.js"
   },

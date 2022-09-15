@@ -1,9 +1,9 @@
 const { ipcMain, app } = require('electron');
 const fs = require('fs');
 const bootstrapData = require("./bootstrap.js");
-//const log = require('electron-log');
-//log.transports.file.level = 'info';
-//log.transports.file.file = __dirname + 'file-log.log';
+const log = require('electron-log');
+log.transports.file.level = 'info';
+log.transports.file.file = __dirname + 'file-log.log';
 
 var env_filepath = app.getPath('userData') +"\\" + bootstrapData.mConstants.appName;
 

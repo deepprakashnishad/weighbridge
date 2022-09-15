@@ -3,9 +3,9 @@ const serialPort = require('serialport');
 const Readline = require('@serialport/parser-readline')
 const ByteLength = require('@serialport/parser-byte-length')
 
-//const log = require('electron-log');
-//log.transports.file.level = 'info';
-//log.transports.file.file = __dirname + 'port-reader.log';
+const log = require('electron-log');
+log.transports.file.level = 'info';
+log.transports.file.file = __dirname + 'port-reader.log';
 
 var weighString;
 var tempPort;

@@ -1,9 +1,9 @@
 var soap = require('strong-soap').soap;
 const { app, ipcMain } = require('electron');
 const db = require('./db-service.js');
-//const log = require('electron-log');
-//log.transports.file.level = 'info';
-//log.transports.file.file = __dirname + 'sap.log';
+const log = require('electron-log');
+log.transports.file.level = 'info';
+log.transports.file.file = __dirname + 'sap.log';
 
 //const username = 'bflpidev';
 //const password = 'pi1234';

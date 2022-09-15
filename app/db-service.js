@@ -2,9 +2,9 @@ const { app, ipcMain } = require('electron');
 const sql = require("mssql");
 const fs = require('fs');
 const bootstrapData = require("./bootstrap.js");
-//const log = require('electron-log');
-//log.transports.file.level = 'info';
-//log.transports.file.file = __dirname + 'db-log.log';
+const log = require('electron-log');
+log.transports.file.level = 'info';
+log.transports.file.file = __dirname + 'db-log.log';
 
 var sqlConfig = {
   pool: {

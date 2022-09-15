@@ -7,9 +7,9 @@ const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 const bootstrap = require("./bootstrap");
 
-//const log = require('electron-log');
-//log.transports.file.level = 'info';
-//log.transports.file.file = __dirname + 'print-log.log';
+const log = require('electron-log');
+log.transports.file.level = 'info';
+log.transports.file.file = __dirname + 'print-log.log';
 
 async function runCommand(command) {
   console.log(command);
