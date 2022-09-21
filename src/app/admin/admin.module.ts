@@ -34,6 +34,7 @@ import { AddEditUserDialogComponent } from './user-management/add-edit-user-dial
 import { SapConfigComponent } from './sap-config/sap-config.component';
 import { FieldSetupComponent } from './data-setup/field-setup/field-setup.component';
 import { WeighmentTypesComponent } from './data-setup/weighment-types/weighment-types.component';
+import { CameraSetupComponent } from './camera-setup/camera-setup.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { WeighmentTypesComponent } from './data-setup/weighment-types/weighment-
     AddEditUserDialogComponent,
     SapConfigComponent,
     FieldSetupComponent,
-    WeighmentTypesComponent
+    WeighmentTypesComponent,
+    CameraSetupComponent
   ],
   imports: [
     SharedModule,

@@ -16,6 +16,7 @@ import { EmailSetupComponent } from './email-setup/email-setup.component';
 import { DbBackupComponent } from './db-backup/db-backup.component';
 import { UserManagement } from './user-management/user-management.component';
 import { SapConfigComponent } from './sap-config/sap-config.component';
+import { CameraSetupComponent } from './camera-setup/camera-setup.component';
 
 const routes: Routes = [
 	
@@ -88,6 +89,13 @@ const routes: Routes = [
         canActivate: [AuthGuardService],
         canDeactivate: [CanDeactivateGuardService],
         data: { title: 'User Management' }
+      },
+      {
+        path: 'camera-setup',
+        component: CameraSetupComponent,
+        canActivate: [AuthGuardService],
+        canDeactivate: [CanDeactivateGuardService],
+        data: { title: 'Camera Setup' }
       },
 		]
 	},

@@ -1,0 +1,43 @@
+<div class="full-width" fxLayout fxLayoutAlign="space-between center">
+  <div class="box-title">Camera Setup</div>
+  <app-help [tag]="'CAMERA_SETUP'"></app-help>
+</div>
+<div class="inner-container full-width" fxLayout>
+  <mat-card class="full-width">
+    <mat-card-content>
+      <form fxLayout="column" fxLayoutGap="16px">
+        <mat-checkbox [(ngModel)]="enableCamera" name="cboxAllowEmail">Enable Camera</mat-checkbox>
+        <mat-form-field appearance="outline">
+          <input
+                 matInput
+                 placeholder="Camera Id"
+                 aria-label="Camera Id"
+                 name="cntlCameraId"
+                 [(ngModel)]="cameraId" />
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Username" name="cntlUsername" [(ngModel)]="username" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" placeholder="Password" name="cntlPassword" [(ngModel)]="password" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Picture Url</mat-label>
+          <input matInput placeholder="Picture Url" name="cntlPictureUrl" [(ngModel)]="pictureUrl" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Print delay in milliseconds</mat-label>
+          <input matInput placeholder="Print delay in milliseconds" name="cntlPrintDelay" [(ngModel)]="printDelayInMillis" />
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div fxLayout fxLayoutAlign="space-between center" fxLayoutGap="32px">
+  <div fxLayout fxLayoutAlign="center center" fxLayoutGap="16px">
+    <button mat-raised-button (click)="save()" color="primary">Save</button>
+  </div>  
+</div>

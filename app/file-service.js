@@ -82,7 +82,6 @@ ipcMain.handle("saveSingleEnvVar", async (event, arg) => {
 ipcMain.handle("loadEnvironmentVars", async (event, arg) => {
   try {
     var data = fs.readFileSync(env_filepath + "\\" + bootstrapData.mConstants.envFilename, 'utf-8');
-
     if (arg && arg[0]) {
       return JSON.parse(data)[arg[0]];
     } else {
@@ -222,7 +221,6 @@ ipcMain.handle("captureImage", async (event, args) => {
   };
   axios.get(args['pictureUrl'], axiosConfig)
     .then(response => {
-      console.log(response.data)
       saveBlob(response.data, "d:/test.jpg");
     })
     .catch(error => {
@@ -231,7 +229,11 @@ ipcMain.handle("captureImage", async (event, args) => {
 });
 
 ipcMain.handle("loadImage", async (event, args) => {
-  var _img = fs.readFileSync("d:/test.jpg").toString('base64');
+  if(args[0]===undefined){
+    args[0] = "g:/test.jpg";
+  }
+  log.error("Image path - "+args[0]);
+  var _img = fs.readFileSync(args[0]).toString('base64');
   //example for .png
   var _out = '<img width=200 height=200 src="data:image/png;base64,' + _img + '" />';
   return _out;

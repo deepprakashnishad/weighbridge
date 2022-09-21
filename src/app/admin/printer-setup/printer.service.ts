@@ -213,7 +213,10 @@ export class PrinterService {
         }
         currY = currY + field.displayName.length;
       } else if (field.type === "image-field") {
-        var res = await this.ipcService.invokeIPC("loadImage", []);
+        //Temporary to be removed
+        var imagePath = await this.ipcService.invokeIPC("loadEnvironmentVars", ["imagePath"]);
+        console.log(imagePath);
+        var res = await this.ipcService.invokeIPC("loadImage", [imagePath]);
         mText = `${mText}${res}`;
       }
     }

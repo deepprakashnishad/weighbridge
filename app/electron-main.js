@@ -20,7 +20,7 @@ require("./sap-integration.js");
 
 const appName = "Accubridge"
 const version = "1.0.1";
-//const env = "PROD"; // DEV Or PROD
+// const env = "PROD"; // DEV Or PROD
 const env = "DEV";
 
 global.win;
