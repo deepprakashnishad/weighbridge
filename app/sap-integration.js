@@ -12,7 +12,14 @@ log.transports.file.file = __dirname + 'sap.log';
 ipcMain.handle("sendDataToSAP", async (event, args) => {
   try {
     //dummyDriver(args[0]);
-    sendToSAP(args[0], args[1], args[2], args[3]);
+    var data = args[0];
+    var chunkSize = args[4];
+    for (let i = 0; i < data.length; i += chunkSize) {
+        const chunk = data.slice(i, i + chunkSize);
+        console.log(chunk)
+        sendToSAP(args[0], args[1], args[2], args[3]);
+    }
+    
   } catch (err) {
     log.error(err);
     return { error: err.message };

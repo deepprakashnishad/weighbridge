@@ -13,7 +13,6 @@ var tempPort;
 ipcMain.handle("get-available-ports", async (event, ...args) => {
   try {
     var ports = await serialPort.list();
-    log.debug(ports);
     return ports;
   } catch (err) {
     log.error("Unable to read ports. Please see below error logged");
@@ -98,12 +97,12 @@ ipcMain.handle("write-to-verification-port", async (event, ...args) => {
 function onReadData(rawData) {
   try {
     data = rawData.toString();
-    if (logLevel==="debug") {
-      log.debug(data);
-      log.debug(data.length);
-      log.debug(weighString);
+    if (logLevel==="silly") {
+      log.silly(data);
+      log.silly(data.length);
+      log.silly(weighString);
       for (var i = 0; i < data.length; i++) {
-        log.debug("Character " + i + " - " + data[i]);
+        log.silly("Character " + i + " - " + data[i]);
       }
     }
     if (weighString === undefined) {
@@ -114,8 +113,8 @@ function onReadData(rawData) {
     var tempWeight = '';
 
     if (data.length !== weighString['totalChars'] && weighString['variableLength']===0) {
-      log.debug("Weigh string data length - " + data.length);
-      log.debug("Expected Chars - " + weighString['totalChars']);
+      log.silly("Weigh string data length - " + data.length);
+      log.silly("Expected Chars - " + weighString['totalChars']);
       win.webContents.send("verification-weight-recieved", [{ weight: "String length mismatch", error: "String length mismatch", timestamp: (new Date()).getTime() }]);
       return;
     }
@@ -151,9 +150,9 @@ function onReadData(rawData) {
       }
     } else {
       var weighStartFlag = false;
-      log.debug("Printing ASCII");
+      log.silly("Printing ASCII");
       for (var i = 0; i < data.length; i++) {
-        log.debug(data.charCodeAt(i));
+        log.silly(data.charCodeAt(i));
 
         if (data.charCodeAt(i) == 32 || data.charCodeAt(i) == 0 || data.charCodeAt(i) == 2) {
           continue;

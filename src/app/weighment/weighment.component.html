@@ -29,7 +29,7 @@
                      (keyup.enter)="parseQRString(weighment.vehicleNo)"
                      (contextmenu)="paste($event)"
                      (blur)="parseQRString(weighment.vehicleNo)" tabindex="0" placeholder="Vehicle No." />
-              <input *ngIf="!enableWhiteSpacesInVehicle" vehicleMask matInput #vehicleCntl [(ngModel)]="weighment.vehicleNo" name="cntlRequestId"
+              <input *ngIf="!enableWhiteSpacesInVehicle" matInput #vehicleCntl [(ngModel)]="weighment.vehicleNo" name="cntlRequestId"
                      (keyup.enter)="parseQRString(weighment.vehicleNo)"
                      (contextmenu)="paste($event)"
                      (blur)="parseQRString(weighment.vehicleNo)" tabindex="0" placeholder="Vehicle No." />
@@ -89,7 +89,7 @@
           <app-tag-selector [tagTypeId]="2" [selectedTag]="weighmentDetail.material" [title]="'Material*'" (optionSelected)="materialSelected($event)"></app-tag-selector>
           <mat-form-field appearance="outline" class="weight">
             <mat-label>First Weight</mat-label>
-            <input matInput [(ngModel)]="weighmentDetail.firstWeight" name="cntlFirstWt"readonly tabindex="-1" />
+            <input matInput [(ngModel)]="weighmentDetail.firstWeight" name="cntlFirstWt" readonly tabindex="-1" />
           </mat-form-field>
           <mat-form-field appearance="outline" class="weight">
             <mat-label>Second Weight</mat-label>

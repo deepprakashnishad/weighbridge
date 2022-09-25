@@ -16,6 +16,10 @@
           <!--<mat-label>Password</mat-label>-->
           <input matInput placeholder="Password" [(ngModel)]="password" type="password" formControlName="inputPassword" class="form-control">
         </mat-form-field>
+        <mat-form-field appearance="outline" *ngIf="enableSAPIntegration">
+          <!--<mat-label>Password</mat-label>-->
+          <input matInput placeholder="Sync Batch Size" [(ngModel)]="syncBatchSize" type="number" formControlName="inputBatchSize" class="form-control">
+        </mat-form-field>
       </form>
       <mat-card-action class="full-width" fxLayout fxLayoutAlign="center center" fxLayoutGap="32px">
         <button mat-raised-button [disabled]="mForm.invalid" type="submit" color="primary" (click)="save();">Save</button>

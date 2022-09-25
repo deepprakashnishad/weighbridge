@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MyDbService } from '../../my-db.service';
+import { MyIpcService } from '../../my-ipc.service';
 import { QueryList } from '../../query-list';
 import { Weighment } from '../../weighment/weighment';
 import * as XLSX from 'xlsx';
@@ -36,6 +37,7 @@ export class CompleteWeighmentReportComponent implements OnInit {
   scrollNo: string;
   transporter: string;
   transporterCode: string;
+  syncStatus: number=-1;
   //customer: string;
 
   status: string;
@@ -64,6 +66,7 @@ export class CompleteWeighmentReportComponent implements OnInit {
     private dbService: MyDbService,
     private printerService: PrinterService,
     private reportService: ReportService,
+    private ipcService: MyIpcService,
     private dialog: MatDialog,
     private clipboard: Clipboard,
     private notifier: NotifierService
@@ -153,6 +156,11 @@ export class CompleteWeighmentReportComponent implements OnInit {
       isCriteriaAdded = true;
     }
 
+    if (this.syncStatus!==-1) {
+      stmt = `${stmt} AND syncFlag = ${this.syncStatus}`;
+      isCriteriaAdded = true;
+    }
+
     if (this.range.value.start && this.range.value.end) {
       var startDate = `${this.range.value.start.getMonth() + 1}/${this.range.value.start.getDate()}/${this.range.value.start.getFullYear()}`;
       if (this.fromTime) {
@@ -175,7 +183,6 @@ export class CompleteWeighmentReportComponent implements OnInit {
     console.log(stmt);
     this.data = await this.dbService.executeSyncDBStmt("SELECT", stmt);
     this.data = this.replaceUsersWithId(this.data);
-    console.log(this.data);
     this.dataSource.data = this.data;
   }
 
@@ -330,5 +337,39 @@ export class CompleteWeighmentReportComponent implements OnInit {
         }
       }
     });
+  }
+
+  async syncSAPSingleRecord(rstNo){
+    var sql = `SELECT w.*, wd.*, u1.username firstWeightUsername, u2.username secondWeightUserName, \
+              convert(varchar, createdAt, 112) createdAtDate, convert(varchar, createdAt, 8) createdAtTime, \
+              convert(varchar, firstWeightDatetime, 112) firstWeightDate, convert(varchar, firstWeightDatetime, 8) firstWeightTime, \
+              convert(varchar, secondWeightDatetime, 112) secondWeightDate, convert(varchar, secondWeightDatetime, 8) secondWeightTime \
+              FROM weighment w, weighment_details wd, app_user u1, app_user u2 \
+              WHERE w.rstNo = wd.weighmentRstNo AND w.status = 'complete' AND w.syncFlag = 0 \
+              AND u1.id = wd.firstWeightUser AND u2.id = wd.secondWeightUser AND w.rstNo=${rstNo} \
+              ORDER BY w.rstNo, wd.id`;
+    var dataRows = await this.dbService.executeSyncDBStmt("GET", sql);
+    dataRows = this.reportService.processResultWithFinalWeight(dataRows);
+    //this.ipcService.invokeIPC("sendDataToSAP", [dataRows]);
+    this.ipcService.sendDataToSAP(dataRows);
+  }
+
+  async syncAllRecords(){
+    var rstNos = this.data.map(ele => ele.rstNo);
+    var rstNos = [...new Set(rstNos)];
+    var rstNosStr = rstNos.join(",");
+    var sql = `SELECT w.*, wd.*, u1.username firstWeightUsername, u2.username secondWeightUserName, \
+              convert(varchar, createdAt, 112) createdAtDate, convert(varchar, createdAt, 8) createdAtTime, \
+              convert(varchar, firstWeightDatetime, 112) firstWeightDate, convert(varchar, firstWeightDatetime, 8) firstWeightTime, \
+              convert(varchar, secondWeightDatetime, 112) secondWeightDate, convert(varchar, secondWeightDatetime, 8) secondWeightTime \
+              FROM weighment w, weighment_details wd, app_user u1, app_user u2 \
+              WHERE w.rstNo = wd.weighmentRstNo AND w.status = 'complete' AND w.syncFlag = 0 \
+              AND u1.id = wd.firstWeightUser AND u2.id = wd.secondWeightUser AND w.rstNo IN (${rstNosStr})\
+              ORDER BY w.rstNo, wd.id`;
+    console.log(sql)
+    var dataRows = await this.dbService.executeSyncDBStmt("GET", sql);
+    dataRows = this.reportService.processResultWithFinalWeight(dataRows);
+
+    this.ipcService.sendDataToSAP(dataRows);
   }
 }

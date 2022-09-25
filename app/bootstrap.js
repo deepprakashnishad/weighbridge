@@ -77,7 +77,8 @@ module.exports = Object.freeze({
       { field: "enableSAPIntegration", mValue: "false" },
       { field: "sapUsername", mValue: "" },
       { field: "sapPassword", mValue: "" },
-      { field: "sapEndpoint", mValue: "" }
+      { field: "sapEndpoint", mValue: "" },
+      { field: "syncBatchSize", mValue: "200" },
     ],
     app_user: [{
       "id": 1,

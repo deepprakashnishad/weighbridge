@@ -69,6 +69,9 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   enableOutboundSubcontract: boolean;
   enableOthers: boolean;
   enableInternal: boolean;
+
+  // mode: string = "manual";
+  mode: string = "auto";
   
   constructor(
     private sharedDataService: SharedDataService,
@@ -103,7 +106,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     this.enableOthers = sessionStorage.getItem("enableOthers") == "true";
     this.enableInternal = sessionStorage.getItem("enableInternal") == "true";
 
-    if (this.selectedIndicator?.stringType === "continuous") {
+    if (this.selectedIndicator?.stringType === "continuous" && this.mode==="auto") {
       setInterval(this.updateCurrentWeight.bind(this), 1000);
     }
 
@@ -317,8 +320,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
 
   async createWeighment(status) {
     var stmt = QueryList.INSERT_WEIGHMENT
-      .replace("{vehicleNo}", this.weighment.vehicleNo)
-      .replace("{scrollNo}", this.weighment.scrollNo ? this.weighment.scrollNo : "")
+      .replace("{vehicleNo}", this.weighment.vehicleNo.trim())
+      .replace("{scrollNo}", this.weighment.scrollNo ? this.weighment.scrollNo.trim() : "")
       .replace("{reqId}", this.weighment.reqId ? this.weighment.reqId.toString():null)
       .replace("{gatePassNo}", this.weighment?.gatePassNo ? this.weighment.gatePassNo.toString() : null)
       .replace("{weighmentType}", this.weighment.weighmentType)

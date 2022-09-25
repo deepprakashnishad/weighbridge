@@ -34,12 +34,22 @@ export class MyIpcService {
       sessionStorage.getItem("sapPassword"), SAP_ENCRYPTION_KEY
     ).toString(CryptoJS.enc.Utf8);
     if (sessionStorage.getItem("enableSAPIntegration")==="true") {
+      try{
+        var batchSize = parseInt(sessionStorage.getItem("syncBatchSize")); 
+        if(isNaN(batchSize)){
+          batchSize = data.length;
+        }
+      }catch(ex){
+        batchSize = data.length;
+      }
+      
       this.invokeIPC("sendDataToSAP",
         [
           data,
           sessionStorage.getItem("sapEndpoint"),
           sessionStorage.getItem("sapUsername"),
-          originalPassword
+          originalPassword,
+          batchSize
         ]
       );
     }

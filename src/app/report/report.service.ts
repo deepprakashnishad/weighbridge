@@ -349,39 +349,39 @@ export class ReportService {
     var data = {};
     data['WEIGHMENT_RST_NO'] = rows[0]['rstNo'];
     data['VEHICLE_NO'] = rows[0]['vehicleNo'];
-    data['REQ_ID'] = rows[0]['reqId'] == null || rows[0]['reqId'] == undefined ? "" : rows[0]['reqId'];
-    data['REQ_ID_DATE'] = rows[0]['reqIdDate'] == null || rows[0]['reqIdDate'] == undefined ? "" : rows[0]['reqIdDate'];
+    data['REQ_ID'] = rows[0]['reqId'] == null || rows[0]['reqId'] == undefined ? "null" : rows[0]['reqId'];
+    data['REQ_ID_DATE'] = rows[0]['reqIdDate'] == "" || rows[0]['reqIdDate'] == null || rows[0]['reqIdDate'] == undefined ? "null" : rows[0]['reqIdDate'];
     data['WEIGHMENT_TYPE'] = rows[0]['weighmentType'].toUpperCase();
-    data['GATE_PASS_NO'] = rows[0]['gatePassNo'] == null || rows[0]['gatePassNo'] == undefined ? "" : rows[0]['gatePassNo'];
-    data['PO_DETAILS'] = rows[0]['poDetails'] == null || rows[0]['poDetails'] == undefined ? "" : rows[0]['poDetails'];
+    data['GATE_PASS_NO'] = rows[0]['gatePassNo'] == null || rows[0]['gatePassNo'] == undefined ? "null" : rows[0]['gatePassNo'];
+    data['PO_DETAILS'] = rows[0]['poDetails'] == null || rows[0]['poDetails'] == undefined ? "null" : rows[0]['poDetails'];
     data['TRANSPORTER_CODE'] = rows[0]['transporterCode'];
     data['TRANSPORTER_NAME'] = rows[0]['transporterName'];
     data['WEIGHMENT_STATUS'] = rows[0]['status'].toUpperCase();
     data['CREATED_AT_DATE'] = rows[0]['createdAtDate'];
     data['CREATED_AT_TIME'] = rows[0]['createdAtTime']?.toString().replaceAll(":", "");
-    data['SCROLL_NO'] = rows[0]['scrollNo'] == null || rows[0]['scrollNo'] == undefined ? "" : rows[0]['scrollNo'];
-    data['SCROLL_DATE'] = rows[0]['scrollDate'] == null || rows[0]['scrollDate'] == undefined ? "" : rows[0]['scrollDate'];
+    data['SCROLL_NO'] = rows[0]['scrollNo'] == "" || rows[0]['scrollNo'] == null || rows[0]['scrollNo'] == undefined ? "null" : rows[0]['scrollNo'];
+    data['SCROLL_DATE'] = rows[0]['scrollDate'] == "" || rows[0]['scrollDate'] == null || rows[0]['scrollDate'] == undefined ? "null" : rows[0]['scrollDate'];
     data['SYNC_FLAG'] = rows[0]['syncFlag'];
-    data['MISC_TEXT'] = rows[0]['misc'] == null || rows[0]['misc'] == undefined ? "" : rows[0]['misc'];
+    data['MISC_TEXT'] = rows[0]['misc'] == null || rows[0]['misc'] == undefined ? "null" : rows[0]['misc'];
 
-    data['FIRST_WEIGH_BRIDGE'] = rows[0]['firstWeighBridge']!=null && rows[0]['firstWeighBridge'] ? rows[0]['firstWeighBridge'] : "";
-    data['FIRST_WEIGHT'] = rows[0]['firstWeight']!=null && rows[0]['firstWeight'] ? rows[0]['firstWeight'] : "";
-    data['FIRST_WEIGHT_UNIT'] = rows[0]['firstUnit'] != null && rows[0]['firstUnit'] ? rows[0]['firstUnit'].toUpperCase() : "";
-    data['FIRST_WEIGHT_DATE'] = rows[0]['firstWeightDate'] && rows[0]['firstWeightDate'] ? rows[0]['firstWeightDate'] : "";
-    data['FIRST_WEIGHT_TIME'] = rows[0]['firstWeightTime']?.toString().replaceAll(":", "") && rows[0]['firstWeightTime']?.toString().replaceAll(":", "") ? rows[0]['firstWeightTime']?.toString().replaceAll(":", "") : "";
-    data['FIRST_WEIGHT_USER'] = rows[0]['firstWeightUsername'] != null || rows[0]['firstWeightUsername'] != undefined ? rows[0]['firstWeightUsername'] : "";
+    data['FIRST_WEIGH_BRIDGE'] = rows[0]['firstWeighBridge']!=null && rows[0]['firstWeighBridge'] ? rows[0]['firstWeighBridge'] : "null";
+    data['FIRST_WEIGHT'] = rows[0]['firstWeight']!=null && rows[0]['firstWeight'] ? rows[0]['firstWeight'] : "null";
+    data['FIRST_WEIGHT_UNIT'] = rows[0]['firstUnit'] != null && rows[0]['firstUnit'] ? rows[0]['firstUnit'].toUpperCase() : "null";
+    data['FIRST_WEIGHT_DATE'] = rows[0]['firstWeightDate'] && rows[0]['firstWeightDate'] ? rows[0]['firstWeightDate'] : "null";
+    data['FIRST_WEIGHT_TIME'] = rows[0]['firstWeightTime']?.toString().replaceAll(":", "") && rows[0]['firstWeightTime']?.toString().replaceAll(":", "") ? rows[0]['firstWeightTime']?.toString().replaceAll(":", "") : "null";
+    data['FIRST_WEIGHT_USER'] = rows[0]['firstWeightUsername'] != null || rows[0]['firstWeightUsername'] != undefined ? rows[0]['firstWeightUsername'] : "null";
 
-    data['SECOND_WEIGH_BRIDGE'] = rows[0]['secondWeighBridge'] == null || rows[0]['secondWeighBridge']==undefined ?"": rows[0]['secondWeighBridge'];
-    data['SECOND_WEIGHT'] = rows[0]['secondWeight']!=null && rows[0]['secondWeight'] ? rows[0]['secondWeight'] : "";
-    data['SECOND_WEIGHT_UNIT'] = rows[0]['secondUnit'] != null && rows[0]['secondUnit'] ? rows[0]['secondUnit'].toUpperCase() : "";
+    data['SECOND_WEIGH_BRIDGE'] = rows[0]['secondWeighBridge'] == "" || rows[0]['secondWeighBridge'] == null || rows[0]['secondWeighBridge']==undefined ?"null": rows[0]['secondWeighBridge'];
+    data['SECOND_WEIGHT'] = rows[0]['secondWeight']!=null && rows[0]['secondWeight'] ? rows[0]['secondWeight'] : "null";
+    data['SECOND_WEIGHT_UNIT'] = rows[0]['secondUnit'] != null && rows[0]['secondUnit'] ? rows[0]['secondUnit'].toUpperCase() : "null";
     data['SECOND_WEIGHT_DATE'] = rows[0]['secondWeightDate'];
     data['SECOND_WEIGHT_TIME'] = rows[0]['secondWeightTime']?.toString().replaceAll(":", "") && rows[0]['secondWeightTime']?.toString().replaceAll(":", "");
-    data['SECOND_WEIGHT_USER'] = rows[0]['secondWeightUserName'] != null && rows[0]['secondWeightUserName'] ? rows[0]['secondWeightUserName'] : "";
+    data['SECOND_WEIGHT_USER'] = rows[0]['secondWeightUserName'] != null && rows[0]['secondWeightUserName'] ? rows[0]['secondWeightUserName'] : "null";
 
     data['WEIGHMENT_RST_NO_ID'] = rows.map(ele => ele['id']).join(",");
     data['MATERIAL_CODE'] = rows.map(ele => ele['material']).join(",");
     data['SUPPLIER_CUSTOMER_CODE'] = rows.map(ele => ele['supplier']).join(",");
-    data['REMARK_TEXT'] = rows[0]['remark'] == null || rows[0]['remark'] == undefined ? "" :
+    data['REMARK_TEXT'] = rows[0]['remark'] == "" || rows[0]['remark'] == null || rows[0]['remark'] == undefined ? "null" :
                           rows.map(ele=> ele['remark']).join(":");
 
     data['NET_WEIGHT'] = Math.abs(rows[rows.length - 1]['secondWeight'] - rows[0]['firstWeight']);

@@ -19,6 +19,7 @@ export class SapConfigComponent implements OnInit {
   sapEndpoint: string;
   username: string;
   password: string;
+  syncBatchSize: string;
 
   logLevel: string;
 
@@ -33,13 +34,14 @@ export class SapConfigComponent implements OnInit {
     this.mForm = this.fb.group({
       inputSapEndpoint: [''],
       inputUsername: [''],
-      inputPassword: ['']
+      inputPassword: [''],
+      inputBatchSize: ['200']
     });
 
     this.enableSAPIntegration = sessionStorage.getItem("enableSAPIntegration") === "true";
     this.sapEndpoint = sessionStorage.getItem("sapEndpoint");
     this.username = sessionStorage.getItem("sapUsername");
-
+    this.syncBatchSize = sessionStorage.getItem("syncBatchSize");
     this.logLevel = sessionStorage.getItem("logLevel");
   }
 
@@ -53,6 +55,7 @@ export class SapConfigComponent implements OnInit {
       this.sapEndpoint = "";
       this.username = "";
       this.password = "";
+      this.syncBatchSize="200";
     } else {
       encryptedPassword = CryptoJS.AES.encrypt(this.password, SAP_ENCRYPTION_KEY).toString();
     }
@@ -61,7 +64,8 @@ export class SapConfigComponent implements OnInit {
       { field: "enableSAPIntegration", mValue: this.enableSAPIntegration },
       { field: "sapEndpoint", mValue: this.sapEndpoint },
       { field: "sapUsername", mValue: this.username },
-      { field: "sapPassword", mValue: encryptedPassword }
+      { field: "sapPassword", mValue: encryptedPassword },
+      { field: "syncBatchSize", mValue: this.syncBatchSize }
     ]);
   }
 
