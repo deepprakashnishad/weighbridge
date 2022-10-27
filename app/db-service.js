@@ -51,17 +51,17 @@ function initializeSqlConfig(dbDetails){
 }
 
 ipcMain.handle("initializeDBConfig", async (event, args) => {
-  log.debug("Initialize SQL Configuration");
+  log.silly("Initialize SQL Configuration");
   initializeSqlConfig(args[0]);
 });
 
 ipcMain.on("executeDBQuery", (event, arg) => {
-  log.debug(sqlConfig);
-  log.debug(arg[1]);
+  log.silly(sqlConfig);
+  log.silly(arg[1]);
   sql.connect(sqlConfig).then(pool => {
     return pool.query(arg[1]);
   }).then(results => {
-    log.debug(results);
+    log.silly(results);
     event.sender.send("db-reply", [arg[0], results['recordset']]);
   }).catch(e=>{
     log.error(e);
@@ -70,14 +70,6 @@ ipcMain.on("executeDBQuery", (event, arg) => {
 
 ipcMain.handle("executeSyncStmt", async (event, arg) => {
   try {
-    if (arg[1].indexOf("weighment")===-1) {
-      log.debug(sqlConfig);
-    }
-    if (arg.length === 3 && arg[2] == "SILLY") {
-      log.silly(arg[1]);
-    } else {
-      log.debug(arg[1]);
-    }
     var pool = await sql.connect(sqlConfig);
     var results = await pool.query(arg[1]);
   } catch (err) {
@@ -98,7 +90,7 @@ ipcMain.handle("executeSyncInsertAutoId", async (event, arg) => {
   }
   var mQuery = arg[2].replace(`{${arg[1]}}`, newId);
   try {
-    log.debug(mQuery);
+    log.silly(mQuery);
     var results = await pool.query(mQuery);
   } catch (err) {
     log.error(err);

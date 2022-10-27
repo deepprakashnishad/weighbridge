@@ -205,13 +205,25 @@ ipcMain.handle("writeToHtml", async (event, args) => {
   }
   //fs.mkdir(path, { recursive: true }, function (err) {
   //  if (err) return cb(err);
-
+  
   //});
 });
 
 ipcMain.handle("captureImage", async (event, args) => {
-  var basicAuth = 'Basic ' + Buffer.from(args['user'] + ':' + args['password']).toString('base64');
-  
+  console.log(args);
+  var basicAuth = 'Basic ' + Buffer.from(args['username'] + ':' + args['password']).toString('base64');
+  // var basicAuth = 'Basic ' + new Buffer("admin"+ ':' + "NoPassword").toString('base64');
+  console.log(args);
+  var path = args['imagePath'];
+
+  if(path===undefined || path===null || path===""){
+    path = app.getPath('userData') + "\\" + bootstrapData.mConstants.appName+ "\\ticket-images\\"
+  }else if(path.charAt(path.length-1) !== "\\"){
+    path = path+"\\";
+  }
+  path = path+args['sub-folder'];
+  fs.mkdirSync(path, {recursive: true});
+  path = path+"\\"+args['filename'];
   let axiosConfig = {
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -219,14 +231,36 @@ ipcMain.handle("captureImage", async (event, args) => {
     },
     responseType: "arraybuffer"
   };
-  axios.get(args['pictureUrl'], axiosConfig)
-    .then(response => {
-      saveBlob(response.data, "d:/test.jpg");
-    })
-    .catch(error => {
-      console.log(error);
-    });
+  try{
+    var response = await axios.get(args['pictureUrl'], axiosConfig);
+    saveBlob(response.data, path);
+    return {success: true, "path": path}
+  }catch(err){
+    log.error(err);
+    return {success: false, "path": null}
+  }
 });
+
+// ipcMain.handle("captureImage", async (event, args) => {
+//   // var basicAuth = 'Basic ' + Buffer.from(args['user'] + ':' + args['password']).toString('base64');
+//   var basicAuth = 'Basic ' + new Buffer("admin"+ ':' + "NoPassword").toString('base64');
+//   console.log(args);
+//   console.log(basicAuth);
+//   let axiosConfig = {
+//     headers: {
+//       "Access-Control-Allow-Origin": "*",
+//       'Authorization': basicAuth
+//     },
+//     responseType: "arraybuffer"
+//   };
+//   axios.get(args['pictureUrl'], axiosConfig)
+//     .then(response => {
+//       saveBlob(response.data, "d:/test.jpg");
+//     })
+//     .catch(error => {
+//       console.log(error);
+//     });
+// });
 
 ipcMain.handle("loadImage", async (event, args) => {
   if(args[0]===undefined){

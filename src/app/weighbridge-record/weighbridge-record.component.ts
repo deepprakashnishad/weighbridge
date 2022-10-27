@@ -38,6 +38,7 @@ export class WeighbridgeRecordComponent implements OnInit {
   displayedColumns: string[] = ['vehicleNo', 'datetime'];
 
   image: any;
+  cameraSettings: any;
 
   constructor(
     private sharedDataService: SharedDataService,
@@ -53,16 +54,19 @@ export class WeighbridgeRecordComponent implements OnInit {
   ngOnInit() {
     this.initializePendingRecords();
     this.fetchWeighIndicators();
-    //setInterval(()=>this.getPicture(), 5000)
+    this.ipcService.invokeIPC("loadEnvironmentVars", ["camera"]).then(result => {
+
+      this.cameraSettings = result;
+      setInterval(()=>this.getPicture(this.cameraSettings), result['imageRefreshRate']);
+    });
   }
 
-  getPicture() {
-    this.ipcService.invokeIPC("loadEnvironmentVars", ["camera"]).then(result => {
-      this.licenseService.getPicture(result['pictureUrl'], result['user'], result['password']).subscribe(blob => {
-        let objectURL = URL.createObjectURL(blob);
-        this.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-      })
-    });
+  getPicture(result) {
+    console.log(result);
+    this.licenseService.getPicture(result['pictureUrl'], result['username'], result['password']).subscribe(blob => {
+      let objectURL = URL.createObjectURL(blob);
+      this.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+    })
   }
 
   connectCam() {

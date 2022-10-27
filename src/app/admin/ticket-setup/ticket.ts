@@ -29,8 +29,6 @@ const ticketPredefinedFields = [
 const predefinedImageFields = [
   { displayName: "Image 1", field: "img1" },
   { displayName: "Image 2", field: "img2" },
-  { displayName: "Image 3", field: "img3" },
-  { displayName: "Image 4", field: "img4" },
 ]
 
 const weighmentDetailColumnFields = [

@@ -14,33 +14,37 @@ export class QueryList{
   //Weighment Details
   static readonly INSERT_WEIGHMENT_DETAIL: string = "INSERT INTO weighment_details( \
     id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser, \
-    secondWeighBridge, secondWeight, secondUnit, secondWeightDatetime, secondWeightUser, remark, netWeight, customer) \
+    secondWeighBridge, secondWeight, secondUnit, secondWeightDatetime, secondWeightUser, remark, netWeight, customer, firstWeightImage, secondWeightImage) \
     VALUES({id}, {weighmentRstNo}, '{material}', '{supplier}', '{firstWeighBridge}', {firstWeight}, '{firstUnit}', \
     {firstWeightDatetime}, {firstWeightUser}, {secondWeighBridge}, {secondWeight}, '{secondUnit}', {secondWeightDatetime}, \
-    {secondWeightUser}, '{remark}', {netWeight}, '{customer}')";
+    {secondWeightUser}, '{remark}', {netWeight}, '{customer}', '{firstWeightImage}', '{secondWeightImage}')";
   static readonly SELECT_WEIGHMENT_DETAILS_BY_WEIGHBRIDGE: string = "SELECT * FROM weighment_details WHERE firstWeighBridge='{firstWeighBridge}' OR secondWeighBridge='{secondWeighBridge}'";
   static readonly INSERT_FIRST_WEIGHMENT_DETAIL: string = "INSERT INTO weighment_details( \
-  id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser, remark, customer) \
+  id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, \
+  firstWeightUser, remark, customer, firstWeightImage, secondWeightImage) \
   VALUES({id}, {weighmentRstNo}, '{material}', '{supplier}', '{firstWeighBridge}', {firstWeight}, '{firstUnit}', \
-  GETDATE(), {firstWeightUser}, '{remark}', '{customer}') ";
+  GETDATE(), {firstWeightUser}, '{remark}', '{customer}', '{firstWeightImage}', '{secondWeightImage}') ";
 
   static readonly INSERT_COMPLETE_WEIGHMENT_DETAIL: string = "INSERT INTO weighment_details( \
   id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser,\
-  secondWeighBridge, secondWeight, secondUnit, secondWeightDatetime, secondWeightUser, remark, customer) \
+  secondWeighBridge, secondWeight, secondUnit, secondWeightDatetime, secondWeightUser, remark, customer, \
+  firstWeightImage, secondWeightImage) \
   VALUES({id}, {weighmentRstNo}, '{material}', '{supplier}', \
   '{firstWeighBridge}', {firstWeight}, '{firstUnit}', GETDATE(), {firstWeightUser},\
-  '{secondWeighBridge}', {secondWeight}, '{secondUnit}', GETDATE(), {secondWeightUser}, '{remark}', '{customer}') ";
+  '{secondWeighBridge}', {secondWeight}, '{secondUnit}', GETDATE(), {secondWeightUser}, '{remark}', '{customer}', '{firstWeightImage}', '{secondWeightImage}') ";
 
   static readonly INSERT_PRESET_VEHICLE_WEIGHMENT_DETAIL: string = "INSERT INTO weighment_details( \
   id, weighmentRstNo, material, supplier, firstWeighBridge, firstWeight, firstUnit, firstWeightDatetime, firstWeightUser, \
-  secondWeighBridge, secondWeight, secondUnit, secondWeightDatetime, secondWeightUser, netWeight, remark, customer) \
+  secondWeighBridge, secondWeight, secondUnit, secondWeightDatetime, secondWeightUser, netWeight, remark, customer \
+  firstWeightImage, secondWeightImage) \
   VALUES({id}, {weighmentRstNo}, '{material}', '{supplier}', '{firstWeighBridge}', {firstWeight}, '{firstUnit}', \
   GETDATE(), {firstWeightUser}, '{secondWeighBridge}', {secondWeight}, '{secondUnit}', \
-  GETDATE(), {secondWeightUser}, {netWeight},'{remark}', '{customer}') ";
+  GETDATE(), {secondWeightUser}, {netWeight},'{remark}', '{customer}', '{firstWeightImage}', '{secondWeightImage}') ";
 
   static readonly UPDATE_SECOND_WEIGHMENT_DETAIL: string = "UPDATE weighment_details SET material='{material}', \
   supplier = '{supplier}', secondWeighBridge = '{secondWeighBridge}', secondWeight = {secondWeight}, \
-  secondUnit = '{secondUnit}', secondWeightDatetime = GETDATE(), secondWeightUser = {secondWeightUser}, remark = '{remark}', \
+  secondUnit = '{secondUnit}', secondWeightDatetime = GETDATE(), secondWeightUser = {secondWeightUser}, \
+  remark = '{remark}', secondWeightImage='{secondWeightImage}', \
   netWeight = {netWeight}, customer='{customer}' WHERE id = {id}";
   static readonly UPDATE_WEIGHMENT_DETAIL: string = "UPDATE weighment_details SET {values} WHERE id='{id}'";
   static readonly GET_WEIGHMENTS = "SELECT * FROM weighment ";
@@ -48,7 +52,8 @@ export class QueryList{
       FROM weighment WHERE status='Pending'";
   static readonly GET_WEIGHMENT_DETAILS = "SELECT id, weighmentRstNo, material, supplier, firstWeighBridge, firstUnit, firstWeight, \
     FORMAT(firstWeightDatetime, '{date_format_code}') as firstWeightDatetime, firstWeightUser, secondWeighBridge, secondUnit, secondWeight, \
-    FORMAT(secondWeightDatetime, '{date_format_code}') as secondWeightDatetime, secondWeightUser, remark, netWeight, customer \
+    FORMAT(secondWeightDatetime, '{date_format_code}') as secondWeightDatetime, secondWeightUser, remark, netWeight, customer, \
+    firstWeightImage, secondWeightImage \
     FROM weighment_details WHERE weighmentRstNo={rstNo} ORDER BY id";
 
   static readonly GET_WEIGHMENTS_WITH_LATEST_DETAIL = "SELECT w.*, id, weighmentRstNo, material, supplier, \
@@ -56,6 +61,7 @@ export class QueryList{
     FORMAT(firstWeightDatetime, '{date_format_code}') as firstWeightDatetime, \
     firstWeightUser, secondWeighBridge, secondUnit, secondWeight, \
     FORMAT(secondWeightDatetime, '{date_format_code}') as secondWeightDatetime, customer, \
+    firstWeightImage, secondWeightImage, \
     secondWeightUser, remark, netWeight FROM weighment w, weighment_details wd WHERE w.rstNo=wd.weighmentRstNo";
 
   static readonly GET_COMPLETED_RECORDS = "SELECT w.*, id, weighmentRstNo, material, supplier, \

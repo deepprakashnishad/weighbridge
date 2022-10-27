@@ -17,6 +17,8 @@ export class CameraSetupComponent implements OnInit {
   username: string;
   pictureUrl: string;
   printDelayInMillis: number;
+  imagePath: string;
+  imageRefreshRate: number = 2500;
 
   constructor(
     private ipcService: MyIpcService,
@@ -31,14 +33,23 @@ export class CameraSetupComponent implements OnInit {
       if (result['username']) {
         this.username = result['username'];
       }
-      /*if (result['password']) {
+      if (result['password']) {
         this.password = result['password'];
-      }*/
+      }
       if (result['pictureUrl']) {
         this.pictureUrl = result['pictureUrl'];
       }
       if (result['printDelayInMillis']) {
         this.printDelayInMillis = result['printDelayInMillis'];
+      }
+      if (result['imagePath']) {
+        this.imagePath = result['imagePath'];
+      }
+      if (result['imageRefreshRate']) {
+        this.imageRefreshRate = result['imageRefreshRate'];
+      }
+      if(result['enableCamera']){
+        this.enableCamera = result['enableCamera'];
       }
     });
   }
@@ -49,7 +60,10 @@ export class CameraSetupComponent implements OnInit {
       "password": this.password,
       "cameraId": this.cameraId,
       "pictureUrl": this.pictureUrl,
-      "printDelayInMillis": this.printDelayInMillis
+      "printDelayInMillis": this.printDelayInMillis,
+      "imagePath": this.imagePath,
+      "imageRefreshRate": this.imageRefreshRate,
+      "enableCamera": this.enableCamera
     }]).then(result => {
       if (result) {
         this.notifier.notify("success", `Camera details updated successfully`);

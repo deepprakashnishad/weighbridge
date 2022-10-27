@@ -37,14 +37,15 @@ export class PrinterService {
         fields['freetextFields'],
         fields['weighDetailFields'],
         fields['newlineField'],
-        fields['reverseFeedField']
+        fields['reverseFeedField'],
+        fields['imageFields']
       );
     } else {
       this.notifier.notify("error", "Ticket template is missing");
     }
   }
 
-  getCurrentFieldData(ticketFields, freetextFields, weighDetailFields, newlineField, reverseFeed) {
+  getCurrentFieldData(ticketFields, freetextFields, weighDetailFields, newlineField, reverseFeed, imageFields) {
     var fields = [];
     for (var i = 0; i < ticketFields.length; i++) {
       var temp = ticketFields[i];
@@ -74,13 +75,20 @@ export class PrinterService {
       fields.push(reverseFeed);
     }
 
+    for (var i = 0; i < imageFields.length; i++) {
+      var temp = imageFields[i];
+      if (temp.displayName?.length > 0 && temp.col !== null && temp.row !== null && temp.isIncluded) {
+        fields.push(temp);
+      }
+    }
+
     fields = fields.sort(function (a, b) {
       if ((a['row'] - b['row']) === 0) {
         return a['col'] - b['col'];
       }
       return a['row'] - b['row'];
     })
-
+    console.log(fields);
     return fields;
   }
 
@@ -100,7 +108,7 @@ export class PrinterService {
       fields = await this.fetchTemplateDetail(templates[0].id);
       fields = this.ticketService.getSortedFields(fields);
     }
-    return {template: templates[0], ticketFields: fields, content: this.preparePreviewText(fields, weighment, weighmentDetail) };
+    return {template: templates[0], ticketFields: fields, content: await this.preparePreviewText(fields, weighment, weighmentDetail) };
   }
 
   async getPreviewText(weighment: Weighment, weighmentDetail: WeighmentDetail, fields?) {
@@ -111,7 +119,7 @@ export class PrinterService {
       fields = this.ticketService.getSortedFields(fields);
     }
     
-    return this.preparePreviewText(fields, weighment, weighmentDetail);
+    return  await this.preparePreviewText(fields, weighment, weighmentDetail);
   }
 
   private trimDatetimeWeighmentDetails(weighmentDetails: Array<WeighmentDetail>) {
@@ -212,15 +220,20 @@ export class PrinterService {
           mText = mText + field.displayName;
         }
         currY = currY + field.displayName.length;
-      } else if (field.type === "image-field") {
-        //Temporary to be removed
-        var imagePath = await this.ipcService.invokeIPC("loadEnvironmentVars", ["imagePath"]);
-        console.log(imagePath);
-        var res = await this.ipcService.invokeIPC("loadImage", [imagePath]);
-        mText = `${mText}${res}`;
+      } else if (field.type === "image-field" && field.field==="img1") {
+        var latestWeighment = weighment.weighmentDetails[weighment.weighmentDetails.length-1];
+        if(latestWeighment.firstWeightImage && latestWeighment.firstWeightImage!==""){
+          var res1 = await this.ipcService.invokeIPC("loadImage", [latestWeighment.firstWeightImage]);
+          mText = `${mText}${res1}`;
+        }
+      } else if (field.type === "image-field" && field.field==="img2") {
+        if(latestWeighment.secondWeightImage && latestWeighment.secondWeightImage!==""){
+          var res2 = await this.ipcService.invokeIPC("loadImage", [latestWeighment.secondWeightImage]);
+          mText = `${mText}${res2}`;
+        }
+        
       }
     }
-
     mText = mText + "</div>";
     console.log(mText);
     return mText;

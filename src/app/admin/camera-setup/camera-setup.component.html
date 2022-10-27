@@ -32,6 +32,14 @@
           <mat-label>Print delay in milliseconds</mat-label>
           <input matInput placeholder="Print delay in milliseconds" name="cntlPrintDelay" [(ngModel)]="printDelayInMillis" />
         </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Path for saving images</mat-label>
+          <input matInput placeholder="Path for saving images" name="cntlImagePath" [(ngModel)]="imagePath" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Image Refresh Rate</mat-label>
+          <input matInput type="number" placeholder="Image refresh rate in milliseconds" name="cntlImageRefreshRate" [(ngModel)]="imageRefreshRate" />
+        </mat-form-field>
       </form>
     </mat-card-content>
   </mat-card>

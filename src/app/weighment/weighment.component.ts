@@ -163,14 +163,14 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     if (!this.currData) {
       this.isWeightStable = false;
       this.currentWeight = "Err!";
-      this.capture();
+      // this.capture();
       return;
     }
     var currWeight = this.currData;
     if (this.selectedIndicator?.stringType === "polling") {
       this.currentWeight = currWeight['weight'];
       this.isWeightStable = true;
-      this.capture();
+      // this.capture();
     } else {
       if (currWeight['timestamp'] > (new Date().getTime()) - 3000) {
         this.currentWeight = currWeight['weight'];
@@ -197,7 +197,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
         this.isWeightStable = false;
         this.currentWeight = "Err!";
         if (!this.enterFirstWeightManually) {
-          this.capture();
+          // this.capture();
         }        
       }
     }
@@ -256,16 +256,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     this.weighmentDetail.customer = `${event.code}-${event.mValue}`;
   }
 
-  getPicture() {
-    this.ipcService.invokeIPC("loadEnvironmentVars", ["camera"]).then(result => {
-      this.ipcService.invokeIPC("captureImage", result)
-    });
-  }
-
   async save() {
-
-    this.getPicture();
-    return;
     if (!this.isValid()) {
       return;
     }
@@ -288,6 +279,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
           this.weighbridge,
           this.weighmentDetail.secondWeight,
           this.weighmentDetail.secondUnit,
+          this.weighmentDetail.secondWeightImage,
           this.authService.getTokenOrOtherStoredData("id")
         );
       }
@@ -297,7 +289,21 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
 
   captureImage() {
     this.ipcService.invokeIPC("loadEnvironmentVars", ["camera"]).then(result => {
-      this.ipcService.invokeIPC("captureImage", result);
+      var currDate = new Date();
+      result['sub-folder'] = `${currDate.getUTCDate()}-${currDate.getUTCMonth()+1}-${currDate.getUTCFullYear()}`;
+      result['filename'] = `${this.weighbridge}_${currDate.valueOf()}.jpg`;
+      this.ipcService.invokeIPC("captureImage", result).then(camResult=>{
+        if(camResult['success']===false){
+          this.notifier.notify("error", "Failed to capture image");
+        }else{
+          if (this.weighment.rstNo === undefined) {
+            this.weighmentDetail.firstWeightImage = camResult['path'];
+          }
+          else if (this.weighment.rstNo && typeof(this.weighmentDetail.firstWeight)==="number") {
+            this.weighmentDetail.secondWeightImage = camResult['path'];
+          }
+        }
+      });
     });
   }
 
@@ -325,7 +331,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     this.ipcService.sendDataToSAP(dataRows);
   }
 
-  async insertFirstWeighmentForPartial(weighBridge, firstWeight, firstUnit, user) {
+  async insertFirstWeighmentForPartial(weighBridge, firstWeight, firstUnit, firstWeightImage, user) {
     var stmt = QueryList.INSERT_FIRST_WEIGHMENT_DETAIL
       .replace("{weighmentRstNo}", this.weighment.rstNo.toString())
       .replace("{supplier}", this.dbService.escapeString(this.weighmentDetail.supplier))
@@ -335,6 +341,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       .replace("{firstWeight}", firstWeight.toString())
       .replace("{firstUnit}", this.weighmentDetail.firstUnit)
       .replace("{firstWeightUser}", user)
+      .replace("{firstWeightImage}", firstWeightImage)
       .replace("{remark}", this.dbService.escapeString(this.weighmentDetail.remark));
 
     var result = await this.dbService.executeInsertAutoId("weighment_details", "id", stmt);
@@ -417,10 +424,12 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       .replace("{firstUnit}", this.weighmentDetail.firstUnit)
       .replace("{firstWeightUser}", this.authService.getTokenOrOtherStoredData("id"))
       .replace("{secondWeighBridge}", this.weighbridge)
-      .replace("{secondWeight}", this.weighmentDetail.secondWeight.toString())
+      .replace("{secondWeight}", this.weighmentDetail?.secondWeight?.toString())
       .replace("{secondUnit}", this.weighmentDetail.firstUnit)
       .replace("{customer}", this.weighmentDetail.customer)
       .replace("{secondWeightUser}", this.authService.getTokenOrOtherStoredData("id"))
+      .replace("{firstWeightImage}", this.weighmentDetail.firstWeightImage?this.weighmentDetail.firstWeightImage:"")
+      .replace("{secondWeightImage}", this.weighmentDetail.secondWeightImage?this.weighmentDetail.secondWeightImage:"")
       .replace("{remark}", this.dbService.escapeString(this.weighmentDetail.remark));
     console.log(stmt);
     var result = await this.dbService.executeInsertAutoId("weighment_details", "id", stmt);
@@ -449,6 +458,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       .replace("{secondWeight}", this.weighmentDetail.secondWeight.toString())
       .replace("{secondUnit}", this.weighmentDetail.secondUnit)
       .replace("{secondWeightUser}", this.authService.getTokenOrOtherStoredData("id"))
+      .replace("{firstWeightImage}", this.weighmentDetail.firstWeightImage?this.weighmentDetail.firstWeightImage:"")
+      .replace("{secondWeightImage}", this.weighmentDetail.secondWeightImage?this.weighmentDetail.secondWeightImage:"")
       .replace("{remark}", this.dbService.escapeString(this.weighmentDetail.remark))
       .replace("{netWeight}", 
           Math.abs(this.weighmentDetail.firstWeight - this.weighmentDetail.secondWeight).toString());
@@ -463,6 +474,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
           this.weighbridge,
           this.weighmentDetail.secondWeight,
           this.weighmentDetail.secondUnit,
+          this.weighmentDetail.secondWeightImage,
           this.authService.getTokenOrOtherStoredData("id")
         );
       }
@@ -482,6 +494,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       .replace("{firstWeight}", this.weighmentDetail.firstWeight.toString())
       .replace("{firstUnit}", this.weighmentDetail.firstUnit)
       .replace("{firstWeightUser}", this.authService.getTokenOrOtherStoredData("id"))
+      .replace("{firstWeightImage}", this.weighmentDetail.firstWeightImage?this.weighmentDetail.firstWeightImage:"")
+      .replace("{secondWeightImage}", this.weighmentDetail.secondWeightImage?this.weighmentDetail.secondWeightImage:"")
       .replace("{remark}", this.dbService.escapeString(this.weighmentDetail.remark));
 
     var result = await this.dbService.executeInsertAutoId("weighment_details", "id", stmt);
@@ -504,11 +518,14 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
       .replace("{secondWeight}", this.weighmentDetail.secondWeight.toString())
       .replace("{secondUnit}", this.weighmentDetail.secondUnit ? this.weighmentDetail.secondUnit: "Kg")
       .replace("{secondWeightUser}", this.authService.getTokenOrOtherStoredData("id"))
+      .replace("{firstWeightImage}", this.weighmentDetail.firstWeightImage?this.weighmentDetail.firstWeightImage:"")
+      .replace("{secondWeightImage}", this.weighmentDetail.secondWeightImage?this.weighmentDetail.secondWeightImage:"")
       .replace("{netWeight}",
         this.weighmentDetail.netWeight ? this.weighmentDetail.netWeight?.toString() :
           Math.abs(this.weighmentDetail.firstWeight - this.weighmentDetail.secondWeight).toString())
       .replace("{remark}", this.dbService.escapeString(this.weighmentDetail.remark))
       .replace("{id}", this.weighment.weighmentDetails[this.weighment.weighmentDetails.length-1].id.toString());
+      console.log(stmt);
     var result = await this.dbService.executeSyncDBStmt("UPDATE", stmt);
     if (result) {
       this.weighment.weighmentDetails = await this.getWeighmentDetails(this.weighment.rstNo);
@@ -672,6 +689,7 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
   }
 
   capture() {
+    this.captureImage();
     if (this.weighment?.weighmentDetails[this.weighment?.weighmentDetails?.length - 1]?.firstWeight === undefined) {
       this.weighmentDetail.firstWeight = this.currentWeight;
     } else {

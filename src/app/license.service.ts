@@ -107,7 +107,9 @@ export class LicenseService {
   }
 
   getPicture(pictureUrl:string="", username="", password=""): Observable<any> {    
-    var authHeader = 'Basic ' + new Buffer("admin"+ ':' + "NoPassword").toString('base64');
+    console.log(username);
+    console.log(password);
+    var authHeader = 'Basic ' + new Buffer(username+ ':' + password).toString('base64');
     return this.http.get(pictureUrl, {
       headers: { 'Authorization': authHeader },
       responseType: "blob"

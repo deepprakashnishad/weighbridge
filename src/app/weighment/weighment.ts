@@ -97,6 +97,8 @@ export class WeighmentDetail {
   remark: string;
   netWeight: number;
   customer: string;
+  firstWeightImage: string;
+  secondWeightImage: string;
 
   constructor() {
     this.firstUnit = "Kg";
@@ -129,6 +131,8 @@ export class WeighmentDetail {
 
     weighmentDetails.remark = data['remark'] != "null" ? data['remark']: undefined;
     weighmentDetails.netWeight = data['netWeight'];
+    weighmentDetails.firstWeightImage = data['firstWeightImage'] != "null" ? data['firstWeightImage']: undefined;
+    weighmentDetails.secondWeightImage = data['secondWeightImage'] != "null" ? data['secondWeightImage']: undefined;
     return weighmentDetails;
   }
 
