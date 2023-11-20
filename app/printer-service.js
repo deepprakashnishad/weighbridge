@@ -1,5 +1,5 @@
 const { BrowserWindow, ipcMain, shell } = require("electron");
-const { getPrinter } = require("printer");
+// const { getPrinter } = require("printer");
 const fs = require('fs')
 const path = require('path')
 const os = require('os')
@@ -18,17 +18,17 @@ async function runCommand(command) {
   return stdout;
 }
 
-function getPrinters() {
+/*function getPrinters() {
   var printers = win.webContents.getPrinters();
   return printers;
-}
+}*/
 
 ipcMain.handle("printer-ipc", async (event, ...args) => {
-  if (args[0] === "getPrinters") {
+  /*if (args[0] === "getPrinters") {
     return getPrinters();
   } else if (args[0] === "print") {
     await runCommand(args[1]);
-  }
+  }*/
 })
 
 ipcMain.handle("graphical-print-ipc", async (e, ...args) => {

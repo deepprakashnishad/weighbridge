@@ -1,5 +1,7 @@
 {
+  "author": "Deep Prakash Nishad <deep.prakash.nishad@gmail.com>",
   "name": "angular-electron",
+  "email": "deep.prakash.nishad@gmail.com",
   "version": "0.0.1",
   "main": "electron-main.js",
   "private": true,
@@ -12,8 +14,7 @@
     "mysql": "^2.18.1",
     "node-machine-id": "^1.1.12",
     "nodemailer": "^6.6.3",
-    "printer": "^0.4.0",
-    "serialport": "^9.2.0"
+    "serialport": "^10.5.0"
   },
   "devDependencies": {
     "electron-rebuild": "^2.3.5"

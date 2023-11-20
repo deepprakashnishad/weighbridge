@@ -18,6 +18,12 @@
       "nsis"
     ]
   },
+  "linux": {
+    "category": "Network;InstantMessaging",
+    "target": [
+      "deb"
+    ]
+  },
   "nsis": {
     "runAfterFinish": false
   }

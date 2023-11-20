@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from './../shared/shared.module';
 import { RoleComponent } from './role/role.component';
 import { PermissionComponent } from './permission/permission.component';
-import { ColorPickerModule } from 'ngx-color-picker';
+// import { ColorPickerModule } from 'ngx-color-picker';
 import { ActivityLogComponent } from './activity-log/activity-log.component';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { AdminComponent } from './admin/admin.component';
@@ -65,7 +65,7 @@ import { AddEditUserDialogComponent } from './user-management/add-edit-user-dial
   ],
   imports: [
     SharedModule,
-    ColorPickerModule,
+    // ColorPickerModule,
     NgxJsonViewerModule,
     AdminRoutingModule
   ],

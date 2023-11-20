@@ -1411,3 +1411,27 @@
     at electron/js2c/browser_init.js:197:579
     at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
     at Object.emit (events.js:315:20)
+[2023-11-20 18:09:07.963] [error] Error: ENOENT: no such file or directory, open './notamedia/796ab66ef86b4387a9c6e15df508df61'
+    at Object.openSync (node:fs:603:3)
+    at Object.func [as openSync] (node:electron/js2c/asar_bundle:2:2131)
+    at Object.readFileSync (node:fs:471:35)
+    at Object.readFileSync (node:electron/js2c/asar_bundle:2:9462)
+    at /media/deep/Work(G:)/weighbridge/app/file-service.js:101:19
+    at WebContents.<anonymous> (node:electron/js2c/browser_init:2:88656)
+    at WebContents.emit (node:events:514:28)
+[2023-11-20 18:09:16.818] [error] Error: ENOENT: no such file or directory, open './notamedia/796ab66ef86b4387a9c6e15df508df61'
+    at Object.openSync (node:fs:603:3)
+    at Object.func [as openSync] (node:electron/js2c/asar_bundle:2:2131)
+    at Object.readFileSync (node:fs:471:35)
+    at Object.readFileSync (node:electron/js2c/asar_bundle:2:9462)
+    at /media/deep/Work(G:)/weighbridge/app/file-service.js:101:19
+    at WebContents.<anonymous> (node:electron/js2c/browser_init:2:88656)
+    at WebContents.emit (node:events:514:28)
+[2023-11-20 18:12:36.692] [error] Error: ENOENT: no such file or directory, open './notamedia/796ab66ef86b4387a9c6e15df508df61'
+    at Object.openSync (node:fs:603:3)
+    at Object.func [as openSync] (node:electron/js2c/asar_bundle:2:2131)
+    at Object.readFileSync (node:fs:471:35)
+    at Object.readFileSync (node:electron/js2c/asar_bundle:2:9462)
+    at /media/deep/Work(G:)/weighbridge/app/file-service.js:101:19
+    at WebContents.<anonymous> (node:electron/js2c/browser_init:2:88656)
+    at WebContents.emit (node:events:514:28)

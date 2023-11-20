@@ -29,6 +29,7 @@ function initializeSqlConfig(dbDetails){
     sqlConfig['password'] = dbDetails['database']['password'];
     sqlConfig['database'] = dbDetails['database']['database'];
     sqlConfig['server'] = dbDetails['database']['server'];
+    sqlConfig['port'] = dbDetails['database']['port'];
 
     loadEnvDataFromDB();
   }
