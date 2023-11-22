@@ -1,5 +1,5 @@
 const { BrowserWindow, ipcMain, shell } = require("electron");
-const { getPrinter } = require("printer");
+// const { getPrinter } = require("printer");
 const fs = require('fs')
 const path = require('path')
 const os = require('os')

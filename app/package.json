@@ -1,6 +1,8 @@
 {
   "name": "accubridge",
   "version": "0.0.1",
+  "author": "Deep Prakash Nishad",
+  "description": "This software is to be used by weighbridges",
   "main": "electron-main.js",
   "private": true,
   "scripts": {
@@ -16,7 +18,6 @@
     "node-machine-id": "^1.1.12",
     "node-schedule": "^2.0.0",
     "nodemailer": "^6.6.3",
-    "printer": "^0.4.0",
     "serialport": "^9.2.0",
     "strong-soap": "^3.3.1"
   },

@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  licenseurl: "https://aesm-license-manager.herokuapp.com",
+  licenseurl: "https://license-manager.onrender.com",
   appName: "accubridge",
   appDisplayName: "Accubridge",
   firstAutoRefresh: true,

@@ -4,7 +4,6 @@ import { RoleComponent } from './role/role.component';
 import { PermissionComponent } from './permission/permission.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ActivityLogComponent } from './activity-log/activity-log.component';
-import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { AdminComponent } from './admin/admin.component';
 import { DataSetupComponent } from './data-setup/data-setup.component';
 import { AdminRoutingModule } from './admin-routing.module';
@@ -74,7 +73,6 @@ import { CameraSetupComponent } from './camera-setup/camera-setup.component';
   imports: [
     SharedModule,
     ColorPickerModule,
-    NgxJsonViewerModule,
     AdminRoutingModule
   ],
   exports: [

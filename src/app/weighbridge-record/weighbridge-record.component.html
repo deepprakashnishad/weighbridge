@@ -16,7 +16,7 @@
         <button mat-raised-button (click)="getWeight()" *ngIf="selectedIndicator && selectedIndicator['stringType']==='polling'">Get Weight</button>
       </mat-card-content>
   </mat-card>
-  <mat-card>
+  <mat-card *ngIf="cameraSettings">
     <img id="myimage" [src]='image' height="250" width="250"/>
   </mat-card>
   <mat-card fxFlex class="pending-record-container">
