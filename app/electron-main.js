@@ -11,7 +11,9 @@ log.transports.console.level = "error";
 log.transports.file.level = 'error';
 
 require("./db-service.js");
+
 require("./my-port-reader.js");
+
 require("./printer-service.js");
 require("./file-service.js");
 require("./port-verifier.js");
@@ -20,8 +22,8 @@ require("./sap-integration.js");
 
 const appName = "Accubridge"
 const version = "1.0.1";
-const env = "PROD"; // DEV Or PROD
-// const env = "DEV";
+// const env = "PROD"; // DEV Or PROD
+const env = "DEV";
 
 global.win;
 

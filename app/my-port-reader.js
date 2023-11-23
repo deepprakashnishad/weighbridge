@@ -1,5 +1,6 @@
 const { ipcMain } = require("electron");
 const serialPort = require('serialport');
+
 const Readline = require('@serialport/parser-readline')
 const ByteLength = require('@serialport/parser-byte-length')
 
