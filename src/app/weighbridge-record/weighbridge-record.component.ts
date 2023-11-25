@@ -56,7 +56,7 @@ export class WeighbridgeRecordComponent implements OnInit {
     this.fetchWeighIndicators();
     this.ipcService.invokeIPC("loadEnvironmentVars", ["camera"]).then(result => {
       this.cameraSettings = result;
-      if(this.cameraSettings){
+      if(this.cameraSettings && this.cameraSettings.enableCamera){
         setInterval(()=>this.getPicture(this.cameraSettings), result['imageRefreshRate']);
       }
     });

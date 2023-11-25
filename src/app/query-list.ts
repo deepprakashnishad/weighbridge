@@ -128,6 +128,7 @@ export class QueryList{
   static readonly GET_TICKET_FIELDS: string = "SELECT * FROM template_detail WHERE templateId={templateId}";
   static readonly UPDATE_TICKET_FIELD: string = "UPDATE template_detail SET templateId={templateId}, field='{field}', type='{type}', displayName='{displayName}', row={row}, col={col}, isIncluded={isIncluded}, font='{font}' WHERE id={id}";
   static readonly DELETE_TICKET_FIELD: string = "DELETE FROM template_detail WHERE id={id}";
+  static readonly DELETE_TICKET_FIELDS_BY_TEMPLATE_ID: string = "DELETE FROM template_detail WHERE templateId={templateId}";
 
   //User
   static readonly GET_USER_BY_CREDENTIALS: string = "SELECT * FROM app_user WHERE username='{username}' AND password='{password}'";

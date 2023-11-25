@@ -14,6 +14,7 @@ import { TicketTemplate } from '../ticket-template';
 })
 export class CreateEditTicketTemplateComponent implements OnInit {
 
+  existingTemplates: Array<TicketTemplate> = [];
   template: TicketTemplate = new TicketTemplate();
   copyFrom: TicketTemplate;
   title: string;
@@ -25,11 +26,15 @@ export class CreateEditTicketTemplateComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.title = data['title'];
-    console.log(this.template);
     if (data['ticketTemplate']) {
       this.template = data['ticketTemplate'];
-      console.log(this.template);
     }
+
+    if(data['existingTemplates']){
+      this.existingTemplates = data['existingTemplates'];
+    }
+
+    console.log(data);
   }
 
   ngOnInit() {
@@ -53,10 +58,10 @@ export class CreateEditTicketTemplateComponent implements OnInit {
         .replace("{operatingType}", this.template?.operatingType)
         .replace(undefinedRegExp, "");
       var result = await this.dbService.executeSyncDBStmt("UPDATE", stmt);
+      console.log(this.copyFrom.id);
       if (result) {
         this.notifier.notify("success", "Ticket template updated successfully");
-        this.template.id = result['newId'];
-        this.dialogRef.close(this.template);
+        this.dialogRef.close({"template": this.template, "copyFrom": this.copyFrom});
       } else {
         this.notifier.notify("error", "Failed to update ticket template");
       }
@@ -79,13 +84,11 @@ export class CreateEditTicketTemplateComponent implements OnInit {
       if (result['newId']) {
         this.notifier.notify("success", "Ticket template created successfully");
         this.template.id = result['newId'];
-        this.dialogRef.close(this.template);
+        this.dialogRef.close({"template": this.template, "copyFrom": this.copyFrom});
       } else {
         this.notifier.notify("error", "Failed to save ticketTemplate");
       }
     }
-    
-    console.log(result);
   }
 
 }

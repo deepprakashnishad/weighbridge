@@ -21,6 +21,8 @@ export class TicketSetupComponent implements OnInit {
 
   templates: Array<TicketTemplate> = [];
   selectedTemplate: TicketTemplate = new TicketTemplate();
+  copyFrom: TicketTemplate;
+  isCopying: boolean = false;
 
   ticketFields: Array<TicketField> = [];
 
@@ -56,11 +58,19 @@ export class TicketSetupComponent implements OnInit {
   openAddTicketTemplateDialog(){
     const dialogRef = this.dialog.open(CreateEditTicketTemplateComponent, {
       width: "600px",
-      data: {title: "New ticket template"}
+      data: {title: "New ticket template", existingTemplates: this.templates}
     });
 
     dialogRef.afterClosed().subscribe((result)=>{
-      this.templates.push(result);
+      console.log(result);
+      if(result){
+        if(result.copyFrom){
+          this.copyFrom = result.copyFrom;
+          this.selectedTemplateChanged(true);
+          this.selectedTemplate = result.template;
+        }
+        this.templates.push(result.template);
+      }
     });
   }
 
@@ -69,16 +79,26 @@ export class TicketSetupComponent implements OnInit {
       width: "600px",
       data: {
         title: "Edit ticket template",
-        ticketTemplate: this.selectedTemplate
+        ticketTemplate: this.selectedTemplate,
+        existingTemplates: this.templates
       }
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
+        var index = -1;
         for (var i = 0; i < this.templates.length; i++) {
-          this.templates[i] = result;
-          break;
+          if(this.templates[i].id === result.template.id){
+            index=i;
+            break;
+          }
         }
+        if(result.copyFrom){
+          this.copyFrom = result.copyFrom;
+          this.selectedTemplateChanged(true);
+          this.selectedTemplate = this.templates[index];
+        }
+
       }      
     });
   }
@@ -87,6 +107,11 @@ export class TicketSetupComponent implements OnInit {
     if (!this.selectedTemplate) {
       this.notifier.notify("error", "Please select a template");
       return;
+    }
+
+    if(this.isCopying){
+      var mRes = await this.dbService.executeSyncDBStmt("DELETE", QueryList.DELETE_TICKET_FIELDS_BY_TEMPLATE_ID.replace("{templateId}", this.selectedTemplate.id.toString()));
+      console.log(mRes);
     }
     //console.log(this.ticketFieldDataSource.data);
     for (var i = 0; i < this.ticketFieldDataSource.data.length; i++) {
@@ -107,8 +132,6 @@ export class TicketSetupComponent implements OnInit {
     this.reverseFeedField['id'] = await this.insertTicketField(this.reverseFeedField, this.selectedTemplate.id);
     this.notifier.notify("success", "Template details saved successfully");
   }
-
-
 
   async insertTicketField(data: TicketField, templateId) {
     if (data.id === undefined && data.displayName?.length > 0) {
@@ -215,11 +238,27 @@ export class TicketSetupComponent implements OnInit {
     return ticketFields;
   }
 
-  async selectedTemplateChanged() {
-    var result = await this.dbService.executeSyncDBStmt(
-      "SELECT", QueryList.GET_TICKET_FIELDS.replace("{templateId}", this.selectedTemplate.id.toString())
-    );
+  async selectedTemplateChanged(isCopying: boolean = false) {
+    var result;
+    if(isCopying){
+      result = await this.dbService.executeSyncDBStmt(
+        "SELECT", QueryList.GET_TICKET_FIELDS.replace("{templateId}", this.copyFrom.id.toString())
+      );
+      result = result.map(ele=>{
+        ele.templateId=this.selectedTemplate.id; 
+        delete ele.id;
+        return ele;
+      });
+      console.log(result);
+    }else{
+      result = await this.dbService.executeSyncDBStmt(
+        "SELECT", QueryList.GET_TICKET_FIELDS.replace("{templateId}", this.selectedTemplate.id.toString())
+      );
+      this.copyFrom = undefined
+    } 
+    this.isCopying = isCopying;
     var mFields = TicketField.fromJSON(result, true);
+
     var ticketFields = mFields["ticketFields"];
     var freetextFields = mFields["freetextFields"];
     var weighDetailFields = mFields["weighDetailFields"];

@@ -27,30 +27,32 @@ export class CameraSetupComponent implements OnInit {
 
   ngOnInit() {
     this.ipcService.invokeIPC("loadEnvironmentVars", ["camera"]).then(result => {
-      if (result['cameraId']) {
-        this.cameraId = result['cameraId'];
-      }
-      if (result['username']) {
-        this.username = result['username'];
-      }
-      if (result['password']) {
-        this.password = result['password'];
-      }
-      if (result['pictureUrl']) {
-        this.pictureUrl = result['pictureUrl'];
-      }
-      if (result['printDelayInMillis']) {
-        this.printDelayInMillis = result['printDelayInMillis'];
-      }
-      if (result['imagePath']) {
-        this.imagePath = result['imagePath'];
-      }
-      if (result['imageRefreshRate']) {
-        this.imageRefreshRate = result['imageRefreshRate'];
-      }
-      if(result['enableCamera']){
-        this.enableCamera = result['enableCamera'];
-      }
+      if(result){
+        if (result['cameraId']) {
+          this.cameraId = result['cameraId'];
+        }
+        if (result['username']) {
+          this.username = result['username'];
+        }
+        if (result['password']) {
+          this.password = result['password'];
+        }
+        if (result['pictureUrl']) {
+          this.pictureUrl = result['pictureUrl'];
+        }
+        if (result['printDelayInMillis']) {
+          this.printDelayInMillis = result['printDelayInMillis'];
+        }
+        if (result['imagePath']) {
+          this.imagePath = result['imagePath'];
+        }
+        if (result['imageRefreshRate']) {
+          this.imageRefreshRate = result['imageRefreshRate'];
+        }
+        if(result['enableCamera']){
+          this.enableCamera = result['enableCamera'];
+        }
+      } 
     });
   }
 

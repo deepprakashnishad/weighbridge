@@ -60,4 +60,11 @@ export class Utils{
   static removeWhiteSpaces(str) {
     return str.replace(/\s/g, "");
   }
+
+  static formatDate(dateStr){
+    var mDate = new Date(dateStr);
+    var res = `${mDate.getDate()}/${mDate.getMonth() + 1}/${mDate.getFullYear()} ${('0'+mDate.getHours()).slice(-2)}:${('0'+mDate.getMinutes()).slice(-2)}` ;
+    console.log(res);
+    return res;
+  }
 }

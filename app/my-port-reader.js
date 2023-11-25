@@ -1,8 +1,8 @@
 const { ipcMain } = require("electron");
 const serialPort = require('serialport');
 
-const Readline = require('@serialport/parser-readline')
-const ByteLength = require('@serialport/parser-byte-length')
+const {ReadlineParser} = require('@serialport/parser-readline')
+const {ByteLengthParser} = require('@serialport/parser-byte-length')
 
 //const log = require('electron-log');
 //log.transports.file.level = 'info';
@@ -23,7 +23,9 @@ ipcMain.handle("initialize-port", async (event, ...args) => {
     }
     try {
       weighString = args[1]['weighString'];
-      tempPort = serialPort(args[1]['comPort'], {
+      log.debug(args[1]['comPort']);
+      tempPort = new serialPort.SerialPort({
+        "path": args[1]['comPort'],
         "baudRate": weighString['baudRate'],
         "dataBits": weighString['dataBits'],
         "stopBits": weighString['stopBits'],
@@ -62,9 +64,9 @@ function initializePort() {
     if (weighString['delimeter'] === undefined
       || weighString['delimeter'] === null
       || weighString['delimeter'].length === 0) {
-      var parser = tempPort.pipe(new ByteLength({ length: weighString["totalChars"] }));
+      var parser = tempPort.pipe(new ByteLengthParser({ length: weighString["totalChars"] }));
     } else {
-      var parser = tempPort.pipe(new Readline({ delimiter: '\r\n' }));
+      var parser = tempPort.pipe(new ReadlineParser({ delimiter: '\r\n' }));
     }
 
     parser.on('data', onReadData);

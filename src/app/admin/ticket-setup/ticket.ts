@@ -2,6 +2,7 @@ const ticketPredefinedFields = [
   { displayName: "Transporter Code", field: "transporterCode" },
   { displayName: "Transporter Name", field: "transporterName" },
   { displayName: "Scroll No", field: "scrollNo" },
+  { displayName: "Scroll Date", field: "scrollDate" },
   { displayName: "Rst No", field: "rstNo" },
   { displayName: "Vehicle No", field: "vehicleNo" },
   { displayName: "Request Id", field: "reqId" },

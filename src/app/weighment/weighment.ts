@@ -5,9 +5,9 @@ import { Utils } from "../utils";
 export class Weighment{
   rstNo: number;
   vehicleNo: string;
-  reqId: number;
+  reqId: string;
   weighmentType: string;
-  gatePassNo: number;
+  gatePassNo: string;
   poDetails: string;
   scrollNo: string;
   transporterCode: number;
@@ -48,9 +48,9 @@ export class Weighment{
     weighment.scrollDate = (new Date()).toString();
     weighment.scrollNo = "M" + Utils.randomStringGenerator(4);
     weighment.createdAt = (new Date()).toString();
-    weighment.gatePassNo = 1;
+    weighment.gatePassNo = "1";
     weighment.poDetails = Utils.randomStringGenerator(6);
-    weighment.reqId = Utils.randomNumberGenerator(4, 1000, 9999);
+    weighment.reqId = Utils.randomStringGenerator(4);
     weighment.rstNo = Utils.randomNumberGenerator(4, 1000, 9999);
     weighment.status = status;
     weighment.transporterCode = Utils.randomNumberGenerator(4, 1000, 9999);
@@ -83,6 +83,7 @@ export class WeighmentDetail {
   weighmentRstNo: number;
   material: string;
   supplier: string;
+  customer: string;
   firstWeighBridge: string;
   firstWeight: number;
   firstUnit: string;
@@ -96,7 +97,6 @@ export class WeighmentDetail {
   secondWeightUser: User;
   remark: string;
   netWeight: number;
-  customer: string;
   firstWeightImage: string;
   secondWeightImage: string;
 

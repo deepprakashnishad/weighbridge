@@ -7,6 +7,7 @@ import { Weighment, WeighmentDetail } from '../../weighment/weighment';
 import { TicketField } from '../ticket-setup/ticket';
 import { TicketService } from '../ticket-setup/ticket.service';
 import { User } from '../user-management/user';
+import {Utils} from '../../utils';
 
 const USER_PRINT_FIELD = "username";
 
@@ -102,9 +103,20 @@ export class PrinterService {
   }
 
   async getPreviewDataWithTemplate(weighment: Weighment, weighmentDetail: WeighmentDetail, fields?) {
+    weighment.createdAt = weighmentDetail.firstWeightDatetime;
+
+    // weighment.createdAt = Utils.formatDate(weighment.createdAt);
     if (!fields) {
-      var stmt = `SELECT * FROM ticket_template WHERE applicableTo LIKE '%${weighment.weighmentType}%' OR applicableTo='GENERIC'`;
+      var stmt = `SELECT * FROM ticket_template WHERE applicableTo LIKE '%${weighment.weighmentType}%'`;
       var templates = await this.dbService.executeSyncDBStmt("SELECT", stmt);
+      if(templates.length===0){
+        var stmt = `SELECT * FROM ticket_template WHERE applicableTo LIKE '%${weighment.weighmentType}%' OR applicableTo='GENERIC'`;
+        templates = await this.dbService.executeSyncDBStmt("SELECT", stmt);
+      }  
+      if(templates.length<1){
+        this.notifier.notify("error", "No matching template found")
+        return;
+      }
       fields = await this.fetchTemplateDetail(templates[0].id);
       fields = this.ticketService.getSortedFields(fields);
     }
@@ -112,9 +124,19 @@ export class PrinterService {
   }
 
   async getPreviewText(weighment: Weighment, weighmentDetail: WeighmentDetail, fields?) {
+    weighment.createdAt = weighmentDetail.firstWeightDatetime;
+    // weighment.createdAt = Utils.formatDate(weighment.createdAt);
     if (!fields) {
-      var stmt = `SELECT * FROM ticket_template WHERE applicableTo LIKE '%${weighment.weighmentType}%' OR applicableTo='GENERIC'`;
+      var stmt = `SELECT * FROM ticket_template WHERE applicableTo LIKE '%${weighment.weighmentType}%'`;
       var templates = await this.dbService.executeSyncDBStmt("SELECT", stmt);
+      if(templates.length===0){
+        var stmt = `SELECT * FROM ticket_template WHERE applicableTo LIKE '%${weighment.weighmentType}%' OR applicableTo='GENERIC'`;
+        templates = await this.dbService.executeSyncDBStmt("SELECT", stmt);
+      }
+      if(templates.length<1){
+        this.notifier.notify("error", "No matching template found")
+        return;
+      }      
       fields = await this.fetchTemplateDetail(templates[0].id);
       fields = this.ticketService.getSortedFields(fields);
     }

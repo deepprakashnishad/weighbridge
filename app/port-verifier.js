@@ -1,7 +1,9 @@
 const { ipcMain } = require("electron");
 const serialPort = require('serialport');
-const Readline = require('@serialport/parser-readline')
-const ByteLength = require('@serialport/parser-byte-length')
+// const Readline = require('@serialport/parser-readline')
+// const ByteLength = require('@serialport/parser-byte-length')
+const {ReadlineParser} = require('@serialport/parser-readline')
+const {ByteLengthParser} = require('@serialport/parser-byte-length')
 
 //const log = require('electron-log');
 //log.transports.file.level = 'info';
@@ -12,7 +14,7 @@ var tempPort;
 
 ipcMain.handle("get-available-ports", async (event, ...args) => {
   try {
-    var ports = await serialPort.list();
+    var ports = await serialPort.SerialPort.list();
     log.debug(ports);
     return ports;
   } catch (err) {
@@ -29,7 +31,11 @@ ipcMain.handle("verify-port", async (event, ...args) => {
     }
     try {
       weighString = args[1]['weighString'];
-      tempPort = serialPort(args[1]['comPort'], {
+      log.debug("Weigh String format");
+      log.debug(weighString);
+      log.debug(args[1]['comPort']);
+      tempPort = new serialPort.SerialPort({
+        "path": args[1]['comPort'],
         "baudRate": weighString['baudRate'],
         "dataBits": weighString['dataBits'],
         "stopBits": weighString['stopBits'],
@@ -44,11 +50,11 @@ ipcMain.handle("verify-port", async (event, ...args) => {
     try {
       tempPort.open();
       if (weighString['delimeter'] === undefined || weighString['delimeter'] === null || weighString['delimeter'].length === 0) {
-        console.log("Bytelength parser initialized");
-        var parser = tempPort.pipe(new ByteLength({ length: weighString["totalChars"] }));
+        log.info("Readline parser initialized");
+        var parser = tempPort.pipe(new ByteLengthParser({ length: weighString["totalChars"] }));
       } else {
-        console.log("Readline parser initialized");
-        var parser = tempPort.pipe(new Readline({ delimiter: '\r\n' }));
+        log.info("Readline parser initialized");
+        var parser = tempPort.pipe(new ReadlineParser({ delimiter: '\r\n' }));
       }
       tempPort.on("open", () => {
         if (weighString["type"] === "polling") {

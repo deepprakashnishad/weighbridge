@@ -49,36 +49,31 @@
             <input matInput [(ngModel)]="weighment.misc" />
           </mat-form-field>
           <!--<button tabindex="-1" mat-icon-button color="primary" (click)="openSearchDialog()"><mat-icon>open_in_new</mat-icon></button>-->
-          <!--<mat-form-field appearance="outline" *ngIf="weighment.weighmentType!=='inbound' && weighment.weighmentType!=='others'">
-    <mat-label>Request Id</mat-label>
-    <input matInput [(ngModel)]="weighment.reqId" name="cntlRequestId"
-           (keyup.enter)="parseQRString(weighment.reqId)"
-           (blur)="parseQRString(weighment.reqId)" />
-  </mat-form-field>-->
           <mat-form-field appearance="outline">
-            <mat-label>Gate Pass No</mat-label>
+            <mat-label>Container No.</mat-label>
+            <input matInput [(ngModel)]="weighment.reqId" name="cntlRequestId" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>License No.</mat-label>
             <input matInput [(ngModel)]="weighment.gatePassNo" name="cntlGatePassNo" />
           </mat-form-field>
-          <!--<mat-form-field fxFlex appearance="outline" *ngIf="weighment.weighmentType==='inbound'">
-    <mat-label>Scroll No</mat-label>
-    <input matInput [(ngModel)]="weighment.scrollNo" name="cntlscrollNo"
-           (keyup.enter)="parseQRString(weighment.scrollNo)"
-           (blur)="parseQRString(weighment.scrollNo)" />
-  </mat-form-field>
-  <mat-form-field fxFlex appearance="outline" *ngIf="weighment.weighmentType==='inbound'">
-    <mat-label>Scroll Date</mat-label>
-    <input matInput [(ngModel)]="weighment.scrollDate" name="cntlscrollDate"
-           (keyup.enter)="parseQRString(weighment.scrollDate)"
-           (blur)="parseQRString(weighment.scrollDate)" maxlength="8" />
-  </mat-form-field>
-  <mat-form-field fxFlex appearance="outline" *ngIf="weighment.weighmentType.indexOf('outbound')>-1">
-    <mat-label>Request Id Date</mat-label>
-    <input matInput [(ngModel)]="weighment.reqIdDate" name="cntlReqIdDate" maxlength="8" />
-  </mat-form-field>-->
+          <mat-form-field fxFlex appearance="outline">
+            <mat-label>Driver Name</mat-label>
+            <input matInput [(ngModel)]="weighment.scrollNo" name="cntlscrollNo"/>
+          </mat-form-field>
+          <mat-form-field fxFlex appearance="outline">
+            <mat-label>PUC No.</mat-label>
+            <input matInput [(ngModel)]="weighment.scrollDate" name="cntlscrollDate"
+                  maxlength="255" />
+          </mat-form-field>
+          <!-- <mat-form-field fxFlex appearance="outline" *ngIf="weighment.weighmentType.indexOf('outbound')>-1">
+            <mat-label>Request Id Date</mat-label>
+            <input matInput [(ngModel)]="weighment.reqIdDate" name="cntlReqIdDate" maxlength="8" />
+          </mat-form-field> -->
 
           <app-tag-selector *ngIf="isSeachFieldEnabled('supplier')" [tagTypeId]="1" [selectedTag]="weighmentDetail.supplier" [title]="'Supplier'" (optionSelected)="supplierSelected($event)"></app-tag-selector>
-          <app-tag-selector *ngIf="isSeachFieldEnabled('transporter')" #transporterCntl [tagTypeId]="3" [selectedTag]="transporter" [title]="'Transporter'" (optionSelected)="transporterSelected($event)"></app-tag-selector>
           <app-tag-selector *ngIf="isSeachFieldEnabled('customer')" #customerCntl [tagTypeId]="4" [selectedTag]="customer" [title]="'Customer'" (optionSelected)="customerSelected($event)"></app-tag-selector>
+          <app-tag-selector *ngIf="isSeachFieldEnabled('transporter')" #transporterCntl [tagTypeId]="3" [selectedTag]="transporter" [title]="'Transporter'" (optionSelected)="transporterSelected($event)"></app-tag-selector>
           <app-tag-selector *ngIf="isSeachFieldEnabled('material')" [tagTypeId]="2" [selectedTag]="weighmentDetail.material" [title]="'Material*'" (optionSelected)="materialSelected($event)"></app-tag-selector>
         </div>
         <!--<div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="16px">
@@ -87,12 +82,12 @@
         <div fxLayout fxLayoutAlign="start center" fxLayoutGap="16px">
           <mat-form-field appearance="outline" class="weight">
             <mat-label>First Weight</mat-label>
-            <input matInput [(ngModel)]="weighmentDetail.firstWeight" (input)="weightUpdated($event, 'firstweight')"
+            <input matInput [(ngModel)]="weighmentDetail.firstWeight" (input)="weightUpdated($event, 'firstweight')" [disabled] = "!enableWeightEditing && !enterFirstWeightManually"
                    (change)="weightUpdated($event, 'firstweight')" name="cntlFirstWt" tabindex="-1"/>
           </mat-form-field>
           <mat-form-field appearance="outline" class="weight">
             <mat-label>Second Weight</mat-label>
-            <input matInput [(ngModel)]="weighmentDetail.secondWeight" (input)="weightUpdated($event, 'secondweight')"
+            <input matInput [(ngModel)]="weighmentDetail.secondWeight" (input)="weightUpdated($event, 'secondweight')" [disabled]="!enableWeightEditing"
                    (change)="weightUpdated($event, 'secondweight')" name="cntlSecondWt" tabindex="-1" />
           </mat-form-field>
           <mat-form-field appearance="outline" class="weight">
