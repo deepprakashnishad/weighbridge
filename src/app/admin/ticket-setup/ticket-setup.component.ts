@@ -103,6 +103,28 @@ export class TicketSetupComponent implements OnInit {
     });
   }
 
+  async deleteTemplate(){
+    if(!this.selectedTemplate){
+      this.notifier.notify("error", "Please select a template");
+      return;
+    }
+
+    if(this.selectedTemplate.id === 1){
+      this.notifier.notify("error", "This template cannot be deleted");
+      this.notifier.notify("error", "To avoid usage of this template mark select weightment type as DUMMY");
+      return;
+    }
+
+    var mRes = await this.dbService.executeSyncDBStmt("DELETE", QueryList.DELETE_TICKET_FIELDS_BY_TEMPLATE_ID.replace("{templateId}", this.selectedTemplate.id.toString()));
+    
+    await this.dbService.executeSyncDBStmt("DELETE", QueryList.DELETE_TICKET_TEMPLATE.replace("{id}", this.selectedTemplate.id.toString()));
+    var index = this.templates.findIndex(ele=>ele.id===this.selectedTemplate.id);
+    this.templates.splice(index);
+    console.log(this.templates);
+    this.selectedTemplate = new TicketTemplate();
+    this.notifier.notify("success", "Template deleted successfully");
+  }
+
   async saveTemplateDetail() {
     if (!this.selectedTemplate) {
       this.notifier.notify("error", "Please select a template");

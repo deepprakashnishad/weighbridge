@@ -609,9 +609,8 @@ export class WeighmentComponent implements OnInit, AfterViewInit {
     }
 
     if (this.weighmentDetail.id &&
-      (this.weighmentDetail.material === "null" || this.weighmentDetail.material === null || this.weighmentDetail.material === ""
-      || this.weighmentDetail.material === "null" || this.weighmentDetail.supplier === null || this.weighmentDetail.supplier === "")) {
-      this.notifier.notify("error", "Material and supplier are mandatory for second weight.");
+      (this.weighmentDetail.material === "null" || this.weighmentDetail.material === null || this.weighmentDetail.material === "")) {
+      this.notifier.notify("error", "Material is mandatory for second weight.");
       return false;
     }
 

@@ -21,7 +21,7 @@ require("./mailer.js");
 require("./sap-integration.js");
 
 const appName = "Accubridge"
-const version = "1.0.2";
+const version = "1.0.3";
 const env = "PROD"; // DEV Or PROD
 // const env = "DEV";
 

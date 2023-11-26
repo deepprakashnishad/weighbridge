@@ -122,6 +122,7 @@ export class QueryList{
   static readonly INSERT_TICKET_TEMPLATE: string = "INSERT INTO ticket_template(id, name, applicableTo, printerType, defaultPrinter, labelLength, copiesPerPrint, alignment, width, font, fontSize, operatingType) VALUES({id}, '{name}', '{applicableTo}', '{printerType}', '{defaultPrinter}', {labelLength}, {copiesPerPrint}, '{alignment}', {width}, '{font}', {fontSize}, '{operatingType}')";
   static readonly UPDATE_TICKET_TEMPLATE: string = "UPDATE ticket_template SET name='{name}', applicableTo='{applicableTo}', printerType='{printerType}', defaultPrinter='{defaultPrinter}', labelLength={labelLength}, copiesPerPrint={copiesPerPrint}, alignment='{alignment}', width={width}, font='{font}', fontSize={fontSize}, operatingType='{operatingType}' WHERE id={id}";
   static readonly GET_ALL_TICKET_TEMPLATE: string = "SELECT * FROM ticket_template";
+  static readonly DELETE_TICKET_TEMPLATE: string = "DELETE FROM ticket_template WHERE id={id}";
 
   //Ticket Field
   static readonly INSERT_TICKET_FIELD: string = "INSERT INTO template_detail(id, templateId, field, type, displayName, row, col, isIncluded, font) VALUES({id}, {templateId}, '{field}', '{type}', '{displayName}', {row}, {col}, {isIncluded}, '{font}')";
